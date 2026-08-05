@@ -1,0 +1,99 @@
+</div><script>
+const C = __DATA__;                       // course catalogue with packages
+const BY={}; C.forEach(c=>BY[c.code]=c);
+const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat'];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const f1=n=>(Math.round(n*10)/10);
+function hm(m){const h=Math.floor(m/60),q=m%60,ap=h>=12?'PM':'AM';let x=h%12;if(!x)x=12;
+  return x+':'+String(q).padStart(2,'0')+' '+ap;}
+/* term overlap: two half-semester terms in opposite halves never collide */
+function tOv(a,b){ if(a===b) return true; return a==='Full semester'||b==='Full semester'; }
+/* meeting = [day, start, end, comp, sec, room] */
+function mOv(a,b,ta,tb){ return a[0]===b[0] && tOv(ta,tb) && a[1]<b[2] && b[1]<a[2]; }
+
+/* ---------- state ---------- */
+let FIXED=[];       // [{code,pkg}]  pre-enrolled, not biddable
+let MANUAL=[];      // [{name,cr}]   off-timetable credit (project, SWAYAM)
+let PICK={};        // code -> {want, pkg}
+let BUD={ME:0,UWE:0,CCC:0};
+let LAST=null;
+let DONE_ME=[];     // [{code,name,cr}] already-completed major electives, for
+                     // specialisation-bucket credit banking -- empty by default,
+                     // filled in per-student and saved locally (see plans.js)
+let CHOICE_GROUPS=[]; // [{kind, members:[code,...], min_credits, label}] for the
+                       // wishlist scheduler (see app/services/cp_scheduler.py) --
+                       // members must be codes currently in PICK.
+let ADVISEMENT_INFO=null; // private, local-only report provenance; never shipped as a default
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on'); $('p-'+t.dataset.p).classList.add('on');
+  if(t.dataset.p==='sched') drawTT();
+  if(t.dataset.p==='two') drawTwo();
+  if(t.dataset.p==='spec') drawSpec();
+  if(t.dataset.p==='rules') drawRules();
+  if(t.dataset.p==='learn') drawLearn();
+  if(t.dataset.p==='stress'&&typeof RESULT!=='undefined'&&RESULT&&RESULT.recommendations) void stressPlan();
+});
+
+/* ============ BUDGET ============ */
+const SEMS={y4:[7],y3:[5,6,7],y2:[2,3,4,5,6,7]};
+const UREL={2:.15,3:.20,4:.20,5:.20,6:.15,7:.10}, MREL={2:.075,3:.175,4:.20,5:.20,6:.20,7:.15};
+function refreshSem(){const m=$('model').value,s=$('sem');s.innerHTML='';
+  SEMS[m].forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent='Semester '+v;s.appendChild(o);});
+  if(m==='y3')s.value=5;}
+$('model').onchange=()=>{refreshSem();recalc();};refreshSem();
+
+function recalc(){
+  const m=$('model').value, sem=+$('sem').value;
+  const rM=+$('remME').value||0,rU=+$('remUWE').value||0,rC=+$('remCCC').value||0,fl=+$('remFL').value||0;
+  const eU=rU+fl/2, eC=rC+fl/2; let f='';
+  if(m==='y4'){ BUD={ME:Math.round(rM*15+162),UWE:Math.round(eU*15+110),CCC:Math.round(eC*30+72)};
+    f='Fourth-year model — ME = remaining×15 + 162 · UWE = (remaining + ½ floater)×15 + 110 · CCC = (remaining + ½ floater)×30 + 72.';
+  } else if(m==='y3'){ const sh={5:.40,6:.30,7:.30}[sem];
+    BUD={ME:Math.round(rM*10*sh+65),UWE:Math.round(eU*10*sh+50),CCC:Math.round(eC*10*sh+30)};
+    f=`Third-year transition, Sem ${sem} — credit part at ${Math.round(sh*100)}% of (remaining×10) plus the full constant each semester.`;
+  } else { let a=0,b=0,c2=0;
+    for(let s=2;s<=sem;s++){a+=rM*10*(MREL[s]||0);b+=eU*10*(UREL[s]||0);c2+=eC*10*(MREL[s]||0);}
+    BUD={ME:Math.round(a),UWE:Math.round(b),CCC:Math.round(c2)};
+    f=`Steady state — 10 points per remaining credit, released on the staggered schedule, accumulated to Sem ${sem}.`;}
+  $('bME').textContent=BUD.ME;$('bUWE').textContent=BUD.UWE;$('bCCC').textContent=BUD.CCC;
+  $('fME').textContent =`${Math.floor(BUD.ME/75)} three-credit courses at the 75-pt cap`;
+  $('fUWE').textContent=`${Math.floor(BUD.UWE/75)} three-credit courses at the 75-pt cap`;
+  $('fCCC').textContent=`${Math.floor(BUD.CCC/75)} full-semester CCCs at the 75-pt cap`;
+  $('formula').textContent=f;
+  budFlags(); posFlags(); renderChosen(); drawTwo(); if(typeof drawSpec==='function') drawSpec();
+}
+['remME','remUWE','remCCC','remFL','capCr','sem','doneCr','degCr','remCore','remOther']
+  .forEach(id=>{const e=$(id); if(e) e.addEventListener('change',recalc);});
+
+function budFlags(){
+  let h=`<div class="flag f-ok"><b>The per-course cap binds long before your pool does.</b>
+   No bid may exceed 25 × the course's credits, so a 3-credit course tops out at
+   <span class="mono">75</span>. With ${BUD.ME} ME points you could max-bid ${Math.floor(BUD.ME/75)}
+   three-credit electives at once. A high bid does not increase the settled price above the clearing price,
+   but points may still be committed across simultaneous live bids; treat the pool as scarce until SNU documents
+   the cross-course release timing unambiguously.</div>`;
+  h+=`<div class="flag f-q"><b>Your inputs control this estimate.</b> Remaining-credit values come from
+   your local profile. Run the degree audit against your selected programme before relying on the pool,
+   especially when a course may satisfy more than one published minimum.</div>`;
+  $('budFlags').innerHTML=h;
+}
+function fixedCredits(){
+  let t=0; FIXED.forEach(f=>t+=(BY[f.code]?BY[f.code].cr:0)); MANUAL.forEach(m=>t+=m.cr); return t;
+}
+function posFlags(){
+  const cap=+$('capCr').value||25, fx=fixedCredits();
+  const room=Math.max(0,cap-fx), chosen=Object.keys(PICK).reduce((n,code)=>n+(BY[code]?BY[code].cr:0),0);
+  let h=`<div class="flag ${chosen>room?'f-bad':'f-ok'}"><b>Credit-ceiling check.</b>
+   Your fixed load is <span class="mono">${f1(fx)}</span> credits, leaving
+   <span class="mono">${f1(room)}</span> credits under the ${f1(cap)}-credit ceiling.
+   The current picker contains <span class="mono">${f1(chosen)}</span> additional credits.</div>`;
+  h+=`<div class="flag f-q"><b>Degree impact is programme-specific.</b> Use “Run audit check” to see which
+   published requirements the selected courses would satisfy. A selected course is always shown as planned,
+   never silently recorded as completed.</div>`;
+  $('posFlags').innerHTML=h;
+}

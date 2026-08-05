@@ -1,0 +1,36 @@
+{
+  "active_version": "monsoon-2026-netlify-revision-2026-08-04",
+  "versions": [
+    {
+      "version_id": "monsoon-2026-excel-v1",
+      "source_name": "Monsoon 2026 Timetable.xlsx + scheduler workbook (original session extraction)",
+      "source_url": null,
+      "retrieved_at": null,
+      "source_checksum": null,
+      "dataset_checksum": "ad92b769ad06fc43",
+      "importer_version": "manual-2026-08-04-session",
+      "effective_semester": "Monsoon 2026",
+      "course_count": 326,
+      "package_count": 859,
+      "error_count": 0,
+      "warning_count": 0,
+      "validation_status": "clean",
+      "note": "Baseline dataset this project has used since inception. CSD355 cat:DONE personal-data leak fixed 2026-08-04 before this baseline was frozen."
+    },
+    {
+      "version_id": "monsoon-2026-netlify-revision-2026-08-04",
+      "source_name": "SNU Monsoon 2026 Timetable Planner (Netlify)",
+      "source_url": "https://snioe-monsoon2026-tt.netlify.app/",
+      "retrieved_at": "2026-08-04T13:29:16.191118+00:00",
+      "source_checksum": "ecc63f7071704010",
+      "dataset_checksum": "9f5ff5a611844334",
+      "importer_version": "1.0.0",
+      "effective_semester": "Monsoon 2026",
+      "course_count": 326,
+      "package_count": 988,
+      "error_count": 0,
+      "warning_count": 5,
+      "validation_status": "clean"
+    }
+  ]
+}

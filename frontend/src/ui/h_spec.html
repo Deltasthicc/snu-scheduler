@@ -1,0 +1,153 @@
+/* ============ SPECIALISATION TRACKER ============ */
+const SPEC={
+"Artificial Intelligence":[["AI Applications",null],["Computer Vision","CSD454"],["Deep Learning","CSD456"],
+ ["Generative AI",null],["Image Processing and Its Applications","CSD357"],["Information Retrieval","CSD358"],
+ ["Medical Imaging",null],["Natural Language Processing","CSD350"],["Reinforcement Learning","CSD336*"],
+ ["Special Topics in Artificial Intelligence","CSD481"]],
+"Data Science":[["Advanced Data Management Systems","CSD351"],["Algorithms for Big Data","CSD450"],
+ ["Cloud Computing","CSD462"],["Computer Graphics","CSD353"],["Deep Learning","CSD456"],
+ ["Foundations of Data Science","CSD355"],["Information Retrieval","CSD358"],
+ ["Natural Language Processing","CSD350"],["Object Oriented Analysis and Design",null],
+ ["Social and Information Networks","CSD363"],["Special Topics in Data Science",null]],
+"Cybersecurity":[["Foundation of Information Security","CSD356"],["Applied Cryptography","CSD451"],
+ ["Internet of Things","CSD457"],["Embedded systems",null],["Ethical Hacking",null],["Blockchain","CSD436"],
+ ["Mobile Computing",null],["Cloud Computing","CSD462"],["Secure coding",null],
+ ["Special Topics in Cybersecurity",null]],
+"Systems and Networks":[["Real time systems",null],["Distributed Systems","CSD438"],["Compiler Design",null],
+ ["Object Oriented Analysis and Design",null],["Mobile Computing",null],["Internet of Things","CSD457"],
+ ["Embedded systems",null],["Special Topics in Systems and Networks",null],
+ ["Parallel and Concurrent Programming",null],["Cloud Computing","CSD462"]]};
+const AMB={'CSD336*':'CSD336 Reinforcement Learning is named in the AI bucket but is also listed as Major Core. Count it only if the UG Advisor has confirmed that it satisfies the specialization bucket.'};
+let COUNT336=false;
+
+function addDoneME(){
+  const code=prompt('Course code of the completed major elective (e.g. CSD355):'); if(!code)return;
+  const trimmed=code.trim();
+  const name=prompt('Course title:', BY[trimmed]?BY[trimmed].title:'') || trimmed;
+  const cr=parseFloat(prompt('How many credits?', BY[trimmed]?String(BY[trimmed].cr):'3')); if(isNaN(cr))return;
+  DONE_ME.push({code:trimmed,name,cr});
+  renderDoneME(); drawSpec();
+}
+function removeDoneME(i){ DONE_ME.splice(i,1); renderDoneME(); drawSpec(); }
+function renderDoneME(){
+  const box=$('doneMEList'); if(!box) return;
+  if(!DONE_ME.length){ box.innerHTML='<div class="note">Nothing added yet — bucket credit banking starts at 0.</div>'; return; }
+  let h='<table><thead><tr><th>Code</th><th>Title</th><th class="num">Credits</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>';
+  DONE_ME.forEach((d,i)=>{
+    h+=`<tr><td><b>${esc(d.code)}</b></td><td class="tiny">${esc(d.name||'')}</td><td class="num">${f1(d.cr)}</td>
+      <td><button class="btn2 sm" onclick="removeDoneME(${i})">×</button></td></tr>`;
+  });
+  h+='</tbody></table>';
+  box.innerHTML=h;
+}
+
+function specProgress(){
+  const picked=Object.keys(PICK).filter(c=>BY[c].cat==='ME');
+  const out={};
+  Object.keys(SPEC).forEach(area=>{
+    let bank=0,now=0,bankL=[],nowL=[],openL=[];
+    SPEC[area].forEach(([nm,code])=>{
+      if(!code) return;
+      const base=code.replace('*','');
+      const amb=code.endsWith('*');
+      if(amb && !COUNT336) { if(DONE_ME.some(d=>d.code===base)) openL.push([nm,base,'ambiguous']); return; }
+      const d=DONE_ME.find(x=>x.code===base);
+      if(d){ const cr=d.cr; bank+=cr; bankL.push([nm,base,cr]); return; }
+      if(picked.includes(base)||picked.some(p=>p.split('/')[0]===base)){ now+=BY[base]?BY[base].cr:3; nowL.push([nm,base]); return; }
+      if(BY[base]) openL.push([nm,base,'offered now, not chosen']);
+      else openL.push([nm,base,'not offered in Monsoon 2026']);
+    });
+    out[area]={bank,now,tot:bank+now,bankL,nowL,openL};
+  });
+  return out;
+}
+function drawSpec(){
+  if(!$('specBox'))return;
+  renderDoneME(); // the completed-electives list isn't CSE-specific storage, so it must
+                   // render regardless of the programme-gated bucket display below
+  const programme=$('programme')?$('programme').value:'';
+  if(programme!=='b-tech-in-computer-science-and-engineering'){
+    $('specBox').innerHTML='<div class="note">The built-in specialization buckets on this tab apply only to B.Tech. Computer Science and Engineering. Select that programme, or provide programme-specific specialization rules in your private profile.</div>';
+    if($('blockBox'))$('blockBox').innerHTML='<div class="note">CSE block optimization is available only for a CSE profile.</div>';
+    return;
+  }
+  const P=specProgress();
+  const order=Object.keys(P).sort((a,b)=>P[b].tot-P[a].tot);
+  let h=`<div class="grid g4" style="margin-bottom:14px">`;
+  order.forEach(a=>{const p=P[a];
+    const routeB=p.tot>=6, routeA=p.tot>=12;
+    const cls=routeA?'':(routeB?'u':'r');
+    h+=`<div class="stat ${cls}"><div class="k">${a}</div><div class="v mono">${f1(p.tot)}</div>
+      <div class="f">${routeA?'route A complete':routeB?'route B complete':'needs '+f1(6-p.tot)+' more'}</div></div>`;});
+  h+='</div>';
+  const remME=+($('remME')?$('remME').value:0)||0;
+  const routeAFeasible=remME>=12;
+  h+=`<div class="flag f-ok"><b>The rule.</b> 12 credits in one area, either as 12 credits of bucket electives
+   (route A) or <b>6 credits of bucket electives plus Project-1 done in that area</b> (route B).
+   ${routeAFeasible
+     ? `You have ${f1(remME)} major-elective credits left, so route A (12 credits in one bucket) is at least
+        numerically possible — though route B is usually the more efficient use of your remaining slots.`
+     : `Route B is the more realistic path: you have ${f1(remME)} major-elective credit${remME===1?'':'s'} left
+        in total (set this on the Profile &amp; budget tab), so 12 credits of one bucket would consume
+        ${remME>=12?'exactly':'more than'} all of your remaining slots${remME<12?' and leave nothing for the rest of the degree':''}.`}
+   On top of that the prospectus requires overall CGPA &ge; 7 <i>and</i> &ge; 8 in the specialisation component.
+   This tracker does not mark that condition complete unless grade data is added to the private profile.</div>`;
+  order.forEach(a=>{const p=P[a];
+    h+=`<div class="rec ${p.tot>=6?'top':''}"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div><b>${a}</b></div><div class="mono tiny">${f1(p.bank)} banked + ${f1(p.now)} this semester = ${f1(p.tot)} / 6 for route B</div></div>`;
+    if(p.bankL.length) h+=`<div style="margin-top:7px" class="tiny">Already banked: `+
+      p.bankL.map(x=>`<span class="pill p-uwe">${x[1]} ${x[2]}cr</span>`).join(' ')+'</div>';
+    if(p.nowL.length) h+=`<div style="margin-top:5px" class="tiny">Chosen now: `+
+      p.nowL.map(x=>`<span class="pill p-me">${x[1]}</span>`).join(' ')+'</div>';
+    const avail=p.openL.filter(x=>x[2]==='offered now, not chosen');
+    if(avail.length) h+=`<div style="margin-top:5px" class="tiny">Available this semester but not chosen: `+
+      avail.map(x=>`<span class="pill p-m">${x[1]}</span>`).join(' ')+'</div>';
+    const spring=p.openL.filter(x=>x[2]==='not offered in Monsoon 2026');
+    if(spring.length) h+=`<div style="margin-top:5px" class="tiny mut">Not offered in the current timetable; requires a future term: `+
+      spring.map(x=>x[1]).join(', ')+'</div>';
+    const amb=p.openL.filter(x=>x[2]==='ambiguous');
+    if(amb.length) h+=`<div class="flag f-q" style="margin:7px 0 0">${AMB['CSD336*']}</div>`;
+    if(p.tot>=6) h+=`<div class="flag f-ok" style="margin:7px 0 0"><b>Route B is satisfied.</b>
+      ${f1(p.tot)} bucket credits + Project-1 in this area = ${f1(p.tot+6)} ≥ 12.</div>`;
+    else h+=`<div class="flag f-warn" style="margin:7px 0 0">Needs ${f1(6-p.tot)} more bucket credits before
+      Project-1 can carry you over the line.</div>`;
+    h+='</div>';});
+  $('specBox').innerHTML=h;
+  drawBlockOpt();
+}
+/* ---- which core sections keep the most electives alive ---- */
+function drawBlockOpt(){
+  if(!$('blockBox'))return;
+  const coa=BY['CSD211/CSD2003'], med=BY['MED2001'];
+  if(!coa||!med){$('blockBox').innerHTML='<div class="note">Add CSD211 and MED2001 as fixed courses to use this.</div>';return;}
+  const ME=C.filter(c=>c.cat==='ME');
+  const BLOCK={PRAC1:'CSD21',PRAC2:'CSD22',PRAC3:'CSD23',PRAC4:'CSD24'};
+  const rows=[];
+  coa.pk.forEach((cp,ci)=>med.pk.forEach((mp,mi)=>{
+    const core=cp.m.map(m=>({m,term:cp.t,code:'CSD211'})).concat(mp.m.map(m=>({m,term:mp.t,code:'MED2001'})));
+    if(conflicts(cp.m.map(m=>({m,term:cp.t,code:'A'})),mp.m.map(m=>({m,term:mp.t,code:'B'}))).length) return;
+    const free=ME.filter(e=>conflicts(e.pk[0].m.map(m=>({m,term:e.pk[0].t,code:e.code})),core).length===0);
+    const pr=Object.keys(BLOCK).find(p=>cp.l.includes(p));
+    rows.push({ci,mi,cl:cp.l,ml:mp.l,blk:BLOCK[pr]||'?',free:free.map(f=>f.code),n:free.length});
+  }));
+  rows.sort((a,b)=>b.n-a.n);
+  const seen=new Set(),uniq=[];
+  rows.forEach(r=>{const k=r.cl+'|'+r.ml; if(!seen.has(k)){seen.add(k);uniq.push(r);}});
+  let h=`<div class="note" style="margin-bottom:10px">Compare CSD block combinations only if your profile says
+   those core courses are applicable. Every combination below is clash-free internally; the last column shows
+   which current electives remain open.</div>
+   <table><thead><tr><th>Block</th><th>CoA package</th><th>MED package</th><th>Electives left open</th>
+   <th>Which</th><th><span class="sr-only">Action</span></th></tr></thead><tbody>`;
+  uniq.slice(0,10).forEach(r=>{
+    h+=`<tr><td><b>${r.blk}</b></td><td class="tiny">${esc(r.cl)}</td><td class="tiny">${esc(r.ml)}</td>
+     <td class="num" style="color:${r.n>=4?'var(--ok)':'var(--sig)'}">${r.n}</td>
+     <td class="tiny">${r.free.join(', ')||'none'}</td>
+     <td><button class="btn2 sm" onclick="applyCore(${r.ci},${r.mi})">use this</button></td></tr>`;});
+  h+='</tbody></table>';
+  $('blockBox').innerHTML=h;
+}
+function applyCore(ci,mi){
+  const a=FIXED.findIndex(f=>f.code==='CSD211/CSD2003'), b=FIXED.findIndex(f=>f.code==='MED2001');
+  if(a>=0)FIXED[a].pkg=ci; if(b>=0)FIXED[b].pkg=mi;
+  renderFixed();renderPick();renderChosen();drawSpec();
+}

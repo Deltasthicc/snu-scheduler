@@ -1,0 +1,204 @@
+/* ============================================================
+   LEARN — plain-language explainers with live worked examples,
+   plus what comparable universities actually do (researched,
+   with sources), kept strictly separate from the official simulator.
+   ============================================================ */
+
+const OTHER_UNIS = [
+  {
+    inst: 'Wharton (UPenn)',
+    system: 'Course Match',
+    mech: 'Approximate competitive equilibrium from equal incomes (CEEI)',
+    input: 'Report how much you value each course, and link courses as substitutes or complements',
+    alloc: 'A solver searches for prices that clear the market, then assigns each student the best bundle their budget affords',
+    ties: 'Handled inside the optimisation, not by a lottery',
+    transparency: 'Students see their own valuations, not a live price race',
+    strategy: 'Designed so honest reporting is close to optimal',
+    strength: 'Judged fairer and more efficient than the auction it replaced, in a controlled experiment on real Wharton MBA students',
+    weakness: 'Computationally heavy — reportedly ten servers running roughly twelve hours; opaque as a process',
+    relevance: 'Wharton ran a point-bidding auction very like SNU\u2019s and deliberately abandoned it.',
+    src: 'Budish, Cachon, Kessler & Othman, "Course Match", Operations Research 65(2):314-336, 2017; Clear Admit, 2014'
+  },
+  {
+    inst: 'Chicago Booth',
+    system: 'iBid',
+    mech: 'Multi-round point auction, clearing at the lowest successful bid',
+    input: 'Point bids per course across several phases',
+    alloc: 'Each phase clears; winners pay the closing price',
+    ties: 'Not published in the material found',
+    transparency: 'Publishes Course Price History spreadsheets — past closing prices section by section, plus live seat supply and remaining spots',
+    strategy: 'Strategic; students study price history to bid',
+    strength: 'Historical clearing prices remove most of the guesswork that makes a first-year auction so stressful',
+    weakness: 'Same dual-role-of-bids problem as any point auction',
+    relevance: 'This is the single most directly copyable idea for SNU: publish clearing prices after each round.',
+    src: 'Chicago Booth student handbook, "Registration and Course Credit"; iBid registrar site'
+  },
+  {
+    inst: 'Michigan Ross, Columbia, Berkeley Haas, Kellogg, Yale SOM',
+    system: 'UMBS-style course bidding',
+    mech: 'Point auction, bids processed highest-first, clearing price = lowest successful bid',
+    input: 'Point bids only',
+    alloc: 'Sequential processing of bids by size',
+    ties: 'Random lottery number per bid',
+    transparency: 'Varies by school',
+    strategy: 'Highly strategic',
+    strength: 'Simple to explain and to run',
+    weakness: 'The canonical example in the literature of a mechanism whose outcomes are not true market outcomes',
+    relevance: 'SNU\u2019s mechanism is essentially this family. The published critiques apply directly.',
+    src: 'S\u00f6nmez & \u00dcnver, "Course Bidding at Business Schools", International Economic Review 51(1):99-123, 2010'
+  },
+  {
+    inst: 'Michigan Ross (field study)',
+    system: 'Gale-Shapley Pareto-dominant mechanism',
+    mech: 'Deferred acceptance, using bids for priority but a separate stated preference ranking for what you actually want',
+    input: 'Point bids AND a preference ranking',
+    alloc: 'Deferred acceptance on those two inputs',
+    ties: 'Bid size sets priority',
+    transparency: 'Students state preferences directly, so the system knows what they want',
+    strategy: 'Substantially less strategic than pure bidding',
+    strength: 'A field and lab study found it could vastly improve efficiency over the incumbent bidding system',
+    weakness: 'Requires students to submit one more input',
+    relevance: 'The cheapest possible fix to a point auction: keep the points, add a preference ranking.',
+    src: 'Krishna, S\u00f6nmez & \u00dcnver, "Efficiency Enhanced Course Bidding: Evidence from a Field Experiment at the University of Michigan Business School"'
+  },
+  {
+    inst: 'Stanford GSB, Harvard Business School',
+    system: 'Preference revelation',
+    mech: 'Students rank courses; no currency at all',
+    input: 'A ranked list',
+    alloc: 'Assignment algorithm over the rankings',
+    ties: 'Lottery or class-year priority',
+    transparency: 'High — nothing to out-guess',
+    strategy: 'Low',
+    strength: 'No budgeting, no price prediction, no bidding-war anxiety',
+    weakness: 'Cannot express intensity — "I need this one course" looks identical to "I mildly prefer it"',
+    relevance: 'The opposite design pole from SNU. Worth knowing the trade-off exists.',
+    src: 'Referenced as preference-revelation schools in Krishna, S\u00f6nmez & \u00dcnver'
+  }
+];
+
+function drawLearn() {
+  if (!$('learnBox')) return;
+
+  /* --- 1. the mechanism, with a live worked example --- */
+  let h = `<div class="card"><div class="hd"><div><h2>What actually happens when a round closes</h2>
+    <div class="note">A transparent settlement sandbox: six bids, a configurable seat count, deterministic
+    tie-breaking, the clearing price, and every refund. This demonstrates one course only; it does not predict demand.</div></div></div>
+    <div class="grid g4" style="margin-bottom:12px">
+      <div><label for="lnSeats">Seats</label><input type="number" id="lnSeats" value="3" min="0" max="9"></div>
+      <div><label for="lnB1">Bid A</label><input type="number" id="lnB1" value="70" min="0" max="75"></div>
+      <div><label for="lnB2">Bid B</label><input type="number" id="lnB2" value="55" min="0" max="75"></div>
+      <div><label for="lnB3">Bid C</label><input type="number" id="lnB3" value="40" min="0" max="75"></div>
+      <div><label for="lnB4">Bid D</label><input type="number" id="lnB4" value="40" min="0" max="75"></div>
+      <div><label for="lnB5">Bid E</label><input type="number" id="lnB5" value="25" min="0" max="75"></div>
+      <div><label for="lnB6">Bid F</label><input type="number" id="lnB6" value="10" min="0" max="75"></div>
+    </div>
+    <div id="lnResult"></div></div>`;
+
+  /* --- 2. the dual-role problem, which is the real answer to "bid enough" --- */
+  h += `<div class="card"><h2>Why "bid exactly enough" is not a thing you can do</h2>
+    <div class="note" style="font-size:13.5px;line-height:1.75">
+    In this mechanism your bid is asked to do <b>two different jobs at once</b>: it signals how much you want a
+    course, and it decides your priority against everyone else. Economists call this the dual role of bids, and
+    it is the documented weakness of this entire family of systems. S&ouml;nmez and &Uuml;nver showed that the two
+    roles conflict, so the preferences the system infers from your bids can differ significantly from what you
+    actually want &mdash; meaning a point auction does not necessarily produce a market outcome at all.
+    <br><br>
+    That is the honest answer to the question you keep running into. You cannot bid "exactly enough" because
+    the amount that would be enough depends on what everyone else does, and you are not allowed to say
+    separately "I want this one most". The best you can do is bid an amount you are confident clears the price,
+    knowing that you are charged the clearing price and refunded the rest &mdash; and let the priority list carry
+    the information about which course you actually want most.
+    </div>
+    <div class="flag f-ok"><b>The practical consequence.</b> Points you commit are not points you spend. The
+    only real cost of bidding generously is that, if bids in a round share one live pool, those points are
+    unavailable to another course in the same round. That is why this tool reports committed and uncommitted
+    points separately, and why the budget-rule switch matters.</div></div>`;
+
+  /* --- 3. researched comparison --- */
+  h += `<div class="card"><div class="hd"><div><h2>How comparable universities handle this</h2>
+    <div class="note">Researched from primary and peer-reviewed sources. This is background for understanding
+    the design, not a description of SNU's rules &mdash; the simulator always follows SNU.</div></div></div>`;
+  const wharton=OTHER_UNIS[0];
+  h += `<div class="rec"><div style="margin-bottom:6px"><b>${esc(wharton.inst)}</b> <span class="mut">${esc(wharton.system)}</span></div>
+    <table style="margin-top:6px"><tbody>
+      <tr><td style="width:150px;color:var(--dim)">Student input</td><td>${esc(wharton.input)}</td></tr>
+      <tr><td style="color:var(--dim)">Allocation</td><td>${esc(wharton.alloc)}</td></tr>
+      <tr><td style="color:var(--dim)">Why it matters</td><td>${esc(wharton.relevance)}</td></tr>
+      <tr><td style="color:var(--dim)">Trade-off</td><td>${esc(wharton.weakness)}</td></tr>
+    </tbody></table><div class="tiny" style="margin-top:6px"><b>Source:</b> ${esc(wharton.src)}</div></div>`;
+  h += `<div class="rec"><h3 style="margin:0 0 8px">Other useful reference points — condensed</h3>
+    <div class="scroll"><table><thead><tr><th>University/system</th><th>How it works</th><th>Useful lesson for SNU</th><th>Trade-off</th></tr></thead><tbody>`;
+  OTHER_UNIS.slice(1).forEach(u=>{h+=`<tr><td><b>${esc(u.inst)}</b><div class="tiny mut">${esc(u.system)}</div></td>
+    <td>${esc(u.mech)}</td><td>${esc(u.relevance)}</td><td>${esc(u.weakness)}</td></tr>`;});
+  h += `</tbody></table></div><div class="tiny" style="margin-top:7px">Sources: `+
+    OTHER_UNIS.slice(1).map(u=>esc(u.src)).join(' · ')+'</div></div>';
+  h += `<div class="flag f-ok"><b>The one change that would help SNU students most, at almost no cost:</b>
+    publish the clearing price of every course after every round, the way Chicago Booth publishes its Course
+    Price History. Every number this tool has to <i>simulate</i> would become a number students could simply
+    look up. Worth raising with the Academic Office, since this is the first cohort and the precedent is
+    being set now.</div></div>`;
+
+  $('learnBox').innerHTML = h;
+  ['lnSeats', 'lnB1', 'lnB2', 'lnB3', 'lnB4', 'lnB5', 'lnB6'].forEach(id => {
+    const el = $(id); if (el) el.oninput = () => void runLearnExample();
+  });
+  void runLearnExample();
+}
+
+let _learnBusy = false;
+async function runLearnExample() {
+  if (!$('lnResult') || _learnBusy) return;
+  _learnBusy = true;
+  const seats = Math.max(0, +$('lnSeats').value || 0);
+  const bids = ['A', 'B', 'C', 'D', 'E', 'F'].map((n, i) => ({ id: n, bid: Math.max(0, +$('ln' + 'B' + (i + 1)).value || 0), tie_break: i + 1 }));
+  let r;
+  try {
+    // §2: settlement is authoritative, so it runs on the backend, not here
+    r = await API.settleAuction(seats, bids, 75, 'learn');
+  } catch (e) {
+    $('lnResult').innerHTML = '<div class="flag f-bad">' + esc(API.humanError(e)) + '</div>';
+    _learnBusy = false; return;
+  } finally { _learnBusy = false; }
+  const byId = {}; r.results.forEach(x => byId[x.id] = x);
+
+  const rank={}; r.ranked.forEach((x,i)=>rank[x.id]=i+1);
+  let h = `<table><thead><tr><th>Rank</th><th>Student</th><th>Bid</th><th>Outcome</th><th>Charged</th><th>Refunded</th></tr></thead><tbody>`;
+  bids.forEach(b => {
+    const x = byId[b.id];
+    h += `<tr><td class="num">${rank[b.id]||'—'}</td><td><b>${b.id}</b></td><td class="num">${b.bid}</td>
+      <td>${x.won ? '<span class="pill p-uwe">wins a seat</span>' : '<span class="pill p-m">no seat</span>'}</td>
+      <td class="num" style="color:var(--sig)">${x.charged}</td>
+      <td class="num" style="color:var(--ok)">${x.refunded}</td></tr>`;
+  });
+  h += '</tbody></table>';
+  h += `<div class="grid g3" style="margin-top:12px">
+    <div class="stat"><div class="k">Clearing price</div><div class="v mono">${r.clearing_price}</div>
+      <div class="f">${r.seats_unfilled > 0 ? 'seats unfilled, so it clears at zero' : 'the lowest winning bid'}</div></div>
+    <div class="stat u"><div class="k">Total actually charged</div><div class="v mono">${r.totals.charged}</div>
+      <div class="f">of ${r.totals.bid} bid</div></div>
+    <div class="stat c"><div class="k">Total refunded</div><div class="v mono">${r.totals.refunded}</div>
+      <div class="f">${r.conservation_ok ? 'nothing lost' : 'CONSERVATION ERROR'}</div></div></div>`;
+
+  const winners = r.results.filter(x => x.won).sort((a, b) => b.bid - a.bid);
+  if (winners.length > 1) {
+    const top = winners[0], marginal = winners[winners.length - 1];
+    if (top.bid > marginal.bid) {
+      h += `<div class="flag f-ok"><b>High bid is not the same as high price.</b> ${top.id} bid ${top.bid},
+        but every winner paid the clearing price of ${r.clearing_price}; ${top.id} received ${top.refunded}
+        points back. A larger bid improves rank, subject to the live-pool constraint, without changing the
+        uniform price after settlement.</div>`;
+    }
+  }
+  const cutoff=r.ranked[r.seats-1],next=r.ranked[r.seats];
+  if(cutoff&&next&&cutoff.bid===next.bid){
+    h+=`<div class="flag f-warn"><b>Tie at the cutoff.</b> ${esc(cutoff.id)} and ${esc(next.id)} both bid ${cutoff.bid};
+      the documented tie-break order decides the final seat. The displayed rank is deterministic for this example,
+      not a claim about a student's real lottery position.</div>`;
+  }
+  if (r.seats_unfilled > 0 && r.winners.length) {
+    h += `<div class="flag f-ok"><b>Seats went unfilled, so everyone paid nothing.</b> A zero bid would have
+      won just as well. This is why the tool tells you when a course is probably free.</div>`;
+  }
+  $('lnResult').innerHTML = h;
+}

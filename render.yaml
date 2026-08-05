@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: snu-scheduler
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/ready
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: SNU_DB
+        value: /tmp/snu.db
+      - key: SNU_FRONTEND_DIR
+        value: /code/frontend-dist

@@ -1,0 +1,15 @@
+{
+  "version_id": "monsoon-2026-netlify-revision-2026-08-04",
+  "source_name": "SNU Monsoon 2026 Timetable Planner (Netlify)",
+  "source_url": "https://snioe-monsoon2026-tt.netlify.app/",
+  "retrieved_at": "2026-08-04T21:33:46.131453+00:00",
+  "source_checksum": "55c3985fe64e6fda",
+  "dataset_checksum": "d2c66e31058da400",
+  "importer_version": "1.0.0",
+  "effective_semester": "Monsoon 2026",
+  "course_count": 326,
+  "package_count": 988,
+  "error_count": 0,
+  "warning_count": 2,
+  "validation_status": "clean"
+}

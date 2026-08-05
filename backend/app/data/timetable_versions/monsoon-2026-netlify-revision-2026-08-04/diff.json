@@ -1,0 +1,2100 @@
+{
+  "renamed_courses": [
+    {
+      "old_code": "CCC2503",
+      "new_code": "CCC526/CCC2503"
+    },
+    {
+      "old_code": "CCC2101",
+      "new_code": "CCC826/CCC2101"
+    }
+  ],
+  "added_courses": [
+    "CCC396/CCC2315"
+  ],
+  "removed_courses": [
+    "STM205"
+  ],
+  "changed_courses": [
+    {
+      "code": "ART220",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "ART341/AMP2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "ART342",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO1004",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO1008",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "BIO2009",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC1",
+            "LEC:LEC2 + PRAC:PRAC1"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO208/BIO2008",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "BIO210/BIO2010",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO301",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO302",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO303",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO304",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO327",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO330",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CCC122/CCC2105",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CCC125/CCC2116",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CCC2103",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC228/CCC2605",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC252/CCC2506",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CCC259/CCC2213",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC261/CCC2214",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CCC395/CCC2502",
+      "diffs": {
+        "terms": {
+          "old": [
+            "First half",
+            "Second half"
+          ],
+          "new": [
+            "First half"
+          ]
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC2"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CCC411/CCC2201",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CCC416/CCC2314",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC419/CCC2202",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC448/CCC2407",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CCC634/CCC2204",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CCC685/CCC2302",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC697/CCC2308",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC704/CCC2302",
+      "diffs": {
+        "seats": {
+          "old": 60,
+          "new": 450
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC804/CCC2309",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CCC848/CCC2504",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CED2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CED2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CED2004",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CED2005",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CED304",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CED310",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CHD2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CHD2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CHD310",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CHD318",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CHD320",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CHY103/CHY1003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CHY111/CHY1011",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1",
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT2",
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT3",
+          "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT1",
+          "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT2",
+          "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "CHY211/CHY2011",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CHY221/CHY2021",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CHY245/CHY2045",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CHY311",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CHY313",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CHY321",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CHY400",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CHY545/CHY5045",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "COM191/AMP2004",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "COM197/AMP2006",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD101/CSD1001",
+      "diffs": {
+        "seats": {
+          "old": 120,
+          "new": 160
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC10",
+            "LEC:LEC1 + PRAC:PRAC9",
+            "LEC:LEC2 + PRAC:PRAC10",
+            "LEC:LEC2 + PRAC:PRAC9",
+            "LEC:LEC3 + PRAC:PRAC10",
+            "LEC:LEC3 + PRAC:PRAC9",
+            "LEC:LEC4 + PRAC:PRAC10",
+            "LEC:LEC4 + PRAC:PRAC9"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD102/CSD1002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC4",
+          "LEC:LEC2 + PRAC:PRAC1",
+          "LEC:LEC2 + PRAC:PRAC2",
+          "LEC:LEC2 + PRAC:PRAC4"
+        ]
+      }
+    },
+    {
+      "code": "CSD205/CSD2002",
+      "diffs": {
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC2 + TUT:TUT1",
+            "LEC:LEC2 + TUT:TUT2"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CSD211/CSD2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1",
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT2",
+          "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT1",
+          "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT2",
+          "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT1",
+          "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT2",
+          "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT1",
+          "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "CSD213/CSD2004",
+      "diffs": {
+        "seats": {
+          "old": 240,
+          "new": 120
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC2 + PRAC:PRAC1",
+            "LEC:LEC2 + PRAC:PRAC2",
+            "LEC:LEC2 + PRAC:PRAC3",
+            "LEC:LEC2 + PRAC:PRAC4"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD304",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC3",
+          "LEC:LEC1 + PRAC:PRAC4",
+          "LEC:LEC2 + PRAC:PRAC1",
+          "LEC:LEC2 + PRAC:PRAC2",
+          "LEC:LEC2 + PRAC:PRAC3",
+          "LEC:LEC2 + PRAC:PRAC4"
+        ]
+      }
+    },
+    {
+      "code": "CSD311",
+      "diffs": {
+        "seats": {
+          "old": 240,
+          "new": 120
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC2 + PRAC:PRAC1",
+            "LEC:LEC2 + PRAC:PRAC2",
+            "LEC:LEC2 + PRAC:PRAC3"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD319",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC3"
+        ]
+      }
+    },
+    {
+      "code": "CSD355",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD361",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD365",
+      "diffs": {
+        "seats": {
+          "old": 60,
+          "new": 80
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD436",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD438",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD457",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CWR1002",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC4"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CWR2002",
+      "diffs": {
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC3",
+            "LEC:LEC4"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES102/DES1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES131",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES203/DES2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES204/DES2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES205/DES2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES301/DES3001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES302/DES3002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES4001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES4002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES4003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES4007",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES4008",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES406/DES4009",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES4100",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "ECE1001",
+      "diffs": {
+        "seats": {
+          "old": 120,
+          "new": 150
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC2 + PRAC:PRAC5",
+            "LEC:LEC4 + PRAC:PRAC5"
+          ],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC10",
+            "LEC:LEC1 + PRAC:PRAC3",
+            "LEC:LEC1 + PRAC:PRAC9",
+            "LEC:LEC2 + PRAC:PRAC10",
+            "LEC:LEC2 + PRAC:PRAC9",
+            "LEC:LEC3 + PRAC:PRAC10",
+            "LEC:LEC3 + PRAC:PRAC7",
+            "LEC:LEC3 + PRAC:PRAC9",
+            "LEC:LEC4 + PRAC:PRAC10",
+            "LEC:LEC4 + PRAC:PRAC3",
+            "LEC:LEC4 + PRAC:PRAC9"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC3",
+          "LEC:LEC1 + PRAC:PRAC5"
+        ]
+      }
+    },
+    {
+      "code": "ECE2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC3"
+        ]
+      }
+    },
+    {
+      "code": "ECE2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC3"
+        ]
+      }
+    },
+    {
+      "code": "ECE301",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC3",
+          "LEC:LEC1 + PRAC:PRAC5",
+          "LEC:LEC1 + PRAC:PRAC6",
+          "LEC:LEC2 + PRAC:PRAC1",
+          "LEC:LEC2 + PRAC:PRAC2",
+          "LEC:LEC2 + PRAC:PRAC3",
+          "LEC:LEC2 + PRAC:PRAC5",
+          "LEC:LEC2 + PRAC:PRAC6"
+        ]
+      }
+    },
+    {
+      "code": "ECE302",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC3",
+          "LEC:LEC1 + PRAC:PRAC4",
+          "LEC:LEC1 + PRAC:PRAC5",
+          "LEC:LEC1 + PRAC:PRAC6",
+          "LEC:LEC2 + PRAC:PRAC1",
+          "LEC:LEC2 + PRAC:PRAC3",
+          "LEC:LEC2 + PRAC:PRAC4",
+          "LEC:LEC2 + PRAC:PRAC5",
+          "LEC:LEC2 + PRAC:PRAC6"
+        ]
+      }
+    },
+    {
+      "code": "ECE305",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "ECE351",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "ECE356",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "ECE357",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "ECE363",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "ECE370",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "ECE374",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "ECE452",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "ECE454",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "ECO101/ECO1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT10",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3",
+          "LEC:LEC1 + TUT:TUT4",
+          "LEC:LEC1 + TUT:TUT5",
+          "LEC:LEC1 + TUT:TUT6",
+          "LEC:LEC1 + TUT:TUT7",
+          "LEC:LEC1 + TUT:TUT8",
+          "LEC:LEC1 + TUT:TUT9",
+          "LEC:LEC2 + TUT:TUT10",
+          "LEC:LEC2 + TUT:TUT2",
+          "LEC:LEC2 + TUT:TUT3",
+          "LEC:LEC2 + TUT:TUT4",
+          "LEC:LEC2 + TUT:TUT6",
+          "LEC:LEC2 + TUT:TUT7",
+          "LEC:LEC3 + TUT:TUT10",
+          "LEC:LEC3 + TUT:TUT2",
+          "LEC:LEC3 + TUT:TUT3",
+          "LEC:LEC3 + TUT:TUT4",
+          "LEC:LEC3 + TUT:TUT6",
+          "LEC:LEC3 + TUT:TUT7",
+          "LEC:LEC3 + TUT:TUT8"
+        ]
+      }
+    },
+    {
+      "code": "ECO102/ECO1002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT4",
+          "LEC:LEC1 + TUT:TUT5"
+        ]
+      }
+    },
+    {
+      "code": "ECO104/ECO1004",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO108/ECO1009",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO203/ECO2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT3",
+          "LEC:LEC1 + TUT:TUT4",
+          "LEC:LEC1 + TUT:TUT5",
+          "LEC:LEC1 + TUT:TUT6",
+          "LEC:LEC2 + TUT:TUT1",
+          "LEC:LEC2 + TUT:TUT3",
+          "LEC:LEC2 + TUT:TUT4",
+          "LEC:LEC2 + TUT:TUT5",
+          "LEC:LEC2 + TUT:TUT6"
+        ]
+      }
+    },
+    {
+      "code": "ECO301/ECO2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO302",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "ECO325",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO354/ECO4201",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO373",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3",
+          "LEC:LEC1 + TUT:TUT4"
+        ]
+      }
+    },
+    {
+      "code": "ECO375",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO402",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO415/ECO3101",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO4502",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO4603",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO483",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ENF409",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "ENG104/CWR1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC2 + TUT:TUT1",
+          "LEC:LEC2 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ENG141/ENG1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "ENG241/ENG2041",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "ENG245/ENG2045",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "ENG340",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "ENG342",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "ENG343",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "ENG440",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "ENG448",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "FAC1002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "FAC2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "FAC211",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "FAC410",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "HIS102",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "HIS302",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "HIS303",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "HIS326",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "HIS331",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "IHS1001",
+      "diffs": {
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC2 + TUT:TUT1"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "IHS1002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "IHS1003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "IHS1004",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "IHS1005",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT101/INT1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT102/INT1002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT104/INT2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT246/INT3046",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT301",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT354",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT363",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT365",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT100/MAT1000",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT1003",
+      "diffs": {
+        "seats": {
+          "old": 275,
+          "new": 300
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC1 + TUT:TUT1",
+            "LEC:LEC2 + TUT:TUT2"
+          ],
+          "added_labels": [
+            "LEC:LEC1 + TUT:TUT10",
+            "LEC:LEC1 + TUT:TUT9",
+            "LEC:LEC2 + TUT:TUT9"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT1005",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT1008",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "MAT1009",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT101/MAT1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "MAT160/MAT1006",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT184/MAT2007",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT241/MAT2041",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT331",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT360",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT390",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "MAT422",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT442",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT494",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "MAT620",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MDR102",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC2 + TUT:TUT1",
+          "LEC:LEC2 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "MDR152",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC2 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MDR252",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MDR302",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MDR352",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MDR402",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MEC 104/MEC2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "MED2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "MED2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "MED2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "MED2004",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "MED301",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "MED303",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC3"
+        ]
+      }
+    },
+    {
+      "code": "MED309",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "MED403",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "MED412",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "MED416",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "MED417",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "MGT1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "MGT2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "MGT2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "MKT404",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "OHM2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC4"
+        ]
+      }
+    },
+    {
+      "code": "PHY1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "PHY1007",
+      "diffs": {
+        "packages_moved": [
+          "PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "PHY1011",
+      "diffs": {
+        "seats": {
+          "old": 120,
+          "new": 150
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT8"
+          ],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT8"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY105/PHY1005",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "PHY201/PHY2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "PHY203/PHY2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "PHY205/PHY2005",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "PHY301",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "PHY303",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "PHY305",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "PHY307",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "SNS1001",
+      "diffs": {
+        "seats": {
+          "old": 125,
+          "new": 300
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC3",
+            "LEC:LEC4"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "SOC323",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "SOC327",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "SOC414",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "SOE4801",
+      "diffs": {
+        "seats": {
+          "old": 450,
+          "new": 300
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC2"
+          ]
+        }
+      }
+    },
+    {
+      "code": "SPO201/SPO2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "STM2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "renamed": 2,
+    "added": 1,
+    "removed": 1,
+    "changed": 205,
+    "unchanged": 118
+  }
+}

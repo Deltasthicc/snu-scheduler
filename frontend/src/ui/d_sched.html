@@ -1,0 +1,229 @@
+/* ============ FIXED / PRE-ENROLLED ============ */
+const BLOCKS=[...new Set(C.flatMap(c=>c.blocks))].filter(b=>/^CSD/.test(b)).sort();
+function initBlocks(){
+  $('blk').innerHTML='<option value="">— none / not in a CSD block —</option>'+
+    BLOCKS.map(b=>`<option value="${b}">${b}</option>`).join('');
+  $('blk').onchange=applyBlock;
+}
+function applyBlock(){
+  const b=$('blk').value;
+  FIXED=FIXED.filter(f=>!f.auto);
+  if(b) C.filter(c=>c.blocks.includes(b)).forEach(c=>{
+    const pk=c.pk.findIndex(p=>p.m.some(m=>true));
+    FIXED.push({code:c.code,pkg:pickBlockPkg(c,b),auto:true,lock:false});
+  });
+  renderFixed(); renderPick(); renderChosen();
+}
+/* choose the package whose sections are the ones tagged with this block, if identifiable */
+function pickBlockPkg(c,b){ return 0; }
+function fixedMeets(){
+  const out=[];
+  FIXED.forEach(f=>{const c=BY[f.code]; if(!c||!c.pk.length)return; const p=c.pk[f.pkg]||c.pk[0]; if(!p)return;
+    p.m.forEach(m=>out.push({m,term:p.t,code:c.code,title:c.title,kind:'fix'}));});
+  return out;
+}
+function renderFixed(){
+  let h='<table><thead><tr><th>Course</th><th>Package</th><th>Cr</th><th>Term</th><th>When</th>'+
+    '<th title="Locked sections are never changed by the solver. Unlocked ones can be swapped in Round 1 or 5.">Swappable</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>';
+  if(!FIXED.length && !MANUAL.length) h+='<tr><td colspan="7" class="tiny">Nothing fixed yet.</td></tr>';
+  FIXED.forEach((f,i)=>{const c=BY[f.code];if(!c)return;const p=c.pk[f.pkg];
+    const opts=c.pk.map((q,j)=>`<option value="${j}"${j===f.pkg?' selected':''}>${esc(q.l)} — ${q.t}</option>`).join('');
+    h+=`<tr><td><b>${esc(c.code)}</b> <span class="mut">${esc(c.title.slice(0,30))}</span>
+      ${f.auto?'<span class="pill p-m">block</span>':''}</td>
+      <td>${c.pk.length>1?`<select aria-label="Section package for ${esc(c.code)}" style="width:auto;min-width:150px" onchange="FIXED[${i}].pkg=+this.value;renderFixed();renderPick();renderChosen()">${opts}</select>`:`<span class="tiny">${esc(p.l)}</span>`}</td>
+      <td class="num">${c.cr}</td><td class="tiny">${p.t}</td>
+      <td class="tiny">${p.m.map(m=>m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])).join(' · ')}</td>
+      <td><input type="checkbox" class="chk" aria-label="Allow solver to swap ${esc(c.code)} section" ${f.lock?'':'checked'} title="untick to lock this section"
+          onchange="FIXED[${i}].lock=!this.checked"></td>
+      <td><button class="btn2 sm" onclick="FIXED.splice(${i},1);renderFixed();renderPick();renderChosen()">×</button></td></tr>`;});
+  MANUAL.forEach((m,i)=>{h+=`<tr><td><b>${esc(m.name)}</b> <span class="pill p-nb">off-timetable</span></td>
+    <td class="tiny">no scheduled meetings</td><td class="num">${m.cr}</td><td class="tiny">—</td>
+    <td class="tiny">—</td><td class="tiny">—</td><td><button class="btn2 sm" onclick="MANUAL.splice(${i},1);renderFixed();renderChosen()">×</button></td></tr>`;});
+  h+='</tbody></table>';
+  $('fixedList').innerHTML=h;
+  $('fxAdd').innerHTML='<option value="">+ add a fixed / pre-enrolled course…</option>'+
+    C.filter(c=>!FIXED.some(f=>f.code===c.code)).map(c=>`<option value="${c.code}">${esc(c.code)} — ${esc(c.title.slice(0,40))}</option>`).join('');
+}
+function addFixed(){const v=$('fxAdd').value; if(!v)return;
+  FIXED.push({code:v,pkg:0,auto:false,lock:false}); delete PICK[v]; renderFixed(); renderPick(); renderChosen();}
+function addManual(){const n=prompt('Name of the off-timetable item (e.g. Project-1, SWAYAM):'); if(!n)return;
+  const c=parseFloat(prompt('How many credits does it carry?','6')); if(isNaN(c))return;
+  MANUAL.push({name:n,cr:c}); renderFixed(); renderChosen(); recalc();}
+
+/* ============ CLASH ENGINE ============ */
+function pkgMeets(code,pkgIdx){const c=BY[code];if(!c||!c.pk.length)return[];const p=c.pk[pkgIdx]||c.pk[0];if(!p)return[];
+  return p.m.map(m=>({m,term:p.t,code,title:c.title,kind:c.cat.toLowerCase()}));}
+function conflicts(A,B){   // arrays of {m,term,code}
+  const out=[];
+  A.forEach(a=>B.forEach(b=>{ if(a.code===b.code) return;
+    if(mOv(a.m,b.m,a.term,b.term)) out.push({a,b,
+      day:a.m[0], st:Math.max(a.m[1],b.m[1]), en:Math.min(a.m[2],b.m[2])});}));
+  return out;
+}
+function bestPkg(c,against){
+  if(!c.pk.length) return {i:0,n:0,none:true};
+  let bi=0,bn=1e9;
+  c.pk.forEach((p,i)=>{const mm=p.m.map(m=>({m,term:p.t,code:c.code}));
+    const n=conflicts(mm,against).length; if(n<bn){bn=n;bi=i;}});
+  return {i:bi,n:bn};
+}
+function allChosenMeets(exclude){
+  let out=fixedMeets();
+  Object.keys(PICK).forEach(code=>{ if(code===exclude)return;
+    out=out.concat(pkgMeets(code,PICK[code].pkg)); });
+  return out;
+}
+
+let LASTSWAPS=[];
+/* ---- CSP auto-solver: minimum-conflict package assignment ---- */
+/* Auto-resolve clashes: backend-authoritative (see app/services/scheduler.py's
+   search_with_fallback). Used to run an equivalent branch-and-bound search
+   synchronously on this page's own main thread, capped at 400,000 nodes -
+   the same category of bug as the old Schedule Builder search, just smaller.
+   Round 1 and Round 5 are Major-Core SWAP rounds, so an unlocked pre-enrolled
+   section is a legitimate decision variable here too, not just the shortlist. */
+async function autoSolve(silent){
+  const shortlist=Object.keys(PICK).filter(c=>BY[c]&&BY[c].pk.length);
+  const lockedFixed=FIXED.filter(f=>BY[f.code]&&f.lock);
+  const unlockedFixed=FIXED.filter(f=>BY[f.code]&&!f.lock&&BY[f.code].pk.length>1);
+  if(!shortlist.length && !unlockedFixed.length){
+    if(!silent) alert('Nothing to solve — add courses, or unlock a pre-enrolled section.');
+    return;
+  }
+  if(!BACKEND_OK){ await probeHealth(); if(!BACKEND_OK) return; }
+  const req={
+    shortlist,
+    fixed:[...lockedFixed.map(f=>({code:f.code,pkg:f.pkg,locked:true})),
+          ...unlockedFixed.map(f=>({code:f.code,pkg:f.pkg,locked:false}))],
+    max_nodes:2000000, max_results:1, sort:'compact', allow_least_conflict:true
+  };
+  try {
+    const out=await API.runScheduleSearch(req, {});
+    if(out.stale||out.cancelled) return;
+    const best=out.results.schedules[0];
+    if(!best){ if(!silent) alert('Could not find any assignment.'); return; }
+    const swaps=[];
+    unlockedFixed.forEach(f=>{
+      const v=best.assign[f.code]; if(v===undefined) return;
+      if(f.pkg!==v) swaps.push(`${f.code}: ${BY[f.code].pk[f.pkg].l} → ${BY[f.code].pk[v].l}`);
+      f.pkg=v;
+    });
+    shortlist.forEach(c=>{ const v=best.assign[c]; if(v!==undefined) PICK[c].pkg=v; });
+    renderFixed(); renderChosen(); renderPick();
+    LASTSWAPS=swaps;
+    if(!silent){
+      let msg=out.results.mode==='exact' ? 'Found a completely clash-free assignment.'
+        : 'Best achievable still leaves '+out.results.clash_count+' overlap(s) — see the scheduler tab for exactly which.';
+      if(swaps.length) msg+='\n\nThis requires a Major-Core SWAP in Round 1 or 5:\n  '+swaps.join('\n  ');
+      alert(msg);
+    }
+  } catch(e){
+    if(!silent) alert('Could not resolve clashes: '+API.humanError(e));
+  }
+}
+
+/* ============ PICKER ============ */
+function renderPick(){
+  const cat=$('fCat').value, term=$('fTerm').value, q=$('fQ').value.trim().toLowerCase();
+  const fit=$('fFit').value, day=$('fDay').value, crf=($('fCr')?$('fCr').value:'');
+  const fx=fixedMeets(), all=allChosenMeets(null);
+  let L=C.filter(c=>!FIXED.some(f=>f.code===c.code));
+  if(cat) L=L.filter(c=>c.cat===cat);
+  else L=L.filter(c=>['ME','UWE','CCC'].includes(c.cat));   // default view: only what you can bid for
+  if(term) L=L.filter(c=>c.terms.includes(term));
+  if(q) L=L.filter(c=>(c.code+' '+c.title+' '+c.dept+' '+c.pk.map(p=>p.l).join(' ')).toLowerCase().includes(q));
+  if(day!=='') L=L.filter(c=>c.pk.some(p=>p.m.some(m=>m[0]===+day)));
+  if(crf==='lt3')      L=L.filter(c=>c.cr<3);
+  else if(crf==='gte4')L=L.filter(c=>c.cr>=4);
+  else if(crf!=='')    L=L.filter(c=>Math.abs(c.cr-parseFloat(crf))<0.01);
+  const rows=L.map(c=>{const bf=bestPkg(c,fx), ba=bestPkg(c,all);
+    return {c,bf,ba};});
+  let R=rows;
+  if(fit==='free') R=rows.filter(r=>r.bf.n===0);
+  if(fit==='freeall') R=rows.filter(r=>r.ba.n===0);
+  R.sort((x,y)=>(x.ba.n-y.ba.n)||x.c.code.localeCompare(y.c.code));
+  const CAP={ME:'p-me',UWE:'p-uwe',CCC:'p-ccc',NB:'p-nb',CORE:'p-nb'};
+  let h='';
+  R.slice(0,400).forEach(r=>{const c=r.c;
+    const routesToFixed = (c.cat==='CORE'||c.cat==='NB');
+    const on = routesToFixed ? FIXED.some(f=>f.code===c.code) : !!PICK[c.code];
+    const disabled = c.unsched;
+    const p=c.pk[r.ba.i]||{m:[],l:'—',t:''};
+    h+=`<tr><td><input type="checkbox" class="chk" aria-label="Add ${esc(c.code)} to plan" ${on?'checked':''} ${disabled?'disabled':''}
+        onchange="togglePick('${c.code}',this.checked)"
+        title="${routesToFixed?'adds as a fixed / pre-enrolled reference item':'adds to your bid shortlist'}"></td>
+      <td><b>${esc(c.code)}</b> <span class="mut">${esc(c.title.slice(0,34))}</span>
+        <div class="tiny">${esc(c.dept.slice(0,46))}</div></td>
+      <td><span class="pill ${CAP[c.cat]||'p-m'}">${c.cat}</span></td>
+      <td class="tiny">${c.terms.join(', ').replace('Full semester','Full')}</td>
+      <td class="num" ${c.crOfficial?'':'style="border-bottom:1px dotted var(--sig)"'} title="${c.crOfficial?'official':'timetable-derived — confirm in COS'}">${c.cr}</td>
+      <td class="num">${c.seats}</td>
+      <td class="num" style="color:var(--sig)">${c.cat==='ME'||c.cat==='UWE'||c.cat==='CCC'?Math.floor(25*c.cr):'—'}</td>
+      <td class="num tiny">${c.pk.length||'0'}</td>
+      <td class="tiny">${c.unsched?'<span style="color:var(--bad)" title="'+esc(c.why)+'">unschedulable</span>':(r.ba.n===0?'<span style="color:var(--ok)">clear</span>':'<span style="color:var(--bad)">'+r.ba.n+' clash</span>')}
+        <div class="tiny">${p.m.slice(0,3).map(m=>m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])).join(' · ')}</div></td>
+      <td>${routesToFixed?'<span class="tiny mut">fixed</span>':(PICK[c.code]?`<input type="number" aria-label="Want level for ${esc(c.code)}" min="1" max="10" value="${PICK[c.code].want}" style="width:52px"
+          onchange="PICK['${c.code}'].want=+this.value;renderChosen()">`:'<span class="tiny">—</span>')}</td></tr>`;});
+  $('pickBody').innerHTML=h||'<tr><td colspan="10" class="tiny" style="padding:16px">Nothing matches.</td></tr>';
+  $('pickCount').textContent=`${R.length} match · ${Object.keys(PICK).length} in your bid shortlist`+(R.length>400?' · showing first 400':'');
+}
+function togglePick(code,on){
+  const c=BY[code];
+  if(c.unsched){alert(c.why);return;}
+  if(c.cat==='CORE'||c.cat==='NB'){
+    if(on){ if(!FIXED.some(f=>f.code===code)) FIXED.push({code,pkg:bestPkg(c,fixedMeets()).i,auto:false,lock:false}); }
+    else { const idx=FIXED.findIndex(f=>f.code===code); if(idx>=0) FIXED.splice(idx,1); }
+    renderFixed();
+  } else {
+    if(on){ PICK[code]={want:5,pkg:bestPkg(c,allChosenMeets(null)).i}; }
+    else delete PICK[code];
+  }
+  renderPick(); renderChosen();
+}
+['fCat','fTerm','fFit','fDay','fCr'].forEach(i=>{ if($(i)) $(i).onchange=renderPick; });
+$('fQ').oninput=renderPick;
+
+/* ============ CHOSEN ============ */
+function renderChosen(){
+  const codes=Object.keys(PICK);
+  if(!codes.length){ $('chosenBox').innerHTML='<div class="note">Nothing chosen yet.</div>'; drawTT(); return; }
+  const CAP={ME:'p-me',UWE:'p-uwe',CCC:'p-ccc'};
+  const grp={ME:[],UWE:[],CCC:[]};
+  codes.forEach(c=>grp[BY[c].cat]&&grp[BY[c].cat].push(c));
+  let h='',tot=0;
+  ['ME','UWE','CCC'].forEach(cat=>{
+    if(!grp[cat].length)return;
+    h+=`<h3 style="margin:14px 0 7px">${cat} — pool ${BUD[cat]} pts</h3>
+     <table><thead><tr><th>Course</th><th>Package</th><th>Cr</th><th>Seats</th><th>Max bid</th>
+     <th>Priority</th><th>Clashes with</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>`;
+    grp[cat].sort((a,b)=>PICK[b].want-PICK[a].want).forEach(code=>{
+      const c=BY[code]; tot+=c.cr;
+      const mm=pkgMeets(code,PICK[code].pkg);
+      const cf=conflicts(mm,allChosenMeets(code));
+      const names=[...new Set(cf.map(x=>x.b.code))];
+      const opts=c.pk.map((p,i)=>`<option value="${i}"${i===PICK[code].pkg?' selected':''}>${esc(p.l)} — ${p.t}</option>`).join('');
+      h+=`<tr><td><b>${esc(c.code)}</b> <span class="mut">${esc(c.title.slice(0,26))}</span></td>
+        <td>${c.pk.length>1?`<select aria-label="Section package for ${esc(code)}" style="width:auto;min-width:140px" onchange="PICK['${code}'].pkg=+this.value;renderChosen();renderPick()">${opts}</select>`:`<span class="tiny">${esc(c.pk[0].l)}</span>`}</td>
+        <td class="num">${c.cr}</td><td class="num">${c.seats}</td>
+        <td class="num" style="color:var(--sig)">${Math.floor(25*c.cr)}</td>
+        <td><select aria-label="Priority for ${esc(code)}" style="width:auto;min-width:118px"
+             onchange="setPriority('${code}',this.value)">
+          ${['MUST','STRONG','BACKUP','OPTIONAL'].map(k=>`<option value="${k}"${prioOf(code)===k?' selected':''}>${PRIO_LABEL[k]}</option>`).join('')}
+        </select></td>
+        <td>${names.length?`<span class="pill p-w">${names.join(', ')}</span>`:'<span class="tiny" style="color:var(--ok)">clear</span>'}</td>
+        <td><button class="btn2 sm" onclick="togglePick('${code}',false)">×</button></td></tr>`;});
+    h+='</tbody></table>';
+  });
+  const cap=+$('capCr').value||25, fx=fixedCredits();
+  h+=`<div class="grid g4" style="margin-top:14px">
+   <div class="stat"><div class="k">Fixed credits</div><div class="v mono">${f1(fx)}</div></div>
+   <div class="stat u"><div class="k">Chosen elective credits</div><div class="v mono">${f1(tot)}</div></div>
+   <div class="stat c"><div class="k">Total if all won</div><div class="v mono">${f1(fx+tot)}</div>
+     <div class="f">cap ${cap}</div></div>
+   <div class="stat r"><div class="k">Net ceiling (Req×2)</div><div class="v mono">${f1(Math.max(0,cap-fx)*2)}</div>
+     <div class="f">max consideration set</div></div></div>`;
+  if(fx+tot>cap) h+=`<div class="flag f-warn"><b>Over the cap if everything wins — that is fine, if the priority
+    order is right.</b> ${f1(fx+tot)} against a ${cap} limit. The platform confirms down your priority list and
+    unconfirms (and refunds) the rest, so surplus choices act as free backups.</div>`;
+  $('chosenBox').innerHTML=h; drawTT(); if(typeof drawSpec==='function') drawSpec();
+}

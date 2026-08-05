@@ -1,0 +1,20 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+node_modules/
+dist/
+build/
+tmp/
+snu-scheduler-files/
+*.spec
+*.db
+.env
+*.log
+frontend/tests/a11y-results.json
+
+# Private per-student data - never committed, never bundled into a public
+# build or release ZIP. See tools/import_personal_profile.py and
+# backend/desktop_launcher.py's --import-profile flag.
+user_profile.local.json
+user_profile.local.*.json
+**/user_profile.local*.json

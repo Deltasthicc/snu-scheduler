@@ -1,0 +1,3001 @@
+{
+  "schema_version": 1,
+  "catalog_date": "2026-08-05",
+  "catalog_url": "https://snu.edu.in/programs/",
+  "program_count": 44,
+  "programs": [
+    {
+      "id": "accelerated-masters-program-with-asu",
+      "title": "Accelerated Masters Program with ASU",
+      "level": "graduate",
+      "official_page": "https://snu.edu.in/programs/accelerated-masters-program-with-asu/overview/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The public catalog entry does not publish a complete fixed requirement table. Use private-profile custom requirements for an exact cohort audit.",
+      "requirements": [],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/accelerated-masters-program-with-asu/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/18554/asu_master_program_-_09_12.pdf"
+        }
+      ],
+      "department_keywords": []
+    },
+    {
+      "id": "b-a-research-in-english",
+      "title": "B.A. (Research) in English",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/ba-research-in-english/overview/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The official programme-structure page confirms 96 credits of English courses and a 12-credit supervised research paper. It does not publish the complete degree-wide basket here, so cohort-specific total/CCC/UWE rules still require the COS or a private override.",
+      "requirements": [
+        {
+          "id": "english_courses",
+          "label": "English major courses (24 × 4 credits)",
+          "kind": "credits",
+          "required": 96,
+          "categories": [
+            "major_core",
+            "major_elective"
+          ],
+          "note": "Confirmed on the official programme-structure page."
+        },
+        {
+          "id": "project",
+          "label": "Supervised Research Paper (UGSRP)",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project",
+            "thesis"
+          ],
+          "note": "Confirmed on the official programme-structure page."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/ba-research-in-english/overview/"
+        },
+        {
+          "label": "Programme structure",
+          "url": "https://snu.edu.in/programs/ba-research-in-english/programme-structure/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/view_pdf/6971/programme_prospectus"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6971/english_-_final_10_jan_2024.pdf"
+        }
+      ],
+      "department_keywords": [
+        "english"
+      ]
+    },
+    {
+      "id": "b-sc-research-in-biotechnology",
+      "title": "B.Sc. (Research) in Biotechnology",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bsc-research-in-biotechnology/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 153,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major",
+          "label": "Major courses, electives and project",
+          "kind": "credits",
+          "required": 111,
+          "categories": [
+            "major_core",
+            "major_elective",
+            "project"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "Core Common Curriculum minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "University-Wide Elective minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined minimum",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bsc-research-in-biotechnology/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6935/prospectus_bsc_research_biotechnology_snioe_2024.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6935/life_science_-_final_ug_brochure_2025_27_02.pdf"
+        }
+      ],
+      "department_keywords": [
+        "life sciences",
+        "biotechnology"
+      ]
+    },
+    {
+      "id": "b-sc-research-in-chemistry",
+      "title": "B.Sc. (Research) in Chemistry",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bsc-research-in-chemistry/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 152,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major",
+          "label": "Chemistry graduation curriculum",
+          "kind": "credits",
+          "required": 110,
+          "categories": [
+            "major_core",
+            "major_elective",
+            "project"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "Core Common Curriculum minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "University-Wide Elective minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined minimum",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bsc-research-in-chemistry/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6939/b_sc__research_in_chemistry-prospectus.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6939/chemistry_undergraduate_prospectus_2023_-25_apr_2023.pdf"
+        }
+      ],
+      "department_keywords": [
+        "chemistry"
+      ]
+    },
+    {
+      "id": "b-sc-research-in-economics",
+      "title": "B.Sc. (Research) in Economics",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bsc-research-in-economics/overview/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The public catalog entry does not publish a complete fixed requirement table. Use private-profile custom requirements for an exact cohort audit.",
+      "requirements": [],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bsc-research-in-economics/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6969/b_sc__research_in_economics-prospectus.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6969/economics_brochure_2024.pdf"
+        }
+      ],
+      "department_keywords": [
+        "economics"
+      ]
+    },
+    {
+      "id": "b-sc-research-in-economics-and-finance",
+      "title": "B.Sc. (Research) in Economics and Finance",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/b.sc-research-in-economics-and-finance/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The public catalog entry does not publish a complete fixed requirement table. Use private-profile custom requirements for an exact cohort audit.",
+      "requirements": [],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/b.sc-research-in-economics-and-finance/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6993/economics_ug_brochure.pdf"
+        }
+      ],
+      "department_keywords": [
+        "economics",
+        "finance"
+      ]
+    },
+    {
+      "id": "b-sc-research-in-mathematics",
+      "title": "B.Sc. (Research) in Mathematics",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bsc-research-in-mathematics/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 150,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major_core",
+          "label": "Major Core",
+          "kind": "credits",
+          "required": 72,
+          "categories": [
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective_a",
+          "label": "Major Elective A",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "major_elective_a"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective_b",
+          "label": "Major Elective B",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "major_elective_b",
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "thesis",
+          "label": "Undergraduate Thesis",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project",
+            "thesis"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined minimum",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bsc-research-in-mathematics/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6937/ug_prospectus.pdf"
+        }
+      ],
+      "department_keywords": [
+        "mathematics"
+      ]
+    },
+    {
+      "id": "b-sc-research-in-physics",
+      "title": "B.Sc. (Research) in Physics",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bsc-research-in-physics/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 151,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major",
+          "label": "Physics major and research credits",
+          "kind": "credits",
+          "required": 109,
+          "categories": [
+            "major_core",
+            "major_elective",
+            "project",
+            "thesis"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined minimum",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bsc-research-in-physics/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6941/physics_ug_prospectus_1_1.pdf"
+        }
+      ],
+      "department_keywords": [
+        "physics"
+      ]
+    },
+    {
+      "id": "b-tech-in-chemical-engineering",
+      "title": "B.Tech. in Chemical Engineering",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/btech-in-chemical-engineering/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 163,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major_common_core",
+          "label": "Major Common Core",
+          "kind": "credits",
+          "required": 30,
+          "categories": [
+            "major_common_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_department_core",
+          "label": "Major Department Core",
+          "kind": "credits",
+          "required": 52,
+          "categories": [
+            "major_department_core",
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Major Department Elective",
+          "kind": "credits",
+          "required": 21,
+          "categories": [
+            "major_department_elective",
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "experiential",
+          "label": "Experiential Learning",
+          "kind": "credits",
+          "required": 8,
+          "categories": [
+            "experiential"
+          ],
+          "note": null
+        },
+        {
+          "id": "project",
+          "label": "Research project / thesis / internship",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project",
+            "thesis",
+            "internship"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 16,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 16,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 40,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/btech-in-chemical-engineering/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6903/2025_onwards_-_chemical_engineering_-_ug_curriculum.pdf"
+        }
+      ],
+      "department_keywords": [
+        "chemical engineering"
+      ]
+    },
+    {
+      "id": "btech-chemical-bioenergy",
+      "title": "B.Tech. in Chemical Engineering with specialisation in Bioenergy and Biomaterials | SNIoE",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/b-tech-in-chemical-engineering-with-specialisation-in-bioenergy-and-biomaterials/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 163,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major_common_core",
+          "label": "Major Common Core",
+          "kind": "credits",
+          "required": 30,
+          "categories": [
+            "major_common_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_department_core",
+          "label": "Major Department Core",
+          "kind": "credits",
+          "required": 52,
+          "categories": [
+            "major_department_core",
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Major Department Elective",
+          "kind": "credits",
+          "required": 21,
+          "categories": [
+            "major_department_elective",
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "experiential",
+          "label": "Experiential Learning",
+          "kind": "credits",
+          "required": 8,
+          "categories": [
+            "experiential"
+          ],
+          "note": null
+        },
+        {
+          "id": "project",
+          "label": "Research project / thesis / internship",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project",
+            "thesis",
+            "internship"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 16,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 16,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 40,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/b-tech-in-chemical-engineering-with-specialisation-in-bioenergy-and-biomaterials/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/20542/2025_onwards_-_chemical_engineering_-_ug_curriculum.pdf"
+        }
+      ],
+      "department_keywords": [
+        "chemical engineering"
+      ]
+    },
+    {
+      "id": "btech-chemical-modelling",
+      "title": "B.Tech. in Chemical Engineering with specialisation in Modelling and Simulation | SNIoE",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/b-tech-in-chemical-engineering-with-specialisation-in-modelling-and-simulation/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 163,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major_common_core",
+          "label": "Major Common Core",
+          "kind": "credits",
+          "required": 30,
+          "categories": [
+            "major_common_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_department_core",
+          "label": "Major Department Core",
+          "kind": "credits",
+          "required": 52,
+          "categories": [
+            "major_department_core",
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Major Department Elective",
+          "kind": "credits",
+          "required": 21,
+          "categories": [
+            "major_department_elective",
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "experiential",
+          "label": "Experiential Learning",
+          "kind": "credits",
+          "required": 8,
+          "categories": [
+            "experiential"
+          ],
+          "note": null
+        },
+        {
+          "id": "project",
+          "label": "Research project / thesis / internship",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project",
+            "thesis",
+            "internship"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 16,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 16,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 40,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/b-tech-in-chemical-engineering-with-specialisation-in-modelling-and-simulation/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/20533/2025_onwards_-_chemical_engineering_-_ug_curriculum.pdf"
+        }
+      ],
+      "department_keywords": [
+        "chemical engineering"
+      ]
+    },
+    {
+      "id": "b-tech-in-civil-engineering",
+      "title": "B.Tech. in Civil Engineering",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/btech-in-civil-engineering/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 160,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "basic_science",
+          "label": "Basic Sciences",
+          "kind": "credits",
+          "required": 17,
+          "categories": [
+            "basic_science"
+          ],
+          "note": null
+        },
+        {
+          "id": "engineering_science",
+          "label": "Engineering Sciences",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "engineering_science"
+          ],
+          "note": null
+        },
+        {
+          "id": "sensing_data",
+          "label": "Sensing and Data Analytics",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "sensing_data"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_core",
+          "label": "Major Core",
+          "kind": "credits",
+          "required": 47,
+          "categories": [
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Major Elective",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "project",
+          "label": "Project",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/btech-in-civil-engineering/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6909/btech_prospectus_2024_final.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6909/civil_engineering_brochure.pdf"
+        }
+      ],
+      "department_keywords": [
+        "civil engineering"
+      ]
+    },
+    {
+      "id": "b-tech-in-computer-science-and-engineering",
+      "title": "B.Tech. in Computer Science and Engineering",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/btech-in-computer-science-engineering/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 160,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "basic_science",
+          "label": "Basic Sciences",
+          "kind": "credits",
+          "required": 17,
+          "categories": [
+            "basic_science"
+          ],
+          "note": null
+        },
+        {
+          "id": "engineering_science",
+          "label": "Engineering Sciences",
+          "kind": "credits",
+          "required": 13,
+          "categories": [
+            "engineering_science"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_core",
+          "label": "Major Core",
+          "kind": "credits",
+          "required": 61,
+          "categories": [
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Major Elective",
+          "kind": "credits",
+          "required": 15,
+          "categories": [
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "project",
+          "label": "Project / internship",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project",
+            "internship"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/btech-in-computer-science-engineering/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/3888/prospectus_b_tech__-_cse_2022onwards.pdf"
+        }
+      ],
+      "department_keywords": [
+        "computer science"
+      ]
+    },
+    {
+      "id": "b-tech-in-electrical-and-computer-engineering",
+      "title": "B.Tech. in Electrical and Computer Engineering",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/btech-in-electrical-and-computer-engineering/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 163,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 16,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 16,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 40,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "experiential",
+          "label": "Experiential Learning",
+          "kind": "credits",
+          "required": 8,
+          "categories": [
+            "experiential"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_core",
+          "label": "Major Core",
+          "kind": "credits",
+          "required": 83,
+          "categories": [
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Major Elective",
+          "kind": "credits",
+          "required": 20,
+          "categories": [
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "project",
+          "label": "Major projects / internship",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project",
+            "internship"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/btech-in-electrical-and-computer-engineering/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6905/curriculum_electrical_engineering.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6905/electrical_engineering_brochure_2024.pdf"
+        }
+      ],
+      "department_keywords": [
+        "electrical engineering"
+      ]
+    },
+    {
+      "id": "b-tech-in-mechanical-engineering",
+      "title": "B.Tech. in Mechanical Engineering",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/btech-in-mechanical-engineering/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 160,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "basic_science",
+          "label": "Basic Sciences",
+          "kind": "credits",
+          "required": 20,
+          "categories": [
+            "basic_science"
+          ],
+          "note": null
+        },
+        {
+          "id": "engineering_science",
+          "label": "Engineering Sciences",
+          "kind": "credits",
+          "required": 9,
+          "categories": [
+            "engineering_science"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_core",
+          "label": "Major Core",
+          "kind": "credits",
+          "required": 68,
+          "categories": [
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Major Elective",
+          "kind": "credits",
+          "required": 9,
+          "categories": [
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "project",
+          "label": "Projects",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "project"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/btech-in-mechanical-engineering/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6907/med_ug_prospectus-1.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6907/mechanical_engineering_brochure.pdf"
+        }
+      ],
+      "department_keywords": [
+        "mechanical engineering"
+      ]
+    },
+    {
+      "id": "ba-research-in-international-relations",
+      "title": "BA (Research) in International Relations",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/ba-research-in-international-relations/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "The official programme-structure page publishes the complete 150-credit basket. Verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 150,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major_core",
+          "label": "IR core courses",
+          "kind": "credits",
+          "required": 44,
+          "categories": ["major_core"],
+          "note": null
+        },
+        {
+          "id": "school_core",
+          "label": "School compulsory courses",
+          "kind": "credits",
+          "required": 12,
+          "categories": ["school_core"],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Major electives",
+          "kind": "credits",
+          "required": 40,
+          "categories": ["major_elective"],
+          "note": null
+        },
+        {
+          "id": "project",
+          "label": "Undergraduate dissertation",
+          "kind": "credits",
+          "required": 12,
+          "categories": ["project", "thesis"],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "University-Wide Electives",
+          "kind": "credits",
+          "required": 24,
+          "categories": ["uwe"],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "Common Core Curriculum",
+          "kind": "credits",
+          "required": 18,
+          "categories": ["ccc"],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/ba-research-in-international-relations/overview/"
+        },
+        {
+          "label": "Programme structure",
+          "url": "https://snu.edu.in/programs/ba-research-in-international-relations/programme-structure/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6963/irgs_brochure.pdf"
+        }
+      ],
+      "department_keywords": [
+        "international relations"
+      ]
+    },
+    {
+      "id": "ba-research-interdisciplinary-humanities-and-social-sciences-ihs",
+      "title": "BA (Research) Interdisciplinary Humanities and Social Sciences (IHS)",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/interdisciplinary-humanities-and-social-sciences/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 160,
+          "categories": [],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/interdisciplinary-humanities-and-social-sciences/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/21200/ihs_brochure_final_for_printing_051125_-_low_resolution-1.pdf"
+        }
+      ],
+      "department_keywords": []
+    },
+    {
+      "id": "bachelor-of-design",
+      "title": "Bachelor of Design",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bachelor-of-design/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Requirements are from the official programme-structure page; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 160,
+          "categories": [],
+          "note": null,
+          "source": null
+        },
+        {
+          "id": "major_core",
+          "label": "Core courses",
+          "kind": "credits",
+          "required": 82,
+          "categories": [
+            "major_core"
+          ],
+          "note": null,
+          "source": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Design electives",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "major_elective"
+          ],
+          "note": null,
+          "source": null
+        },
+        {
+          "id": "project",
+          "label": "Design projects",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "project"
+          ],
+          "note": null,
+          "source": null
+        },
+        {
+          "id": "industry",
+          "label": "Industry exposure",
+          "kind": "credits",
+          "required": 6,
+          "categories": [
+            "internship",
+            "industry_exposure"
+          ],
+          "note": null,
+          "source": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null,
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bachelor-of-design/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/10587/two_page_a4_flyer_for_b_des_1_6a_copy_compressed.pdf"
+        }
+      ],
+      "department_keywords": [
+        "design"
+      ]
+    },
+    {
+      "id": "bachelor-of-management-studies",
+      "title": "Bachelor of Management Studies",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bachelor-of-management-studies/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 150,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "major_core",
+          "label": "Management core",
+          "kind": "credits",
+          "required": 64,
+          "categories": [
+            "major_core"
+          ],
+          "note": null
+        },
+        {
+          "id": "major_elective",
+          "label": "Departmental electives",
+          "kind": "credits",
+          "required": 32,
+          "categories": [
+            "major_elective"
+          ],
+          "note": null
+        },
+        {
+          "id": "internships",
+          "label": "Social and business-sector internships",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "internship"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc",
+          "label": "CCC minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "ccc"
+          ],
+          "note": null
+        },
+        {
+          "id": "uwe",
+          "label": "UWE minimum",
+          "kind": "credits",
+          "required": 18,
+          "categories": [
+            "uwe"
+          ],
+          "note": null
+        },
+        {
+          "id": "ccc_uwe",
+          "label": "CCC and UWE combined",
+          "kind": "credits",
+          "required": 42,
+          "categories": [
+            "ccc_uwe"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bachelor-of-management-studies/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6991/bms_brochure_28_march_2023_low_res-1.pdf"
+        }
+      ],
+      "department_keywords": [
+        "management"
+      ]
+    },
+    {
+      "id": "bs-business-dual-degree-with-asu",
+      "title": "BS Business  (Dual Degree with ASU)",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bs-business-dual-degree-with-asu/overview/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The public catalog entry does not publish a complete fixed requirement table. Use private-profile custom requirements for an exact cohort audit.",
+      "requirements": [],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bs-business-dual-degree-with-asu/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/16637/snuic_bs_business_2_2_brochure_120126.pdf"
+        }
+      ],
+      "department_keywords": [
+        "management",
+        "business"
+      ]
+    },
+    {
+      "id": "bs-computer-science-dual-degree-with-asu",
+      "title": "BS Computer Science (Dual Degree with ASU)",
+      "level": "undergraduate",
+      "official_page": "https://snu.edu.in/programs/bs-computer-science-dual-degree-with-asu/overview/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The public catalog entry does not publish a complete fixed requirement table. Use private-profile custom requirements for an exact cohort audit.",
+      "requirements": [],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/bs-computer-science-dual-degree-with-asu/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/16584/cs_brochure_11_dec-2015.pdf"
+        }
+      ],
+      "department_keywords": [
+        "computer science"
+      ]
+    },
+    {
+      "id": "integrated-m-sc-ph-d-in-chemistry",
+      "title": "Integrated M.Sc.-Ph.D. in Chemistry",
+      "level": "graduate",
+      "official_page": "https://snu.edu.in/programs/integrated-m.sc-phd-in-chemistry/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 83,
+          "categories": [],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/integrated-m.sc-phd-in-chemistry/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6953/integrated_m_sc_-ph_d_prospectus-1.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6953/m_sc__research_integrated_m_sc_-ph_d__ph.jpg"
+        }
+      ],
+      "department_keywords": [
+        "chemistry"
+      ]
+    },
+    {
+      "id": "integrated-m-sc-ph-d-in-life-sciences",
+      "title": "Integrated M.Sc.-Ph.D. in Life Sciences",
+      "level": "graduate",
+      "official_page": "https://snu.edu.in/programs/integrated-m.sc-ph.d-in-life-sciences/overview/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The public catalog entry does not publish a complete fixed requirement table. Use private-profile custom requirements for an exact cohort audit.",
+      "requirements": [],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/integrated-m.sc-ph.d-in-life-sciences/overview/"
+        }
+      ],
+      "department_keywords": [
+        "life sciences"
+      ]
+    },
+    {
+      "id": "m-a-in-english",
+      "title": "M.A. in English",
+      "level": "graduate",
+      "official_page": "https://snu.edu.in/programs/ma-in-english/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "Credit requirements transcribed from the linked official curriculum/prospectus; verify cohort-specific changes against COS.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total degree credits",
+          "kind": "credits",
+          "required": 80,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "thesis_internship",
+          "label": "Thesis and experiential learning",
+          "kind": "credits",
+          "required": 20,
+          "categories": [
+            "thesis",
+            "project",
+            "internship"
+          ],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/ma-in-english/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6977/ma_english_prospectus_2026-27.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6977/snu_ma_brochure_2026-27_1.pdf"
+        }
+      ],
+      "department_keywords": [
+        "english"
+      ]
+    },
+    {
+      "id": "m-a-rural-management",
+      "title": "M.A. Rural Management",
+      "level": "graduate",
+      "official_page": "https://snu.edu.in/programs/m.a-rural-management/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "The official programme page publishes an 80-credit total; use a private override for finer cohort-specific buckets.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total programme credits",
+          "kind": "credits",
+          "required": 80,
+          "categories": [],
+          "note": null,
+          "source": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/m.a-rural-management/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/view_pdf/12640/programme_prospectus"
+        }
+      ],
+      "department_keywords": [
+        "management"
+      ]
+    },
+    {
+      "id": "m-sc-in-economics",
+      "title": "M.Sc. in Economics",
+      "level": "graduate",
+      "official_page": "https://snu.edu.in/programs/msc-in-economics/overview/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The public catalog entry does not publish a complete fixed requirement table. Use private-profile custom requirements for an exact cohort audit.",
+      "requirements": [],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/msc-in-economics/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6975/msc_prospectus_2.pdf"
+        }
+      ],
+      "department_keywords": [
+        "economics"
+      ]
+    },
+    {
+      "id": "master-of-fine-arts",
+      "title": "Master of Fine Arts",
+      "level": "graduate",
+      "official_page": "https://snu.edu.in/programs/mfa-in-fine-arts/overview/",
+      "verification": "verified_public_curriculum",
+      "coverage_note": "The official programme-structure page and brochure confirm 64 total credits: 16 practice core, 16 theory core, and 32 elective credits.",
+      "requirements": [
+        {
+          "id": "total",
+          "label": "Total programme credits",
+          "kind": "credits",
+          "required": 64,
+          "categories": [],
+          "note": null
+        },
+        {
+          "id": "practice_core",
+          "label": "Practice Core",
+          "kind": "credits",
+          "required": 16,
+          "categories": ["practice_core", "major_core"],
+          "note": "Four 4-credit courses."
+        },
+        {
+          "id": "theory_core",
+          "label": "Theory Core",
+          "kind": "credits",
+          "required": 16,
+          "categories": ["theory_core"],
+          "note": "Four 4-credit courses."
+        },
+        {
+          "id": "electives",
+          "label": "Department and University electives",
+          "kind": "credits",
+          "required": 32,
+          "categories": ["major_elective", "uwe", "elective"],
+          "note": null
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/mfa-in-fine-arts/overview/"
+        },
+        {
+          "label": "Programme structure",
+          "url": "https://snu.edu.in/programs/mfa-in-fine-arts/programme-structure/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6979/prospectus-mfa-2024.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6979/snu_mfa_brochure_010426a.pdf"
+        }
+      ],
+      "department_keywords": [
+        "art, media and performance",
+        "fine arts"
+      ]
+    },
+    {
+      "id": "mba",
+      "title": "MBA",
+      "level": "graduate",
+      "official_page": "https://snu.edu.in/programs/mba-degree-global/overview/",
+      "verification": "source_linked_partial",
+      "coverage_note": "The public catalog entry does not publish a complete fixed requirement table. Use private-profile custom requirements for an exact cohort audit.",
+      "requirements": [],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/mba-degree-global/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/flipbook/mba-brochure"
+        }
+      ],
+      "department_keywords": []
+    },
+    {
+      "id": "ph-d-in-chemical-engineering",
+      "title": "Ph.D. in Chemical Engineering",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-chemical-engineering/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-chemical-engineering/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6931/phd_chemical.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6931/2023_24_-_chemical_engineering_brochure.pdf"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "chemical engineering"
+      ]
+    },
+    {
+      "id": "ph-d-in-chemistry",
+      "title": "Ph.D. in Chemistry",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-chemistry/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework_credits",
+          "label": "Required coursework credits",
+          "kind": "credits",
+          "required": 12,
+          "categories": [
+            "coursework"
+          ],
+          "note": null,
+          "source": null
+        },
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-chemistry/overview/"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "chemistry"
+      ]
+    },
+    {
+      "id": "ph-d-in-civil-engineering",
+      "title": "Ph.D. in Civil Engineering",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-civil-engineering/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-civil-engineering/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6929/round2_ced_phd_admission_brochure.pdf"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "civil engineering"
+      ]
+    },
+    {
+      "id": "ph-d-in-computer-science-and-engineering",
+      "title": "Ph.D. in Computer Science and Engineering",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-computer-science-and-engineering/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-computer-science-and-engineering/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6254/department_of_computer_science_engineering_ph_d_program_monsoon_2026_final_copy_1.pdf"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "computer science"
+      ]
+    },
+    {
+      "id": "ph-d-in-economics",
+      "title": "Ph.D. in Economics",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-economics/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-economics/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6981/phd_prospectus_2.pdf"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "economics"
+      ]
+    },
+    {
+      "id": "ph-d-in-electrical-engineering",
+      "title": "Ph.D. in Electrical Engineering",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-electrical-engineering/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-electrical-engineering/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6933/electrical_engineering_department_brochure.pdf"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "electrical engineering"
+      ]
+    },
+    {
+      "id": "ph-d-in-electronics-and-communication-engineering",
+      "title": "Ph.D. in Electronics and Communication Engineering",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-electronics-communication-engineering/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-electronics-communication-engineering/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6925/electrical_engineering_department_brochure.pdf"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "electrical engineering"
+      ]
+    },
+    {
+      "id": "ph-d-in-english",
+      "title": "Ph.D. in English",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-english/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-english/overview/"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "english"
+      ]
+    },
+    {
+      "id": "ph-d-in-history-and-archaeology",
+      "title": "Ph.D. in History and Archaeology",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-history-and-archaeology/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-history-and-archaeology/overview/"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "history and archaeology"
+      ]
+    },
+    {
+      "id": "ph-d-in-international-relations-and-governance-studies",
+      "title": "Ph.D. in International Relations and Governance Studies",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-international-relations-and-governance-studies/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-international-relations-and-governance-studies/overview/"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "international relations"
+      ]
+    },
+    {
+      "id": "ph-d-in-life-sciences-and-bioinformatics",
+      "title": "Ph.D. in Life Sciences and Bioinformatics",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-life-sciences-bioinformatics/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-life-sciences-bioinformatics/overview/"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "life sciences"
+      ]
+    },
+    {
+      "id": "ph-d-in-management-executive",
+      "title": "Ph.D. in Management (Executive)",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-management/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework_credits",
+          "label": "Required coursework credits",
+          "kind": "credits",
+          "required": 14,
+          "categories": [
+            "coursework"
+          ],
+          "note": null,
+          "source": null
+        },
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-management/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/7001/phd_in_management_executive_programme_2025_a4_copy_1.pdf"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "management"
+      ]
+    },
+    {
+      "id": "ph-d-in-mathematics",
+      "title": "Ph.D. in Mathematics",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-mathematics/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-mathematics/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6957/phd_prospectus-mon2026-1.pdf"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "mathematics"
+      ]
+    },
+    {
+      "id": "ph-d-in-mechanical-engineering",
+      "title": "Ph.D. in Mechanical Engineering",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-mechanical-engineering/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-mechanical-engineering/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6927/phd_me.jpg"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "mechanical engineering"
+      ]
+    },
+    {
+      "id": "ph-d-in-physics",
+      "title": "Ph.D. in Physics",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-physics/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-physics/overview/"
+        },
+        {
+          "label": "Prospectus",
+          "url": "https://snu.edu.in/site/assets/files/6961/physics_snioe_graduate_prospectus-1.pdf"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6961/a_2_1.jpg"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "physics"
+      ]
+    },
+    {
+      "id": "ph-d-in-sociology",
+      "title": "Ph.D. in Sociology",
+      "level": "doctoral",
+      "official_page": "https://snu.edu.in/programs/phd-in-sociology/overview/",
+      "verification": "verified_public_milestones",
+      "coverage_note": "University-wide Ph.D. milestones are from the official 2022 regulations; department-specific coursework may require a private profile override.",
+      "requirements": [
+        {
+          "id": "coursework",
+          "label": "Required coursework completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "candidacy",
+          "label": "Qualified to candidacy",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "comprehensive_exam",
+          "label": "Research seminar / comprehensive examination",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_submission",
+          "label": "Doctoral thesis submitted",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        },
+        {
+          "id": "thesis_defence",
+          "label": "Thesis defence / oral examination completed",
+          "kind": "milestone",
+          "required": 1,
+          "categories": [],
+          "note": null,
+          "source": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Learn more",
+          "url": "https://snu.edu.in/programs/phd-in-sociology/overview/"
+        },
+        {
+          "label": "Brochure",
+          "url": "https://snu.edu.in/site/assets/files/6983/department_of_sociology_-_phd_06_may_1.jpg"
+        },
+        {
+          "label": "Ph.D. policies and procedures",
+          "url": "https://snu.edu.in/home/mandatory-disclosure/ph.d-policies-procedures/"
+        }
+      ],
+      "department_keywords": [
+        "sociology"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+/* ============================================================
+   SCHEDULE BUILDER — rendering only.
+
+   The search itself (previously a synchronous, unbounded recursive
+   backtracking search that ran on this page's own main thread -
+   measured to block a real browser tab for roughly 100 seconds at
+   its old default budget) now runs entirely server-side; see
+   app/services/scheduler.py and app/workers/schedule_jobs.py. This
+   file only renders whatever page of results the backend returns.
+   State (ALLSCHED/SCHED_JOB/SCHED_TOTAL/SCHED_TRUNC/SCHED_MODE/SCHED_CLASHES) and the actual
+   API calls (buildSchedules/loadMoreSchedules/cancelBuild) live in
+   glue.js, per this project's rule that ui/*.html carries markup
+   only, never fetch calls or simulation math.
+   ============================================================ */
+
+function renderSchedules(){
+  if(!ALLSCHED.length){ $('buildOut').innerHTML=''; return; }
+  const leastConflict=SCHED_MODE==='least_conflict';
+  let h='';
+  if(leastConflict){
+    h+=`<div class="card" style="border-color:var(--sig)"><div class="flag f-warn">
+      <b>No fully clash-free combination exists for this shortlist.</b> Showing the best available
+      option${ALLSCHED.length>1?'s':''} instead — each still leaves <b>${SCHED_CLASHES} overlap${SCHED_CLASHES===1?'':'s'}</b>.
+      Remove a course (check the Scheduler &amp; clashes tab for which one clashes most) to try for zero.</div></div>`;
+  }
+  h+='<div class="card"><div class="hd"><div><h2>Results</h2><div class="note">'+
+    `Showing ${ALLSCHED.length} of ${SCHED_TOTAL} ${leastConflict?'best-available':'clash-free'} option${SCHED_TOTAL===1?'':'s'} found`+
+    (SCHED_TRUNC?' <span style="color:var(--bad)">— the search hit its combination limit before finishing; '+
+      'raise it above, or narrow your shortlist, for a complete search.</span>':'')+
+    (SCHED_TOTAL===0?' <span style="color:var(--bad)">— no combination of your current shortlist avoids every '+
+      'clash. Remove a course (start with the one flagged most often on the Course Picker tab) and try again.</span>':'')+
+    ' "Idle time" is total gap-between-classes across the week — lower means less dead time on campus.'+
+    '</div></div></div><div class="scroll" style="max-height:560px"><table><thead><tr><th>#</th>';
+  const codes=Object.keys(ALLSCHED[0].assign);
+  codes.forEach(c=>h+=`<th>${esc(c.split('/')[0])}</th>`);
+  h+='<th>Days</th><th>Idle/wk</th><th>Earliest</th><th>Latest</th><th><span class="sr-only">Action</span></th></tr></thead><tbody>';
+  ALLSCHED.forEach((s,i)=>{
+    h+=`<tr><td class="num" style="color:var(--sig)">${i+1}</td>`;
+    codes.forEach(c=>{
+      const p=BY[c].pk[s.assign[c]];
+      h+=`<td class="tiny" title="${esc(p.l)}">${esc(p.l.replace(/LEC:|PRAC:|TUT:/g,'').replace(/ \+ /g,'·'))}</td>`;
+    });
+    h+=`<td class="num">${s.stats.days}</td><td class="num">${(s.stats.gap/60).toFixed(1)}h</td>
+      <td class="num tiny">${hm(s.stats.earliest_start)}</td><td class="num tiny">${hm(s.stats.latest_end)}</td>
+      <td><button class="btn2 sm" onclick="previewSchedule(${i})">preview</button>
+          <button class="btn2 sm" onclick="useSchedule(${i})">use this</button></td></tr>`;
+  });
+  h+='</tbody></table></div>';
+  if(ALLSCHED.length<SCHED_TOTAL)
+    h+=`<div style="margin-top:10px"><button class="btn2" id="loadMoreBtn" onclick="void loadMoreSchedules()">`+
+       `Load more (${ALLSCHED.length} of ${SCHED_TOTAL})</button></div>`;
+  h+='</div><div id="previewBox"></div>';
+  $('buildOut').innerHTML=h;
+}
+function useSchedule(i){
+  const s=ALLSCHED[i];
+  if(!s) return;
+  Object.keys(s.assign).forEach(code=>{ if(PICK[code]) PICK[code].pkg=s.assign[code]; });
+  renderChosen(); renderPick();
+  document.querySelector('[data-p="sched"]').click();
+}
+function previewSchedule(i){
+  const s=ALLSCHED[i];
+  if(!s) return;
+  const fx=fixedMeets();
+  let ev=[...fx];
+  Object.keys(s.assign).forEach(code=>{
+    const p=BY[code].pk[s.assign[code]];
+    p.m.forEach(m=>ev.push({m,term:p.t,code,title:BY[code].title,kind:BY[code].cat.toLowerCase()}));
+  });
+  const box=document.getElementById('previewBox');
+  box.innerHTML='<div class="card"><h2>Preview</h2><div class="ttwrap" id="previewGrid"></div></div>';
+  renderMiniGrid(ev,'previewGrid');
+}
+function renderMiniGrid(ev,targetId){
+  if(!ev.length){document.getElementById(targetId).innerHTML='';return;}
+  let lo=Math.min(...ev.map(e=>e.m[1])), hi=Math.max(...ev.map(e=>e.m[2]));
+  lo=Math.floor(lo/60)*60; hi=Math.ceil(hi/60)*60;
+  const PXM=0.9, H=(hi-lo)*PXM;
+  let h='<div class="tt"><div class="hh"></div>'+DAYS.map(d=>`<div class="hh">${d}</div>`).join('');
+  h+=`<div class="col" style="height:${H}px;background:none">`;
+  for(let t=lo;t<=hi;t+=60) h+=`<div class="hrlab" style="top:${(t-lo)*PXM}px">${hm(t).replace(':00','')}</div>`;
+  h+='</div>';
+  DAYS.forEach((d,di)=>{
+    h+=`<div class="col" style="height:${H}px">`;
+    for(let t=lo;t<=hi;t+=60) h+=`<div class="hrline" style="top:${(t-lo)*PXM}px"></div>`;
+    const day=ev.filter(e=>e.m[0]===di).sort((a,b)=>a.m[1]-b.m[1]);
+    const lanes=[];
+    day.forEach(e=>{let L=0; while(lanes[L]!==undefined && lanes[L]>e.m[1])L++; lanes[L]=e.m[2]; e._lane=L;});
+    const nl=Math.max(1,lanes.length);
+    day.forEach(e=>{const top=(e.m[1]-lo)*PXM, ht=Math.max(15,(e.m[2]-e.m[1])*PXM-2);
+      const w=100/nl, left=e._lane*w;
+      h+=`<div class="ev ${e.kind==='nb'||e.kind==='core'?'fix':e.kind}"
+        style="top:${top}px;height:${ht}px;left:calc(${left}% + 2px);width:calc(${w}% - 4px)"
+        title="${esc(e.code)} ${DAYS[e.m[0]]} ${hm(e.m[1])}-${hm(e.m[2])}">
+        <b>${esc(e.code.split('/')[0])}</b><br>${e.m[3]}</div>`;});
+    h+='</div>';
+  });
+  h+='</div>';
+  document.getElementById(targetId).innerHTML=h;
+}

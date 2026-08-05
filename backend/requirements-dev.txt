@@ -1,0 +1,11 @@
+# Test tooling only - never installed into the environment a desktop build is
+# frozen from. PyInstaller's static analysis walks whatever is importable in
+# the active environment, not just what desktop_launcher.py actually imports,
+# so pytest/hypothesis/httpx ending up in requirements.txt previously meant a
+# normal `pip install -r requirements.txt` + `./scripts/build-exe.sh` swept
+# test-only packages into the frozen desktop app for no functional reason.
+-r requirements.txt
+pytest>=8.0
+pytest-asyncio>=0.23
+hypothesis>=6.100
+httpx>=0.27

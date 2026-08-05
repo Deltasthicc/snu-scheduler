@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 7,
+  "exportedAt": "2026-08-04T00:00:00.000Z",
+  "generator": "snu-bid-simulator",
+  "datasetVersion": "monsoon-2026-netlify-revision-2026-08-04",
+  "ruleVersion": "2026.M.3",
+  "modelVersion": "competition-v3",
+  "payload": {
+    "pools": { "ME": 0, "UWE": 0, "CCC": 0 },
+    "profile": {
+      "model": "y4",
+      "semester": 7,
+      "remME": 0,
+      "remUWE": 0,
+      "remCCC": 0,
+      "floater": 0,
+      "creditCap": 25,
+      "doneCr": 0,
+      "degCr": 160,
+      "remCore": 0,
+      "remOther": 0,
+      "csdBlock": "",
+      "programme": "b-tech-in-computer-science-and-engineering",
+      "cohortYear": 2025,
+      "completedCoursesText": "CCC101 | 3 | CCC\nCSD101 | 4 | engineering_science",
+      "completedMilestones": []
+    },
+    "fixed": [
+      { "code": "EXAMPLE101/EXAMPLE1001", "pkg": 0, "lock": false }
+    ],
+    "manual": [],
+    "doneElectives": [],
+    "choiceGroups": [
+      { "kind": "exactly_one", "members": ["EXAMPLE201", "EXAMPLE202"], "min_credits": null }
+    ],
+    "creditPolicy": { "min": 18, "target": 24, "overloadOn": false, "overloadCeiling": 30, "overloadConfirmed": false },
+    "auditRequirements": [],
+    "courses": [
+      { "code": "EXAMPLE201", "credits": 3, "seats": 40, "category": "ME", "priority": "MUST", "pkg": 0, "liveBidders": null },
+      { "code": "EXAMPLE202", "credits": 3, "seats": 40, "category": "ME", "priority": "STRONG", "pkg": 0, "liveBidders": null }
+    ],
+    "assumptions": {
+      "headlineMode": "HIGH",
+      "budgetMode": "SHARED_LIVE",
+      "robustMethod": "minimax",
+      "trials": 8000,
+      "seed": 20260802,
+      "dispersion": 0.18
+    }
+  }
+}

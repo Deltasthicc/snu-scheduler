@@ -1,0 +1,82 @@
+/* ============ TIMETABLE GRID ============ */
+function drawTT(){
+  if(!$('ttGrid')) return;
+  const filt=$('ttTerm')?$('ttTerm').value:'all';
+  let ev=fixedMeets();
+  Object.keys(PICK).forEach(c=>ev=ev.concat(pkgMeets(c,PICK[c].pkg)));
+  if(filt!=='all') ev=ev.filter(e=>e.term==='Full semester'||e.term===filt);
+  if(!ev.length){ $('ttGrid').innerHTML='<div class="note">Nothing scheduled yet.</div>';
+    $('ttReport').innerHTML=''; drawLoad([]); return; }
+  const cf=[]; const badKey=new Set();
+  for(let i=0;i<ev.length;i++)for(let j=i+1;j<ev.length;j++){
+    const a=ev[i],b=ev[j];
+    if(a.code!==b.code && mOv(a.m,b.m,a.term,b.term)){
+      cf.push({a,b,d:a.m[0],st:Math.max(a.m[1],b.m[1]),en:Math.min(a.m[2],b.m[2])});
+      badKey.add(i); badKey.add(j);
+    }}
+  let lo=Math.min(...ev.map(e=>e.m[1])), hi=Math.max(...ev.map(e=>e.m[2]));
+  lo=Math.floor(lo/60)*60; hi=Math.ceil(hi/60)*60;
+  const PXM=1.05, H=(hi-lo)*PXM;
+  let h='<div class="tt"><div class="hh"></div>'+DAYS.map(d=>`<div class="hh">${d}</div>`).join('');
+  h+=`<div class="col" style="height:${H}px;background:none">`;
+  for(let t=lo;t<=hi;t+=60) h+=`<div class="hrlab" style="top:${(t-lo)*PXM}px">${hm(t).replace(':00','')}</div>`;
+  h+='</div>';
+  DAYS.forEach((d,di)=>{
+    h+=`<div class="col" style="height:${H}px">`;
+    for(let t=lo;t<=hi;t+=60) h+=`<div class="hrline" style="top:${(t-lo)*PXM}px"></div>`;
+    const day=ev.map((e,i)=>({e,i})).filter(x=>x.e.m[0]===di).sort((a,b)=>a.e.m[1]-b.e.m[1]);
+    /* lay out overlapping events side by side */
+    const lanes=[];
+    day.forEach(x=>{ let L=0;
+      while(lanes[L]!==undefined && lanes[L]>x.e.m[1]) L++;
+      lanes[L]=x.e.m[2]; x.lane=L; });
+    const nl=Math.max(1,lanes.length);
+    day.forEach(x=>{const e=x.e, top=(e.m[1]-lo)*PXM, ht=Math.max(17,(e.m[2]-e.m[1])*PXM-2);
+      const w=100/nl, left=x.lane*w;
+      h+=`<div class="ev ${e.kind==='nb'?'fix':e.kind} ${badKey.has(x.i)?'bad':''}"
+        style="top:${top}px;height:${ht}px;left:calc(${left}% + 2px);width:calc(${w}% - 4px)"
+        title="${esc(e.code)} ${esc(e.title)} — ${e.m[3]} ${e.m[4]} ${DAYS[e.m[0]]} ${hm(e.m[1])}–${hm(e.m[2])} ${esc(e.m[5]||'')} [${e.term}]">
+        <b>${esc(e.code.split('/')[0])}</b><br>${e.m[3]}<br>${hm(e.m[1]).replace(' ','')}–${hm(e.m[2]).replace(' ','')}</div>`;});
+    h+='</div>';
+  });
+  h+='</div>';
+  $('ttGrid').innerHTML=h;
+  const uniq=[]; const seen=new Set();
+  cf.forEach(x=>{const k=[x.a.code,x.b.code,x.d,x.st].sort().join('|');
+    if(!seen.has(k)){seen.add(k);uniq.push(x);} });
+  const swapNote = (typeof LASTSWAPS!=='undefined' && LASTSWAPS.length)
+    ? `<div class="flag f-warn"><b>This schedule depends on a Major-Core swap.</b> Request it in Round 1
+       (or Round 5) — it uses no bid points, but only one swap request is allowed per round:<br>`+
+       LASTSWAPS.map(x=>'&nbsp;&nbsp;'+esc(x)).join('<br>')+'</div>' : '';
+  $('ttReport').innerHTML = swapNote + (uniq.length
+    ? `<div class="flag f-bad"><b>${uniq.length} real overlap${uniq.length>1?'s':''}:</b><br>`+
+      uniq.map(x=>`&nbsp;&nbsp;${esc(x.a.code)} (${x.a.m[3]}) × ${esc(x.b.code)} (${x.b.m[3]}) — `+
+        `${DAYS[x.d]} ${hm(x.st)}–${hm(x.en)} · ${x.en-x.st} min`).join('<br>')+'</div>'
+    : '<div class="flag f-ok">No time overlaps in the current package assignment.</div>');
+  drawLoad(ev);
+}
+if($('ttTerm')) $('ttTerm').onchange=drawTT;
+
+function drawLoad(ev){
+  const cap=+$('capCr').value||25, fx=fixedCredits();
+  let el=0; Object.keys(PICK).forEach(c=>el+=BY[c].cr);
+  const perDay=[0,0,0,0,0,0];
+  ev.forEach(e=>perDay[e.m[0]]+=(e.m[2]-e.m[1]));
+  const gaps=[];
+  DAYS.forEach((d,i)=>{
+    const day=ev.filter(e=>e.m[0]===i).sort((a,b)=>a.m[1]-b.m[1]);
+    for(let k=1;k<day.length;k++){const g=day[k].m[1]-day[k-1].m[2];
+      if(g>0&&g<20) gaps.push(`${d}: only ${g} min between ${day[k-1].code} (${day[k-1].m[5]||'?'}) and ${day[k].code} (${day[k].m[5]||'?'})`);}
+  });
+  let h=`<div class="grid g3"><div class="stat"><div class="k">Contact hours / week</div>
+    <div class="v mono">${f1(perDay.reduce((a,b)=>a+b,0)/60)}</div></div>
+   <div class="stat u"><div class="k">Busiest day</div><div class="v mono">${f1(Math.max(...perDay)/60)}h</div>
+     <div class="f">${DAYS[perDay.indexOf(Math.max(...perDay))]}</div></div>
+   <div class="stat ${fx+el>cap?'r':'c'}"><div class="k">Credits if all won</div>
+     <div class="v mono">${f1(fx+el)}</div><div class="f">cap ${cap}</div></div></div>`;
+  h+='<table style="margin-top:12px"><thead><tr>'+DAYS.map(d=>`<th>${d}</th>`).join('')+'</tr></thead><tbody><tr>'+
+     perDay.map(m=>`<td class="num">${f1(m/60)} h</td>`).join('')+'</tr></tbody></table>';
+  if(gaps.length) h+=`<div class="flag f-warn"><b>Tight transitions (under 20 minutes):</b><br>`+
+     gaps.map(g=>'&nbsp;&nbsp;'+esc(g)).join('<br>')+'</div>';
+  $('loadBox').innerHTML=h;
+}

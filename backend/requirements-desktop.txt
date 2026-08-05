@@ -1,0 +1,5 @@
+# Extra dependencies only needed to build/run the desktop .exe
+# (scripts/build-exe.sh). Not needed for the API server, Docker, or tests.
+-r requirements.txt
+pyinstaller>=6.0
+pywebview>=6.0

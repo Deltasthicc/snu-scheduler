@@ -1,0 +1,171 @@
+/* ============ DEGREE AUDIT & PROGRAMME CATALOG ============ */
+let PROGRAMME_CATALOG=[];
+let LAST_AUDIT=null;
+let PROFILE_AUDIT_OVERRIDES=[];
+
+async function loadProgrammeCatalog(){
+  const sel=$('programme'); if(!sel||!BACKEND_OK)return;
+  try{
+    const data=await API.getProgrammes(); PROGRAMME_CATALOG=data.programs||[];
+    const current=sel.value;
+    sel.innerHTML='<option value="">Select your programme…</option>'+
+      ['undergraduate','graduate','doctoral'].map(level=>{
+        const rows=PROGRAMME_CATALOG.filter(p=>p.level===level);
+        return `<optgroup label="${level[0].toUpperCase()+level.slice(1)}">`+
+          rows.map(p=>`<option value="${esc(p.id)}">${esc(p.title)}</option>`).join('')+'</optgroup>';
+      }).join('');
+    if(current&&PROGRAMME_CATALOG.some(p=>p.id===current))sel.value=current;
+    sel.onchange=()=>{applyProgrammeCategories();drawSpec();LAST_AUDIT=null;drawTwo();void autosaveNow();};
+    applyProgrammeCategories();
+  }catch(e){sel.innerHTML='<option value="">Programme catalogue unavailable</option>';}
+}
+
+function applyProgrammeCategories(){
+  const id=$('programme')?$('programme').value:'';
+  const p=PROGRAMME_CATALOG.find(x=>x.id===id),keys=(p&&p.department_keywords)||[];
+  C.forEach(c=>{
+    if(c._baseCat==null)c._baseCat=c.cat;
+    if(!p){c.cat=c._baseCat;return;}
+    const tt=String(c.ttype||'').toLowerCase(),dept=String(c.dept||'').toLowerCase();
+    const inMajor=keys.some(k=>dept.includes(String(k).toLowerCase()));
+    if(tt==='ccc'||c._baseCat==='CCC')c.cat='CCC';
+    else if(inMajor&&tt.includes('elective'))c.cat='ME';
+    else if(inMajor)c.cat='CORE';
+    else if(c.uwe)c.cat='UWE';
+    else c.cat='NB';
+  });
+  renderFixed();renderPick();renderChosen();
+}
+
+function parseCompletedCourses(){
+  const text=($('completedCourses')?$('completedCourses').value:'').trim();
+  if(!text)return [];
+  return text.split(/\r?\n/).filter(Boolean).map((line,i)=>{
+    const bits=line.split(/\s*[|,]\s*/);
+    const credits=Number(bits[1]);
+    if(!bits[0]||!Number.isFinite(credits)||credits<=0||!bits[2])
+      throw new Error(`Line ${i+1}: expected CODE | credits | category`);
+    return {code:bits[0].trim(),credits,category:bits[2].trim(),title:bits[3]?bits[3].trim():null};
+  });
+}
+function renderAdvisementInfo(){
+  const status=$('completedCourseStatus'),info=$('advisementInfo');
+  let count=0; try{count=parseCompletedCourses().length;}catch(e){}
+  if(status)status.textContent=count
+    ? `${count} completed course record${count===1?'':'s'} loaded.`
+    : 'No completed-course records loaded. Upload an SNU advisement PDF above or enter them manually.';
+  if(!info)return;
+  if(!ADVISEMENT_INFO){info.innerHTML='';return;}
+  const a=ADVISEMENT_INFO,t=a.totals||{};
+  const ip=(a.inProgress||[]).map(c=>c.code).join(', '),failed=(a.failed||[]).map(c=>c.code).join(', ');
+  info.innerHTML=`<div class="flag f-ok"><b>Advisement report loaded as a partial record.</b> Report ${esc(a.reportDate||'date unavailable')}`+
+    `${a.cgpa!=null?` · CGPA ${f1(a.cgpa)}`:''} · report-used ${f1(a.reportVisibleUsed==null?(t.used||0):a.reportVisibleUsed)}`+
+    `${a.transferredCredits?` · transferred ${f1(a.transferredCredits)}`:''}${a.pendingCredits?` · confirmed supplemental/summer ${f1(a.pendingCredits)}`:''}`+
+    ` · planning total ${f1(a.planningTotal==null?(t.used||0):a.planningTotal)} of ${f1(t.required||0)}.`+
+    `${ip?`<div class="tiny" style="margin-top:4px">Not counted yet (IP): ${esc(ip)}</div>`:''}`+
+    `${failed?`<div class="tiny" style="margin-top:4px">Failed attempts excluded: ${esc(failed)}</div>`:''}</div>`;
+}
+function auditCategory(c){
+  if(!c)return 'unknown';
+  if(c.cat==='CCC'||String(c.ttype).toLowerCase()==='ccc')return 'ccc';
+  if(c.cat==='ME'||String(c.ttype).toLowerCase().includes('major elective'))return 'major_elective';
+  if(c.cat==='CORE')return 'major_core';
+  if(c.cat==='UWE')return 'uwe';
+  return String(c.ttype||c.cat||'unknown').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+}
+function plannedAuditCourses(){
+  const seen=new Set(),out=[];
+  [...FIXED.map(f=>f.code),...Object.keys(PICK)].forEach(code=>{
+    if(seen.has(code)||!BY[code])return; seen.add(code); const c=BY[code];
+    out.push({code,credits:c.cr,category:auditCategory(c),title:c.title});
+  });
+  MANUAL.forEach((m,i)=>out.push({code:`MANUAL-${i+1}`,credits:m.cr,category:m.category||'project',title:m.name}));
+  return out;
+}
+
+function completedRequirementCredits(){
+  const p=PROGRAMME_CATALOG.find(x=>x.id===($('programme')?$('programme').value:''));
+  const req=Object.fromEntries(((p&&p.requirements)||[]).map(r=>[r.id,+r.required||0]));
+  // Imported plans can outlive individual form fields as the profile schema
+  // evolves.  Missing optional controls must mean "no aggregate supplied",
+  // never a fatal audit error.
+  const fieldNumber=id=>{const el=$(id);return el?(+el.value||0):0;};
+  const out={total:fieldNumber('doneCr')};
+  const remaining={major_core:fieldNumber('remCore'),major_elective:fieldNumber('remME'),
+    ccc:fieldNumber('remCCC'),uwe:fieldNumber('remUWE')};
+  Object.entries(remaining).forEach(([id,left])=>{if(req[id]!=null)out[id]=Math.max(0,req[id]-left);});
+  if(req.ccc_uwe!=null)out.ccc_uwe=Math.max(0,req.ccc_uwe-
+    (fieldNumber('remCCC')+fieldNumber('remUWE')+fieldNumber('remFL')));
+  const rp=(ADVISEMENT_INFO&&ADVISEMENT_INFO.requirementProgress)||{};
+  Object.entries(rp).forEach(([id,row])=>{if(row&&Number.isFinite(+row.used))out[id]=Math.max(out[id]||0,+row.used);});
+  return out;
+}
+
+async function runDegreeAudit(){
+  const box=$('auditBox'),two=$('twoBox'),btn=$('auditBtn');
+  const programme=$('programme')?$('programme').value:'';
+  if(!programme){const h='<div class="flag f-warn">Select a programme first.</div>';if(box)box.innerHTML=h;if(two)two.innerHTML=h;return;}
+  if(!BACKEND_OK){await probeHealth();if(!BACKEND_OK)return;}
+  try{
+    if(btn){btn.disabled=true;btn.textContent='Checking…';}
+    const completed=parseCompletedCourses();
+    const milestones=($('completedMilestones')?$('completedMilestones').value:'').split(',').map(x=>x.trim()).filter(Boolean);
+    LAST_AUDIT=await API.runDegreeAudit({programme_id:programme,
+      cohort_year:+($('cohortYear')?$('cohortYear').value:0)||null,
+      completed_courses:completed,planned_courses:plannedAuditCourses(),
+      completed_milestones:milestones,custom_requirements:PROFILE_AUDIT_OVERRIDES,
+      completed_requirement_credits:completedRequirementCredits()});
+    renderDegreeAudit(box);renderDegreeAudit(two);void autosaveNow();
+  }catch(e){const h=`<div class="flag f-bad"><b>Audit could not run.</b> ${esc(API.humanError(e))}</div>`;if(box)box.innerHTML=h;if(two)two.innerHTML=h;}
+  finally{if(btn){btn.disabled=false;btn.textContent='Run audit check';}}
+}
+function renderDegreeAudit(target){
+  if(!target)return;
+  if(!LAST_AUDIT){target.innerHTML='<div class="note">Run the audit after selecting your programme and entering completed work.</div>';return;}
+  const a=LAST_AUDIT;
+  let h=`<div class="stats"><div class="stat"><div class="k">Courses recorded done</div><div class="v mono">${a.courses_recorded}</div></div>
+   <div class="stat u"><div class="k">Requirements met</div><div class="v mono">${a.requirements_met}/${a.requirements_total}</div></div>
+   <div class="stat ${a.remaining_after_plan?'r':'c'}"><div class="k">Credits left after this plan</div><div class="v mono">${f1(a.remaining_after_plan)}</div><div class="f">${a.estimate_note}</div></div></div>`;
+  if(a.aggregate_progress_applied)h+=`<div class="flag f-q"><b>Aggregate progress included.</b> The audit uses your private accepted-credit total in addition to the named course rows; it does not invent course codes for transfer credit.</div>`;
+  if(a.coverage!=='verified_public_curriculum'&&a.coverage!=='profile_overrides_applied')
+    h+=`<div class="flag f-warn"><b>Partial public curriculum.</b> ${esc(a.coverage_note||'')} ${(a.warnings||[]).map(esc).join(' ')}</div>`;
+  if(a.requirements.length){h+='<div class="scroll"><table><thead><tr><th>Requirement</th><th>Required</th><th>Done</th><th>Selected now</th><th>Left after plan</th><th>Status</th></tr></thead><tbody>';
+    a.requirements.forEach(r=>{h+=`<tr><td><b>${esc(r.label)}</b>${r.note?`<div class="tiny mut">${esc(r.note)}</div>`:''}</td><td class="num">${f1(r.required)}</td><td class="num">${f1(r.completed)}</td><td class="num">${f1(r.planned)}</td><td class="num">${f1(r.remaining_after_plan)}</td><td><span class="pill ${r.status==='complete'?'p-uwe':r.status==='on_track'?'p-m':'p-w'}">${esc(r.status.replace('_',' '))}</span></td></tr>`;});
+    h+='</tbody></table></div>';}
+  if(a.sources.length)h+=`<div class="tiny mut" style="margin-top:10px">Official sources: `+a.sources.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')+'</div>';
+  target.innerHTML=h;
+}
+function drawTwo(){renderDegreeAudit($('twoBox'));}
+
+if($('completedCourses'))$('completedCourses').addEventListener('input',renderAdvisementInfo);
+
+/* ============ DATA TAB ============ */
+function drawData(){
+  const Q=[
+   ['Official catalogue coverage','The app includes all 44 entries currently listed on the University programmes page, grouped as undergraduate, graduate, and doctoral.'],
+   ['Exact versus partial audits','A programme is marked verified only when its linked official curriculum publishes a usable requirement table. Partial programmes require cohort-specific rules in the private profile JSON.'],
+   ['Current-semester projection','Courses selected or fixed in the picker are shown separately from completed courses. They can make a requirement “on track” but never “complete”.'],
+   ['Course-count estimate','Credits are authoritative; “courses left” is explicitly a three-credit planning estimate because SNU courses have different credit values.'],
+   ['Privacy','No completed course, backlog, specialization preference, cohort, or future-semester claim ships as a default. Those appear only after local entry or JSON import.']];
+  if($('qBox'))$('qBox').innerHTML=Q.map(([q,a])=>`<div class="qbox"><b>${esc(q)}</b><div style="margin-top:5px;font-size:12.5px;color:var(--dim)">${esc(a)}</div></div>`).join('');
+  renderCredits();
+  if($('rulesBox'))$('rulesBox').innerHTML=`<table><tbody>
+   <tr><td><b>Clearing price</b></td><td>Every winner pays the lowest winning bid, or zero if seats go unfilled.</td></tr>
+   <tr><td><b>Maximum bid</b></td><td>25 × the course's credits.</td></tr>
+   <tr><td><b>Audit completion</b></td><td>Only completed coursework satisfies a requirement; selected courses are projected separately.</td></tr>
+   <tr><td><b>Overlapping minima</b></td><td>CCC and UWE each count toward their own minimum and the combined minimum, without duplicate credits inside a rule.</td></tr>
+   <tr><td><b>Unknown curriculum</b></td><td>The app reports incomplete source coverage and accepts a private override; it never invents missing requirements.</td></tr>
+  </tbody></table>`;
+}
+function renderCredits(){
+  if(!$('cQ')||!$('cBody'))return;
+  const q=$('cQ').value.trim().toLowerCase();
+  let L=C.filter(c=>!q||(c.code+' '+c.title).toLowerCase().includes(q)).slice(0,300);
+  $('cBody').innerHTML=L.map(c=>`<tr><td><b>${esc(c.code)}</b> <span class="mut">${esc(c.title.slice(0,32))}</span></td>
+   <td class="num">${c.cr}</td><td>${c.crOfficial?'<span class="pill p-uwe">official</span>':'<span class="pill p-w">derived</span>'}</td>
+   <td class="tiny">${esc(c.crBasis||'')}${c.unsched?' <span class="pill p-w">unschedulable</span>':''}</td></tr>`).join('');
+}
+if($('cQ'))$('cQ').oninput=renderCredits;
+
+/* ============ BOOT ============ */
+</script></body></html>

@@ -1,0 +1,13 @@
+.git
+.github
+.pytest_cache
+**/__pycache__
+**/*.pyc
+backend/build
+backend/dist
+frontend/dist
+frontend/node_modules
+tmp
+*.db
+*.log
+user_profile.local*.json
