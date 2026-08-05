@@ -77,6 +77,8 @@ docker run --rm -p 8000:8000 snu-scheduler
 not used because it can host only static files and cannot execute the Python/OR-Tools
 API that makes the scheduler functional.
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Deltasthicc/snu-scheduler)
+
 Desktop (Windows): `./scripts/build-exe.sh` builds a one-folder distribution at
 `backend/dist/SNU-Bid-Scheduler/` and zips it to
 `backend/dist/SNU-Bid-Scheduler-portable.zip`. See
