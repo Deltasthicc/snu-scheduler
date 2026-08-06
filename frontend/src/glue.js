@@ -114,7 +114,10 @@ async function refreshPoolsFromBackend() {
       model: $('model') ? $('model').value : 'y4',
       semester: $('sem') ? +$('sem').value : 7,
       remME: +$('remME').value, remUWE: +$('remUWE').value,
-      remCCC: +$('remCCC').value, floater: +$('remFL').value
+      remCCC: +$('remCCC').value, floater: +$('remFL').value,
+      doneME: +($('doneME') ? $('doneME').value : 0),
+      doneUWE: +($('doneUWE') ? $('doneUWE').value : 0),
+      doneCCC: +($('doneCCC') ? $('doneCCC').value : 0)
     });
     BUD = { ME: p.ME, UWE: p.UWE, CCC: p.CCC };
     if ($('bME')) $('bME').textContent = p.ME;
@@ -124,9 +127,12 @@ async function refreshPoolsFromBackend() {
       $('formula').innerHTML = Object.values(p.detail).map(esc).join(' &middot; ')
         + ` <span class="pill p-uwe">from backend · ${esc(p.rule_id)} · ${esc(p.rule_version)}</span>`;
     }
-    if ($('fME')) $('fME').textContent = `${Math.floor(p.ME / 75)} three-credit courses at the 75-pt cap`;
-    if ($('fUWE')) $('fUWE').textContent = `${Math.floor(p.UWE / 75)} three-credit courses at the 75-pt cap`;
-    if ($('fCCC')) $('fCCC').textContent = `${Math.floor(p.CCC / 75)} full-semester CCCs at the 75-pt cap`;
+    // No per-course bid cap exists (AUC.MAX_BID, rectified 2026-08-05) - a bid may run up to
+    // the whole category pool on one course, so "courses at a fixed cap" is no longer a
+    // meaningful figure. Report the pool itself instead.
+    if ($('fME')) $('fME').textContent = `${p.ME} points available — no per-course cap`;
+    if ($('fUWE')) $('fUWE').textContent = `${p.UWE} points available — no per-course cap`;
+    if ($('fCCC')) $('fCCC').textContent = `${p.CCC} points available — no per-course cap`;
     budFlags(); posFlags(); renderChosen();
   } catch (e) {
     if (e instanceof API.ApiError && (e.kind === 'offline' || e.kind === 'timeout')) setBackendState(false);
@@ -293,7 +299,8 @@ function drawResult(res) {
   });
   h += `<div class="tiny mut" style="margin-top:10px">rules ${esc(res.rule_version)} ·
     model ${esc(res.model_version)} · dataset ${esc(res.dataset_version)} ·
-    budget rule ${esc(res.budget_mode)} (not officially confirmed) ·
+    budget rule ${esc(res.budget_mode)} ${res.budget_mode === 'INDEPENDENT'
+      ? '(hypothetical comparison only)' : '(officially confirmed, rule BUDGET.SHARED_LIVE)'} ·
     ${res.trials.toLocaleString()} trials · seed ${res.seed}</div></div>`;
 
   /* §12 shared vs independent, from the same simulation */
@@ -316,9 +323,10 @@ function drawResult(res) {
       ? `<div class="flag f-warn"><b>${bc.courses_changed.length} recommendation(s) change between the two
          readings:</b><br>` + bc.courses_changed.map(c =>
            `&nbsp;&nbsp;${esc(c.code)}: ${c[bc.primary_mode.toLowerCase()]} → ${c[bc.alternate_mode.toLowerCase()]}`
-         ).join('<br>') + `<br><br>Neither reading is officially confirmed (rule ${esc(bc.rule_id)}).</div>`
+         ).join('<br>') + `<br><br>${esc(bc.primary_mode)} is the officially confirmed reading (rule
+         ${esc(bc.rule_id)}); ${esc(bc.alternate_mode)} is shown only as a hypothetical comparison.</div>`
       : `<div class="flag f-ok">No recommendation changes between the two readings for this plan, so the
-         unresolved rule does not affect your decision here.</div>`;
+         confirmed budget rule (${esc(bc.rule_id)}) does not affect your decision here.</div>`;
     h += '</div>';
   }
 
@@ -867,7 +875,7 @@ async function boot() {
   ['compMode', 'robustMethod', 'disp', 'showOptimistic', 'budgetMode'].forEach(id => {
     const e = $(id); if (e) e.onchange = () => { if (RESULT) void runOpt(); };
   });
-  ['model', 'sem', 'remME', 'remUWE', 'remCCC', 'remFL'].forEach(id => {
+  ['model', 'sem', 'remME', 'remUWE', 'remCCC', 'remFL', 'doneME', 'doneUWE', 'doneCCC'].forEach(id => {
     const e = $(id); if (e) e.addEventListener('change', () => void refreshPoolsFromBackend());
   });
   if ($('rStatus')) $('rStatus').onchange = () => void drawRules();
@@ -926,6 +934,9 @@ function currentPlanPayload() {
       semester: $('sem') ? +$('sem').value : 7,
       remME: +$('remME').value, remUWE: +$('remUWE').value,
       remCCC: +$('remCCC').value, floater: +$('remFL').value,
+      doneME: +($('doneME') ? $('doneME').value : 0),
+      doneUWE: +($('doneUWE') ? $('doneUWE').value : 0),
+      doneCCC: +($('doneCCC') ? $('doneCCC').value : 0),
       creditCap: +$('capCr').value,
       doneCr: +$('doneCr').value, degCr: +$('degCr').value,
       remCore: +$('remCore').value, remOther: +$('remOther').value,
@@ -981,6 +992,8 @@ function restoreActivePlan() {
       set('model', pay.profile.model); set('sem', pay.profile.semester);
       set('remME', pay.profile.remME); set('remUWE', pay.profile.remUWE);
       set('remCCC', pay.profile.remCCC); set('remFL', pay.profile.floater);
+      set('doneME', pay.profile.doneME || 0); set('doneUWE', pay.profile.doneUWE || 0);
+      set('doneCCC', pay.profile.doneCCC || 0);
       set('capCr', 25); // institutional rule; never trust a stale per-profile ceiling
       set('doneCr', pay.profile.doneCr); set('degCr', pay.profile.degCr);
       set('remCore', pay.profile.remCore); set('remOther', pay.profile.remOther);

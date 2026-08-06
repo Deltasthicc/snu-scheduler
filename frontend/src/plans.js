@@ -22,7 +22,7 @@
 
   const KEY = 'snu.plans.v1';
   const ACTIVE = 'snu.plans.active';
-  const SCHEMA = 9;
+  const SCHEMA = 10;
   const MAX_IMPORT_BYTES = 2 * 1024 * 1024;
   const DANGEROUS = ['__proto__', 'constructor', 'prototype'];
 
@@ -153,6 +153,21 @@
         if (p.payload.profile) p.payload.profile.creditCap = 25;
       });
       v = 9;
+    }
+    if (v < 10) {
+      // v10 adds already-completed ME/UWE/CCC credit counts (POOL.Y2, rectified
+      // 2026-08-05: each completed credit lowers the Second Year pool by 5 points).
+      // Zero for every fresh install and for every plan saved before this rule
+      // existed - matches "no deduction" exactly, so this migration changes no
+      // existing plan's computed pool.
+      Object.values(db.plans).forEach(p => {
+        p.payload = p.payload || {};
+        p.payload.profile = p.payload.profile || {};
+        if (p.payload.profile.doneME == null) p.payload.profile.doneME = 0;
+        if (p.payload.profile.doneUWE == null) p.payload.profile.doneUWE = 0;
+        if (p.payload.profile.doneCCC == null) p.payload.profile.doneCCC = 0;
+      });
+      v = 10;
     }
     db.schema = v;
     db.seq = Number(db.seq) || 0;
@@ -365,7 +380,9 @@
                + ' | trials ' + (result.trials || '?')
                + ' | seed ' + (result.seed || '?'));
       lines.push('Budget rule: ' + (result.budget_mode || '?')
-               + ' (NOT officially confirmed - see rule BUDGET.SHARED_LIVE)');
+               + (result.budget_mode === 'INDEPENDENT'
+                  ? ' (hypothetical comparison only - SHARED_LIVE is the confirmed official rule)'
+                  : ' (officially confirmed - see rule BUDGET.SHARED_LIVE)'));
     }
     lines.push('');
     lines.push('Pools: ME ' + plan.pools.ME + ' | UWE ' + plan.pools.UWE + ' | CCC ' + plan.pools.CCC);

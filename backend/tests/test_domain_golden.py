@@ -5,7 +5,7 @@ than being caught by hand-verification in a chat session."""
 from __future__ import annotations
 
 from app.domain.auction import settle
-from app.domain.pools import compute_pools
+from app.domain.pools import compute_pools, max_bid
 
 
 def test_pools_match_the_concept_notes_own_worked_example():
@@ -18,6 +18,43 @@ def test_pools_match_the_secondary_worked_example():
     # 12/4/6/6 -> 342/215/342, per docs/RULES_REFERENCE.md #40
     p = compute_pools("y4", 7, 12, 4, 6, 6)
     assert (p["ME"], p["UWE"], p["CCC"]) == (342, 215, 342)
+
+
+def test_y2_pool_matches_the_rectified_concept_note_semester_3_example():
+    # 2nd year, Sem 3 first bidding cycle: 36 total ME / 16 total UWE / 12 total CCC
+    # (excl EVS), 8 floater (split 4/4 UWE+CCC), 3 UWE credits already completed.
+    # UWE: Sem2 carry-forward 30 + Sem3 release 40 - (3 credits x 5) = 55 exactly.
+    # Rectified 2026-08-05: deduction is 5 per completed credit, not the prior 10, and
+    # the release schedule is a fraction of the TOTAL requirement, not of "remaining".
+    p = compute_pools("y2", 3, 36, 13, 12, 8, done_me=0, done_uwe=3, done_ccc=0)
+    assert (p["ME"], p["UWE"], p["CCC"]) == (90, 55, 40)
+
+
+def test_y2_pool_with_zero_completed_credits_matches_faq_typical_average():
+    # Course_Enrolment_FAQ_1.pdf: "Typical first-cycle averages are about 90/70/40
+    # (ME/UWE/CCC) for 2nd years" - the zero-completed-credit baseline, independently
+    # corroborating the total-requirement-based release formula.
+    p = compute_pools("y2", 3, 36, 16, 12, 8, done_me=0, done_uwe=0, done_ccc=0)
+    assert (p["ME"], p["UWE"], p["CCC"]) == (90, 70, 40)
+
+
+def test_y2_pool_never_goes_negative():
+    # Course_Enrolment_FAQ_1.pdf: "it is floored at zero - it never goes negative."
+    p = compute_pools("y2", 2, 0, 0, 0, 0, done_me=1000, done_uwe=1000, done_ccc=1000)
+    assert (p["ME"], p["UWE"], p["CCC"]) == (0, 0, 0)
+
+
+def test_no_per_course_max_bid_by_default():
+    # AUC.MAX_BID, rectified 2026-08-05: "There is no minimum or maximum bid. You can
+    # go from zero to your entire pool of bid points for one course."
+    assert max_bid(3) is None
+    assert max_bid(6) is None
+
+
+def test_settlement_has_no_cap_when_none_is_supplied():
+    r = settle(1, [{"id": "a", "bid": 100_000}])
+    assert r["winners"] == ["a"]
+    assert r["rejected"] == []
 
 
 def test_settlement_example_1_all_three_win_lowest_bid_clears():

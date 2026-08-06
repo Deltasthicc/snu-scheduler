@@ -8,7 +8,6 @@ import numpy as np
 from app.simulation.engine import (simulate_course, expected_rivals, MODES,
                                    STRESS_GRID, Cancelled)
 from app.optimization.robust import allocate, summarise, PRIORITY
-from app.domain.pools import max_bid
 from app.domain.rules import RULE_VERSION, DATASET_VERSION, MODEL_VERSION
 
 
@@ -42,7 +41,11 @@ def run_plan(req: dict, should_cancel=None, on_progress=None) -> dict:
     per_course = {}
 
     for c in courses:
-        cap = max_bid(c["credits"])
+        # AUC.MAX_BID (rectified 2026-08-05): there is no per-course bid cap. The only real
+        # ceiling is the student's own category pool - ME/UWE/CCC bids never draw on each
+        # other (POOL.SEPARATE), so a course cannot rationally be bid past its own category's
+        # pool total. Previously this was min(25 x credits), a University rule now abolished.
+        cap = max(0, int(req["pools"].get(c["category"], 0)))
         curves, paid, ci, beat_q, demand = {}, {}, {}, {}, None
         for mid in grid:
             if should_cancel is not None and should_cancel():
@@ -175,10 +178,11 @@ def run_plan_both_budget_modes(req: dict, should_cancel=None, on_progress=None) 
         "alternate": _budget_summary(alt),
         "courses_changed": changed,
         "why_it_matters": (
-            "No University document states whether bids on different courses in one round draw "
-            "from a single live pool. Under the independent reading there is little reason not to "
-            "bid the cap on every must-have course. Under the shared reading your category budget "
-            "forces real tradeoffs. Neither is officially confirmed."
+            "SHARED_LIVE is the officially confirmed rule (Course_Enrolment_FAQ_1.pdf: 'each category "
+            "has its own balance; points you place on a bid are held against that balance'). Your "
+            "category budget forces real tradeoffs across simultaneous bids. INDEPENDENT is kept here "
+            "only as a hypothetical comparison, the same way the Optimistic competition scenario is "
+            "kept for contrast, not as an equally-plausible alternative reading."
         ),
         "rule_id": "BUDGET.SHARED_LIVE",
     }

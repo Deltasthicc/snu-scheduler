@@ -5,17 +5,26 @@ Extracted from `backend/app/domain/rules.py` (30 rules, machine-readable, each w
 if the two ever disagree, `rules.py` wins because tests run against it.
 
 ## Provenance breakdown
-21 official · 2 prospectus · 2 inferred · 4 disputed · 1 unknown
+As of the 2026-08-05 rectification (Dean Academics email + three revised/new official
+PDFs): the large majority of rules are official, two are disputed, one remains genuinely
+unresolved by the University itself (`SET.CREDIT_CAP`'s exact >25-credit handling), and
+`BUDGET.SHARED_LIVE` moved from unknown to officially confirmed. See `rules.py`'s own
+`counts()` for the exact live breakdown; this file is a mirror, not the source of truth.
 
 ## The mechanism, in one paragraph
 Students get three separate, non-interchangeable point pools (Major Elective / UWE /
-CCC) per bidding semester. For each course they bid any whole number of points, 0 up to
-25×credits. When a round closes, seats go to the highest bidders; **everyone who wins
-pays the same price — the lowest winning bid (the clearing price)** — and gets the
-difference between their bid and that price refunded. Ties are broken by a random
-6-digit number assigned when the course is added, not by timing.
+CCC) per bidding semester. **There is no minimum or maximum bid** (rectified
+2026-08-05): a student may bid any whole number of points, 0 up to their *entire
+available pool for that category*, on a single course. Points placed on a bid are held
+against that category's live balance while the round is open, and released back if the
+bid loses (`BUDGET.SHARED_LIVE`, now confirmed). When a round closes, seats go to the
+highest bidders; **everyone who wins pays the same price — the lowest winning bid (the
+clearing price)** — and gets the difference between their bid and that price refunded.
+Ties are broken by a random number assigned uniquely per course per round, not by
+timing; withdrawing and rebidding for the same course in the same round keeps the same
+number.
 
-## Verified pool formulas (all reproduce the Concept Note's own worked examples exactly)
+## Verified pool formulas (all reproduce the two Concept Notes' own worked examples exactly)
 
 ```
 Y4 (final semester, Sem 7 only):
@@ -28,25 +37,40 @@ Y3 (transition, Sem 5/6/7):
   semester_share: 40% / 30% / 30% for Sem 5/6/7
   flat_constant: +65 ME, +50 UWE, +30 CCC (added IN FULL each semester)
 
-Y2 (steady state, Sem 2-7):
-  10 points per remaining credit, released on a staggered schedule:
+Y2 (steady state, Sem 2-7) — rectified 2026-08-05:
+  10 points per credit of the category's TOTAL requirement (not "remaining"),
+  released on a staggered schedule and accumulated across semesters:
     UWE:     15/20/20/20/15/10% across Sem 2-7
     ME/CCC:  7.5/17.5/20/20/20/15% across Sem 2-7
-  minus 10 points per already-completed credit
+  minus 5 points per already-completed credit (was 10 before the rectification)
 ```
 
-**This specific student's numbers** (4th year, Sem 7): 9 ME / 4 UWE / 11 CCC / 6 floater
-remaining → **ME=297, UWE=215, CCC=492**. Verified against the Concept Note's own
-worked example (12/4/6/6 → 342/215/342) — exact match, not approximate.
+**Y4 example** (4th year, Sem 7): 9 ME / 4 UWE / 11 CCC / 6 floater remaining →
+**ME=297, UWE=215, CCC=492**. Verified against the revised Concept Note's own worked
+example (12/4/6/6 → 342/215/342) — exact match, not approximate; unchanged from the
+prior document version.
 
-## The one unresolved rule that matters most: `BUDGET.SHARED_LIVE`
+**Y2 example** (2nd year, Sem 3, first bidding cycle): 36 total ME / 16 total UWE /
+12 total CCC (excl. EVS), 8 floater, 3 UWE credits already completed →
+**ME=90, UWE=55, CCC=40**. Verified against the revised Concept Note's own arithmetic:
+UWE = 30 (Sem2 carry-forward) + 40 (Sem3 release) - 15 (3 credits x 5) = 55 exactly.
+Note: the source PDF's own prose sentence for this example says "40 UWE points"
+immediately after showing this 30+40-15=55 arithmetic — an apparent typo in the
+document itself. This implementation trusts the arithmetic. The zero-completed-credit
+baseline (90/70/40) independently matches `Course_Enrolment_FAQ_1.pdf`'s own stated
+"typical first-cycle average" for 2nd years.
 
-No University document states whether bids on different courses within the same round
-draw from one shared live pool, or whether each bid is independently capped only by the
-category total at settlement. This is not a detail — it decides whether the optimizer
-has a real allocation problem to solve at all. **Both interpretations are implemented
-and compared side-by-side on every simulation run** (see `run_plan_both_budget_modes`
-in `backend/app/services/runner.py`).
+## `BUDGET.SHARED_LIVE` — resolved 2026-08-05, previously the one unresolved rule that mattered most
+
+`Course_Enrolment_FAQ_1.pdf` states directly: *"Each category (ME / UWE / CCC) has its
+own balance. Points you place on a bid are held against that balance and released if
+the bid is unsuccessful back to the same category. You cannot commit more than you
+have."* This confirms SHARED_LIVE as the official rule: simultaneous bids within one
+category are a real, shared constraint, not independent per-course budgets. The
+optimizer keeps the INDEPENDENT reading available purely as a labelled hypothetical
+comparison (see `run_plan_both_budget_modes` in `backend/app/services/runner.py`),
+the same treatment as the "Optimistic" competition scenario — never presented as an
+equally-plausible alternative going forward.
 
 ## Disputed data points (confirmed by direct arithmetic, not assumed)
 
@@ -56,8 +80,7 @@ in `backend/app/services/runner.py`).
   fully-worked example immediately below it in the same document DOES reconcile exactly.
   **Resolution: the formula is used everywhere; this one disputed row is excluded.**
 - Only 33 of 326 offered courses have an officially published credit value; the rest are
-  derived from L-T-P contact-hour patterns in the timetable. Since the bid cap is
-  25×credits, a wrong credit value directly changes the legal maximum bid.
+  derived from L-T-P contact-hour patterns in the timetable.
 - Three major electives (CSD365, CSD436, CSD438) do not appear in the printed prospectus
   elective table at all; CSD358/361/457 do, at 3 credits each (confirmed match).
 - Whether CSD336 (a 4-credit Major Core) counts toward the AI specialisation bucket —

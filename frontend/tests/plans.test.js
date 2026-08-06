@@ -149,7 +149,7 @@ console.log('\n=== §11 IMPORT / EXPORT ===');
                                      { recommendations: recs, rule_version: 'r', model_version: 'm',
                                        trials: 8000, seed: 1, budget_mode: 'SHARED_LIVE' });
   ck('printable summary includes the not-a-guarantee caveat', /not guarantees/.test(summary));
-  ck('printable summary flags the unconfirmed budget rule', /NOT officially confirmed/.test(summary));
+  ck('printable summary confirms the officially-resolved budget rule', /officially confirmed/.test(summary));
 }
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

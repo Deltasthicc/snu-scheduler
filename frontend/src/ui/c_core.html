@@ -48,35 +48,49 @@ function refreshSem(){const m=$('model').value,s=$('sem');s.innerHTML='';
 $('model').onchange=()=>{refreshSem();recalc();};refreshSem();
 
 function recalc(){
+  // Offline fallback only: refreshPoolsFromBackend() (glue.js) overwrites BUD from the
+  // authoritative POST /api/v1/pools call whenever the backend is reachable. This client
+  // copy exists purely so the page renders something before that call resolves, or if the
+  // backend is genuinely unreachable — it must stay in sync with app/domain/pools.py.
   const m=$('model').value, sem=+$('sem').value;
   const rM=+$('remME').value||0,rU=+$('remUWE').value||0,rC=+$('remCCC').value||0,fl=+$('remFL').value||0;
+  const dM=+($('doneME')?$('doneME').value:0)||0,dU=+($('doneUWE')?$('doneUWE').value:0)||0,
+        dC=+($('doneCCC')?$('doneCCC').value:0)||0;
   const eU=rU+fl/2, eC=rC+fl/2; let f='';
   if(m==='y4'){ BUD={ME:Math.round(rM*15+162),UWE:Math.round(eU*15+110),CCC:Math.round(eC*30+72)};
     f='Fourth-year model — ME = remaining×15 + 162 · UWE = (remaining + ½ floater)×15 + 110 · CCC = (remaining + ½ floater)×30 + 72.';
   } else if(m==='y3'){ const sh={5:.40,6:.30,7:.30}[sem];
     BUD={ME:Math.round(rM*10*sh+65),UWE:Math.round(eU*10*sh+50),CCC:Math.round(eC*10*sh+30)};
     f=`Third-year transition, Sem ${sem} — credit part at ${Math.round(sh*100)}% of (remaining×10) plus the full constant each semester.`;
-  } else { let a=0,b=0,c2=0;
-    for(let s=2;s<=sem;s++){a+=rM*10*(MREL[s]||0);b+=eU*10*(UREL[s]||0);c2+=eC*10*(MREL[s]||0);}
-    BUD={ME:Math.round(a),UWE:Math.round(b),CCC:Math.round(c2)};
-    f=`Steady state — 10 points per remaining credit, released on the staggered schedule, accumulated to Sem ${sem}.`;}
+  } else {
+    // POOL.Y2 (rectified 2026-08-05): release is a fraction of the TOTAL category
+    // requirement (remaining + already-completed), not of "remaining" alone, then 5
+    // points are deducted per completed credit. See app/domain/pools.py's own comment
+    // for the worked-example derivation (55 = 30 + 40 - 15 for UWE).
+    const totM=rM+dM, totU=eU+dU, totC=eC+dC;
+    let a=0,b=0,c2=0;
+    for(let s=2;s<=sem;s++){a+=totM*10*(MREL[s]||0);b+=totU*10*(UREL[s]||0);c2+=totC*10*(MREL[s]||0);}
+    a-=dM*5; b-=dU*5; c2-=dC*5;
+    BUD={ME:Math.round(Math.max(0,a)),UWE:Math.round(Math.max(0,b)),CCC:Math.round(Math.max(0,c2))};
+    f=`Steady state — 10 points per credit of the category's total requirement, released on the staggered `
+     +`schedule and accumulated to Sem ${sem}, minus 5 points per already-completed credit.`;}
   $('bME').textContent=BUD.ME;$('bUWE').textContent=BUD.UWE;$('bCCC').textContent=BUD.CCC;
-  $('fME').textContent =`${Math.floor(BUD.ME/75)} three-credit courses at the 75-pt cap`;
-  $('fUWE').textContent=`${Math.floor(BUD.UWE/75)} three-credit courses at the 75-pt cap`;
-  $('fCCC').textContent=`${Math.floor(BUD.CCC/75)} full-semester CCCs at the 75-pt cap`;
+  $('fME').textContent =`${BUD.ME} points available — no per-course cap`;
+  $('fUWE').textContent=`${BUD.UWE} points available — no per-course cap`;
+  $('fCCC').textContent=`${BUD.CCC} points available — no per-course cap`;
   $('formula').textContent=f;
   budFlags(); posFlags(); renderChosen(); drawTwo(); if(typeof drawSpec==='function') drawSpec();
 }
-['remME','remUWE','remCCC','remFL','capCr','sem','doneCr','degCr','remCore','remOther']
+['remME','remUWE','remCCC','remFL','doneME','doneUWE','doneCCC','capCr','sem','doneCr','degCr','remCore','remOther']
   .forEach(id=>{const e=$(id); if(e) e.addEventListener('change',recalc);});
 
 function budFlags(){
-  let h=`<div class="flag f-ok"><b>The per-course cap binds long before your pool does.</b>
-   No bid may exceed 25 × the course's credits, so a 3-credit course tops out at
-   <span class="mono">75</span>. With ${BUD.ME} ME points you could max-bid ${Math.floor(BUD.ME/75)}
-   three-credit electives at once. A high bid does not increase the settled price above the clearing price,
-   but points may still be committed across simultaneous live bids; treat the pool as scarce until SNU documents
-   the cross-course release timing unambiguously.</div>`;
+  let h=`<div class="flag f-ok"><b>There is no per-course bid cap.</b>
+   You may bid any whole number from zero up to your entire available pool for that category on a single
+   course (rectified 2026-08-05). With ${BUD.ME} ME points you could commit all of it to one elective if you
+   chose to. Points bid are held against your category's live balance while a round is open and released back
+   if the bid loses (confirmed official rule, BUDGET.SHARED_LIVE — see the Rules tab), so simultaneous bids in
+   the same category are a real tradeoff, not independent budgets.</div>`;
   h+=`<div class="flag f-q"><b>Your inputs control this estimate.</b> Remaining-credit values come from
    your local profile. Run the degree audit against your selected programme before relying on the pool,
    especially when a course may satisfy more than one published minimum.</div>`;

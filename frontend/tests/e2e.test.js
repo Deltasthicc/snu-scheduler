@@ -119,7 +119,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('both budget interpretations returned in one run', res.hasComparison);
   const bcText = await p.textContent('#bidOut');
   ck('comparison is shown to the student', /Shared live pool vs independent bids/.test(bcText));
-  ck('the unresolved rule is named', /not officially confirmed|BUDGET\.SHARED_LIVE/.test(bcText));
+  ck('the confirmed rule is named', /BUDGET\.SHARED_LIVE/.test(bcText));
 
   console.log('\n=== HONEST LANGUAGE ===');
   ck('no bare 100% claim', !/(^|[^.\d])100%/.test(bcText), (bcText.match(/.{0,20}100%.{0,10}/) || [''])[0]);

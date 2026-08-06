@@ -241,7 +241,13 @@ async def pools(req: PoolRequest):
 
 @app.get("/api/v1/max-bid", tags=["rules"])
 async def maxbid(credits: float):
-    return {"credits": credits, "max_bid": max_bid(credits), "rule_id": "AUC.MAX_BID"}
+    """No per-course bid cap exists (rectified 2026-08-05): a student may bid any whole
+    number up to their entire available category pool on a single course. Endpoint kept
+    for API stability; `max_bid` is always null unless a caller supplies an explicit
+    override multiplier."""
+    return {"credits": credits, "max_bid": max_bid(credits), "rule_id": "AUC.MAX_BID",
+            "note": "There is no per-course bid cap. The only real ceiling is your own "
+                    "category pool for this course - see POST /api/v1/pools."}
 
 
 @app.post("/api/v1/settlement", tags=["rules"])

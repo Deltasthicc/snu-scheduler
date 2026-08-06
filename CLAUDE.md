@@ -1401,3 +1401,135 @@ cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 62 pass
 ./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations
 ./scripts/build-exe.sh                                                 # rebuilt twice more (programs.json fix, then h_spec.html fix); final exe verified directly: root route, /api/v1/programmes, /api/v1/degree-audit, /api/v1/timetable-updates/status, and a wishlist search all confirmed working against the actual packaged artifact
 ```
+
+---
+
+## 17. Session update — 2026-08-06: three revised official bidding documents + a Dean's
+## Office rectification email, applied end to end, and a real formula bug they exposed
+
+The user forwarded an email from Dean Academics (2026-08-05) stating two explicit
+rectifications to a document sent earlier, plus three attached official PDFs read in
+full: `Course_Bid_Point_Allocation_Concept_Note_revised_final.pdf`,
+`Course_Bidding_Introduction.pdf`, and `Course_Enrolment_FAQ_1.pdf` (the last one
+re-read directly from disk mid-session to verify an exact quote before committing to a
+high-impact rule change — see below). Every rule in `rules.py` was cross-checked
+against these documents; conflicting old rules were overridden per the user's explicit
+instruction, and the two rectifications were treated as ground truth.
+
+**Rectification 1 — Y2 completed-credit deduction: 10 points → 5 points per credit.**
+Applying just the number swap in `compute_pools()`'s existing formula did **not**
+reproduce the revised Concept Note's own Semester-3 worked example (UWE 30 + 40 - 15 =
+55). The existing formula multiplied the release percentage by *remaining* credits,
+summed across semesters using today's remaining value retroactively for every past
+semester too; the document's actual mechanism multiplies the release percentage by the
+category's *total* requirement (remaining + already-completed), accumulated normally
+across semesters, then subtracts a flat 5-points-per-completed-credit deduction
+afterward. These are genuinely different formulas whenever any credit has already been
+completed — reproduced with the concrete numbers before writing the fix: the old
+remaining-based approach gives 29.5 for that example, not 55. Fixed in
+`backend/app/domain/pools.py`'s `y2` branch. The zero-completed-credit baseline (90/70/
+40) this produces independently matches `Course_Enrolment_FAQ_1.pdf`'s own stated
+"typical first-cycle average" for 2nd years — corroboration from a second, separately-
+authored document, found by actually re-reading that FAQ in full rather than trusting
+the prior session's own summary of it (see below).
+
+The frontend's client-side `recalc()` fallback in `c_core.html` had the identical
+formula bug (the "10 points per remaining credit" version) — this matters because it's
+what the page shows before `refreshPoolsFromBackend()`'s real API call resolves, and
+what it falls back to if the backend is genuinely unreachable. Fixed to match. Also
+found: **no UI ever exposed a "credits already completed" input at all** — the backend
+API (`app/models/schemas.py::PoolRequest`) and `api.js::calculateProfileBudget()` both
+already had `done_me`/`done_uwe`/`done_ccc` parameters wired end-to-end, but nothing on
+the Profile tab ever set them, so the deduction was completely inert in the shipped
+app regardless of the formula's correctness. Added three new inputs
+("ME/UWE/CCC credits already completed") to `b_body.html`, wired into
+`refreshPoolsFromBackend()`, `currentPlanPayload()`, and `restoreActivePlan()` in
+`glue.js`, and a new plans.js schema v10 migration (defaults to 0, so no existing saved
+plan's computed pool changes).
+
+**Rectification 2 — no minimum or maximum bid at all.** The prior `AUC.MAX_BID` rule
+("a bid may not exceed 25 x course credits") is explicitly abolished by all three
+documents plus the email. This cascaded further than the rule text: `pools.py::max_bid()`
+now returns `None` (kept only for API-shape stability); `runner.py`'s `run_plan()` used
+to set each course's simulation/optimizer cap to `max_bid(credits)` — now set to
+`req["pools"][category]`, the student's own remaining pool for that course's category,
+since that pool is now the *only* real ceiling (categories never subsidise each other,
+`POOL.SEPARATE`). Verified end-to-end through the real API, not just unit-level: the
+e2e suite's cap assertion now reports caps of `297`/`297` (the ME pool) for a two-ME-
+course test plan, not the old `75`/`45` (25 x 3 / 25 x 1.8-ish credits). Frontend "Max
+bid" columns (`b_body.html`, `d_sched.html`) recomputed `Math.floor(25*c.cr)` locally —
+replaced with the student's actual live category pool (`BUD[cat]`), and the stale
+"25 × the course's credits" line in the Rules tab (`g_two.html`) and Budget-flags copy
+(`c_core.html`) rewritten.
+
+**`BUDGET.SHARED_LIVE` resolved from unknown to officially confirmed — but verified by
+re-reading the source PDF directly before committing to it**, since flipping this rule
+changes the optimizer's actual behavior (§5.3 in this file explicitly calls this "large
+impact"). The prior session's own compacted summary claimed the FAQ resolved this;
+rather than trust that secondhand, `Course_Enrolment_FAQ_1.pdf` was re-read in full from
+its original path. It does: *"Each category ... has its own balance. Points you place
+on a bid are held against that balance and released if the bid is unsuccessful back to
+the same category. You cannot commit more than you have."* Updated the rule's status,
+`runner.py`'s `why_it_matters` copy, and every "not officially confirmed" /
+"unresolved rule" string across `glue.js` and `plans.js` that presented SHARED_LIVE as
+one of two equally-plausible readings — INDEPENDENT is now explicitly labelled a
+hypothetical comparison only, the same treatment the "Optimistic" competition scenario
+already gets. Caught one of these strings only because `plans.test.js`'s own assertion
+name ("flags the unconfirmed budget rule") no longer matched reality once the rule
+copy changed — fixed both the source string and the test's assertion together.
+
+**Other genuinely new provisions from the same documents, added as rules (most
+informational, since they don't require simulation code changes):** one swap per round
+and whole-batch-only swaps (`ROUND.SWAP_NO_POINTS`, extended); Add/Drop-round drops get
+no clearing-price refund, versus a full refund in the dedicated Major Elective Drop
+round (new `ROUND.DROP_REFUND`); waitlist rounds settle by bid, not by who clicks first
+(new `ROUND.WAITLIST_BY_BID`); tie-break numbers are assigned per course per round, not
+once per add (updated `AUC.TIEBREAK`); failed-core retakes go through a Dean's Office
+Google Form, with the email's own stated deadline of **7 August 2026** flagged as
+imminent relative to this session's date (new `RETAKE.FAILED_CORE`); grade-improvement
+retakes use a separate Add/Drop-period form, with an automatic attendance waiver for
+clean retakes (new `RETAKE.GRADE_IMPROVEMENT`, `RETAKE.ATTENDANCE_WAIVER`); no extra bid
+points for retakes (new `RETAKE.NO_EXTRA_POINTS`); SWAYAM/NPTEL courses skip bidding
+entirely (new `ENROL.SWAYAM_NO_BID`); backend enrolment is discontinued except named
+exceptions (new `ENROL.BACKEND_DISCONTINUED`); a future Spring-2027 feedback-form bonus
+(new `POOL.FEEDBACK_BONUS_FUTURE`, deliberately not modelled yet). Citations for
+`SET.ONE_CLASH`, `SET.NEVER_CLASH_CORE`, `SET.NET_CEILING`, and `ROUND.SEQUENCE` were
+updated to point at the two new named PDFs instead of the superseded "Introduction"/
+"guide" documents; `POOL.Y4_AVERAGE_ROW`'s disputed note now records that the FAQ
+independently repeats the same unreconciled 297/125/238.5 figures in a second document,
+strengthening rather than resolving the dispute.
+
+**An unrelated, pre-existing environment gap found while running the real e2e suite**
+(not caused by this session's changes): `scripts/run-e2e.sh` invokes `python3`, which on
+this machine resolves to a different Python installation (Windows Store Python 3.11)
+than the `python` this session had been using directly — one that was missing `pypdf`
+and `cryptography`, dependencies a prior session had already added to
+`requirements.txt` for the advisement-report PDF-parsing feature but never installed
+into that specific environment. The backend crashed on import
+(`ModuleNotFoundError: No module named 'pypdf'`), which surfaced as `stack up: api=DOWN`
+with no further detail — diagnosed by running `python -m uvicorn` directly to see the
+real traceback rather than guessing from the summary line. Fixed by installing both
+packages into that environment; not a code change, but the exact "same category of bug
+as the Docker port collision and the stale-process port issues" this file has flagged
+twice before — an environment/dependency mismatch masquerading as a test failure.
+
+Also reviewed, per the user's own instruction to check "changes made since last time":
+`CODEX.md` (a new project-root file, evidence/verification guardrails, complementary to
+this file — not authored this session, left as-is), and confirmed
+`backend/app/services/credit_policy.py` has no reference to `AUC.MAX_BID` or the Y2
+pool formula, so nothing there conflicted with this session's rule changes.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 154 passed, 1 skipped (was 139)
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 44 + 35 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 64 passed (was 62)
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations
+./scripts/build-exe.sh                                                 # rebuilt; launched the actual packaged exe and verified directly: /health/ready, POST /api/v1/pools (y2, rectified -> 90/55/40 exactly), GET /api/v1/max-bid (null, no cap), a real simulation (cap:90 = the ME pool, not the old 25x3=75), and the root route serving the frontend
+```
+
+**Explicitly not done this session**: a full re-audit of every Q&A item in Part 2 of the
+FAQ (situation-specific student questions, mostly pointing back to Part 1 or to "contact
+the office") was not turned into individual rule entries, since almost all of them
+resolve to a rule already added or to genuine "contact the department" guidance with no
+computable content; the exact reconciliation of `POOL.Y4_AVERAGE_ROW`'s disputed figures
+is still unresolved by the University's own materials, not just by this project.
