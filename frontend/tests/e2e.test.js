@@ -56,14 +56,11 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
      String(auditRegression.total));
 
   await p.click('.tab[data-p="bid"]');
-  ck('stress card shows the pre-run placeholder before any simulation has completed',
-     /Run a simulation above first/.test(await p.textContent('#stressOut')));
-  await p.click('.tab[data-p="learn"]');
+  ck('default bid tab is the strategic planner, not the synthetic stress UI',
+     /Strategic bid planner/.test(await p.textContent('#p-bid')) &&
+     (await p.locator('#stressOut').count()) === 0);
 
   console.log('\n=== POOLS COME FROM THE BACKEND ===');
-  // profile fields default to neutral (0) since real personal progress must
-  // never ship as a hardcoded page default; set the guide's own worked-example
-  // numbers explicitly so this test still exercises the documented 297/215/492 case
   await p.evaluate(async () => {
     const set = (id, v) => { document.getElementById(id).value = v; };
     set('remME', 9); set('remUWE', 4); set('remCCC', 11); set('remFL', 6);
@@ -85,114 +82,67 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('pool panel states it came from the backend', /from backend/.test(poolInfo.formula),
      poolInfo.formula.slice(0, 70));
 
-  console.log('\n=== FULL SIMULATION VIA THE API ===');
+  console.log('\n=== DETERMINISTIC STRATEGIC BID PLAN ===');
   await p.evaluate(() => {
     PICK = {};
     ['CSD358', 'CSD361'].forEach(c => { if (BY[c]) PICK[c] = { want: 5, pkg: 0 }; });
-    PRIO = { CSD358: 'MUST', CSD361: 'STRONG' };
+    PRIO = { CSD358: 'STRONG', CSD361: 'STRONG' };
+    document.getElementById('bidReserve').value = 20;
+    document.getElementById('bidPosture').value = 'balanced';
     renderChosen();
   });
   await p.click('.tab[data-p="bid"]');
-  await p.selectOption('#nsim', '1000');
-  const t0 = Date.now();
   await p.click('#runBtn');
-  await p.waitForFunction(() => window.RESULT && window.RESULT.recommendations, null, { timeout: 120000 });
-  const ms = Date.now() - t0;
-  ck('simulation completes through the API', true, ms + 'ms wall');
+  await p.waitForFunction(() => window.RESULT && window.RESULT.strategy_version === 'allocation-v1',
+                          null, { timeout: 15000 });
 
   const res = await p.evaluate(() => ({
-    n: RESULT.recommendations.length,
-    rule: RESULT.rule_version, model: RESULT.model_version,
-    bids: RESULT.recommendations.map(r => ({ c: r.code, bid: r.bid, cap: r.cap,
-                                             rivals: r.demand.expected_rivals, seats: r.demand.seats })),
-    hasComparison: !!RESULT.budget_comparison,
-    scenarios: RESULT.scenarios_run
+    courses: RESULT.courses.map(c => ({ code: c.code, opening: c.opening_bid,
+      ceiling: c.strategic_ceiling, pressure: c.pressure.label })),
+    categories: RESULT.categories,
+    invariants: RESULT.invariants,
+    resultKeys: Object.keys(RESULT),
+    courseKeys: Object.keys(RESULT.courses[0] || {}),
+    text: document.getElementById('bidOut').textContent
   }));
-  ck('all courses returned', res.n === 2, String(res.n));
-  ck('no bid exceeds its cap', res.bids.every(x => x.bid <= x.cap), JSON.stringify(res.bids.map(x => x.bid + '/' + x.cap)));
-  ck('modelled rivals exceed seats (stress default)', res.bids.every(x => x.rivals > x.seats),
-     JSON.stringify(res.bids.map(x => Math.round(x.rivals) + '>' + x.seats)));
-  ck('all three mandatory stress scenarios were run', ['HIGH', 'VERY_HIGH', 'EXTREME'].every(m => res.scenarios.includes(m)),
-     res.scenarios.join(','));
-  ck('Low and Moderate comparison scenarios run by default too', ['LOW', 'MODERATE'].every(m => res.scenarios.includes(m)),
-     res.scenarios.join(','));
-  ck('backend versions surfaced to the UI', !!res.rule && !!res.model, res.rule + ' / ' + res.model);
+  ck('all selected courses receive a result', res.courses.length === 2, String(res.courses.length));
+  ck('equal-priority alternatives are both funded, not greedily zeroed',
+     res.courses.every(c => c.ceiling > 0) &&
+     Math.abs(res.courses[0].ceiling - res.courses[1].ceiling) <= 1,
+     JSON.stringify(res.courses));
+  const meEnvelope = res.categories.find(c => c.category === 'ME');
+  ck('ME ceilings fit the usable envelope and protect the reserve',
+     meEnvelope.strategic_ceiling_total <= meEnvelope.current_round_envelope &&
+     meEnvelope.current_round_envelope + meEnvelope.carry_forward_reserve === meEnvelope.pool,
+     JSON.stringify(meEnvelope));
+  ck('backend exposes all four planner invariants as true',
+     Object.values(res.invariants).every(Boolean), JSON.stringify(res.invariants));
+  ck('response has no synthetic probability or expected-charge fields',
+     !res.resultKeys.includes('trials') && !res.courseKeys.includes('expected_charge') &&
+     !res.courseKeys.includes('worst_tested') && !/target not reachable/i.test(res.text));
+  ck('the former undefined disclaimer is gone', !/undefined/.test(res.text));
+  ck('UI clearly distinguishes opening bids from personal ceilings',
+     /Opening bids and stop points/.test(res.text) && /Personal ceiling/.test(res.text));
+  ck('UI explains that probability is not identifiable',
+     /No win probability is shown/.test(res.text) && /historical/.test(res.text));
 
-  console.log('\n=== §12 SHARED vs INDEPENDENT COMPARISON ===');
-  ck('both budget interpretations returned in one run', res.hasComparison);
-  const bcText = await p.textContent('#bidOut');
-  ck('comparison is shown to the student', /Shared live pool vs independent bids/.test(bcText));
-  ck('the confirmed rule is named', /BUDGET\.SHARED_LIVE/.test(bcText));
-
-  console.log('\n=== HONEST LANGUAGE ===');
-  ck('no bare 100% claim', !/(^|[^.\d])100%/.test(bcText), (bcText.match(/.{0,20}100%.{0,10}/) || [''])[0]);
-  ck('no "guaranteed" or "certain"', !/\bguaranteed\b|\bcertain\b/i.test(bcText));
-  ck('uses "in this model" qualifier where saturated', /in this model/.test(bcText) || !/99\.9/.test(bcText));
-  ck('states competition is assumed not observed', /assumed rather than observed|assumed, not observed|no historical/i.test(bcText));
-
-  console.log('\n=== §5 CANCELLATION FROM THE UI ===');
-  await p.evaluate(() => {
-    PICK = {};
-    (C.filter(c => ['ME','CCC','UWE'].includes(c.cat) && c.pk.length).slice(0, 30))
-      .forEach(c => PICK[c.code] = { want: 5, pkg: 0 });
-    renderChosen();
+  const beforeLive = res.courses.find(c => c.code === 'CSD358');
+  await p.evaluate(() => setLive('CSD358', '240'));
+  await p.waitForFunction((oldOpening) => {
+    const row = window.RESULT && RESULT.courses.find(c => c.code === 'CSD358');
+    return row && row.pressure.provenance === 'live' && row.opening_bid !== oldOpening;
+  }, beforeLive.opening, { timeout: 15000 });
+  const afterLive = await p.evaluate(() => {
+    const row = RESULT.courses.find(c => c.code === 'CSD358');
+    return { opening: row.opening_bid, ceiling: row.strategic_ceiling, pressure: row.pressure.label };
   });
-  await p.selectOption('#nsim', '30000');
-  await p.click('#runBtn');
-  await p.waitForFunction(() => {
-    const s = document.getElementById('optStat');
-    return s && s.textContent.length > 0;
-  }, null, { timeout: 20000 });
-  await p.waitForTimeout(1200);
-  const tc = Date.now();
-  await p.click('#cancelBtn');
-  await p.waitForFunction(() => /cancelled/i.test(document.getElementById('bidOut').textContent),
-                          null, { timeout: 8000 });
-  const cms = Date.now() - tc;
-  ck('UI reflects cancellation immediately', cms < 1500, cms + 'ms');
-  const afterCancel = await p.evaluate(() => ({
-    running: document.getElementById('runBtn').textContent,
-    text: document.getElementById('bidOut').textContent.slice(0, 120)
-  }));
-  ck('run button is re-enabled after cancel', /Run simulation/.test(afterCancel.running), afterCancel.running);
-  ck('no partial result applied', /No result was applied/.test(afterCancel.text), afterCancel.text.slice(0, 60));
+  ck('a heavy live count raises the opening step', afterLive.opening > beforeLive.opening,
+     `${beforeLive.opening} -> ${afterLive.opening}`);
+  ck('live pressure does not silently inflate the personal ceiling',
+     afterLive.ceiling === beforeLive.ceiling, `${beforeLive.ceiling} -> ${afterLive.ceiling}`);
+  ck('live pressure is labelled, not converted into a probability',
+     afterLive.pressure === 'heavily_oversubscribed', afterLive.pressure);
 
-  console.log('\n=== §16 WHOLE-PLAN STRESS TEST ===');
-  await p.evaluate(() => {
-    PICK = {};
-    ['CSD358', 'CSD361'].forEach(c => { if (BY[c]) PICK[c] = { want: 5, pkg: 0 }; });
-    PRIO = { CSD358: 'MUST', CSD361: 'STRONG' };
-    renderChosen();
-  });
-  await p.selectOption('#nsim', '1000');
-  await p.click('#runBtn');
-  await p.waitForFunction(() => window.RESULT && window.RESULT.recommendations, null, { timeout: 120000 });
-  // stress and bid now share one pane; runOpt() itself auto-triggers stressPlan()
-  // on completion, so no tab switch is needed to see it refresh
-  await p.waitForFunction(() => {
-    const t = document.getElementById('stressOut').textContent;
-    return t.length > 0 && !/Running synthetic cohorts/.test(t) && !/Run the bid stress test first/.test(t);
-  }, null, { timeout: 30000 });
-  ck('a completed simulation run auto-runs the stress test below it',
-     !/Run a simulation above first/.test(await p.textContent('#stressOut')));
-  const stress1 = await p.evaluate(() => ({
-    html: document.getElementById('stressOut').innerHTML,
-    text: document.getElementById('stressOut').textContent
-  }));
-  ck('stress result reports a cohort count', /of [\d,]+ cohorts/.test(stress1.text), stress1.text.match(/of [\d,]+ cohorts/)?.[0]);
-  ck('all-must-haves rate is rendered (MUST course present)', /All must-haves/.test(stress1.text)
-    && !/All must-haves[\s\S]{0,40}n\/a/.test(stress1.text));
-  ck('per-course failure-rate table is rendered', (stress1.html.match(/<tr>/g) || []).length >= 3,
-     String((stress1.html.match(/<tr>/g) || []).length) + ' rows');
-  ck('both plan courses appear in the failure-rate table', /CSD358/.test(stress1.text) && /CSD361/.test(stress1.text));
-  ck('methodology note is shown, not hidden', /random from High, Very high and Extreme/.test(stress1.text));
-  ck('stress button re-enabled after completion', await p.evaluate(() => !document.getElementById('stressBtn').disabled));
-
-  await p.click('#stressBtn');
-  await p.waitForFunction(() => !/Running synthetic cohorts/.test(document.getElementById('stressOut').textContent),
-                          null, { timeout: 30000 });
-  const stress2 = await p.evaluate(() => document.getElementById('stressOut').textContent);
-  ck('same seed reproduces byte-identical stress results', stress2 === stress1.text);
 
   console.log('\n=== §17 SCHEDULE BUILDER (backend-authoritative search) ===');
   await p.evaluate(() => { PICK = {}; renderChosen(); });

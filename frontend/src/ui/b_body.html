@@ -1,7 +1,7 @@
 <header>
 <div class="mast">
   <div class="eyebrow">Shiv Nadar IoE · Monsoon 2026 · bid-point enrolment</div>
-  <h1>Bid &amp; Schedule Simulator</h1>
+  <h1>SNU Scheduler &amp; Strategic Bid Planner</h1>
   <div class="sub">326 offered courses · 988 valid section packages · 3,201 package-meeting slots, all read from the
   published timetable dataset. Nothing here is invented — where a value is an estimate it says so.
   <b>Unofficial planning aid.</b></div>
@@ -19,7 +19,7 @@
   <button class="tab on" data-p="learn"><span class="n">01</span>Learn</button>
   <button class="tab" data-p="prof"><span class="n">02</span>Profile &amp; budget</button>
   <button class="tab" data-p="courses"><span class="n">03</span>Courses &amp; schedule</button>
-  <button class="tab" data-p="bid"><span class="n">04</span>Bid simulator</button>
+  <button class="tab" data-p="bid"><span class="n">04</span>Strategic bids</button>
   <button class="tab" data-p="two"><span class="n">05</span>Degree audit</button>
   <button class="tab" data-p="rules"><span class="n">06</span>Rules &amp; data</button>
 </div>
@@ -249,64 +249,34 @@
 
 <!-- 04 BID SIMULATOR -->
 <div class="pane" id="p-bid">
- <div class="card" style="border-color:var(--bad)">
-  <h2>This simulator assumes serious competition</h2>
-  <div class="note">No historical SNU clearing-price or bidder-count data exists &mdash; this is the first cohort.
-  Every course is assumed <b>oversubscribed</b> until the platform proves otherwise. Recommendations are
-  conservative model outputs, not guarantees. <b>Enter live bidder counts as soon as the platform shows them</b>
-  &mdash; a real number replaces the assumption entirely.</div>
+ <div class="card" style="border-color:var(--ok)">
+  <h2>Strategic bid planner</h2>
+  <div class="note">Build a budget-feasible plan across every selected course without guessing what other
+  students will bid. The University publishes the auction mechanism and live bidder counts, but not historical
+  clearing prices or private rival bids. This planner therefore shows an <b>opening bid</b> and a
+  <b>personal ceiling</b>&mdash;never a made-up win probability.</div>
  </div>
- <div class="card tight"><div class="hd" style="margin-bottom:10px"><div><h2>Competition assumptions</h2>
-  <div class="note">The recommendation must always survive High, Very high and Extreme &mdash; that floor never
-  moves. Low and Moderate are easier comparison readings you can additionally see; the mode below sets which
-  scenario is shown as the headline number.</div></div></div>
-  <div class="grid g4">
-   <div><label for="compMode">Headline scenario</label><select id="compMode">
-     <option value="LOW">Low competition (easy comparison)</option>
-     <option value="MODERATE">Moderate competition (comparison)</option>
-     <option value="HIGH" selected>High competition (default)</option>
-     <option value="VERY_HIGH">Very high competition</option>
-     <option value="EXTREME">Extreme stress</option>
-     <option value="OPTIMISTIC">Optimistic (comparison)</option></select></div>
-   <div><label for="robustMethod">Robustness rule</label><select id="robustMethod">
-     <option value="minimax" selected>Minimax &mdash; every scenario individually</option>
-     <option value="cvar">CVaR &mdash; worse half, blended</option>
-     <option value="mean">Mean &mdash; blended average</option></select></div>
-   <div><label for="nsim">Simulation quality</label><select id="nsim">
-     <option value="1000">Fast preview &mdash; 1k</option>
-     <option value="8000" selected>Balanced &mdash; 8k</option>
-     <option value="30000">High confidence &mdash; 30k</option></select></div>
-   <div><label for="budgetMode">Budget rule <span title="Confirmed official (2026-08-05): each category has its own live balance" style="color:var(--ok)">&#10003;</span></label>
-     <select id="budgetMode">
-       <option value="SHARED_LIVE" selected>Shared live pool (confirmed)</option>
-       <option value="INDEPENDENT">Independent bids (hypothetical comparison)</option></select></div></div>
-  <div class="grid g4" style="margin-top:12px">
-   <div><label for="seed">Market seed</label>
-     <div style="display:flex;gap:6px">
-       <input type="number" id="seed" value="20260802" style="flex:1;min-width:0">
-       <button type="button" class="btn2 sm" onclick="randomizeSeed()"
-         title="Pick a new random seed. The run itself stays fully deterministic for whatever seed ends up here — same seed, same result, every time.">Randomize</button>
-     </div></div>
-   <div><label for="disp">Rival dispersion</label><input type="number" id="disp" value="0.18" step="0.02" min="0" max="0.6"></div>
-   <div><label for="liveRound">Round label for live counts</label><input type="text" id="liveRound" value="Round 2" placeholder="e.g. Round 2"></div>
-   <div style="align-self:end"><label style="text-transform:none;display:block;font-weight:600;margin-bottom:3px">Also compute for comparison</label>
-     <label style="display:inline;text-transform:none;margin-right:10px"><input type="checkbox" id="showLow" checked> Low</label>
-     <label style="display:inline;text-transform:none;margin-right:10px"><input type="checkbox" id="showModerate" checked> Moderate</label>
-     <label style="display:inline;text-transform:none"><input type="checkbox" id="showOptimistic"> Optimistic</label></div></div>
+ <div class="card tight"><div class="hd" style="margin-bottom:10px"><div><h2>Choose your resource strategy</h2>
+  <div class="note">These controls are personal planning choices, not University rules. Category balances
+  remain separate, and the total held by simultaneous bids can never exceed the relevant live balance.</div></div></div>
+  <div class="grid g3">
+   <div><label for="bidPosture">Allocation posture</label><select id="bidPosture">
+     <option value="diversified">Diversified &mdash; protect alternatives</option>
+     <option value="balanced" selected>Balanced &mdash; spread by priority</option>
+     <option value="focused">Focused &mdash; concentrate on top choices</option></select>
+     <div class="tiny mut" style="margin-top:5px">Controls how much of one category envelope any single course may receive.</div></div>
+   <div><label for="bidReserve">Carry-forward reserve (%)</label>
+     <input type="number" id="bidReserve" value="20" min="0" max="90" step="5">
+     <div class="tiny mut" style="margin-top:5px">Protected for later rounds or semesters. Unused points carry forward.</div></div>
+   <div><label for="liveRound">Round label for live counts</label>
+     <input type="text" id="liveRound" value="Round 2" placeholder="e.g. Round 2">
+     <div class="tiny mut" style="margin-top:5px">The portal's live count changes the opening step, not your personal ceiling.</div></div>
+  </div>
   <div style="margin-top:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-   <button class="btn" id="runBtn" onclick="void runOpt()">Run simulation</button>
-   <button class="btn2" id="cancelBtn" onclick="void cancelRun()" disabled>Cancel</button>
+   <button class="btn" id="runBtn" onclick="void runOpt()">Build strategic bid plan</button>
    <span class="tiny" id="optStat" role="status" aria-live="polite"></span></div>
-  <div id="progBar" class="progress" role="progressbar" aria-label="Simulation progress"
-       aria-valuemin="0" aria-valuemax="100" style="display:none"><i id="progFill"></i></div>
   </div>
  <div id="bidOut"></div>
- <div class="card"><div class="hd"><div><h2>Stress-test the whole plan</h2>
-  <div class="note">4,000 synthetic cohorts across High, Very high and Extreme, then applies your credit cap in
-  priority order &mdash; a course can be lost even after winning its bid. Refreshes automatically after every
-  simulation run above.</div></div>
-  <div><button class="btn" id="stressBtn" onclick="void stressPlan()">Stress-test my plan</button></div></div>
-  <div id="stressOut"><div class="note">Run a simulation above first, then stress-test here.</div></div></div>
 </div>
 
 <!-- 05 DEGREE AUDIT -->

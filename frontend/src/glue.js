@@ -5,11 +5,7 @@
    authoritative is now an API call:
 
      pools          -> POST /api/v1/pools
-     validation     -> POST /api/v1/validate-plan
-     simulation     -> POST /api/v1/simulations  (+ SSE progress)
-     cancellation   -> POST /api/v1/simulations/{id}/cancel
-     result         -> GET  /api/v1/simulations/{id}/result
-     stress test    -> POST /api/v1/simulations/{id}/stress-test
+     bid strategy   -> POST /api/v1/bid-strategy
      settlement     -> POST /api/v1/settlement
      rules          -> GET  /api/v1/rules
 
@@ -18,31 +14,18 @@
    ===================================================================== */
 
 let LIVE = {}, PRIO = {}, USERPOP = {};
-let LAST_JOB_ID = null;   // job id of the last COMPLETED run, for the stress test
 let RULES_CACHE = null;   // declared here to avoid a temporal-dead-zone error at boot
 let RESULT = null;           // last completed backend result
-let CURRENT_JOB = null;      // job id of the in-flight run
-let UNSUB = null;            // progress unsubscribe
 let BACKEND_OK = null;       // null = unknown, true/false = last health probe
 let HEALTH_TIMER = null;
 let RUNNING = false;
 let DATASET_INFO = null;     // active institutional timetable dataset identity (see /api/v1/dataset)
 
-function curMode() { const e = $('compMode'); return e ? e.value : 'HIGH'; }
-function curMethod() { const e = $('robustMethod'); return e ? e.value : 'minimax'; }
-function curBudgetMode() { const e = $('budgetMode'); return e ? e.value : 'SHARED_LIVE'; }
+function curPosture() { const e = $('bidPosture'); return e ? e.value : 'balanced'; }
+function curReserve() { const e = $('bidReserve'); return e ? Math.max(0, Math.min(90, Math.round(+e.value || 0))) : 20; }
 function prioOf(code) { return PRIO[code] || 'STRONG'; }
 
 /* ---------------- plan assembly for the API ---------------- */
-function randomizeSeed() {
-  // A UI convenience only: picks a fresh seed value to try. The compute path itself never
-  // uses unseeded randomness (design decision - see CLAUDE.md §5.6) - whatever seed ends up
-  // in the field afterward still produces a fully deterministic, reproducible result.
-  const e = $('seed'); if (!e) return;
-  e.value = Math.floor(Math.random() * 90000000) + 10000000;
-  e.dispatchEvent(new Event('change'));
-}
-
 function buildPlan() {
   const courses = Object.keys(PICK).map(code => {
     const c = BY[code];
@@ -62,25 +45,10 @@ function buildPlan() {
   return {
     courses,
     pools: { ME: BUD.ME, UWE: BUD.UWE, CCC: BUD.CCC },
-    trials: +($('nsim') ? $('nsim').value : 8000),
-    seed: +($('seed') ? $('seed').value : 20260802),
-    headlineMode: curMode(), budgetMode: curBudgetMode(), robustMethod: curMethod(),
-    dispersion: +($('disp') ? $('disp').value : 0.18),
-    extraScenarios: extraScenarios()
+    reservePercent: curReserve(), posture: curPosture(),
+    semester: $('sem') ? +$('sem').value : 7
   };
 }
-function extraScenarios() {
-  const picked = ['showLow', 'showModerate', 'showOptimistic']
-    .filter(id => $(id) && $(id).checked)
-    .map(id => ({ showLow: 'LOW', showModerate: 'MODERATE', showOptimistic: 'OPTIMISTIC' }[id]));
-  // The headline scenario must always be one of the simulated tiers - if it's a
-  // comparison-only mode whose own checkbox happens to be unchecked, include it
-  // anyway rather than sending a request the backend would reject.
-  const headline = curMode();
-  if (['LOW', 'MODERATE', 'OPTIMISTIC'].includes(headline) && !picked.includes(headline)) picked.push(headline);
-  return picked;
-}
-
 /* ---------------- §9 backend availability ---------------- */
 function setBackendState(ok, info) {
   const changed = BACKEND_OK !== ok;
@@ -90,17 +58,17 @@ function setBackendState(ok, info) {
     if (ok) {
       bar.className = 'flag f-ok';
       bar.innerHTML = `<b>Calculation service connected.</b> <span class="tiny mono">`
-        + `rules ${esc((info && info.rule_version) || '?')} · model ${esc((info && info.model_version) || '?')}`
+        + `rules ${esc((info && info.rule_version) || '?')} · strategy ${esc((info && info.strategy_version) || 'allocation-v1')}`
         + ` · ${esc(API.getBase() || 'same origin')}</span>`;
     } else {
       bar.className = 'flag f-bad';
-      bar.innerHTML = `<b>The calculation service is unavailable.</b> Your plan is safe, but simulations and
+      bar.innerHTML = `<b>The calculation service is unavailable.</b> Your plan is safe, but the schedule and
         bid recommendations cannot run until the service reconnects.
         <button class="btn2 sm" onclick="void retryBackend()" style="margin-left:8px">Retry connection</button>
         <span class="tiny mut" id="healthNote" style="margin-left:8px"></span>`;
     }
   }
-  ['runBtn', 'stressBtn'].forEach(id => {
+  ['runBtn'].forEach(id => {
     const b = $(id);
     if (b) {
       b.disabled = !ok || RUNNING;
@@ -160,35 +128,10 @@ async function refreshPoolsFromBackend() {
 }
 
 /* ---------------- §4/§6 run lifecycle ---------------- */
-function setPhase(text, indeterminate) {
-  const s = $('optStat');
-  if (s) s.innerHTML = (indeterminate ? '<span class="spin" aria-hidden="true"></span> ' : '') + esc(text);
-  const pb = $('progBar');
-  if (pb) {
-    pb.style.display = 'block';
-    pb.setAttribute('aria-valuetext', text);
-    if (indeterminate) { pb.classList.add('indet'); pb.removeAttribute('aria-valuenow'); }
-  }
-}
-function setProgress(pct, phase) {
-  const pb = $('progBar'), fill = $('progFill');
-  if (pb) {
-    pb.classList.remove('indet');
-    pb.setAttribute('aria-valuenow', String(Math.round(pct)));
-    pb.setAttribute('aria-valuetext', phase || (Math.round(pct) + '%'));
-  }
-  if (fill) fill.style.width = Math.max(2, Math.min(100, pct)) + '%';
-  const s = $('optStat');
-  if (s) s.textContent = `${Math.round(pct)}% — ${phase || 'running'}`;
-}
-function clearProgress() {
-  const pb = $('progBar'); if (pb) { pb.style.display = 'none'; pb.classList.remove('indet'); }
-  const fill = $('progFill'); if (fill) fill.style.width = '0%';
-}
 function setRunning(on) {
   RUNNING = on;
   const run = $('runBtn'), cancel = $('cancelBtn');
-  if (run) { run.disabled = on || !BACKEND_OK; run.textContent = on ? 'Running…' : 'Run simulation'; }
+  if (run) { run.disabled = on || !BACKEND_OK; run.textContent = on ? 'Planning…' : 'Build strategic bid plan'; }
   if (cancel) cancel.disabled = !on;
 }
 
@@ -201,83 +144,22 @@ async function runOpt() {
   if (!BACKEND_OK) { await probeHealth(); if (!BACKEND_OK) return; }
 
   setRunning(true);
-  // §6: an immediate indeterminate indicator, before any backend event
-  setPhase('Validating plan', true);
-  $('bidOut').innerHTML = '<div class="card"><div class="note" id="runNote">Preparing…</div></div>';
+  $('optStat').textContent = 'Allocating category envelopes…';
+  $('bidOut').innerHTML = '<div class="card"><div class="note"><span class="spin" aria-hidden="true"></span> Building a deterministic plan…</div></div>';
 
   try {
-    const out = await API.runSimulation(buildPlan(), {
-      onPhase: t => setPhase(t, true),
-      onValidated: v => {
-        const note = $('runNote');
-        if (note) {
-          note.innerHTML = 'Plan accepted: ' + v.course_count + ' course(s), '
-            + v.scenarios + ' stress scenarios, ' + v.trials.toLocaleString() + ' trials each.'
-            + (v.warnings && v.warnings.length
-                ? '<br><span style="color:var(--sig)">' + v.warnings.map(esc).join('<br>') + '</span>' : '');
-        }
-      },
-      onJob: j => { CURRENT_JOB = j.job_id; setPhase(j.cache_hit ? 'Loading cached result' : 'Starting worker', true); },
-      onProgress: s => {
-        const p = s.progress || {};
-        if (p.percent > 0) setProgress(p.percent, p.phase);
-        else setPhase(p.phase || s.state, true);
-      },
-      onWarning: e => {
-        const n = $('runNote');
-        if (n) n.innerHTML += '<br><span style="color:var(--sig)">Connection interrupted; still retrying…</span>';
-      }
-    });
-
-    if (out.stale) { clearProgress(); return; }           // a newer run superseded this one
-    if (out.cancelled) {
-      clearProgress();
-      $('bidOut').innerHTML = `<div class="card"><div class="flag f-warn">
-        <b>Simulation cancelled.</b> No result was applied to your plan.</div></div>`;
-      return;
-    }
-    RESULT = out.result;
-    LAST_JOB_ID = out.jobId;
-    clearProgress();
+    RESULT = await API.getBidStrategy(buildPlan());
     drawResult(RESULT);
     const st = $('optStat');
-    if (st) {
-      st.textContent = `${Math.round(RESULT.runtime_ms)} ms server-side · `
-        + `${RESULT.trials.toLocaleString()} trials × ${RESULT.scenarios_run.length} scenarios · `
-        + `seed ${RESULT.seed}${RESULT.cache_hit ? ' · served from cache' : ''}`;
-    }
+    if (st) st.textContent = `${RESULT.courses.length} course(s) · ${RESULT.reserve_percent}% reserve · ${RESULT.posture} posture`;
     void autosaveNow();
-    void stressPlan();  // stress card sits right below on the merged Bid simulator tab now
   } catch (e) {
-    clearProgress();
     if (e instanceof API.ApiError && (e.kind === 'offline' || e.kind === 'timeout')) setBackendState(false);
     $('bidOut').innerHTML = `<div class="card"><div class="flag f-bad">
-      <b>Could not complete the simulation.</b><br>${esc(API.humanError(e))}
+      <b>Could not build the bid plan.</b><br>${esc(API.humanError(e))}
       <br><button class="btn2 sm" style="margin-top:8px" onclick="void runOpt()">Retry</button></div></div>`;
   } finally {
     setRunning(false);
-    CURRENT_JOB = null;
-  }
-}
-
-/* ---------------- §5 real cancellation ---------------- */
-async function cancelRun() {
-  // frontend responds immediately, regardless of network latency
-  API.invalidateRuns();
-  setPhase('Cancelling…', true);
-  const jid = CURRENT_JOB;
-  setRunning(false);
-  clearProgress();
-  $('bidOut').innerHTML = `<div class="card"><div class="flag f-warn">
-    <b>Simulation cancelled.</b> No result was applied to your plan.</div></div>`;
-  if (!jid) return;
-  try {
-    const r = await API.cancelSimulation(jid);
-    const st = $('optStat');
-    if (st) st.textContent = `cancelled · backend acknowledged in ${r.ack_ms} ms`;
-  } catch (e) {
-    const st = $('optStat');
-    if (st) st.textContent = 'cancelled locally; the backend did not confirm (' + API.humanError(e) + ')';
   }
 }
 
@@ -291,139 +173,62 @@ function probLabel(p) {
 const PRIO_LABEL = { MUST: 'Must have', STRONG: 'Strongly preferred', BACKUP: 'Useful backup', OPTIONAL: 'Optional' };
 
 function drawResult(res) {
-  const CL = { ME: 'p-me', UWE: 'p-uwe', CCC: 'p-ccc' };
-  let h = `<div class="card" style="border-color:var(--sig)"><h2>What to enter</h2>
-    <div class="note" style="margin-bottom:10px">${esc(res.disclaimer)}</div>
-    <table><thead><tr><th>Course</th><th>Priority</th><th>Enter</th><th>Range</th>
-      <th>Worst tested</th><th>Modelled rivals</th><th>Status</th></tr></thead><tbody>`;
-  res.recommendations.forEach(r => {
-    const st = !r.target_met ? '<span class="pill p-w">target not reachable</span>'
-             : (r.reduced_for_budget ? '<span class="pill p-w">cut for budget</span>'
-                                     : '<span class="pill p-uwe">target met</span>');
-    h += `<tr><td><b>${esc(r.code)}</b></td>
-      <td><span class="pill p-m">${esc(PRIO_LABEL[r.priority] || r.priority)}</span></td>
-      <td class="num" style="font-size:17px;color:var(--sig);font-weight:600">${r.bid}</td>
-      <td class="num tiny">${r.bid_range[0]}&ndash;${r.bid_range[1]} <span class="mut">/ cap ${r.cap}</span></td>
-      <td class="num">${probLabel(r.worst_tested)}</td>
-      <td class="tiny">${r.demand.source === 'live'
-          ? '<span class="pill p-uwe">live</span>' : '<span class="pill p-w">stress default</span>'}
-        ${Math.round(r.demand.expected_rivals)} vs ${r.demand.seats} seats</td>
-      <td>${st}</td></tr>`;
+  const categoryClass = { ME: 'p-me', UWE: 'p-uwe', CCC: 'p-ccc' };
+  const pressureLabel = {
+    unknown: 'Live count needed', spare_capacity: 'Spare capacity', near_capacity: 'Near capacity',
+    oversubscribed: 'Oversubscribed', heavily_oversubscribed: 'Heavily oversubscribed'
+  };
+  const openingByCategory = {};
+  res.courses.forEach(course => {
+    openingByCategory[course.category] = (openingByCategory[course.category] || 0) + course.opening_bid;
   });
-  h += '</tbody></table>';
-  res.allocations.forEach(a => {
-    const bad = !a.feasible || (a.sacrificed || []).length;
-    h += `<div class="flag ${bad ? 'f-bad' : 'f-ok'}" style="margin-top:10px"><b>${esc(a.category)}:</b>
-      committing ${a.committed} of ${a.pool} points. ${esc(a.note)}
-      ${(a.sacrificed || []).length ? '<br>Reduced: '
-        + a.sacrificed.map(s => esc(s.code) + ' by ' + s.cut).join(', ') : ''}</div>`;
+
+  let h = `<div class="card" style="border-color:var(--sig)"><h2>Your category envelopes</h2>
+    <div class="note">The reserve is protected before any course receives points. A personal ceiling is a
+    resource-management boundary, <b>not</b> a prediction of the clearing price and not a University bid cap.</div>
+    <div class="grid g3" style="margin-top:12px">`;
+  res.categories.filter(category => category.course_count > 0).forEach(category => {
+    h += `<div class="stat ${category.category === 'CCC' ? 'c' : category.category === 'UWE' ? 'u' : ''}">
+      <div class="k">${esc(category.category)} live balance</div><div class="v mono">${category.pool}</div>
+      <div class="f">opening bids ${openingByCategory[category.category] || 0} · personal ceilings
+      ${category.strategic_ceiling_total}<br>protected reserve ${category.carry_forward_reserve} ·
+      uncommitted ${category.uncommitted_in_envelope}</div></div>`;
   });
-  h += `<div class="tiny mut" style="margin-top:10px">rules ${esc(res.rule_version)} ·
-    model ${esc(res.model_version)} · dataset ${esc(res.dataset_version)} ·
-    budget rule ${esc(res.budget_mode)} ${res.budget_mode === 'INDEPENDENT'
-      ? '(hypothetical comparison only)' : '(officially confirmed, rule BUDGET.SHARED_LIVE)'} ·
-    ${res.trials.toLocaleString()} trials · seed ${res.seed}</div></div>`;
+  h += `</div><div class="flag f-ok" style="margin-top:12px"><b>Budget check passed.</b>
+    Every category's simultaneous personal ceilings fit inside its current-round envelope, and the selected
+    carry-forward reserve remains untouched.</div></div>`;
 
-  /* §12 shared vs independent, from the same simulation */
-  if (res.budget_comparison) {
-    const bc = res.budget_comparison;
-    h += `<div class="card"><div class="hd"><div><h2>Shared live pool vs independent bids</h2>
-      <div class="note">${esc(bc.why_it_matters)}</div></div></div>
-      <table><thead><tr><th>Interpretation</th><th>Total committed</th><th>Expected charge</th>
-      <th>Feasible</th></tr></thead><tbody>
-      <tr><td><b>${esc(bc.primary_mode)}</b> <span class="pill p-m">shown above</span></td>
-        <td class="num">${bc.primary.total_committed}</td>
-        <td class="num">${bc.primary.expected_charge}</td>
-        <td>${bc.primary.allocations.every(a => a.feasible) ? 'yes' : 'no'}</td></tr>
-      <tr><td><b>${esc(bc.alternate_mode)}</b></td>
-        <td class="num">${bc.alternate.total_committed}</td>
-        <td class="num">${bc.alternate.expected_charge}</td>
-        <td>${bc.alternate.allocations.every(a => a.feasible) ? 'yes' : 'no'}</td></tr>
-      </tbody></table>`;
-    h += bc.courses_changed.length
-      ? `<div class="flag f-warn"><b>${bc.courses_changed.length} recommendation(s) change between the two
-         readings:</b><br>` + bc.courses_changed.map(c =>
-           `&nbsp;&nbsp;${esc(c.code)}: ${c[bc.primary_mode.toLowerCase()]} → ${c[bc.alternate_mode.toLowerCase()]}`
-         ).join('<br>') + `<br><br>${esc(bc.primary_mode)} is the officially confirmed reading (rule
-         ${esc(bc.rule_id)}); ${esc(bc.alternate_mode)} is shown only as a hypothetical comparison.</div>`
-      : `<div class="flag f-ok">No recommendation changes between the two readings for this plan, so the
-         confirmed budget rule (${esc(bc.rule_id)}) does not affect your decision here.</div>`;
-    h += '</div>';
-  }
-
-  /* per-course scenario detail */
-  h += `<div class="card"><div class="hd"><div><h2>How each recommendation holds up under stress</h2>
-    <div class="note">Every row is a different assumption about how many rivals turn up and how hard they bid.
-    Model uncertainty dominates sampling error here.</div></div></div>`;
-  res.recommendations.forEach(r => {
-    h += `<div class="rec ${r.target_met ? 'top' : ''}">
-      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px">
-        <div><b>${esc(r.code)}</b> <span class="pill ${CL[r.category]}">${esc(r.category)}</span>
-          <span class="pill p-m">${esc(PRIO_LABEL[r.priority] || r.priority)}</span></div>
-        <div class="mono tiny">${r.demand.seats} seats · cap ${r.cap}</div></div>
-      <table><thead><tr><th>Scenario</th><th>Rivals</th><th>Win at ${r.bid}</th>
-        <th>At ${Math.max(0, r.bid - 1)}</th><th>At cap ${r.cap}</th></tr></thead><tbody>`;
-    r.scenarios.forEach(s => {
-      // A dimmed row (opacity) used to distinguish comparison-only scenarios, but that
-      // fades the text along with everything else - fine when this row was opt-in and
-      // rare, not fine now that Low/Moderate run by default and this row is common.
-      // The pill label alone (full-contrast text) carries the same distinction.
-      h += `<tr${s.comparison_only ? ' class="comparison-row"' : ''}>
-        <td>${esc(s.label)}${s.comparison_only ? ' <span class="pill p-m">comparison only</span>' : ''}</td>
-        <td class="num tiny">${Math.round(s.expected_rivals)}</td>
-        <td class="num">${probLabel(s.win_at_bid)}</td>
-        <td class="num tiny mut">${probLabel(s.win_one_below)}</td>
-        <td class="num tiny">${probLabel(s.win_at_cap)}</td></tr>`;
-    });
-    h += `</tbody></table>
-      <div class="grid g4" style="margin-top:10px">
-        <div class="kv"><span>Temporary commitment</span><span style="color:var(--sig)">${r.bid}</span></div>
-        <div class="kv"><span>Expected charge</span><span>${r.expected_charge}</span></div>
-        <div class="kv"><span>Expected refund</span><span style="color:var(--ok)">${r.expected_refund}</span></div>
-        <div class="kv"><span>Sampling error</span><span>±${(r.ci_halfwidth * 100).toFixed(2)}pp</span></div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap">
-        <label for="live-${esc(r.code)}" style="margin:0;text-transform:none;font-size:11.5px">Live bidder count from the platform</label>
-        <input type="number" id="live-${esc(r.code)}" min="0" style="width:90px"
-          value="${LIVE[r.code] ? LIVE[r.code].bidders : ''}" placeholder="not seen yet"
-          onchange="setLive('${esc(r.code)}',this.value)">
-        <button class="btn2 sm" onclick="setLive('${esc(r.code)}','')">clear</button>
-        <span class="tiny mut">a real count replaces the stress assumption entirely</span></div>`;
-    if (r.demand.source === 'live') {
-      const obs = Math.round(r.demand.expected_rivals) + 1, margin = r.demand.seats - obs;
-      h += `<div class="flag ${margin > 0 ? 'f-ok' : 'f-bad'}" style="margin:8px 0 0">
-        <b>Live data in use.</b> ${obs} bidders observed against ${r.demand.seats} seats.
-        Safety margin: <b>${margin > 0 ? margin + ' seats spare' : Math.abs(margin) + ' bidders over capacity'}</b>.
-        ${margin > 0 ? 'The round may still be open, so more bidders can arrive before it closes.' : ''}</div>`;
-    } else if ((r.demand.factors || []).length) {
-      h += `<details style="margin-top:8px"><summary>Why this course is modelled as
-        ${Math.round(r.demand.expected_rivals)} rivals</summary>
-        <div class="tiny" style="margin-top:6px">${r.demand.factors.map(f =>
-          `× ${f.multiplier} — ${esc(f.why)} <span class="pill p-m">${esc(f.provenance)}</span>`).join('<br>')}
-        <br><br><b>None of this is observed data.</b> It is a stress assumption designed to stop you
-        underbidding.</div></details>`;
-    }
-    if (!r.target_met) {
-      h += `<div class="flag f-bad" style="margin:8px 0 0"><b>Reliability target not reachable.</b>
-        Even at the legal cap of ${r.cap}, this course does not reach the
-        ${esc((PRIO_LABEL[r.priority] || '').toLowerCase())} target in every tested scenario
-        (worst tested ${probLabel(r.worst_tested)}). The cap is a hard legal limit, so no bid fixes this.</div>`;
-    }
-    h += '</div>';
+  h += `<div class="card"><div class="hd"><div><h2>Opening bids and stop points</h2>
+    <div class="note">Start at the opening bid, watch the portal, and revise before the round closes. Never
+    chase a course beyond the ceiling unless you deliberately change your posture or reserve.</div></div></div>
+    <div style="overflow-x:auto"><table><thead><tr><th>Course</th><th>Priority</th><th>Live pressure</th>
+    <th>Opening bid</th><th>Personal ceiling</th><th>Action</th></tr></thead><tbody>`;
+  res.courses.forEach(course => {
+    const liveValue = course.pressure.live_bidders == null ? '' : course.pressure.live_bidders;
+    const ratio = course.pressure.bidder_to_seat_ratio == null ? ''
+      : ` <span class="tiny mut">(${course.pressure.bidder_to_seat_ratio.toFixed(2)}× seats)</span>`;
+    h += `<tr><td><b>${esc(course.code)}</b><div class="tiny mut">${esc(course.title || '')}</div></td>
+      <td><span class="pill p-m">${esc(PRIO_LABEL[course.priority] || course.priority)}</span></td>
+      <td><span class="pill ${course.pressure.provenance === 'live' ? 'p-uwe' : 'p-w'}">
+        ${esc(pressureLabel[course.pressure.label] || course.pressure.label)}</span>${ratio}<br>
+        <label class="sr-only" for="live-${esc(course.code)}">Live bidders for ${esc(course.code)}</label>
+        <input type="number" id="live-${esc(course.code)}" min="0" style="width:92px;margin-top:7px"
+          value="${liveValue}" placeholder="bidders" onchange="setLive('${esc(course.code)}',this.value)"></td>
+      <td class="num" style="font-size:18px;color:var(--sig);font-weight:700">${course.opening_bid}</td>
+      <td class="num" style="font-size:18px;font-weight:700">${course.strategic_ceiling}</td>
+      <td>${esc(course.action)}<details style="margin-top:7px"><summary class="tiny">Why these numbers?</summary>
+        <div class="tiny mut" style="margin-top:5px">${course.rationale.map(esc).join('<br>')}</div></details></td></tr>`;
   });
-  h += '</div>';
+  h += `</tbody></table></div></div>`;
 
-  h += `<div class="card"><h2>What the numbers do and do not mean</h2>
-    <table><tbody>
-    <tr><td style="width:210px"><b>Sampling uncertainty</b></td><td>How much the answer would move if the
-      simulation were re-run with a different seed. Small: shown per course as ±pp.</td></tr>
-    <tr><td><b>Parameter uncertainty</b></td><td>How many rivals turn up and how hard they bid. Large, and
-      the dominant source of doubt. Compare the scenario rows above.</td></tr>
-    <tr><td><b>Model uncertainty</b></td><td>Whether synthetic rivals behave like real students at all.
-      Unquantified, because no historical data exists.</td></tr>
-    <tr><td><b>Rule uncertainty</b></td><td>Whether bids share one live pool. Unresolved; both readings
-      shown above.</td></tr>
-    </tbody></table></div>`;
+  h += `<div class="card"><h2>What is known, and what is not</h2>
+    <div class="flag f-warn"><b>No win probability is shown.</b> ${esc(res.uncertainty)}</div>
+    <div class="grid g2" style="margin-top:12px"><div><h3>Official mechanism used</h3><ol>`
+    + res.official_mechanism.map(item => `<li>${esc(item)}</li>`).join('')
+    + `</ol></div><div><h3>How to use this plan</h3><ol>`
+    + res.next_steps.map(item => `<li>${esc(item)}</li>`).join('')
+    + `</ol></div></div><div class="tiny mut">strategy ${esc(res.strategy_version)} · deterministic ·
+      no synthetic opponents · no random seed</div></div>`;
   $('bidOut').innerHTML = h;
 }
 
@@ -436,49 +241,6 @@ function setLive(code, v) {
   if (RESULT) void runOpt();                     // re-run so the live count takes effect
 }
 function setPriority(code, v) { PRIO[code] = v; renderChosen(); void autosaveNow(); }
-
-/* ---------------- §16 whole-plan stress test ---------------- */
-async function stressPlan() {
-  if (!RESULT || !RESULT.recommendations) {
-    $('stressOut').innerHTML = '<div class="note">Run the bid simulation first, then come back here.</div>';
-    return;
-  }
-  const btn = $('stressBtn'); if (btn) btn.disabled = true;
-  $('stressOut').innerHTML = '<div class="note"><span class="spin"></span> Running synthetic cohorts on the server…</div>';
-  try {
-    const credits = {};
-    RESULT.recommendations.forEach(r => { credits[r.code] = (BY[r.code] || {}).cr || 3; });
-    const st = await API.stressTestPlan(LAST_JOB_ID, {
-      credits, credit_cap: +$('capCr').value || 25,
-      fixed_credits: fixedCredits(), cohorts: 4000, seed: +$('seed').value || 0
-    });
-    let h = `<div class="grid g4">
-      <div class="stat ${st.all_must_have_rate != null && st.all_must_have_rate < 0.9 ? 'r' : 'u'}">
-        <div class="k">All must-haves</div>
-        <div class="v mono">${st.all_must_have_rate == null ? 'n/a' : (st.all_must_have_rate * 100).toFixed(1) + '%'}</div>
-        <div class="f">${st.must_have_count} marked must-have</div></div>
-      <div class="stat"><div class="k">At least one must-have</div>
-        <div class="v mono">${st.any_must_have_rate == null ? 'n/a' : (st.any_must_have_rate * 100).toFixed(1) + '%'}</div></div>
-      <div class="stat c"><div class="k">Expected elective credits</div>
-        <div class="v mono">${st.expected_elective_credits}</div></div>
-      <div class="stat r"><div class="k">Worst-case credits</div>
-        <div class="v mono">${st.worst_case_credits}</div>
-        <div class="f">of ${st.cohorts.toLocaleString()} cohorts</div></div></div>`;
-    h += '<table style="margin-top:12px"><thead><tr><th>Course</th><th>Failed in</th><th>Reading</th></tr></thead><tbody>';
-    st.failure_rates.forEach(f => {
-      h += `<tr><td><b>${esc(f.code)}</b></td>
-        <td class="num" style="color:${f.rate > 0.25 ? 'var(--bad)' : 'var(--dim)'}">${(f.rate * 100).toFixed(1)}%</td>
-        <td class="tiny">${f.rate > 0.4 ? 'most likely to cost you a seat'
-          : f.rate > 0.15 ? 'meaningful risk' : 'holding up well'}</td></tr>`;
-    });
-    h += `</tbody></table><div class="note" style="margin-top:10px">${esc(st.note)}</div>`;
-    $('stressOut').innerHTML = h;
-  } catch (e) {
-    $('stressOut').innerHTML = `<div class="flag f-bad">${esc(API.humanError(e))}</div>`;
-  } finally {
-    if (btn) btn.disabled = !BACKEND_OK;
-  }
-}
 
 /* ---------------- schedule builder (backend-authoritative search) ----------------
    Replaces the old in-browser combination search: it used to run synchronously
@@ -911,7 +673,7 @@ async function boot() {
   MANUAL = [];
   FIXED = [];
 
-  ['compMode', 'robustMethod', 'disp', 'showLow', 'showModerate', 'showOptimistic', 'budgetMode'].forEach(id => {
+  ['bidPosture', 'bidReserve'].forEach(id => {
     const e = $(id); if (e) e.onchange = () => { if (RESULT) void runOpt(); };
   });
   ['model', 'sem', 'remME', 'remUWE', 'remCCC', 'remFL', 'doneME', 'doneUWE', 'doneCCC'].forEach(id => {
@@ -961,7 +723,6 @@ async function boot() {
     Object.defineProperty(window, 'BACKEND_OK', { get: () => BACKEND_OK, configurable: true });
     window.probeHealth = probeHealth;
     window.runOpt = runOpt;
-    window.cancelRun = cancelRun;
     window.currentPlanPayload = currentPlanPayload;
   } catch (e) {}
 }
@@ -1011,10 +772,7 @@ function currentPlanPayload() {
       liveBidders: LIVE[code] ? LIVE[code].bidders : null
     })),
     assumptions: {
-      headlineMode: curMode(), budgetMode: curBudgetMode(), robustMethod: curMethod(),
-      trials: +($('nsim') ? $('nsim').value : 8000),
-      seed: +($('seed') ? $('seed').value : 20260802),
-      dispersion: +($('disp') ? $('disp').value : 0.18)
+      posture: curPosture(), reservePercent: curReserve()
     }
   };
 }
@@ -1088,11 +846,8 @@ function restoreActivePlan() {
     }
     if (pay.assumptions) {
       const set = (k, v) => { const e = $(k); if (e && v != null) e.value = v; };
-      set('compMode', pay.assumptions.headlineMode);
-      set('budgetMode', pay.assumptions.budgetMode);
-      set('robustMethod', pay.assumptions.robustMethod);
-      set('nsim', pay.assumptions.trials); set('seed', pay.assumptions.seed);
-      set('disp', pay.assumptions.dispersion);
+      set('bidPosture', pay.assumptions.posture || 'balanced');
+      set('bidReserve', pay.assumptions.reservePercent == null ? 20 : pay.assumptions.reservePercent);
     }
     applyProgrammeCategories(); recalc(); renderFixed(); renderPick(); renderChosen(); renderChoiceGroups();
     if (typeof renderAdvisementInfo === 'function') renderAdvisementInfo();
@@ -1319,9 +1074,9 @@ function planExportJson() {
   planMsg('Exported JSON.');
 }
 function planExportCsv() {
-  if (!RESULT) { planMsg('Run a simulation first, then export the recommendations.', true); return; }
-  const recs = RESULT.recommendations.map(r => ({ ...r, credits: (BY[r.code] || {}).cr }));
-  download('snu-recommendations.csv', PLANS.exportCsv(recs), 'text/csv');
+  if (!RESULT) { planMsg('Build a strategic bid plan first, then export it.', true); return; }
+  const recs = (RESULT.courses || []).map(r => ({ ...r, credits: (BY[r.code] || {}).cr }));
+  download('snu-strategic-bid-plan.csv', PLANS.exportCsv(recs), 'text/csv');
   planMsg('Exported CSV.');
 }
 function planPrint() {

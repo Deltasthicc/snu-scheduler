@@ -22,7 +22,7 @@
 
   const KEY = 'snu.plans.v1';
   const ACTIVE = 'snu.plans.active';
-  const SCHEMA = 11;
+  const SCHEMA = 12;
   const MAX_IMPORT_BYTES = 2 * 1024 * 1024;
   const DANGEROUS = ['__proto__', 'constructor', 'prototype'];
 
@@ -183,6 +183,20 @@
       });
       v = 11;
     }
+    if (v < 12) {
+      // v12 replaces synthetic market assumptions in the default recommender
+      // with a transparent reserve and concentration posture.  The legacy
+      // fields stay readable for old exports but no longer drive the UI.
+      Object.values(db.plans).forEach(p => {
+        p.payload = p.payload || {};
+        p.payload.assumptions = p.payload.assumptions || {};
+        if (p.payload.assumptions.reservePercent == null) p.payload.assumptions.reservePercent = 20;
+        if (!['diversified', 'balanced', 'focused'].includes(p.payload.assumptions.posture)) {
+          p.payload.assumptions.posture = 'balanced';
+        }
+      });
+      v = 12;
+    }
     db.schema = v;
     db.seq = Number(db.seq) || 0;
     return db;
@@ -276,6 +290,18 @@
   }
 
   function exportCsv(recommendations) {
+    const strategic = (recommendations || []).some(r => r && r.strategic_ceiling != null);
+    if (strategic) {
+      const head = ['course', 'category', 'priority', 'credits', 'opening_bid', 'personal_ceiling',
+                    'allocation_share_percent', 'pressure', 'live_bidders', 'seats', 'provenance', 'action'];
+      const rows = recommendations.map(r => [
+        r.code, r.category, r.priority, r.credits ?? '', r.opening_bid, r.strategic_ceiling,
+        r.allocation_share_percent, r.pressure ? r.pressure.label : '',
+        r.pressure ? r.pressure.live_bidders ?? '' : '', r.pressure ? r.pressure.seats : '',
+        r.pressure ? r.pressure.provenance : '', r.action || ''
+      ]);
+      return [head, ...rows].map(r => r.map(csvCell).join(',')).join('\n');
+    }
     const head = ['course', 'category', 'priority', 'credits', 'cap', 'recommended_bid',
                   'worst_tested_win', 'expected_charge', 'target_met', 'demand_source',
                   'modelled_rivals', 'seats'];
@@ -388,33 +414,29 @@
     const lines = [];
     lines.push('SNU Bid Plan Summary');
     lines.push('Generated ' + new Date().toLocaleString());
-    if (result) {
-      lines.push('Rule version ' + (result.rule_version || '?')
-               + ' | model ' + (result.model_version || '?')
-               + ' | trials ' + (result.trials || '?')
-               + ' | seed ' + (result.seed || '?'));
-      lines.push('Budget rule: ' + (result.budget_mode || '?')
-               + (result.budget_mode === 'INDEPENDENT'
-                  ? ' (hypothetical comparison only - SHARED_LIVE is the confirmed official rule)'
-                  : ' (officially confirmed - see rule BUDGET.SHARED_LIVE)'));
+    if (result && Array.isArray(result.courses)) {
+      lines.push('Strategy ' + (result.strategy_version || '?')
+               + ' | posture ' + (result.posture || '?')
+               + ' | carry-forward reserve ' + (result.reserve_percent || 0) + '%');
+    } else if (result) {
+      lines.push('Legacy simulation result');
     }
     lines.push('');
     lines.push('Pools: ME ' + plan.pools.ME + ' | UWE ' + plan.pools.UWE + ' | CCC ' + plan.pools.CCC);
     lines.push('');
-    lines.push('Course      Cat  Priority   Bid/Cap  Worst tested  Expected charge');
-    (result ? result.recommendations : []).forEach(r => {
+    lines.push('Course      Cat  Priority   Opening  Personal ceiling');
+    (result && Array.isArray(result.courses) ? result.courses : []).forEach(r => {
       lines.push([
         String(r.code).padEnd(11),
         String(r.category).padEnd(4),
         String(r.priority).padEnd(10),
-        (r.bid + '/' + r.cap).padEnd(8),
-        ((r.worst_tested * 100).toFixed(1) + '%').padEnd(13),
-        String(r.expected_charge)
+        String(r.opening_bid).padEnd(8),
+        String(r.strategic_ceiling)
       ].join(' '));
     });
     lines.push('');
-    lines.push('Recommendations are conservative model outputs, not guarantees. No historical SNU');
-    lines.push('clearing-price or bidder-count data exists, so competition is assumed, not observed.');
+    lines.push('Opening bids and ceilings are transparent planning heuristics, not guarantees.');
+    lines.push('No win probability or expected clearing price is claimed without historical market data.');
     return lines.join('\n');
   }
 

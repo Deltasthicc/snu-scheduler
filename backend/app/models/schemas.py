@@ -16,6 +16,17 @@ class Priority(str, Enum):
     MUST = "MUST"; STRONG = "STRONG"; BACKUP = "BACKUP"; OPTIONAL = "OPTIONAL"
 
 
+class StrategyPosture(str, Enum):
+    """How concentrated the student's *planning* envelope may become.
+
+    This is deliberately not described as a University rule or bid cap.  It is
+    a user-selected guardrail for allocating a scarce, carry-forward balance.
+    """
+    DIVERSIFIED = "diversified"
+    BALANCED = "balanced"
+    FOCUSED = "focused"
+
+
 class BudgetMode(str, Enum):
     SHARED_LIVE = "SHARED_LIVE"; INDEPENDENT = "INDEPENDENT"
 
@@ -134,6 +145,84 @@ class SimulationRequest(BaseModel):
             if not (0 <= v[k] <= 100_000):
                 raise ValueError(f"pool {k} out of range")
         return v
+
+
+class BidStrategyRequest(BaseModel):
+    """Deterministic strategic allocation request.
+
+    Unlike ``SimulationRequest``, this contract contains no rival distribution,
+    trial count, random seed, or claimed win-probability target.  The published
+    rules do not provide the historical clearing-price data required to
+    identify those quantities.
+    """
+    model_config = ConfigDict(extra="forbid")
+    courses: list[CourseInput] = Field(..., min_length=1, max_length=MAX_COURSES)
+    pools: dict[str, int]
+    reserve_percent: int = Field(20, ge=0, le=90)
+    posture: StrategyPosture = StrategyPosture.BALANCED
+    semester: int = Field(7, ge=1, le=8)
+
+    @field_validator("courses")
+    @classmethod
+    def strategy_unique_codes(cls, v: list[CourseInput]) -> list[CourseInput]:
+        codes = [course.code for course in v]
+        if len(set(codes)) != len(codes):
+            raise ValueError("duplicate course codes are not allowed")
+        return v
+
+    @field_validator("pools")
+    @classmethod
+    def strategy_pools_sane(cls, v: dict[str, int]) -> dict[str, int]:
+        for key in ("ME", "UWE", "CCC"):
+            if key not in v:
+                raise ValueError(f"pools must include {key}")
+            if not (0 <= v[key] <= 100_000):
+                raise ValueError(f"pool {key} out of range")
+        return v
+
+
+class PressureReading(BaseModel):
+    label: Literal["unknown", "spare_capacity", "near_capacity", "oversubscribed", "heavily_oversubscribed"]
+    live_bidders: int | None
+    seats: int
+    bidder_to_seat_ratio: float | None
+    provenance: Literal["live", "unknown"]
+
+
+class BidStrategyCourse(BaseModel):
+    code: str
+    title: str
+    category: Category
+    priority: Priority
+    opening_bid: int
+    strategic_ceiling: int
+    allocation_share_percent: float
+    pressure: PressureReading
+    action: str
+    rationale: list[str]
+
+
+class BidStrategyCategory(BaseModel):
+    category: Category
+    pool: int
+    carry_forward_reserve: int
+    current_round_envelope: int
+    strategic_ceiling_total: int
+    uncommitted_in_envelope: int
+    course_count: int
+
+
+class BidStrategyResponse(BaseModel):
+    strategy_version: str
+    posture: StrategyPosture
+    reserve_percent: int
+    semester: int
+    courses: list[BidStrategyCourse]
+    categories: list[BidStrategyCategory]
+    invariants: dict[str, bool]
+    uncertainty: str
+    official_mechanism: list[str]
+    next_steps: list[str]
 
 
 class DemandProvenance(BaseModel):

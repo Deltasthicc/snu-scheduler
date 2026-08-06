@@ -78,6 +78,28 @@ console.log('=== §14 API ADAPTER ===');
   ck('empty liveBidders becomes null, not 0', req.courses[0].live_bidders === null);
 }
 {
+  let requestBody = null, requestUrl = '';
+  const API = freshApi(async (url, opts) => {
+    requestUrl = url;
+    requestBody = JSON.parse(opts.body);
+    return { ok: true, status: 200, text: async () => JSON.stringify({ strategy_version: 'allocation-v1' }) };
+  });
+  const plan = {
+    courses: [{ code: 'CSD361', category: 'ME', credits: 4, seats: 80 }],
+    pools: { ME: 297, UWE: 215, CCC: 492 }, reservePercent: 25,
+    posture: 'diversified', semester: 7
+  };
+  const built = API.buildBidStrategyRequest(plan);
+  ck('strategy adapter keeps explicit reserve and posture',
+     built.reserve_percent === 25 && built.posture === 'diversified');
+  ck('strategy request contains no simulation controls',
+     built.trials == null && built.seed == null && built.dispersion == null);
+  await API.getBidStrategy(plan);
+  ck('strategy uses the dedicated endpoint', requestUrl.endsWith('/api/v1/bid-strategy'), requestUrl);
+  ck('strategy POST sends the deterministic contract',
+     requestBody.reserve_percent === 25 && requestBody.courses[0].code === 'CSD361');
+}
+{
   let seen = '';
   const API = freshApi(async (url) => { seen = url; return { ok: true, status: 200, text: async () => '{}' }; });
   await API.getRules();

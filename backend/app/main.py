@@ -14,13 +14,15 @@ from app.domain.pools import compute_pools, max_bid, RuleError
 from app.domain.auction import settle
 from app.domain import catalog
 from app.models.schemas import (PoolRequest, PoolResponse, SimulationRequest,
-                                SettlementRequest, JobStatus, MAX_COURSES, MAX_TRIALS)
+                                SettlementRequest, JobStatus, MAX_COURSES, MAX_TRIALS,
+                                BidStrategyRequest, BidStrategyResponse)
 from app.models.schedule_schemas import ScheduleJobStatus, ScheduleSearchRequest
 from app.models.profile_schemas import (CreditPolicyRequest, ProfileValidateRequest,
                                         WishlistValidateRequest)
 from app.models.audit_schemas import DegreeAuditRequest
 from app.models.advisement_schemas import AdvisementParseRequest
 from app.services.runner import input_hash, stress_test_plan
+from app.services.bid_strategy import STRATEGY_VERSION, build_bid_strategy
 from app.services.credit_policy import CreditPolicyError, resolve_ceiling
 from app.services.wishlist import validate_choice_groups, wishlist_summary
 from app.services.degree_audit import ProgrammeCatalog, audit_degree
@@ -80,9 +82,9 @@ async def lifespan(app: FastAPI):
     log.info("shutdown complete")
 
 
-app = FastAPI(title="SNU Bid Simulator API", version="3.0.0", lifespan=lifespan,
-              description="Backend for the Shiv Nadar IoE Monsoon 2026 bid-point planner. "
-                          "Competition is assumed, not observed: see rule COMP.STRESS_DEFAULT.")
+app = FastAPI(title="SNU Scheduler API", version="3.1.0", lifespan=lifespan,
+              description="Backend for the Shiv Nadar IoE schedule, degree-audit, and strategic bid planner. "
+                          "The default bid planner does not invent rival bids or win probabilities.")
 _local_origins = ["http://127.0.0.1:5173", "http://localhost:5173"]
 _configured_origins = [value.strip() for value in os.getenv("SNU_CORS_ORIGINS", "").split(",") if value.strip()]
 app.add_middleware(CORSMiddleware, allow_origins=_local_origins + _configured_origins,
@@ -129,7 +131,7 @@ async def ready():
         "active_jobs": MANAGER.active_count() if MANAGER else None,
         "active_schedule_jobs": SCHED_MANAGER.active_count() if SCHED_MANAGER else None,
         "rule_version": RULE_VERSION, "dataset_version": DATASET_VERSION,
-        "model_version": MODEL_VERSION,
+        "model_version": MODEL_VERSION, "strategy_version": STRATEGY_VERSION,
     })
 
 
@@ -254,6 +256,12 @@ async def maxbid(credits: float):
 @app.post("/api/v1/settlement", tags=["rules"])
 async def settlement(req: SettlementRequest):
     return settle(req.seats, req.bids, req.cap, req.seed)
+
+
+@app.post("/api/v1/bid-strategy", response_model=BidStrategyResponse, tags=["planning"])
+async def bid_strategy(req: BidStrategyRequest):
+    """Build a deterministic, reserve-aware plan without inventing rival bids."""
+    return build_bid_strategy(req)
 
 
 # ---------------- simulation jobs ----------------

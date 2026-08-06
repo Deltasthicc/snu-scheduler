@@ -24,6 +24,7 @@ stops in bounded time instead of after burning the whole budget.
 """
 from __future__ import annotations
 
+import hashlib
 import numpy as np
 from dataclasses import dataclass, field
 from typing import Callable
@@ -259,7 +260,12 @@ def simulate_course(
         return SimResult(np.ones(K), np.zeros(K), np.zeros(K),
                          {"p05": 0, "p50": 0, "p95": 0}, trials, 0.0, cap)
 
-    rng = np.random.default_rng(abs(hash((seed, key))) % (2 ** 63))
+    # Python's built-in hash is salted per interpreter process, so it cannot be
+    # used for a reproducibility promise.  Keep legacy/advanced simulation runs
+    # stable across workers and restarts with an explicit digest.
+    seed_bytes = hashlib.blake2b(f"{seed}\0{key}".encode("utf-8"), digest_size=8).digest()
+    stable_seed = int.from_bytes(seed_bytes, "big") & ((1 << 63) - 1)
+    rng = np.random.default_rng(stable_seed)
     w, lo, hi = strategy_mix(mode)
     cw = np.cumsum(w)
     cw = cw / cw[-1]

@@ -5,7 +5,7 @@
    anywhere else in the app.
 
    It deliberately contains no University formulas. Pools, clearing prices,
-   refunds, win probabilities and bid recommendations are all computed
+   refunds and strategic bid allocations are all computed
    server-side so there is exactly one authoritative implementation.
 
    Responsibilities:
@@ -225,6 +225,22 @@
   }
 
   function validatePlan(plan) { return req('/validate-plan', { method: 'POST', body: buildSimRequest(plan) }); }
+
+  function buildBidStrategyRequest(plan) {
+    const normalised = buildSimRequest(plan);
+    return {
+      courses: normalised.courses,
+      pools: normalised.pools,
+      reserve_percent: Math.min(90, Math.max(0, Math.round(
+        plan.reservePercent == null ? 20 : num(plan.reservePercent)))),
+      posture: ['diversified', 'balanced', 'focused'].includes(plan.posture) ? plan.posture : 'balanced',
+      semester: Math.min(8, Math.max(1, Math.round(num(plan.semester) || 7)))
+    };
+  }
+
+  function getBidStrategy(plan) {
+    return req('/bid-strategy', { method: 'POST', body: buildBidStrategyRequest(plan) });
+  }
 
   /* ---------- simulation job lifecycle ---------- */
   function startSimulation(plan) {
@@ -484,7 +500,7 @@
     calculateProfileBudget, settleAuction, getRules, getDataset, maxBid,
     getTimetableUpdateStatus, checkTimetableUpdate, getTimetableCandidate, getTimetableDiff,
     applyTimetableUpdate, discardTimetableCandidate, rollbackTimetableUpdate, getTimetableUpdateHistory,
-    buildSimRequest, validatePlan,
+    buildSimRequest, validatePlan, buildBidStrategyRequest, getBidStrategy,
     startSimulation, getSimulationStatus, getSimulationResult,
     cancelSimulation, stressTestPlan, subscribeToSimulationProgress,
     runSimulation, newRunToken, isCurrent, invalidateRuns,

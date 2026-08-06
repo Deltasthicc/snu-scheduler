@@ -148,11 +148,21 @@ console.log('\n=== §11 IMPORT / EXPORT ===');
   ck('CSV includes the demand provenance', /stress-default/.test(csv));
   const tricky = P.exportCsv([{ code: 'A,B', category: 'ME', priority: 'x"y', cap: 1, bid: 1 }]);
   ck('CSV quotes commas and escapes quotes', tricky.includes('"A,B"') && tricky.includes('"x""y"'));
+  const strategicCsv = P.exportCsv([{ code: 'A', category: 'ME', priority: 'STRONG', credits: 4,
+    opening_bid: 20, strategic_ceiling: 40, allocation_share_percent: 13.5,
+    pressure: { label: 'unknown', live_bidders: null, seats: 80, provenance: 'unknown' },
+    action: 'monitor' }]);
+  ck('strategic CSV exports opening bid and personal ceiling',
+     /opening_bid,personal_ceiling/.test(strategicCsv) && /,20,40,/.test(strategicCsv));
+  ck('strategic CSV contains no synthetic probability columns',
+     !/worst_tested_win|expected_charge/.test(strategicCsv));
   const summary = P.printableSummary({ pools: { ME: 297, UWE: 215, CCC: 492 } },
-                                     { recommendations: recs, rule_version: 'r', model_version: 'm',
-                                       trials: 8000, seed: 1, budget_mode: 'SHARED_LIVE' });
+                                     { courses: [{ code: 'CSD358', category: 'ME', priority: 'MUST',
+                                                   opening_bid: 40, strategic_ceiling: 90 }],
+                                       strategy_version: 'allocation-v1', posture: 'balanced', reserve_percent: 20 });
   ck('printable summary includes the not-a-guarantee caveat', /not guarantees/.test(summary));
-  ck('printable summary confirms the officially-resolved budget rule', /officially confirmed/.test(summary));
+  ck('printable summary avoids an invented win probability', /No win probability/.test(summary));
+  ck('printable summary includes opening bid and personal ceiling', /40\s+90/.test(summary));
 }
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

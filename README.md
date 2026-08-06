@@ -1,8 +1,8 @@
-# SNU Bid & Schedule Simulator
+# SNU Scheduler and Strategic Bid Planner
 
 An unofficial planning tool for Shiv Nadar University's Monsoon 2026 bid-point course
-enrolment system. Simulates the bid auction under adversarial competition assumptions,
-generates clash-free (or best-available) timetables, and now supports a personalised,
+enrolment system. Builds transparent, reserve-aware bid allocations without inventing
+rival behaviour, generates clash-free (or best-available) timetables, and supports a personalised,
 credit-aware wishlist scheduler backed by Google OR-Tools CP-SAT.
 
 **This is a student-built unofficial tool, not a University product.** Every rule it
@@ -13,8 +13,10 @@ changing anything — it is the canonical handoff document for this project.
 
 ## What it does
 
-- **Bid simulator**: stress-tests a bid plan against synthetic competitive cohorts,
-  recommends bids that survive a worst-case scenario.
+- **Strategic bid planner**: allocates each shared ME/UWE/CCC balance across several
+  courses, protects a configurable carry-forward reserve, and gives an opening bid
+  plus a personal ceiling. It never presents an uncalibrated synthetic market as a
+  win probability or expected clearing price.
 - **Schedule builder**: generates clash-free timetables from a course shortlist
   (exhaustive branch-and-bound search, server-side).
 - **Wishlist scheduler**: given course intent (must-have / strong / optional / backup),
@@ -68,7 +70,7 @@ docker compose up -d
 ## Production web deployment
 
 The production image serves the frontend and API from one origin, so PDF import,
-degree audits, timetable checks, schedule solving, and simulations work online without
+degree audits, timetable checks, schedule solving, and strategic bid planning work online without
 pointing a visitor's browser at `127.0.0.1`. Build and verify it locally with:
 
 ```bash
