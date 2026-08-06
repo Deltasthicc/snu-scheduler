@@ -246,9 +246,14 @@ _R: list[Rule] = [
          Status.PROSPECTUS, "prospectus footnote",
          programme_scope=("b-tech-in-computer-science-and-engineering",)),
     Rule("SPEC.CSD336_AMBIGUOUS", "Disputed: does CSD336 count toward the AI bucket?",
-         "The AI bucket lists Reinforcement Learning by name, but CSD336 is a 4-credit Major CORE.",
+         "The AI-ML pathway's published course pool lists Reinforcement Learning by name, but CSD336 is a "
+         "4-credit Major CORE, not a Major Elective.",
          Status.DISPUTED, "prospectus AI bucket vs Major Core table",
-         resolution="Excluded by default; user-toggleable so both readings can be compared.",
+         resolution="Tracked by title, not by course code, in backend/app/data/pathways.json - the pathway "
+                    "planner (Degree audit tab) only banks it toward the AI-ML pathway if the student's own "
+                    "completed-course record names it 'Reinforcement Learning' explicitly, matching exactly "
+                    "what the prospectus itself lists. There is no separate include/exclude toggle; the "
+                    "student's own recorded coursework is the only input.",
          programme_scope=("b-tech-in-computer-science-and-engineering",)),
     Rule("COMP.STRESS_DEFAULT", "Competition is assumed, not observed",
          "No historical SNU clearing-price or bidder-count data exists. Every course is modelled as "

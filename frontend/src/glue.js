@@ -896,7 +896,6 @@ async function boot() {
   MANUAL = [];
   FIXED = [];
 
-  if ($('c336')) $('c336').onchange = e => { COUNT336 = e.target.value === '1'; drawSpec(); };
   ['compMode', 'robustMethod', 'disp', 'showOptimistic', 'budgetMode'].forEach(id => {
     const e = $(id); if (e) e.onchange = () => { if (RESULT) void runOpt(); };
   });
