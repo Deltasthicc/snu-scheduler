@@ -97,37 +97,42 @@ function drawLearn() {
 
   /* --- 2. the dual-role problem, which is the real answer to "bid enough" --- */
   h += `<div class="card"><h2>Why "bid exactly enough" is not a thing you can do</h2>
-    <div class="note" style="font-size:13.5px;line-height:1.75">
-    In this mechanism your bid is asked to do <b>two different jobs at once</b>: it signals how much you want a
-    course, and it decides your priority against everyone else. Economists call this the dual role of bids, and
-    it is the documented weakness of this entire family of systems. S&ouml;nmez and &Uuml;nver showed that the two
-    roles conflict, so the preferences the system infers from your bids can differ significantly from what you
-    actually want &mdash; meaning a point auction does not necessarily produce a market outcome at all.
-    <br><br>
-    That is the honest answer to the question you keep running into. You cannot bid "exactly enough" because
-    the amount that would be enough depends on what everyone else does, and you are not allowed to say
-    separately "I want this one most". The best you can do is bid an amount you are confident clears the price,
-    knowing that you are charged the clearing price and refunded the rest &mdash; and let the priority list carry
-    the information about which course you actually want most.
+    <div class="stats" style="margin-top:10px">
+      <div class="stat"><div class="k">Your bid does two jobs at once</div>
+        <div class="f">signals how much you want it, AND sets your priority against everyone else</div></div>
+      <div class="stat u"><div class="k">So there's no "correct" number</div>
+        <div class="f">it depends on what everyone else bids, which you can't know in advance</div></div>
+      <div class="stat c"><div class="k">The practical fix</div>
+        <div class="f">bid what you're confident clears the price; let <b>priority</b>, not bid size, carry
+        which course you want most</div></div>
     </div>
-    <div class="flag f-ok"><b>The practical consequence.</b> Points you commit are not points you spend. The
-    only real cost of bidding generously is that, if bids in a round share one live pool, those points are
-    unavailable to another course in the same round. That is why this tool reports committed and uncommitted
-    points separately, and why the budget-rule switch matters.</div></div>`;
+    <div class="flag f-ok" style="margin-top:12px"><b>Points you commit are not points you spend.</b> You're
+    charged only the clearing price and refunded the rest. The real cost of bidding generously is that a shared
+    live pool makes those points briefly unavailable to another course in the same round.</div>
+    <details class="more"><summary>Read the full explanation (dual-role-of-bids theory, with sources)</summary>
+    <div style="font-size:13.5px;line-height:1.75">
+    Economists call this the dual role of bids, and it is the documented weakness of this entire family of
+    systems. S&ouml;nmez and &Uuml;nver showed that the two roles conflict, so the preferences the system infers
+    from your bids can differ significantly from what you actually want &mdash; meaning a point auction does not
+    necessarily produce a market outcome at all. You cannot bid "exactly enough" because the amount that would
+    be enough depends on what everyone else does, and you are not allowed to say separately "I want this one
+    most" &mdash; that's what the priority list is for.</div></details></div>`;
 
-  /* --- 3. researched comparison --- */
-  h += `<div class="card"><div class="hd"><div><h2>How comparable universities handle this</h2>
-    <div class="note">Researched from primary and peer-reviewed sources. This is background for understanding
-    the design, not a description of SNU's rules &mdash; the simulator always follows SNU.</div></div></div>`;
+  /* --- 3. researched comparison, collapsed by default: real depth for anyone who wants it,
+     without making it the thing every visitor has to scroll past first --- */
   const wharton=OTHER_UNIS[0];
-  h += `<div class="rec"><div style="margin-bottom:6px"><b>${esc(wharton.inst)}</b> <span class="mut">${esc(wharton.system)}</span></div>
+  h += `<details class="more" style="margin-bottom:15px">
+    <summary>How 6 comparable universities handle this (research background, not SNU's rules)</summary>
+    <div class="note">Researched from primary and peer-reviewed sources. Background for understanding the
+    design &mdash; the simulator always follows SNU's own rules regardless.</div>
+    <div class="rec"><div style="margin-bottom:6px"><b>${esc(wharton.inst)}</b> <span class="mut">${esc(wharton.system)}</span></div>
     <table style="margin-top:6px"><tbody>
       <tr><td style="width:150px;color:var(--dim)">Student input</td><td>${esc(wharton.input)}</td></tr>
       <tr><td style="color:var(--dim)">Allocation</td><td>${esc(wharton.alloc)}</td></tr>
       <tr><td style="color:var(--dim)">Why it matters</td><td>${esc(wharton.relevance)}</td></tr>
       <tr><td style="color:var(--dim)">Trade-off</td><td>${esc(wharton.weakness)}</td></tr>
-    </tbody></table><div class="tiny" style="margin-top:6px"><b>Source:</b> ${esc(wharton.src)}</div></div>`;
-  h += `<div class="rec"><h3 style="margin:0 0 8px">Other useful reference points — condensed</h3>
+    </tbody></table><div class="tiny" style="margin-top:6px"><b>Source:</b> ${esc(wharton.src)}</div></div>
+    <div class="rec"><h3 style="margin:0 0 8px">Other reference points — condensed</h3>
     <div class="scroll"><table><thead><tr><th>University/system</th><th>How it works</th><th>Useful lesson for SNU</th><th>Trade-off</th></tr></thead><tbody>`;
   OTHER_UNIS.slice(1).forEach(u=>{h+=`<tr><td><b>${esc(u.inst)}</b><div class="tiny mut">${esc(u.system)}</div></td>
     <td>${esc(u.mech)}</td><td>${esc(u.relevance)}</td><td>${esc(u.weakness)}</td></tr>`;});
@@ -135,9 +140,8 @@ function drawLearn() {
     OTHER_UNIS.slice(1).map(u=>esc(u.src)).join(' · ')+'</div></div>';
   h += `<div class="flag f-ok"><b>The one change that would help SNU students most, at almost no cost:</b>
     publish the clearing price of every course after every round, the way Chicago Booth publishes its Course
-    Price History. Every number this tool has to <i>simulate</i> would become a number students could simply
-    look up. Worth raising with the Academic Office, since this is the first cohort and the precedent is
-    being set now.</div></div>`;
+    Price History &mdash; worth raising with the Academic Office, since this is the first cohort and the
+    precedent is being set now.</div></details>`;
 
   $('learnBox').innerHTML = h;
   ['lnSeats', 'lnB1', 'lnB2', 'lnB3', 'lnB4', 'lnB5', 'lnB6'].forEach(id => {

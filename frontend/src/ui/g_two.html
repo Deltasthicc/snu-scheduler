@@ -48,6 +48,65 @@ function parseCompletedCourses(){
     return {code:bits[0].trim(),credits,category:bits[2].trim(),title:bits[3]?bits[3].trim():null};
   });
 }
+
+/* ---- completed-courses editor: a small table instead of a raw pipe-delimited
+   textarea. The hidden #completedCourses textarea stays the single source of
+   truth (parseCompletedCourses/renderAdvisementInfo/save-restore/PDF-import all
+   already read and write it) - this editor only renders it more legibly and
+   keeps it in sync, so nothing downstream needed to change. */
+let COMPLETED_COURSES=[];
+const COMPLETED_CATS=[['major_elective','Major Elective'],['uwe','UWE'],['ccc','CCC'],
+  ['major_core','Major Core'],['project','Project / thesis / internship'],['other','Other']];
+
+function loadCompletedCoursesFromTextarea(){
+  try{COMPLETED_COURSES=parseCompletedCourses();}catch(e){COMPLETED_COURSES=[];}
+}
+function syncCompletedCoursesTextarea(){
+  const ta=$('completedCourses'); if(!ta)return;
+  ta.value=COMPLETED_COURSES.filter(c=>c.code).map(c=>
+    `${c.code} | ${c.credits||0} | ${c.category||'other'} | ${c.title||''}`).join('\n');
+  renderAdvisementInfo();
+}
+function addCompletedCourseRow(){
+  COMPLETED_COURSES.push({code:'',credits:3,category:'major_elective',title:''});
+  renderCompletedCoursesTable();
+}
+function removeCompletedCourseRow(i){
+  COMPLETED_COURSES.splice(i,1);
+  renderCompletedCoursesTable();
+}
+function updateCompletedCourseRow(i,field,value){
+  if(!COMPLETED_COURSES[i])return;
+  COMPLETED_COURSES[i][field]=field==='credits'?(+value||0):value;
+  syncCompletedCoursesTextarea();
+  void autosaveNow();
+}
+function renderCompletedCoursesTable(){
+  const box=$('completedCoursesTable'); if(!box)return;
+  if(!COMPLETED_COURSES.length){
+    box.innerHTML='<div class="note">Nothing added yet. Upload an advisement PDF above, or click '
+      +'&ldquo;+ Add completed course&rdquo;.</div>';
+    return;
+  }
+  const opts=cur=>COMPLETED_CATS.map(([v,l])=>`<option value="${v}"${v===cur?' selected':''}>${esc(l)}</option>`).join('');
+  let h='<div class="scroll"><table><thead><tr><th>Code</th><th>Title (optional)</th>'
+    +'<th class="num">Credits</th><th>Category</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>';
+  COMPLETED_COURSES.forEach((c,i)=>{
+    h+=`<tr>
+      <td><input type="text" aria-label="Course code" value="${esc(c.code||'')}" style="width:110px"
+          onchange="updateCompletedCourseRow(${i},'code',this.value.trim())"></td>
+      <td><input type="text" aria-label="Course title" value="${esc(c.title||'')}" style="width:100%;min-width:140px"
+          onchange="updateCompletedCourseRow(${i},'title',this.value.trim())"></td>
+      <td><input type="number" aria-label="Credits" value="${c.credits||0}" min="0" step="0.5" style="width:70px"
+          onchange="updateCompletedCourseRow(${i},'credits',this.value)"></td>
+      <td><select aria-label="Category" style="width:auto;min-width:170px"
+          onchange="updateCompletedCourseRow(${i},'category',this.value)">${opts(c.category)}</select></td>
+      <td><button class="btn2 sm" onclick="removeCompletedCourseRow(${i})">&times;</button></td>
+    </tr>`;
+  });
+  h+='</tbody></table></div>';
+  box.innerHTML=h;
+}
 function renderAdvisementInfo(){
   const status=$('completedCourseStatus'),info=$('advisementInfo');
   let count=0; try{count=parseCompletedCourses().length;}catch(e){}

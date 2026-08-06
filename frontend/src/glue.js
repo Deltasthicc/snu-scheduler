@@ -34,6 +34,15 @@ function curBudgetMode() { const e = $('budgetMode'); return e ? e.value : 'SHAR
 function prioOf(code) { return PRIO[code] || 'STRONG'; }
 
 /* ---------------- plan assembly for the API ---------------- */
+function randomizeSeed() {
+  // A UI convenience only: picks a fresh seed value to try. The compute path itself never
+  // uses unseeded randomness (design decision - see CLAUDE.md §5.6) - whatever seed ends up
+  // in the field afterward still produces a fully deterministic, reproducible result.
+  const e = $('seed'); if (!e) return;
+  e.value = Math.floor(Math.random() * 90000000) + 10000000;
+  e.dispatchEvent(new Event('change'));
+}
+
 function buildPlan() {
   const courses = Object.keys(PICK).map(code => {
     const c = BY[code];
@@ -822,9 +831,8 @@ async function drawRules() {
       <div class="v mono">${n}</div><div class="f">of ${total} rules</div></div>`;
   });
   sum += '</div>';
-  sum += `<div class="flag f-warn" style="margin-top:12px"><b>The rule that matters most is unknown.</b>
-    No supplied document states whether bids on different courses in one round draw from a single live pool.
-    Both readings are computed on every run and compared on the Bid simulator tab.
+  sum += `<div class="flag f-ok" style="margin-top:12px"><b>BUDGET.SHARED_LIVE is officially confirmed
+    (2026-08-05).</b> Bids in the same category share one live balance while a round is open.
     Rule version <span class="mono">${esc(R.version)}</span>, served by the backend.</div>`;
   $('ruleSummary').innerHTML = sum;
 
@@ -837,17 +845,20 @@ async function drawRules() {
   list.sort((a, b) => (order[a.status] - order[b.status]) || a.id.localeCompare(b.id));
   $('ruleList').innerHTML = list.map(r => {
     const [lbl, cls] = STATUS_LABEL[r.status] || ['?', 'p-m'];
+    const extras = [
+      r.verified ? `<div class="tiny" style="color:var(--ok)"><b>Verified:</b> ${esc(r.verified)}</div>` : '',
+      r.resolution ? `<div class="flag f-ok" style="margin-top:0"><b>How this tool resolves it:</b> ${esc(r.resolution)}</div>` : '',
+      r.note ? `<div class="tiny"><b>Note:</b> ${esc(r.note)}</div>` : '',
+      r.impact ? `<div class="tiny"><b>Impact:</b> ${esc(r.impact)}</div>` : '',
+    ].filter(Boolean).join('');
     return `<div class="rec">
       <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px">
         <div><b>${esc(r.name)}</b> <span class="tiny mono mut">${esc(r.id)}</span></div>
         <div><span class="pill ${cls}">${lbl}</span>
           ${r.configurable ? '<span class="pill p-m">configurable</span>' : ''}</div></div>
       <div style="font-size:12.5px;color:var(--dim)">${esc(r.desc)}</div>
-      <div class="tiny" style="margin-top:6px"><b>Source:</b> ${esc(r.source)}</div>
-      ${r.verified ? `<div class="tiny" style="margin-top:4px;color:var(--ok)"><b>Verified:</b> ${esc(r.verified)}</div>` : ''}
-      ${r.resolution ? `<div class="flag f-ok" style="margin:7px 0 0"><b>How this tool resolves it:</b> ${esc(r.resolution)}</div>` : ''}
-      ${r.note ? `<div class="tiny" style="margin-top:4px"><b>Note:</b> ${esc(r.note)}</div>` : ''}
-      ${r.impact ? `<div class="tiny" style="margin-top:4px"><b>Impact:</b> ${esc(r.impact)}</div>` : ''}
+      <details class="more" style="margin-top:8px"><summary>Source &amp; details</summary>
+        <div class="tiny"><b>Source:</b> ${esc(r.source)}</div>${extras}</details>
     </div>`;
   }).join('') || '<div class="note">No rules match.</div>';
 }
@@ -893,6 +904,7 @@ async function boot() {
   // had even populated FIXED/PICK from the saved plan.
   recalc(); renderFixed(); renderPick(); renderChosen();
   drawData(); drawSpec(); drawLearn();
+  loadCompletedCoursesFromTextarea(); renderCompletedCoursesTable();
   restoreActivePlan();
   refreshPlanPicker();
   if ($('planPicker')) $('planPicker').onchange = e => {
@@ -999,6 +1011,7 @@ function restoreActivePlan() {
       set('remCore', pay.profile.remCore); set('remOther', pay.profile.remOther);
       set('programme', pay.profile.programme); set('cohortYear', pay.profile.cohortYear);
       set('completedCourses', pay.profile.completedCoursesText);
+      loadCompletedCoursesFromTextarea(); renderCompletedCoursesTable();
       if ($('completedMilestones')) $('completedMilestones').value = (pay.profile.completedMilestones || []).join(', ');
       if (pay.profile.csdBlock) { refreshSem(); set('blk', pay.profile.csdBlock); applyBlock(); }
     }

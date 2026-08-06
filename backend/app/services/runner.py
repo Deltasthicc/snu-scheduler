@@ -56,7 +56,6 @@ def run_plan(req: dict, should_cancel=None, on_progress=None) -> dict:
                 "live_observed_at": c.get("live_observed_at"),
                 "user_popularity": c.get("user_popularity", 1.0),
                 "in_specialisation": c.get("in_specialisation", False),
-                "graduation_critical": c.get("priority") == "MUST",
             }
             er = expected_rivals(c, mid, opts)
             r = simulate_course(
@@ -102,8 +101,7 @@ def run_plan(req: dict, should_cancel=None, on_progress=None) -> dict:
             m = MODES[mid]
             er = expected_rivals(v["course"], mid, {
                 "live_bidders": v["course"].get("live_bidders"),
-                "user_popularity": v["course"].get("user_popularity", 1.0),
-                "graduation_critical": v["course"].get("priority") == "MUST"})
+                "user_popularity": v["course"].get("user_popularity", 1.0)})
             scen.append({
                 "mode": mid, "label": m.label, "expected_rivals": round(er["lambda"], 1),
                 "win_at_bid": float(v["curves"][mid][bid]),

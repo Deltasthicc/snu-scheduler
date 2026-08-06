@@ -97,7 +97,6 @@ _POP_FACTORS = {
     "small_section": (1.15, "fewer than 40 seats", "timetable-derived"),
     "convenient_slot": (1.15, "sits in a mid-morning or early-afternoon weekday slot",
                         "timetable-derived"),
-    "graduation_critical": (1.25, "flagged by you as graduation-critical", "user-entered"),
     "hot_topic": (1.25, "subject area with unusually high student demand (AI / data science)",
                   "model-inferred"),
     "broad_appeal": (1.20, "broad-appeal introductory subject", "model-inferred"),
@@ -108,12 +107,27 @@ _AI_DS = ("machine learning", "deep learning", "artificial intelligence", "data 
 _BROAD = ("python", "programming", "introduction", "foundations", "basics", "communication",
           "psychology", "economics", "entrepreneur", "design thinking", "film", "music", "sport")
 
+# Up to 5 provenance factors can legitimately co-occur on one course (small AND sole-section
+# AND specialisation AND convenient-slot AND hot-topic), and they were multiplied together
+# uncapped - 1.15 x 1.20 x 1.20 x 1.15 x 1.25 = ~2.38x. That pushes a single course's effective
+# rivals-per-seat ratio under "High competition" (base 1.35x) to 3.2x, well past what "Extreme
+# stress" (2.5x) itself represents - the tiers stop being distinct. Capping keeps a maximally
+# popular course pinned near the top of ITS OWN tier instead of silently jumping into the next
+# one. 1.85 is deliberate, not derived: at that ceiling, HIGH's worst case (1.35 x 1.85 = 2.5)
+# lands exactly on EXTREME's own uncapped base ratio - "as bad as it gets for this one course
+# under High" is allowed to feel like "Extreme," never worse.
+POPULARITY_CAP = 1.85
+
 
 def popularity(course: dict, opts: dict | None = None) -> dict:
     """Course-level popularity multiplier with per-factor provenance.
 
     Never derived from category capacity - that is what produced the old
-    "55 rivals for a 120-seat course" failure.
+    "55 rivals for a 120-seat course" failure. The combined provenance-based
+    multiplier is capped (see POPULARITY_CAP) so stacking several real factors
+    on one course cannot silently escape its competition tier; the user's own
+    estimate is applied after the cap and is not capped, since it is a direct
+    input, not a compounding assumption.
     """
     opts = opts or {}
     m = 1.0
@@ -136,8 +150,6 @@ def popularity(course: dict, opts: dict | None = None) -> dict:
         add("small_section")
     if course.get("section_count", 1) <= 1:
         add("sole_section")
-    if opts.get("graduation_critical"):
-        add("graduation_critical")
     if course.get("convenient_slot"):
         add("convenient_slot")
 
@@ -147,12 +159,21 @@ def popularity(course: dict, opts: dict | None = None) -> dict:
     elif any(k in title for k in _BROAD):
         add("broad_appeal")
 
+    uncapped = m
+    capped = uncapped > POPULARITY_CAP
+    if capped:
+        m = POPULARITY_CAP
+        reasons.append({"key": "popularity_cap", "multiplier": round(POPULARITY_CAP / uncapped, 4),
+                        "why": f"stacked factors would have reached {round(uncapped, 2)}x; capped at "
+                               f"{POPULARITY_CAP}x so they cannot exceed the next competition tier",
+                        "provenance": "model-inferred"})
+
     up = opts.get("user_popularity")
     if up is not None and abs(up - 1.0) > 1e-9:
         m *= up
         reasons.append({"key": "user_estimate", "multiplier": up,
                         "why": "your own popularity estimate", "provenance": "user-entered"})
-    return {"multiplier": m, "reasons": reasons}
+    return {"multiplier": m, "reasons": reasons, "capped": capped}
 
 
 def expected_rivals(course: dict, mode_id: str, opts: dict | None = None) -> dict:

@@ -78,6 +78,14 @@ tr:last-child td{border-bottom:0}td.num{font-family:var(--mono);font-variant-num
 .rec.top{border-color:var(--sig)}
 .kv{display:flex;justify-content:space-between;padding:3px 0;font-size:12px;border-bottom:1px dotted var(--line)}
 .kv:last-child{border:0}.kv span:last-child{font-family:var(--mono)}
+details.more{border:1px solid var(--line);border-radius:9px;padding:2px 16px;margin-top:10px;background:var(--s2)}
+details.more>summary{cursor:pointer;padding:11px 0;font-weight:600;font-size:13px;color:var(--dim);list-style:none}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:'+ ';color:var(--sig);font-family:var(--mono)}
+details.more[open]>summary::before{content:'\2212 '}
+details.more[open]>summary{border-bottom:1px solid var(--line)}
+details.more>*:not(summary){margin-top:12px}
+details.more>*:last-child{margin-bottom:14px}
 /* timetable */
 .ttwrap{overflow-x:auto}
 .tt{position:relative;display:grid;grid-template-columns:54px repeat(6,minmax(112px,1fr));gap:2px;min-width:760px}

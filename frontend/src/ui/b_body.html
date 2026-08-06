@@ -93,18 +93,21 @@
   <div style="margin-top:15px"><button class="btn" onclick="recalc()">Recalculate</button></div>
  </div>
  <div class="card tight"><div class="hd"><div><h2>Programme and completed work</h2>
-  <div class="note">Choose your programme, then record completed courses one per line as
-  <span class="mono">CODE | credits | category</span> (for example,
-  <span class="mono">CCC101 | 3 | CCC</span>). The data stays in your local plan and is included only when
-  you export your private JSON. Categories and cohort-specific overrides from imported JSON are preserved.</div></div></div>
+  <div class="note">Select your programme, then add each completed course below.
+   <span title="Data stays in your local plan and is included only when you export your private JSON. Categories and cohort-specific overrides from imported JSON are preserved." style="color:var(--sig);cursor:help">&#9432;</span></div></div></div>
   <div class="grid g3">
    <div><label>Programme</label><select id="programme"><option value="">Loading official catalogue…</option></select></div>
    <div><label>Cohort year</label><input type="number" id="cohortYear" min="2000" max="2100" placeholder="e.g. 2025"></div>
    <div><label>Completed milestones (doctoral/research)</label><input type="text" id="completedMilestones" placeholder="coursework, comprehensive_exam, thesis"></div>
   </div>
-  <div style="margin-top:12px"><label>Completed courses</label>
-   <textarea id="completedCourses" rows="6" placeholder="One completed course per line: CODE | credits | category | optional title"></textarea>
-   <div id="completedCourseStatus" class="tiny mut" style="margin-top:5px">No completed-course records loaded. Upload an SNU advisement PDF above or enter them manually.</div>
+  <div style="margin-top:14px">
+   <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+    <label style="margin:0">Completed courses</label>
+    <button class="btn2 sm" onclick="addCompletedCourseRow()">+ Add completed course</button>
+   </div>
+   <div id="completedCoursesTable" style="margin-top:8px"></div>
+   <textarea id="completedCourses" style="display:none" aria-hidden="true"></textarea>
+   <div id="completedCourseStatus" class="tiny mut" style="margin-top:8px">No completed-course records loaded. Upload an SNU advisement PDF above or add rows manually.</div>
    <div id="advisementInfo" style="margin-top:8px"></div></div>
   <div style="margin-top:12px"><button class="btn" id="auditBtn" onclick="void runDegreeAudit()">Run audit check</button></div>
   <div id="auditBox" style="margin-top:12px"></div>
@@ -294,7 +297,12 @@
        <option value="SHARED_LIVE" selected>Shared live pool (confirmed)</option>
        <option value="INDEPENDENT">Independent bids (hypothetical comparison)</option></select></div></div>
   <div class="grid g4" style="margin-top:12px">
-   <div><label for="seed">Market seed</label><input type="number" id="seed" value="20260802"></div>
+   <div><label for="seed">Market seed</label>
+     <div style="display:flex;gap:6px">
+       <input type="number" id="seed" value="20260802" style="flex:1;min-width:0">
+       <button type="button" class="btn2 sm" onclick="randomizeSeed()"
+         title="Pick a new random seed. The run itself stays fully deterministic for whatever seed ends up here — same seed, same result, every time.">Randomize</button>
+     </div></div>
    <div><label for="disp">Rival dispersion</label><input type="number" id="disp" value="0.18" step="0.02" min="0" max="0.6"></div>
    <div><label for="liveRound">Round label for live counts</label><input type="text" id="liveRound" value="Round 2" placeholder="e.g. Round 2"></div>
    <div style="align-self:end"><label for="showOptimistic" style="text-transform:none">
