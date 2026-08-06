@@ -8,7 +8,7 @@ const path = require('path');
 const APP = 'http://127.0.0.1:5173/index.html';
 const AXE_SRC = fs.readFileSync(path.join(__dirname, '..', 'node_modules', 'axe-core', 'axe.min.js'), 'utf8');
 
-const TABS = ['learn', 'prof', 'plan', 'sched', 'build', 'bid', 'stress', 'spec', 'two', 'rules', 'data'];
+const TABS = ['learn', 'prof', 'courses', 'bid', 'two', 'rules'];
 
 (async () => {
   const b = await chromium.launch();
@@ -28,8 +28,8 @@ const TABS = ['learn', 'prof', 'plan', 'sched', 'build', 'bid', 'stress', 'spec'
   await p.selectOption('#nsim', '1000');
   await p.click('#runBtn');
   await p.waitForFunction(() => window.RESULT && window.RESULT.recommendations, null, { timeout: 60000 });
-  await p.click('.tab[data-p="stress"]');
-  await p.click('#stressBtn');
+  // stress-test now lives on the same "bid" pane, auto-triggered by runOpt() itself;
+  // just wait for it rather than switching to a separate tab that no longer exists
   await p.waitForFunction(() => {
     const t = document.getElementById('stressOut').textContent;
     return t.length > 0 && !/Running synthetic cohorts/.test(t);
@@ -50,6 +50,10 @@ const TABS = ['learn', 'prof', 'plan', 'sched', 'build', 'bid', 'stress', 'spec'
   for (const tab of TABS) {
     await p.click(`.tab[data-p="${tab}"]`);
     await p.waitForTimeout(400);
+    // open every collapsible <details class="more"> on this tab so its content is
+    // actually part of the DOM axe scans, not silently skipped the way a hidden
+    // .pane already is
+    await p.evaluate(() => document.querySelectorAll('.pane.on details.more').forEach(d => d.open = true));
     await p.evaluate(AXE_SRC);
     const result = await p.evaluate(async () => {
       return await axe.run(document, {

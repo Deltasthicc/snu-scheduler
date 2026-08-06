@@ -55,9 +55,9 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('private aggregate/transfer total remains 105', auditRegression.total === 105,
      String(auditRegression.total));
 
-  await p.click('.tab[data-p="stress"]');
-  ck('stress tab shows the pre-run placeholder before any simulation has completed',
-     /Run the bid stress test first/.test(await p.textContent('#stressOut')));
+  await p.click('.tab[data-p="bid"]');
+  ck('stress card shows the pre-run placeholder before any simulation has completed',
+     /Run a simulation above first/.test(await p.textContent('#stressOut')));
   await p.click('.tab[data-p="learn"]');
 
   console.log('\n=== POOLS COME FROM THE BACKEND ===');
@@ -164,15 +164,14 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   await p.selectOption('#nsim', '1000');
   await p.click('#runBtn');
   await p.waitForFunction(() => window.RESULT && window.RESULT.recommendations, null, { timeout: 120000 });
-  // switching to the stress tab with a completed RESULT auto-runs stressPlan(),
-  // the same pattern every other data-driven tab (sched/two/spec/rules/learn) uses
-  await p.click('.tab[data-p="stress"]');
+  // stress and bid now share one pane; runOpt() itself auto-triggers stressPlan()
+  // on completion, so no tab switch is needed to see it refresh
   await p.waitForFunction(() => {
     const t = document.getElementById('stressOut').textContent;
     return t.length > 0 && !/Running synthetic cohorts/.test(t) && !/Run the bid stress test first/.test(t);
   }, null, { timeout: 30000 });
-  ck('switching to the tab with a completed run auto-runs the stress test',
-     !/Run the bid stress test first/.test(await p.textContent('#stressOut')));
+  ck('a completed simulation run auto-runs the stress test below it',
+     !/Run a simulation above first/.test(await p.textContent('#stressOut')));
   const stress1 = await p.evaluate(() => ({
     html: document.getElementById('stressOut').innerHTML,
     text: document.getElementById('stressOut').textContent
@@ -194,7 +193,8 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
 
   console.log('\n=== §17 SCHEDULE BUILDER (backend-authoritative search) ===');
   await p.evaluate(() => { PICK = {}; renderChosen(); });
-  await p.click('.tab[data-p="build"]');
+  await p.click('.tab[data-p="courses"]');
+  await p.evaluate(() => { const d = document.querySelector('#p-courses details.more'); if (d) d.open = true; });
   await p.click('#buildBtn');
   await p.waitForTimeout(200);
   ck('empty shortlist shows a friendly message, no request made', /Course Picker tab first/.test(
@@ -248,10 +248,10 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
 
   await p.click('#buildOut .scroll table tbody tr:nth-child(2) button:has-text("use this")');
   await p.waitForTimeout(200);
-  ck('"use this" navigates to the Scheduler & clashes tab',
-     await p.evaluate(() => document.querySelector('.tab.on').dataset.p) === 'sched');
+  ck('"use this" stays on Courses & schedule and scrolls to the timetable',
+     await p.evaluate(() => document.querySelector('.tab.on').dataset.p) === 'courses');
 
-  await p.click('.tab[data-p="build"]');
+  await p.evaluate(() => { const d = document.querySelector('#p-courses details.more'); if (d) d.open = true; });
   await p.selectOption('#bSort', 'days');
   await p.waitForFunction(() => /combinations tested/.test(document.getElementById('buildStat').textContent),
                           null, { timeout: 20000 });
@@ -285,7 +285,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     codes.forEach(c => PICK[c] = { want: 5, pkg: 0 });
     renderChosen(); renderFixed();
   }, pair.unavoidable);
-  await p.click('.tab[data-p="plan"]');
+  await p.click('.tab[data-p="courses"]');
   await p.evaluate(() => {
     window.__longTasks2 = [];
     window.__lto2 = new PerformanceObserver(l => l.getEntries().forEach(e => window.__longTasks2.push(e.duration)));
@@ -299,8 +299,9 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('auto-resolve does not block the main thread either', longTasks2.length === 0, JSON.stringify(longTasks2));
 
   // Rendering the full timetable is verified separately; it must not pollute
-  // the solver's long-task measurement above.
-  await p.click('.tab[data-p="sched"]');
+  // the solver's long-task measurement above. Timetable now lives on the same
+  // "courses" pane, already active - just force a fresh draw.
+  await p.evaluate(() => void drawTT());
   await p.waitForFunction(() => /overlap/.test(document.getElementById('ttReport').textContent) ||
     document.querySelectorAll('#ttReport .flag').length > 0, null, { timeout: 15000 }).catch(() => {});
   await p.waitForTimeout(500);
@@ -311,7 +312,8 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     codes.forEach(c => PICK[c] = { want: 5, pkg: 0 });
     renderChosen(); renderFixed();
   }, pair.unavoidable);
-  await p.click('.tab[data-p="build"]');
+  await p.click('.tab[data-p="courses"]');
+  await p.evaluate(() => { const d = document.querySelector('#p-courses details.more'); if (d) d.open = true; });
   await p.click('#buildBtn');
   await p.waitForFunction(() => /combinations tested/.test(document.getElementById('buildStat').textContent),
                           null, { timeout: 20000 });
@@ -325,7 +327,8 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
 
   console.log('\n=== §20 SPECIALISATION: DONE ELECTIVES ARE LOCAL, NOT SHIPPED ===');
   await p.evaluate(() => { DONE_ME = []; });
-  await p.click('.tab[data-p="spec"]');
+  await p.click('.tab[data-p="two"]');
+  await p.evaluate(() => { const d = document.querySelector('#p-two details.more'); if (d) d.open = true; });
   ck('starts empty on a fresh session (no baked-in personal data)',
      /Nothing added yet/.test(await p.textContent('#doneMEList')));
   await p.evaluate(() => {
@@ -355,7 +358,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     PICK[codes[1]] = { want: 5, pkg: 0 }; PRIO[codes[1]] = 'STRONG';
     renderChosen(); renderFixed();
   }, pair.unavoidable);
-  await p.click('.tab[data-p="build"]');
+  await p.click('.tab[data-p="courses"]');
   await p.evaluate(() => {
     window.__longTasks3 = [];
     window.__lto3 = new PerformanceObserver(l => l.getEntries().forEach(e => window.__longTasks3.push(e.duration)));

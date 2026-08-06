@@ -31,12 +31,11 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
   document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));
   t.classList.add('on'); $('p-'+t.dataset.p).classList.add('on');
-  if(t.dataset.p==='sched') drawTT();
-  if(t.dataset.p==='two') drawTwo();
-  if(t.dataset.p==='spec') drawSpec();
+  if(t.dataset.p==='courses') drawTT();
+  if(t.dataset.p==='two'){ drawTwo(); drawSpec(); }
   if(t.dataset.p==='rules') drawRules();
   if(t.dataset.p==='learn') drawLearn();
-  if(t.dataset.p==='stress'&&typeof RESULT!=='undefined'&&RESULT&&RESULT.recommendations) void stressPlan();
+  if(t.dataset.p==='bid'&&typeof RESULT!=='undefined'&&RESULT&&RESULT.recommendations) void stressPlan();
 });
 
 /* ============ BUDGET ============ */

@@ -15,14 +15,20 @@ async function loadProgrammeCatalog(){
           rows.map(p=>`<option value="${esc(p.id)}">${esc(p.title)}</option>`).join('')+'</optgroup>';
       }).join('');
     if(current&&PROGRAMME_CATALOG.some(p=>p.id===current))sel.value=current;
-    sel.onchange=()=>{applyProgrammeCategories();drawSpec();LAST_AUDIT=null;drawTwo();void autosaveNow();};
+    sel.onchange=()=>{applyProgrammeCategories();drawSpec();LAST_AUDIT=null;drawTwo();void drawRules();void autosaveNow();};
     applyProgrammeCategories();
   }catch(e){sel.innerHTML='<option value="">Programme catalogue unavailable</option>';}
 }
 
+const CSE_PROGRAMME_ID='b-tech-in-computer-science-and-engineering';
+
 function applyProgrammeCategories(){
   const id=$('programme')?$('programme').value:'';
   const p=PROGRAMME_CATALOG.find(x=>x.id===id),keys=(p&&p.department_keywords)||[];
+  // CCC/UWE come from the timetable's own flags either way; only Major-Elective vs
+  // Major-Core vs "not my business" depends on knowing the student's own department,
+  // which the University's public pages don't publish for every programme.
+  const categoryKnown=!p || keys.length>0;
   C.forEach(c=>{
     if(c._baseCat==null)c._baseCat=c.cat;
     if(!p){c.cat=c._baseCat;return;}
@@ -34,6 +40,17 @@ function applyProgrammeCategories(){
     else if(c.uwe)c.cat='UWE';
     else c.cat='NB';
   });
+  const covBox=$('categoryCoverageNote');
+  if(covBox){
+    covBox.style.display=(p && !categoryKnown)?'':'none';
+    if(p && !categoryKnown) covBox.innerHTML=`<div class="flag f-warn"><b>Major Elective / Major Core isn't
+      distinguishable yet for ${esc(p.title)}.</b> The University's public page for this programme doesn't
+      publish a department mapping, so every one of your own major's courses below shows as "Everything else"
+      instead of ME/Core. CCC and UWE are unaffected. Report the mis-categorisation via a private profile
+      override if this matters for your plan.</div>`;
+  }
+  const blkWrap=$('blkWrap');
+  if(blkWrap) blkWrap.style.display=(id===CSE_PROGRAMME_ID)?'':'none';
   renderFixed();renderPick();renderChosen();
 }
 

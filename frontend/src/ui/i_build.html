@@ -57,7 +57,8 @@ function useSchedule(i){
   if(!s) return;
   Object.keys(s.assign).forEach(code=>{ if(PICK[code]) PICK[code].pkg=s.assign[code]; });
   renderChosen(); renderPick();
-  document.querySelector('[data-p="sched"]').click();
+  const grid=$('ttGrid'); if(grid) grid.scrollIntoView({behavior:'smooth',block:'start'});
+  drawTT();
 }
 function previewSchedule(i){
   const s=ALLSCHED[i];

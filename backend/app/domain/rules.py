@@ -35,6 +35,11 @@ class Rule:
     resolution: str | None = None
     verified: str | None = None
     impact: str | None = None
+    # None = applies to every programme (the default, and correct for nearly every rule
+    # here - pool formulas, settlement, rounds). Set only for rules that are genuinely
+    # specific to one programme's own published prospectus, so the Rules tab can avoid
+    # showing e.g. CSE's specialisation buckets to a History or MBA student by default.
+    programme_scope: tuple[str, ...] | None = None
 
 
 _R: list[Rule] = [
@@ -234,14 +239,17 @@ _R: list[Rule] = [
     Rule("SPEC.REQUIREMENT", "Specialisation requirement",
          "12 credits in one area, or 6 credits plus Project-1 in that area. Requires overall CGPA >= 7 "
          "and specialisation-component CGPA >= 8.",
-         Status.PROSPECTUS, "prospectus, Minimum Requirement for Specialization"),
+         Status.PROSPECTUS, "prospectus, Minimum Requirement for Specialization",
+         programme_scope=("b-tech-in-computer-science-and-engineering",)),
     Rule("SPEC.BUCKET_TENTATIVE", "Specialisation buckets are explicitly tentative",
          "The prospectus footnotes that the lists are tentative and may be updated.",
-         Status.PROSPECTUS, "prospectus footnote"),
+         Status.PROSPECTUS, "prospectus footnote",
+         programme_scope=("b-tech-in-computer-science-and-engineering",)),
     Rule("SPEC.CSD336_AMBIGUOUS", "Disputed: does CSD336 count toward the AI bucket?",
          "The AI bucket lists Reinforcement Learning by name, but CSD336 is a 4-credit Major CORE.",
          Status.DISPUTED, "prospectus AI bucket vs Major Core table",
-         resolution="Excluded by default; user-toggleable so both readings can be compared."),
+         resolution="Excluded by default; user-toggleable so both readings can be compared.",
+         programme_scope=("b-tech-in-computer-science-and-engineering",)),
     Rule("COMP.STRESS_DEFAULT", "Competition is assumed, not observed",
          "No historical SNU clearing-price or bidder-count data exists. Every course is modelled as "
          "oversubscribed until live platform data proves otherwise.",

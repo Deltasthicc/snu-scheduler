@@ -236,6 +236,7 @@ async function runOpt() {
         + `seed ${RESULT.seed}${RESULT.cache_hit ? ' · served from cache' : ''}`;
     }
     void autosaveNow();
+    void stressPlan();  // stress card sits right below on the merged Bid simulator tab now
   } catch (e) {
     clearProgress();
     if (e instanceof API.ApiError && (e.kind === 'offline' || e.kind === 'timeout')) setBackendState(false);
@@ -797,7 +798,7 @@ function useWishlistSchedule() {
   const assign = r.schedules[0].assign;
   Object.keys(assign).forEach(code => { if (PICK[code]) PICK[code].pkg = assign[code]; });
   renderChosen(); renderPick();
-  const tab = document.querySelector('[data-p="sched"]'); if (tab) tab.click();
+  const tab = document.querySelector('[data-p="courses"]'); if (tab) tab.click();
 }
 
 /* ---------------- rules from the backend ---------------- */
@@ -838,9 +839,22 @@ async function drawRules() {
 
   const st = $('rStatus') ? $('rStatus').value : '';
   const q = $('rQ') ? $('rQ').value.trim().toLowerCase() : '';
+  const showAllProgrammes = !!($('rAllProgrammes') && $('rAllProgrammes').checked);
+  const programme = $('programme') ? $('programme').value : '';
   let list = R.rules.slice();
+  // Most rules apply to every programme (pool formulas, settlement, rounds). A handful are
+  // specific to one programme's own prospectus (e.g. CSE's specialisation buckets) - hide
+  // those by default so the Rules tab doesn't read as CS-specific to everyone else.
+  const scopedOut = list.filter(r => r.programme_scope && !r.programme_scope.includes(programme));
+  if (!showAllProgrammes) list = list.filter(r => !r.programme_scope || r.programme_scope.includes(programme));
   if (st) list = list.filter(r => r.status === st);
   if (q) list = list.filter(r => (r.id + ' ' + r.name + ' ' + r.desc + ' ' + r.source).toLowerCase().includes(q));
+  if (!showAllProgrammes && scopedOut.length) {
+    sum = $('ruleSummary').innerHTML + `<div class="flag f-q" style="margin-top:8px">${scopedOut.length}
+      programme-specific rule(s) hidden (e.g. CSE's specialisation buckets) — tick "Also show other
+      programmes' rules" to see them.</div>`;
+    $('ruleSummary').innerHTML = sum;
+  }
   const order = { unknown: 0, disputed: 1, inferred: 2, timetable: 3, prospectus: 4, official: 5 };
   list.sort((a, b) => (order[a.status] - order[b.status]) || a.id.localeCompare(b.id));
   $('ruleList').innerHTML = list.map(r => {
@@ -891,6 +905,7 @@ async function boot() {
   });
   if ($('rStatus')) $('rStatus').onchange = () => void drawRules();
   if ($('rQ')) $('rQ').oninput = () => void drawRules();
+  if ($('rAllProgrammes')) $('rAllProgrammes').onchange = () => void drawRules();
   if ($('cgKind')) $('cgKind').onchange = () => {
     if ($('cgMinCredits')) $('cgMinCredits').style.display = $('cgKind').value === 'min_credits' ? '' : 'none';
   };

@@ -18,15 +18,10 @@
 <div class="tabs">
   <button class="tab on" data-p="learn"><span class="n">01</span>Learn</button>
   <button class="tab" data-p="prof"><span class="n">02</span>Profile &amp; budget</button>
-  <button class="tab" data-p="plan"><span class="n">03</span>Course picker</button>
-  <button class="tab" data-p="sched"><span class="n">04</span>Scheduler &amp; clashes</button>
-  <button class="tab" data-p="build"><span class="n">05</span>Schedule builder</button>
-  <button class="tab" data-p="bid"><span class="n">06</span>Bid simulator</button>
-  <button class="tab" data-p="stress"><span class="n">07</span>Stress-test plan</button>
-  <button class="tab" data-p="spec"><span class="n">08</span>Specialisation</button>
-  <button class="tab" data-p="two"><span class="n">09</span>Degree audit &amp; plan</button>
-  <button class="tab" data-p="rules"><span class="n">10</span>Rules &amp; provenance</button>
-  <button class="tab" data-p="data"><span class="n">11</span>Data &amp; open questions</button>
+  <button class="tab" data-p="courses"><span class="n">03</span>Courses &amp; schedule</button>
+  <button class="tab" data-p="bid"><span class="n">04</span>Bid simulator</button>
+  <button class="tab" data-p="two"><span class="n">05</span>Degree audit</button>
+  <button class="tab" data-p="rules"><span class="n">06</span>Rules &amp; data</button>
 </div>
 
 <!-- 01 LEARN -->
@@ -68,7 +63,7 @@
      <option value="y2">2nd year — steady state</option></select></div>
    <div><label>Bidding semester</label><select id="sem"></select></div>
    <div><label>Standard semester ceiling (official)</label><input type="number" id="capCr" value="25" step="1" readonly></div>
-   <div><label>CSE block (optional; auto-loads core)</label><select id="blk"></select></div>
+   <div id="blkWrap" style="display:none"><label>CSE block (optional; auto-loads core)</label><select id="blk"></select></div>
   </div>
   <div class="grid g4">
    <div><label>ME credits remaining</label><input type="number" id="remME" value="0" step="0.5"></div>
@@ -140,11 +135,12 @@
  <div class="card"><h2>What will actually decide your semester</h2><div id="posFlags"></div></div>
 </div>
 
-<!-- 02 PICKER -->
-<div class="pane" id="p-plan">
+<!-- 03 COURSES & SCHEDULE -->
+<div class="pane" id="p-courses">
+ <div id="categoryCoverageNote" style="display:none;margin-bottom:15px"></div>
  <div class="card tight"><div class="hd" style="margin-bottom:9px"><div><h2>Fixed / pre-enrolled</h2>
-  <div class="note">These are not biddable and form the baseline of every clash check.
-  CSE core courses can auto-load from an optional CSE block; every programme can add or remove fixed courses manually.</div></div></div>
+  <div class="note">Not biddable — the baseline every clash check runs against. Add or remove manually; some
+  programmes can also auto-load a core block, below in Profile &amp; budget.</div></div></div>
   <div id="fixedList"></div>
   <div class="srch" style="margin-top:11px">
    <select id="fxAdd"><option value="">+ add a fixed / pre-enrolled course…</option></select>
@@ -153,10 +149,8 @@
  </div>
  <div class="card">
   <div class="hd"><div><h2>Every course you can bid for</h2>
-   <div class="note">Category is recomputed for the programme selected in your profile: <b>ME</b> = that
-   department's major electives · <b>UWE</b> = outside-major courses flagged open-as-UWE · <b>CCC</b> = common core.
-   <b>Seats</b> and <b>timings</b> are exact from the timetable; a dotted credit means it is
-   timetable-derived and needs COS confirmation.</div></div>
+   <div class="note">Category follows your selected programme: <b>ME</b>/<b>Core</b> = your major ·
+   <b>UWE</b> = open to everyone · <b>CCC</b> = common core. A dotted credit is timetable-derived — confirm in COS.</div></div>
    <div class="tiny" id="pickCount"></div></div>
   <div class="srch">
    <select id="fCat"><option value="">All biddable (ME + UWE + CCC)</option>
@@ -185,15 +179,13 @@
    <tbody id="pickBody"></tbody></table></div>
  </div>
  <div class="card"><div class="hd"><div><h2>Chosen for Monsoon 2026</h2>
-  <div class="note">Pick the section package per course, or let the solver find a clash-free assignment. The
-  <b>Priority</b> column on each row is also this course's <b>intent</b> for the wishlist scheduler on the
-  Schedule builder tab: must-have / strongly preferred / backup / optional.</div></div>
+  <div class="note">Pick a section package per course, or auto-resolve clashes. <b>Priority</b> also doubles as
+  this course's intent for the schedule generator further down this tab.</div></div>
   <div><button class="btn2" onclick="void autoSolve()">Auto-resolve clashes</button></div></div>
   <div id="chosenBox"></div></div>
  <div class="card tight"><div class="hd" style="margin-bottom:8px"><div><h2>Choice groups</h2>
-  <div class="note">Rules across your chosen courses, for the wishlist scheduler: e.g. &ldquo;exactly one of
-  these three&rdquo;, or &ldquo;at least 6 credits from this set&rdquo;. A course must be chosen above before
-  it can join a group.</div></div></div>
+  <div class="note">Rules across chosen courses for the schedule generator, e.g. &ldquo;exactly one of these
+  three&rdquo;. Choose the courses above first.</div></div></div>
   <div id="choiceGroupList"></div>
   <div class="srch" style="margin-top:9px">
    <select id="cgKind"><option value="exactly_one">Exactly one of…</option>
@@ -204,13 +196,9 @@
    <button class="btn2" onclick="void addChoiceGroup()">+ add group (pick 2+ courses next)</button></div>
   <div class="tiny mut" style="margin-top:6px">After clicking add, you'll be asked to pick which chosen
   courses belong to the group.</div></div>
-</div>
 
-<!-- 03 SCHEDULER -->
-<div class="pane" id="p-sched">
- <div class="card"><div class="hd"><div><h2>Weekly timetable</h2>
-  <div class="note">Exact start and end times. A red outline is a real overlap between two things you would
-  attend in the same week and the same half of the semester.</div></div>
+ <div class="card"><div class="hd"><div><h2>Weekly timetable &amp; clashes</h2>
+  <div class="note">A red outline is a real overlap in the same week and half-semester.</div></div>
   <div><label for="ttTerm" style="display:inline">Show</label>
    <select id="ttTerm" style="width:auto;display:inline-block">
     <option value="all">Both halves</option><option value="First half">First half only</option>
@@ -220,27 +208,20 @@
    <span><i style="background:#4A3717"></i>ME</span><span><i style="background:#173A34"></i>UWE</span>
    <span><i style="background:#2E2A4C"></i>CCC</span><span><i style="background:var(--bad)"></i>Clash</span></div>
   <div id="ttReport"></div></div>
- <div class="card"><h2>Load &amp; feasibility</h2><div id="loadBox"></div></div>
-</div>
+ <div class="card tight"><h2>Load &amp; feasibility</h2><div id="loadBox"></div></div>
 
-<!-- 04 SCHEDULE BUILDER -->
-<div class="pane" id="p-build">
  <div class="card tight" style="border-color:var(--sig)"><div class="hd" style="margin-bottom:9px"><div>
-  <h2>Personalised wishlist schedule (recommended)</h2>
-  <div class="note">Uses everything on the Course picker tab — intent (priority column), choice groups, and
-  your credit policy from the Profile tab — to find the best subset of your wishlist up to your credit
-  ceiling, not just every clash-free combination of everything. Backend-computed (OR-Tools CP-SAT); a course
-  that doesn't make it in gets an exact reason, not just silence.</div></div>
+  <h2>Generate a schedule — personalised (recommended)</h2>
+  <div class="note">Best subset of your chosen courses within your credit ceiling — using intent, choice groups
+  and credit policy above, not just any clash-free combination. Backend-computed; every excluded course gets a
+  specific reason, not silence.</div></div>
   <div style="align-self:end"><button class="btn" id="wishBtn" onclick="void generateWishlistSchedule()">Generate personalised schedule</button></div></div>
   <div class="tiny" id="wishStat" style="margin-top:9px" role="status" aria-live="polite"></div>
  </div>
  <div id="wishOut"></div>
- <div class="card tight"><div class="hd" style="margin-bottom:9px"><div><h2>Exhaustive shortlist search (legacy)</h2>
-  <div class="note">Takes everything you added on the Course Picker tab — every course, every possible section
-  combination for each — and searches the whole space for complete schedules where nothing overlaps, against
-  each other and against your fixed/pre-enrolled courses. You never pick a section by hand: pick the <i>courses</i>
-  you want, generate, then browse whichever complete timetables actually work. Use this if you want every valid
-  combination rather than one optimized, credit-aware pick.</div></div></div>
+ <details class="more"><summary>Exhaustive search instead — every valid combination, not credit-aware</summary>
+  <div class="note" style="margin-top:10px">Searches the whole space of section combinations for complete,
+  clash-free schedules. Use this if you want to browse every valid option rather than one optimised pick.</div>
   <div class="grid g4">
    <div><label>Search up to</label><select id="bMaxNodes">
      <option value="500000">500k combinations tried</option>
@@ -262,19 +243,18 @@
   <div class="tiny" id="buildStat" style="margin-top:9px" role="status" aria-live="polite"></div>
   <div id="buildProgBar" class="progress" role="progressbar" aria-label="Schedule search progress"
        aria-valuemin="0" aria-valuemax="100" style="display:none"><i id="buildProgFill"></i></div>
- </div>
- <div id="buildOut"></div>
+  <div id="buildOut" style="margin-top:10px"></div>
+ </details>
 </div>
 
-<!-- 05 BID -->
+<!-- 04 BID SIMULATOR -->
 <div class="pane" id="p-bid">
  <div class="card" style="border-color:var(--bad)">
   <h2>This simulator assumes serious competition</h2>
   <div class="note">No historical SNU clearing-price or bidder-count data exists &mdash; this is the first cohort.
-  Rather than invent a comfortable low-demand estimate, every course is assumed <b>oversubscribed</b> until the
-  platform proves otherwise, and your plan is stress-tested against aggressive strategic bidders. Recommendations
-  are conservative model outputs, not guarantees. <b>Enter live bidder counts as soon as the platform shows
-  them</b> &mdash; a real number replaces the assumption entirely.</div>
+  Every course is assumed <b>oversubscribed</b> until the platform proves otherwise. Recommendations are
+  conservative model outputs, not guarantees. <b>Enter live bidder counts as soon as the platform shows them</b>
+  &mdash; a real number replaces the assumption entirely.</div>
  </div>
  <div class="card tight"><div class="hd" style="margin-bottom:10px"><div><h2>Competition assumptions</h2>
   <div class="note">The recommendation must survive High, Very high and Extreme. The mode below sets which one
@@ -315,48 +295,40 @@
        aria-valuemin="0" aria-valuemax="100" style="display:none"><i id="progFill"></i></div>
   </div>
  <div id="bidOut"></div>
-</div>
-
-<!-- 07 STRESS -->
-<div class="pane" id="p-stress">
- <div class="card"><div class="hd"><div><h2>Stress-test your complete plan</h2>
-  <div class="note">Runs your whole plan against 4,000 synthetic competitive cohorts drawn at random from the
-  High, Very high and Extreme scenarios, then applies your credit cap in priority order &mdash; so a course can be
-  lost even after winning its bid, if something higher-priority already filled your credits.</div></div>
+ <div class="card"><div class="hd"><div><h2>Stress-test the whole plan</h2>
+  <div class="note">4,000 synthetic cohorts across High, Very high and Extreme, then applies your credit cap in
+  priority order &mdash; a course can be lost even after winning its bid. Refreshes automatically after every
+  simulation run above.</div></div>
   <div><button class="btn" id="stressBtn" onclick="void stressPlan()">Stress-test my plan</button></div></div>
-  <div id="stressOut"><div class="note">Run the bid stress test first, then come back here.</div></div></div>
+  <div id="stressOut"><div class="note">Run a simulation above first, then stress-test here.</div></div></div>
 </div>
 
-<!-- 08 SPEC -->
-<div class="pane" id="p-spec">
- <div class="card tight"><div class="hd" style="margin-bottom:8px"><div><h2>Already-completed major electives</h2>
-  <div class="note">These bank credit toward the specialisation buckets below. Empty by default — add anything
-  you've already finished that counts as a Major Elective; this is saved in this browser only, the same as
-  everything else on the Profile &amp; budget tab.</div></div></div>
-  <div id="doneMEList"></div>
-  <div class="srch" style="margin-top:9px">
-   <button class="btn2" onclick="addDoneME()">+ add a completed major elective</button></div></div>
- <div class="card"><div class="hd"><div><h2>Which specialisation you can actually reach</h2>
-  <div class="note">Buckets are verbatim from the prospectus. A course counts only where the published name
-  maps to a real course code — where no code is published I say so rather than guess.</div></div>
-  <div><label style="display:inline">Count CSD336 RL as AI bucket?</label>
-   <select id="c336" style="width:auto;display:inline-block">
-    <option value="0" selected>No — it is Major Core</option><option value="1">Yes — advisor accepted it</option>
-   </select></div></div>
-  <div id="specBox"></div></div>
- <div class="card"><div class="hd"><div><h2>Which block to ask for</h2></div></div><div id="blockBox"></div></div>
-</div>
-
-<!-- 09 DEGREE AUDIT -->
+<!-- 05 DEGREE AUDIT -->
 <div class="pane" id="p-two">
  <div class="card"><div class="hd"><div><h2>Degree audit and current-semester impact</h2>
-  <div class="note">This is generated from the selected official programme rules, your locally stored
-  completed-course data, and the courses currently selected in the picker.</div></div>
+  <div class="note">From your selected programme's official rules, your completed-course data, and the courses
+  currently chosen.</div></div>
   <div><button class="btn" onclick="void runDegreeAudit()">Run audit check</button></div></div>
   <div id="twoBox"></div></div>
+ <details class="more"><summary>Specialisation tracker (CSE B.Tech. only)</summary>
+  <div class="card tight" style="margin-top:10px"><div class="hd" style="margin-bottom:8px"><div><h2>Already-completed major electives</h2>
+   <div class="note">Banks credit toward the specialisation buckets below. Saved in this browser only.</div></div></div>
+   <div id="doneMEList"></div>
+   <div class="srch" style="margin-top:9px">
+    <button class="btn2" onclick="addDoneME()">+ add a completed major elective</button></div></div>
+  <div class="card"><div class="hd"><div><h2>Which specialisation you can actually reach</h2>
+   <div class="note">Buckets are verbatim from the prospectus. A course counts only where the published name
+   maps to a real course code.</div></div>
+   <div id="c336Wrap" style="display:none"><label style="display:inline">Count CSD336 RL as AI bucket?</label>
+    <select id="c336" style="width:auto;display:inline-block">
+     <option value="0" selected>No — it is Major Core</option><option value="1">Yes — advisor accepted it</option>
+    </select></div></div>
+   <div id="specBox"></div></div>
+  <div class="card"><div class="hd"><div><h2>Which block to ask for</h2></div></div><div id="blockBox"></div></div>
+ </details>
 </div>
 
-<!-- 08 RULES -->
+<!-- 06 RULES & DATA -->
 <div class="pane" id="p-rules">
  <div class="card"><div class="hd"><div><h2>Every rule this tool applies, and where it came from</h2>
   <div class="note">Nothing here is folklore. Each rule states whether the University wrote it down, whether it
@@ -368,23 +340,23 @@
      <option value="prospectus">Prospectus</option><option value="timetable">Timetable-derived</option>
      <option value="inferred">Inferred</option><option value="disputed">Disputed</option>
      <option value="unknown">Unknown</option></select>
+   <label style="display:inline;text-transform:none;font-size:12px"><input type="checkbox" id="rAllProgrammes">
+    Also show other programmes' rules</label>
    <input type="text" id="rQ" placeholder="Search rules&hellip;"></div>
   <div id="ruleList"></div>
  </div>
-</div>
-
-<!-- 09 DATA -->
-<div class="pane" id="p-data">
- <div class="card"><h2>Data checks and limitations</h2>
-  <div class="note" style="margin-bottom:12px">Programme rules are linked to official sources. Where a public
-  page does not publish a complete fixed curriculum, the audit asks for a private profile override instead of guessing.</div>
-  <div id="qBox"></div></div>
- <div class="card"><div class="hd"><div><h2>Credit provenance</h2>
-  <div class="note">Only 33 of 328 courses have an official/public credit match. The rest are derived from
-  L/T/P contact patterns in the timetable and must be confirmed in COS before you register.</div></div></div>
-  <div class="srch"><input type="text" id="cQ" placeholder="Search a course to check its credit source…"></div>
-  <div class="scroll"><table><thead><tr><th>Course</th><th>Credits used</th><th>Status</th><th>Basis</th></tr></thead>
-   <tbody id="cBody"></tbody></table></div></div>
- <div class="card"><h2>Rules implemented</h2><div id="rulesBox"></div></div>
+ <details class="more"><summary>Data checks, limitations &amp; credit provenance</summary>
+  <div class="card" style="margin-top:10px"><div class="note">Programme rules are linked to official sources.
+   Where a public page does not publish a complete fixed curriculum, the audit asks for a private profile
+   override instead of guessing.</div>
+   <div id="qBox" style="margin-top:10px"></div></div>
+  <div class="card"><div class="hd"><div><h2>Credit provenance</h2>
+   <div class="note">Only 33 of 328 courses have an official/public credit match. The rest are derived from
+   L/T/P contact patterns in the timetable and must be confirmed in COS before you register.</div></div></div>
+   <div class="srch"><input type="text" id="cQ" placeholder="Search a course to check its credit source…"></div>
+   <div class="scroll"><table><thead><tr><th>Course</th><th>Credits used</th><th>Status</th><th>Basis</th></tr></thead>
+    <tbody id="cBody"></tbody></table></div></div>
+  <div class="card"><h2>Rules implemented</h2><div id="rulesBox"></div></div>
+ </details>
 </div>
 </main>

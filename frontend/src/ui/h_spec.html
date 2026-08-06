@@ -66,7 +66,9 @@ function drawSpec(){
   renderDoneME(); // the completed-electives list isn't CSE-specific storage, so it must
                    // render regardless of the programme-gated bucket display below
   const programme=$('programme')?$('programme').value:'';
-  if(programme!=='b-tech-in-computer-science-and-engineering'){
+  const isCSE=programme==='b-tech-in-computer-science-and-engineering';
+  if($('c336Wrap'))$('c336Wrap').style.display=isCSE?'':'none';
+  if(!isCSE){
     $('specBox').innerHTML='<div class="note">The built-in specialization buckets on this tab apply only to B.Tech. Computer Science and Engineering. Select that programme, or provide programme-specific specialization rules in your private profile.</div>';
     if($('blockBox'))$('blockBox').innerHTML='<div class="note">CSE block optimization is available only for a CSE profile.</div>';
     return;

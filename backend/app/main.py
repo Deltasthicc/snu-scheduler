@@ -227,7 +227,8 @@ async def rules():
             "rules": [{"id": r.id, "name": r.name, "desc": r.desc, "status": r.status.value,
                        "source": r.source, "value": r.value, "configurable": r.configurable,
                        "note": r.note, "resolution": r.resolution, "verified": r.verified,
-                       "impact": r.impact} for r in RULES.values()]}
+                       "impact": r.impact, "programme_scope": list(r.programme_scope) if r.programme_scope else None}
+                      for r in RULES.values()]}
 
 
 # ---------------- deterministic rule endpoints ----------------

@@ -1533,3 +1533,74 @@ the office") was not turned into individual rule entries, since almost all of th
 resolve to a rule already added or to genuine "contact the department" guidance with no
 computable content; the exact reconciliation of `POOL.Y4_AVERAGE_ROW`'s disputed figures
 is still unresolved by the University's own materials, not just by this project.
+
+---
+
+## 18. Session update — 2026-08-06 (later): tab consolidation, and a real
+## CS-programme bias audit
+
+Two requests in one message: reduce the 11-tab navigation to something that flows more
+naturally, and audit the whole app for assuming every student is in CSE even though all
+44 programmes' official requirement tables are already loaded.
+
+**Tab consolidation, 11 -> 6.** `Course picker` + `Scheduler & clashes` + `Schedule
+builder` merged into one **Courses & schedule** tab (fixed courses -> browse/pick ->
+chosen + choice groups -> weekly timetable -> schedule generation, with the legacy
+exhaustive search collapsed behind a `<details>` since the personalised generator above
+it now covers the common case). `Bid simulator` + `Stress-test plan` merged into one
+**Bid simulator** tab; `stressPlan()` now auto-runs at the end of every `runOpt()` instead
+of on a tab-switch that no longer exists, since both cards now share a page. `Degree
+audit & plan` + `Specialisation` merged, with the CSE-only specialisation tracker behind
+a `<details>` labelled "(CSE B.Tech. only)". `Rules & provenance` + `Data & open
+questions` merged, with the data/credit-provenance appendix behind a `<details>`.
+`frontend/src/glue.js::useWishlistSchedule()` and `frontend/src/ui/i_build.html::useSchedule()`
+both used to `.click()` a `[data-p="sched"]` tab button that no longer exists; fixed to
+scroll to the (now same-pane) timetable and redraw it instead.
+
+**The CS-bias audit found real bugs, not just tone.** Dispatched a research-only
+subagent first rather than guessing:
+- The "CSE block (optional; auto-loads core)" selector on the Profile tab
+  (`frontend/src/ui/b_body.html`) rendered unconditionally for every programme -
+  `frontend/src/ui/d_sched.html`'s `BLOCKS` array is filtered to `/^CSD/` blocks only, so
+  a non-CSE student saw a dead, unexplained control. Now wrapped in `#blkWrap`, toggled
+  by `applyProgrammeCategories()` to show only when the selected programme is CSE.
+- "Count CSD336 RL as AI bucket?" sat in the Specialisation card's static header,
+  *outside* the `#specBox` div that `drawSpec()` already correctly gates to CSE only -
+  every other programme still saw and could interact with a CSE-specific control despite
+  the gating note right below it. Moved inside a `#c336Wrap` toggled by the same
+  CSE check in `drawSpec()` (`frontend/src/ui/h_spec.html`).
+- `SPEC.REQUIREMENT`, `SPEC.BUCKET_TENTATIVE`, `SPEC.CSD336_AMBIGUOUS` in
+  `backend/app/domain/rules.py` are CSE-prospectus-specific rules that showed up on the
+  Rules tab for every student in every programme, with no way to tell they didn't apply.
+  Added a `programme_scope` field to `Rule` (`None` = universal, the correct default for
+  every other rule here), scoped those three to CSE, and `drawRules()` now hides
+  out-of-scope rules by default with a one-line count and a "also show other programmes'
+  rules" checkbox to reveal them - never silently dropped, always disclosed.
+- `applyProgrammeCategories()` (`frontend/src/ui/g_two.html`) silently fell back to
+  labelling every course `NB`/`UWE` for the 3 programmes with empty
+  `department_keywords` in `programs.json` (`mba`, `accelerated-masters-program-with-asu`,
+  `ba-research-interdisciplinary-humanities-and-social-sciences-ihs`) - meaning those
+  students' own major courses were mislabelled "not my business" with no indication
+  anything was wrong. CCC/UWE classification is unaffected (those come from the
+  timetable's own flags, not department keywords); added a `#categoryCoverageNote` flag
+  that names the programme and states plainly that ME/Core isn't distinguishable for it
+  yet, rather than presenting a guess as fact.
+- Confirmed clean by the same audit: `backend/app/services/degree_audit.py` is fully
+  programme-agnostic already (reads each programme's own `requirements` list, supports
+  `kind: "milestone"` for doctoral rows); `h_spec.html`'s bucket *display* logic was
+  already correctly gated, it was specifically the header controls escaping that gate.
+
+**Not done this pass, named rather than silently skipped**: doctoral/MBA/PhD students
+still see the full bid-point budget and Bid simulator tabs even though
+`ENROL.BACKEND_DISCONTINUED` states graduate enrolment mostly bypasses bidding - gating
+those tabs by programme `level` is a real follow-up, not attempted here since it changes
+what a whole tab is *for*, not just what one control shows; a full per-programme
+department-keyword mapping for the 3 empty-keyword programmes (the actual fix, versus
+this session's honest disclosure) needs more source data than is currently available.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 161 passed, 1 skipped
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 44 + 35 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 64 passed
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, across the new 6-tab structure with every <details> opened before scanning
+```
