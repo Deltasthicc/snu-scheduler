@@ -22,7 +22,7 @@
 
   const KEY = 'snu.plans.v1';
   const ACTIVE = 'snu.plans.active';
-  const SCHEMA = 10;
+  const SCHEMA = 11;
   const MAX_IMPORT_BYTES = 2 * 1024 * 1024;
   const DANGEROUS = ['__proto__', 'constructor', 'prototype'];
 
@@ -168,6 +168,20 @@
         if (p.payload.profile.doneCCC == null) p.payload.profile.doneCCC = 0;
       });
       v = 10;
+    }
+    if (v < 11) {
+      // v11 stores each programme's selected pathway/focus and an optional
+      // private advising note. Empty maps preserve every older plan exactly.
+      Object.values(db.plans).forEach(p => {
+        p.payload = p.payload || {};
+        if (!p.payload.pathwaySelections || typeof p.payload.pathwaySelections !== 'object') {
+          p.payload.pathwaySelections = {};
+        }
+        if (!p.payload.pathwayNotes || typeof p.payload.pathwayNotes !== 'object') {
+          p.payload.pathwayNotes = {};
+        }
+      });
+      v = 11;
     }
     db.schema = v;
     db.seq = Number(db.seq) || 0;

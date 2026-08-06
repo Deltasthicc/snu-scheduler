@@ -21,6 +21,8 @@ let LAST=null;
 let DONE_ME=[];     // [{code,name,cr}] already-completed major electives, for
                      // specialisation-bucket credit banking -- empty by default,
                      // filled in per-student and saved locally (see plans.js)
+let PATHWAY_SELECTIONS={}; // programme id -> selected pathway/focus id
+let PATHWAY_NOTES={};      // programme id -> private cohort/supervisor note
 let CHOICE_GROUPS=[]; // [{kind, members:[code,...], min_credits, label}] for the
                        // wishlist scheduler (see app/services/cp_scheduler.py) --
                        // members must be codes currently in PICK.

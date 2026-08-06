@@ -20,6 +20,15 @@ def test_catalog_contains_every_current_official_program_entry():
     assert all(p["official_page"].startswith("https://snu.edu.in/") for p in CATALOG.list())
     assert all(p.get("pathways", {}).get("kind") for p in CATALOG.list())
     assert all(p["pathways"].get("sources") for p in CATALOG.list())
+    assert all(p["pathways"].get("options") for p in CATALOG.list())
+
+
+def test_every_programme_pathway_choice_has_a_unique_stable_id():
+    for programme in CATALOG.list():
+        options = programme["pathways"]["options"]
+        ids = [option["id"] for option in options]
+        assert len(ids) == len(set(ids)), programme["id"]
+        assert all(option.get("title") and option.get("type") for option in options), programme["id"]
 
 
 def test_published_pathway_types_and_cse_options_are_not_conflated():

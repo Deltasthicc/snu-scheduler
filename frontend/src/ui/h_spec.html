@@ -16,6 +16,18 @@ function sameTitle(a,b){
   return norm(a)&&norm(a)===norm(b);
 }
 
+function completedPathwayCourses(){
+  let fromAudit=[];
+  try { fromAudit=typeof parseCompletedCourses==='function' ? parseCompletedCourses() : []; } catch(e) {}
+  const merged=[...fromAudit.map(d=>({code:d.code,name:d.title||d.name||d.code,cr:+d.credits||0})),...DONE_ME];
+  const seen=new Set();
+  return merged.filter(d=>{
+    const key=codeParts(d.code).sort().join('/');
+    if(!key||seen.has(key))return false;
+    seen.add(key); return true;
+  });
+}
+
 function addDoneME(){
   const code=prompt('Course code of the completed pathway / specialisation course:'); if(!code)return;
   const trimmed=code.trim();
@@ -40,7 +52,7 @@ function renderDoneME(){
 function specProgress(option){
   const codes=option.course_codes||[],titles=option.course_titles||[];
   const matches=(code,title)=>codes.some(c=>codesOverlap(c,code))||titles.some(t=>sameTitle(t,title));
-  const banked=DONE_ME.filter(d=>matches(d.code,d.name));
+  const banked=completedPathwayCourses().filter(d=>matches(d.code,d.name));
   const selectedCodes=[...new Set([...Object.keys(PICK),...FIXED.map(f=>f.code)])];
   const selected=selectedCodes.filter(code=>{
     const course=BY[code];
@@ -53,8 +65,48 @@ function specProgress(option){
     !group.some(required=>creditedCodes.some(actual=>codesOverlap(actual,required))));
   const offered=codes.filter(code=>Object.keys(BY).some(current=>codesOverlap(current,code))
     &&!selected.some(current=>codesOverlap(current,code))&&!banked.some(d=>codesOverlap(d.code,code)));
-  return {bank,now,total:bank+now,banked,selected,offered,missingMandatory,
+  return {bank,now,total:bank+now,count:banked.length+selected.length,banked,selected,offered,missingMandatory,
     trackable:codes.length>0||titles.length>0};
+}
+function choosePathway(programmeId,optionId){
+  PATHWAY_SELECTIONS[programmeId]=optionId;
+  drawSpec();
+  if(typeof autosaveNow==='function')void autosaveNow();
+}
+function setPathwayNote(programmeId,value){
+  PATHWAY_NOTES[programmeId]=String(value||'').slice(0,500);
+  if(typeof autosaveNow==='function')void autosaveNow();
+}
+function pathwayCourseCode(published){
+  return Object.keys(BY).find(code=>codesOverlap(code,published))||'';
+}
+function addPathwayCourse(published){
+  const code=pathwayCourseCode(published);
+  if(code&&typeof togglePick==='function')togglePick(code,true);
+  drawSpec();
+}
+function removePathwayCourse(published){
+  const code=pathwayCourseCode(published);
+  if(code&&typeof togglePick==='function')togglePick(code,false);
+  drawSpec();
+}
+function optionTypeLabel(option){
+  return String(option.type||'pathway').replaceAll('_',' ');
+}
+function pathwayStatus(option,progress,isSelected){
+  const minCourses=+option.minimum_courses||0;
+  if(minCourses){
+    const complete=progress.trackable&&progress.count>=minCourses&&!progress.missingMandatory.length;
+    return complete?{label:'published course condition reached',tone:'ok'}:
+      {label:`${Math.max(0,minCourses-progress.count)} qualifying courses remaining`,tone:'warn'};
+  }
+  const min=+option.minimum_credits||0,alt=+option.project_alternative_at||0;
+  const threshold=alt||min;
+  const complete=progress.trackable&&threshold>0&&progress.total>=threshold&&!progress.missingMandatory.length;
+  if(complete)return {label:'published course condition reached',tone:'ok'};
+  if(threshold&&progress.trackable)return {label:`${f1(Math.max(0,threshold-progress.total))} credits remaining`,tone:'warn'};
+  if(isSelected)return {label:'chosen for this plan',tone:'selected'};
+  return {label:'available choice',tone:'neutral'};
 }
 function drawSpec(){
   if(!$('specBox'))return;
@@ -69,50 +121,58 @@ function drawSpec(){
   }
   if(!pathways){$('specBox').innerHTML='<div class="flag f-bad">Programme pathway data did not load. Refresh and check the catalogue service.</div>';return;}
   const sourceLinks=(pathways.sources||[]).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ');
-  let h=`<div class="flag f-ok"><b>${esc(pathways.label||'Programme pathways')}.</b> ${esc(pathways.summary||'')}`+
+  const options=pathways.options||[];
+  const selectedId=PATHWAY_SELECTIONS[programmeId]||'';
+  const selectedOption=options.find(o=>o.id===selectedId)||null;
+  let h=`<div class="pathway-steps" aria-label="Pathway planning steps"><span class="done">1. Programme loaded</span><span class="${selectedOption?'done':''}">2. Choose a direction</span><span>3. Add matching courses</span><span>4. Run degree audit</span></div>`+
+    `<div class="flag f-ok"><b>${esc(pathways.label||'Programme pathways')}.</b> ${esc(pathways.summary||'')}`+
     `${pathways.cohort_note?`<div class="tiny" style="margin-top:5px"><b>Cohort scope:</b> ${esc(pathways.cohort_note)}</div>`:''}`+
     `${sourceLinks?`<div class="tiny" style="margin-top:5px"><b>Official source:</b> ${sourceLinks}</div>`:''}</div>`;
-  if(pathways.kind==='no_formal_specialisation'){
-    h+='<div class="note" style="margin-top:12px">No separate formal specialisation is published for this catalogue entry. This is a verified absence of a public rule, not a claim that students cannot shape their electives.</div>';
+  if(!options.length){
+    h+='<div class="flag f-bad" style="margin-top:12px">This programme has no pathway choices loaded. Report this catalogue error; every supported programme must have at least one choice.</div>';
     $('specBox').innerHTML=h; return;
   }
-  if(!(pathways.options||[]).length){
-    h+='<div class="note" style="margin-top:12px">No fixed public option list is available. Record the supervisor-approved pathway in your private profile; the app will not invent one.</div>';
-    $('specBox').innerHTML=h; return;
+  const rows=options.map(option=>({option,progress:specProgress(option)}));
+  if(selectedOption){
+    const progress=specProgress(selectedOption),min=+selectedOption.minimum_credits||0,alt=+selectedOption.project_alternative_at||0,threshold=alt||min,minCourses=+selectedOption.minimum_courses||0;
+    const pct=minCourses?Math.min(100,Math.round(100*progress.count/minCourses)):
+      threshold?Math.min(100,Math.round(100*progress.total/threshold)):0;
+    h+=`<section class="pathway-hero"><div><div class="eyebrow">YOUR CHOICE</div><h3>${esc(selectedOption.title)}</h3><div class="note">${esc(optionTypeLabel(selectedOption))}${threshold?' · official course threshold shown below':' · planning choice, not a completion claim'}</div></div>`+
+      `<div class="pathway-metrics"><div><b>${f1(progress.bank)}</b><span>completed credits</span></div><div><b>${f1(progress.now)}</b><span>selected credits</span></div><div><b>${minCourses?Math.max(0,minCourses-progress.count):threshold?f1(Math.max(0,threshold-progress.total)):'—'}</b><span>${minCourses?'courses left':threshold?'credits left':'no public minimum'}</span></div></div>`+
+      `${threshold||minCourses?`<div class="progress pathway-progress" aria-label="${pct}% of published ${minCourses?'course':'credit'} threshold"><i style="width:${pct}%"></i></div>`:''}</section>`;
+  }else{
+    h+='<div class="flag f-warn" style="margin-top:12px"><b>Choose one direction below.</b> Your choice is saved inside this local plan and can be changed at any time.</div>';
   }
-  const rows=pathways.options.map(option=>({option,progress:specProgress(option)}));
-  rows.sort((a,b)=>b.progress.total-a.progress.total||a.option.title.localeCompare(b.option.title));
-  h+='<div class="grid g4" style="margin:14px 0">';
+  h+='<div class="pathway-grid" style="margin:14px 0">';
   rows.forEach(({option,progress})=>{
-    const min=+option.minimum_credits||0;
-    const alt=+option.project_alternative_at||0;
-    const threshold=alt||min;
-    const complete=progress.trackable&&threshold>0&&progress.total>=threshold&&!progress.missingMandatory.length;
-    const metric=progress.trackable&&threshold>0?`${f1(progress.total)} / ${f1(threshold)} cr`:'published option';
-    const footer=!progress.trackable?'course mapping not public':complete?(alt?'elective route ready for project':'credit minimum reached'):
-      progress.missingMandatory.length?'mandatory course(s) still missing':`needs ${f1(Math.max(0,threshold-progress.total))} cr`;
-    h+=`<div class="stat ${complete?'':progress.trackable?'u':'r'}"><div class="k">${esc(option.title)}</div><div class="v mono" style="font-size:22px">${metric}</div><div class="f">${esc(footer)}</div></div>`;
+    const isSelected=option.id===selectedId,status=pathwayStatus(option,progress,isSelected);
+    const min=+option.minimum_credits||0,threshold=+option.project_alternative_at||min,minCourses=+option.minimum_courses||0;
+    h+=`<button class="pathway-choice ${isSelected?'selected':''}" aria-pressed="${isSelected}" onclick="choosePathway('${esc(programmeId)}','${esc(option.id)}')"><span class="pathway-radio">${isSelected?'✓':'○'}</span><span><b>${esc(option.title)}</b><small>${esc(optionTypeLabel(option))}</small>${progress.trackable?`<small>${f1(progress.bank)} completed + ${f1(progress.now)} selected${minCourses?` · ${progress.count}/${minCourses} courses`:threshold?` / ${f1(threshold)} cr`:''}</small>`:''}<em class="${status.tone}">${esc(status.label)}</em></span></button>`;
   });
   h+='</div>';
-  rows.forEach(({option,progress})=>{
-    const min=+option.minimum_credits||0,alt=+option.project_alternative_at||0;
-    h+=`<div class="rec ${progress.trackable&&!progress.missingMandatory.length&&((alt&&progress.total>=alt)||(min&&progress.total>=min))?'top':''}"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><b>${esc(option.title)}</b><span class="pill p-m">${esc(String(option.type||'pathway').replaceAll('_',' '))}</span></div>`;
+  const visibleRows=selectedOption?rows.filter(r=>r.option.id===selectedId):rows;
+  visibleRows.forEach(({option,progress})=>{
+    const min=+option.minimum_credits||0,alt=+option.project_alternative_at||0,minCourses=+option.minimum_courses||0;
+    h+=`<div class="rec ${option.id===selectedId?'top':''}"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><b>${esc(option.title)} planner</b><span class="pill p-m">${esc(optionTypeLabel(option))}</span></div>`;
     if(progress.trackable){
       h+=`<div class="tiny mono" style="margin-top:7px">${f1(progress.bank)} completed + ${f1(progress.now)} selected now = ${f1(progress.total)} credits</div>`;
       if(progress.banked.length)h+=`<div class="tiny" style="margin-top:5px">Completed: ${progress.banked.map(d=>`<span class="pill p-uwe">${esc(d.code)} ${f1(d.cr)}cr</span>`).join(' ')}</div>`;
       if(progress.selected.length)h+=`<div class="tiny" style="margin-top:5px">Selected now: ${progress.selected.map(c=>`<span class="pill p-me">${esc(c)}</span>`).join(' ')}</div>`;
-      if(progress.offered.length)h+=`<div class="tiny" style="margin-top:5px">Published bucket courses offered now: ${progress.offered.map(c=>`<span class="pill p-m">${esc(c)}</span>`).join(' ')}</div>`;
+      const offeredNow=(option.course_codes||[]).map(code=>({published:code,current:pathwayCourseCode(code)})).filter(x=>x.current);
+      if(offeredNow.length)h+=`<div class="pathway-courses"><b>Available in the current timetable</b>${offeredNow.map(x=>{const on=!!PICK[x.current];return `<button class="btn2 sm ${on?'active':''}" onclick="${on?'remove':'add'}PathwayCourse('${esc(x.published)}')">${on?'✓ Remove':'＋ Add'} ${esc(x.current)}</button>`;}).join('')}</div>`;
       if(progress.missingMandatory.length)h+=`<div class="flag f-warn" style="margin-top:7px"><b>Mandatory course condition not yet met:</b> ${progress.missingMandatory.map(group=>group.map(esc).join(' or ')).join('; ')}</div>`;
       if(alt)h+=`<div class="note" style="margin-top:7px">Either ${f1(min)} bucket credits, or ${f1(alt)} bucket credits plus a ${f1(option.project_credits||0)}-credit project in this area. Project and grade conditions require confirmation from your record.</div>`;
+      else if(minCourses)h+=`<div class="note" style="margin-top:7px">Published course condition: ${minCourses} qualifying courses.${progress.missingMandatory.length?' The named mandatory course condition is still outstanding.':''}</div>`;
       else if(option.project_required)h+=`<div class="note" style="margin-top:7px">The ${f1(min)}-credit elective minimum is only the course component; a ${f1(option.project_credits||0)}-credit project in the same area is also required.</div>`;
       else if(min)h+=`<div class="note" style="margin-top:7px">Published course minimum: ${f1(min)} credits.${pathways.overall_cgpa_min?` CGPA requirement: ${f1(pathways.overall_cgpa_min)} or above.`:''}</div>`;
     }else{
-      h+='<div class="note" style="margin-top:7px">The option is official, but its complete course-to-option mapping is not public in the cited source, so no automatic credit total is shown.</div>';
+      h+='<div class="note" style="margin-top:7px">SNU publishes this choice, but not a complete machine-auditable course rule. The app saves your selection without pretending that a focus or research area has been completed.</div>';
     }
     const codes=option.course_codes||[],titles=option.course_titles||[];
     if(codes.length||titles.length)h+=`<details class="more" style="margin-top:8px"><summary>Published course pool</summary><div class="tiny" style="margin-top:6px">${codes.map(c=>`<span class="pill">${esc(c)}</span>`).join(' ')}${titles.length?`<div style="margin-top:5px">Also published without stable codes: ${titles.map(esc).join(', ')}</div>`:''}</div></details>`;
     h+='</div>';
   });
+  if(selectedOption&&selectedOption.customizable)h+=`<div class="rec top"><label for="pathwayNote"><b>Name or describe your approved direction</b></label><textarea id="pathwayNote" rows="3" maxlength="500" oninput="setPathwayNote('${esc(programmeId)}',this.value)" placeholder="Optional private note: exact concentration, thesis area, supervisor-approved topic…">${esc(PATHWAY_NOTES[programmeId]||'')}</textarea><div class="tiny">Saved only inside this browser plan and included in your private export.</div></div>`;
   $('specBox').innerHTML=h;
   if(programmeId===CSE_PROGRAMME_ID)drawBlockOpt();
 }

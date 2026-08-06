@@ -63,6 +63,9 @@ console.log('=== §10 SAVED PLANS ===');
   ck('v6 adds an empty choiceGroups array', Array.isArray(p.payload.choiceGroups) && p.payload.choiceGroups.length === 0);
   ck('v6 adds a neutral creditPolicy block',
      !!p.payload.creditPolicy && p.payload.creditPolicy.overloadOn === false && p.payload.creditPolicy.min === 0);
+  ck('v11 adds empty pathway selections and notes',
+     p.payload.pathwaySelections && p.payload.pathwayNotes &&
+     Object.keys(p.payload.pathwaySelections).length === 0);
 }
 {
   const { P } = fresh();

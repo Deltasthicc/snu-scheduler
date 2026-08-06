@@ -32,6 +32,15 @@ class ProgrammeCatalog:
                 missing = sorted(program_ids - set(pathway_by_id))
                 extra = sorted(set(pathway_by_id) - program_ids)
                 raise ValueError(f"pathway catalogue mismatch: missing={missing}, extra={extra}")
+            for programme_id, pathway in pathway_by_id.items():
+                options = pathway.get("options")
+                if not isinstance(options, list) or not options:
+                    raise ValueError(f"pathway catalogue has no choices for {programme_id}")
+                option_ids = [option.get("id") for option in options]
+                if any(not option_id for option_id in option_ids) or len(option_ids) != len(set(option_ids)):
+                    raise ValueError(f"pathway catalogue has invalid option ids for {programme_id}")
+                if not pathway.get("sources"):
+                    raise ValueError(f"pathway catalogue has no official source for {programme_id}")
             for program in self.programs:
                 program["pathways"] = pathway_by_id[program["id"]]
             self.meta["pathways"] = {

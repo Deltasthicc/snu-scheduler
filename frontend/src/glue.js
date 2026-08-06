@@ -976,6 +976,8 @@ function currentPlanPayload() {
     fixed: FIXED.filter(f => !f.auto).map(f => ({ code: f.code, pkg: f.pkg, lock: f.lock })),
     manual: MANUAL.map(m => ({ name: m.name, cr: m.cr })),
     doneElectives: DONE_ME.map(d => ({ code: d.code, name: d.name, cr: d.cr })),
+    pathwaySelections: Object.assign({}, PATHWAY_SELECTIONS),
+    pathwayNotes: Object.assign({}, PATHWAY_NOTES),
     datasetVersion: DATASET_INFO ? DATASET_INFO.active_version : null,
     choiceGroups: CHOICE_GROUPS.map(g => ({ kind: g.kind, members: g.members.slice(), min_credits: g.min_credits })),
     creditPolicy: {
@@ -1041,6 +1043,10 @@ function restoreActivePlan() {
     if (Array.isArray(pay.doneElectives)) {
       DONE_ME = pay.doneElectives.map(d => ({ code: d.code, name: d.name, cr: d.cr }));
     }
+    PATHWAY_SELECTIONS = pay.pathwaySelections && typeof pay.pathwaySelections === 'object'
+      ? Object.assign({}, pay.pathwaySelections) : {};
+    PATHWAY_NOTES = pay.pathwayNotes && typeof pay.pathwayNotes === 'object'
+      ? Object.assign({}, pay.pathwayNotes) : {};
     if (Array.isArray(pay.choiceGroups)) {
       CHOICE_GROUPS = pay.choiceGroups.map(g => ({ kind: g.kind, members: g.members.slice(), min_credits: g.min_credits }));
     }

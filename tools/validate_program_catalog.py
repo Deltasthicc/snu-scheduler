@@ -59,17 +59,26 @@ def validate(check_urls: bool) -> int:
         pathway = (catalog.get(prefix) or {}).get("pathways", {})
         if pathway.get("kind") not in {
             "formal_specialisation", "programme_stream", "degree_route",
-            "research_areas", "no_formal_specialisation",
+            "research_areas", "elective_focus",
         }:
             errors.append(f"{prefix}: invalid or missing pathways kind")
         if not pathway.get("summary") or not pathway.get("sources"):
             errors.append(f"{prefix}: pathways summary and source are required")
-        for option in pathway.get("options", []):
+        options = pathway.get("options", [])
+        if not options:
+            errors.append(f"{prefix}: at least one pathway/focus choice is required")
+        option_ids = [option.get("id") for option in options]
+        if len(option_ids) != len(set(option_ids)):
+            errors.append(f"{prefix}: duplicate pathway option id")
+        for option in options:
             if not option.get("id") or not option.get("title"):
                 errors.append(f"{prefix}: pathway options require id and title")
             minimum = option.get("minimum_credits")
             if minimum is not None and float(minimum) <= 0:
                 errors.append(f"{prefix}/{option.get('id')}: minimum credits must be positive")
+            minimum_courses = option.get("minimum_courses")
+            if minimum_courses is not None and int(minimum_courses) <= 0:
+                errors.append(f"{prefix}/{option.get('id')}: minimum courses must be positive")
         requirements = program.get("requirements", [])
         if verification not in VERIFICATION:
             errors.append(f"{prefix}: invalid verification state {verification!r}")

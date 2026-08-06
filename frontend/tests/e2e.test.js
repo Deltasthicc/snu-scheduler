@@ -347,7 +347,13 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('B.Des. renders streams rather than CSE-style credit buckets',
      /B\.Des\. stream/.test(await p.textContent('#specBox')) &&
      /Experience Design/.test(await p.textContent('#specBox')) &&
-     /course mapping not public/.test(await p.textContent('#specBox')));
+     /available choice/.test(await p.textContent('#specBox')));
+  await p.evaluate(() => {
+    choosePathway('bachelor-of-design', 'experience-design');
+  });
+  ck('a programme pathway is interactive and updates the selected summary',
+     /YOUR CHOICE/.test(await p.textContent('#specBox')) &&
+     /Experience Design/.test(await p.textContent('.pathway-hero')));
   await p.evaluate(() => {
     document.getElementById('programme').value = 'ph-d-in-civil-engineering'; drawSpec();
   });
@@ -355,6 +361,18 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
      /Research areas/.test(await p.textContent('#specBox')) &&
      /Environmental Engineering/.test(await p.textContent('#specBox')) &&
      /not transcript specialisation buckets/.test(await p.textContent('#specBox')));
+  const allProgrammeChoices = await p.evaluate(() => {
+    const select = document.getElementById('programme');
+    return PROGRAMME_CATALOG.every(programme => {
+      select.value = programme.id;
+      drawSpec();
+      const first = programme.pathways && programme.pathways.options && programme.pathways.options[0];
+      if (!first || !document.querySelector('.pathway-choice')) return false;
+      choosePathway(programme.id, first.id);
+      return PATHWAY_SELECTIONS[programme.id] === first.id && !!document.querySelector('.pathway-hero');
+    });
+  });
+  ck('all 44 programmes render and accept a pathway/focus choice', allProgrammeChoices);
   await p.evaluate(() => {
     document.getElementById('programme').value = 'b-tech-in-computer-science-and-engineering'; drawSpec();
   });
