@@ -44,6 +44,16 @@ class Mode:
 
 
 MODES: dict[str, Mode] = {
+    # Comparison-only tiers, easier than the mandatory stress grid. Never used for the
+    # conservative recommendation (see COMP.STRESS_DEFAULT) - shown so a student can see
+    # what an uncrowded or mildly-competitive reading would look like, not to talk anyone
+    # out of the stress-first default.
+    "LOW": Mode("LOW", "Low competition", 0.95, 0.06, 0.35, 0.70, 0.30,
+               "Comparison only. About as many bidders as seats - a genuinely uncrowded reading.",
+               comparison_only=True),
+    "MODERATE": Mode("MODERATE", "Moderate competition", 1.15, 0.10, 0.50, 0.82, 0.20,
+                     "Comparison only. Modestly oversubscribed - between the optimistic and "
+                     "stress-tested readings.", comparison_only=True),
     "HIGH": Mode("HIGH", "High competition (default)", 1.35, 0.15, 0.65, 0.95, 0.12,
                  "Assumes every course is oversubscribed. Rival bids concentrate in the upper half "
                  "of the legal range."),

@@ -423,10 +423,11 @@ async def validate_plan(req: SimulationRequest):
         cat_courses = [c for c in req.courses if c.category == cat]
         if cat_courses and req.pools.get(cat, 0) <= 0:
             blocking.append(f"{len(cat_courses)} {cat} course(s) selected but the {cat} pool is zero")
+    scenario_count = 3 + len(req.extra_scenarios)
     return {"ok": not blocking, "blocking": blocking, "warnings": warnings,
             "course_count": len(req.courses), "total_credits": total_cr,
-            "trials": req.trials, "scenarios": 3 + (1 if req.include_optimistic else 0),
-            "estimated_work_units": len(req.courses) * (3 + (1 if req.include_optimistic else 0)) * req.trials,
+            "trials": req.trials, "scenarios": scenario_count,
+            "estimated_work_units": len(req.courses) * scenario_count * req.trials,
             "rule_version": RULE_VERSION}
 
 

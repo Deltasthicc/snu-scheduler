@@ -139,7 +139,7 @@ class JobManager:
                 raise RuntimeError(
                     f"too many concurrent simulations (limit {self._max}); cancel one or retry")
             jid = uuid.uuid4().hex[:16]
-            grid = 3 + (1 if req.get("include_optimistic") else 0)
+            grid = 3 + len(req.get("extra_scenarios", []))
             j = Job(job_id=jid, input_hash=input_hash, seed=int(req.get("seed", 0)),
                     courses_total=len(req["courses"]),
                     scenarios_total=len(req["courses"]) * grid,

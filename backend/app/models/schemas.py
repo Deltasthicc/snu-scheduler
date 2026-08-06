@@ -2,11 +2,10 @@
 from __future__ import annotations
 from enum import Enum
 from typing import Literal
-from pydantic import BaseModel, Field, field_validator, ConfigDict
+from pydantic import BaseModel, Field, field_validator, model_validator, ConfigDict
 
 MAX_COURSES = 120
 MAX_TRIALS = 100_000
-MAX_SCENARIOS = 4
 
 
 class Category(str, Enum):
@@ -22,7 +21,16 @@ class BudgetMode(str, Enum):
 
 
 class CompetitionMode(str, Enum):
-    HIGH = "HIGH"; VERY_HIGH = "VERY_HIGH"; EXTREME = "EXTREME"; OPTIMISTIC = "OPTIMISTIC"
+    LOW = "LOW"; MODERATE = "MODERATE"; HIGH = "HIGH"; VERY_HIGH = "VERY_HIGH"; EXTREME = "EXTREME"
+    OPTIMISTIC = "OPTIMISTIC"
+
+
+# Always simulated, and the only tiers a bid recommendation is actually held to
+# (app/optimization/robust.py's PRIORITY targets) - never remove or relax this set.
+MANDATORY_SCENARIOS = (CompetitionMode.HIGH, CompetitionMode.VERY_HIGH, CompetitionMode.EXTREME)
+# Comparison-only tiers a student may additionally request to see. Never used for
+# the conservative recommendation itself - see COMP.STRESS_DEFAULT.
+COMPARISON_SCENARIOS = (CompetitionMode.LOW, CompetitionMode.MODERATE, CompetitionMode.OPTIMISTIC)
 
 
 class RobustMethod(str, Enum):
@@ -83,7 +91,31 @@ class SimulationRequest(BaseModel):
     budget_mode: BudgetMode = BudgetMode.SHARED_LIVE
     robust_method: RobustMethod = RobustMethod.MINIMAX
     dispersion: float = Field(0.18, ge=0, le=0.6)
-    include_optimistic: bool = False
+    # Comparison-only scenarios to run alongside the three mandatory ones (see
+    # COMPARISON_SCENARIOS). Defaults to Low + Moderate so a student sees an
+    # easier reading without having to opt in; Optimistic stays opt-in since it
+    # is the most detached from the stress-first default.
+    extra_scenarios: list[CompetitionMode] = Field(
+        default_factory=lambda: [CompetitionMode.LOW, CompetitionMode.MODERATE], max_length=len(COMPARISON_SCENARIOS))
+
+    @field_validator("extra_scenarios")
+    @classmethod
+    def _only_comparison_scenarios(cls, v: list[CompetitionMode]) -> list[CompetitionMode]:
+        bad = [m for m in v if m not in COMPARISON_SCENARIOS]
+        if bad:
+            raise ValueError(f"extra_scenarios must be comparison-only tiers {COMPARISON_SCENARIOS}, got {bad}")
+        seen, out = set(), []
+        for m in v:
+            if m not in seen:
+                seen.add(m); out.append(m)
+        return out
+
+    @model_validator(mode="after")
+    def _headline_must_be_simulated(self) -> "SimulationRequest":
+        if self.headline_mode not in MANDATORY_SCENARIOS and self.headline_mode not in self.extra_scenarios:
+            raise ValueError(
+                f"headline_mode {self.headline_mode} was not requested in extra_scenarios {self.extra_scenarios}")
+        return self
 
     @field_validator("courses")
     @classmethod

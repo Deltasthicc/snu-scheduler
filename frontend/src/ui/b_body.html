@@ -257,17 +257,21 @@
   &mdash; a real number replaces the assumption entirely.</div>
  </div>
  <div class="card tight"><div class="hd" style="margin-bottom:10px"><div><h2>Competition assumptions</h2>
-  <div class="note">The recommendation must survive High, Very high and Extreme. The mode below sets which one
-  is shown as the headline scenario.</div></div></div>
+  <div class="note">The recommendation must always survive High, Very high and Extreme &mdash; that floor never
+  moves. Low and Moderate are easier comparison readings you can additionally see; the mode below sets which
+  scenario is shown as the headline number.</div></div></div>
   <div class="grid g4">
    <div><label for="compMode">Headline scenario</label><select id="compMode">
+     <option value="LOW">Low competition (easy comparison)</option>
+     <option value="MODERATE">Moderate competition (comparison)</option>
      <option value="HIGH" selected>High competition (default)</option>
      <option value="VERY_HIGH">Very high competition</option>
-     <option value="EXTREME">Extreme stress</option></select></div>
+     <option value="EXTREME">Extreme stress</option>
+     <option value="OPTIMISTIC">Optimistic (comparison)</option></select></div>
    <div><label for="robustMethod">Robustness rule</label><select id="robustMethod">
-     <option value="minimax" selected>Minimax &mdash; worst scenario</option>
-     <option value="cvar">CVaR &mdash; worse half of scenarios</option>
-     <option value="mean">Mean &mdash; average scenario</option></select></div>
+     <option value="minimax" selected>Minimax &mdash; every scenario individually</option>
+     <option value="cvar">CVaR &mdash; worse half, blended</option>
+     <option value="mean">Mean &mdash; blended average</option></select></div>
    <div><label for="nsim">Simulation quality</label><select id="nsim">
      <option value="1000">Fast preview &mdash; 1k</option>
      <option value="8000" selected>Balanced &mdash; 8k</option>
@@ -285,8 +289,10 @@
      </div></div>
    <div><label for="disp">Rival dispersion</label><input type="number" id="disp" value="0.18" step="0.02" min="0" max="0.6"></div>
    <div><label for="liveRound">Round label for live counts</label><input type="text" id="liveRound" value="Round 2" placeholder="e.g. Round 2"></div>
-   <div style="align-self:end"><label for="showOptimistic" style="text-transform:none">
-     <input type="checkbox" id="showOptimistic"> Also show optimistic comparison</label></div></div>
+   <div style="align-self:end"><label style="text-transform:none;display:block;font-weight:600;margin-bottom:3px">Also compute for comparison</label>
+     <label style="display:inline;text-transform:none;margin-right:10px"><input type="checkbox" id="showLow" checked> Low</label>
+     <label style="display:inline;text-transform:none;margin-right:10px"><input type="checkbox" id="showModerate" checked> Moderate</label>
+     <label style="display:inline;text-transform:none"><input type="checkbox" id="showOptimistic"> Optimistic</label></div></div>
   <div style="margin-top:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
    <button class="btn" id="runBtn" onclick="void runOpt()">Run simulation</button>
    <button class="btn2" id="cancelBtn" onclick="void cancelRun()" disabled>Cancel</button>

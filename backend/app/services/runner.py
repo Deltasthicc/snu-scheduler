@@ -33,8 +33,9 @@ def run_plan(req: dict, should_cancel=None, on_progress=None) -> dict:
     t0 = time.perf_counter()
     courses = req["courses"]
     grid = list(STRESS_GRID)
-    if req.get("include_optimistic"):
-        grid.append("OPTIMISTIC")
+    for extra in req.get("extra_scenarios", []):
+        if extra not in grid:
+            grid.append(extra)
 
     total_units = len(courses) * len(grid)
     unit = 0

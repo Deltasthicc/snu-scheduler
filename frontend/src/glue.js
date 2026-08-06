@@ -66,8 +66,19 @@ function buildPlan() {
     seed: +($('seed') ? $('seed').value : 20260802),
     headlineMode: curMode(), budgetMode: curBudgetMode(), robustMethod: curMethod(),
     dispersion: +($('disp') ? $('disp').value : 0.18),
-    includeOptimistic: !!($('showOptimistic') && $('showOptimistic').checked)
+    extraScenarios: extraScenarios()
   };
+}
+function extraScenarios() {
+  const picked = ['showLow', 'showModerate', 'showOptimistic']
+    .filter(id => $(id) && $(id).checked)
+    .map(id => ({ showLow: 'LOW', showModerate: 'MODERATE', showOptimistic: 'OPTIMISTIC' }[id]));
+  // The headline scenario must always be one of the simulated tiers - if it's a
+  // comparison-only mode whose own checkbox happens to be unchecked, include it
+  // anyway rather than sending a request the backend would reject.
+  const headline = curMode();
+  if (['LOW', 'MODERATE', 'OPTIMISTIC'].includes(headline) && !picked.includes(headline)) picked.push(headline);
+  return picked;
 }
 
 /* ---------------- §9 backend availability ---------------- */
@@ -353,7 +364,11 @@ function drawResult(res) {
       <table><thead><tr><th>Scenario</th><th>Rivals</th><th>Win at ${r.bid}</th>
         <th>At ${Math.max(0, r.bid - 1)}</th><th>At cap ${r.cap}</th></tr></thead><tbody>`;
     r.scenarios.forEach(s => {
-      h += `<tr${s.comparison_only ? ' style="opacity:.6"' : ''}>
+      // A dimmed row (opacity) used to distinguish comparison-only scenarios, but that
+      // fades the text along with everything else - fine when this row was opt-in and
+      // rare, not fine now that Low/Moderate run by default and this row is common.
+      // The pill label alone (full-contrast text) carries the same distinction.
+      h += `<tr${s.comparison_only ? ' class="comparison-row"' : ''}>
         <td>${esc(s.label)}${s.comparison_only ? ' <span class="pill p-m">comparison only</span>' : ''}</td>
         <td class="num tiny">${Math.round(s.expected_rivals)}</td>
         <td class="num">${probLabel(s.win_at_bid)}</td>
@@ -896,7 +911,7 @@ async function boot() {
   MANUAL = [];
   FIXED = [];
 
-  ['compMode', 'robustMethod', 'disp', 'showOptimistic', 'budgetMode'].forEach(id => {
+  ['compMode', 'robustMethod', 'disp', 'showLow', 'showModerate', 'showOptimistic', 'budgetMode'].forEach(id => {
     const e = $(id); if (e) e.onchange = () => { if (RESULT) void runOpt(); };
   });
   ['model', 'sem', 'remME', 'remUWE', 'remCCC', 'remFL', 'doneME', 'doneUWE', 'doneCCC'].forEach(id => {

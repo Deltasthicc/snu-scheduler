@@ -1629,3 +1629,83 @@ backend suite passed (162 passed, 1 skipped); real-browser E2E passed (67/67), i
 CSE, B.Des., and doctoral pathway renderings; frontend production bundle rebuilt to
 922,806 bytes. Relevant prospectus pages were rendered and visually inspected for CSE,
 Civil, ECE, Mechanical, and Chemical Engineering.
+
+---
+
+## 19. Session update — 2026-08-06 (still later): a real bid-allocation bug, more
+## competition scenarios, and a layout that was 640px narrower than it needed to be
+
+The user reported the bid simulator felt like it was "over-oversubscribing" - courses
+were showing "target not reachable" even at the full pool cap - plus a request for
+easier headline-scenario options, more customisability, and a much wider layout.
+
+**Found a real bug in `minimal_robust_bid()` (`backend/app/optimization/robust.py`),
+not just harsh tuning.** For STRONG/BACKUP/OPTIONAL priorities, EXTREME's own published
+target is 0 - it's a stress test to report, never a bar those priorities must clear.
+`brute_force()`'s own `meets()` oracle already encoded that correctly (`t[k]<=0 or
+curves[k][b]>=t[k]`), but `minimal_robust_bid()`'s fast path had a first-pass gate that
+compared the worst win-probability across *all three* mandatory tiers - EXTREME
+included - against the HIGH tier's target, before it ever reached the (correct) per-tier
+check. A course whose EXTREME performance was merely low - not a problem, since EXTREME
+was never required - failed that gate on every bid up to and including the cap, so the
+correct per-tier logic never ran. Reproduced with the exact numbers from the report
+(HIGH 99.9%, VERY_HIGH 94%, EXTREME 56% at cap for a STRONG course): before the fix,
+`target_met=False` at the full cap for all three robustness methods; after, `minimax`
+returns bid 282 with `target_met=True` - the course was reachable the whole time. No
+test had ever compared `minimal_robust_bid()` against `brute_force()` despite
+`brute_force()` existing specifically for that - a real gap, not a hypothetical one.
+Rewrote the function so minimax matches `brute_force()` exactly (verified by
+`test_minimal_robust_bid_matches_brute_force_on_random_curves`, 25 random trials) and
+mean/cvar blend probabilities only across the tiers a priority is actually held to,
+compared against a matching blended target - genuinely more permissive than minimax
+now, not just a broken gate. `backend/tests/test_robust.py` (new, 9 tests) covers this;
+`summarise()`'s own `_worst`/`_mean`/`_cvar` display aggregates were also fixed to use
+an allowlist of mandatory tiers (`k in STRESS`) instead of a denylist naming
+`"OPTIMISTIC"` by name, so the fix generalizes to the two new modes below automatically.
+
+**Added `LOW` and `MODERATE` competition modes** (`backend/app/simulation/engine.py`),
+both `comparison_only=True` like `OPTIMISTIC` - never used for the conservative
+recommendation itself (design decision #1 stands unchanged). `SimulationRequest`'s old
+single `include_optimistic: bool` became `extra_scenarios: list[CompetitionMode]`
+(defaults to `[LOW, MODERATE]` - visible without opting in; `OPTIMISTIC` stays opt-in),
+with a validator rejecting anything that isn't one of the three comparison-only tiers
+and a cross-field check that `headline_mode` is always one of the tiers actually being
+simulated. Frontend: the single "Also show optimistic comparison" checkbox became three
+(Low/Moderate checked, Optimistic unchecked), and the headline-scenario dropdown gained
+Low and Moderate. `buildPlan()` now guards against sending an inconsistent request
+(picking a comparison-only headline whose own checkbox is unticked still includes it).
+
+**Found and fixed a second, real accessibility regression while re-running the a11y
+audit** (not assumed clean): the scenario-comparison table dimmed comparison-only rows
+via `opacity:.6` on the whole `<tr>` - fine when that row was `OPTIMISTIC` only and
+opt-in, not fine now that Low/Moderate run by default and that row is the common case.
+Faded text pushed already-borderline `.p-m`/`.mut` contrast below WCAG AA. Fixed by
+replacing the opacity trick with a subtle background tint (`.comparison-row`) that
+doesn't touch text contrast - the "comparison only" pill label alone already carries
+the distinction. Re-ran the full 6-tab audit after the fix: 0 violations again.
+
+**Layout width.** `.wrap` was capped at `max-width:1240px` - on a real 1512px laptop
+viewport that's over 270px of dead margin on each side, confirmed by checking the
+actual rendered `.wrap` width via a real Playwright-controlled Chromium page (the
+`Browser` pane tool in this environment reports a 0x0 viewport and can't render for
+real, so this was verified through the same Playwright harness the e2e suite already
+uses, not assumed from the CSS alone). Widened to `max-width:1880px`; verified at both
+1512px (fills the full width, no overflow) and 1920px (caps at 1880px, no overflow).
+`.note`/`.sub` prose text got explicit `max-width` caps (105ch/90ch) so paragraph text
+doesn't stretch uncomfortably wide just because the card around it now can; stat/grid
+columns (`.g3`/`.g4`) gain an extra column at `min-width:1500px` so the recovered space
+holds more content, not just more padding.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 172 passed, 1 skipped (was 163)
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 44 + 36 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 70 passed (was 69)
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations (1 found and fixed mid-session)
+```
+
+**Not done this pass**: no page-level multi-column (sidebar) layout was added anywhere
+- the width fix recovers space for existing grids/tables/cards to breathe, not a new
+information-architecture change; a `.pane-cols` utility was drafted then removed
+unused rather than left half-wired. Doctoral/MBA/PhD students still see the full bid
+simulator tab even though most graduate enrolment bypasses bidding (`ENROL.BACKEND_DISCONTINUED`)
+- named again as a real follow-up, not attempted.

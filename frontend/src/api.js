@@ -220,7 +220,7 @@
       budget_mode: plan.budgetMode || 'SHARED_LIVE',
       robust_method: plan.robustMethod || 'minimax',
       dispersion: Math.min(0.6, Math.max(0, num(plan.dispersion) ?? 0.18)),
-      include_optimistic: !!plan.includeOptimistic
+      extra_scenarios: Array.isArray(plan.extraScenarios) ? plan.extraScenarios : ['LOW', 'MODERATE']
     };
   }
 

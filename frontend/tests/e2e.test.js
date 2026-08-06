@@ -112,7 +112,10 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('no bid exceeds its cap', res.bids.every(x => x.bid <= x.cap), JSON.stringify(res.bids.map(x => x.bid + '/' + x.cap)));
   ck('modelled rivals exceed seats (stress default)', res.bids.every(x => x.rivals > x.seats),
      JSON.stringify(res.bids.map(x => Math.round(x.rivals) + '>' + x.seats)));
-  ck('three stress scenarios were run', res.scenarios.length === 3, res.scenarios.join(','));
+  ck('all three mandatory stress scenarios were run', ['HIGH', 'VERY_HIGH', 'EXTREME'].every(m => res.scenarios.includes(m)),
+     res.scenarios.join(','));
+  ck('Low and Moderate comparison scenarios run by default too', ['LOW', 'MODERATE'].every(m => res.scenarios.includes(m)),
+     res.scenarios.join(','));
   ck('backend versions surfaced to the UI', !!res.rule && !!res.model, res.rule + ' / ' + res.model);
 
   console.log('\n=== §12 SHARED vs INDEPENDENT COMPARISON ===');
