@@ -18,6 +18,7 @@ from app.models.audit_schemas import DegreeAuditRequest  # noqa: E402
 from app.services.degree_audit import ProgrammeCatalog, audit_degree  # noqa: E402
 
 CATALOG_PATH = ROOT / "backend" / "app" / "data" / "programs.json"
+PATHWAYS_PATH = ROOT / "backend" / "app" / "data" / "pathways.json"
 ALLOWED_HOSTS = {"snu.edu.in", "www.snu.edu.in", "snulinks.snu.edu.in"}
 VERIFICATION = {"verified_public_curriculum", "verified_public_milestones", "source_linked_partial"}
 
@@ -47,10 +48,28 @@ def validate(check_urls: bool) -> int:
             errors.append(f"duplicate programme {key}")
 
     catalog = ProgrammeCatalog(CATALOG_PATH)
+    pathway_payload = json.loads(PATHWAYS_PATH.read_text(encoding="utf-8"))
+    pathway_by_id = pathway_payload.get("programmes", {})
+    if set(pathway_by_id) != {program["id"] for program in programs}:
+        errors.append("pathways.json must contain exactly one entry for every programme")
     urls: set[str] = {payload["catalog_url"]}
     for program in programs:
         prefix = program["id"]
         verification = program.get("verification")
+        pathway = (catalog.get(prefix) or {}).get("pathways", {})
+        if pathway.get("kind") not in {
+            "formal_specialisation", "programme_stream", "degree_route",
+            "research_areas", "no_formal_specialisation",
+        }:
+            errors.append(f"{prefix}: invalid or missing pathways kind")
+        if not pathway.get("summary") or not pathway.get("sources"):
+            errors.append(f"{prefix}: pathways summary and source are required")
+        for option in pathway.get("options", []):
+            if not option.get("id") or not option.get("title"):
+                errors.append(f"{prefix}: pathway options require id and title")
+            minimum = option.get("minimum_credits")
+            if minimum is not None and float(minimum) <= 0:
+                errors.append(f"{prefix}/{option.get('id')}: minimum credits must be positive")
         requirements = program.get("requirements", [])
         if verification not in VERIFICATION:
             errors.append(f"{prefix}: invalid verification state {verification!r}")
@@ -77,6 +96,12 @@ def validate(check_urls: bool) -> int:
             parsed = urlparse(url)
             if parsed.scheme != "https" or parsed.hostname not in ALLOWED_HOSTS:
                 errors.append(f"{prefix}: non-official or non-HTTPS source {url}")
+            urls.add(url)
+        for source in pathway.get("sources", []):
+            url = source["url"]
+            parsed = urlparse(url)
+            if parsed.scheme != "https" or parsed.hostname not in ALLOWED_HOSTS:
+                errors.append(f"{prefix}: non-official pathway source {url}")
             urls.add(url)
         try:
             result = audit_degree(DegreeAuditRequest(programme_id=prefix), catalog)

@@ -33,6 +33,7 @@ echo "==> freezing the desktop app with PyInstaller (--onedir)"
 (cd "$HERE/backend" && python3 -m PyInstaller --onedir --windowed --name SNU-Bid-Scheduler \
   --add-data "app/data/courses.json;app/data" \
   --add-data "app/data/programs.json;app/data" \
+  --add-data "app/data/pathways.json;app/data" \
   --add-data "app/data/dataset_manifest.json;app/data" \
   --add-data "app/data/timetable_versions;app/data/timetable_versions" \
   --add-data "../frontend/dist/index.html;frontend_dist" \

@@ -1604,3 +1604,28 @@ cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 44 + 35
 cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 64 passed
 ./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, across the new 6-tab structure with every <details> opened before scanning
 ```
+
+---
+
+## 19. Session update — 2026-08-06: programme-wide pathways and specialisations
+
+Replaced the hardcoded CSE-only `SPEC` object with a source-linked pathway catalogue
+(`backend/app/data/pathways.json`) containing exactly one record for every one of the
+44 programme IDs in `programs.json`. `ProgrammeCatalog` merges the two files and fails
+closed on missing or extra IDs; the packaged desktop build now includes the new file.
+
+The UI distinguishes formal specialisations, B.Des. streams, ASU degree routes,
+doctoral research areas, and programmes with no separately published specialisation.
+It calculates completed + selected credit only when SNU publishes a course mapping;
+otherwise it shows the official option and source without inventing a number. The
+former CSE “Systems and Networks” bucket was removed: the current CSE prospectus names
+exactly AI/ML, Data Science/Big Data Analytics, and Cyber Security/Privacy. Civil's
+9-credit-plus-project rule, CSE's 12-or-6-plus-project rule, and the 12-credit ECE,
+Mechanical, and Chemical models are kept separate. Mandatory course groups for
+interdisciplinary ECE/Mechanical tracks are checked explicitly.
+
+Verification performed: programme catalogue validator passed for all 44 IDs; full
+backend suite passed (162 passed, 1 skipped); real-browser E2E passed (67/67), including
+CSE, B.Des., and doctoral pathway renderings; frontend production bundle rebuilt to
+922,806 bytes. Relevant prospectus pages were rendered and visually inspected for CSE,
+Civil, ECE, Mechanical, and Chemical Engineering.

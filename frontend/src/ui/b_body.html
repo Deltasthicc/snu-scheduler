@@ -310,21 +310,17 @@
   currently chosen.</div></div>
   <div><button class="btn" onclick="void runDegreeAudit()">Run audit check</button></div></div>
   <div id="twoBox"></div></div>
- <details class="more"><summary>Specialisation tracker (CSE B.Tech. only)</summary>
-  <div class="card tight" style="margin-top:10px"><div class="hd" style="margin-bottom:8px"><div><h2>Already-completed major electives</h2>
-   <div class="note">Banks credit toward the specialisation buckets below. Saved in this browser only.</div></div></div>
+ <details class="more"><summary>Programme pathways &amp; specialisations</summary>
+  <div class="card tight" style="margin-top:10px"><div class="hd" style="margin-bottom:8px"><div><h2>Completed pathway / specialisation courses</h2>
+   <div class="note">Used only when the selected programme publishes a course-mapped pathway. Saved in this browser only.</div></div></div>
    <div id="doneMEList"></div>
    <div class="srch" style="margin-top:9px">
-    <button class="btn2" onclick="addDoneME()">+ add a completed major elective</button></div></div>
-  <div class="card"><div class="hd"><div><h2>Which specialisation you can actually reach</h2>
-   <div class="note">Buckets are verbatim from the prospectus. A course counts only where the published name
-   maps to a real course code.</div></div>
-   <div id="c336Wrap" style="display:none"><label style="display:inline">Count CSD336 RL as AI bucket?</label>
-    <select id="c336" style="width:auto;display:inline-block">
-     <option value="0" selected>No — it is Major Core</option><option value="1">Yes — advisor accepted it</option>
-    </select></div></div>
+    <button class="btn2" onclick="addDoneME()">+ add a completed pathway course</button></div></div>
+  <div class="card"><div class="hd"><div><h2>Your programme pathway options</h2>
+   <div class="note">The label and progress model change with the selected programme. Formal specialisations,
+   B.Des. streams, partner routes, and doctoral research areas remain explicitly distinct.</div></div></div>
    <div id="specBox"></div></div>
-  <div class="card"><div class="hd"><div><h2>Which block to ask for</h2></div></div><div id="blockBox"></div></div>
+  <div class="card" id="blockCard" style="display:none"><div class="hd"><div><h2>CSE core-block helper</h2></div></div><div id="blockBox"></div></div>
  </details>
 </div>
 

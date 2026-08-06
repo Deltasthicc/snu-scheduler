@@ -15,6 +15,7 @@ from typing import Any
 from app.models.audit_schemas import AuditCourse, AuditRequirementOverride, DegreeAuditRequest
 
 DATA_FILE = Path(__file__).resolve().parents[1] / "data" / "programs.json"
+PATHWAYS_FILE = Path(__file__).resolve().parents[1] / "data" / "pathways.json"
 
 
 class ProgrammeCatalog:
@@ -22,6 +23,20 @@ class ProgrammeCatalog:
         payload = json.loads(path.read_text(encoding="utf-8"))
         self.meta = {key: value for key, value in payload.items() if key != "programs"}
         self.programs = payload["programs"]
+        pathways_path = path.with_name("pathways.json")
+        if pathways_path.exists():
+            pathway_payload = json.loads(pathways_path.read_text(encoding="utf-8"))
+            pathway_by_id = pathway_payload.get("programmes", {})
+            program_ids = {program["id"] for program in self.programs}
+            if set(pathway_by_id) != program_ids:
+                missing = sorted(program_ids - set(pathway_by_id))
+                extra = sorted(set(pathway_by_id) - program_ids)
+                raise ValueError(f"pathway catalogue mismatch: missing={missing}, extra={extra}")
+            for program in self.programs:
+                program["pathways"] = pathway_by_id[program["id"]]
+            self.meta["pathways"] = {
+                key: value for key, value in pathway_payload.items() if key != "programmes"
+            }
         self.by_id = {program["id"]: program for program in self.programs}
 
     def list(self) -> list[dict[str, Any]]:

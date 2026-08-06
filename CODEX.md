@@ -54,6 +54,12 @@ testing, stop only the exact processes created for the test.
   no extension may exceed 30 total credits. Additional eligibility conditions apply.
 - CSE programme: 160 total; 61 major core; 15 major elective; 17 basic science;
   13 engineering science; 12 project; CCC/UWE 42 combined with at least 18 each.
+- CSE's current published optional specialisations are exactly three: Artificial
+  Intelligence and Machine Learning, Data Science and Big Data Analytics, and Cyber
+  Security and Privacy. Do not revive the legacy fourth "Systems and Networks" bucket.
+- Programme pathway labels are not interchangeable. A B.Des. stream, ASU partner route,
+  doctoral research area, minor, and formal award-bearing specialisation must remain
+  distinct. Only calculate pathway credit when an official course mapping is present.
 - Bid pools follow the published bidding concept-note formulas, but the concept note's
   own average fourth-year example contains unresolved arithmetic inconsistencies.
   Show formula provenance and input values; never call the disputed example verified.

@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "catalog_checked": "2026-08-06",
+  "scope_note": "Programme-specific pathways from official public SNU pages and prospectuses. A research area, elective focus, stream, or partner route is not labelled as an award-bearing specialisation unless the source does so.",
+  "programmes": {
+    "accelerated-masters-program-with-asu": {
+      "kind": "degree_route", "label": "ASU master's route", "summary": "The public programme page identifies the accelerated ASU route and specifically names MS Software Engineering with a Cybersecurity specialization; exact destination eligibility is partner- and cohort-dependent.",
+      "options": [{"id": "asu-msse-cybersecurity", "title": "MS Software Engineering (Cybersecurity specialization)", "type": "partner_route"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/accelerated-masters-program-with-asu/overview/"}]
+    },
+    "b-a-research-in-english": {
+      "kind": "no_formal_specialisation", "label": "English major", "summary": "The public programme page describes a single English major and does not publish separate award-bearing specialisation buckets. Use the degree audit and current electives instead.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/ba-research-in-english/overview/"}]
+    },
+    "b-sc-research-in-biotechnology": {
+      "kind": "no_formal_specialisation", "label": "Biotechnology major", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for this degree.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bsc-research-in-biotechnology/overview/"}]
+    },
+    "b-sc-research-in-chemistry": {
+      "kind": "formal_specialisation", "label": "Major configuration", "summary": "The official overview says a Chemistry major may be combined with a Life Sciences minor, or pursued with a specialization in Chemical Physics or Chemical Biology. Public credit-bucket rules are not stated on that page.",
+      "options": [{"id": "chemical-physics", "title": "Chemical Physics", "type": "formal_specialisation"}, {"id": "chemical-biology", "title": "Chemical Biology", "type": "formal_specialisation"}, {"id": "life-sciences-minor", "title": "Life Sciences minor", "type": "minor"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bsc-research-in-chemistry/overview/"}]
+    },
+    "b-sc-research-in-economics": {
+      "kind": "no_formal_specialisation", "label": "Economics major", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for this degree.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bsc-research-in-economics/overview/"}]
+    },
+    "b-sc-research-in-economics-and-finance": {
+      "kind": "no_formal_specialisation", "label": "Economics and Finance major", "summary": "Economics and Finance is already the named interdisciplinary major; the public page does not publish a second layer of award-bearing specialisation buckets.", "options": [],
+      "sources": [{"label": "Official programme page", "url": "https://snu.edu.in/b.sc-research-in-economics-and-finance/"}]
+    },
+    "b-sc-research-in-mathematics": {
+      "kind": "no_formal_specialisation", "label": "Mathematics major", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for this degree.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bsc-research-in-mathematics/overview/"}]
+    },
+    "b-sc-research-in-physics": {
+      "kind": "no_formal_specialisation", "label": "Physics major", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for this degree.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bsc-research-in-physics/overview/"}]
+    },
+    "b-tech-in-chemical-engineering": {
+      "kind": "formal_specialisation", "label": "Optional specialisation", "summary": "The 2025-onward curriculum publishes two named Chemical Engineering buckets and a cross-domain Computational Mechanics option. Each shown option uses a 12-credit elective requirement; exact cohort rules must match the student's curriculum.", "cohort_note": "2025 onward curriculum",
+      "options": [
+        {"id": "modelling-simulation", "title": "Modelling and Simulation", "type": "formal_specialisation", "minimum_credits": 12, "course_titles": ["Introduction to Modelling and Simulation", "Computational Fluid Dynamics", "Modelling and Simulation of Engineering Systems", "Molecular Simulation"]},
+        {"id": "bioenergy-biomaterials", "title": "Bioenergy and Biomaterials", "type": "formal_specialisation", "minimum_credits": 12, "course_titles": ["Industrial Pollution and Waste Management", "Waste to Biomaterials", "Biomass Conversion to Bioenergy", "Microreactor Technology for Biofuel Production"]},
+        {"id": "computational-mechanics", "title": "Computational Mechanics", "type": "interdisciplinary_specialisation", "minimum_credits": 12, "course_titles": ["Finite Element Method", "Computational Fluid Dynamics", "Modelling and Simulation of Engineering Systems", "Fracture Mechanics", "Continuum Mechanics", "Advanced Mechanics of Composites", "Optimization Methods", "Multiphase Flows", "Molecular Simulation"]}
+      ],
+      "sources": [{"label": "Official 2025-onward curriculum", "url": "https://snu.edu.in/site/assets/files/6903/2025_onwards_-_chemical_engineering_-_ug_curriculum.pdf"}]
+    },
+    "btech-chemical-bioenergy": {
+      "kind": "formal_specialisation", "label": "Embedded specialisation", "summary": "Bioenergy and Biomaterials is built into this named programme. The 2025-onward curriculum publishes a 12-credit specialisation pool.", "cohort_note": "2025 onward curriculum",
+      "options": [{"id": "bioenergy-biomaterials", "title": "Bioenergy and Biomaterials", "type": "embedded_specialisation", "minimum_credits": 12, "course_titles": ["Industrial Pollution and Waste Management", "Waste to Biomaterials", "Biomass Conversion to Bioenergy", "Microreactor Technology for Biofuel Production"]}],
+      "sources": [{"label": "Official 2025-onward curriculum", "url": "https://snu.edu.in/site/assets/files/6903/2025_onwards_-_chemical_engineering_-_ug_curriculum.pdf"}]
+    },
+    "btech-chemical-modelling": {
+      "kind": "formal_specialisation", "label": "Embedded specialisation", "summary": "Modelling and Simulation is built into this named programme. The 2025-onward curriculum publishes a 12-credit specialisation pool.", "cohort_note": "2025 onward curriculum",
+      "options": [{"id": "modelling-simulation", "title": "Modelling and Simulation", "type": "embedded_specialisation", "minimum_credits": 12, "course_titles": ["Introduction to Modelling and Simulation", "Computational Fluid Dynamics", "Modelling and Simulation of Engineering Systems", "Molecular Simulation"]}],
+      "sources": [{"label": "Official 2025-onward curriculum", "url": "https://snu.edu.in/site/assets/files/6903/2025_onwards_-_chemical_engineering_-_ug_curriculum.pdf"}]
+    },
+    "b-tech-in-civil-engineering": {
+      "kind": "formal_specialisation", "label": "Optional specialisation", "summary": "Civil Engineering publishes three optional specialisations. The 2024 prospectus requires at least three courses (minimum 9 elective credits) plus the 6-credit seventh-semester FYUP project in the same area, for 15 credits total.", "cohort_note": "2024 prospectus; verify your cohort",
+      "options": [
+        {"id": "sustainable-infrastructure", "title": "Sustainable Infrastructure Systems", "type": "formal_specialisation", "minimum_credits": 9, "project_credits": 6, "project_required": true},
+        {"id": "water-environment-climate", "title": "Water, Environment and Climate", "type": "formal_specialisation", "minimum_credits": 9, "project_credits": 6, "project_required": true},
+        {"id": "urban-network", "title": "Urban Network Systems", "type": "formal_specialisation", "minimum_credits": 9, "project_credits": 6, "project_required": true}
+      ],
+      "sources": [{"label": "Official 2024 prospectus", "url": "https://snu.edu.in/site/assets/files/6909/btech_prospectus_2024_final.pdf"}]
+    },
+    "b-tech-in-computer-science-and-engineering": {
+      "kind": "formal_specialisation", "label": "Optional specialisation", "summary": "CSE publishes three optional specialisations. Complete 12 bucket credits, or 6 bucket credits plus the 6-credit Project-I in the same area; overall CGPA must be at least 7 and the specialisation-component CGPA at least 8. Only one may be claimed.", "cohort_note": "2022 onward prospectus; course lists are marked tentative by SNU", "overall_cgpa_min": 7, "component_cgpa_min": 8,
+      "options": [
+        {"id": "ai-ml", "title": "Artificial Intelligence and Machine Learning", "type": "formal_specialisation", "minimum_credits": 12, "project_alternative_at": 6, "project_credits": 6, "course_codes": ["CSD350", "CSD352", "CSD357", "CSD360", "CSD361", "CSD454", "CSD456", "CSD481", "CSD485"], "course_titles": ["Reinforcement Learning", "Evolutionary Computing"]},
+        {"id": "data-big-data", "title": "Data Science and Big Data Analytics", "type": "formal_specialisation", "minimum_credits": 12, "project_alternative_at": 6, "project_credits": 6, "course_codes": ["CSD350", "CSD351", "CSD355", "CSD358", "CSD361", "CSD363", "CSD450", "CSD452", "CSD455", "CSD462", "CSD482", "CSD486"], "course_titles": ["Stochastic Simulation and Modelling"]},
+        {"id": "cyber-privacy", "title": "Cyber Security and Privacy", "type": "formal_specialisation", "minimum_credits": 12, "project_alternative_at": 6, "project_credits": 6, "course_codes": ["CSD356", "CSD451", "CSD457", "CSD459", "CSD463", "CSD464", "CSD483", "CSD487"], "course_titles": ["Ethical Hacking", "Security Analytics", "Secure Coding"]}
+      ],
+      "sources": [{"label": "Official CSE prospectus (2022 onward)", "url": "https://snu.edu.in/site/assets/files/3888/prospectus_b_tech__-_cse_2022onwards.pdf?v=2"}]
+    },
+    "b-tech-in-electrical-and-computer-engineering": {
+      "kind": "formal_specialisation", "label": "Optional specialisation", "summary": "The current curriculum publishes three departmental and four interdisciplinary specialisations. Each needs at least 12 credits from its pool and CGPA of at least 5; some interdisciplinary tracks also name prerequisites or compulsory courses.", "cohort_note": "Current public curriculum; verify cohort applicability", "overall_cgpa_min": 5,
+      "options": [
+        {"id": "modern-energy", "title": "Modern Energy Systems", "type": "departmental_specialisation", "minimum_credits": 12, "course_codes": ["ECE3302", "ECE3304", "ECE3312", "ECE3318", "ECE3322", "ECE3323", "ECE3329", "ECE4205", "ECE4209", "ECE4212"]},
+        {"id": "wireless-systems", "title": "Wireless Systems Engineering", "type": "departmental_specialisation", "minimum_credits": 12, "course_codes": ["ECE3303", "ECE3306", "ECE3307", "ECE3308", "ECE3313", "ECE3315", "ECE3316", "ECE3319", "ECE3324", "ECE4202", "ECE4207", "ECE4208", "ECE4210", "ECE4211", "ECE4213"]},
+        {"id": "vlsi", "title": "VLSI Design", "type": "departmental_specialisation", "minimum_credits": 12, "course_codes": ["ECE3301", "ECE3321", "ECE3325", "ECE3326", "ECE3327", "ECE3329", "ECE3328", "ECE4204", "ECE4212"]},
+        {"id": "applied-machine-intelligence", "title": "Applied Machine Intelligence", "type": "interdisciplinary_specialisation", "minimum_credits": 12, "course_codes": ["ECE4206", "CSD4210", "ECE3320", "ECE4215", "CSD4211", "CSD4228", "MED4204"], "mandatory_groups": [["ECE4206", "CSD4210"]]},
+        {"id": "e-mobility", "title": "E-Mobility", "type": "interdisciplinary_specialisation", "minimum_credits": 12, "course_codes": ["ECE3310", "CSD4236", "MED3306", "ECE4203", "CSD4209", "MED4205"], "mandatory_groups": [["ECE3310"], ["CSD4236"], ["MED3306"]]},
+        {"id": "cognitive-robotics", "title": "Cognitive Robotics", "type": "interdisciplinary_specialisation", "minimum_credits": 12, "course_codes": ["MED4204", "MED3305", "MED3311", "CSD4209", "ECE3318", "ECE3311", "CSD4220", "ECE4206", "CSD4210"], "mandatory_groups": [["MED4204"]]},
+        {"id": "real-time-embedded", "title": "Real-Time Embedded Systems", "type": "interdisciplinary_specialisation", "minimum_credits": 12, "course_codes": ["ECE3328", "ECE4204", "ECE4208", "CSD4227", "CSD4212", "CSD4206"]}
+      ],
+      "sources": [{"label": "Official ECE curriculum", "url": "https://snu.edu.in/site/assets/files/6905/curriculum_electrical_engineering.pdf"}]
+    },
+    "b-tech-in-mechanical-engineering": {
+      "kind": "formal_specialisation", "label": "Optional track", "summary": "The 2025-29-onward curriculum publishes three departmental and two interdisciplinary tracks. A track uses 12 major-elective credits and is optional.", "cohort_note": "2025-29 onward curriculum",
+      "options": [
+        {"id": "computational-techniques", "title": "Computational Techniques in Mechanical Engineering", "type": "departmental_track", "minimum_credits": 12, "course_codes": ["MED3301", "MED3302", "MED3307", "MED3308", "MED3313", "MED4201"]},
+        {"id": "energy-technology", "title": "Energy Technology", "type": "departmental_track", "minimum_credits": 12, "course_codes": ["MED3303", "MED3304", "MED3308", "MED3309", "MED3312", "MED4202", "MED4203", "MED4205"]},
+        {"id": "robotics-industrial-automation", "title": "Robotics and Industrial Automation", "type": "departmental_track", "minimum_credits": 12, "course_codes": ["MED3305", "MED3310", "MED3311", "MED4204", "MED4206"]},
+        {"id": "e-mobility", "title": "E-Mobility", "type": "interdisciplinary_track", "minimum_credits": 12, "course_codes": ["MED3306", "ECE3310", "CSD4236", "MED4205", "CSD4209", "ECE4203"], "mandatory_groups": [["MED3306"], ["ECE3310"], ["CSD4236"]]},
+        {"id": "cognitive-robotics", "title": "Cognitive Robotics", "type": "interdisciplinary_track", "minimum_credits": 12, "course_codes": ["MED4204", "ECE3318", "MED3305", "CSD4209", "MED3310", "ECE3311", "ECE4206", "CSD4210"], "mandatory_groups": [["MED4204"], ["ECE3318"]]}
+      ],
+      "sources": [{"label": "Official 2025-29-onward curriculum", "url": "https://snu.edu.in/site/assets/files/16490/med_curriculum_202529_onwards.pdf?v=2"}]
+    },
+    "ba-research-in-international-relations": {
+      "kind": "no_formal_specialisation", "label": "International Relations major", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for this degree.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/ba-research-in-international-relations/overview/"}]
+    },
+    "ba-research-interdisciplinary-humanities-and-social-sciences-ihs": {
+      "kind": "formal_specialisation", "label": "Interdisciplinary major", "summary": "After the common first year, students choose one of three published interdisciplinary areas. The programme structure describes each as a 60-credit major within the 160-credit degree.",
+      "options": [{"id": "sustainability", "title": "Sustainability Studies", "type": "major", "minimum_credits": 60}, {"id": "archaeology-heritage-history", "title": "Archaeology, Heritage, and Historical Studies", "type": "major", "minimum_credits": 60}, {"id": "society-culture-technology", "title": "Society, Culture, Technology", "type": "major", "minimum_credits": 60}],
+      "sources": [{"label": "Official programme structure", "url": "https://snu.edu.in/programs/interdisciplinary-humanities-and-social-sciences/programme-structure/"}]
+    },
+    "bachelor-of-design": {
+      "kind": "programme_stream", "label": "B.Des. stream", "summary": "The official overview describes a choice-based streaming system for the B.Des. The same page reserves the word specialisation for the integrated B.Des.-M.Des.; this tracker therefore labels these as B.Des. streams.",
+      "options": [{"id": "experience-design", "title": "Experience Design (UI-UX)", "type": "stream"}, {"id": "product-system-design", "title": "Product-System Design", "type": "stream"}, {"id": "visual-communication", "title": "Visual Communication Design", "type": "stream"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bachelor-of-design/overview/"}]
+    },
+    "bachelor-of-management-studies": {
+      "kind": "no_formal_specialisation", "label": "Management elective focus", "summary": "The public programme page describes specialised core and elective study but does not publish separate award-bearing specialisation options.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bachelor-of-management-studies/overview/"}]
+    },
+    "bs-business-dual-degree-with-asu": {
+      "kind": "degree_route", "label": "Partner concentration", "summary": "The official page identifies the dual-degree BS Business route and a Finance specialization at the partner stage. Partner rules and destination eligibility should be confirmed for the student's cohort.",
+      "options": [{"id": "finance", "title": "Finance", "type": "partner_specialisation"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bs-business-dual-degree-with-asu/overview/"}]
+    },
+    "bs-computer-science-dual-degree-with-asu": {
+      "kind": "degree_route", "label": "Dual-degree route", "summary": "The public SNU page describes the BS Computer Science dual-degree route but does not publish a complete, credit-auditable concentration list. Use the ASU degree map for the destination cohort rather than treating interests as SNU credentials.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/bs-computer-science-dual-degree-with-asu/overview/"}]
+    },
+    "integrated-m-sc-ph-d-in-chemistry": {
+      "kind": "research_areas", "label": "Research direction", "summary": "Research direction is chosen with the department and supervisor; it is not an undergraduate-style credit-bucket specialisation.",
+      "options": [{"id": "chemical-biology", "title": "Chemical Biology", "type": "research_area"}, {"id": "chemical-physics", "title": "Chemical Physics", "type": "research_area"}, {"id": "materials-chemistry", "title": "Materials Chemistry", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/integrated-m.sc-phd-in-chemistry/overview/"}]
+    },
+    "integrated-m-sc-ph-d-in-life-sciences": {
+      "kind": "research_areas", "label": "Research direction", "summary": "Research direction is chosen with the department and supervisor; it is not an undergraduate-style credit-bucket specialisation.",
+      "options": [{"id": "development-regeneration", "title": "Development, Tissue Regeneration and Repair", "type": "research_area"}, {"id": "microbes-immunity", "title": "Microbes and Immunity", "type": "research_area"}, {"id": "neuroscience", "title": "Neuroscience, Brain and Cognition", "type": "research_area"}, {"id": "disease-therapeutics", "title": "Disease Pathogenesis and Therapeutics", "type": "research_area"}, {"id": "evolution-ecology", "title": "Evolution and Ecology", "type": "research_area"}, {"id": "plant-climate", "title": "Plant Biotechnology, Climate and Sustainability", "type": "research_area"}, {"id": "aging-metabolism", "title": "Aging and Metabolism", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/integrated-m.sc-ph.d.in-life-sciences/overview/"}]
+    },
+    "m-a-in-english": {
+      "kind": "no_formal_specialisation", "label": "English postgraduate programme", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for the M.A.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/ma-in-english/overview/"}]
+    },
+    "m-a-rural-management": {
+      "kind": "no_formal_specialisation", "label": "Rural Management programme", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for the M.A.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/m.a-rural-management/overview/"}]
+    },
+    "m-sc-in-economics": {
+      "kind": "no_formal_specialisation", "label": "Economics postgraduate programme", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for the M.Sc.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/msc-in-economics/overview/"}]
+    },
+    "master-of-fine-arts": {
+      "kind": "no_formal_specialisation", "label": "Fine Arts practice", "summary": "The public programme page does not publish separate award-bearing specialisation buckets for the MFA; studio/research direction remains a programme choice rather than a credit-bucket credential in this audit.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/mfa-in-fine-arts/overview/"}]
+    },
+    "mba": {
+      "kind": "no_formal_specialisation", "label": "MBA Global", "summary": "This catalogue entry is the MBA Global programme. The public programme page does not publish a credit-auditable list of award-bearing specialisations, so elective interests are not presented as credentials.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/mba-degree-global/overview/"}]
+    },
+    "ph-d-in-chemical-engineering": {
+      "kind": "research_areas", "label": "Research areas", "summary": "These are published research areas, not transcript specialisation buckets; final fit depends on supervisor availability.",
+      "options": [{"id": "biomass-bioenergy", "title": "Biomass conversion and bioenergy", "type": "research_area"}, {"id": "microfluidics", "title": "Microfluidics and microparticle self-assembly", "type": "research_area"}, {"id": "computational-materials", "title": "Computational modelling of responsive materials", "type": "research_area"}, {"id": "biobased-materials", "title": "Bio-based coatings and packaging films", "type": "research_area"}, {"id": "process-intensification", "title": "Process intensification and separations", "type": "research_area"}, {"id": "nanomaterials", "title": "Nanomaterials, catalysis and sensors", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-chemical-engineering/overview/"}]
+    },
+    "ph-d-in-chemistry": {
+      "kind": "research_areas", "label": "Research areas", "summary": "The Monsoon 2026 admission notice groups current opportunities under Organic, Inorganic, Physical and Computational Chemistry and lists detailed faculty topics. These are research areas, not credit-bucket credentials.",
+      "options": [{"id": "organic", "title": "Organic Chemistry", "type": "research_area"}, {"id": "inorganic", "title": "Inorganic Chemistry", "type": "research_area"}, {"id": "physical", "title": "Physical Chemistry", "type": "research_area"}, {"id": "computational", "title": "Computational Chemistry", "type": "research_area"}],
+      "sources": [{"label": "Official 2026 admission announcement", "url": "https://snu.edu.in/admissions/graduate-programs/ph.d-chemistry-admission-announcement/"}]
+    },
+    "ph-d-in-civil-engineering": {
+      "kind": "research_areas", "label": "Research areas", "summary": "These are the department's published research domains, not transcript specialisation buckets.",
+      "options": [{"id": "environmental", "title": "Environmental Engineering", "type": "research_area"}, {"id": "geotechnical", "title": "Geotechnical Engineering", "type": "research_area"}, {"id": "structural", "title": "Structural Engineering", "type": "research_area"}, {"id": "transportation", "title": "Transportation Engineering", "type": "research_area"}, {"id": "water-resources", "title": "Water Resources Engineering", "type": "research_area"}, {"id": "multidisciplinary", "title": "Building physics, disaster management, remote sensing/GIS and smart agricultural water management", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-civil-engineering/overview/"}]
+    },
+    "ph-d-in-computer-science-and-engineering": {
+      "kind": "research_areas", "label": "Research areas", "summary": "The current department material publishes four broad faculty research areas. These are supervisor-alignment areas, not the B.Tech. specialisation buckets.",
+      "options": [{"id": "wireless-mobile-networks", "title": "Wireless, Mobile Computing and Networking", "type": "research_area"}, {"id": "security-privacy", "title": "Security and Privacy", "type": "research_area"}, {"id": "data-science-engineering", "title": "Data Science and Engineering", "type": "research_area"}, {"id": "ml-computer-vision", "title": "Machine Learning and Computer Vision", "type": "research_area"}],
+      "sources": [{"label": "Official Spring 2026 programme brochure", "url": "https://snu.edu.in/site/assets/files/6254/department_of_computer_science_engineering_ph_d_program_spring_2026_copy_2.pdf"}]
+    },
+    "ph-d-in-economics": {
+      "kind": "research_areas", "label": "Research areas", "summary": "These are published faculty/research areas, not transcript specialisation buckets.",
+      "options": [{"id": "development-growth-environment", "title": "Development, growth and environmental economics", "type": "research_area"}, {"id": "micro-theory-design", "title": "Microeconomic theory, game theory and market/mechanism design", "type": "research_area"}, {"id": "macro-political", "title": "Macroeconomics and political economy", "type": "research_area"}, {"id": "labour-gender-public", "title": "Labour, gender and public economics", "type": "research_area"}, {"id": "econometrics-behavioural", "title": "Econometrics, computational and behavioural economics", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-economics/overview/"}]
+    },
+    "ph-d-in-electrical-engineering": {
+      "kind": "research_areas", "label": "Research areas", "summary": "These are published doctoral research areas, not transcript specialisation buckets.",
+      "options": [{"id": "power-energy", "title": "Power systems, renewable energy and storage", "type": "research_area"}, {"id": "rf-microwave", "title": "RF, microwave, electromagnetics and antennas", "type": "research_area"}, {"id": "signal-communication", "title": "Signal processing and communication", "type": "research_area"}, {"id": "vlsi-semiconductor", "title": "VLSI, semiconductor and MEMS devices", "type": "research_area"}, {"id": "power-electronics", "title": "Power electronics, drives and electric vehicles", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-electrical-engineering/overview/"}]
+    },
+    "ph-d-in-electronics-and-communication-engineering": {
+      "kind": "research_areas", "label": "Research areas", "summary": "These are published doctoral research areas, not transcript specialisation buckets.",
+      "options": [{"id": "rf-microwave", "title": "RF, microwave, electromagnetics and antennas", "type": "research_area"}, {"id": "signal-communication", "title": "Signal processing and communication", "type": "research_area"}, {"id": "vlsi", "title": "VLSI circuit design", "type": "research_area"}, {"id": "wireless", "title": "Wireless mobile communication and networks", "type": "research_area"}, {"id": "semiconductor-mems", "title": "Advanced semiconductor and MEMS devices", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-electronics-communication-engineering/overview/"}]
+    },
+    "ph-d-in-english": {
+      "kind": "research_areas", "label": "Research direction", "summary": "Research direction is agreed with the department and supervisor; the public page does not define credit-bucket specialisations.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-english/overview/"}]
+    },
+    "ph-d-in-history-and-archaeology": {
+      "kind": "research_areas", "label": "Research direction", "summary": "Research direction is agreed with the department and supervisor; the public page does not define credit-bucket specialisations.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-history-and-archaeology/overview/"}]
+    },
+    "ph-d-in-international-relations-and-governance-studies": {
+      "kind": "research_areas", "label": "Research direction", "summary": "Research direction is agreed with the department and supervisor; the public page does not define credit-bucket specialisations.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-international-relations-and-governance-studies/overview/"}]
+    },
+    "ph-d-in-life-sciences-and-bioinformatics": {
+      "kind": "research_areas", "label": "Research areas", "summary": "These are department research themes, not transcript specialisation buckets; final fit depends on supervisor availability.",
+      "options": [{"id": "development-regeneration", "title": "Development, Tissue Regeneration and Repair", "type": "research_area"}, {"id": "microbes-immunity", "title": "Microbes and Immunity", "type": "research_area"}, {"id": "neuroscience", "title": "Neuroscience, Brain and Cognition", "type": "research_area"}, {"id": "disease-therapeutics", "title": "Disease Pathogenesis and Therapeutics", "type": "research_area"}, {"id": "evolution-ecology", "title": "Evolution and Ecology", "type": "research_area"}, {"id": "plant-climate", "title": "Plant Biotechnology, Climate and Sustainability", "type": "research_area"}, {"id": "aging-metabolism", "title": "Aging and Metabolism", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-life-sciences-bioinformatics/overview/"}]
+    },
+    "ph-d-in-management-executive": {
+      "kind": "research_areas", "label": "Research direction", "summary": "The official page describes multidisciplinary, management-grounded doctoral research rather than fixed specialisation buckets; the topic is agreed through supervision.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-management/overview/"}]
+    },
+    "ph-d-in-mathematics": {
+      "kind": "research_areas", "label": "Monsoon 2026 research intake areas", "summary": "The current programme page lists six areas accepting students for Monsoon 2026. They describe the intake/research fit, not transcript specialisation buckets.",
+      "options": [{"id": "geometry", "title": "Geometry", "type": "research_area"}, {"id": "functional-analysis", "title": "Functional Analysis", "type": "research_area"}, {"id": "algebra", "title": "Algebra", "type": "research_area"}, {"id": "mathematical-modelling", "title": "Mathematical Modelling", "type": "research_area"}, {"id": "probability-statistics", "title": "Probability and Statistics", "type": "research_area"}, {"id": "mathematical-data-science", "title": "Mathematical Data Science", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/schools/school-of-natural-sciences/programs/phd-in-mathematics/overview/"}]
+    },
+    "ph-d-in-mechanical-engineering": {
+      "kind": "research_areas", "label": "Research areas", "summary": "These are published doctoral research areas, not transcript specialisation buckets.",
+      "options": [{"id": "advanced-materials", "title": "Advanced materials, bioimplants and degradation", "type": "research_area"}, {"id": "energy-systems", "title": "Energy systems", "type": "research_area"}, {"id": "biomimetics-robotics", "title": "Biomimetics and robotics", "type": "research_area"}, {"id": "advanced-manufacturing", "title": "Advanced and additive manufacturing", "type": "research_area"}, {"id": "joining-processing", "title": "Welding, friction-stir processing, cladding and casting", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-mechanical-engineering/overview/"}]
+    },
+    "ph-d-in-physics": {
+      "kind": "research_areas", "label": "Research areas", "summary": "These are published department research themes, not transcript specialisation buckets.",
+      "options": [{"id": "condensed-matter", "title": "Condensed matter and materials physics", "type": "research_area"}, {"id": "soft-matter", "title": "Soft matter", "type": "research_area"}, {"id": "high-energy", "title": "High-energy physics", "type": "research_area"}, {"id": "mathematical-statistical", "title": "Mathematical and statistical physics", "type": "research_area"}, {"id": "cosmology-astrophysics", "title": "Cosmology and astrophysics", "type": "research_area"}],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-physics/overview/"}]
+    },
+    "ph-d-in-sociology": {
+      "kind": "research_areas", "label": "Research direction", "summary": "Research direction is agreed with the department and supervisor; the public page does not define credit-bucket specialisations.", "options": [],
+      "sources": [{"label": "Official programme overview", "url": "https://snu.edu.in/programs/phd-in-sociology/overview/"}]
+    }
+  }
+}

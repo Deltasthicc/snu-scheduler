@@ -18,6 +18,27 @@ def test_catalog_contains_every_current_official_program_entry():
     assert len(CATALOG.list()) == 44
     assert CATALOG.get("b-tech-in-computer-science-and-engineering") is not None
     assert all(p["official_page"].startswith("https://snu.edu.in/") for p in CATALOG.list())
+    assert all(p.get("pathways", {}).get("kind") for p in CATALOG.list())
+    assert all(p["pathways"].get("sources") for p in CATALOG.list())
+
+
+def test_published_pathway_types_and_cse_options_are_not_conflated():
+    cse = CATALOG.get("b-tech-in-computer-science-and-engineering")["pathways"]
+    assert cse["kind"] == "formal_specialisation"
+    assert {option["title"] for option in cse["options"]} == {
+        "Artificial Intelligence and Machine Learning",
+        "Data Science and Big Data Analytics",
+        "Cyber Security and Privacy",
+    }
+    assert all(option["minimum_credits"] == 12 for option in cse["options"])
+
+    design = CATALOG.get("bachelor-of-design")["pathways"]
+    assert design["kind"] == "programme_stream"
+    assert all(option["type"] == "stream" for option in design["options"])
+
+    doctorate = CATALOG.get("ph-d-in-civil-engineering")["pathways"]
+    assert doctorate["kind"] == "research_areas"
+    assert all(option["type"] == "research_area" for option in doctorate["options"])
 
 
 def test_every_catalogued_programme_can_run_an_audit():

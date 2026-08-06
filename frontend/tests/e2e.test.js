@@ -325,7 +325,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
      /no clash-free combination found/.test(fallback.stat), fallback.stat);
   ck('best-available banner is shown, not a silent empty result', fallback.hasWarnBanner);
 
-  console.log('\n=== §20 SPECIALISATION: DONE ELECTIVES ARE LOCAL, NOT SHIPPED ===');
+  console.log('\n=== §20 PROGRAMME-WIDE PATHWAYS: DONE COURSES ARE LOCAL, NOT SHIPPED ===');
   await p.evaluate(() => { DONE_ME = []; });
   await p.click('.tab[data-p="two"]');
   await p.evaluate(() => { const d = document.querySelector('#p-two details.more'); if (d) d.open = true; });
@@ -336,6 +336,28 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     renderDoneME(); drawSpec();
   });
   ck('added elective is rendered', /CSD355/.test(await p.textContent('#doneMEList')));
+  ck('current CSE source exposes exactly three specialisations and no legacy Systems bucket',
+     /Artificial Intelligence and Machine Learning/.test(await p.textContent('#specBox')) &&
+     /Data Science and Big Data Analytics/.test(await p.textContent('#specBox')) &&
+     /Cyber Security and Privacy/.test(await p.textContent('#specBox')) &&
+     !/Systems and Networks/.test(await p.textContent('#specBox')));
+  await p.evaluate(() => {
+    document.getElementById('programme').value = 'bachelor-of-design'; drawSpec();
+  });
+  ck('B.Des. renders streams rather than CSE-style credit buckets',
+     /B\.Des\. stream/.test(await p.textContent('#specBox')) &&
+     /Experience Design/.test(await p.textContent('#specBox')) &&
+     /course mapping not public/.test(await p.textContent('#specBox')));
+  await p.evaluate(() => {
+    document.getElementById('programme').value = 'ph-d-in-civil-engineering'; drawSpec();
+  });
+  ck('doctoral programme renders research areas without calling them credit credentials',
+     /Research areas/.test(await p.textContent('#specBox')) &&
+     /Environmental Engineering/.test(await p.textContent('#specBox')) &&
+     /not transcript specialisation buckets/.test(await p.textContent('#specBox')));
+  await p.evaluate(() => {
+    document.getElementById('programme').value = 'b-tech-in-computer-science-and-engineering'; drawSpec();
+  });
   await p.evaluate(() => { removeDoneME(0); });
   ck('remove button clears it back to empty', /Nothing added yet/.test(await p.textContent('#doneMEList')));
 

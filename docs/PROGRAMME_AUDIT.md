@@ -1,10 +1,28 @@
 # Programme catalogue and degree audit
 
-The catalogue snapshot in `backend/app/data/programs.json` was checked on 2026-08-05
+The programme snapshot in `backend/app/data/programs.json` was checked on 2026-08-05
 against Shiv Nadar University's official [programmes catalogue](https://snu.edu.in/programs/).
 It contains all 44 programme entries shown there, their level, official page, source
 links, and any requirement table that could be supported by an official public
 programme page, brochure, prospectus, or university regulation.
+
+The separate `backend/app/data/pathways.json` catalogue was checked on 2026-08-06.
+It contains exactly one pathway record for each of the same 44 programme IDs. The
+separation is deliberate: degree-completion minima and optional pathways are not the
+same audit. The pathway UI distinguishes five evidence types:
+
+- formal specialisations (including embedded named specialisations);
+- programme streams or majors;
+- partner/destination degree routes;
+- supervisor-led doctoral research areas; and
+- programmes for which no separate formal specialisation is published.
+
+Only an official course-mapped option gets an automatic credit total. A published
+option without a complete public course mapping is shown but not numerically inferred.
+Current cohort-sensitive mappings include CSE (three options, not the former legacy
+four-bucket display), Civil, ECE, Mechanical, Chemical Engineering, IHS, and B.Des.
+The app also enforces published mandatory-course groups for interdisciplinary ECE and
+Mechanical tracks when evaluating current progress.
 
 ## Coverage and deliberate limits
 

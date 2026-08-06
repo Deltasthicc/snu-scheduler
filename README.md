@@ -43,6 +43,10 @@ changing anything — it is the canonical handoff document for this project.
   Where a complete cohort curriculum is not public, it says so and accepts exact
   private-profile overrides instead of inventing requirements. See
   [docs/PROGRAMME_AUDIT.md](docs/PROGRAMME_AUDIT.md).
+- **Programme pathways and specialisations**: every catalogue entry has a source-linked
+  pathway view. The UI keeps formal specialisations, B.Des. streams, ASU routes, and
+  doctoral research areas distinct, and calculates progress only where SNU publishes
+  a course mapping. Cohort notes and official sources remain visible beside the result.
 
 ## Running it
 
