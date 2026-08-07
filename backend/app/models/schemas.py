@@ -189,6 +189,19 @@ class PressureReading(BaseModel):
     provenance: Literal["live", "unknown"]
 
 
+class WinProbabilityBand(BaseModel):
+    """A model-conditional win chance, always reported as a range.
+
+    There is no historical clearing-price data, so a single number would be
+    fake-precise. `low`/`high` span the three labelled market readings and
+    `basis` records whether the rival count came from the portal or the model.
+    """
+    low: float = Field(..., ge=0, le=1)
+    central: float = Field(..., ge=0, le=1)
+    high: float = Field(..., ge=0, le=1)
+    basis: Literal["live bidder count", "modelled rival count"]
+
+
 class BidStrategyCourse(BaseModel):
     code: str
     title: str
@@ -199,6 +212,8 @@ class BidStrategyCourse(BaseModel):
     allocation_share_percent: float
     pressure: PressureReading
     action: str
+    win_probability_band: WinProbabilityBand
+    modelled_rivals: dict[str, int]
     rationale: list[str]
 
 
@@ -210,6 +225,20 @@ class BidStrategyCategory(BaseModel):
     strategic_ceiling_total: int
     uncommitted_in_envelope: int
     course_count: int
+    expected_courses_won: float
+    # Shadow price of one more point this round, in the same units as the
+    # priority value ratios (1.0 = winning one must-have course). This is the
+    # number that makes the carry-forward decision answerable instead of a
+    # guessed percentage.
+    marginal_value_next_point: float
+    reserve_note: str
+    # What the posture's breadth constraint costs in expected value versus
+    # concentrating freely. Disclosed rather than hidden, because concentrating
+    # really is optimal under a tight budget and the student is entitled to know
+    # the price of the diversification they asked for.
+    concentration_cost_percent: float
+    single_course_share_cap_percent: int
+    breadth_note: str
 
 
 class BidStrategyResponse(BaseModel):
@@ -220,6 +249,7 @@ class BidStrategyResponse(BaseModel):
     courses: list[BidStrategyCourse]
     categories: list[BidStrategyCategory]
     invariants: dict[str, bool]
+    assumptions: dict
     uncertainty: str
     official_mechanism: list[str]
     next_steps: list[str]

@@ -1,28 +1,53 @@
 <header>
 <div class="mast">
-  <div class="eyebrow">Shiv Nadar IoE · Monsoon 2026 · bid-point enrolment</div>
-  <h1>SNU Scheduler &amp; Strategic Bid Planner</h1>
-  <div class="sub">326 offered courses · 988 valid section packages · 3,201 package-meeting slots, all read from the
-  published timetable dataset. Nothing here is invented — where a value is an estimate it says so.
-  <b>Unofficial planning aid.</b></div>
+ <div class="mast-grid">
+  <div class="brand-mark" aria-hidden="true"><span>S</span></div>
+  <div>
+   <div class="eyebrow">Shiv Nadar IoE · Monsoon 2026 · student planning workspace</div>
+   <h1>SNU Scheduler &amp; <span style="color:var(--sig-hi)">Strategic Bid Planner</span></h1>
+   <div class="sub">326 offered courses · 988 valid section packages · 3,201 package-meeting slots, all read from the
+   published timetable dataset. Nothing here is invented — where a value is an estimate it says so.
+   <b>Unofficial planning aid.</b></div>
+  </div>
+  <div class="mast-actions">
+   <div class="theme-control" role="group" aria-label="Colour theme">
+    <button class="theme-choice" type="button" data-theme-choice="light" onclick="setThemePreference('light')" aria-label="Use light theme" title="Light theme">☀</button>
+    <button class="theme-choice" type="button" data-theme-choice="system" onclick="setThemePreference('system')" aria-label="Follow system theme" title="Follow system">◐</button>
+    <button class="theme-choice" type="button" data-theme-choice="dark" onclick="setThemePreference('dark')" aria-label="Use dark theme" title="Dark theme">☾</button>
+   </div>
+   <div class="theme-caption" id="themeCaption">System theme</div>
+  </div>
+ </div>
 </div>
-<div id="backendBar" class="flag f-warn">Connecting to the calculation service…</div>
+<div class="status-grid">
+ <div id="backendBar" class="flag f-warn">Connecting to the calculation service…</div>
+ <div id="ttUpdateBar" class="flag f-ok" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+   <span id="ttUpdateText">Timetable status unknown.</span>
+   <button class="btn2 sm" id="ttCheckBtn" onclick="void checkTimetableNow()">Check timetable now</button>
+ </div>
+</div>
 <div id="datasetBanner" style="display:none"></div>
-<div id="ttUpdateBar" class="flag f-ok" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-  <span id="ttUpdateText">Timetable status unknown.</span>
-  <button class="btn2 sm" id="ttCheckBtn" onclick="void checkTimetableNow()">Check timetable now</button>
-</div>
 <div id="ttUpdateReview" style="display:none"></div>
 </header>
 <main>
-<div class="tabs">
-  <button class="tab on" data-p="learn"><span class="n">01</span>Learn</button>
-  <button class="tab" data-p="prof"><span class="n">02</span>Profile &amp; budget</button>
-  <button class="tab" data-p="courses"><span class="n">03</span>Courses &amp; schedule</button>
-  <button class="tab" data-p="bid"><span class="n">04</span>Strategic bids</button>
-  <button class="tab" data-p="two"><span class="n">05</span>Degree audit</button>
-  <button class="tab" data-p="rules"><span class="n">06</span>Rules &amp; data</button>
+<div class="scroll-progress" aria-hidden="true"><i id="scrollProgressFill"></i></div>
+<div class="tabs" role="tablist" aria-label="Planning workspace">
+  <button class="tab on" role="tab" aria-selected="true" aria-controls="p-learn" data-p="learn"><span class="n">01</span>Learn</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="p-prof" data-p="prof"><span class="n">02</span>Profile &amp; budget</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="p-courses" data-p="courses"><span class="n">03</span>Courses &amp; schedule</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="p-bid" data-p="bid"><span class="n">04</span>Strategic bids</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="p-two" data-p="two"><span class="n">05</span>Degree audit</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="p-rules" data-p="rules"><span class="n">06</span>Rules &amp; data</button>
 </div>
+<div class="workspace-shell">
+ <aside class="workspace-rail" aria-label="Current page sections">
+  <div class="rail-card">
+   <div class="rail-label">On this page</div>
+   <nav class="section-nav" id="sectionNav"></nav>
+   <div class="rail-tip">Jump between tools without losing anything. Your working plan stays local to this browser.</div>
+  </div>
+ </aside>
+ <div class="workspace-content">
 
 <!-- 01 LEARN -->
 <div class="pane on" id="p-learn">
@@ -331,4 +356,7 @@
   <div class="card"><h2>Rules implemented</h2><div id="rulesBox"></div></div>
  </details>
 </div>
+</div>
+</div>
+<button class="back-top" id="backTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" title="Back to top">↑</button>
 </main>

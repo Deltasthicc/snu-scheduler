@@ -71,20 +71,22 @@ def test_single_course_does_not_consume_the_whole_pool_by_default():
     assert me["uncommitted_in_envelope"] > 0
 
 
-def test_live_counts_change_opening_step_but_not_personal_ceiling():
+def test_live_counts_reallocate_the_plan_toward_observed_pressure():
     low = build_bid_strategy(_request([_course("A", live_bidders=20)]))["courses"][0]
     high = build_bid_strategy(_request([_course("A", live_bidders=160)]))["courses"][0]
-    assert low["strategic_ceiling"] == high["strategic_ceiling"]
-    assert low["opening_bid"] < high["opening_bid"]
+    assert low["strategic_ceiling"] < high["strategic_ceiling"]
+    assert low["opening_bid"] <= high["opening_bid"]
     assert low["pressure"]["provenance"] == high["pressure"]["provenance"] == "live"
 
 
-def test_response_contains_no_probability_or_expected_price_fields():
+def test_response_exposes_bounded_probability_band_but_no_expected_price():
     result = build_bid_strategy(_request([_course("A")]))
     encoded = str(result).lower()
     assert "win_at_bid" not in encoded
     assert "expected_charge" not in encoded
-    assert result["invariants"]["no_claimed_win_probabilities"]
+    band = result["courses"][0]["win_probability_band"]
+    assert 0 <= band["low"] <= band["central"] <= band["high"] <= 1
+    assert band["basis"] in {"live bidder count", "modelled rival count"}
 
 
 def test_http_contract_rejects_duplicate_courses_and_returns_strategy():
@@ -92,7 +94,7 @@ def test_http_contract_rejects_duplicate_courses_and_returns_strategy():
         payload = _request([_course("A"), _course("B")]).model_dump(mode="json")
         response = client.post("/api/v1/bid-strategy", json=payload)
         assert response.status_code == 200, response.text
-        assert response.json()["strategy_version"] == "allocation-v1"
+        assert response.json()["strategy_version"] == "marginal-value-v2"
 
         payload["courses"][1]["code"] = "A"
         duplicate = client.post("/api/v1/bid-strategy", json=payload)

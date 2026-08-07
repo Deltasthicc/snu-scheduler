@@ -28,16 +28,74 @@ let CHOICE_GROUPS=[]; // [{kind, members:[code,...], min_credits, label}] for th
                        // members must be codes currently in PICK.
 let ADVISEMENT_INFO=null; // private, local-only report provenance; never shipped as a default
 
+/* ---------- presentation shell (theme, page map, motion) ----------
+   This intentionally owns no planning or allocation state. It only changes how
+   the existing controls are presented and navigated. */
+const THEME_KEY='snu-ui-theme';
+let SECTION_HEADINGS=[];
+function getThemePreference(){try{return localStorage.getItem(THEME_KEY)||'system';}catch(e){return 'system';}}
+function setThemePreference(pref){
+  const value=['light','dark','system'].includes(pref)?pref:'system';
+  if(value==='system')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',value);
+  try{localStorage.setItem(THEME_KEY,value);}catch(e){}
+  document.querySelectorAll('[data-theme-choice]').forEach(b=>{
+    const on=b.dataset.themeChoice===value;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));
+  });
+  const caption=$('themeCaption');if(caption)caption.textContent=value==='system'?'System theme':value[0].toUpperCase()+value.slice(1)+' mode';
+}
+function headingLabel(h){return (h.textContent||'').replace(/\s+/g,' ').trim();}
+function updateSectionNav(){
+  const pane=document.querySelector('.pane.on'),nav=$('sectionNav');if(!pane||!nav)return;
+  const seen=new Set();SECTION_HEADINGS=[...pane.querySelectorAll('h2')].filter(h=>{
+    const label=headingLabel(h);if(!label||seen.has(label)||h.offsetParent===null)return false;seen.add(label);return true;
+  }).slice(0,10);
+  SECTION_HEADINGS.forEach((h,i)=>{if(!h.id)h.id=`section-${pane.id}-${i}`;});
+  nav.innerHTML=SECTION_HEADINGS.map((h,i)=>`<button type="button" class="section-link${i===0?' current':''}" data-section-index="${i}">${esc(headingLabel(h))}</button>`).join('');
+  nav.querySelectorAll('.section-link').forEach(b=>b.onclick=()=>{
+    const h=SECTION_HEADINGS[+b.dataset.sectionIndex];if(h)h.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+}
+function updateScrollChrome(){
+  const top=window.scrollY||document.documentElement.scrollTop;
+  const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+  const fill=$('scrollProgressFill');if(fill)fill.style.width=Math.min(100,top/max*100)+'%';
+  const back=$('backTop');if(back)back.classList.toggle('show',top>520);
+  let active=0;SECTION_HEADINGS.forEach((h,i)=>{if(h.getBoundingClientRect().top<190)active=i;});
+  document.querySelectorAll('.section-link').forEach((b,i)=>b.classList.toggle('current',i===active));
+}
+function initPresentation(){
+  setThemePreference(getThemePreference());
+  document.querySelectorAll('.pane').forEach(p=>{p.setAttribute('role','tabpanel');p.hidden=!p.classList.contains('on');});
+  document.addEventListener('pointermove',e=>{
+    const card=e.target.closest&&e.target.closest('.card');if(!card)return;
+    const r=card.getBoundingClientRect();card.style.setProperty('--mx',(e.clientX-r.left)+'px');card.style.setProperty('--my',(e.clientY-r.top)+'px');
+  },{passive:true});
+  window.addEventListener('scroll',()=>requestAnimationFrame(updateScrollChrome),{passive:true});
+  window.addEventListener('resize',()=>requestAnimationFrame(updateSectionNav),{passive:true});
+  const content=document.querySelector('.workspace-content');if(content&&window.MutationObserver){
+    new MutationObserver(()=>requestAnimationFrame(updateSectionNav)).observe(content,{childList:true,subtree:true});
+  }
+  updateSectionNav();updateScrollChrome();
+}
+
 /* ---------- tabs ---------- */
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
-  document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));
-  t.classList.add('on'); $('p-'+t.dataset.p).classList.add('on');
+  document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-selected','false');});
+  document.querySelectorAll('.pane').forEach(x=>{x.classList.remove('on');x.hidden=true;});
+  t.classList.add('on');t.setAttribute('aria-selected','true');const pane=$('p-'+t.dataset.p);pane.hidden=false;pane.classList.add('on');
   if(t.dataset.p==='courses') drawTT();
   if(t.dataset.p==='two'){ drawTwo(); drawSpec(); }
   if(t.dataset.p==='rules') drawRules();
   if(t.dataset.p==='learn') drawLearn();
+  requestAnimationFrame(()=>{updateSectionNav();updateScrollChrome();});
 });
+document.querySelectorAll('.tab').forEach((t,i,all)=>t.addEventListener('keydown',e=>{
+  if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();
+  const next=e.key==='Home'?0:e.key==='End'?all.length-1:(i+(e.key==='ArrowRight'?1:-1)+all.length)%all.length;
+  all[next].focus();all[next].click();
+}));
+initPresentation();
 
 /* ============ BUDGET ============ */
 const SEMS={y4:[7],y3:[5,6,7],y2:[2,3,4,5,6,7]};
