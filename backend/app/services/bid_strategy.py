@@ -234,21 +234,32 @@ RIVAL_LOG_DISPERSION = 0.55
 # planned bid would buy; the rest is held back and added if the live count climbs.
 OPENING_CAPTURE = 0.90
 
-# Opportunity cost of committing one point, in must-have-course units.
+# A COMMITTED POINT IS NOT A SPENT POINT.
 #
-# This exists because a win curve asymptotes to 1 but never reaches it in
-# floating point, so without an explicit cost the optimiser will happily commit
-# the entire envelope to buy a gain of order 1e-15 - which is exactly what the
-# first run of this rewrite did (238 of 238 points committed for no measurable
-# improvement). It is also the mechanism that finally puts carry-forward value
-# into the objective, which the allocation-v1 audit listed as an open defect:
-# points now have to *earn* their place instead of being free to spend.
+# An earlier draft of v2 charged an opportunity cost for every point *bid*. That
+# is economically wrong under this mechanism, and wrong in the direction that
+# produces exactly the "it under-bids and the numbers look off" complaint: SNU's
+# FAQ states that a winner is "charged the clearing price - the lowest winning
+# bid - not the amount you bid", that surplus above the clearing price is
+# refunded, and that unsuccessful bids are refunded in full. Bidding 200 on a
+# course that clears at 50 costs 50, not 200.
 #
-# Read it as a materiality floor: 100 committed points must buy at least a 2%
-# improvement in the chance of landing a must-have course, or those points are
-# better kept. It is deliberately small enough never to override a genuinely
-# contested course and large enough to stop numerical noise driving real advice.
-MATERIAL_VALUE_PER_POINT = 0.0002
+# So the only genuine costs of a bid are:
+#   1. the clearing price actually paid, and only if you WIN; and
+#   2. the within-round hold - points on a live bid cannot simultaneously back
+#      another bid in the same category (BUDGET.SHARED_LIVE), which is already
+#      the sum(b) <= envelope constraint.
+#
+# Crucially the clearing price is set by *other* students' bids, not by yours, so
+# raising your bid raises your chance of winning without raising what you pay.
+# That is the defining property of a uniform-price auction and it is why bids
+# here are bounded by value and budget rather than by an invented per-point tax.
+#
+# Numerical note: a win curve asymptotes to 1 without reaching it in floating
+# point, so gains are quantised below before the optimiser compares them.
+# Otherwise the DP will spend real points chasing improvements of order 1e-15,
+# which is what the per-point tax was really being used to suppress.
+GAIN_QUANTUM = 1e-6
 
 _SQRT2 = sqrt(2.0)
 
@@ -339,6 +350,28 @@ def _win_curve(seats: int, rivals: int, outrank: np.ndarray, log_fact: np.ndarra
     return np.clip(np.maximum.accumulate(win), 0.0, 1.0)
 
 
+def _clearing_price(outrank: np.ndarray, seats: int, rivals: int) -> int:
+    """Modelled clearing price: the lowest bid that still takes a seat.
+
+    With `rivals` other bidders and `seats` seats, the price is set by the
+    marginal winner, i.e. the (seats-1)-th highest rival bid once you take one of
+    the seats yourself. `outrank(b)` is the chance a single rival bids above b, so
+    the expected number above b is rivals*outrank(b); the marginal winner sits
+    where that count falls to seats-1.
+
+    Returns 0 when there are fewer rivals than seats - SNU states directly that a
+    course with seats left over clears at zero. The price is a property of other
+    students' bids, not of yours: raising your own bid cannot raise it.
+    """
+    if seats <= 0:
+        return 0
+    if rivals <= seats - 1:
+        return 0
+    target = (seats - 1) / rivals
+    reached = np.nonzero(outrank <= target + 1e-12)[0]
+    return int(reached[0]) if reached.size else int(outrank.shape[0] - 1)
+
+
 def _allocate(values: list[float], curves: list[np.ndarray], envelope: int,
               caps: list[int] | None = None) -> tuple[list[int], np.ndarray]:
     """Exact integer solution of  max sum_j v_j * P_j(b_j)  s.t.  sum b_j <= E.
@@ -356,14 +389,14 @@ def _allocate(values: list[float], curves: list[np.ndarray], envelope: int,
     if n == 0 or envelope <= 0:
         return [0] * n, np.zeros(max(envelope, 0) + 1)
 
-    spend_cost = MATERIAL_VALUE_PER_POINT * np.arange(envelope + 1, dtype=np.float64)
     best = np.zeros(envelope + 1)
     choice = np.zeros((n, envelope + 1), dtype=np.int32)
 
     for j in range(n):
-        # Net value of putting `a` points here: what they buy, minus what holding
-        # them back is worth. A point that buys less than it costs is never taken.
-        gain = values[j] * curves[j][: envelope + 1] - spend_cost
+        # Net worth of winning course j, times the chance `a` points win it.
+        # Quantised so the optimiser cannot be driven by floating-point noise in
+        # the flat tail of a saturated win curve.
+        gain = np.round(values[j] * curves[j][: envelope + 1] / GAIN_QUANTUM) * GAIN_QUANTUM
         if caps is not None and caps[j] < envelope:
             # Breadth constraint for the risk-averse postures. -inf rather than a
             # penalty, so the cap is a hard bound the DP cannot trade away.
@@ -458,23 +491,57 @@ def build_bid_strategy(request: BidStrategyRequest) -> dict:
         reserve = round(pool * request.reserve_percent / 100)
         envelope = max(0, pool - reserve)
         courses = sorted(grouped[category], key=lambda item: item.code)
-        bids = np.arange(envelope + 1, dtype=np.float64)
-        rival_pool = REFERENCE_RIVAL_POOL[category]
+        # The clearing price is a property of the market, so it must be searched
+        # over a range wide enough to contain any plausible rival bid - NOT over
+        # the student's own envelope. Bounding it by the envelope truncated the
+        # reported price: a student holding 120 ME points was told a course cleared
+        # at 96 when the same course cleared at 161 for a student holding 450.
+        # That is the user's own balance leaking into a market statistic, the same
+        # class of defect the v1 audit found in the old rival generator.
+        price_ceiling = int(max(envelope, max(PUBLISHED_YEAR_POOLS[y][category]
+                                              for y in PUBLISHED_YEAR_POOLS)))
+        price_grid = np.arange(price_ceiling + 1, dtype=np.float64)
+        bids = price_grid[: envelope + 1]
 
         per_course_curves: list[dict[str, np.ndarray]] = []
-        values: list[float] = []
+        gross_values: list[float] = []
         rival_counts: list[dict[str, int]] = []
+        prices: list[dict[str, int]] = []
         for course in courses:
             curves: dict[str, np.ndarray] = {}
             counts: dict[str, int] = {}
+            price: dict[str, int] = {}
             for scenario in SCENARIOS:
                 rivals, _ = _modelled_rivals(course, scenario)
                 counts[scenario.key] = rivals
-                outrank = _rival_outrank_probability(bids, category, scenario)
-                curves[scenario.key] = _win_curve(course.seats, rivals, outrank, log_fact)
+                # Computed on the full market grid, then sliced to what the
+                # student can actually afford to bid.
+                outrank_full = _rival_outrank_probability(price_grid, category, scenario)
+                curves[scenario.key] = _win_curve(course.seats, rivals,
+                                                  outrank_full[: envelope + 1], log_fact)
+                price[scenario.key] = _clearing_price(outrank_full, course.seats, rivals)
             per_course_curves.append(curves)
             rival_counts.append(counts)
-            values.append(BASE_VALUE[course.priority])
+            prices.append(price)
+            gross_values.append(BASE_VALUE[course.priority])
+
+        expected_price = [
+            sum(scenario.prior * prices[i][scenario.key] for scenario in SCENARIOS)
+            for i in range(len(courses))
+        ]
+        # The clearing price is REPORTED, not netted off the value.
+        #
+        # Netting it was tried and is wrong here, in a way worth recording: it
+        # needs an exogenous price per point, but inside the round the true
+        # opportunity cost of a point is endogenous - it is whatever that point
+        # would buy on the student's other courses, which the sum(b) <= envelope
+        # constraint already prices correctly via the DP's own shadow price.
+        # Supplying an outside number on top double-counts the constraint. Measured
+        # on a live 20-seat/140-bidder course it drove a STRONG course to a bid of
+        # zero purely because an accounting identity said its price "exceeded its
+        # value", which is not a judgement the student asked for. Value beyond this
+        # round is what the carry-forward reserve is for, and that is user-set.
+        values = list(gross_values)
 
         # Objective: expected value under the stated prior over scenarios. A
         # mixture is separable across courses, so the DP solves it exactly; a
@@ -568,6 +635,14 @@ def build_bid_strategy(request: BidStrategyRequest) -> dict:
                     "basis": "live bidder count" if live else "modelled rival count",
                 },
                 "modelled_rivals": {key: rival_counts[index][key] for key in rival_counts[index]},
+                "clearing_price_band": {
+                    "low": min(prices[index].values()),
+                    "central": prices[index]["central"],
+                    "high": max(prices[index].values()),
+                    "note": ("What a seat is modelled to actually cost. You are charged this, not your bid, "
+                             "and it is set by other students' bids - raising your own bid raises your chance "
+                             "of winning without raising what you pay."),
+                },
                 "rationale": _rationale(course, request, values[index],
                                         ceiling, opening, probs, live, free_seat_chance),
             })

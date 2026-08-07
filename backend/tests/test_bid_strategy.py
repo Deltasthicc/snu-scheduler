@@ -89,6 +89,61 @@ def test_response_exposes_bounded_probability_band_but_no_expected_price():
     assert band["basis"] in {"live bidder count", "modelled rival count"}
 
 
+def test_a_bid_is_not_a_spend_so_a_bigger_bid_never_raises_the_modelled_price():
+    """SNU charges the clearing price, not the bid, and the clearing price is set
+    by other students. An earlier draft charged an opportunity cost for every
+    point *committed*, which systematically under-bid because it billed the
+    student for points that get refunded. The price must depend on the market
+    (seats and rivals) and never on the student's own pool or bid."""
+    small = build_bid_strategy(_request([_course("A", seats=20, live_bidders=140)],
+                                        pools={"ME": 120, "UWE": 215, "CCC": 492}))
+    large = build_bid_strategy(_request([_course("A", seats=20, live_bidders=140)],
+                                        pools={"ME": 450, "UWE": 215, "CCC": 492}))
+    price_small = small["courses"][0]["clearing_price_band"]
+    price_large = large["courses"][0]["clearing_price_band"]
+    assert price_small == price_large, "the clearing price must not track the user's own balance"
+    # More budget must still buy a genuinely better chance - the v1 audit's
+    # critical scale-invariance defect must not reappear.
+    assert (large["courses"][0]["win_probability_band"]["central"]
+            >= small["courses"][0]["win_probability_band"]["central"])
+
+
+def test_a_scarcer_course_is_modelled_to_clear_higher():
+    result = build_bid_strategy(_request([
+        _course("SCARCE", seats=20, live_bidders=140),
+        _course("PLENTIFUL", seats=90, live_bidders=95),
+    ]))
+    by_code = {row["code"]: row["clearing_price_band"] for row in result["courses"]}
+    assert by_code["SCARCE"]["central"] > by_code["PLENTIFUL"]["central"]
+
+
+def test_an_undersubscribed_course_is_modelled_to_clear_at_zero():
+    """SNU states directly that a course with seats left over clears at zero."""
+    result = build_bid_strategy(_request([_course("QUIET", seats=90, live_bidders=30)]))
+    assert result["courses"][0]["clearing_price_band"]["high"] == 0
+
+
+def test_plan_never_exceeds_the_envelope_across_many_shapes():
+    """The one invariant that must hold unconditionally: points on live bids are
+    held against the category balance, so the plan has to fit inside it."""
+    shapes = [
+        [_course("A", seats=20, live_bidders=200), _course("B", seats=300)],
+        [_course(c, priority=p) for c, p in
+         (("A", "MUST"), ("B", "STRONG"), ("C", "BACKUP"), ("D", "OPTIONAL"))],
+        [_course("A", seats=5, live_bidders=400)],
+    ]
+    for posture in ("focused", "balanced", "diversified"):
+        for reserve in (0, 20, 60):
+            for shape in shapes:
+                result = build_bid_strategy(_request(shape, posture=posture,
+                                                     reserve_percent=reserve))
+                for row in result["categories"]:
+                    assert row["strategic_ceiling_total"] <= row["current_round_envelope"]
+                    assert row["current_round_envelope"] + row["carry_forward_reserve"] == row["pool"]
+                for row in result["courses"]:
+                    assert 0 <= row["opening_bid"] <= row["strategic_ceiling"]
+
+
 def test_http_contract_rejects_duplicate_courses_and_returns_strategy():
     with TestClient(app) as client:
         payload = _request([_course("A"), _course("B")]).model_dump(mode="json")

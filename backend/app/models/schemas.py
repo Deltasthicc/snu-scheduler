@@ -202,6 +202,18 @@ class WinProbabilityBand(BaseModel):
     basis: Literal["live bidder count", "modelled rival count"]
 
 
+class ClearingPriceBand(BaseModel):
+    """What a seat is modelled to cost, as a range across the market readings.
+
+    Distinct from the bid: SNU charges the clearing price (the lowest winning
+    bid), refunds the surplus, and refunds losing bids in full.
+    """
+    low: int = Field(..., ge=0)
+    central: int = Field(..., ge=0)
+    high: int = Field(..., ge=0)
+    note: str
+
+
 class BidStrategyCourse(BaseModel):
     code: str
     title: str
@@ -213,6 +225,7 @@ class BidStrategyCourse(BaseModel):
     pressure: PressureReading
     action: str
     win_probability_band: WinProbabilityBand
+    clearing_price_band: ClearingPriceBand
     modelled_rivals: dict[str, int]
     rationale: list[str]
 

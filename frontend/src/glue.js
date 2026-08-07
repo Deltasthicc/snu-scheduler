@@ -202,11 +202,17 @@ function drawResult(res) {
     <div class="note">Start at the opening bid, watch the portal, and revise before the round closes. Never
     chase a course beyond the ceiling unless you deliberately change your posture or reserve.</div></div></div>
     <div style="overflow-x:auto"><table><thead><tr><th>Course</th><th>Priority</th><th>Live pressure</th>
-    <th>Opening bid</th><th>Personal ceiling</th><th>Action</th></tr></thead><tbody>`;
+    <th>Opening bid</th><th>Personal ceiling</th>
+    <th title="What a seat is modelled to actually cost. You are charged this, not your bid.">Modelled price</th>
+    <th title="Chance your ceiling clears the price, across three market readings">Chance at ceiling</th>
+    <th>Action</th></tr></thead><tbody>`;
   res.courses.forEach(course => {
     const liveValue = course.pressure.live_bidders == null ? '' : course.pressure.live_bidders;
     const ratio = course.pressure.bidder_to_seat_ratio == null ? ''
       : ` <span class="tiny mut">(${course.pressure.bidder_to_seat_ratio.toFixed(2)}× seats)</span>`;
+    const price = course.clearing_price_band;
+    const band = course.win_probability_band;
+    const affordable = course.strategic_ceiling >= price.central;
     h += `<tr><td><b>${esc(course.code)}</b><div class="tiny mut">${esc(course.title || '')}</div></td>
       <td><span class="pill p-m">${esc(PRIO_LABEL[course.priority] || course.priority)}</span></td>
       <td><span class="pill ${course.pressure.provenance === 'live' ? 'p-uwe' : 'p-w'}">
@@ -216,13 +222,19 @@ function drawResult(res) {
           value="${liveValue}" placeholder="bidders" onchange="setLive('${esc(course.code)}',this.value)"></td>
       <td class="num" style="font-size:18px;color:var(--sig);font-weight:700">${course.opening_bid}</td>
       <td class="num" style="font-size:18px;font-weight:700">${course.strategic_ceiling}</td>
-      <td>${esc(course.action)}<details style="margin-top:7px"><summary class="tiny">Why these numbers?</summary>
+      <td class="num tiny">${price.central}<div class="mut">${price.low}&ndash;${price.high}</div></td>
+      <td class="num tiny">${probLabel(band.central)}<div class="mut">${probLabel(band.low)}&ndash;${probLabel(band.high)}</div></td>
+      <td>${affordable ? '' : `<div class="flag f-bad" style="margin:0 0 6px;padding:5px 8px">Your ceiling
+        (${course.strategic_ceiling}) is below the modelled price (${price.central}). More points would be
+        needed, or this seat is out of reach this round.</div>`}${esc(course.action)}
+        <details style="margin-top:7px"><summary class="tiny">Why these numbers?</summary>
         <div class="tiny mut" style="margin-top:5px">${course.rationale.map(esc).join('<br>')}</div></details></td></tr>`;
   });
   h += `</tbody></table></div></div>`;
 
   h += `<div class="card"><h2>What is known, and what is not</h2>
-    <div class="flag f-warn"><b>No win probability is shown.</b> ${esc(res.uncertainty)}</div>
+    <div class="flag f-warn"><b>Every probability and price here is a model output, not a measurement.</b>
+      ${esc(res.uncertainty)}</div>
     <div class="grid g2" style="margin-top:12px"><div><h3>Official mechanism used</h3><ol>`
     + res.official_mechanism.map(item => `<li>${esc(item)}</li>`).join('')
     + `</ol></div><div><h3>How to use this plan</h3><ol>`

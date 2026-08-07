@@ -235,3 +235,73 @@ It is also:
 The legacy simulation endpoint remains available only for research/backward API
 compatibility. It is no longer the application's default recommender or displayed as
 an authoritative student decision tool.
+
+---
+
+## Addendum — marginal-value-v2 corrections (2026-08-07)
+
+Three defects were found in the v2 planner itself and fixed. Each was measured
+before being changed, and each is now pinned by a regression test in
+`backend/tests/test_bid_strategy.py`.
+
+### 1. A committed point was charged as if it were spent — critical
+
+v2 initially applied a per-point opportunity cost (`MATERIAL_VALUE_PER_POINT`) to
+every point *bid*. Under this mechanism that is simply wrong, and wrong in the
+direction that produces visibly conservative, off-looking numbers.
+
+The FAQ states that a winner is charged the clearing price — the lowest winning
+bid — not the amount bid; that surplus above the clearing price is refunded; and
+that unsuccessful bids are refunded in full. Bidding 200 on a course that clears
+at 50 costs 50, not 200. The genuine costs of a bid are therefore only:
+
+1. the clearing price, and only if you win; and
+2. the within-round hold, since points on a live bid cannot simultaneously back
+   another bid in the same category — already the `sum(b) <= envelope` constraint.
+
+The per-point tax was removed. The numerical problem it had been masking (a win
+curve asymptotes to 1 without reaching it in floating point, so the optimiser
+would commit real points chasing gains of order 1e-15) is now handled where it
+belongs, by quantising the objective (`GAIN_QUANTUM`).
+
+### 2. The reported clearing price was truncated by the student's own balance — critical
+
+The bid grid ran to the student's envelope, and the clearing-price search ran on
+that same grid. Any price above the envelope was therefore clamped to it. Measured:
+an identical 20-seat course with 140 live bidders was reported as clearing at 96
+for a student holding 120 ME points and at 161 for a student holding 450.
+
+This is the user's own balance leaking into a market statistic — the same class of
+defect the original audit found in the v1 rival generator, reappearing in a new
+place. The clearing price is now computed on a market-wide grid bounded by the
+largest published category pool, independent of the student. A student who cannot
+afford a course is now told so plainly instead of being shown a comfortable price.
+
+### 3. The clearing price was briefly netted off course value — rejected, with reasoning
+
+An intermediate version subtracted the modelled price from each course's value.
+It was measured driving a STRONG course to a bid of zero on a live
+20-seat/140-bidder course, and was reverted. The reason it is wrong is structural:
+netting requires an exogenous value per point, but inside a round the true
+opportunity cost of a point is endogenous — it is whatever that point would buy on
+the student's other courses, which the budget constraint already prices through the
+DP's own shadow price. Supplying an outside number on top double-counts the
+constraint. Value beyond the current round is what the carry-forward reserve is
+for, and that is user-set.
+
+The clearing price is therefore reported, not netted: it is shown per course as a
+band, alongside an explicit warning when a personal ceiling falls below it.
+
+### What the research corpus changed, and what it did not
+
+The supplied systematic reviews independently state the objective this planner
+already maximises — `sum_c u_c * Pr(b_c >= p_c)` subject to `sum_c b_c <= B` — which
+is a useful corroboration rather than a change. They also record the Sönmez–Ünver
+dual-role-of-bids critique, which is a property of the mechanism SNU has adopted
+and cannot be engineered away by a planning tool; it is a reason to report
+uncertainty honestly, not a reason to claim more precision.
+
+One recommendation in that corpus is worth repeating here because it is outside
+this tool's control: the single highest-value change SNU could make is to publish
+clearing prices after each round. Every price this planner has to model would then
+be a number students could simply look up.

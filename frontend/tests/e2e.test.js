@@ -93,7 +93,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   });
   await p.click('.tab[data-p="bid"]');
   await p.click('#runBtn');
-  await p.waitForFunction(() => window.RESULT && window.RESULT.strategy_version === 'allocation-v1',
+  await p.waitForFunction(() => window.RESULT && window.RESULT.strategy_version === 'marginal-value-v2',
                           null, { timeout: 15000 });
 
   const res = await p.evaluate(() => ({
@@ -106,10 +106,12 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     text: document.getElementById('bidOut').textContent
   }));
   ck('all selected courses receive a result', res.courses.length === 2, String(res.courses.length));
+  // Both must be funded (the v1 greedy-deletion defect must not return), but they
+  // are NOT expected to be equal: CSD358 has 120 seats and CSD361 has 80, and the
+  // planner now prices scarcity, so identical priorities with different seat
+  // counts should and do receive different bids.
   ck('equal-priority alternatives are both funded, not greedily zeroed',
-     res.courses.every(c => c.ceiling > 0) &&
-     Math.abs(res.courses[0].ceiling - res.courses[1].ceiling) <= 1,
-     JSON.stringify(res.courses));
+     res.courses.every(c => c.ceiling > 0), JSON.stringify(res.courses));
   const meEnvelope = res.categories.find(c => c.category === 'ME');
   ck('ME ceilings fit the usable envelope and protect the reserve',
      meEnvelope.strategic_ceiling_total <= meEnvelope.current_round_envelope &&
@@ -123,8 +125,10 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('the former undefined disclaimer is gone', !/undefined/.test(res.text));
   ck('UI clearly distinguishes opening bids from personal ceilings',
      /Opening bids and stop points/.test(res.text) && /Personal ceiling/.test(res.text));
-  ck('UI explains that probability is not identifiable',
-     /No win probability is shown/.test(res.text) && /historical/.test(res.text));
+  ck('UI labels probabilities and prices as model outputs, not measurements',
+     /model output, not a measurement/.test(res.text) && /historical/.test(res.text));
+  ck('UI shows the modelled clearing price, which is what a seat actually costs',
+     /Modelled price/.test(res.text));
 
   const beforeLive = res.courses.find(c => c.code === 'CSD358');
   await p.evaluate(() => setLive('CSD358', '240'));
@@ -136,12 +140,24 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     const row = RESULT.courses.find(c => c.code === 'CSD358');
     return { opening: row.opening_bid, ceiling: row.strategic_ceiling, pressure: row.pressure.label };
   });
-  ck('a heavy live count raises the opening step', afterLive.opening > beforeLive.opening,
-     `${beforeLive.opening} -> ${afterLive.opening}`);
-  ck('live pressure does not silently inflate the personal ceiling',
-     afterLive.ceiling === beforeLive.ceiling, `${beforeLive.ceiling} -> ${afterLive.ceiling}`);
+  // A live count REPLACES the modelled rival count rather than being averaged
+  // into it, so the plan can move either way: with no data the model spans up to
+  // 4x seats, and observing a count below that upper reading is genuinely
+  // reassuring. The property that must hold is monotonicity *among observed
+  // counts* - more bidders must never buy you a smaller bid.
   ck('live pressure is labelled, not converted into a probability',
      afterLive.pressure === 'heavily_oversubscribed', afterLive.pressure);
+  const ladder = [];
+  for (const count of [140, 240, 400]) {
+    await p.evaluate(c => setLive('CSD358', String(c)), count);
+    await p.waitForFunction(c => {
+      const row = window.RESULT && RESULT.courses.find(x => x.code === 'CSD358');
+      return row && row.pressure.live_bidders === c;
+    }, count, { timeout: 15000 });
+    ladder.push(await p.evaluate(() => RESULT.courses.find(c => c.code === 'CSD358').strategic_ceiling));
+  }
+  ck('heavier observed competition never lowers the personal ceiling',
+     ladder[0] <= ladder[1] && ladder[1] <= ladder[2], ladder.join(' -> '));
 
 
   console.log('\n=== §17 SCHEDULE BUILDER (backend-authoritative search) ===');
