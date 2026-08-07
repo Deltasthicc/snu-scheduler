@@ -213,6 +213,25 @@ function drawResult(res) {
     const price = course.clearing_price_band;
     const band = course.win_probability_band;
     const affordable = course.strategic_ceiling >= price.central;
+    // A ceiling of exactly 0 is a deliberate allocation choice, not necessarily a
+    // budget wall - the planner may have genuinely spare, uncommitted points in
+    // this category and still put none here because they buy more elsewhere on
+    // this objective (see bid_strategy.py::_rationale). Saying "more points
+    // needed" in that case is actively wrong, since more points may already be
+    // sitting unused rather than unavailable - only the >0-but-short case is a
+    // real "raise this to help" situation.
+    const zeroByChoice = course.strategic_ceiling === 0 && price.central > 0;
+    const underfunded = !affordable && !zeroByChoice;
+    let flag = '';
+    if (underfunded) {
+      flag = `<div class="flag f-bad" style="margin:0 0 6px;padding:5px 8px">Your ceiling
+        (${course.strategic_ceiling}) is below the modelled price (${price.central}). Raising it would need
+        more of this category's balance, likely from another course here.</div>`;
+    } else if (zeroByChoice) {
+      flag = `<div class="flag f-warn" style="margin:0 0 6px;padding:5px 8px">0 points allocated here by
+        design, not because the balance ran out - see "Why these numbers?" below. Raise this course's
+        priority if that trade-off is wrong for you.</div>`;
+    }
     h += `<tr><td><b>${esc(course.code)}</b><div class="tiny mut">${esc(course.title || '')}</div></td>
       <td><span class="pill p-m">${esc(PRIO_LABEL[course.priority] || course.priority)}</span></td>
       <td><span class="pill ${course.pressure.provenance === 'live' ? 'p-uwe' : 'p-w'}">
@@ -224,9 +243,7 @@ function drawResult(res) {
       <td class="num" style="font-size:18px;font-weight:700">${course.strategic_ceiling}</td>
       <td class="num tiny">${price.central}<div class="mut">${price.low}&ndash;${price.high}</div></td>
       <td class="num tiny">${probLabel(band.central)}<div class="mut">${probLabel(band.low)}&ndash;${probLabel(band.high)}</div></td>
-      <td>${affordable ? '' : `<div class="flag f-bad" style="margin:0 0 6px;padding:5px 8px">Your ceiling
-        (${course.strategic_ceiling}) is below the modelled price (${price.central}). More points would be
-        needed, or this seat is out of reach this round.</div>`}${esc(course.action)}
+      <td>${flag}${esc(course.action)}
         <details style="margin-top:7px"><summary class="tiny">Why these numbers?</summary>
         <div class="tiny mut" style="margin-top:5px">${course.rationale.map(esc).join('<br>')}</div></details></td></tr>`;
   });

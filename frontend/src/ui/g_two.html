@@ -40,6 +40,7 @@ function applyProgrammeCategories(){
     else if(c.uwe)c.cat='UWE';
     else c.cat='NB';
   });
+  migrateNonBiddablePicks();
   const covBox=$('categoryCoverageNote');
   if(covBox){
     covBox.style.display=(p && !categoryKnown)?'':'none';
@@ -52,6 +53,38 @@ function applyProgrammeCategories(){
   const blkWrap=$('blkWrap');
   if(blkWrap) blkWrap.style.display=(id===CSE_PROGRAMME_ID)?'':'none';
   renderFixed();renderPick();renderChosen();
+}
+
+/* A course sitting in the bid shortlist (PICK) is only ever biddable while its
+   category is ME/UWE/CCC. Switching programme can reclassify a course to
+   CORE/NB after it was already added - left alone, that stale entry gets
+   serialised into the bid-strategy/simulation request with a non-biddable
+   category and the backend rejects the whole request with a raw 422. Route
+   it into FIXED instead, exactly like togglePick() already does when a
+   CORE/NB course is added directly, and say so instead of letting it vanish. */
+function migrateNonBiddablePicks(){
+  const moved=[];
+  Object.keys(PICK).forEach(code=>{
+    const c=BY[code];
+    if(!c||c.cat==='ME'||c.cat==='UWE'||c.cat==='CCC')return;
+    delete PICK[code];
+    if(!FIXED.some(f=>f.code===code)){
+      const pkgIdx=(typeof bestPkg==='function'&&typeof fixedMeets==='function')
+        ?bestPkg(c,fixedMeets()).i:0;
+      FIXED.push({code,pkg:pkgIdx,auto:false,lock:false});
+    }
+    moved.push(code);
+  });
+  const box=$('categoryMigrationNote');
+  if(box){
+    if(moved.length){
+      box.style.display='';
+      box.innerHTML=`<div class="flag f-warn"><b>${moved.length} course${moved.length>1?'s':''}
+        moved to your fixed / pre-enrolled list:</b> ${moved.map(esc).join(', ')} - your new programme
+        no longer treats ${moved.length>1?'these as':'this as'} something you bid for, so
+        ${moved.length>1?"they're":"it's"} kept in your plan as fixed instead of being dropped silently.</div>`;
+    } else box.style.display='none';
+  }
 }
 
 function parseCompletedCourses(){

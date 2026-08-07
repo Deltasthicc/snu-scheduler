@@ -186,8 +186,9 @@
     if (!plan || !Array.isArray(plan.courses) || !plan.courses.length) {
       throw new ApiError('validation', 'no courses selected', null, 'choose at least one course');
     }
+    const BIDDABLE_CATEGORIES = new Set(['ME', 'UWE', 'CCC']);
     const seen = new Set();
-    const courses = plan.courses.map(c => {
+    const courses = plan.courses.filter(c => BIDDABLE_CATEGORIES.has(c.category)).map(c => {
       if (seen.has(c.code)) {
         throw new ApiError('validation', 'duplicate course', null, 'duplicate course code ' + c.code);
       }
@@ -210,6 +211,10 @@
         live_observed_at: c.liveObservedAt || null
       };
     });
+    if (!courses.length) {
+      throw new ApiError('validation', 'no biddable courses selected', null,
+        'every selected course is fixed/pre-enrolled under your current programme - add a Major Elective, UWE, or CCC course to bid');
+    }
     return {
       courses,
       pools: { ME: Math.round(num(plan.pools.ME)), UWE: Math.round(num(plan.pools.UWE)),
