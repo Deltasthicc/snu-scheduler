@@ -23,23 +23,23 @@ function fixedMeets(){
   return out;
 }
 function renderFixed(){
-  let h='<table><thead><tr><th>Course</th><th>Package</th><th>Cr</th><th>Term</th><th>When</th>'+
+  let h='<div class="table-shell responsive-table"><table><thead><tr><th>Course</th><th>Package</th><th>Cr</th><th>Term</th><th>When</th>'+
     '<th title="Locked sections are never changed by the solver. Unlocked ones can be swapped in Round 1 or 5.">Swappable</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>';
   if(!FIXED.length && !MANUAL.length) h+='<tr><td colspan="7" class="tiny">Nothing fixed yet.</td></tr>';
   FIXED.forEach((f,i)=>{const c=BY[f.code];if(!c)return;const p=c.pk[f.pkg];
     const opts=c.pk.map((q,j)=>`<option value="${j}"${j===f.pkg?' selected':''}>${esc(q.l)} — ${q.t}</option>`).join('');
-    h+=`<tr><td><b>${esc(c.code)}</b> <span class="mut">${esc(c.title.slice(0,30))}</span>
+    h+=`<tr><td data-label="Course"><b>${esc(c.code)}</b><span class="course-title">${esc(c.title)}</span>
       ${f.auto?'<span class="pill p-m">block</span>':''}</td>
-      <td>${c.pk.length>1?`<select aria-label="Section package for ${esc(c.code)}" style="width:auto;min-width:150px" onchange="FIXED[${i}].pkg=+this.value;renderFixed();renderPick();renderChosen()">${opts}</select>`:`<span class="tiny">${esc(p.l)}</span>`}</td>
-      <td class="num">${c.cr}</td><td class="tiny">${p.t}</td>
-      <td class="tiny">${p.m.map(m=>m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])).join(' · ')}</td>
-      <td><input type="checkbox" class="chk" aria-label="Allow solver to swap ${esc(c.code)} section" ${f.lock?'':'checked'} title="untick to lock this section"
+      <td data-label="Package">${c.pk.length>1?`<select aria-label="Section package for ${esc(c.code)}" onchange="FIXED[${i}].pkg=+this.value;renderFixed();renderPick();renderChosen()">${opts}</select>`:`<span class="tiny">${esc(p.l)}</span>`}</td>
+      <td data-label="Credits" class="num">${c.cr}</td><td data-label="Term" class="tiny">${p.t}</td>
+      <td data-label="When" class="tiny">${p.m.map(m=>m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])).join(' · ')}</td>
+      <td data-label="Swappable"><input type="checkbox" class="chk" aria-label="Allow solver to swap ${esc(c.code)} section" ${f.lock?'':'checked'} title="untick to lock this section"
           onchange="FIXED[${i}].lock=!this.checked"></td>
-      <td><button class="btn2 sm" onclick="FIXED.splice(${i},1);renderFixed();renderPick();renderChosen()">×</button></td></tr>`;});
-  MANUAL.forEach((m,i)=>{h+=`<tr><td><b>${esc(m.name)}</b> <span class="pill p-nb">off-timetable</span></td>
-    <td class="tiny">no scheduled meetings</td><td class="num">${m.cr}</td><td class="tiny">—</td>
-    <td class="tiny">—</td><td class="tiny">—</td><td><button class="btn2 sm" onclick="MANUAL.splice(${i},1);renderFixed();renderChosen()">×</button></td></tr>`;});
-  h+='</tbody></table>';
+      <td data-label=""><button class="btn2 sm" aria-label="Remove ${esc(c.code)}" onclick="FIXED.splice(${i},1);renderFixed();renderPick();renderChosen()">×</button></td></tr>`;});
+  MANUAL.forEach((m,i)=>{h+=`<tr><td data-label="Course"><b>${esc(m.name)}</b> <span class="pill p-nb">off-timetable</span></td>
+    <td data-label="Package" class="tiny">no scheduled meetings</td><td data-label="Credits" class="num">${m.cr}</td><td data-label="Term" class="tiny">—</td>
+    <td data-label="When" class="tiny">—</td><td data-label="Swappable" class="tiny">—</td><td data-label=""><button class="btn2 sm" aria-label="Remove ${esc(m.name)}" onclick="MANUAL.splice(${i},1);renderFixed();renderChosen()">×</button></td></tr>`;});
+  h+='</tbody></table></div>';
   $('fixedList').innerHTML=h;
   $('fxAdd').innerHTML='<option value="">+ add a fixed / pre-enrolled course…</option>'+
     C.filter(c=>!FIXED.some(f=>f.code===c.code)).map(c=>`<option value="${c.code}">${esc(c.code)} — ${esc(c.title.slice(0,40))}</option>`).join('');
@@ -123,6 +123,8 @@ async function autoSolve(silent){
 }
 
 /* ============ PICKER ============ */
+let PICK_VISIBLE=30;
+function setPickVisible(value){PICK_VISIBLE=value==='all'?10000:Math.max(30,+value||30);renderPick();}
 function renderPick(){
   const cat=$('fCat').value, term=$('fTerm').value, q=$('fQ').value.trim().toLowerCase();
   const fit=$('fFit').value, day=$('fDay').value, crf=($('fCr')?$('fCr').value:'');
@@ -144,28 +146,32 @@ function renderPick(){
   R.sort((x,y)=>(x.ba.n-y.ba.n)||x.c.code.localeCompare(y.c.code));
   const CAP={ME:'p-me',UWE:'p-uwe',CCC:'p-ccc',NB:'p-nb',CORE:'p-nb'};
   let h='';
-  R.slice(0,400).forEach(r=>{const c=r.c;
+  R.slice(0,PICK_VISIBLE).forEach(r=>{const c=r.c;
     const routesToFixed = (c.cat==='CORE'||c.cat==='NB');
     const on = routesToFixed ? FIXED.some(f=>f.code===c.code) : !!PICK[c.code];
     const disabled = c.unsched;
     const p=c.pk[r.ba.i]||{m:[],l:'—',t:''};
-    h+=`<tr><td><input type="checkbox" class="chk" aria-label="Add ${esc(c.code)} to plan" ${on?'checked':''} ${disabled?'disabled':''}
+    h+=`<tr><td data-label="Add"><input type="checkbox" class="chk" aria-label="Add ${esc(c.code)} to plan" ${on?'checked':''} ${disabled?'disabled':''}
         onchange="togglePick('${c.code}',this.checked)"
         title="${routesToFixed?'adds as a fixed / pre-enrolled reference item':'adds to your bid shortlist'}"></td>
-      <td><b>${esc(c.code)}</b> <span class="mut">${esc(c.title.slice(0,34))}</span>
-        <div class="tiny">${esc(c.dept.slice(0,46))}</div></td>
-      <td><span class="pill ${CAP[c.cat]||'p-m'}">${c.cat}</span></td>
-      <td class="tiny">${c.terms.join(', ').replace('Full semester','Full')}</td>
-      <td class="num" ${c.crOfficial?'':'style="border-bottom:1px dotted var(--sig)"'} title="${c.crOfficial?'official':'timetable-derived — confirm in COS'}">${c.cr}</td>
-      <td class="num">${c.seats}</td>
-      <td class="num" style="color:var(--sig)" title="No per-course cap — bounded only by your category pool">${c.cat==='ME'||c.cat==='UWE'||c.cat==='CCC'?(BUD[c.cat]??'—'):'—'}</td>
-      <td class="num tiny">${c.pk.length||'0'}</td>
-      <td class="tiny">${c.unsched?'<span style="color:var(--bad)" title="'+esc(c.why)+'">unschedulable</span>':(r.ba.n===0?'<span style="color:var(--ok)">clear</span>':'<span style="color:var(--bad)">'+r.ba.n+' clash</span>')}
+      <td data-label="Course"><b>${esc(c.code)}</b><span class="course-title">${esc(c.title)}</span>
+        <span class="course-meta">${esc(c.dept)}</span></td>
+      <td data-label="Category"><span class="pill ${CAP[c.cat]||'p-m'}">${c.cat}</span></td>
+      <td data-label="Term" class="tiny">${c.terms.join(', ').replace('Full semester','Full')}</td>
+      <td data-label="Credits" class="num" ${c.crOfficial?'':'style="border-bottom:1px dotted var(--sig)"'} title="${c.crOfficial?'official':'timetable-derived — confirm in COS'}">${c.cr}</td>
+      <td data-label="Seats" class="num">${c.seats}</td>
+      <td data-label="Pool cap" class="num" style="color:var(--sig)" title="No per-course cap — bounded only by your category pool">${c.cat==='ME'||c.cat==='UWE'||c.cat==='CCC'?(BUD[c.cat]??'—'):'—'}</td>
+      <td data-label="Packages" class="num tiny">${c.pk.length||'0'}</td>
+      <td data-label="Best fit" class="tiny">${c.unsched?'<span style="color:var(--bad)" title="'+esc(c.why)+'">unschedulable</span>':(r.ba.n===0?'<span style="color:var(--ok)">clear</span>':'<span style="color:var(--bad)">'+r.ba.n+' clash</span>')}
         <div class="tiny">${p.m.slice(0,3).map(m=>m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])).join(' · ')}</div></td>
-      <td>${routesToFixed?'<span class="tiny mut">fixed</span>':(PICK[c.code]?`<input type="number" aria-label="Want level for ${esc(c.code)}" min="1" max="10" value="${PICK[c.code].want}" style="width:52px"
+      <td data-label="Want">${routesToFixed?'<span class="tiny mut">fixed</span>':(PICK[c.code]?`<input type="number" aria-label="Want level for ${esc(c.code)}" min="1" max="10" value="${PICK[c.code].want}" style="width:52px"
           onchange="PICK['${c.code}'].want=+this.value;renderChosen()">`:'<span class="tiny">—</span>')}</td></tr>`;});
   $('pickBody').innerHTML=h||'<tr><td colspan="10" class="tiny" style="padding:16px">Nothing matches.</td></tr>';
-  $('pickCount').textContent=`${R.length} match · ${Object.keys(PICK).length} in your bid shortlist`+(R.length>400?' · showing first 400':'');
+  const shown=Math.min(R.length,PICK_VISIBLE);
+  $('pickCount').textContent=`${R.length} match · showing ${shown} · ${Object.keys(PICK).length} in your bid shortlist`;
+  if($('pickMore'))$('pickMore').innerHTML=R.length>PICK_VISIBLE
+    ? `<span class="tiny">Showing ${shown} of ${R.length}</span><button class="btn2 sm" onclick="setPickVisible(${PICK_VISIBLE+30})">Show 30 more</button><button class="btn2 sm" onclick="setPickVisible('all')">Show all</button>`
+    : (R.length>30?`<span class="tiny">Showing all ${R.length}</span><button class="btn2 sm" onclick="setPickVisible(30);document.querySelector('[data-section-title=&quot;Every course you can bid for&quot;]').scrollIntoView({behavior:'smooth'})">Collapse list</button>`:'');
 }
 function togglePick(code,on){
   const c=BY[code];
@@ -180,8 +186,8 @@ function togglePick(code,on){
   }
   renderPick(); renderChosen();
 }
-['fCat','fTerm','fFit','fDay','fCr'].forEach(i=>{ if($(i)) $(i).onchange=renderPick; });
-$('fQ').oninput=renderPick;
+['fCat','fTerm','fFit','fDay','fCr'].forEach(i=>{ if($(i)) $(i).onchange=()=>{PICK_VISIBLE=30;renderPick();}; });
+$('fQ').oninput=()=>{PICK_VISIBLE=30;renderPick();};
 
 /* ============ CHOSEN ============ */
 function renderChosen(){
@@ -193,8 +199,8 @@ function renderChosen(){
   let h='',tot=0;
   ['ME','UWE','CCC'].forEach(cat=>{
     if(!grp[cat].length)return;
-    h+=`<h3 style="margin:14px 0 7px">${cat} — pool ${BUD[cat]} pts</h3>
-     <table><thead><tr><th>Course</th><th>Package</th><th>Cr</th><th>Seats</th>
+    h+=`<h3 style="margin:18px 0 8px">${cat} — pool ${BUD[cat]} pts</h3>
+     <div class="table-shell responsive-table"><table><thead><tr><th>Course</th><th>Package</th><th>Cr</th><th>Seats</th>
      <th title="No per-course cap — you may bid up to your entire category pool on one course">Pool cap</th>
      <th>Priority</th><th>Clashes with</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>`;
     grp[cat].sort((a,b)=>PICK[b].want-PICK[a].want).forEach(code=>{
@@ -203,17 +209,17 @@ function renderChosen(){
       const cf=conflicts(mm,allChosenMeets(code));
       const names=[...new Set(cf.map(x=>x.b.code))];
       const opts=c.pk.map((p,i)=>`<option value="${i}"${i===PICK[code].pkg?' selected':''}>${esc(p.l)} — ${p.t}</option>`).join('');
-      h+=`<tr><td><b>${esc(c.code)}</b> <span class="mut">${esc(c.title.slice(0,26))}</span></td>
-        <td>${c.pk.length>1?`<select aria-label="Section package for ${esc(code)}" style="width:auto;min-width:140px" onchange="PICK['${code}'].pkg=+this.value;renderChosen();renderPick()">${opts}</select>`:`<span class="tiny">${esc(c.pk[0].l)}</span>`}</td>
-        <td class="num">${c.cr}</td><td class="num">${c.seats}</td>
-        <td class="num" style="color:var(--sig)" title="No per-course cap — the figure shown is your whole ${cat} pool">${BUD[cat]}</td>
-        <td><select aria-label="Priority for ${esc(code)}" style="width:auto;min-width:118px"
+      h+=`<tr><td data-label="Course"><b>${esc(c.code)}</b><span class="course-title">${esc(c.title)}</span></td>
+        <td data-label="Package">${c.pk.length>1?`<select aria-label="Section package for ${esc(code)}" onchange="PICK['${code}'].pkg=+this.value;renderChosen();renderPick()">${opts}</select>`:`<span class="tiny">${esc(c.pk[0].l)}</span>`}</td>
+        <td data-label="Credits" class="num">${c.cr}</td><td data-label="Seats" class="num">${c.seats}</td>
+        <td data-label="Pool cap" class="num" style="color:var(--sig)" title="No per-course cap — the figure shown is your whole ${cat} pool">${BUD[cat]}</td>
+        <td data-label="Priority"><select aria-label="Priority for ${esc(code)}"
              onchange="setPriority('${code}',this.value)">
           ${['MUST','STRONG','BACKUP','OPTIONAL'].map(k=>`<option value="${k}"${prioOf(code)===k?' selected':''}>${PRIO_LABEL[k]}</option>`).join('')}
         </select></td>
-        <td>${names.length?`<span class="pill p-w">${names.join(', ')}</span>`:'<span class="tiny" style="color:var(--ok)">clear</span>'}</td>
-        <td><button class="btn2 sm" onclick="togglePick('${code}',false)">×</button></td></tr>`;});
-    h+='</tbody></table>';
+        <td data-label="Clashes">${names.length?`<span class="pill p-w">${names.join(', ')}</span>`:'<span class="tiny" style="color:var(--ok)">clear</span>'}</td>
+        <td data-label=""><button class="btn2 sm" aria-label="Remove ${esc(code)}" onclick="togglePick('${code}',false)">×</button></td></tr>`;});
+    h+='</tbody></table></div>';
   });
   const cap=+$('capCr').value||25, fx=fixedCredits();
   h+=`<div class="grid g4" style="margin-top:14px">

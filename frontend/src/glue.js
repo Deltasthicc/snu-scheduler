@@ -584,6 +584,42 @@ const STATUS_LABEL = {
   timetable: ['From timetable', 'p-ccc'], inferred: ['Inferred', 'p-me'],
   disputed: ['Disputed', 'p-w'], unknown: ['Unknown', 'p-w']
 };
+const RULE_SOURCE_DOCUMENTS = [
+  {id:'faq', title:'Course Enrolment — Frequently Asked Questions', kind:'Official PDF · Dean of Academics',
+   href:'docs/Course_Enrolment_FAQ_1.pdf', local:true,
+   aliases:['course_enrolment_faq_1.pdf','course enrolment faq','frequently asked questions']},
+  {id:'intro', title:'Course Bidding — Process, Rounds and Schedule', kind:'Official PDF · Dean of Academics',
+   href:'docs/Course_Bidding_Introduction.pdf', local:true,
+   aliases:['course_bidding_introduction.pdf','introduction s.','guide s.','eligibility checks']},
+  {id:'concept', title:'Course Bid-Point Allocation Concept Note', kind:'Official revised PDF',
+   href:'docs/Course_Bid_Point_Allocation_Concept_Note_revised_final.pdf', local:true,
+   aliases:['course_bid_point_allocation_concept_note_revised_final.pdf','concept note s.']},
+  {id:'credit-policy', title:'Student credit-limit policy', kind:'Official SNU policy portal',
+   href:'https://snulinks.snu.edu.in/application/student-policy/index?pId=0&cId1=1&cId2=9', local:false,
+   aliases:['credit-limit policy 4.7.9','credit-limit policy 4.7.10','credit-limit policy 4.8']},
+  {id:'cse-prospectus', title:'B.Tech. CSE prospectus (2022 onward)', kind:'Official SNU prospectus',
+   href:'https://snu.edu.in/site/assets/files/3888/prospectus_b_tech__-_cse_2022onwards.pdf?v=2', local:false,
+   aliases:['prospectus, minimum requirement','prospectus footnote','prospectus ai bucket','prospectus major electives']},
+  {id:'timetable', title:'Monsoon 2026 published timetable', kind:'Official timetable source used by this dataset',
+   href:'https://snioe-monsoon2026-tt.netlify.app/', local:false,
+   aliases:['scheduler workbook','monsoon 2026 timetable','timetable term field']},
+];
+function sourceDocumentsForRule(rule){
+  const hay=(rule.source+' '+(rule.note||'')+' '+(rule.verified||'')).toLowerCase();
+  return RULE_SOURCE_DOCUMENTS.filter(doc=>doc.aliases.some(alias=>hay.includes(alias)));
+}
+function sourceAction(doc,label){
+  const download=doc.local?' download':'';
+  return `<a class="btn2 sm" href="${esc(doc.href)}" target="_blank" rel="noopener"${download}>${label}</a>`;
+}
+function renderSourceLibrary(rules){
+  const cards=RULE_SOURCE_DOCUMENTS.map(doc=>{
+    const count=rules.filter(rule=>sourceDocumentsForRule(rule).some(match=>match.id===doc.id)).length;
+    if(!count)return '';
+    return `<article class="source-card"><div class="source-card-head"><span class="source-icon">${doc.local?'PDF':'LINK'}</span><div><b>${esc(doc.title)}</b><small>${esc(doc.kind)} · cited by ${count} rule${count===1?'':'s'}</small></div></div><div class="source-actions">${sourceAction(doc,doc.local?'Open / download PDF':'Open official source')}</div></article>`;
+  }).join('');
+  return `<div class="hd" style="margin-bottom:9px"><div><h2>Source document library</h2><div class="note">Repeated citations are grouped here. Open one document once, then compare every rule that cites it below.</div></div></div><div class="source-library">${cards}</div>`;
+}
 async function drawRules() {
   if (!$('ruleList')) return;
   if (!RULES_CACHE) {
@@ -613,6 +649,7 @@ async function drawRules() {
     (2026-08-05).</b> Bids in the same category share one live balance while a round is open.
     Rule version <span class="mono">${esc(R.version)}</span>, served by the backend.</div>`;
   $('ruleSummary').innerHTML = sum;
+  if($('sourceLibrary'))$('sourceLibrary').innerHTML=renderSourceLibrary(R.rules);
 
   const st = $('rStatus') ? $('rStatus').value : '';
   const q = $('rQ') ? $('rQ').value.trim().toLowerCase() : '';
@@ -636,6 +673,8 @@ async function drawRules() {
   list.sort((a, b) => (order[a.status] - order[b.status]) || a.id.localeCompare(b.id));
   $('ruleList').innerHTML = list.map(r => {
     const [lbl, cls] = STATUS_LABEL[r.status] || ['?', 'p-m'];
+    const documents=sourceDocumentsForRule(r);
+    const sourceLinks=documents.length?`<div class="rule-source-links">${documents.map(doc=>sourceAction(doc,doc.local?'Open PDF':'Official source')).join('')}</div>`:'';
     const extras = [
       r.verified ? `<div class="tiny" style="color:var(--ok)"><b>Verified:</b> ${esc(r.verified)}</div>` : '',
       r.resolution ? `<div class="flag f-ok" style="margin-top:0"><b>How this tool resolves it:</b> ${esc(r.resolution)}</div>` : '',
@@ -649,7 +688,7 @@ async function drawRules() {
           ${r.configurable ? '<span class="pill p-m">configurable</span>' : ''}</div></div>
       <div style="font-size:12.5px;color:var(--dim)">${esc(r.desc)}</div>
       <details class="more" style="margin-top:8px"><summary>Source &amp; details</summary>
-        <div class="tiny"><b>Source:</b> ${esc(r.source)}</div>${extras}</details>
+        <div class="tiny"><b>Exact citation:</b> ${esc(r.source)}</div>${sourceLinks}${extras}</details>
     </div>`;
   }).join('') || '<div class="note">No rules match.</div>';
 }

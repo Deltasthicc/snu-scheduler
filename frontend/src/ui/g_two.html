@@ -106,19 +106,19 @@ function renderCompletedCoursesTable(){
     return;
   }
   const opts=cur=>COMPLETED_CATS.map(([v,l])=>`<option value="${v}"${v===cur?' selected':''}>${esc(l)}</option>`).join('');
-  let h='<div class="scroll"><table><thead><tr><th>Code</th><th>Title (optional)</th>'
+  let h='<div class="scroll responsive-table"><table><thead><tr><th>Code</th><th>Title (optional)</th>'
     +'<th class="num">Credits</th><th>Category</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>';
   COMPLETED_COURSES.forEach((c,i)=>{
     h+=`<tr>
-      <td><input type="text" aria-label="Course code" value="${esc(c.code||'')}" style="width:110px"
+      <td data-label="Code"><input type="text" aria-label="Course code" value="${esc(c.code||'')}"
           onchange="updateCompletedCourseRow(${i},'code',this.value.trim())"></td>
-      <td><input type="text" aria-label="Course title" value="${esc(c.title||'')}" style="width:100%;min-width:140px"
+      <td data-label="Title"><input type="text" aria-label="Course title" value="${esc(c.title||'')}"
           onchange="updateCompletedCourseRow(${i},'title',this.value.trim())"></td>
-      <td><input type="number" aria-label="Credits" value="${c.credits||0}" min="0" step="0.5" style="width:70px"
+      <td data-label="Credits"><input type="number" aria-label="Credits" value="${c.credits||0}" min="0" step="0.5"
           onchange="updateCompletedCourseRow(${i},'credits',this.value)"></td>
-      <td><select aria-label="Category" style="width:auto;min-width:170px"
+      <td data-label="Category"><select aria-label="Category"
           onchange="updateCompletedCourseRow(${i},'category',this.value)">${opts(c.category)}</select></td>
-      <td><button class="btn2 sm" onclick="removeCompletedCourseRow(${i})">&times;</button></td>
+      <td data-label=""><button class="btn2 sm" aria-label="Remove completed course row" onclick="removeCompletedCourseRow(${i})">&times;</button></td>
     </tr>`;
   });
   h+='</tbody></table></div>';
@@ -205,8 +205,8 @@ function renderDegreeAudit(target){
   if(a.aggregate_progress_applied)h+=`<div class="flag f-q"><b>Aggregate progress included.</b> The audit uses your private accepted-credit total in addition to the named course rows; it does not invent course codes for transfer credit.</div>`;
   if(a.coverage!=='verified_public_curriculum'&&a.coverage!=='profile_overrides_applied')
     h+=`<div class="flag f-warn"><b>Partial public curriculum.</b> ${esc(a.coverage_note||'')} ${(a.warnings||[]).map(esc).join(' ')}</div>`;
-  if(a.requirements.length){h+='<div class="scroll"><table><thead><tr><th>Requirement</th><th>Required</th><th>Done</th><th>Selected now</th><th>Left after plan</th><th>Status</th></tr></thead><tbody>';
-    a.requirements.forEach(r=>{h+=`<tr><td><b>${esc(r.label)}</b>${r.note?`<div class="tiny mut">${esc(r.note)}</div>`:''}</td><td class="num">${f1(r.required)}</td><td class="num">${f1(r.completed)}</td><td class="num">${f1(r.planned)}</td><td class="num">${f1(r.remaining_after_plan)}</td><td><span class="pill ${r.status==='complete'?'p-uwe':r.status==='on_track'?'p-m':'p-w'}">${esc(r.status.replace('_',' '))}</span></td></tr>`;});
+  if(a.requirements.length){h+='<div class="scroll responsive-table"><table><thead><tr><th>Requirement</th><th>Required</th><th>Done</th><th>Selected now</th><th>Left after plan</th><th>Status</th></tr></thead><tbody>';
+    a.requirements.forEach(r=>{h+=`<tr><td data-label="Requirement"><b>${esc(r.label)}</b>${r.note?`<div class="tiny mut">${esc(r.note)}</div>`:''}</td><td data-label="Required" class="num">${f1(r.required)}</td><td data-label="Done" class="num">${f1(r.completed)}</td><td data-label="Selected now" class="num">${f1(r.planned)}</td><td data-label="Left after plan" class="num">${f1(r.remaining_after_plan)}</td><td data-label="Status"><span class="pill ${r.status==='complete'?'p-uwe':r.status==='on_track'?'p-m':'p-w'}">${esc(r.status.replace('_',' '))}</span></td></tr>`;});
     h+='</tbody></table></div>';}
   if(a.sources.length)h+=`<div class="tiny mut" style="margin-top:10px">Official sources: `+a.sources.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')+'</div>';
   target.innerHTML=h;
@@ -237,9 +237,9 @@ function renderCredits(){
   if(!$('cQ')||!$('cBody'))return;
   const q=$('cQ').value.trim().toLowerCase();
   let L=C.filter(c=>!q||(c.code+' '+c.title).toLowerCase().includes(q)).slice(0,300);
-  $('cBody').innerHTML=L.map(c=>`<tr><td><b>${esc(c.code)}</b> <span class="mut">${esc(c.title.slice(0,32))}</span></td>
-   <td class="num">${c.cr}</td><td>${c.crOfficial?'<span class="pill p-uwe">official</span>':'<span class="pill p-w">derived</span>'}</td>
-   <td class="tiny">${esc(c.crBasis||'')}${c.unsched?' <span class="pill p-w">unschedulable</span>':''}</td></tr>`).join('');
+  $('cBody').innerHTML=L.map(c=>`<tr><td data-label="Course"><b>${esc(c.code)}</b><span class="course-title">${esc(c.title)}</span></td>
+   <td data-label="Credits used" class="num">${c.cr}</td><td data-label="Status">${c.crOfficial?'<span class="pill p-uwe">official</span>':'<span class="pill p-w">derived</span>'}</td>
+   <td data-label="Basis" class="tiny">${esc(c.crBasis||'')}${c.unsched?' <span class="pill p-w">unschedulable</span>':''}</td></tr>`).join('');
 }
 if($('cQ'))$('cQ').oninput=renderCredits;
 

@@ -32,7 +32,8 @@ let ADVISEMENT_INFO=null; // private, local-only report provenance; never shippe
    This intentionally owns no planning or allocation state. It only changes how
    the existing controls are presented and navigated. */
 const THEME_KEY='snu-ui-theme';
-let SECTION_HEADINGS=[];
+let SECTION_TARGETS=[];
+let SECTION_SIGNATURE='';
 function getThemePreference(){try{return localStorage.getItem(THEME_KEY)||'system';}catch(e){return 'system';}}
 function setThemePreference(pref){
   const value=['light','dark','system'].includes(pref)?pref:'system';
@@ -45,15 +46,27 @@ function setThemePreference(pref){
   const caption=$('themeCaption');if(caption)caption.textContent=value==='system'?'System theme':value[0].toUpperCase()+value.slice(1)+' mode';
 }
 function headingLabel(h){return (h.textContent||'').replace(/\s+/g,' ').trim();}
+function sectionLabel(target){
+  return target.dataset.sectionTitle||headingLabel(target.querySelector('h2,summary')||target);
+}
 function updateSectionNav(){
   const pane=document.querySelector('.pane.on'),nav=$('sectionNav');if(!pane||!nav)return;
-  const seen=new Set();SECTION_HEADINGS=[...pane.querySelectorAll('h2')].filter(h=>{
-    const label=headingLabel(h);if(!label||seen.has(label)||h.offsetParent===null)return false;seen.add(label);return true;
-  }).slice(0,10);
-  SECTION_HEADINGS.forEach((h,i)=>{if(!h.id)h.id=`section-${pane.id}-${i}`;});
-  nav.innerHTML=SECTION_HEADINGS.map((h,i)=>`<button type="button" class="section-link${i===0?' current':''}" data-section-index="${i}">${esc(headingLabel(h))}</button>`).join('');
+  let candidates=[...pane.querySelectorAll(':scope > [data-section-title]')];
+  if(!candidates.length)candidates=[...pane.querySelectorAll('h2')];
+  const seen=new Set();SECTION_TARGETS=candidates.filter(target=>{
+    const label=sectionLabel(target);if(!label||seen.has(label)||target.offsetParent===null)return false;seen.add(label);return true;
+  }).slice(0,12);
+  SECTION_TARGETS.forEach((target,i)=>{if(!target.id)target.id=`section-${pane.id}-${i}`;});
+  const signature=pane.id+'|'+SECTION_TARGETS.map(target=>target.id+':'+sectionLabel(target)).join('|');
+  if(signature===SECTION_SIGNATURE)return;
+  SECTION_SIGNATURE=signature;
+  nav.innerHTML=SECTION_TARGETS.map((target,i)=>`<button type="button" class="section-link${i===0?' current':''}" data-section-index="${i}" aria-controls="${target.id}">${esc(sectionLabel(target))}</button>`).join('');
   nav.querySelectorAll('.section-link').forEach(b=>b.onclick=()=>{
-    const h=SECTION_HEADINGS[+b.dataset.sectionIndex];if(h)h.scrollIntoView({behavior:'smooth',block:'start'});
+    const target=SECTION_TARGETS[+b.dataset.sectionIndex];if(!target)return;
+    if(target.tagName==='DETAILS')target.open=true;
+    target.classList.remove('nav-pulse');void target.offsetWidth;target.classList.add('nav-pulse');
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+    window.setTimeout(()=>target.classList.remove('nav-pulse'),850);
   });
 }
 function updateScrollChrome(){
@@ -61,7 +74,7 @@ function updateScrollChrome(){
   const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
   const fill=$('scrollProgressFill');if(fill)fill.style.width=Math.min(100,top/max*100)+'%';
   const back=$('backTop');if(back)back.classList.toggle('show',top>520);
-  let active=0;SECTION_HEADINGS.forEach((h,i)=>{if(h.getBoundingClientRect().top<190)active=i;});
+  let active=0;SECTION_TARGETS.forEach((target,i)=>{if(target.getBoundingClientRect().top<190)active=i;});
   document.querySelectorAll('.section-link').forEach((b,i)=>b.classList.toggle('current',i===active));
 }
 function initPresentation(){
@@ -88,7 +101,9 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   if(t.dataset.p==='two'){ drawTwo(); drawSpec(); }
   if(t.dataset.p==='rules') drawRules();
   if(t.dataset.p==='learn') drawLearn();
-  requestAnimationFrame(()=>{updateSectionNav();updateScrollChrome();});
+  SECTION_SIGNATURE='';updateSectionNav();updateScrollChrome();requestAnimationFrame(()=>{
+    const shell=document.querySelector('.workspace-shell');if(shell)shell.scrollIntoView({behavior:'smooth',block:'start'});
+  });
 });
 document.querySelectorAll('.tab').forEach((t,i,all)=>t.addEventListener('keydown',e=>{
   if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();

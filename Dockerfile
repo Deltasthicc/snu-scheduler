@@ -8,7 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /build/frontend
 COPY frontend/ ./
 RUN python build_frontend.py && mkdir -p /code/frontend-dist \
-    && cp /build/frontend/dist/index.html /code/frontend-dist/index.html
+    && cp -r /build/frontend/dist/. /code/frontend-dist/
 
 WORKDIR /code
 COPY backend/requirements.txt ./requirements.txt

@@ -4,7 +4,7 @@ const { chromium } = require('playwright');
 const os = require('os');
 const path = require('path');
 
-const APP = 'http://127.0.0.1:5173/index.html';
+const APP = process.env.SNU_APP_URL || 'http://127.0.0.1:5173/index.html';
 let pass = 0, fail = 0;
 const ck = (name, ok, detail = '') => {
   console.log(`${ok ? '  PASS  ' : '  FAIL  '}${name}${detail ? `   [${detail}]` : ''}`);
@@ -76,6 +76,33 @@ const ck = (name, ok, detail = '') => {
       }), tab);
       ck(`${tab} tab remains interactive`, state.selected === 'true' && state.visible);
     }
+    await page.click('.tab[data-p="prof"]');
+    const profileLayout = await page.evaluate(() => {
+      const pane = document.getElementById('p-prof');
+      const widths = [...pane.querySelectorAll(':scope > .card')].map(card => Math.round(card.getBoundingClientRect().width));
+      return { cards: widths.length, spread: Math.max(...widths) - Math.min(...widths), nav: document.querySelectorAll('#sectionNav .section-link').length };
+    });
+    ck('profile sections use the full readable width', profileLayout.cards === 6 && profileLayout.spread <= 1, `${profileLayout.cards} cards · ${profileLayout.spread}px spread`);
+    ck('profile page map covers every major section', profileLayout.nav === 6, String(profileLayout.nav));
+
+    await page.click('.tab[data-p="courses"]');
+    const courseLayout = await page.evaluate(() => ({
+      rows: document.querySelectorAll('#pickBody tr').length,
+      innerOverflow: document.querySelector('.catalog-list').scrollWidth - document.querySelector('.catalog-list').clientWidth,
+      view: document.getElementById('ttView').value,
+      nav: document.querySelectorAll('#sectionNav .section-link').length,
+    }));
+    ck('course catalogue starts with a manageable page', courseLayout.rows <= 30, String(courseLayout.rows));
+    ck('course catalogue does not require horizontal scrolling', courseLayout.innerOverflow <= 1, `${courseLayout.innerOverflow}px`);
+    ck('readable timetable view is the default', courseLayout.view === 'agenda', courseLayout.view);
+    ck('course page map covers every major tool', courseLayout.nav === 8, String(courseLayout.nav));
+    await page.click('#sectionNav .section-link:last-child');
+    ck('page map opens collapsed target sections', await page.$eval('#p-courses > details.more', el => el.open));
+
+    await page.click('.tab[data-p="rules"]');
+    await page.waitForSelector('.source-card');
+    const sourceCount = await page.locator('.source-card').count();
+    ck('rules group repeated citations into source cards', sourceCount >= 6, String(sourceCount));
     ck('no JavaScript errors', errors.length === 0, errors.slice(0, 2).join(' | '));
     await page.close();
   }

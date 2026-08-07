@@ -56,7 +56,7 @@
 
 <!-- 02 PROFILE -->
 <div class="pane" id="p-prof">
- <div class="card tight"><div class="hd" style="margin-bottom:8px"><div><h2>Plans — load my existing work</h2>
+ <div class="card tight" data-section-title="Plans — load my existing work"><div class="hd" style="margin-bottom:8px"><div><h2>Plans — load my existing work</h2>
   <div class="note">Plans are saved in this browser and autosave as you work. Export to move a plan
   between devices, or to create a private profile bootstrap file for a new install (see
   <span class="mono">tools/import_personal_profile.py</span>). Importing always previews what's inside and
@@ -76,7 +76,7 @@
   <div id="planMsg" class="tiny" role="status" aria-live="polite" style="margin-top:8px"></div>
   <div id="importPreviewBox" style="margin-top:10px"></div>
  </div>
- <div class="card">
+ <div class="card" data-section-title="Your degree position">
   <div class="hd"><div><h2>Your degree position</h2>
    <div class="note">Enter your own numbers from your degree audit / COS. Every figure is editable,
    nothing is locked, and this stays saved in this browser on this computer only — see
@@ -112,7 +112,7 @@
   </div>
   <div style="margin-top:15px"><button class="btn" onclick="recalc()">Recalculate</button></div>
  </div>
- <div class="card tight"><div class="hd"><div><h2>Programme and completed work</h2>
+ <div class="card tight" data-section-title="Programme and completed work"><div class="hd"><div><h2>Programme and completed work</h2>
   <div class="note">Select your programme, then add each completed course below.
    <span title="Data stays in your local plan and is included only when you export your private JSON. Categories and cohort-specific overrides from imported JSON are preserved." style="color:var(--sig);cursor:help">&#9432;</span></div></div></div>
   <div class="grid g3">
@@ -132,7 +132,7 @@
   <div style="margin-top:12px"><button class="btn" id="auditBtn" onclick="void runDegreeAudit()">Run audit check</button></div>
   <div id="auditBox" style="margin-top:12px"></div>
  </div>
- <div class="card tight"><div class="hd" style="margin-bottom:9px"><div><h2>Credit policy — three different numbers, kept separate</h2>
+ <div class="card tight" data-section-title="Credit policy"><div class="hd" style="margin-bottom:9px"><div><h2>Credit policy — three different numbers, kept separate</h2>
   <div class="note">The official ceiling, your personal target, and an overload/what-if scenario are never the
   same number. The wishlist scheduler (Course picker → Schedule builder) uses these to decide how many
   additional credits it may add on top of your fixed courses.</div></div></div>
@@ -151,19 +151,19 @@
   <div style="margin-top:12px"><button class="btn2" onclick="void refreshCreditPolicy()">Check my credit policy</button></div>
   <div id="creditPolicyBox" style="margin-top:10px"></div>
  </div>
- <div class="card"><div class="hd"><div><h2>Bid-point budget</h2><div class="note" id="formula"></div></div></div>
+ <div class="card" data-section-title="Bid-point budget"><div class="hd"><div><h2>Bid-point budget</h2><div class="note" id="formula"></div></div></div>
   <div class="stats">
    <div class="stat"><div class="k">Major elective</div><div class="v" id="bME">—</div><div class="f" id="fME"></div></div>
    <div class="stat u"><div class="k">UWE</div><div class="v" id="bUWE">—</div><div class="f" id="fUWE"></div></div>
    <div class="stat c"><div class="k">CCC</div><div class="v" id="bCCC">—</div><div class="f" id="fCCC"></div></div></div>
   <div id="budFlags"></div></div>
- <div class="card"><h2>What will actually decide your semester</h2><div id="posFlags"></div></div>
+ <div class="card" data-section-title="Semester decision checks"><h2>What will actually decide your semester</h2><div id="posFlags"></div></div>
 </div>
 
 <!-- 03 COURSES & SCHEDULE -->
 <div class="pane" id="p-courses">
  <div id="categoryCoverageNote" style="display:none;margin-bottom:15px"></div>
- <div class="card tight"><div class="hd" style="margin-bottom:9px"><div><h2>Fixed / pre-enrolled</h2>
+ <div class="card tight" data-section-title="Fixed / pre-enrolled"><div class="hd" style="margin-bottom:9px"><div><h2>Fixed / pre-enrolled</h2>
   <div class="note">Not biddable — the baseline every clash check runs against. Add or remove manually; some
   programmes can also auto-load a core block, below in Profile &amp; budget.</div></div></div>
   <div id="fixedList"></div>
@@ -172,7 +172,7 @@
    <button class="btn2" onclick="addFixed()">Add</button>
    <button class="btn2" onclick="addManual()">+ add an off-timetable item (project, SWAYAM…)</button></div>
  </div>
- <div class="card">
+ <div class="card" data-section-title="Every course you can bid for">
   <div class="hd"><div><h2>Every course you can bid for</h2>
    <div class="note">Category follows your selected programme: <b>ME</b>/<b>Core</b> = your major ·
    <b>UWE</b> = open to everyone · <b>CCC</b> = common core. A dotted credit is timetable-derived — confirm in COS.</div></div>
@@ -197,18 +197,19 @@
    <select id="fDay"><option value="">Any day</option><option value="0">Mon</option><option value="1">Tue</option>
      <option value="2">Wed</option><option value="3">Thu</option><option value="4">Fri</option><option value="5">Sat</option></select>
    <input type="text" id="fQ" placeholder="Search code, title, department or instructor…"></div>
-  <div class="scroll"><table><thead><tr><th style="width:30px"><span class="sr-only">Add to plan</span></th><th>Course</th><th>Cat</th><th>Term</th>
+  <div class="scroll catalog-list responsive-table"><table><thead><tr><th style="width:30px"><span class="sr-only">Add to plan</span></th><th>Course</th><th>Cat</th><th>Term</th>
    <th>Cr</th><th>Seats</th>
    <th title="No per-course cap — you may bid up to your entire category pool on one course">Pool cap</th>
    <th>Pkgs</th><th>Best fit</th><th>Want</th></tr></thead>
    <tbody id="pickBody"></tbody></table></div>
+  <div id="pickMore" class="list-pagination"></div>
  </div>
- <div class="card"><div class="hd"><div><h2>Chosen for Monsoon 2026</h2>
+ <div class="card" data-section-title="Chosen for Monsoon 2026"><div class="hd"><div><h2>Chosen for Monsoon 2026</h2>
   <div class="note">Pick a section package per course, or auto-resolve clashes. <b>Priority</b> also doubles as
   this course's intent for the schedule generator further down this tab.</div></div>
   <div><button class="btn2" onclick="void autoSolve()">Auto-resolve clashes</button></div></div>
   <div id="chosenBox"></div></div>
- <div class="card tight"><div class="hd" style="margin-bottom:8px"><div><h2>Choice groups</h2>
+ <div class="card tight" data-section-title="Choice groups"><div class="hd" style="margin-bottom:8px"><div><h2>Choice groups</h2>
   <div class="note">Rules across chosen courses for the schedule generator, e.g. &ldquo;exactly one of these
   three&rdquo;. Choose the courses above first.</div></div></div>
   <div id="choiceGroupList"></div>
@@ -222,20 +223,22 @@
   <div class="tiny mut" style="margin-top:6px">After clicking add, you'll be asked to pick which chosen
   courses belong to the group.</div></div>
 
- <div class="card"><div class="hd"><div><h2>Weekly timetable &amp; clashes</h2>
+ <div class="card" data-section-title="Weekly timetable &amp; clashes"><div class="hd"><div><h2>Weekly timetable &amp; clashes</h2>
   <div class="note">A red outline is a real overlap in the same week and half-semester.</div></div>
-  <div><label for="ttTerm" style="display:inline">Show</label>
+  <div class="timetable-controls"><div><label for="ttView">View</label>
+   <select id="ttView"><option value="agenda" selected>Readable day agenda</option><option value="grid">Weekly time grid</option></select></div>
+  <div><label for="ttTerm">Term</label>
    <select id="ttTerm" style="width:auto;display:inline-block">
     <option value="all">Both halves</option><option value="First half">First half only</option>
-    <option value="Second half">Second half only</option></select></div></div>
+    <option value="Second half">Second half only</option></select></div></div></div>
   <div class="ttwrap" id="ttGrid"></div>
   <div class="legend"><span><i style="background:#2F3B45"></i>Fixed</span>
    <span><i style="background:#4A3717"></i>ME</span><span><i style="background:#173A34"></i>UWE</span>
    <span><i style="background:#2E2A4C"></i>CCC</span><span><i style="background:var(--bad)"></i>Clash</span></div>
   <div id="ttReport"></div></div>
- <div class="card tight"><h2>Load &amp; feasibility</h2><div id="loadBox"></div></div>
+ <div class="card tight" data-section-title="Load &amp; feasibility"><h2>Load &amp; feasibility</h2><div id="loadBox"></div></div>
 
- <div class="card tight" style="border-color:var(--sig)"><div class="hd" style="margin-bottom:9px"><div>
+ <div class="card tight" data-section-title="Generate a personalised schedule" style="border-color:var(--sig)"><div class="hd" style="margin-bottom:9px"><div>
   <h2>Generate a schedule — personalised (recommended)</h2>
   <div class="note">Best subset of your chosen courses within your credit ceiling — using intent, choice groups
   and credit policy above, not just any clash-free combination. Backend-computed; every excluded course gets a
@@ -244,7 +247,7 @@
   <div class="tiny" id="wishStat" style="margin-top:9px" role="status" aria-live="polite"></div>
  </div>
  <div id="wishOut"></div>
- <details class="more"><summary>Exhaustive search instead — every valid combination, not credit-aware</summary>
+ <details class="more" data-section-title="Exhaustive schedule search"><summary>Exhaustive search instead — every valid combination, not credit-aware</summary>
   <div class="note" style="margin-top:10px">Searches the whole space of section combinations for complete,
   clash-free schedules. Use this if you want to browse every valid option rather than one optimised pick.</div>
   <div class="grid g4">
@@ -274,14 +277,14 @@
 
 <!-- 04 BID SIMULATOR -->
 <div class="pane" id="p-bid">
- <div class="card" style="border-color:var(--ok)">
+ <div class="card" data-section-title="Strategic bid planner" style="border-color:var(--ok)">
   <h2>Strategic bid planner</h2>
   <div class="note">Build a budget-feasible plan across every selected course without guessing what other
   students will bid. The University publishes the auction mechanism and live bidder counts, but not historical
   clearing prices or private rival bids. This planner therefore shows an <b>opening bid</b> and a
   <b>personal ceiling</b>&mdash;never a made-up win probability.</div>
  </div>
- <div class="card tight"><div class="hd" style="margin-bottom:10px"><div><h2>Choose your resource strategy</h2>
+ <div class="card tight" data-section-title="Choose your resource strategy"><div class="hd" style="margin-bottom:10px"><div><h2>Choose your resource strategy</h2>
   <div class="note">These controls are personal planning choices, not University rules. Category balances
   remain separate, and the total held by simultaneous bids can never exceed the relevant live balance.</div></div></div>
   <div class="grid g3">
@@ -306,12 +309,12 @@
 
 <!-- 05 DEGREE AUDIT -->
 <div class="pane" id="p-two">
- <div class="card"><div class="hd"><div><h2>Degree audit and current-semester impact</h2>
+ <div class="card" data-section-title="Degree audit and current-semester impact"><div class="hd"><div><h2>Degree audit and current-semester impact</h2>
   <div class="note">From your selected programme's official rules, your completed-course data, and the courses
   currently chosen.</div></div>
   <div><button class="btn" onclick="void runDegreeAudit()">Run audit check</button></div></div>
   <div id="twoBox"></div></div>
- <details class="more" open><summary>Programme pathways, specialisations &amp; focus planner</summary>
+ <details class="more" open data-section-title="Programme pathways and specialisations"><summary>Programme pathways, specialisations &amp; focus planner</summary>
   <div class="card tight" style="margin-top:10px"><div class="hd" style="margin-bottom:8px"><div><h2>Completed pathway / specialisation courses</h2>
    <div class="note">Completed courses are read automatically from your audit record. Add an item here only when it is missing from that record; everything stays in your local plan.</div></div></div>
    <div id="doneMEList"></div>
@@ -327,11 +330,12 @@
 
 <!-- 06 RULES & DATA -->
 <div class="pane" id="p-rules">
- <div class="card"><div class="hd"><div><h2>Every rule this tool applies, and where it came from</h2>
+ <div class="card" data-section-title="Rules and source documents"><div class="hd"><div><h2>Every rule this tool applies, and where it came from</h2>
   <div class="note">Nothing here is folklore. Each rule states whether the University wrote it down, whether it
   was derived from the timetable, or whether it is an assumption &mdash; and disputed or unknown items say how
   they were resolved.</div></div></div>
   <div id="ruleSummary"></div>
+  <div id="sourceLibrary" style="margin-top:14px"></div>
   <div class="srch" style="margin-top:12px">
    <select id="rStatus"><option value="">All statuses</option><option value="official">Official</option>
      <option value="prospectus">Prospectus</option><option value="timetable">Timetable-derived</option>
@@ -342,7 +346,7 @@
    <input type="text" id="rQ" placeholder="Search rules&hellip;"></div>
   <div id="ruleList"></div>
  </div>
- <details class="more"><summary>Data checks, limitations &amp; credit provenance</summary>
+ <details class="more" data-section-title="Data checks and credit provenance"><summary>Data checks, limitations &amp; credit provenance</summary>
   <div class="card" style="margin-top:10px"><div class="note">Programme rules are linked to official sources.
    Where a public page does not publish a complete fixed curriculum, the audit asks for a private profile
    override instead of guessing.</div>
@@ -351,7 +355,7 @@
    <div class="note">Only 33 of 328 courses have an official/public credit match. The rest are derived from
    L/T/P contact patterns in the timetable and must be confirmed in COS before you register.</div></div></div>
    <div class="srch"><input type="text" id="cQ" placeholder="Search a course to check its credit source…"></div>
-   <div class="scroll"><table><thead><tr><th>Course</th><th>Credits used</th><th>Status</th><th>Basis</th></tr></thead>
+   <div class="scroll responsive-table" tabindex="0" role="region" aria-label="Credit provenance table"><table><thead><tr><th>Course</th><th>Credits used</th><th>Status</th><th>Basis</th></tr></thead>
     <tbody id="cBody"></tbody></table></div></div>
   <div class="card"><h2>Rules implemented</h2><div id="rulesBox"></div></div>
  </details>

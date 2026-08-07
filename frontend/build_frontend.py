@@ -5,7 +5,7 @@ Deliberately does NOT bundle the heavy compute modules that used to run in the
 browser (simulate / competition / robust / optimize) or the authoritative
 domain engine. Only a clash-preview helper remains client-side.
 """
-import os, re, sys
+import os, re, shutil, sys
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.environ.get("SNU_FRONTEND_OUT", os.path.join(BASE, "dist", "index.html"))
@@ -17,6 +17,7 @@ UI = ["src/ui/a_head.html", "src/ui/b_body.html", "src/ui/c_core.html", "src/ui/
       "src/ui/i_build.html", "src/ui/e_tt.html", "src/ui/h_spec.html", "src/ui/k_learn.html",
       "src/ui/g_two.html"]
 DATA = os.path.join(BASE, "src", "data.json")
+DOCS = os.path.join(BASE, "src", "docs")
 
 # every browser-side computation path that must NOT survive the migration
 # Any REFERENCE to a removed engine is a bug, not just a definition. An earlier
@@ -105,9 +106,14 @@ def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(html)
+    docs_out = os.path.join(os.path.dirname(OUT), "docs")
+    if os.path.isdir(DOCS):
+        shutil.copytree(DOCS, docs_out, dirs_exist_ok=True)
     print(f"built {OUT}  ({len(html):,} bytes)")
     print(f"  client modules: {len(CLIENT)} + glue")
     print(f"  ui layers:      {len(UI)}")
+    if os.path.isdir(DOCS):
+        print(f"  source docs:    {len(os.listdir(DOCS))}")
     print("  verified: no simulation/optimisation engine defined OR referenced in the bundle")
     return 0
 

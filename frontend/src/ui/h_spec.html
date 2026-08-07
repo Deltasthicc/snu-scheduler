@@ -40,12 +40,12 @@ function removeDoneME(i){ DONE_ME.splice(i,1); renderDoneME(); drawSpec(); }
 function renderDoneME(){
   const box=$('doneMEList'); if(!box) return;
   if(!DONE_ME.length){ box.innerHTML='<div class="note">Nothing added yet. Add only courses that your programme source places in a pathway or specialisation.</div>'; return; }
-  let h='<table><thead><tr><th>Code</th><th>Title</th><th class="num">Credits</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>';
+  let h='<div class="table-shell responsive-table"><table><thead><tr><th>Code</th><th>Title</th><th class="num">Credits</th><th><span class="sr-only">Remove</span></th></tr></thead><tbody>';
   DONE_ME.forEach((d,i)=>{
-    h+=`<tr><td><b>${esc(d.code)}</b></td><td class="tiny">${esc(d.name||'')}</td><td class="num">${f1(d.cr)}</td>
-      <td><button class="btn2 sm" onclick="removeDoneME(${i})">×</button></td></tr>`;
+    h+=`<tr><td data-label="Code"><b>${esc(d.code)}</b></td><td data-label="Title" class="tiny">${esc(d.name||'')}</td><td data-label="Credits" class="num">${f1(d.cr)}</td>
+      <td data-label=""><button class="btn2 sm" aria-label="Remove ${esc(d.code)}" onclick="removeDoneME(${i})">×</button></td></tr>`;
   });
-  h+='</tbody></table>';
+  h+='</tbody></table></div>';
   box.innerHTML=h;
 }
 
@@ -197,14 +197,14 @@ function drawBlockOpt(){
   let h=`<div class="note" style="margin-bottom:10px">Compare CSD block combinations only if your profile says
    those core courses are applicable. Every combination below is clash-free internally; the last column shows
    which current electives remain open.</div>
-   <table><thead><tr><th>Block</th><th>CoA package</th><th>MED package</th><th>Electives left open</th>
+   <div class="table-shell responsive-table"><table><thead><tr><th>Block</th><th>CoA package</th><th>MED package</th><th>Electives left open</th>
    <th>Which</th><th><span class="sr-only">Action</span></th></tr></thead><tbody>`;
   uniq.slice(0,10).forEach(r=>{
-    h+=`<tr><td><b>${r.blk}</b></td><td class="tiny">${esc(r.cl)}</td><td class="tiny">${esc(r.ml)}</td>
-     <td class="num" style="color:${r.n>=4?'var(--ok)':'var(--sig)'}">${r.n}</td>
-     <td class="tiny">${r.free.join(', ')||'none'}</td>
-     <td><button class="btn2 sm" onclick="applyCore(${r.ci},${r.mi})">use this</button></td></tr>`;});
-  h+='</tbody></table>';
+    h+=`<tr><td data-label="Block"><b>${r.blk}</b></td><td data-label="CoA package" class="tiny">${esc(r.cl)}</td><td data-label="MED package" class="tiny">${esc(r.ml)}</td>
+     <td data-label="Electives left" class="num" style="color:${r.n>=4?'var(--ok)':'var(--sig)'}">${r.n}</td>
+     <td data-label="Which" class="tiny">${r.free.join(', ')||'none'}</td>
+     <td data-label=""><button class="btn2 sm" onclick="applyCore(${r.ci},${r.mi})">use this</button></td></tr>`;});
+  h+='</tbody></table></div>';
   $('blockBox').innerHTML=h;
 }
 function applyCore(ci,mi){
