@@ -16,8 +16,17 @@ kill_port() {
   if command -v lsof >/dev/null 2>&1; then
     lsof -ti tcp:"$port" 2>/dev/null | xargs -r kill -9 2>/dev/null || true
   elif command -v netstat >/dev/null 2>&1 && command -v taskkill.exe >/dev/null 2>&1; then
+    # `|| true` on the whole pipeline is load-bearing, not decorative: this
+    # script runs under `set -e` (run-e2e.sh, which shares this same
+    # pipeline, deliberately does not - see its own comment). On a clean
+    # machine nothing is listening on the port yet, `grep LISTENING` finds no
+    # match and exits 1, and `pipefail` propagates that through the whole
+    # pipeline - which set -e then treats as this function failing, aborting
+    # the entire script via the EXIT trap before a single server is started.
+    # Found by tracing a real run with `bash -x` that printed nothing but
+    # "shutting down..." and exited immediately.
     netstat -ano 2>/dev/null | grep ":$port " | grep LISTENING | awk '{print $NF}' | sort -u \
-      | while read -r pid; do taskkill.exe //F //PID "$pid" >/dev/null 2>&1 || true; done
+      | while read -r pid; do taskkill.exe //F //PID "$pid" >/dev/null 2>&1 || true; done || true
   fi
 }
 cleanup() {
@@ -40,7 +49,7 @@ command -v python3 >/dev/null || { echo "ERROR: python3 not found"; exit 1; }
 echo "python: $(python3 --version)"
 
 python3 - <<'PY' || { echo "ERROR: missing packages. Run: pip install -r backend/requirements.txt"; exit 1; }
-import importlib, sys
+import importlib.util, sys
 missing = [m for m in ("fastapi","uvicorn","pydantic","numpy") if importlib.util.find_spec(m) is None]
 if missing:
     print("missing:", ", ".join(missing)); sys.exit(1)
