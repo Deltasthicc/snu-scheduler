@@ -64,6 +64,30 @@ const ck = (name, ok, detail = '') => {
       }
     }
 
+    const motionTarget = await page.$eval('[data-motion-choice="full"]', el => Math.min(el.getBoundingClientRect().width, el.getBoundingClientRect().height));
+    ck('motion controls remain touchable', motionTarget >= 32, `${Math.round(motionTarget)}px`);
+    await page.click('[data-motion-choice="reduced"]');
+    const reduced = await page.evaluate(() => ({
+      effective: document.documentElement.dataset.motion,
+      saved: localStorage.getItem('snu-ui-motion'),
+      revealVisible: [...document.querySelectorAll('.ui-reveal')].every(el => Number.parseFloat(getComputedStyle(el).opacity) > .99),
+    }));
+    ck('reduced-motion preference is applied and persisted', reduced.effective === 'reduced' && reduced.saved === 'reduced', `${reduced.effective}/${reduced.saved}`);
+    ck('reduced motion never hides revealed content', reduced.revealVisible);
+    await page.click('[data-motion-choice="full"]');
+
+    await page.keyboard.press('Control+K');
+    await page.waitForSelector('#commandBackdrop:not([hidden])');
+    await page.fill('#commandSearch', 'degree audit');
+    const commandState = await page.evaluate(() => ({
+      open: !document.getElementById('commandBackdrop').hidden,
+      results: document.querySelectorAll('#commandResults .command-item').length,
+      focus: document.activeElement.id,
+    }));
+    ck('keyboard quick find opens, focuses search and filters tools', commandState.open && commandState.results > 0 && commandState.focus === 'commandSearch', `${commandState.results} result(s)`);
+    await page.keyboard.press('Escape');
+    ck('quick find closes with Escape', await page.$eval('#commandBackdrop', el => el.hidden));
+
     const expectedSingleColumn = testCase.name === 'phone';
     const columns = await page.$eval('.workspace-shell', el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
     ck('responsive workspace column count', expectedSingleColumn ? columns === 1 : columns >= 2, String(columns));
@@ -76,6 +100,11 @@ const ck = (name, ok, detail = '') => {
       }), tab);
       ck(`${tab} tab remains interactive`, state.selected === 'true' && state.visible);
     }
+    await page.click('.tab[data-p="prof"]');
+    const journey = await page.evaluate(() => ({ count: document.getElementById('journeyCount').textContent, title: document.getElementById('journeyTitle').textContent, hash: location.hash }));
+    ck('guided journey follows the active workspace', journey.count === 'Step 2 of 6' && /profile/i.test(journey.title) && journey.hash === '#prof', `${journey.count} · ${journey.hash}`);
+    await page.keyboard.press('Alt+3');
+    ck('Alt+number shortcut changes workspace', await page.$eval('.tab[data-p="courses"]', el => el.getAttribute('aria-selected') === 'true'));
     await page.click('.tab[data-p="prof"]');
     const profileLayout = await page.evaluate(() => {
       const pane = document.getElementById('p-prof');

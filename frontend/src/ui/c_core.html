@@ -31,11 +31,27 @@ let ADVISEMENT_INFO=null; // private, local-only report provenance; never shippe
 /* ---------- presentation shell (theme, page map, motion) ----------
    This intentionally owns no planning or allocation state. It only changes how
    the existing controls are presented and navigated. */
-const THEME_KEY='snu-ui-theme';
+const THEME_KEY='snu-ui-theme',MOTION_KEY='snu-ui-motion';
+const JOURNEY={
+  learn:['Learn the system','See how clearing prices, refunds and strategic bids work before making a plan.'],
+  prof:['Set your profile','Load or enter your programme, completed work, credit policy and bid-point position.'],
+  courses:['Shape your semester','Browse courses, resolve clashes and build a schedule you can actually attend.'],
+  bid:['Plan your bids','Turn priorities and separate point pools into opening bids and personal stop points.'],
+  two:['Check degree progress','See what is complete, what this semester satisfies and what remains afterward.'],
+  rules:['Verify every claim','Open the exact University source behind a rule, assumption or programme requirement.']
+};
 let SECTION_TARGETS=[];
 let SECTION_SIGNATURE='';
+let REVEAL_OBSERVER=null,CMD_ITEMS=[],CMD_ACTIVE=0,CMD_RETURN_FOCUS=null,TOAST_TIMER=null;
 function getThemePreference(){try{return localStorage.getItem(THEME_KEY)||'system';}catch(e){return 'system';}}
-function setThemePreference(pref){
+function getMotionPreference(){try{return localStorage.getItem(MOTION_KEY)||'auto';}catch(e){return 'auto';}}
+function motionReduced(){return document.documentElement.dataset.motion==='reduced';}
+function motionBehavior(){return motionReduced()?'auto':'smooth';}
+function showToast(message){
+  const toast=$('uiToast');if(!toast)return;toast.textContent=message;toast.classList.add('show');
+  window.clearTimeout(TOAST_TIMER);TOAST_TIMER=window.setTimeout(()=>toast.classList.remove('show'),2300);
+}
+function setThemePreference(pref,silent=false){
   const value=['light','dark','system'].includes(pref)?pref:'system';
   if(value==='system')document.documentElement.removeAttribute('data-theme');
   else document.documentElement.setAttribute('data-theme',value);
@@ -44,6 +60,21 @@ function setThemePreference(pref){
     const on=b.dataset.themeChoice===value;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));
   });
   const caption=$('themeCaption');if(caption)caption.textContent=value==='system'?'System theme':value[0].toUpperCase()+value.slice(1)+' mode';
+  if(!silent)showToast(`${caption?caption.textContent:'Theme updated'}. Your planning data is unchanged.`);
+}
+function setMotionPreference(pref,silent=false){
+  const value=['auto','full','reduced'].includes(pref)?pref:'auto';
+  const systemReduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const effective=value==='reduced'||(value==='auto'&&systemReduced)?'reduced':'full';
+  document.documentElement.dataset.motion=effective;
+  try{localStorage.setItem(MOTION_KEY,value);}catch(e){}
+  document.querySelectorAll('[data-motion-choice]').forEach(b=>{
+    const on=b.dataset.motionChoice===value;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));
+  });
+  const caption=$('motionCaption');if(caption)caption.textContent=value==='auto'?`System motion (${effective==='reduced'?'less':'full'})`:`${value[0].toUpperCase()+value.slice(1)} motion`;
+  if(effective==='reduced')document.querySelectorAll('.ui-reveal').forEach(el=>el.classList.add('reveal-in'));
+  else registerReveals(document);
+  if(!silent)showToast(`${caption?caption.textContent:'Motion updated'}. You can change this any time.`);
 }
 function headingLabel(h){return (h.textContent||'').replace(/\s+/g,' ').trim();}
 function sectionLabel(target){
@@ -65,20 +96,92 @@ function updateSectionNav(){
     const target=SECTION_TARGETS[+b.dataset.sectionIndex];if(!target)return;
     if(target.tagName==='DETAILS')target.open=true;
     target.classList.remove('nav-pulse');void target.offsetWidth;target.classList.add('nav-pulse');
-    target.scrollIntoView({behavior:'smooth',block:'start'});
+    target.scrollIntoView({behavior:motionBehavior(),block:'start'});
     window.setTimeout(()=>target.classList.remove('nav-pulse'),850);
   });
 }
 function updateScrollChrome(){
   const top=window.scrollY||document.documentElement.scrollTop;
   const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
-  const fill=$('scrollProgressFill');if(fill)fill.style.width=Math.min(100,top/max*100)+'%';
+  const fill=$('scrollProgressFill');if(fill)fill.style.transform=`scaleX(${Math.min(1,top/max)})`;
   const back=$('backTop');if(back)back.classList.toggle('show',top>520);
   let active=0;SECTION_TARGETS.forEach((target,i)=>{if(target.getBoundingClientRect().top<190)active=i;});
   document.querySelectorAll('.section-link').forEach((b,i)=>b.classList.toggle('current',i===active));
 }
+function registerReveals(root=document){
+  const nodes=[...root.querySelectorAll('.card,.pane>details,.source-card,.agenda-day,.pathway-choice')];
+  nodes.forEach((el,i)=>{
+    if(el.dataset.revealReady)return;el.dataset.revealReady='1';el.style.setProperty('--reveal-delay',`${Math.min(i%6,5)*34}ms`);
+    if(motionReduced()||!REVEAL_OBSERVER){el.classList.add('reveal-in');return;}
+    el.classList.add('ui-reveal');
+    if(el.closest('.pane.on'))requestAnimationFrame(()=>el.classList.add('reveal-in'));
+    else REVEAL_OBSERVER.observe(el);
+  });
+}
+function bumpStatus(target){
+  const status=target.nodeType===1?target:target.parentElement;const box=status&&status.closest('[role="status"],.flag');
+  if(!box||box.offsetParent===null||motionReduced())return;box.classList.remove('status-bump');void box.offsetWidth;box.classList.add('status-bump');
+}
+function updateJourney(tab){
+  const tabs=[...document.querySelectorAll('.tab')],i=Math.max(0,tabs.indexOf(tab||document.querySelector('.tab.on'))),key=tabs[i]?.dataset.p||'learn',copy=JOURNEY[key]||JOURNEY.learn;
+  const track=$('journeyTrack');if(track)track.innerHTML=tabs.map((_,n)=>`<i class="${n<i?'done':n===i?'current':''}"></i>`).join('');
+  if($('journeyCount'))$('journeyCount').textContent=`Step ${i+1} of ${tabs.length}`;if($('journeyTitle'))$('journeyTitle').textContent=copy[0];if($('journeyHint'))$('journeyHint').textContent=copy[1];
+  if($('journeyPrev'))$('journeyPrev').disabled=i===0;if($('journeyNext')){$('journeyNext').disabled=i===tabs.length-1;$('journeyNext').textContent=i===tabs.length-1?'All steps open':'Next →';}
+}
+function journeyMove(direction){
+  const tabs=[...document.querySelectorAll('.tab')],i=tabs.indexOf(document.querySelector('.tab.on')),next=tabs[i+direction];if(next){next.focus();next.click();}
+}
+function scrollPageTop(){window.scrollTo({top:0,behavior:motionBehavior()});}
+function currentViewUrl(){const tab=document.querySelector('.tab.on')?.dataset.p||'learn';return `${location.href.split('#')[0]}#${tab}`;}
+function buildCommandItems(){
+  const tabs=[...document.querySelectorAll('.tab')];
+  const items=tabs.map((tab,i)=>({icon:String(i+1).padStart(2,'0'),kind:'Workspace',title:headingLabel(tab),detail:JOURNEY[tab.dataset.p]?.[1]||'',run:()=>tab.click()}));
+  document.querySelectorAll('.pane').forEach(pane=>pane.querySelectorAll(':scope > [data-section-title]').forEach((target,i)=>{
+    const tab=tabs.find(t=>`p-${t.dataset.p}`===pane.id);if(!tab)return;const title=sectionLabel(target);
+    items.push({icon:'§',kind:headingLabel(tab),title,detail:'Jump directly to this tool',run:()=>{
+      tab.click();window.setTimeout(()=>{if(target.tagName==='DETAILS')target.open=true;target.scrollIntoView({behavior:motionBehavior(),block:'start'});},motionReduced()?0:120);
+    }});
+  }));
+  items.push(
+    {icon:'◐',kind:'Appearance',title:'Cycle colour theme',detail:'Switch between system, light and dark',run:()=>{const p=getThemePreference(),n={system:'light',light:'dark',dark:'system'}[p];setThemePreference(n);}},
+    {icon:'~',kind:'Accessibility',title:'Cycle motion preference',detail:'Switch between automatic, full and reduced motion',run:()=>{const p=getMotionPreference(),n={auto:'full',full:'reduced',reduced:'auto'}[p];setMotionPreference(n);}},
+    {icon:'↗',kind:'Share',title:'Copy link to this workspace',detail:'Copy a link that opens the current tab',run:async()=>{const url=currentViewUrl();try{await navigator.clipboard.writeText(url);showToast('Link copied to clipboard.');}catch(e){showToast(url);}}}
+  );
+  return items;
+}
+function renderCommandResults(query=''){
+  const out=$('commandResults');if(!out)return;const q=query.trim().toLowerCase();CMD_ITEMS=buildCommandItems().filter(item=>!q||`${item.title} ${item.detail} ${item.kind}`.toLowerCase().includes(q));CMD_ACTIVE=0;
+  out.innerHTML=CMD_ITEMS.length?CMD_ITEMS.map((item,i)=>`<button type="button" class="command-item${i===0?' active':''}" role="option" aria-selected="${i===0}" data-command-index="${i}"><span class="command-icon">${esc(item.icon)}</span><span><strong>${esc(item.title)}</strong><small>${esc(item.detail)}</small></span><span class="command-kind">${esc(item.kind)}</span></button>`).join(''):'<div class="command-empty">No matching tool. Try a course, audit, rule, theme or motion.</div>';
+  out.querySelectorAll('.command-item').forEach(button=>{button.onmouseenter=()=>setCommandActive(+button.dataset.commandIndex);button.onclick=()=>runCommand(+button.dataset.commandIndex);});
+}
+function setCommandActive(index){
+  if(!CMD_ITEMS.length)return;CMD_ACTIVE=(index+CMD_ITEMS.length)%CMD_ITEMS.length;
+  document.querySelectorAll('.command-item').forEach((b,i)=>{const on=i===CMD_ACTIVE;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
+  document.querySelector(`.command-item[data-command-index="${CMD_ACTIVE}"]`)?.scrollIntoView({block:'nearest'});
+}
+function runCommand(index){const item=CMD_ITEMS[index];if(!item)return;closeCommandPalette(false);void item.run();}
+function openCommandPalette(){
+  const backdrop=$('commandBackdrop');if(!backdrop)return;CMD_RETURN_FOCUS=document.activeElement;backdrop.hidden=false;document.body.style.overflow='hidden';renderCommandResults();
+  const search=$('commandSearch');search.value='';window.setTimeout(()=>search.focus(),0);
+}
+function closeCommandPalette(restore=true){const backdrop=$('commandBackdrop');if(!backdrop||backdrop.hidden)return;backdrop.hidden=true;document.body.style.overflow='';if(restore&&CMD_RETURN_FOCUS?.focus)CMD_RETURN_FOCUS.focus();}
+function activateTab(t){
+  const update=()=>{
+    document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-selected','false');});
+    document.querySelectorAll('.pane').forEach(x=>{x.classList.remove('on');x.hidden=true;});
+    t.classList.add('on');t.setAttribute('aria-selected','true');const pane=$('p-'+t.dataset.p);pane.hidden=false;pane.classList.add('on');
+    if(t.dataset.p==='courses')drawTT();if(t.dataset.p==='two'){drawTwo();drawSpec();}if(t.dataset.p==='rules')drawRules();if(t.dataset.p==='learn')drawLearn();
+    history.replaceState(null,'',`#${t.dataset.p}`);SECTION_SIGNATURE='';updateSectionNav();updateJourney(t);updateScrollChrome();registerReveals(pane);pane.querySelectorAll('.ui-reveal').forEach(el=>el.classList.add('reveal-in'));
+  };
+  // Keep tab state synchronous for assistive technology and downstream renderers;
+  // the pane's transform/opacity transition supplies the visual continuity.
+  update();
+  requestAnimationFrame(()=>document.querySelector('.workspace-shell')?.scrollIntoView({behavior:motionBehavior(),block:'start'}));
+}
 function initPresentation(){
-  setThemePreference(getThemePreference());
+  setThemePreference(getThemePreference(),true);
+  if('IntersectionObserver'in window)REVEAL_OBSERVER=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('reveal-in');REVEAL_OBSERVER.unobserve(entry.target);}}),{rootMargin:'0px 0px -7% 0px',threshold:.06});
+  setMotionPreference(getMotionPreference(),true);
   document.querySelectorAll('.pane').forEach(p=>{p.setAttribute('role','tabpanel');p.hidden=!p.classList.contains('on');});
   document.addEventListener('pointermove',e=>{
     const card=e.target.closest&&e.target.closest('.card');if(!card)return;
@@ -87,24 +190,24 @@ function initPresentation(){
   window.addEventListener('scroll',()=>requestAnimationFrame(updateScrollChrome),{passive:true});
   window.addEventListener('resize',()=>requestAnimationFrame(updateSectionNav),{passive:true});
   const content=document.querySelector('.workspace-content');if(content&&window.MutationObserver){
-    new MutationObserver(()=>requestAnimationFrame(updateSectionNav)).observe(content,{childList:true,subtree:true});
+    new MutationObserver(mutations=>{requestAnimationFrame(()=>{updateSectionNav();registerReveals(content);});mutations.forEach(m=>bumpStatus(m.target));}).observe(content,{childList:true,subtree:true,characterData:true});
   }
-  updateSectionNav();updateScrollChrome();
+  document.addEventListener('pointerdown',e=>{const button=e.target.closest?.('button');if(!button||motionReduced())return;const r=button.getBoundingClientRect(),dot=document.createElement('span');dot.className='tap-ripple';dot.style.left=`${e.clientX-r.left}px`;dot.style.top=`${e.clientY-r.top}px`;button.appendChild(dot);dot.addEventListener('animationend',()=>dot.remove());});
+  $('commandBackdrop')?.addEventListener('pointerdown',e=>{if(e.target===$('commandBackdrop'))closeCommandPalette();});
+  $('commandSearch')?.addEventListener('input',e=>renderCommandResults(e.target.value));
+  $('commandSearch')?.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();setCommandActive(CMD_ACTIVE+(e.key==='ArrowDown'?1:-1));}else if(e.key==='Enter'){e.preventDefault();runCommand(CMD_ACTIVE);}else if(e.key==='Escape'){e.preventDefault();closeCommandPalette();}});
+  document.addEventListener('keydown',e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('commandBackdrop')?.hidden?openCommandPalette():closeCommandPalette();return;}
+    if(e.key==='Escape'&&!$('commandBackdrop')?.hidden){closeCommandPalette();return;}
+    if(e.altKey&&/^[1-6]$/.test(e.key)){e.preventDefault();document.querySelectorAll('.tab')[+e.key-1]?.click();}
+  });
+  const mq=window.matchMedia?.('(prefers-reduced-motion: reduce)');mq?.addEventListener?.('change',()=>{if(getMotionPreference()==='auto')setMotionPreference('auto',true);});
+  updateSectionNav();updateJourney();updateScrollChrome();registerReveals(document);
+  const hash=location.hash.slice(1),initial=document.querySelector(`.tab[data-p="${hash}"]`);if(initial&&!initial.classList.contains('on'))requestAnimationFrame(()=>initial.click());
 }
 
 /* ---------- tabs ---------- */
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
-  document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-selected','false');});
-  document.querySelectorAll('.pane').forEach(x=>{x.classList.remove('on');x.hidden=true;});
-  t.classList.add('on');t.setAttribute('aria-selected','true');const pane=$('p-'+t.dataset.p);pane.hidden=false;pane.classList.add('on');
-  if(t.dataset.p==='courses') drawTT();
-  if(t.dataset.p==='two'){ drawTwo(); drawSpec(); }
-  if(t.dataset.p==='rules') drawRules();
-  if(t.dataset.p==='learn') drawLearn();
-  SECTION_SIGNATURE='';updateSectionNav();updateScrollChrome();requestAnimationFrame(()=>{
-    const shell=document.querySelector('.workspace-shell');if(shell)shell.scrollIntoView({behavior:'smooth',block:'start'});
-  });
-});
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>activateTab(t));
 document.querySelectorAll('.tab').forEach((t,i,all)=>t.addEventListener('keydown',e=>{
   if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();
   const next=e.key==='Home'?0:e.key==='End'?all.length-1:(i+(e.key==='ArrowRight'?1:-1)+all.length)%all.length;

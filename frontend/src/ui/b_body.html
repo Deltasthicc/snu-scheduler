@@ -10,12 +10,19 @@
    <b>Unofficial planning aid.</b></div>
   </div>
   <div class="mast-actions">
-   <div class="theme-control" role="group" aria-label="Colour theme">
-    <button class="theme-choice" type="button" data-theme-choice="light" onclick="setThemePreference('light')" aria-label="Use light theme" title="Light theme">☀</button>
-    <button class="theme-choice" type="button" data-theme-choice="system" onclick="setThemePreference('system')" aria-label="Follow system theme" title="Follow system">◐</button>
-    <button class="theme-choice" type="button" data-theme-choice="dark" onclick="setThemePreference('dark')" aria-label="Use dark theme" title="Dark theme">☾</button>
+   <div class="preference-panel">
+    <div class="preference-row"><span>Theme</span><div class="theme-control" role="group" aria-label="Colour theme">
+     <button class="theme-choice" type="button" data-theme-choice="light" onclick="setThemePreference('light')" aria-label="Use light theme" title="Light theme">☀</button>
+     <button class="theme-choice" type="button" data-theme-choice="system" onclick="setThemePreference('system')" aria-label="Follow system theme" title="Follow system">◐</button>
+     <button class="theme-choice" type="button" data-theme-choice="dark" onclick="setThemePreference('dark')" aria-label="Use dark theme" title="Dark theme">☾</button>
+    </div></div>
+    <div class="preference-row"><span>Motion</span><div class="motion-control" role="group" aria-label="Animation preference">
+     <button class="motion-choice" type="button" data-motion-choice="auto" onclick="setMotionPreference('auto')" aria-label="Follow system motion preference" title="Follow system motion preference">Auto</button>
+     <button class="motion-choice" type="button" data-motion-choice="full" onclick="setMotionPreference('full')" aria-label="Use full interface motion" title="Full motion">Full</button>
+     <button class="motion-choice" type="button" data-motion-choice="reduced" onclick="setMotionPreference('reduced')" aria-label="Reduce interface motion" title="Reduced motion">Less</button>
+    </div></div>
    </div>
-   <div class="theme-caption" id="themeCaption">System theme</div>
+   <div class="theme-caption"><span id="themeCaption">System theme</span> · <span id="motionCaption">System motion</span></div>
   </div>
  </div>
 </div>
@@ -39,6 +46,18 @@
   <button class="tab" role="tab" aria-selected="false" aria-controls="p-two" data-p="two"><span class="n">05</span>Degree audit</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="p-rules" data-p="rules"><span class="n">06</span>Rules &amp; data</button>
 </div>
+<section class="journey-bar" aria-label="Planning journey">
+ <div class="journey-track" id="journeyTrack" aria-hidden="true"></div>
+ <div class="journey-copy">
+  <span class="journey-count" id="journeyCount">Step 1 of 6</span>
+  <strong id="journeyTitle">Learn the system</strong>
+  <span id="journeyHint">See how clearing prices, refunds and strategic bids work before making a plan.</span>
+ </div>
+ <div class="journey-actions">
+  <button class="btn2 sm" id="journeyPrev" type="button" onclick="journeyMove(-1)" aria-label="Previous planning step">← Back</button>
+  <button class="btn2 sm" id="journeyNext" type="button" onclick="journeyMove(1)" aria-label="Next planning step">Next →</button>
+ </div>
+</section>
 <div class="workspace-shell">
  <aside class="workspace-rail" aria-label="Current page sections">
   <div class="rail-card">
@@ -327,6 +346,15 @@
    <div id="specBox"></div></div>
   <div class="card" id="blockCard" style="display:none"><div class="hd"><div><h2>CSE core-block helper</h2></div></div><div id="blockBox"></div></div>
  </details>
+ <details class="more" data-section-title="Minor programme checker"><summary>Minor programme checker</summary>
+  <div class="card tight" style="margin-top:10px"><div class="hd"><div><h2>Which minors can you actually do?</h2>
+   <div class="note">Transcribed from the University's own Minor Programs Guide (old curriculum, students admitted
+   2024 or earlier). Sweeps all 21 published minors against your selected major and your completed/planned
+   courses. GPA minimums, grades, interviews and other conditions the University itself checks are disclosed,
+   never assumed met.</div></div>
+   <button class="btn" onclick="void runMinorOverview()">Check my minors</button></div>
+   <div id="minorOverviewBox" style="margin-top:12px"></div></div>
+ </details>
 </div>
 
 <!-- 06 RULES & DATA -->
@@ -363,5 +391,16 @@
 </div>
 </div>
 </div>
-<button class="back-top" id="backTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" title="Back to top">↑</button>
+<button class="command-launcher" id="commandLauncher" type="button" onclick="openCommandPalette()" aria-haspopup="dialog" aria-controls="commandBackdrop" title="Quick navigation (Ctrl or Command + K)"><span aria-hidden="true">⌕</span><b>Quick find</b><kbd>K</kbd></button>
+<div class="command-backdrop" id="commandBackdrop" hidden>
+ <section class="command-palette" role="dialog" aria-modal="true" aria-labelledby="commandTitle">
+  <div class="command-head"><div><span class="tiny">Navigate anywhere</span><h2 id="commandTitle">Quick find</h2></div><button class="command-close" type="button" onclick="closeCommandPalette()" aria-label="Close quick find">×</button></div>
+  <label class="sr-only" for="commandSearch">Search tabs, sections and actions</label>
+  <input id="commandSearch" type="search" placeholder="Search tabs, sections and actions…" autocomplete="off">
+  <div class="command-results" id="commandResults" role="listbox" aria-label="Quick find results"></div>
+  <div class="command-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span><span><kbd>Alt</kbd> + <kbd>1–6</kbd> tabs</span></div>
+ </section>
+</div>
+<div class="ui-toast" id="uiToast" role="status" aria-live="polite" aria-atomic="true"></div>
+<button class="back-top" id="backTop" type="button" onclick="scrollPageTop()" aria-label="Back to top" title="Back to top">↑</button>
 </main>

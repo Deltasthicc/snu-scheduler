@@ -492,6 +492,40 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
      pathwayHonesty.partial.tone === 'warn' && /remaining/.test(pathwayHonesty.partial.label),
      JSON.stringify(pathwayHonesty.partial));
 
+  console.log('\n=== §23 MINOR PROGRAMME CHECKER ===');
+  await p.evaluate(() => {
+    document.getElementById('programme').value = 'b-tech-in-computer-science-and-engineering';
+    applyProgrammeCategories();
+  });
+  await p.click('.tab[data-p="two"]');
+  await p.evaluate(() => { document.querySelector('#p-two details[data-section-title="Minor programme checker"]').open = true; });
+  await p.click('#p-two details[data-section-title="Minor programme checker"] button.btn');
+  await p.waitForFunction(() => typeof MINOR_OVERVIEW !== 'undefined' && MINOR_OVERVIEW !== null);
+  const minorOverview = await p.evaluate(() => MINOR_OVERVIEW);
+  ck('sweeps all 21 published minors', minorOverview.total_count === 21, minorOverview.total_count);
+  ck('a CSE major is marked closed for the CSE minor itself', (() => {
+    const row = minorOverview.minors.find(m => m.id === 'minor-computer-science-and-engineering');
+    return row && row.eligibility.eligible === false;
+  })());
+  ck('a CSE major is open for the Mechanical Engineering minor', (() => {
+    const row = minorOverview.minors.find(m => m.id === 'minor-mechanical-engineering');
+    return row && row.eligibility.eligible === true;
+  })());
+  ck('the ECE minor auto-resolves to the CSE-specific basket without asking', (() => {
+    const row = minorOverview.minors.find(m => m.id === 'minor-electrical-and-computer-engineering');
+    return row && row.pathway_required === false && row.pathway.id === 'cse';
+  })());
+
+  await p.evaluate(() => openMinorDetail('minor-computer-science-and-engineering'));
+  await p.waitForTimeout(300);
+  ck('opening a closed minor explains why, not just that it is closed',
+     /closed/i.test(await p.textContent('#minorDetailBox')));
+
+  await p.evaluate(() => openMinorDetail('minor-electrical-and-computer-engineering'));
+  await p.waitForTimeout(300);
+  ck('a multi-pathway minor names the eligibility conditions it cannot verify',
+     /minimum CGPA/i.test(await p.textContent('#minorDetailBox')));
+
   console.log('\n=== §9 BACKEND UNAVAILABLE ===');
   await p.route('**/api/v1/**', r => r.abort());
   await p.route('**/health/**', r => r.abort());

@@ -1,0 +1,170 @@
+/* ============ MINOR PROGRAMME CHECKER ============ */
+let MINOR_OVERVIEW = null;
+let MINOR_DETAIL = {};   // minor_id -> last audit result, so a pathway switch doesn't lose earlier detail
+
+function minorAuditPayload() {
+  const programme = $('programme') ? $('programme').value : '';
+  const completed = (typeof parseCompletedCourses === 'function') ? parseCompletedCourses() : [];
+  const planned = (typeof plannedAuditCourses === 'function') ? plannedAuditCourses() : [];
+  return {
+    major_programme_id: programme || null,
+    completed_courses: completed.map(c => ({ code: c.code, title: c.title || c.code, credits: c.credits, category: c.category || 'unspecified' })),
+    planned_courses: planned.map(c => ({ code: c.code, title: c.title || c.code, credits: c.credits, category: c.category || 'unspecified' })),
+  };
+}
+
+async function runMinorOverview() {
+  const box = $('minorOverviewBox');
+  if (!box) return;
+  if (!BACKEND_OK) { await probeHealth(); if (!BACKEND_OK) return; }
+  box.innerHTML = '<div class="tiny mut">Checking…</div>';
+  try {
+    MINOR_OVERVIEW = await API.runMinorsOverview(minorAuditPayload());
+    renderMinorOverview();
+  } catch (e) {
+    box.innerHTML = `<div class="flag f-bad">${esc(API.humanError(e))}</div>`;
+  }
+}
+
+function minorEligibilityPill(row) {
+  if (!row.eligibility.eligible) return '<span class="pill p-w">Closed to your major</span>';
+  if (row.pathway_required) return '<span class="pill p-m">Choose a pathway</span>';
+  if (row.eligibility.needs_confirmation) return '<span class="pill p-uwe">Open, conditions apply</span>';
+  return '<span class="pill p-uwe">Open</span>';
+}
+
+function renderMinorOverview() {
+  const box = $('minorOverviewBox');
+  if (!box || !MINOR_OVERVIEW) return;
+  const rows = MINOR_OVERVIEW.minors;
+  let h = `<div class="stats" style="margin-bottom:12px">
+    <div class="stat u"><div class="k">Open to your major</div><div class="v mono">${MINOR_OVERVIEW.eligible_count}</div>
+      <div class="f">of ${MINOR_OVERVIEW.total_count} published minors</div></div>
+    <div class="stat r"><div class="k">Closed to your major</div><div class="v mono">${MINOR_OVERVIEW.total_count - MINOR_OVERVIEW.eligible_count}</div>
+      <div class="f">same-department restriction</div></div>
+    <div class="stat"><div class="k">Fully complete right now</div><div class="v mono">${rows.filter(r => r.fully_complete).length}</div>
+      <div class="f">based on courses entered so far</div></div>
+  </div>`;
+  if (!MINOR_OVERVIEW.major_programme_id) {
+    h += `<div class="flag f-warn">No programme selected on Profile &amp; budget - eligibility shown assumes no major,
+      so same-department restrictions cannot be checked yet. Select your programme for an accurate list.</div>`;
+  }
+  h += '<div class="pathway-grid">';
+  const bySchool = {};
+  rows.forEach(row => { (bySchool[row.school] = bySchool[row.school] || []).push(row); });
+  Object.keys(bySchool).sort().forEach(school => {
+    h += `<div style="grid-column:1/-1;margin-top:8px"><h3>${esc(school)}</h3></div>`;
+    bySchool[school].forEach(row => {
+      const progress = (!row.pathway_required && row.eligibility.eligible && row.requirements_total)
+        ? `<small>${row.requirements_met}/${row.requirements_total} requirement group(s) met${row.pathway ? ` · ${esc(row.pathway.label)}` : ''}</small>` : '';
+      h += `<button class="pathway-choice" aria-pressed="false" onclick="void openMinorDetail('${esc(row.id)}')">
+        <span class="pathway-radio">${row.fully_complete ? '✓' : '○'}</span>
+        <span><b>${esc(row.title)}</b><small>${esc(row.department)}</small>${progress}<em class="${row.fully_complete ? 'ok' : (row.eligibility.eligible ? 'warn' : 'check')}">
+        ${minorEligibilityPill(row)}</em></span></button>`;
+    });
+  });
+  h += '</div><div id="minorDetailBox" style="margin-top:14px"></div>';
+  box.innerHTML = h;
+}
+
+async function openMinorDetail(minorId) {
+  const overviewRow = (MINOR_OVERVIEW.minors || []).find(m => m.id === minorId);
+  const detailBox = $('minorDetailBox');
+  if (!detailBox) return;
+  detailBox.innerHTML = '<div class="tiny mut">Loading…</div>';
+  const pathwayId = (overviewRow && !overviewRow.pathway_required && overviewRow.pathway) ? overviewRow.pathway.id : null;
+  try {
+    const payload = Object.assign({ minor_id: minorId, pathway_id: pathwayId }, minorAuditPayload());
+    const result = await API.runMinorAudit(payload);
+    MINOR_DETAIL[minorId] = result;
+    renderMinorDetail(minorId);
+  } catch (e) {
+    detailBox.innerHTML = `<div class="flag f-bad">${esc(API.humanError(e))}</div>`;
+  }
+}
+
+function minorRowStatusLabel(row) {
+  if (row.status === 'needs_confirmation') return { label: 'confirm yourself', tone: 'warn' };
+  if (row.status === 'complete') return { label: 'complete', tone: 'ok' };
+  if (row.status === 'on_track') return { label: 'on track with plan', tone: 'ok' };
+  return { label: 'remaining', tone: 'warn' };
+}
+
+function renderMinorDetail(minorId) {
+  const box = $('minorDetailBox');
+  const result = MINOR_DETAIL[minorId];
+  if (!box || !result) return;
+  let h = `<div class="rec top"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+    <b>${esc(result.minor.title)}</b><span class="pill p-m">${esc(result.minor.department)}</span></div>
+    <div class="note" style="margin-top:6px">${esc(result.open_to_note)}</div>`;
+
+  if (!result.eligibility.eligible) {
+    h += `<div class="flag f-bad" style="margin-top:8px">${esc(result.eligibility.reason)}</div></div>`;
+    box.innerHTML = h;
+    return;
+  }
+
+  if (result.eligibility_conditions && result.eligibility_conditions.length) {
+    h += `<div class="flag f-warn" style="margin-top:8px"><b>Conditions this tool does not verify:</b><ul style="margin:6px 0 0 18px;padding:0">
+      ${result.eligibility_conditions.map(c => `<li>${esc(c)}</li>`).join('')}</ul></div>`;
+  }
+
+  if (result.pathway_required) {
+    h += `<div class="note" style="margin-top:8px">This minor has more than one requirement basket. Pick the one that matches
+      your major:</div><div class="srch" style="margin-top:8px">`;
+    result.pathway_options.forEach(opt => {
+      h += `<button class="btn2" onclick="void openMinorDetailWithPathway('${esc(minorId)}','${esc(opt.id)}')">${esc(opt.label)}</button>`;
+    });
+    h += '</div></div>';
+    box.innerHTML = h;
+    return;
+  }
+
+  h += `<div class="note" style="margin-top:8px"><b>${esc(result.pathway.label)}</b>${result.total_credits_published != null
+    ? ` &middot; published total: ${result.total_credits_published} credits` : ''}</div>`;
+  if (result.pathway_options.length > 1) {
+    h += `<div class="srch" style="margin-top:8px">`;
+    result.pathway_options.forEach(opt => {
+      h += `<button class="btn2 ${opt.id === result.pathway.id ? 'active' : ''}" onclick="void openMinorDetailWithPathway('${esc(minorId)}','${esc(opt.id)}')">${esc(opt.label)}</button>`;
+    });
+    h += '</div>';
+  }
+
+  h += `<div style="overflow-x:auto;margin-top:10px"><table><thead><tr><th>Requirement</th><th>Required</th>
+    <th>Done</th><th>Planned</th><th>Remaining</th><th>Status</th></tr></thead><tbody>`;
+  result.requirements.forEach(row => {
+    const status = minorRowStatusLabel(row);
+    h += `<tr><td>${esc(row.label)}${row.note ? `<div class="tiny mut">${esc(row.note)}</div>` : ''}</td>
+      <td class="num">${row.required == null ? '—' : f1(row.required)}</td>
+      <td class="num">${row.completed == null ? '—' : f1(row.completed)}</td>
+      <td class="num">${row.planned == null ? '—' : f1(row.planned)}</td>
+      <td class="num">${row.remaining == null ? '—' : f1(row.remaining)}</td>
+      <td><em class="${status.tone}">${esc(status.label)}</em></td></tr>`;
+  });
+  h += '</tbody></table></div>';
+
+  if (result.requirements_needing_confirmation) {
+    h += `<div class="tiny mut" style="margin-top:6px">${result.requirements_needing_confirmation} of the rows above are not
+      counted in the ${result.requirements_met}/${result.requirements_total} tally - they need your own confirmation, not a computed number.</div>`;
+  }
+  if (result.does_not_count_notes && result.does_not_count_notes.length) {
+    h += `<div class="tiny mut" style="margin-top:6px"><b>Does not count toward this minor:</b> ${result.does_not_count_notes.map(esc).join('; ')}</div>`;
+  }
+  if (result.sources && result.sources.length) {
+    h += `<div class="tiny mut" style="margin-top:6px">Source: ${result.sources.map(s => esc(s.label)).join(', ')}</div>`;
+  }
+  h += '</div>';
+  box.innerHTML = h;
+}
+
+async function openMinorDetailWithPathway(minorId, pathwayId) {
+  const detailBox = $('minorDetailBox');
+  if (detailBox) detailBox.innerHTML = '<div class="tiny mut">Loading…</div>';
+  try {
+    const payload = Object.assign({ minor_id: minorId, pathway_id: pathwayId }, minorAuditPayload());
+    MINOR_DETAIL[minorId] = await API.runMinorAudit(payload);
+    renderMinorDetail(minorId);
+  } catch (e) {
+    if (detailBox) detailBox.innerHTML = `<div class="flag f-bad">${esc(API.humanError(e))}</div>`;
+  }
+}

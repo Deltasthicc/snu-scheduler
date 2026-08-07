@@ -81,6 +81,19 @@ def _course_credits(courses: list[AuditCourse], requirement: dict[str, Any]) -> 
     return round(sum(course.credits for course in courses if _matches(course, requirement)), 2)
 
 
+def _distinct_matching_codes(courses: list[AuditCourse], requirement: dict[str, Any]) -> set[str]:
+    return {course.code.upper() for course in courses if _matches(course, requirement)}
+
+
+def _course_count(courses: list[AuditCourse], requirement: dict[str, Any]) -> int:
+    """Number of DISTINCT matching courses, for requirements stated as "any N
+    courses" rather than a credit total (e.g. a minor's "any four courses from
+    the following"). Distinct by code so a course cannot count twice toward a
+    count-based requirement, mirroring how credit-based requirements already
+    never double-charge one course's credits within a single predicate."""
+    return len(_distinct_matching_codes(courses, requirement))
+
+
 def _as_requirement(rule: AuditRequirementOverride) -> dict[str, Any]:
     return {
         "id": rule.id, "label": rule.label, "kind": rule.kind,
@@ -88,6 +101,77 @@ def _as_requirement(rule: AuditRequirementOverride) -> dict[str, Any]:
         "course_codes": rule.course_codes, "note": rule.note,
         "source": "private profile override",
     }
+
+
+def compute_requirement_rows(requirements: list[dict[str, Any]], completed_courses: list[AuditCourse],
+                             planned_courses: list[AuditCourse], completed_milestones: list[str],
+                             completed_requirement_credits: dict[str, float]) -> list[dict[str, Any]]:
+    """Evaluate one list of independent requirement rows against a student's
+    completed/planned courses. This is the shared engine behind both the
+    programme degree audit and the minor audit (see app/services/minor_audit.py)
+    - a minor's requirements are structurally identical to a programme's: named
+    rows, each a credit threshold, a distinct-course-count threshold, a
+    milestone, or an explicitly non-computable "confirm this yourself" row,
+    matched against the same course-code/category rules either way. Reusing
+    this function rather than re-implementing it means a minor gets the exact
+    same tested matching semantics a programme audit already has, with no
+    second implementation to drift out of sync.
+    """
+    completed_codes = {course.code.upper() for course in completed_courses}
+    planned = [course for course in planned_courses if course.code.upper() not in completed_codes]
+    milestones = {value.strip().lower() for value in completed_milestones}
+    rows = []
+    for rule in requirements:
+        kind = rule.get("kind", "credits")
+        if kind == "manual_confirmation":
+            # Some published requirements name no fixed, enumerable course
+            # list at all (e.g. a minor's "any course from the department
+            # catalogue", or "3 core + 3 elective" with no list published).
+            # Inventing a course-code or category list to make these
+            # machine-checkable would be a fabrication - the whole point of
+            # this engine is that a requirement is only ever "complete"
+            # because real matching courses were found. So this kind never
+            # computes a number; it always reports "needs_confirmation" and
+            # names why, and is excluded from the credit-total aggregates
+            # below (it never carries kind == "credits").
+            required_note = rule.get("required")
+            rows.append({
+                "id": rule["id"], "label": rule["label"], "kind": kind,
+                "required": float(required_note) if required_note is not None else None,
+                "completed": None, "planned": None, "remaining": None, "remaining_after_plan": None,
+                "status": "needs_confirmation",
+                "note": rule.get("note"), "source": rule.get("source"),
+            })
+            continue
+        required = float(rule.get("required", 0))
+        if kind == "milestone":
+            done = 1.0 if rule["id"].lower() in milestones else 0.0
+            projected = done
+        elif kind == "course_count":
+            # "Any N courses from the following" (e.g. a minor's elective
+            # basket) is a count of distinct courses, not a credit sum - a
+            # 5-credit course and a 3-credit course both satisfy one slot.
+            # No private aggregate override here: a course count can only
+            # come from real, named courses, never a private credit total.
+            done = float(_course_count(completed_courses, rule))
+            projected = float(len(_distinct_matching_codes(completed_courses, rule)
+                                  | _distinct_matching_codes(planned, rule)))
+        else:
+            detailed_done = _course_credits(completed_courses, rule)
+            # The aggregate is a lower bound, not an amount to add: detailed rows
+            # may be a subset of the same accepted record.
+            done = max(detailed_done, float(completed_requirement_credits.get(rule["id"], 0)))
+            projected = done + _course_credits(planned, rule)
+        remaining = max(0.0, required - done)
+        remaining_after = max(0.0, required - projected)
+        rows.append({
+            "id": rule["id"], "label": rule["label"], "kind": kind,
+            "required": required, "completed": round(done, 2), "planned": round(projected - done, 2),
+            "remaining": round(remaining, 2), "remaining_after_plan": round(remaining_after, 2),
+            "status": "complete" if remaining == 0 else ("on_track" if remaining_after == 0 else "remaining"),
+            "note": rule.get("note"), "source": rule.get("source"),
+        })
+    return rows
 
 
 def audit_degree(request: DegreeAuditRequest, catalog: ProgrammeCatalog) -> dict[str, Any]:
@@ -102,28 +186,8 @@ def audit_degree(request: DegreeAuditRequest, catalog: ProgrammeCatalog) -> dict
 
     completed_codes = {course.code.upper() for course in request.completed_courses}
     planned = [course for course in request.planned_courses if course.code.upper() not in completed_codes]
-    milestones = {value.strip().lower() for value in request.completed_milestones}
-    rows = []
-    for rule in requirements:
-        required = float(rule.get("required", 0))
-        if rule.get("kind", "credits") == "milestone":
-            done = 1.0 if rule["id"].lower() in milestones else 0.0
-            projected = done
-        else:
-            detailed_done = _course_credits(request.completed_courses, rule)
-            # The aggregate is a lower bound, not an amount to add: detailed rows
-            # may be a subset of the same accepted record.
-            done = max(detailed_done, float(request.completed_requirement_credits.get(rule["id"], 0)))
-            projected = done + _course_credits(planned, rule)
-        remaining = max(0.0, required - done)
-        remaining_after = max(0.0, required - projected)
-        rows.append({
-            "id": rule["id"], "label": rule["label"], "kind": rule.get("kind", "credits"),
-            "required": required, "completed": round(done, 2), "planned": round(projected - done, 2),
-            "remaining": round(remaining, 2), "remaining_after_plan": round(remaining_after, 2),
-            "status": "complete" if remaining == 0 else ("on_track" if remaining_after == 0 else "remaining"),
-            "note": rule.get("note"), "source": rule.get("source"),
-        })
+    rows = compute_requirement_rows(requirements, request.completed_courses, request.planned_courses,
+                                    request.completed_milestones, request.completed_requirement_credits)
 
     credit_rows = [row for row in rows if row["kind"] == "credits"]
     primary = next((row for row in credit_rows if row["id"] == "total"), None)

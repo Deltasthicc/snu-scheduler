@@ -281,6 +281,9 @@
   function validateWishlist(body) { return req('/wishlists/validate', { method: 'POST', body }); }
   function getProgrammes() { return req('/programmes', { timeout: 10000 }); }
   function runDegreeAudit(body) { return req('/degree-audit', { method: 'POST', body, timeout: 15000 }); }
+  function getMinors() { return req('/minors', { timeout: 10000 }); }
+  function runMinorAudit(body) { return req('/minors/audit', { method: 'POST', body, timeout: 15000 }); }
+  function runMinorsOverview(body) { return req('/minors/overview', { method: 'POST', body, timeout: 15000 }); }
   function parseAdvisementReport(filename, contentBase64) {
     return req('/advisement-report/parse', { method: 'POST',
       body: { filename, content_base64: contentBase64 }, timeout: 30000 });
@@ -512,6 +515,7 @@
     startScheduleSearch, getScheduleStatus, getScheduleResults, cancelScheduleSearch,
     subscribeToScheduleProgress, runScheduleSearch, newScheduleRunToken, isScheduleCurrent,
     invalidateScheduleRuns, explainExclusion, validateProfile, validateWishlist,
-    getProgrammes, runDegreeAudit, parseAdvisementReport
+    getProgrammes, runDegreeAudit, parseAdvisementReport,
+    getMinors, runMinorAudit, runMinorsOverview
   };
 }));

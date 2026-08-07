@@ -15,7 +15,7 @@ CLIENT = ["src/api.js", "src/plans.js", "src/clash.js"]
 GLUE = "src/glue.js"
 UI = ["src/ui/a_head.html", "src/ui/b_body.html", "src/ui/c_core.html", "src/ui/d_sched.html",
       "src/ui/i_build.html", "src/ui/e_tt.html", "src/ui/h_spec.html", "src/ui/k_learn.html",
-      "src/ui/g_two.html"]
+      "src/ui/j_minor.html", "src/ui/g_two.html"]
 DATA = os.path.join(BASE, "src", "data.json")
 DOCS = os.path.join(BASE, "src", "docs")
 

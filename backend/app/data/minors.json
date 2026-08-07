@@ -1,0 +1,651 @@
+{
+  "source_document": "Undergraduate Minor Programs - Old Curriculum, Shiv Nadar Institution of Eminence, last updated 7 August 2026 (applicable to students admitted in the 2024 batch and earlier)",
+  "coverage_note": "Transcribed directly from the University's own PDF circular. Eligibility conditions stated as GPA minimums, specific grades, interviews, or committee decisions are NOT verified by this tool - they are disclosed as-is so a student can check them against their own record. Course-level pre-requisite chains are informational only and are not enforced here, matching how the rest of this app's degree audit already treats pre-requisites.",
+  "minors": [
+    {
+      "id": "minor-chemical-engineering",
+      "title": "Minor in Chemical Engineering",
+      "department": "Chemical Engineering",
+      "school": "School of Engineering",
+      "open_to_note": "Students from other engineering and science disciplines",
+      "restricted_major_programme_ids": ["b-tech-in-chemical-engineering", "btech-chemical-bioenergy", "btech-chemical-modelling", "ph-d-in-chemical-engineering"],
+      "eligibility_conditions": [],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Six core courses (all required)",
+          "applies_to_note": "All eligible students",
+          "total_credits": 18,
+          "requirements": [
+            {"id": "core", "label": "Six required courses", "kind": "credits", "required": 18,
+             "course_codes": ["CHD213", "CHD216", "CHD217", "CHD225", "CHD226", "CHD318"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-civil-engineering",
+      "title": "Minor in Civil Engineering",
+      "department": "Civil Engineering",
+      "school": "School of Engineering",
+      "open_to_note": "Students from disciplines other than Civil Engineering",
+      "restricted_major_programme_ids": ["b-tech-in-civil-engineering", "ph-d-in-civil-engineering"],
+      "eligibility_conditions": [],
+      "pathways": [
+        {
+          "id": "mech-chem",
+          "label": "Mechanical / Chemical Engineering pathway",
+          "applies_to_note": "Mechanical Engineering and Chemical Engineering majors",
+          "applies_to_major_programme_ids": ["b-tech-in-mechanical-engineering", "b-tech-in-chemical-engineering", "btech-chemical-bioenergy", "btech-chemical-modelling"],
+          "total_credits": 18,
+          "requirements": [
+            {"id": "compulsory", "label": "Compulsory courses", "kind": "credits", "required": 8,
+             "course_codes": ["CED2002", "CED206", "CED2001", "CED214", "CED2006", "CED219"]},
+            {"id": "optional", "label": "Optional basket (at least 10 credits)", "kind": "credits", "required": 10,
+             "course_codes": ["CED2008", "CED325", "CED3004", "CED304", "CED2009", "CED207", "CED3005", "CED308", "CED3006", "CED310"]}
+          ]
+        },
+        {
+          "id": "cse-ece",
+          "label": "CSE / ECE pathway",
+          "applies_to_note": "Computer Science & Engineering and Electrical and Computer Engineering majors",
+          "applies_to_major_programme_ids": ["b-tech-in-computer-science-and-engineering", "b-tech-in-electrical-and-computer-engineering"],
+          "total_credits": 18,
+          "requirements": [
+            {"id": "compulsory", "label": "Compulsory courses", "kind": "credits", "required": 8,
+             "course_codes": ["CED2002", "CED206", "CED2001", "CED214", "CED2006", "CED219"]},
+            {"id": "optional", "label": "Optional basket (at least 10 credits)", "kind": "credits", "required": 10,
+             "course_codes": ["CED2008", "CED325", "CED3004", "CED304", "CED2009", "CED207", "CED3005", "CED308", "CED2004", "CED216", "CED2003", "CED215"]}
+          ]
+        },
+        {
+          "id": "non-soe",
+          "label": "Non-SoE pathway (10+2 in science stream)",
+          "applies_to_note": "Students outside the School of Engineering with 10+2 in the science stream",
+          "applies_to_major_programme_ids": null,
+          "total_credits": 19,
+          "requirements": [
+            {"id": "compulsory", "label": "Compulsory courses", "kind": "credits", "required": 9,
+             "course_codes": ["CED1001", "CED2002", "CED206", "CED2006", "CED219"]},
+            {"id": "optional", "label": "Optional basket (at least 10 credits)", "kind": "credits", "required": 10,
+             "course_codes": ["CED2008", "CED325", "CED3004", "CED304", "CED2009", "CED207", "CED3005", "CED308", "CED2004", "CED216"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-computer-science-and-engineering",
+      "title": "Minor in Computer Science & Engineering",
+      "department": "Computer Science & Engineering",
+      "school": "School of Engineering",
+      "open_to_note": "Students not majoring in Computer Science & Engineering",
+      "restricted_major_programme_ids": ["b-tech-in-computer-science-and-engineering", "ph-d-in-computer-science-and-engineering"],
+      "eligibility_conditions": ["No separate registration - in the 8th semester, students completing the requirements approach the CSE UG Advisor for verification.", "CSD205 Discrete Mathematics is not available to Mathematics majors."],
+      "pathways": [
+        {
+          "id": "pathway-a",
+          "label": "Pathway A - Mechanical / Civil / Chemical Engineering and non-Engineering majors",
+          "applies_to_note": "Mechanical, Civil and Chemical Engineering majors, and non-engineering majors",
+          "applies_to_major_programme_ids": ["b-tech-in-mechanical-engineering", "b-tech-in-civil-engineering", "b-tech-in-chemical-engineering", "btech-chemical-bioenergy", "btech-chemical-modelling"],
+          "total_credits": 18,
+          "requirements": [
+            {"id": "compulsory", "label": "CSD102 Data Structures (compulsory)", "kind": "credits", "required": 4,
+             "course_codes": ["CSD102"], "note": "CSD101 Introduction to Computing and Programming is an additional pre-requisite, not itself counted toward the minor."},
+            {"id": "basket", "label": "Any four courses from the basket", "kind": "course_count", "required": 4,
+             "course_codes": ["CSD204", "CSD205", "CSD211", "CSD213", "CSD304", "CSD311", "CSD317", "CSD319", "CSD326"]}
+          ]
+        },
+        {
+          "id": "pathway-b",
+          "label": "Pathway B - Electrical and Computer Engineering (ECE) majors",
+          "applies_to_note": "Electrical and Computer Engineering majors",
+          "applies_to_major_programme_ids": ["b-tech-in-electrical-and-computer-engineering"],
+          "total_credits": 18,
+          "requirements": [
+            {"id": "basket", "label": "Any five courses, at least 18 credits", "kind": "course_count", "required": 5,
+             "course_codes": ["CSD204", "CSD205", "CSD213", "CSD317", "CSD319", "CSD326"]},
+            {"id": "basket-credits", "label": "Basket credit minimum", "kind": "credits", "required": 18,
+             "course_codes": ["CSD204", "CSD205", "CSD213", "CSD317", "CSD319", "CSD326"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-electrical-and-computer-engineering",
+      "title": "Minor in Electrical and Computer Engineering",
+      "department": "Electrical Engineering / Electrical and Computer Engineering",
+      "school": "School of Engineering",
+      "open_to_note": "Mechanical, Civil, Chemical and Computer Science & Engineering majors, and non-engineering students",
+      "restricted_major_programme_ids": ["b-tech-in-electrical-and-computer-engineering"],
+      "eligibility_conditions": [
+        "Mechanical Engineering pathway: minimum B- grade in ECE101, minimum CGPA 6.5.",
+        "Civil and Chemical Engineering pathway: minimum CGPA 6.5.",
+        "Computer Science & Engineering pathway: minimum B- grade in ECE101, minimum CGPA 6.5.",
+        "Non-Engineering pathway: Physics and Mathematics at +2 level (or equivalent SNIoE courses with minimum B grade each), minimum CGPA 7.5, entry decided by interview with the UG Advisor or departmental committee."
+      ],
+      "pathways": [
+        {
+          "id": "mechanical",
+          "label": "Mechanical Engineering basket",
+          "applies_to_note": "Mechanical Engineering majors",
+          "applies_to_major_programme_ids": ["b-tech-in-mechanical-engineering"],
+          "total_credits": 20,
+          "requirements": [
+            {"id": "basket", "label": "Minimum 20 credits from the basket", "kind": "credits", "required": 20,
+             "course_codes": ["ECE103", "ECE201", "ECE203", "ECE205", "ECE207", "ECE301", "ECE304", "ECE-ELEC1", "ECE-ELEC2"],
+             "note": "ECE101 is a pre-requisite for this pathway and is not itself counted toward the minor."}
+          ]
+        },
+        {
+          "id": "civil-chemical",
+          "label": "Civil / Chemical Engineering basket",
+          "applies_to_note": "Civil Engineering and Chemical Engineering majors",
+          "applies_to_major_programme_ids": ["b-tech-in-civil-engineering", "b-tech-in-chemical-engineering", "btech-chemical-bioenergy", "btech-chemical-modelling"],
+          "total_credits": 20,
+          "requirements": [
+            {"id": "mandatory", "label": "ECE101 (mandatory within the basket)", "kind": "credits", "required": 5,
+             "course_codes": ["ECE101"]},
+            {"id": "basket", "label": "Remaining credits from the basket (15 more, 20 total)", "kind": "credits", "required": 15,
+             "course_codes": ["ECE103", "ECE201", "ECE203", "ECE205", "ECE207", "ECE301", "ECE304", "ECE-ELEC1", "ECE-ELEC2"]}
+          ]
+        },
+        {
+          "id": "cse",
+          "label": "Computer Science & Engineering basket",
+          "applies_to_note": "Computer Science & Engineering majors",
+          "applies_to_major_programme_ids": ["b-tech-in-computer-science-and-engineering"],
+          "total_credits": 20,
+          "requirements": [
+            {"id": "basket", "label": "Minimum 20 credits from the basket", "kind": "credits", "required": 20,
+             "course_codes": ["ECE201", "ECE202", "ECE205", "ECE207", "ECE301", "ECE-ELEC1", "ECE-ELEC2", "ECE-ELEC3"],
+             "note": "ECE101 is a pre-requisite for this pathway and is not itself counted toward the minor."}
+          ]
+        },
+        {
+          "id": "non-engineering",
+          "label": "Non-Engineering basket",
+          "applies_to_note": "Non-engineering students meeting the +2 Physics/Mathematics condition",
+          "applies_to_major_programme_ids": null,
+          "total_credits": 20,
+          "requirements": [
+            {"id": "mandatory", "label": "ECE101 (mandatory within the basket)", "kind": "credits", "required": 5,
+             "course_codes": ["ECE101"]},
+            {"id": "basket", "label": "Remaining credits from the basket (15 more, 20 total)", "kind": "credits", "required": 15,
+             "course_codes": ["ECE103", "ECE201", "ECE203", "ECE205", "ECE207", "ECE301", "ECE304", "ECE-ELEC1", "ECE-ELEC2"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-mechanical-engineering",
+      "title": "Minor in Mechanical Engineering",
+      "department": "Mechanical Engineering",
+      "school": "School of Engineering",
+      "open_to_note": "Students from other departments in the University",
+      "restricted_major_programme_ids": ["b-tech-in-mechanical-engineering", "ph-d-in-mechanical-engineering"],
+      "eligibility_conditions": ["If a student has already completed some mandatory courses (or equivalent credits) as part of their major, an equal number of credits must be taken additionally from the optional basket. Equivalent courses within a student's own major do not count toward the minor - neither of these is checked by this tool."],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Four mandatory courses plus a 9-credit optional basket",
+          "applies_to_note": "All eligible students",
+          "total_credits": 21,
+          "requirements": [
+            {"id": "mandatory", "label": "Mandatory courses", "kind": "credits", "required": 12,
+             "course_codes": ["MED101", "MED104", "MED105", "MED205"]},
+            {"id": "optional", "label": "Optional basket (at least 9 credits)", "kind": "credits", "required": 9,
+             "course_codes": ["MED203", "MED204", "MED211", "MED303", "MED209", "MED309", "MED306", "MED210", "MED208", "MED320"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-archaeology",
+      "title": "Minor in Archaeology",
+      "department": "History",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Students majoring in disciplines other than Archaeology",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": ["Minimum period of three years."],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Six courses (24 credits): HIS/ARC 101 compulsory, plus any five more",
+          "applies_to_note": "All eligible students",
+          "total_credits": 24,
+          "requirements": [
+            {"id": "compulsory", "label": "HIS/ARC 101 Introduction to Archaeology (compulsory)", "kind": "credits", "required": 4,
+             "course_codes": ["HIS101", "ARC101"]},
+            {"id": "basket", "label": "Any five more courses from the core/elective list", "kind": "course_count", "required": 5,
+             "course_codes": ["HIS104", "ARC104", "HIS201", "ARC201", "HIS210", "ARC210", "HIS213", "ARC213", "HIS215", "ARC215",
+                              "HIS301", "ARC301", "HIS302", "ARC302", "HIS305", "ARC305", "HIS312", "ARC312", "HIS317", "ARC317",
+                              "HIS323", "ARC323", "HIS327", "ARC327"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-history",
+      "title": "Minor in History",
+      "department": "History",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Students majoring in disciplines other than History",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": [],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Six courses (24 credits): HIS 102 mandatory, at least 3 core courses total, balance from departmental electives",
+          "applies_to_note": "All eligible students",
+          "total_credits": 24,
+          "requirements": [
+            {"id": "compulsory", "label": "HIS 102 Does History Matter? (mandatory)", "kind": "credits", "required": 4,
+             "course_codes": ["HIS102"]},
+            {"id": "core-min", "label": "At least 3 core courses in total (including HIS 102)", "kind": "course_count", "required": 3,
+             "course_codes": ["HIS102", "HIS103", "HIS202", "HIS203", "HIS204", "HIS206", "HIS208", "HIS209", "HIS212", "HIS215", "HIS216"]},
+            {"id": "total-basket", "label": "Six courses in total, from core and departmental electives", "kind": "course_count", "required": 6,
+             "course_codes": ["HIS102", "HIS103", "HIS202", "HIS203", "HIS204", "HIS206", "HIS208", "HIS209", "HIS212", "HIS215", "HIS216",
+                              "HIS303", "HIS304", "HIS306", "HIS307", "HIS308", "HIS310", "HIS311", "HIS314", "HIS315", "HIS316",
+                              "HIS318", "HIS319", "HIS321", "HIS322", "HIS324", "HIS325", "HIS326", "HIS328", "HIS329", "HIS330", "HIS331"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-history-and-archaeology-combined",
+      "title": "Minor in History and Archaeology (Combined)",
+      "department": "History",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Students majoring in disciplines other than History",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": [],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Six courses (24 credits): one compulsory course, 3 from Archaeology, 3 from History",
+          "applies_to_note": "All eligible students",
+          "total_credits": 24,
+          "requirements": [
+            {"id": "compulsory", "label": "HIS 101 or HIS 102 (one of the two, compulsory)", "kind": "course_count", "required": 1,
+             "course_codes": ["HIS101", "HIS102"]},
+            {"id": "archaeology-stream", "label": "Archaeology stream (3 courses)", "kind": "course_count", "required": 3,
+             "course_codes": ["HIS104", "ARC104", "HIS201", "ARC201", "HIS210", "ARC210", "HIS213", "ARC213", "HIS215", "ARC215",
+                              "HIS301", "ARC301", "HIS302", "ARC302", "HIS305", "ARC305", "HIS312", "ARC312", "HIS317", "ARC317", "HIS323", "ARC323"]},
+            {"id": "history-stream", "label": "History stream (3 courses)", "kind": "course_count", "required": 3,
+             "course_codes": ["HIS103", "HIS202", "HIS203", "HIS204", "HIS206", "HIS208", "HIS209",
+                              "HIS304", "HIS307", "HIS310", "HIS311", "HIS314", "HIS315", "HIS316", "HIS318"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-visual-arts",
+      "title": "Minor in Visual Arts",
+      "department": "Art, Media and Performance",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Undergraduate students from other disciplines",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": [],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "ART 202 mandatory, plus 4 more of the 6 courses on offer",
+          "applies_to_note": "All eligible students",
+          "total_credits": 20,
+          "requirements": [
+            {"id": "compulsory", "label": "ART 202 Critical Art History: An Introduction (mandatory)", "kind": "credits", "required": 4,
+             "course_codes": ["ART202"]},
+            {"id": "basket", "label": "Any four more courses from the basket", "kind": "course_count", "required": 4,
+             "course_codes": ["ART210", "ART220", "ART651", "ART342", "ART662"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-dance",
+      "title": "Minor in Dance",
+      "department": "Art, Media and Performance",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Undergraduate students from other disciplines",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": [],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "DNC100 and DNC110 mandatory, plus 4 more of the 10 courses on offer",
+          "applies_to_note": "All eligible students",
+          "total_credits": 24,
+          "requirements": [
+            {"id": "compulsory", "label": "DNC100 and DNC110 (mandatory)", "kind": "credits", "required": 8,
+             "course_codes": ["DNC100", "DNC110"]},
+            {"id": "basket", "label": "Any four more courses from the basket", "kind": "course_count", "required": 4,
+             "course_codes": ["DNC101", "DNC112", "DNC115", "DNC212", "DNC214", "DNC310", "DNC311", "DNC312"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-communication",
+      "title": "Minor in Communication",
+      "department": "Art, Media and Performance",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Undergraduate students from other disciplines",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": [],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Any five courses from the nine on offer",
+          "applies_to_note": "All eligible students",
+          "total_credits": 20,
+          "requirements": [
+            {"id": "basket", "label": "Any five courses from the basket", "kind": "course_count", "required": 5,
+             "course_codes": ["COM199", "COM198", "COM197", "COM196", "COM192", "COM191", "ART341", "ART342", "ART651"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-design",
+      "title": "Minor in Design",
+      "department": "Design",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Undergraduate students from other disciplines",
+      "restricted_major_programme_ids": ["bachelor-of-design"],
+      "eligibility_conditions": ["A student may not take more than two courses at the 1000 level."],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Minor Core (10 credits) + one course from each of two elective baskets (4 credits each)",
+          "applies_to_note": "All eligible students; Product Design and Visual Communication tracks share the same credit structure",
+          "total_credits": 18,
+          "requirements": [
+            {"id": "core", "label": "Minor Core (all three required)", "kind": "credits", "required": 10,
+             "course_codes": ["DES1101", "DES102", "DES2008", "DES210", "DES3003", "DES303"]},
+            {"id": "basket1", "label": "Elective Basket 1 - Visual Communication (one course)", "kind": "course_count", "required": 1,
+             "course_codes": ["DES1007", "DES108", "DES2002", "DES204"]},
+            {"id": "basket2", "label": "Elective Basket 2 - Product Design (one course)", "kind": "course_count", "required": 1,
+             "course_codes": ["DES1008", "DES109", "DES2003", "DES205"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-economics",
+      "title": "Minor in Economics",
+      "department": "Economics",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "All students in good academic standing; there are no other entry requirements",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": [
+        "At least three courses must have codes beginning with 2 or higher.",
+        "The GPA calculated from courses counting towards the minor must be at least 5.0 (not verified by this tool).",
+        "Courses must be independent of major requirements - a course already counted toward the student's major does not count again here.",
+        "From Monsoon 2025, students register for the minor through the Office of Academics.",
+        "ECO108 / ECO1009 Logic and Scientific Methods, Swayam courses, and certain advanced electives not open as University-Wide Electives do not count toward the minor."
+      ],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Minor core (3 required courses) plus Basic Econometrics",
+          "applies_to_note": "All eligible students. Which calculus/probability course satisfies the pre-requisite (and whether it also counts toward the minor) depends on the student's own School - see eligibility_conditions.",
+          "total_credits": 20,
+          "requirements": [
+            {"id": "core", "label": "Minor core - all three required", "kind": "credits", "required": 12,
+             "course_codes": ["ECO101", "ECO1001", "ECO102", "ECO1002", "ECO301"]},
+            {"id": "basket", "label": "Remaining credits (Basic Econometrics and/or the calculus/probability bridge courses)", "kind": "credits", "required": 8,
+             "course_codes": ["ECO213", "ECO1004", "ECO113", "ECO1003"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": ["ECO108 / ECO1009 Logic and Scientific Methods", "Swayam courses", "Certain advanced economics electives not open as University-Wide Electives", "Any course already counted towards the student's major requirements"],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-english",
+      "title": "Minor in English",
+      "department": "English",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Students of the University from disciplines other than English",
+      "restricted_major_programme_ids": ["b-a-research-in-english", "m-a-in-english", "ph-d-in-english"],
+      "eligibility_conditions": ["This tool only encodes the pre-2025-batch requirement (any 6 ENG-prefixed courses). Students admitted from 2025 onward follow a defined core-and-elective structure not included in the source circular's detail for this tool - confirm with the Department of English."],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Pre-2025 batch: at least six ENG-prefixed courses (24 credits)",
+          "applies_to_note": "Students admitted prior to 2025 (old curriculum)",
+          "total_credits": 24,
+          "requirements": [
+            {"id": "basket", "label": "At least six ENG-prefixed courses", "kind": "manual_confirmation", "required": 6,
+             "note": "No specific courses are prescribed - any course carrying the ENG prefix counts. This tool cannot enumerate the Department's full course list, so add up your own completed/planned ENG courses and confirm against 24 credits (6 courses) yourself."}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-international-relations",
+      "title": "Minor in International Relations",
+      "department": "International Relations and Governance Studies",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Undergraduate students from other disciplines",
+      "restricted_major_programme_ids": ["ba-research-in-international-relations", "ph-d-in-international-relations-and-governance-studies"],
+      "eligibility_conditions": [],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Two mandatory core courses plus any four major electives",
+          "applies_to_note": "All eligible students",
+          "total_credits": 24,
+          "requirements": [
+            {"id": "compulsory", "label": "INT 101 and INT 105 (mandatory)", "kind": "credits", "required": 8,
+             "course_codes": ["INT101", "INT105"]},
+            {"id": "electives", "label": "Any four courses from the Department's major elective basket", "kind": "manual_confirmation", "required": 4,
+             "note": "The source circular names the shape (any four) but not the elective course list itself. Confirm the current elective basket with the Department of International Relations and Governance Studies."}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-sociology",
+      "title": "Minor in Sociology",
+      "department": "Sociology",
+      "school": "School of Humanities and Social Sciences",
+      "open_to_note": "Undergraduate students from other disciplines",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": ["The source circular does not publish a fixed course list for this minor - it names only the shape (3 core + 3 elective). This tool cannot verify individual course membership in the core/elective lists; confirm the exact course list with the Department of Sociology."],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Any 3 core courses and 3 elective courses in Sociology",
+          "applies_to_note": "All eligible students",
+          "total_credits": null,
+          "requirements": [
+            {"id": "basket", "label": "Six SOC-prefixed courses (3 core + 3 elective)", "kind": "manual_confirmation", "required": 6,
+             "note": "The source circular does not publish a fixed course list for this minor - only the shape (3 core + 3 elective). Confirm the current course list with the Department of Sociology."}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-management",
+      "title": "Minor in Management",
+      "department": "School of Management and Entrepreneurship",
+      "school": "School of Management and Entrepreneurship",
+      "open_to_note": "Undergraduate students in their 3rd and 4th year",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": [
+        "A GPA above 6.5 must be maintained across all School of Management and Entrepreneurship courses taken (not verified by this tool).",
+        "Open only to 3rd- and 4th-year students (not verified by this tool - supply your own year if relevant).",
+        "No BMS core courses are open as University-Wide Electives in the Monsoon semester.",
+        "A maximum of 6 credits may come from Swayam courses, and no more than 2 Swayam courses per semester."
+      ],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "18 credits accumulated across the School's University-Wide Elective offerings",
+          "applies_to_note": "All eligible students",
+          "total_credits": 18,
+          "requirements": [
+            {"id": "basket", "label": "18 credits from eligible SME courses", "kind": "credits", "required": 18,
+             "course_codes": ["DOM307", "DOM207", "DOM304", "MEC301", "MKT402", "MKT409", "MKT304", "MKT404", "MKT408",
+                              "OHM303", "OHM307", "OHM401", "MGT211", "MGT306", "MGT402", "STM205", "FAC211", "FAC410", "MEC405", "MEC4005"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": ["Swayam credit is capped at 6 credits toward this minor, and at most 2 Swayam courses per semester - not enforced by this tool."],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-biotechnology",
+      "title": "Minor in Biotechnology",
+      "department": "Life Sciences",
+      "school": "School of Natural Sciences",
+      "open_to_note": "Students pursuing major degrees across the University",
+      "restricted_major_programme_ids": [],
+      "eligibility_conditions": [
+        "Entry is limited and competitive: based on overall CGPA and/or an interview by the departmental committee (not verified by this tool).",
+        "Students who did not take Biology at Grade 12 must complete BIO113 Essentials of Cell Biology with a minimum B grade to be eligible."
+      ],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Four compulsory courses plus at least 9 optional credits",
+          "applies_to_note": "All eligible students",
+          "total_credits": 21,
+          "requirements": [
+            {"id": "compulsory", "label": "Compulsory courses (all four)", "kind": "credits", "required": 12,
+             "course_codes": ["BIO210", "BIO202", "BIO204", "BIO206"]},
+            {"id": "optional", "label": "Optional courses from the B.Sc. (Research) Biotechnology curriculum (at least 9 credits)", "kind": "manual_confirmation", "required": 9,
+             "note": "All courses offered to B.Sc. (Research) Biotechnology majors in Semesters II-VI qualify, which this tool does not have as an enumerable list. See the B.Sc. (Research) Biotechnology curriculum for the current course set."}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-chemistry",
+      "title": "Minor in Chemistry",
+      "department": "Chemistry",
+      "school": "School of Natural Sciences",
+      "open_to_note": "Undergraduate students not majoring in Chemistry",
+      "restricted_major_programme_ids": ["b-sc-research-in-chemistry", "integrated-m-sc-ph-d-in-chemistry", "ph-d-in-chemistry"],
+      "eligibility_conditions": ["A Category B course cannot count towards both Major and Minor requirements (e.g. Biotechnology students cannot count CHY122 towards the minor, since it is compulsory in their major) - not verified by this tool."],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "Category A (12 credits, all required) + Category B (12 credits chosen) + Category C (3-credit elective)",
+          "applies_to_note": "All eligible students",
+          "total_credits": 27,
+          "requirements": [
+            {"id": "category-a", "label": "Category A - Introductory (all required)", "kind": "credits", "required": 12,
+             "course_codes": ["CHY111", "CHY211", "CHY214"]},
+            {"id": "category-b", "label": "Category B - Foundation (12 credits chosen)", "kind": "credits", "required": 12,
+             "course_codes": ["CHY122", "CHY144", "CHY221", "CHY222", "CHY242", "CHY245", "CHY311", "CHY313"]},
+            {"id": "category-c", "label": "Category C - in-depth elective (any Chemistry course)", "kind": "manual_confirmation", "required": 3,
+             "note": "Freely chosen from the Department of Chemistry's full course catalogue, which this tool does not carry as an enumerable list. Any 3-credit Chemistry course satisfies this row."}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-mathematics",
+      "title": "Minor in Mathematics",
+      "department": "Mathematics",
+      "school": "School of Natural Sciences",
+      "open_to_note": "Undergraduate students not majoring in Mathematics",
+      "restricted_major_programme_ids": ["b-sc-research-in-mathematics", "ph-d-in-mathematics"],
+      "eligibility_conditions": [
+        "A course cannot count towards both Major and Minor requirements (e.g. Economics students cannot count MAT 101, since it is compulsory in their major) - not verified by this tool.",
+        "Certain course combinations are banned each semester (significant syllabus overlap, or a more advanced course already credited) - the published list is not encoded here."
+      ],
+      "pathways": [
+        {
+          "id": "default",
+          "label": "At least 8 credits from Group 1, at least 8 credits from other MAT 200+ courses, balance to 20",
+          "applies_to_note": "All eligible students",
+          "total_credits": 20,
+          "requirements": [
+            {"id": "group1", "label": "At least 8 credits from Group 1", "kind": "credits", "required": 8,
+             "course_codes": ["MAT101", "MAT102", "MAT132", "MAT160", "MAT184", "MAT220", "MAT230", "MAT240", "MAT280", "MAT284"]},
+            {"id": "other-mat200", "label": "At least 8 more credits from other MAT courses numbered 200+ (not in Group 1)", "kind": "manual_confirmation", "required": 8,
+             "note": "Any MAT course numbered 200 or above that is available as a University-Wide Elective and is not already listed in Group 1 counts here. This tool does not carry the Department's full MAT course catalogue, so this cannot be computed automatically - add these credits toward the 20-credit total yourself."}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    },
+    {
+      "id": "minor-physics",
+      "title": "Minor in Physics",
+      "department": "Physics",
+      "school": "School of Natural Sciences",
+      "open_to_note": "Undergraduate students not majoring in Physics",
+      "restricted_major_programme_ids": ["b-sc-research-in-physics", "ph-d-in-physics"],
+      "eligibility_conditions": ["PHY 101 / PHY 102 (Engineering-major route) or PHY 103 / PHY 104 (non-Engineering route) are entry conditions and are not counted toward the minor credit total."],
+      "pathways": [
+        {
+          "id": "engineering-major",
+          "label": "Engineering-major route (minimum 22 credits)",
+          "applies_to_note": "Engineering majors (PHY 101/102 is the entry condition, not counted)",
+          "applies_to_major_programme_ids": ["b-tech-in-chemical-engineering", "btech-chemical-bioenergy", "btech-chemical-modelling", "b-tech-in-civil-engineering", "b-tech-in-computer-science-and-engineering", "b-tech-in-electrical-and-computer-engineering", "b-tech-in-mechanical-engineering"],
+          "total_credits": 22,
+          "requirements": [
+            {"id": "required-sequence", "label": "Required Monsoon + Spring sequence", "kind": "credits", "required": 15,
+             "course_codes": ["PHY207", "PHY201", "PHY202", "PHY208"]},
+            {"id": "electives", "label": "Two elective-group courses (no more than one per group; at least 7 credits)", "kind": "course_count", "required": 2,
+             "course_codes": ["PHY301", "PHY303", "PHY305", "PHY307", "PHY302", "PHY304", "PHY306", "PHY308", "PHY4XX", "PHY5XX"]}
+          ]
+        },
+        {
+          "id": "non-engineering-major",
+          "label": "Non-Engineering-major route (minimum 28 credits)",
+          "applies_to_note": "Non-engineering majors (PHY 103/104 is the entry condition, not counted)",
+          "applies_to_major_programme_ids": null,
+          "total_credits": 28,
+          "requirements": [
+            {"id": "required-sequence", "label": "Required Monsoon + Spring sequence", "kind": "credits", "required": 21,
+             "course_codes": ["PHY201", "PHY202", "PHY208"]},
+            {"id": "electives", "label": "Two elective-group courses (no more than one per group; at least 7 credits)", "kind": "course_count", "required": 2,
+             "course_codes": ["PHY301", "PHY303", "PHY305", "PHY307", "PHY302", "PHY304", "PHY306", "PHY308", "PHY4XX", "PHY5XX"]}
+          ]
+        }
+      ],
+      "does_not_count_notes": [],
+      "sources": [{"label": "Minor Programs Guide (SNU, updated 7 Aug 2026)", "url": null}]
+    }
+  ]
+}

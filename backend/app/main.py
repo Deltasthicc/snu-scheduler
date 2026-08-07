@@ -20,12 +20,14 @@ from app.models.schedule_schemas import ScheduleJobStatus, ScheduleSearchRequest
 from app.models.profile_schemas import (CreditPolicyRequest, ProfileValidateRequest,
                                         WishlistValidateRequest)
 from app.models.audit_schemas import DegreeAuditRequest
+from app.models.minor_schemas import MinorAuditRequest, MinorOverviewRequest
 from app.models.advisement_schemas import AdvisementParseRequest
 from app.services.runner import input_hash, stress_test_plan
 from app.services.bid_strategy import STRATEGY_VERSION, build_bid_strategy
 from app.services.credit_policy import CreditPolicyError, resolve_ceiling
 from app.services.wishlist import validate_choice_groups, wishlist_summary
 from app.services.degree_audit import ProgrammeCatalog, audit_degree
+from app.services.minor_audit import MinorCatalog, audit_minor, minors_overview
 from app.services.advisement_report import AdvisementParseError, parse_advisement_report
 from app.workers.jobs import JobManager
 from app.workers.schedule_jobs import ScheduleJobManager
@@ -59,6 +61,7 @@ MANAGER: JobManager | None = None
 SCHED_MANAGER: ScheduleJobManager | None = None
 UPDATE_SERVICE: UpdateService | None = None
 PROGRAMMES = ProgrammeCatalog()
+MINORS = MinorCatalog()
 
 
 @asynccontextmanager
@@ -484,6 +487,33 @@ async def degree_audit(req: DegreeAuditRequest):
         return audit_degree(req, PROGRAMMES)
     except KeyError:
         raise HTTPException(422, "unknown programme_id") from None
+
+
+@app.get("/api/v1/minors", tags=["profile"])
+async def minors_list():
+    """Undergraduate minor programmes (2024 batch and earlier), transcribed from the University's own circular."""
+    return {**MINORS.meta, "minors": MINORS.list()}
+
+
+@app.get("/api/v1/minors/{minor_id}", tags=["profile"])
+async def minor_detail(minor_id: str):
+    minor = MINORS.get(minor_id)
+    if minor is None:
+        raise HTTPException(404, "unknown minor")
+    return minor
+
+
+@app.post("/api/v1/minors/audit", tags=["profile"])
+async def minor_audit_route(req: MinorAuditRequest):
+    try:
+        return audit_minor(req, MINORS)
+    except KeyError:
+        raise HTTPException(422, "unknown minor_id") from None
+
+
+@app.post("/api/v1/minors/overview", tags=["profile"])
+async def minors_overview_route(req: MinorOverviewRequest):
+    return minors_overview(req, MINORS)
 
 
 @app.post("/api/v1/advisement-report/parse", tags=["profile"])
