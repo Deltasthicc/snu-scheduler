@@ -166,8 +166,13 @@ async function runOpt() {
 /* ---------------- results rendering ---------------- */
 function probLabel(p) {
   if (p == null) return '—';
-  if (p >= 0.9999) return '&gt;99.9% <span class="tiny mut">in this model</span>';
-  if (p <= 0.0001) return '&lt;0.1% <span class="tiny mut">in this model</span>';
+  // The cutoffs must be the values that would *round* to 100.0 / 0.0 at the
+  // precision printed below, not 0.9999/0.0001. They were the latter, so any
+  // probability from 0.9995 up printed a bare "100.0%" - which broke the rule
+  // that this UI never claims certainty, and produced the visible nonsense of a
+  // course reading "100.0%" beside its own band of ">99.9%".
+  if (p >= 0.9995) return '&gt;99.9% <span class="tiny mut">in this model</span>';
+  if (p <= 0.0005) return '&lt;0.1% <span class="tiny mut">in this model</span>';
   return (p * 100).toFixed(p > 0.995 || p < 0.005 ? 1 : 0) + '%';
 }
 const PRIO_LABEL = { MUST: 'Must have', STRONG: 'Strongly preferred', BACKUP: 'Useful backup', OPTIONAL: 'Optional' };
@@ -196,12 +201,31 @@ function drawResult(res) {
   });
   h += `</div><div class="flag f-ok" style="margin-top:12px"><b>Budget check passed.</b>
     Every category's simultaneous personal ceilings fit inside its current-round envelope, and the selected
-    carry-forward reserve remains untouched.</div></div>`;
+    carry-forward reserve remains untouched.</div>`;
+
+  // Why the split inside a category looks the way it does. The backend has
+  // always computed these; nothing displayed them, which is why an uneven split
+  // between two similar courses read as arbitrary rather than as a decision with
+  // a stated reason.
+  res.categories.filter(category => category.course_count > 1).forEach(category => {
+    h += `<details style="margin-top:10px"><summary class="tiny">Why the ${esc(category.category)}
+      split is shaped this way</summary><div class="tiny mut" style="margin-top:6px">
+      ${esc(category.breadth_note)}<br>${esc(category.reserve_note)}
+      ${category.tie_broken_by_scarcity ? `<br><b>Two of these courses are too close for this model to
+        separate.</b> The plan still puts more on one of them, because splitting evenly would lose real
+        expected value, but which one is your call rather than the model's: the larger share went to the
+        course with fewer seats, on the reasoning that the scarcer seat is the one least likely to still be
+        available in a later round. Swap them if you would rather have the other.` : ''}
+      </div></details>`;
+  });
+  h += `</div>`;
 
   h += `<div class="card"><div class="hd"><div><h2>Opening bids and stop points</h2>
     <div class="note">Start at the opening bid, watch the portal, and revise before the round closes. Never
     chase a course beyond the ceiling unless you deliberately change your posture or reserve.</div></div></div>
-    <div style="overflow-x:auto"><table><thead><tr><th>Course</th><th>Priority</th><th>Live pressure</th>
+    <div style="overflow-x:auto"><table><thead><tr><th>Course</th><th>Priority</th>
+    <th title="Seats, and how many other bidders the plan assumes are chasing them">Seats vs rivals</th>
+    <th>Live pressure</th>
     <th>Opening bid</th><th>Personal ceiling</th>
     <th title="What a seat is modelled to actually cost. You are charged this, not your bid.">Modelled price</th>
     <th title="Chance your ceiling clears the price, across three market readings">Chance at ceiling</th>
@@ -210,6 +234,14 @@ function drawResult(res) {
     const liveValue = course.pressure.live_bidders == null ? '' : course.pressure.live_bidders;
     const ratio = course.pressure.bidder_to_seat_ratio == null ? ''
       : ` <span class="tiny mut">(${course.pressure.bidder_to_seat_ratio.toFixed(2)}× seats)</span>`;
+    // Seat count is what separates two courses that are otherwise identical on
+    // every column shown here, so it has to be one of the columns shown here.
+    // Without it, a plan of 108 on one Major Elective and 130 on another looks
+    // arbitrary even when it is not.
+    const rivals = course.modelled_rivals || {};
+    const rivalSpan = course.pressure.provenance === 'live'
+      ? `<span class="tiny mut">${rivals.central} rival(s), observed</span>`
+      : `<span class="tiny mut">${rivals.calm}&ndash;${rivals.tight} rivals, modelled</span>`;
     const price = course.clearing_price_band;
     const band = course.win_probability_band;
     const affordable = course.strategic_ceiling >= price.central;
@@ -234,6 +266,7 @@ function drawResult(res) {
     }
     h += `<tr><td><b>${esc(course.code)}</b><div class="tiny mut">${esc(course.title || '')}</div></td>
       <td><span class="pill p-m">${esc(PRIO_LABEL[course.priority] || course.priority)}</span></td>
+      <td class="num tiny"><b style="font-size:14px">${course.pressure.seats}</b> seats<div>${rivalSpan}</div></td>
       <td><span class="pill ${course.pressure.provenance === 'live' ? 'p-uwe' : 'p-w'}">
         ${esc(pressureLabel[course.pressure.label] || course.pressure.label)}</span>${ratio}<br>
         <label class="sr-only" for="live-${esc(course.code)}">Live bidders for ${esc(course.code)}</label>

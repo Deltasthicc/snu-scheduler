@@ -93,7 +93,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   });
   await p.click('.tab[data-p="bid"]');
   await p.click('#runBtn');
-  await p.waitForFunction(() => window.RESULT && window.RESULT.strategy_version === 'marginal-value-v2',
+  await p.waitForFunction(() => window.RESULT && window.RESULT.strategy_version === 'marginal-value-v3',
                           null, { timeout: 15000 });
 
   const res = await p.evaluate(() => ({

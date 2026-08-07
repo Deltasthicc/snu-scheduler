@@ -305,3 +305,128 @@ One recommendation in that corpus is worth repeating here because it is outside
 this tool's control: the single highest-value change SNU could make is to publish
 clearing prices after each round. Every price this planner has to model would then
 be a number students could simply look up.
+
+---
+
+## Addendum — marginal-value-v3 (2026-08-07)
+
+Reported by the user against the live UI: CSD358 (Information Retrieval) and
+CSD361 (Introduction to Machine Learning) are both Major Electives, both 3
+credits, both marked "strongly preferred", and the plan showed them at a
+personal ceiling of 166 and 72 respectively. The same table showed both with an
+identical modelled price (55) and an identical live-pressure figure (1.51x
+seats). Same cost, same value, same displayed pressure, a 2.3x difference in
+recommended bid.
+
+### The finding
+
+The two courses' win curves are nearly identical. Measured directly:
+
+| bid | 72 | 119 | 140 | 166 | 190 |
+|---|---|---|---|---|---|
+| CSD358 (120 seats) | 0.700 | 0.700 | 0.708 | 0.951 | 1.000 |
+| CSD361 (80 seats) | 0.700 | 0.700 | 0.717 | 0.935 | 0.999 |
+
+The curve is flat for 47 points at a stretch, and 47-56% of the entire budget
+range bought no additional win probability at all. Cause: v2 modelled market
+tightness as exactly three states. Within a state the rival distribution was
+taken as exactly known, so the only residual randomness was binomial sampling
+of a known distribution, which is O(1/sqrt(n)). Each state's win curve was
+therefore a near step function (5%-to-95% transition width: 7 points at 300
+seats, 12 at 120, 20 at 40), and the three-atom mixture was a staircase.
+
+Given a staircase, the exact optimum of the stated objective really is to buy
+the big jump on one course and the cheap jump on the other. 166/72 was the true
+optimum. The objective was the problem, not the optimiser.
+
+Three consequences, all measured:
+
+1. **Arbitrary asymmetry.** Which course got the large share was decided by a
+   1.6-percentage-point difference, well inside the model's own uncertainty.
+2. **Instability.** Sweeping one course's seat count flipped a 22-point
+   allocation seventeen times, on objective gaps as small as 3.4e-05 (0.0038%).
+3. **Wrong direction.** The transition narrows as seats grow, so the model was
+   *most* confident about the largest courses purely because binomial noise
+   averages out faster there. Real uncertainty about a clearing price comes from
+   not knowing how hard the cohort will bid, and that does not shrink because a
+   lecture hall is bigger.
+
+### The fix
+
+Market tightness is integrated as a continuous variable (32-node midpoint rule
+on the quantile axis) instead of three atoms. The three published readings are
+kept exactly as they are and become quantiles of that distribution, positioned
+by their own priors: a reading holding mass p occupies an interval of width p
+and sits at its midpoint. Between anchors the two dials are interpolated
+log-linearly; outside the outermost anchors the mapping is flat, so the model
+never extrapolates to a market calmer than "calm" or tighter than "tight".
+
+No new assumption is introduced. The anchors, their spacing and their weights
+are unchanged. This is a better numerical representation of the same stated
+belief. Result: dead zone falls from 47-56% to 7-25%, and the win curve becomes
+smooth and strictly increasing over its useful range, so "a few more points buys
+a little more chance" is true and the DP equalises marginal value rather than
+solving a knapsack over cliffs.
+
+### Three smaller defects found while verifying the fix
+
+- **The breadth ladder could not express an even split.** Share caps were a fixed
+  tuple (0.35, 0.45, 0.55, ...). For two courses the even split needs share
+  exactly 0.50 and the ladder jumps 0.45 to 0.55, so two *identical* courses were
+  planned at 130/108 while the even split cost 0.24% of expected value, far
+  inside the balanced posture's 5% tolerance. It was never rejected on the
+  merits; it was never offered. The even share 1/n is now always a candidate.
+  Nothing tighter is considered, which is provable rather than a preference: a
+  cap below 1/n forces idle budget, and since win curves are monotone
+  non-decreasing, every allocation feasible under it is also feasible at 1/n.
+- **The objective was quantised a thousand times finer than the model resolves.**
+  GAIN_QUANTUM was 1e-6 against an objective built from a 32-node quadrature over
+  an assumed lognormal with priors quoted to two decimals. Raised to 5e-4, about
+  a quarter of one point's worth of gain, which leaves genuine signal untouched
+  (the decisions this planner acts on are 50-100x larger).
+- **Ties between indistinguishable courses were resolved by noise.** Where the
+  budget cannot secure two equally-wanted courses, the objective genuinely
+  prefers securing one: the curve is convex there, so (130, 108) really does beat
+  (119, 119). But (130, 108) and (108, 130) are distant local optima separated by
+  that same valley, so nothing local can see they are a tie. Swapping them costs
+  0.056% of plan value, while a decision that must always be preserved (must-have
+  beside optional) costs 8.264%. A separate 1% threshold sits two orders of
+  magnitude clear of both. Where two courses fall inside it, the larger share
+  goes to the one with fewer seats, on the stated reasoning that the scarcer seat
+  is least likely to still be available in a later round, and the plan now says
+  it did this rather than presenting a coin flip as a finding. Flips across the
+  same seat sweep: 17 to 1, and the remaining one is the meaningful handover
+  where the two seat counts cross.
+
+### Reporting defects fixed alongside
+
+- **A bare "100.0%" was reaching the screen.** `probLabel` guarded at 0.9999 but
+  printed to one decimal place, so anything from 0.9995 up rendered "100.0%".
+  Visible in the reported screenshot as a course reading "100.0%" beside its own
+  band of ">99.9%". The backend's own rationale text had the same bug via `:.0%`
+  formatting ("win chance is 100% centrally (band 0% to 100%)"). Both now route
+  through formatters that never claim certainty.
+- **The live-pressure ratio was a tautology.** With no observed count the central
+  reading sets rivals to round(seats * 1.5), so the reported bidder-to-seat ratio
+  was (round(1.5 * seats) + 1) / seats, i.e. about 1.51 for every course in the
+  catalogue whatever its size. It was displayed per course under a "live
+  pressure" heading, inviting the reader to take a constant for a measurement.
+  No ratio is reported without an observation; the modelled rival count is shown
+  instead, labelled as modelled.
+- **The decisive variable was invisible.** Seat count is what separates two
+  otherwise identical courses, and it was not a column. It is now, together with
+  the modelled rival range, and the per-course rationale names it explicitly.
+- **The category-level explanations were computed but never displayed.**
+  `breadth_note` and `reserve_note` existed in the response and nothing rendered
+  them, which is why an uneven split read as arbitrary rather than as a decision
+  with a stated reason.
+
+### Verification
+
+`backend/tests/test_bid_strategy.py` gained nine property tests covering: two and
+three identical courses receiving identical bids; the even split always being an
+available breadth option and nothing tighter being offered; a seat sweep
+producing zero noise-driven swings; priority and observed counts outranking the
+scarcity tie-break; the win curve having under 25% dead zone and never falling;
+and the named readings being genuine quantiles of the distribution actually
+optimised. Full suite 191 passed, 1 skipped.

@@ -61,12 +61,42 @@ So the belief is written down explicitly, anchored, and reported as a *band*:
   * A rival's own budget constraint implies their per-course commitment is about
     (their pool) / (courses they bid on).  That is a derivation, not a guess.
   * The remaining genuinely unknown quantity - how hard rivals push - is carried
-    as three labelled scenarios and the plan is optimised against a stated prior
-    over them.  Every reported probability comes with the min-max band across
+    as a continuous market-tightness variable, reported at three labelled
+    quantiles.  Every reported probability comes with the min-max band across
     that set, never as a single fake-precise number.
   * Where the portal supplies a live bidder count, that count REPLACES the
-    modelled rival count in all three scenarios, so real data visibly narrows
+    modelled rival count at every market state, so real data visibly narrows
     the band instead of being averaged into a guess.
+
+WHAT CHANGED FROM marginal-value-v2, AND WHY
+--------------------------------------------
+v2 treated market tightness as exactly three states with fixed priors.  Inside
+one state the rival distribution was taken as exactly known, so the only
+remaining randomness was binomial sampling, which is O(1/sqrt(n)) and therefore
+negligible.  Each state's win curve was a near step function and the three-atom
+mixture was a staircase: measured on real Major Electives, 47-56% of the whole
+budget range bought literally nothing.  Consequences, all measured rather than
+argued:
+
+  * the allocator was solving a knapsack over two cliffs, not equalising
+    marginal value, so two courses differing only in seat count (120 vs 80) were
+    planned at 166 and 72 points on an objective difference of 1.6 percentage
+    points;
+  * which course got the large share flipped seventeen times across a seat
+    sweep, on objective gaps as small as 3.4e-05;
+  * the artefact pointed the wrong way, since the transition narrows as seats
+    grow, making the model most confident about the largest courses purely
+    because binomial noise averages out faster there.
+
+v3 keeps every published anchor, its spacing and its weight, and integrates
+tightness as a continuous variable whose quantiles are pinned to those anchors.
+Nothing new is assumed; it is a faithful representation of the same belief
+rather than a three-point approximation of it.  Three smaller corrections
+follow from the same measurements: the breadth ladder can now express the even
+split (it could not, so identical courses came back lopsided); the objective is
+quantised at the model's real resolution rather than a thousand times finer;
+and where two equally-wanted courses genuinely cannot be separated, the larger
+share is oriented by a stated rule and the plan says that it did so.
 
 Nothing here claims an expected clearing price or an expected charge; those
 depend on the whole rival bid distribution and remain unidentified.
@@ -92,7 +122,7 @@ import numpy as np
 
 from app.models.schemas import BidStrategyRequest, Category, Priority, StrategyPosture
 
-STRATEGY_VERSION = "marginal-value-v2"
+STRATEGY_VERSION = "marginal-value-v3"
 
 # ---------------------------------------------------------------- preferences
 
@@ -140,6 +170,34 @@ BASE_VALUE = {
 # than the diversified tolerance allowed, get rejected outright, and fall back to
 # the *most* concentrated plan - so asking for more breadth produced less of it.
 CAP_LADDER = (0.35, 0.45, 0.55, 0.70, 0.85, 1.00)
+
+
+def _cap_candidates(course_count: int) -> tuple[float, ...]:
+    """Share caps worth trying, tightest first, for a category of this size.
+
+    Two corrections over using CAP_LADDER directly, both of which were measured
+    to matter on real courses:
+
+    1. The even split - one over the number of courses - is always a candidate.
+       It is the single most natural breadth outcome and the fixed ladder could
+       not express it: for two courses the even share is exactly 0.50 and the
+       ladder jumps 0.45 to 0.55, so two *identical* courses were planned at
+       130/108 instead of 119/119. The even split cost 0.24% of expected value
+       there, far inside the balanced posture's 5% tolerance, so it was not
+       rejected on the merits - it was never offered.
+
+    2. Nothing tighter than the even split is considered, and this is provable
+       rather than a preference. Under a cap c the category can spend at most
+       n*floor(E*c), so c < 1/n forces budget to sit idle. Win curves are
+       monotone non-decreasing, so every allocation feasible under c < 1/n is
+       also feasible at 1/n; the tighter cap is weakly dominated and can only
+       throw points away.
+    """
+    if course_count <= 1:
+        return ()
+    even = 1.0 / course_count
+    shares = {even} | {rung for rung in CAP_LADDER if rung > even}
+    return tuple(sorted(share for share in shares if share < 1.0))
 
 # How much expected value the student is willing to give up to keep more options
 # alive. This is the honest way to parameterise risk aversion - a price, not a
@@ -228,6 +286,52 @@ SCENARIOS = (
     Scenario("central", "Central estimate", 1.50, 1.9, 0.45),
     Scenario("tight", "Tight market", 4.00, 1.05, 0.30),
 )
+# --------------------------------------------- continuous market uncertainty
+#
+# The three scenarios above are three *readings* of one underlying unknown: how
+# hard the rest of the cohort bids this round. Treating them as three atoms - a
+# 25% chance of exactly "calm", 45% of exactly "central", 30% of exactly "tight" -
+# is a discretisation choice, not a belief, and it was measured to break the plan.
+#
+# Inside a single scenario the rival distribution is taken as exactly known, so
+# the only randomness left is which side of the seat threshold the binomial lands
+# on. With n rivals that noise is O(1/sqrt(n)), i.e. tiny, so each scenario's win
+# curve is very nearly a step function and the three-atom mixture is a three-step
+# staircase. Measured directly on two real Major Electives (CSD358, 120 seats and
+# CSD361, 80 seats - same category, same credits, both STRONG):
+#
+#     bid       72     119     140     166     190
+#     CSD358   0.700  0.700   0.708   0.951   1.000
+#     CSD361   0.700  0.700   0.717   0.935   0.999
+#
+# Two courses that are all but identical, a curve that is flat for 47 points at a
+# stretch, and 47-56% of the whole budget range buying literally nothing. A flat
+# objective makes the allocator indifferent and a cliff makes it all-or-nothing,
+# so the exact optimum of that staircase was to put 166 points on one course and
+# 72 on the other, decided by a 1.6-percentage-point gap that is far inside the
+# model's own uncertainty. Swapping the two seat counts would swap the entire
+# recommendation. That is a numerical artefact, not an economic finding.
+#
+# Worse, the artefact points the wrong way. The transition narrows as seats grow
+# (300 seats: 7 points wide; 40 seats: 20 points wide), so the model is *most*
+# confident about the largest courses purely because binomial noise averages out
+# faster there. Real uncertainty about a course's clearing price comes from not
+# knowing how hard the cohort will bid, and that is shared across courses; it does
+# not shrink because a lecture hall is bigger.
+#
+# The fix is to stop asserting the market has exactly three states. Tightness is
+# continuous, so it is integrated as a continuous variable whose quantiles are
+# pinned to the three published anchors. The anchors, their spacing and their
+# weights are all unchanged and nothing new is assumed - this is a better
+# numerical representation of the same stated belief. What it buys: smooth,
+# strictly increasing win curves, so "a few more points buys a little more chance"
+# becomes true; and an allocator that equalises marginal value across courses
+# instead of solving a knapsack over two cliffs.
+#
+# Number of quadrature nodes over the tightness quantile. Midpoint rule on a
+# uniform quantile grid, so it is deterministic and needs no RNG or seed.
+MARKET_QUANTILE_NODES = 32
+
 # Spread of rival bids about their median, on a log scale. One shape parameter.
 RIVAL_LOG_DISPERSION = 0.55
 # An opening bid only needs to capture most of the win probability the full
@@ -255,11 +359,42 @@ OPENING_CAPTURE = 0.90
 # That is the defining property of a uniform-price auction and it is why bids
 # here are bounded by value and budget rather than by an invented per-point tax.
 #
-# Numerical note: a win curve asymptotes to 1 without reaching it in floating
-# point, so gains are quantised below before the optimiser compares them.
-# Otherwise the DP will spend real points chasing improvements of order 1e-15,
-# which is what the per-point tax was really being used to suppress.
-GAIN_QUANTUM = 1e-6
+# Resolution of the objective: differences smaller than this are not decisions.
+#
+# A win curve asymptotes to 1 without reaching it in floating point, so gains are
+# quantised before the optimiser compares them; otherwise the DP spends real
+# points chasing improvements of order 1e-15. That was the original reason for
+# this constant, and it was set at 1e-6.
+#
+# 1e-6 turned out to be about a thousand times finer than anything the model can
+# actually support, and the gap was doing visible damage. The objective is a
+# 32-node quadrature over an assumed lognormal whose priors are quoted to two
+# decimal places; a difference of 1e-5 in expected value is noise from all three
+# of those, not a finding. Measured on two Major Electives differing by two seats
+# (120 vs 78 and 120 vs 80), the planner flipped a 22-point allocation between
+# them on an objective gap of 3.4e-05, i.e. 0.0038%. A student cannot act on that
+# and should not be shown it as though it were a reason.
+#
+# Set at half a thousandth of a must-have course, which is roughly a quarter of
+# one point's worth of gain on a typical curve, so genuine signal is untouched:
+# the systematic differences this planner does act on are 50 to 100 times larger
+# (the even-split-versus-concentrate decision in the same measurement was 4.8%).
+# Below this, the DP sees an exact tie and its own tie-break applies, which is
+# deterministic and prefers spending fewer points.
+GAIN_QUANTUM = 5e-4
+
+# When are two equally-wanted courses interchangeable, for the purpose of
+# deciding which one gets the larger share of a lopsided plan?
+#
+# This is a different question from GAIN_QUANTUM, which controls what the
+# optimiser is allowed to chase, so it gets its own number rather than reusing
+# that one. Measured across a seat sweep the gap is not close: the swaps that
+# flip on noise cost 0.056% of the plan's own value, while a decision that must
+# always be preserved (a must-have beside an optional) costs 8.264%. Any
+# threshold between those two works; 1% sits roughly two orders of magnitude
+# clear of each, so it neither reorders a real preference nor leaves a coin flip
+# unresolved.
+INDISTINGUISHABLE_SHARE = 0.01
 
 _SQRT2 = sqrt(2.0)
 
@@ -294,8 +429,8 @@ def _truncated_lognormal_cdf(x: np.ndarray, median: float, ceiling: float) -> np
     return np.where(x >= ceiling, 1.0, np.minimum(raw / cap_mass, 1.0))
 
 
-def _rival_outrank_probability(bids: np.ndarray, category: Category,
-                               scenario: Scenario) -> np.ndarray:
+def _rival_outrank_at_concentration(bids: np.ndarray, category: Category,
+                                    courses_per_rival: float) -> np.ndarray:
     """P(one randomly drawn rival outranks an integer bid b), for each b.
 
     The rival is drawn from a mixture over published year groups; within a group
@@ -310,7 +445,7 @@ def _rival_outrank_probability(bids: np.ndarray, category: Category,
     below = np.zeros_like(bids)
     for year, weight in RIVAL_YEAR_WEIGHTS.items():
         pool = PUBLISHED_YEAR_POOLS[year][category]
-        median = pool / max(scenario.courses_per_rival, 1e-9)
+        median = pool / max(courses_per_rival, 1e-9)
         at_or_below += weight * _truncated_lognormal_cdf(bids, median, pool)
         below += weight * _truncated_lognormal_cdf(bids - 1.0, median, pool)
 
@@ -319,6 +454,63 @@ def _rival_outrank_probability(bids: np.ndarray, category: Category,
     # Monotone by construction; enforced so discretisation cannot produce a curve
     # that dips, which would let the DP buy a worse outcome for more points.
     return np.clip(np.minimum.accumulate(outrank), 0.0, 1.0)
+
+
+def _rival_outrank_probability(bids: np.ndarray, category: Category,
+                               scenario: Scenario) -> np.ndarray:
+    """The outrank curve at one of the three named readings."""
+    return _rival_outrank_at_concentration(bids, category, scenario.courses_per_rival)
+
+
+def _anchor_quantiles() -> tuple[float, ...]:
+    """Where each named reading sits as a quantile of market tightness.
+
+    A reading holding prior mass p occupies an interval of width p, and the
+    reading itself is placed at the midpoint of its own interval. So the priors
+    are not discarded when the atoms are replaced by a continuum: they are exactly
+    what positions the anchors along the quantile axis.
+    """
+    knots, cumulative = [], 0.0
+    for scenario in SCENARIOS:
+        knots.append(cumulative + scenario.prior / 2.0)
+        cumulative += scenario.prior
+    return tuple(knots)
+
+
+_ANCHOR_QUANTILES = _anchor_quantiles()
+
+
+def _market_state(quantile: float) -> tuple[float, float]:
+    """(rivals_per_seat, courses_per_rival) at a given tightness quantile.
+
+    Log-linear between the published anchors, because both dials are positive
+    scale parameters and interpolating them in logs keeps the path monotone and
+    positive. Flat outside the outermost anchors: the model never extrapolates to
+    a market calmer than "calm" or tighter than "tight", since nothing in the
+    source material supports a reading beyond the stated range. Those two tails
+    therefore keep a small atom each, which is the conservative choice.
+    """
+    if quantile <= _ANCHOR_QUANTILES[0]:
+        return SCENARIOS[0].rivals_per_seat, SCENARIOS[0].courses_per_rival
+    if quantile >= _ANCHOR_QUANTILES[-1]:
+        return SCENARIOS[-1].rivals_per_seat, SCENARIOS[-1].courses_per_rival
+    for index in range(len(_ANCHOR_QUANTILES) - 1):
+        low_q, high_q = _ANCHOR_QUANTILES[index], _ANCHOR_QUANTILES[index + 1]
+        if low_q <= quantile <= high_q:
+            step = (quantile - low_q) / (high_q - low_q)
+            low, high = SCENARIOS[index], SCENARIOS[index + 1]
+            rivals = exp(log(low.rivals_per_seat)
+                         + step * (log(high.rivals_per_seat) - log(low.rivals_per_seat)))
+            courses = exp(log(low.courses_per_rival)
+                          + step * (log(high.courses_per_rival) - log(low.courses_per_rival)))
+            return rivals, courses
+    return SCENARIOS[-1].rivals_per_seat, SCENARIOS[-1].courses_per_rival
+
+
+def _market_nodes() -> tuple[tuple[float, float], ...]:
+    """Equal-weight quadrature nodes over market tightness (midpoint rule)."""
+    return tuple(_market_state((k + 0.5) / MARKET_QUANTILE_NODES)
+                 for k in range(MARKET_QUANTILE_NODES))
 
 
 def _win_curve(seats: int, rivals: int, outrank: np.ndarray, log_fact: np.ndarray) -> np.ndarray:
@@ -372,6 +564,114 @@ def _clearing_price(outrank: np.ndarray, seats: int, rivals: int) -> int:
     return int(reached[0]) if reached.size else int(outrank.shape[0] - 1)
 
 
+def _quantised_gain(value: float, curve: np.ndarray, envelope: int,
+                    cap: int | None = None) -> np.ndarray:
+    """Value of winning a course times the chance `a` points win it, quantised.
+
+    Quantised so the optimiser cannot be driven by differences the model does not
+    resolve (see GAIN_QUANTUM). A cap is imposed as -inf rather than a penalty,
+    so it is a hard bound the DP cannot trade away.
+    """
+    gain = np.round(value * curve[: envelope + 1] / GAIN_QUANTUM) * GAIN_QUANTUM
+    if cap is not None and cap < envelope:
+        gain = gain.copy()
+        gain[cap + 1:] = -np.inf
+    return gain
+
+
+def _balance(gains: list[np.ndarray], bids: list[int]) -> list[int]:
+    """Among plans the objective cannot tell apart, return the balanced one.
+
+    The DP returns *an* optimum. Where the objective is flat - common once
+    sub-resolution differences are quantised away - that optimum can be
+    arbitrarily lopsided, and measurably was: a share cap that no single course
+    may exceed still lets one course sit at the cap while another takes the
+    remainder, so two *identical* 120-seat electives came back planned at 130 and
+    108. Nothing in the model prefers one over the other; the DP simply had to
+    return something.
+
+    This pass moves one point from the most-funded course to the least-funded
+    whenever that does not lower the objective. Three properties make it safe:
+    it never accepts a strictly worse plan, so it cannot beat the DP's optimum;
+    each accepted move strictly reduces the spread between the two courses, so it
+    terminates; and genuine asymmetry survives untouched, because where the
+    asymmetry is real - a must-have beside an optional, an observed-heavy course
+    beside a quiet one - the move is a strict loss and is rejected. Caps are
+    respected for free, since exceeding one reads as -inf.
+    """
+    bids = list(bids)
+    count = len(bids)
+    if count < 2:
+        return bids
+    for _ in range(sum(bids) + 1):
+        moved = False
+        for high in sorted(range(count), key=lambda j: (-bids[j], j)):
+            for low in sorted(range(count), key=lambda j: (bids[j], j)):
+                if bids[high] - bids[low] < 2:
+                    continue
+                before = gains[high][bids[high]] + gains[low][bids[low]]
+                after = gains[high][bids[high] - 1] + gains[low][bids[low] + 1]
+                if after >= before:
+                    bids[high] -= 1
+                    bids[low] += 1
+                    moved = True
+                    break
+            if moved:
+                break
+        if not moved:
+            break
+    return bids
+
+
+def _canonical_order(gains: list[np.ndarray], bids: list[int], seats: list[int],
+                     values: list[float]) -> tuple[list[int], bool]:
+    """Orient an unavoidably lopsided plan by a stated rule instead of by noise.
+
+    When the budget cannot secure two equally-wanted courses, the objective
+    genuinely prefers securing one of them: the win curve is convex there, so
+    (130, 108) really does beat (119, 119) and _balance correctly refuses to
+    even it out. The two plans (130, 108) and (108, 130) are distant local
+    optima separated by that same valley, so nothing local can see that they are
+    a tie - and measured across a seat sweep, which course got the larger share
+    flipped seventeen times on objective gaps as small as 3.4e-05.
+
+    Which of two indistinguishable courses to back is a preference, and it is the
+    student's, not the model's. Where swapping the two allocations costs nothing
+    the model can measure, the larger share goes to the course with fewer seats.
+    That is a real argument rather than a coin flip: with equal value and equal
+    modelled outcome, the scarcer seat is the one less likely to still be
+    available in a later round, a waitlist or add/drop, so it is the one worth
+    committing to now. Courses the model *can* separate are never reordered.
+
+    Returns the oriented bids and whether any pair was found indistinguishable,
+    so the plan can say so rather than presenting a coin flip as a finding.
+    """
+    bids = list(bids)
+    count = len(bids)
+    tied = False
+    for _ in range(count * count + 1):
+        swapped_any = False
+        for i in range(count):
+            for j in range(i + 1, count):
+                if values[i] != values[j] or bids[i] == bids[j]:
+                    continue
+                keep = gains[i][bids[i]] + gains[j][bids[j]]
+                swap = gains[i][bids[j]] + gains[j][bids[i]]
+                if not (np.isfinite(keep) and np.isfinite(swap)):
+                    continue
+                scale = max(abs(keep), abs(swap), GAIN_QUANTUM)
+                if keep - swap > INDISTINGUISHABLE_SHARE * scale:
+                    continue           # the model can separate them; leave it alone
+                tied = True
+                high, low = (i, j) if bids[i] > bids[j] else (j, i)
+                if seats[high] > seats[low]:
+                    bids[i], bids[j] = bids[j], bids[i]
+                    swapped_any = True
+        if not swapped_any:
+            break
+    return bids, tied
+
+
 def _allocate(values: list[float], curves: list[np.ndarray], envelope: int,
               caps: list[int] | None = None) -> tuple[list[int], np.ndarray]:
     """Exact integer solution of  max sum_j v_j * P_j(b_j)  s.t.  sum b_j <= E.
@@ -393,15 +693,8 @@ def _allocate(values: list[float], curves: list[np.ndarray], envelope: int,
     choice = np.zeros((n, envelope + 1), dtype=np.int32)
 
     for j in range(n):
-        # Net worth of winning course j, times the chance `a` points win it.
-        # Quantised so the optimiser cannot be driven by floating-point noise in
-        # the flat tail of a saturated win curve.
-        gain = np.round(values[j] * curves[j][: envelope + 1] / GAIN_QUANTUM) * GAIN_QUANTUM
-        if caps is not None and caps[j] < envelope:
-            # Breadth constraint for the risk-averse postures. -inf rather than a
-            # penalty, so the cap is a hard bound the DP cannot trade away.
-            gain = gain.copy()
-            gain[caps[j] + 1:] = -np.inf
+        gain = _quantised_gain(values[j], curves[j], envelope,
+                               None if caps is None else caps[j])
         nxt = np.empty(envelope + 1)
         for budget in range(envelope + 1):
             # value of spending `a` here plus the best use of what is left
@@ -428,22 +721,36 @@ def _first_bid_reaching(curve: np.ndarray, target: float, ceiling: int) -> int:
     return int(reached[0]) if reached.size else ceiling
 
 
-def _modelled_rivals(course, scenario: Scenario) -> tuple[int, str]:
-    """Rival count for one course under one scenario.
+def _rivals_at(course, rivals_per_seat: float) -> int:
+    """Rival count for one course at one market state.
 
-    A live portal count is data and replaces the model in every scenario, which
-    is what makes supplying it narrow the reported band rather than shift it.
+    A live portal count is data and replaces the model at every market state,
+    which is what makes supplying it narrow the reported band rather than shift
+    it.
     """
     if course.live_bidders is not None:
-        return max(0, int(course.live_bidders) - 1), "live"
-    return max(0, int(round(course.seats * scenario.rivals_per_seat))), "modelled"
+        return max(0, int(course.live_bidders) - 1)
+    return max(0, int(round(course.seats * rivals_per_seat)))
+
+
+def _modelled_rivals(course, scenario: Scenario) -> tuple[int, str]:
+    """Rival count and its provenance at one of the three named readings."""
+    provenance = "live" if course.live_bidders is not None else "modelled"
+    return _rivals_at(course, scenario.rivals_per_seat), provenance
 
 
 def _pressure(course, rivals_central: int) -> dict:
     if course.live_bidders is None or course.seats <= 0:
-        ratio = None if course.seats <= 0 else round((rivals_central + 1) / course.seats, 3)
+        # No ratio is reported without an observation, because there is nothing
+        # to report. With no live count the central reading sets rivals to
+        # round(seats * 1.5), so this ratio was always (round(1.5 * seats) + 1) /
+        # seats - about 1.51 for every course in the catalogue, whatever its size.
+        # It was displayed per course under a heading of "live pressure", which
+        # invited the reader to take a constant as a measurement of that specific
+        # course. The modelled rival count is reported instead, labelled as
+        # modelled.
         return {"label": "unknown", "live_bidders": None, "seats": course.seats,
-                "bidder_to_seat_ratio": ratio, "provenance": "unknown"}
+                "bidder_to_seat_ratio": None, "provenance": "unknown"}
     ratio = course.live_bidders / course.seats
     if ratio < 0.80:
         label = "spare_capacity"
@@ -503,7 +810,15 @@ def build_bid_strategy(request: BidStrategyRequest) -> dict:
         price_grid = np.arange(price_ceiling + 1, dtype=np.float64)
         bids = price_grid[: envelope + 1]
 
+        # The outrank curve depends only on the category and on how concentrated
+        # rival bidding is, never on the course, so the quadrature nodes are
+        # evaluated once per category and shared by every course in it.
+        nodes = _market_nodes()
+        node_outrank = [_rival_outrank_at_concentration(price_grid, category, concentration)
+                        for _, concentration in nodes]
+
         per_course_curves: list[dict[str, np.ndarray]] = []
+        mixture: list[np.ndarray] = []
         gross_values: list[float] = []
         rival_counts: list[dict[str, int]] = []
         prices: list[dict[str, int]] = []
@@ -520,7 +835,19 @@ def build_bid_strategy(request: BidStrategyRequest) -> dict:
                 curves[scenario.key] = _win_curve(course.seats, rivals,
                                                   outrank_full[: envelope + 1], log_fact)
                 price[scenario.key] = _clearing_price(outrank_full, course.seats, rivals)
+
+            # The objective integrates over the whole continuous tightness range
+            # rather than the three named readings alone. Equal weights because
+            # the nodes are equally spaced *in quantile*, so the prior is already
+            # baked into where each node sits.
+            integrated = np.zeros(envelope + 1)
+            for (rivals_per_seat, _concentration), outrank_full in zip(nodes, node_outrank):
+                integrated += _win_curve(course.seats, _rivals_at(course, rivals_per_seat),
+                                         outrank_full[: envelope + 1], log_fact)
+            integrated /= len(nodes)
+
             per_course_curves.append(curves)
+            mixture.append(integrated)
             rival_counts.append(counts)
             prices.append(price)
             gross_values.append(BASE_VALUE[course.priority])
@@ -543,14 +870,11 @@ def build_bid_strategy(request: BidStrategyRequest) -> dict:
         # round is what the carry-forward reserve is for, and that is user-set.
         values = list(gross_values)
 
-        # Objective: expected value under the stated prior over scenarios. A
-        # mixture is separable across courses, so the DP solves it exactly; a
-        # max-min objective would not be separable and could not be solved
-        # exactly this cheaply.
-        mixture = [
-            sum(scenario.prior * curves[scenario.key] for scenario in SCENARIOS)
-            for curves in per_course_curves
-        ]
+        # Objective: expected value integrated over market tightness (`mixture`,
+        # built per course above). A mixture is separable across courses, so the
+        # DP solves it exactly; a max-min objective would not be separable and
+        # could not be solved exactly this cheaply.
+        #
         # Unconstrained optimum first, so the cost of asking for breadth is
         # measured rather than asserted.
         free_bids, free_value_fn = _allocate(values, mixture, envelope)
@@ -563,9 +887,7 @@ def build_bid_strategy(request: BidStrategyRequest) -> dict:
         share_cap, breadth_cost, breadth_applied = 1.0, 0.0, False
         cheapest_declined = None
         if len(courses) > 1 and envelope > 0:
-            for candidate in CAP_LADDER:
-                if candidate >= 1.0:
-                    break
+            for candidate in _cap_candidates(len(courses)):
                 caps = [max(1, int(envelope * candidate)) for _ in courses]
                 capped_bids, capped_value_fn = _allocate(values, mixture, envelope, caps)
                 cost = (0.0 if best_free <= 1e-12
@@ -580,6 +902,18 @@ def build_bid_strategy(request: BidStrategyRequest) -> dict:
             if not breadth_applied and cheapest_declined is not None:
                 breadth_cost = cheapest_declined
         concentration_cost = round(100 * breadth_cost, 2)
+
+        # The DP has found the optimum; these two passes only choose *which*
+        # optimum to show when several are indistinguishable. See _balance and
+        # _canonical_order.
+        indistinguishable = False
+        if len(courses) > 1 and envelope > 0:
+            chosen_cap = None if share_cap >= 1.0 else max(1, int(envelope * share_cap))
+            gains = [_quantised_gain(values[i], mixture[i], envelope, chosen_cap)
+                     for i in range(len(courses))]
+            planned = _balance(gains, planned)
+            planned, indistinguishable = _canonical_order(
+                gains, planned, [course.seats for course in courses], values)
 
         planned_total = int(sum(planned))
         all_feasible = all_feasible and planned_total <= envelope <= pool
@@ -600,7 +934,9 @@ def build_bid_strategy(request: BidStrategyRequest) -> dict:
             "concentration_cost_percent": concentration_cost,
             "single_course_share_cap_percent": round(100 * share_cap),
             "breadth_note": _breadth_note(breadth_applied, concentration_cost, share_cap,
-                                          CAP_LADDER[0], len(courses)),
+                                          (_cap_candidates(len(courses)) or (1.0,))[0],
+                                          len(courses)),
+            "tie_broken_by_scarcity": indistinguishable,
         })
 
         for index, course in enumerate(courses):
@@ -736,13 +1072,29 @@ def _reserve_note(marginal_next: float, reserve: int, envelope: int, planned_tot
             "reserve would measurably improve this round's chances.")
 
 
+def _probability_text(probability: float) -> str:
+    """Format a modelled probability without ever claiming certainty.
+
+    Plain percent formatting rounds 0.997 to "100%" and 0.0004 to "0%", and both
+    were reaching the student in this module's own explanation text. A model
+    output is not a fact, and there is no historical SNU clearing-price data to
+    have calibrated it against, so the extremes are named as bounds instead.
+    """
+    if probability >= 0.9995:
+        return "over 99.9%"
+    if probability <= 0.0005:
+        return "under 0.1%"
+    return f"{probability:.0%}" if 0.005 < probability < 0.995 else f"{probability:.1%}"
+
+
 def _rationale(course, request, value, ceiling, opening, probs, live,
                free_seat_chance: float) -> list[str]:
     lines = [
         f"{course.priority.value.title()} priority carries value ratio {value:.3g} "
         f"(MUST = 1); the {request.posture.value} posture governs breadth, not this ratio.",
-        f"{course.seats} seat(s) and the modelled rival count set how fast this course's win curve "
-        f"saturates; points stop being allocated here once they buy more elsewhere.",
+        f"{course.seats} seat(s) is the number that separates this course from an otherwise identical one: "
+        f"with fewer seats the clearing price is less predictable, so it takes more points to be equally "
+        f"safe. Points stop being allocated here once they buy more elsewhere.",
     ]
     if live:
         lines.append(f"Live pressure: {course.live_bidders} bidder(s) for {course.seats} seat(s). This is "
@@ -754,13 +1106,14 @@ def _rationale(course, request, value, ceiling, opening, probs, live,
         if free_seat_chance >= 0.5:
             lines.append(f"No points allocated, and that is not the same as giving up: if this course ends up "
                          f"undersubscribed it clears at zero and a zero bid still takes a seat "
-                         f"({free_seat_chance:.0%} chance under the calm reading). Points would buy more on a "
+                         f"({_probability_text(free_seat_chance)} chance under the calm reading). Points would buy more on a "
                          f"contested course. Raise the priority to override.")
         else:
             lines.append("No points allocated: under this objective they buy more on other courses in the same "
                          "category. Raise this course's priority if that is wrong.")
     else:
-        lines.append(f"At {ceiling} point(s) the modelled win chance is {probs['central']:.0%} centrally "
-                     f"(band {min(probs.values()):.0%} to {max(probs.values()):.0%}); the opening bid of "
+        lines.append(f"At {ceiling} point(s) the modelled win chance is {_probability_text(probs['central'])} "
+                     f"centrally (band {_probability_text(min(probs.values()))} to "
+                     f"{_probability_text(max(probs.values()))}); the opening bid of "
                      f"{opening} already captures about {int(OPENING_CAPTURE * 100)}% of that.")
     return lines

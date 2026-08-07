@@ -252,6 +252,12 @@ class BidStrategyCategory(BaseModel):
     concentration_cost_percent: float
     single_course_share_cap_percent: int
     breadth_note: str
+    # True when the plan is deliberately lopsided but the model could not tell
+    # two equally-wanted courses apart well enough to say which deserves the
+    # larger share. The split is then oriented by a stated rule (back the
+    # scarcer seat), and saying so is the honest alternative to presenting a
+    # coin flip as a finding.
+    tie_broken_by_scarcity: bool = False
 
 
 class BidStrategyResponse(BaseModel):
