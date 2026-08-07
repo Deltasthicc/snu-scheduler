@@ -1,0 +1,16 @@
+{
+  "version_id": "monsoon-2026-batch-coherence-fix-2026-08-07",
+  "source_name": "SNU Monsoon 2026 Timetable Planner (Netlify) - same source as 2026-08-04, reprocessed",
+  "source_url": "https://snioe-monsoon2026-tt.netlify.app/",
+  "retrieved_at": "2026-08-04T13:29:16.191118+00:00",
+  "source_checksum": "ecc63f7071704010",
+  "dataset_checksum": "2715ff8927739bda",
+  "importer_version": "1.0.0",
+  "effective_semester": "Monsoon 2026",
+  "course_count": 326,
+  "package_count": 954,
+  "error_count": 0,
+  "warning_count": 10,
+  "validation_status": "clean",
+  "note": "Same source snapshot as monsoon-2026-netlify-revision-2026-08-04 (raw_snapshot.html, unchanged) reprocessed with a fixed build_packages(): the old cross-product ignored per-section batch tags and offered combinations mixing sections restricted to disjoint student batches as valid packages (e.g. CSD211/CSD2003 PRAC1, batch CSD21-only, + TUT2, batch CSD23/24-only). 8 of 326 courses affected, packages 988 -> 954, no courses added/removed/renamed."
+}

@@ -7,6 +7,8 @@ subtle divergence would be most dangerous).
 """
 from __future__ import annotations
 
+import re
+
 from app.domain.catalog import canonical_checksum
 from app.timetable_updates.models import ImportStats, NormalizeResult
 from app.timetable_updates.validate import DAYS, to_minutes, validate_normalized, validate_raw_row
@@ -24,6 +26,50 @@ def _meetings_overlap(a: tuple, b: tuple, term_a: str, term_b: str) -> bool:
 
 def _day_index(d: str) -> int:
     return DAYS.index(d.strip())
+
+
+# Batch names follow one convention throughout the source: letters (dept),
+# one digit (year), then the batch number - "CSD31" is CSD, year 3, batch 1;
+# "CSD312" is CSD, year 3, batch 12. A "range" token spells out two of these
+# and means every batch numbered in between, within the same dept+year (e.g.
+# "CSD37 to CSD312" = CSD37, CSD38, ... CSD312). The naive read - treating the
+# whole range string as one opaque token - was measured to break this: eight
+# real courses (CSD304, CSD311, CSD319, ECE2001-2003, ECE301, ECE302) came
+# back with zero valid packages, because every one of their range-tokens is a
+# distinct literal string ("CSD31 to CSD36" vs "CSD31 to CSD33" vs "CSD37 to
+# CSD312" ...) that never textually equals another, so nothing was ever seen
+# as sharing a batch and every combination was rejected as incoherent.
+_RANGE_TOKEN = re.compile(r"^([A-Za-z]+)(\d)(\d*)\s+to\s+([A-Za-z]+)(\d)(\d*)$", re.IGNORECASE)
+
+
+def _expand_block_token(token: str) -> frozenset[str]:
+    token = token.strip()
+    if not token:
+        return frozenset()
+    m = _RANGE_TOKEN.match(token)
+    if m:
+        dept_a, year_a, num_a, dept_b, year_b, num_b = m.groups()
+        if dept_a.upper() == dept_b.upper() and year_a == year_b:
+            lo, hi = int(num_a or 0), int(num_b or 0)
+            if 0 <= lo <= hi:
+                return frozenset(f"{dept_a}{year_a}{n}" for n in range(lo, hi + 1))
+        # Dept or year differ, or the range is inverted: not a range this
+        # convention can safely expand. Falls through to the opaque-token
+        # case below rather than guessing.
+    return frozenset({token})
+
+
+def _block_set(raw: str) -> frozenset[str]:
+    """A row's 'block' field names which student batch(es) that specific
+    section belongs to: a literal comma-separated list ("CSD21,CSD22, CSD23,
+    CSD24"), a range ("CSD31 to CSD312"), a single batch ("CSD21"), or a
+    whole-year label with no further split ("BIO4YR"). Empty means the source
+    publishes no batch restriction for that section - open to whichever batch
+    is asking, not "belongs to no one"."""
+    result: frozenset[str] = frozenset()
+    for part in raw.split(","):
+        result |= _expand_block_token(part)
+    return result
 
 
 def flatten_rows(data: dict, stats: ImportStats) -> list[dict]:
@@ -62,7 +108,20 @@ def flatten_rows(data: dict, stats: ImportStats) -> list[dict]:
 def build_packages(rows: list[dict], code: str, stats: ImportStats) -> list[dict]:
     """Cross-product across every present component's distinct sections,
     rejecting internally-conflicting combinations and deduplicating identical
-    meeting sets."""
+    meeting sets.
+
+    A combination must also be BATCH-COHERENT, not just non-conflicting in
+    time. The source tags many sections with which student batch(es) they
+    belong to (e.g. CSD211's PRAC1 is "CSD21" only, its TUT2 is "CSD23,
+    CSD24") - two sections restricted to disjoint batches can never be
+    attended by the same real student, however far apart their meeting times
+    sit. Cross-producting on time alone was measured to manufacture exactly
+    this: CSD211's PRAC1 (CSD21-only) has no time conflict with TUT2 (CSD23/24
+    -only), so the old logic offered "PRAC1 + TUT2" as a valid package - a
+    combination no student who has ever existed could actually be enrolled in.
+    A section with no batch tag at all is open to any batch (the source is
+    simply not restricting it), so it is compatible with everything.
+    """
     by_comp: dict[str, dict[str, list[dict]]] = {}
     for r in rows:
         by_comp.setdefault(r["comp"], {}).setdefault(r["sec"], []).append(r)
@@ -76,9 +135,17 @@ def build_packages(rows: list[dict], code: str, stats: ImportStats) -> list[dict
                for r in by_comp[comp][sec]]
 
     sec_term: dict[tuple[str, str], str] = {}
+    sec_batches: dict[tuple[str, str], frozenset[str]] = {}
     for comp, secs in by_comp.items():
         for sec, sec_rows in secs.items():
             sec_term[(comp, sec)] = sec_rows[0].get("term") or "Full semester"
+            # Union across this section's own rows (its several meetings should
+            # all name the same batch set, but union is the safe read if a
+            # source row is ever inconsistent rather than silently picking one).
+            batches: frozenset[str] = frozenset()
+            for row in sec_rows:
+                batches |= _block_set(row.get("block", ""))
+            sec_batches[(comp, sec)] = batches
 
     sections_per_comp = [sorted(by_comp[c].keys()) for c in comps]
 
@@ -93,7 +160,23 @@ def build_packages(rows: list[dict], code: str, stats: ImportStats) -> list[dict
 
     packages = []
     seen_meeting_sets: set[tuple] = set()
+    incoherent_skipped = 0
     for combo in cross(0, []):
+        # Batch coherence: every pair of *restricted* (non-empty) batch sets
+        # in this combination must share at least one batch. An unrestricted
+        # section imposes no constraint and is compatible with anything.
+        restricted = [sec_batches[key] for key in combo if sec_batches[key]]
+        common = restricted[0] if restricted else frozenset()
+        incoherent = False
+        for s in restricted[1:]:
+            common &= s
+            if not common:
+                incoherent = True
+                break
+        if incoherent:
+            incoherent_skipped += 1
+            continue
+
         all_meetings: list[tuple] = []
         for comp, sec in combo:
             all_meetings.extend(meetings_for(comp, sec))
@@ -116,9 +199,14 @@ def build_packages(rows: list[dict], code: str, stats: ImportStats) -> list[dict
         seen_meeting_sets.add(key)
         pkg_term = sec_term[combo[0]]
         label = " + ".join(f"{comp}:{sec}" for comp, sec in combo)
-        packages.append({"t": pkg_term, "l": label, "m": [list(m) for m in sorted(all_meetings)]})
+        packages.append({"t": pkg_term, "l": label, "m": [list(m) for m in sorted(all_meetings)],
+                         "batches": sorted(common)})
     if not packages:
         stats.error("NO_VALID_PACKAGE", f"every component combination for {code} internally clashes", code)
+    if incoherent_skipped:
+        stats.warn("BATCH_INCOHERENT_COMBOS_SKIPPED",
+                  f"{code}: {incoherent_skipped} section combination(s) skipped because they mixed "
+                  f"sections restricted to different, non-overlapping student batches", code)
     stats.packages_built += len(packages)
     return packages
 

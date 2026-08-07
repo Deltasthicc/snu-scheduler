@@ -14,10 +14,24 @@ import os
 # override for tests: a spawned worker process inherits env vars but not
 # in-process monkeypatches, so this is how integration tests point a real
 # worker at a synthetic catalog instead of the production course data.
+#
+# normpath() here is load-bearing, not cosmetic: a literal, un-collapsed ".."
+# segment (what os.path.join produces on its own) opens the file just fine -
+# the OS resolves ".." at open() time - but breaks any downstream code that
+# walks the path with Path.parent, since parent only pops the last literal
+# segment and has no idea ".." means "go up an extra level". app/timetable_
+# updates/apply.py derives frontend/src/data.json's location by chaining
+# three .parent calls off this module's own path, and with the un-normalized
+# join that chain landed on backend/app/frontend/src/data.json - a directory
+# that has never existed, so apply.py's own "skip if the parent doesn't
+# exist" guard silently ate the frontend write on every single apply. Found
+# while applying the batch-coherence fix below and confirming
+# frontend/src/data.json actually picked up the new dataset.
 _DATA_PATH = os.environ.get(
-    "SNU_CATALOG_PATH", os.path.join(os.path.dirname(__file__), "..", "data", "courses.json"))
+    "SNU_CATALOG_PATH", os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "data", "courses.json")))
 _MANIFEST_PATH = os.environ.get(
-    "SNU_DATASET_MANIFEST_PATH", os.path.join(os.path.dirname(__file__), "..", "data", "dataset_manifest.json"))
+    "SNU_DATASET_MANIFEST_PATH",
+    os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "data", "dataset_manifest.json")))
 
 _CATALOG: list[dict] | None = None
 _BY_CODE: dict[str, dict] | None = None

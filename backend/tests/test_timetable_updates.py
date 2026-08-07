@@ -6,8 +6,10 @@ SNU_LIVE_TIMETABLE_TEST=1 is set.
 from __future__ import annotations
 import http.server
 import json
+import os
 import threading
 import time
+from pathlib import Path
 
 import pytest
 
@@ -137,6 +139,32 @@ def isolated_catalog(tmp_path):
         catalog.reload()
 
 
+# ---------------- path derivation (module-level constants, no fixture) ----------------
+
+def test_frontend_data_path_resolves_to_the_real_sibling_frontend_directory():
+    """A real bug, found while applying the batch-coherence fix: catalog.py
+    built _DATA_PATH with a literal, un-collapsed ".." (os.path.join alone
+    does not resolve it - only the OS does, at open() time). Reading through
+    that path worked fine, but apply.py derives frontend/src/data.json's
+    location by chaining three .parent calls off it, and .parent only pops
+    the last literal segment - it does not know ".." means "go up an extra
+    level". The un-normalized join therefore made that chain land on
+    backend/app/frontend/src/data.json (never existed), and apply_version()'s
+    own "skip the frontend write if its parent directory doesn't exist" guard
+    silently swallowed the failure - every apply looked successful while the
+    frontend copy quietly went stale. The isolated_catalog fixture above
+    cannot catch this: it overrides apply_mod.FRONTEND_DATA directly with an
+    already-correct path, never exercising the derivation itself.
+    """
+    assert ".." not in catalog._DATA_PATH.split(os.sep)
+    assert ".." not in catalog._MANIFEST_PATH.split(os.sep)
+    expected = (Path(__file__).resolve().parent.parent.parent / "frontend" / "src" / "data.json")
+    assert apply_mod.FRONTEND_DATA == expected
+    assert apply_mod.FRONTEND_DATA.parent.exists(), (
+        "frontend/src/data.json's directory must exist in a normal checkout - "
+        "if this fails, the derivation has broken again")
+
+
 # ---------------- source.py: conditional HTTP ----------------
 
 def test_fetch_returns_200_with_etag_on_first_request(fixture_server):
@@ -229,6 +257,84 @@ def test_normalize_carries_forward_credits_from_existing_dataset():
     result = normalize_mod.normalize(SAMPLE_A, existing)
     assert result.courses[0]["cr"] == 4.5
     assert result.courses[0]["cat"] == "ME"
+
+
+def _row(comp, sec, block, day, start, end, rowid, term="Full semester"):
+    return {"code": "CSD211/CSD2003", "title": "Computer Organization and Architecture", "type": "Major",
+           "uwe": "No", "comp": comp, "sec": sec, "block": block, "term": term, "day": day,
+           "start": start, "end": end, "room": "A1", "inst": "X", "cap": "80", "note": "", "rowid": rowid}
+
+
+# The real CSD211/CSD2003 row shape: one shared lecture, four batch-specific
+# practicals (CSD21..CSD24, one seat each), two batch-paired tutorials
+# (CSD21+22, and CSD23+24). PRAC1 (CSD21-only) and TUT2 (CSD23/24-only) sit at
+# genuinely different times with no clash - but no real student can be in both,
+# since they name disjoint batches.
+BATCH_COURSE = {"CSD": {"CSD2YR": [
+    _row("LEC", "LEC1", "CSD21,CSD22, CSD23, CSD24", "Tue", "03:45 PM", "05:10 PM", 1),
+    _row("LEC", "LEC1", "CSD21,CSD22, CSD23, CSD24", "Thu", "03:45 PM", "05:10 PM", 2),
+    _row("PRAC", "PRAC1", "CSD21", "Sat", "09:00 AM", "10:55 AM", 3),
+    _row("PRAC", "PRAC2", "CSD22", "Fri", "03:05 PM", "05:00 PM", 4),
+    _row("PRAC", "PRAC3", "CSD23", "Mon", "09:00 AM", "10:55 AM", 5),
+    _row("PRAC", "PRAC4", "CSD24", "Fri", "01:00 PM", "02:55 PM", 6),
+    _row("TUT", "TUT1", "CSD21, CSD22", "Fri", "10:10 AM", "11:05 AM", 7),
+    _row("TUT", "TUT2", "CSD23, CSD24", "Thu", "11:10 AM", "12:05 PM", 8),
+]}}
+
+
+def test_build_packages_rejects_combinations_mixing_disjoint_batches():
+    """This is the exact CSD211/CSD2003 shape from the live Monsoon 2026
+    source. Before this fix, cross-producting purely on time-conflict offered
+    "PRAC1 (CSD21-only) + TUT2 (CSD23/24-only)" as a valid package, since the
+    two sections never overlap in time - despite no student who is in CSD21
+    ever attending TUT2. Real batches are CSD21->PRAC1+TUT1, CSD22->PRAC2+TUT1,
+    CSD23->PRAC3+TUT2, CSD24->PRAC4+TUT2: exactly 4 coherent packages, not the
+    4x2=8 the naive time-only cross-product would produce."""
+    result = normalize_mod.normalize(BATCH_COURSE, {})
+    course = result.courses[0]
+    assert course["code"] == "CSD211/CSD2003"
+    labels = {p["l"] for p in course["pk"]}
+    assert labels == {
+        "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1",
+        "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT1",
+        "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT2",
+        "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT2",
+    }
+    incoherent = {"LEC:LEC1 + PRAC:PRAC1 + TUT:TUT2", "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT1"}
+    assert not (incoherent & labels)
+
+
+def test_build_packages_records_which_batches_each_package_serves():
+    result = normalize_mod.normalize(BATCH_COURSE, {})
+    by_label = {p["l"]: p for p in result.courses[0]["pk"]}
+    assert by_label["LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1"]["batches"] == ["CSD21"]
+    assert by_label["LEC:LEC1 + PRAC:PRAC3 + TUT:TUT2"]["batches"] == ["CSD23"]
+
+
+def test_build_packages_unrestricted_sections_combine_with_any_batch():
+    """A section with no block tag at all (the common case - only 108 of 326
+    courses carry any batch tag) imposes no restriction and must not be
+    treated as incompatible with a batch-restricted section."""
+    unrestricted = {"CSD": {"CSD2YR": [
+        _row("LEC", "LEC1", "", "Mon", "09:00 AM", "10:00 AM", 1),
+        _row("PRAC", "PRAC1", "CSD21", "Tue", "09:00 AM", "10:55 AM", 2),
+        _row("PRAC", "PRAC2", "CSD22", "Wed", "09:00 AM", "10:55 AM", 3),
+    ]}}
+    result = normalize_mod.normalize(unrestricted, {})
+    labels = {p["l"] for p in result.courses[0]["pk"]}
+    assert labels == {"LEC:LEC1 + PRAC:PRAC1", "LEC:LEC1 + PRAC:PRAC2"}
+
+
+def test_build_packages_still_rejects_genuine_time_conflicts_within_one_batch():
+    """Batch coherence is an additional filter, not a replacement for the
+    existing time-conflict check."""
+    clashing = {"CSD": {"CSD2YR": [
+        _row("LEC", "LEC1", "CSD21", "Mon", "09:00 AM", "10:00 AM", 1),
+        _row("TUT", "TUT1", "CSD21", "Mon", "09:30 AM", "10:30 AM", 2),
+    ]}}
+    result = normalize_mod.normalize(clashing, {})
+    assert result.courses[0]["pk"] == []
+    assert result.stats.error_count == 1
 
 
 # ---------------- diff.py ----------------
