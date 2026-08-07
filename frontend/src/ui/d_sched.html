@@ -1,21 +1,42 @@
 /* ============ FIXED / PRE-ENROLLED ============ */
-const BLOCKS=[...new Set(C.flatMap(c=>c.blocks))].filter(b=>/^CSD/.test(b)).sort();
+// Every package now carries a resolved `batches` list (see backend
+// normalize.py's build_packages) - the concrete batch codes ("CSD21", not
+// the unexpanded "CSD31 to CSD312" range text) that specific package's
+// sections are actually restricted to. Deriving the dropdown from packages
+// rather than the old course-level `blocks` field means it picks up every
+// department that publishes batch data (108 of 326 courses), not just CSD -
+// the CSD-only filter here used to silently hide this feature from every
+// other student. A course with no batch-restricted packages at all (the
+// common case) contributes nothing and is unaffected either way.
+const BLOCKS=[...new Set(C.flatMap(c=>c.pk.flatMap(p=>p.batches||[])))].sort();
 function initBlocks(){
-  $('blk').innerHTML='<option value="">— none / not in a CSD block —</option>'+
+  if(!$('blk'))return;
+  $('blk').innerHTML='<option value="">— none / not in a listed batch —</option>'+
     BLOCKS.map(b=>`<option value="${b}">${b}</option>`).join('');
   $('blk').onchange=applyBlock;
 }
 function applyBlock(){
   const b=$('blk').value;
   FIXED=FIXED.filter(f=>!f.auto);
-  if(b) C.filter(c=>c.blocks.includes(b)).forEach(c=>{
-    const pk=c.pk.findIndex(p=>p.m.some(m=>true));
-    FIXED.push({code:c.code,pkg:pickBlockPkg(c,b),auto:true,lock:false});
+  if(b) C.filter(c=>c.pk.some(p=>(p.batches||[]).includes(b))).forEach(c=>{
+    const pkgIdx=pickBlockPkg(c,b);
+    if(pkgIdx>=0) FIXED.push({code:c.code,pkg:pkgIdx,auto:true,lock:false});
   });
   renderFixed(); renderPick(); renderChosen();
 }
-/* choose the package whose sections are the ones tagged with this block, if identifiable */
-function pickBlockPkg(c,b){ return 0; }
+/* The package whose sections are actually restricted to this batch. Used to
+   silently default to package 0 regardless of which block was selected -
+   real bug, since package 0 is whichever combination sorts first and has no
+   reason to be the one that matches the student's own batch. Falls back to
+   0 only when no package names any batch at all (nothing to match against),
+   never when a match search simply comes up empty for a real, batch-tagged
+   course - that would silently enrol the wrong section instead of enrolling
+   none, which is worse. */
+function pickBlockPkg(c,b){
+  const idx=c.pk.findIndex(p=>(p.batches||[]).includes(b));
+  if(idx>=0)return idx;
+  return c.pk.some(p=>(p.batches||[]).length)?-1:0;
+}
 function fixedMeets(){
   const out=[];
   FIXED.forEach(f=>{const c=BY[f.code]; if(!c||!c.pk.length)return; const p=c.pk[f.pkg]||c.pk[0]; if(!p)return;

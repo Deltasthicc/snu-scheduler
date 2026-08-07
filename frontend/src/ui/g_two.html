@@ -50,8 +50,15 @@ function applyProgrammeCategories(){
       instead of ME/Core. CCC and UWE are unaffected. Report the mis-categorisation via a private profile
       override if this matters for your plan.</div>`;
   }
+  // Batch data now spans 108 courses across many departments (not just CSE -
+  // see backend build_packages()'s batch-coherence fix), so this control
+  // shows whenever BLOCKS (computed globally in d_sched.html) has entries,
+  // regardless of which programme is selected. blockCard/drawBlockOpt() in
+  // h_spec.html is a distinct, deliberately CSE-only feature (a core-swap
+  // optimizer hardcoded to one CSD211/CSD2003+MED2001 pairing) and is left
+  // untouched by this generalisation.
   const blkWrap=$('blkWrap');
-  if(blkWrap) blkWrap.style.display=(id===CSE_PROGRAMME_ID)?'':'none';
+  if(blkWrap) blkWrap.style.display=(typeof BLOCKS!=='undefined'&&BLOCKS.length)?'':'none';
   renderFixed();renderPick();renderChosen();
 }
 
