@@ -61,6 +61,33 @@ def test_every_catalogued_programme_can_run_an_audit():
         assert result["remaining_credits"] >= 0
 
 
+def test_every_catalogued_programme_reports_zero_progress_on_a_genuinely_empty_audit():
+    """A student who has entered nothing has completed nothing, in every one of
+    the 44 catalogued programmes, with no exception.
+
+    A real regression let a fresh B.Sc. (Research) in Mathematics profile - no
+    completed courses, no aggregate override, nothing - report 4 of 8
+    requirements complete (major_core, ccc, uwe and ccc_uwe all read as fully
+    satisfied). Root cause was in the frontend, not here: it derived a fake
+    "completed_requirement_credits" aggregate from Profile-tab fields that exist
+    to feed the bid-pool formula and default to 0, then read that default as
+    "0 remaining" -> "required amount done". This function was never the
+    problem - `required - 0 = required` only reaches 0 (i.e. "complete") if
+    `required` itself is 0, which the sibling test below confirms never
+    happens - but a completely empty request is the one case every programme
+    must get right, and nothing pinned it explicitly before. It does now, for
+    all 44 programmes at once, so a future change to any one programme's
+    requirement data cannot reintroduce a false "complete" silently."""
+    for program in CATALOG.list():
+        result = audit_degree(DegreeAuditRequest(programme_id=program["id"]), CATALOG)
+        assert result["requirements_met"] == 0, (
+            program["id"], [row for row in result["requirements"] if row["status"] == "complete"]
+        )
+        for row in result["requirements"]:
+            assert row["completed"] == 0, (program["id"], row["id"])
+            assert row["status"] != "complete", (program["id"], row["id"])
+
+
 def test_every_catalogued_programme_can_run_through_public_api():
     """The HTTP schema and route must accept every programme exposed by the UI."""
     with TestClient(app) as client:
@@ -82,8 +109,11 @@ def test_catalog_requirement_ids_are_unique_and_numerically_valid():
         assert len(ids) == len(set(ids)), program["id"]
         for rule in requirements:
             assert rule.get("kind", "credits") in {"credits", "milestone"}, program["id"]
-            if rule.get("kind", "credits") == "credits":
-                assert rule["required"] > 0, (program["id"], rule["id"])
+            # A requirement with required <= 0 reads as satisfied by definition
+            # (remaining = max(0, required - 0) == 0 the instant nothing at all
+            # has been entered), so this must hold for every kind, not just
+            # "credits" - a milestone row is exactly as capable of this defect.
+            assert rule.get("required", 0) > 0, (program["id"], rule["id"], rule.get("kind"))
 
 
 def test_overlapping_ccc_uwe_rules_count_without_double_allocation_bug():

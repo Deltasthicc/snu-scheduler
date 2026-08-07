@@ -138,7 +138,12 @@ def audit_degree(request: DegreeAuditRequest, catalog: ProgrammeCatalog) -> dict
     coverage = program.get("verification", "partial")
     if request.custom_requirements:
         coverage = "profile_overrides_applied"
-    aggregate_applied = bool(request.completed_requirement_credits)
+    # A dict with a "total": 0 entry is still a non-empty dict, so `bool(...)`
+    # alone claimed an aggregate was "included" even when it contributed
+    # nothing - the frontend always sends a total entry (defaulting to 0), so
+    # this fired on every single audit regardless of whether the student
+    # entered anything. Only true when some entry actually carries credit.
+    aggregate_applied = any(value > 0 for value in request.completed_requirement_credits.values())
     return {
         "programme": {key: program.get(key) for key in ("id", "title", "level", "verification")},
         "cohort_year": request.cohort_year,

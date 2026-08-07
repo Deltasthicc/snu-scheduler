@@ -405,6 +405,93 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('on-demand explain-exclusion endpoint also gives a specific blocker for the same course',
      !!onDemand.blocker && onDemand.blocker !== 'lower_priority', JSON.stringify(onDemand));
 
+  console.log('\n=== §22 DEGREE AUDIT AND SPECIALISATION HONESTY ===');
+  // Real regression: a fresh B.Sc. (Research) in Mathematics profile - no
+  // completed courses, no aggregate override, nothing touched - reported 4 of
+  // 8 requirements complete. Root cause was completedRequirementCredits()
+  // inferring "done" from Profile-tab "credits remaining" fields that exist to
+  // feed the bid-pool formula and default to 0, reading that default as "0
+  // remaining" -> "required amount done". Checked here for the exact
+  // programme reported, and for every one of the 44 catalogued programmes at
+  // once so no single programme's requirement shape can reintroduce it.
+  await p.click('.tab[data-p="prof"]');
+  await p.evaluate(() => {
+    // This page has been driven through many earlier sections in one
+    // continuous session (this suite never reloads between §-blocks), so an
+    // earlier section's leftover field values (e.g. §11's doneCr=105 worked
+    // example) are still sitting in the DOM. Reset every field this audit can
+    // read from, to genuinely reproduce "a fresh profile with nothing
+    // entered" rather than whatever an earlier section left behind.
+    ['doneCr', 'doneME', 'doneUWE', 'doneCCC', 'degCr', 'remCore', 'remOther',
+     'remME', 'remUWE', 'remCCC', 'remFL'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.value = 0;
+    });
+    document.getElementById('completedMilestones').value = '';
+    document.getElementById('programme').value = 'b-sc-research-in-mathematics';
+    applyProgrammeCategories();
+    // An earlier section already ran a real audit (with doneCr=105, against
+    // whatever programme was selected then) and left LAST_AUDIT populated, so
+    // "#auditBox has a table" is already true before this click - waiting on
+    // that alone raced ahead of runDegreeAudit()'s own async work and read the
+    // stale result. Clear it first and wait for the fresh one specifically.
+    LAST_AUDIT = null;
+  });
+  await p.click('#auditBtn');
+  // LAST_AUDIT is a top-level `let` in g_two.html, which - unlike `var` - does
+  // not become a `window` property, so `window.LAST_AUDIT` is always
+  // `undefined` and `!== null` was true instantly, resolving before the click's
+  // own async runDegreeAudit() had done anything. The bare identifier resolves
+  // through the page's real scope chain instead.
+  await p.waitForFunction(() => LAST_AUDIT !== null);
+  const freshMathAudit = await p.evaluate(() => LAST_AUDIT);
+  ck('a completely untouched profile reports zero requirements met',
+     freshMathAudit.requirements_met === 0, JSON.stringify({met: freshMathAudit.requirements_met, total: freshMathAudit.requirements_total}));
+  ck('every requirement row shows zero credit done, not the requirement silently satisfied',
+     freshMathAudit.requirements.every(row => row.completed === 0 && row.status !== 'complete'),
+     JSON.stringify(freshMathAudit.requirements.filter(r => r.completed !== 0 || r.status === 'complete')));
+  ck('the misleading "aggregate progress included" flag does not fire when nothing was entered',
+     freshMathAudit.aggregate_progress_applied === false);
+
+  const everyProgrammeEmptyAudit = await p.evaluate(async () => {
+    const offenders = [];
+    for (const programme of PROGRAMME_CATALOG) {
+      document.getElementById('programme').value = programme.id;
+      applyProgrammeCategories();
+      const result = await API.runDegreeAudit({
+        programme_id: programme.id, completed_courses: [], planned_courses: [],
+        completed_milestones: [], completed_requirement_credits: {}, custom_requirements: [],
+      });
+      if (result.requirements_met !== 0) offenders.push({ id: programme.id, met: result.requirements_met });
+    }
+    return offenders;
+  });
+  ck('all 44 programmes report zero requirements met on a genuinely empty audit',
+     everyProgrammeEmptyAudit.length === 0, JSON.stringify(everyProgrammeEmptyAudit));
+
+  // Specialisation: the CSE rule is "12 bucket credits, OR 6 bucket credits
+  // plus the named Project-I course in the same area". The status badge used
+  // to print "published course condition reached" the moment 6 credits were
+  // reached via the cheaper route, without ever checking whether Project-I was
+  // actually completed - contradicting this exact module's own planner note
+  // ("Project and grade conditions require confirmation from your record").
+  const pathwayHonesty = await p.evaluate(() => {
+    const option = { minimum_credits: 12, project_alternative_at: 6, project_credits: 6 };
+    return {
+      full: pathwayStatus(option, { trackable: true, total: 12, missingMandatory: [] }, false),
+      alt: pathwayStatus(option, { trackable: true, total: 6, missingMandatory: [] }, false),
+      partial: pathwayStatus(option, { trackable: true, total: 3, missingMandatory: [] }, false),
+    };
+  });
+  ck('the full 12-credit route is a clean "published course condition reached"',
+     pathwayHonesty.full.label === 'published course condition reached' && pathwayHonesty.full.tone === 'ok',
+     JSON.stringify(pathwayHonesty.full));
+  ck('the cheaper 6-credit route never claims full completion - it names the unverified project',
+     pathwayHonesty.alt.tone === 'check' && /project not verified/.test(pathwayHonesty.alt.label),
+     JSON.stringify(pathwayHonesty.alt));
+  ck('a partial 3-credit balance is neither route and is reported as remaining',
+     pathwayHonesty.partial.tone === 'warn' && /remaining/.test(pathwayHonesty.partial.label),
+     JSON.stringify(pathwayHonesty.partial));
+
   console.log('\n=== §9 BACKEND UNAVAILABLE ===');
   await p.route('**/api/v1/**', r => r.abort());
   await p.route('**/health/**', r => r.abort());

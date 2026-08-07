@@ -93,17 +93,42 @@ function removePathwayCourse(published){
 function optionTypeLabel(option){
   return String(option.type||'pathway').replaceAll('_',' ');
 }
+/* Whether an option's published condition is reached, split into the two
+   genuinely different routes the CSE rule offers (12 bucket credits alone, or
+   6 bucket credits plus the named Project-I course in the same area).
+   `threshold=alt||min` used to be treated as ONE number and reaching it always
+   printed "published course condition reached" - which silently assumed the
+   cheaper route's own precondition (the project) was satisfied, with nothing
+   in this tool ever checking that. `option.project_credits` existed in the
+   data and was already used to print an "unverified" caveat in the course
+   planner note below (h_spec.html's own "Project and grade conditions require
+   confirmation" line) - the status BADGE just never read it, so the caveat and
+   the headline verdict openly disagreed. `viaFull` is the only route this tool
+   can actually confirm end to end; `viaAlt` is real progress but conditional. */
+function pathwayCompletion(option,progress){
+  const min=+option.minimum_credits||0,alt=+option.project_alternative_at||0;
+  const viaFull=progress.trackable&&min>0&&progress.total>=min&&!progress.missingMandatory.length;
+  const viaAlt=progress.trackable&&!viaFull&&alt>0&&progress.total>=alt&&!progress.missingMandatory.length;
+  return {min,alt,viaFull,viaAlt};
+}
 function pathwayStatus(option,progress,isSelected){
   const minCourses=+option.minimum_courses||0;
   if(minCourses){
-    const complete=progress.trackable&&progress.count>=minCourses&&!progress.missingMandatory.length;
-    return complete?{label:'published course condition reached',tone:'ok'}:
-      {label:`${Math.max(0,minCourses-progress.count)} qualifying courses remaining`,tone:'warn'};
+    const coursesReached=progress.trackable&&progress.count>=minCourses;
+    if(coursesReached&&!progress.missingMandatory.length)return {label:'published course condition reached',tone:'ok'};
+    // Reaching the course count while a specific mandatory course is still
+    // missing used to fall through to "0 qualifying courses remaining" -
+    // arithmetically true (count already meets minCourses) but reads as
+    // nothing left to do, when a named course is still required.
+    if(coursesReached)return {label:'mandatory course condition not yet met',tone:'warn'};
+    return {label:`${Math.max(0,minCourses-progress.count)} qualifying courses remaining`,tone:'warn'};
   }
-  const min=+option.minimum_credits||0,alt=+option.project_alternative_at||0;
+  const {min,alt,viaFull,viaAlt}=pathwayCompletion(option,progress);
+  if(viaFull)return {label:'published course condition reached',tone:'ok'};
+  if(viaAlt)return {label:`${f1(alt)}-credit route reached — project not verified`,tone:'check'};
   const threshold=alt||min;
-  const complete=progress.trackable&&threshold>0&&progress.total>=threshold&&!progress.missingMandatory.length;
-  if(complete)return {label:'published course condition reached',tone:'ok'};
+  const creditsReached=progress.trackable&&threshold>0&&progress.total>=threshold;
+  if(creditsReached&&progress.missingMandatory.length)return {label:'mandatory course condition not yet met',tone:'warn'};
   if(threshold&&progress.trackable)return {label:`${f1(Math.max(0,threshold-progress.total))} credits remaining`,tone:'warn'};
   if(isSelected)return {label:'chosen for this plan',tone:'selected'};
   return {label:'available choice',tone:'neutral'};
@@ -134,12 +159,19 @@ function drawSpec(){
   }
   const rows=options.map(option=>({option,progress:specProgress(option)}));
   if(selectedOption){
-    const progress=specProgress(selectedOption),min=+selectedOption.minimum_credits||0,alt=+selectedOption.project_alternative_at||0,threshold=alt||min,minCourses=+selectedOption.minimum_courses||0;
+    const progress=specProgress(selectedOption),minCourses=+selectedOption.minimum_courses||0;
+    const {min,alt,viaFull,viaAlt}=pathwayCompletion(selectedOption,progress);
+    const threshold=alt||min;
     const pct=minCourses?Math.min(100,Math.round(100*progress.count/minCourses)):
       threshold?Math.min(100,Math.round(100*progress.total/threshold)):0;
     h+=`<section class="pathway-hero"><div><div class="eyebrow">YOUR CHOICE</div><h3>${esc(selectedOption.title)}</h3><div class="note">${esc(optionTypeLabel(selectedOption))}${threshold?' · official course threshold shown below':' · planning choice, not a completion claim'}</div></div>`+
       `<div class="pathway-metrics"><div><b>${f1(progress.bank)}</b><span>completed credits</span></div><div><b>${f1(progress.now)}</b><span>selected credits</span></div><div><b>${minCourses?Math.max(0,minCourses-progress.count):threshold?f1(Math.max(0,threshold-progress.total)):'—'}</b><span>${minCourses?'courses left':threshold?'credits left':'no public minimum'}</span></div></div>`+
-      `${threshold||minCourses?`<div class="progress pathway-progress" aria-label="${pct}% of published ${minCourses?'course':'credit'} threshold"><i style="width:${pct}%"></i></div>`:''}</section>`;
+      `${threshold||minCourses?`<div class="progress pathway-progress" aria-label="${pct}% of published ${minCourses?'course':'credit'} threshold"><i style="width:${pct}%"></i></div>`:''}`+
+      // "0 credits left" reads as done. It is not done when only the cheaper
+      // project-alternative route is what got there - say so in the same
+      // place the metric is shown, not just in a collapsed note below.
+      `${viaAlt?`<div class="flag f-warn" style="margin-top:10px"><b>Reached via the ${f1(alt)}-credit + project route, not the ${f1(min)}-credit route.</b> SNU also requires the ${f1(selectedOption.project_credits||0)}-credit project in this area for this route, and this tool has no record of whether you have completed it. Confirm from your own transcript/COS before treating this as done.</div>`:''}`+
+      `</section>`;
   }else{
     h+='<div class="flag f-warn" style="margin-top:12px"><b>Choose one direction below.</b> Your choice is saved inside this local plan and can be changed at any time.</div>';
   }

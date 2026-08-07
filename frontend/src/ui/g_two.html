@@ -193,18 +193,30 @@ function plannedAuditCourses(){
 }
 
 function completedRequirementCredits(){
-  const p=PROGRAMME_CATALOG.find(x=>x.id===($('programme')?$('programme').value:''));
-  const req=Object.fromEntries(((p&&p.requirements)||[]).map(r=>[r.id,+r.required||0]));
   // Imported plans can outlive individual form fields as the profile schema
   // evolves.  Missing optional controls must mean "no aggregate supplied",
   // never a fatal audit error.
   const fieldNumber=id=>{const el=$(id);return el?(+el.value||0):0;};
+  // ONLY `doneCr` ("Total credits done") belongs here, and only for the `total`
+  // requirement row. Its default of 0 is the correct claim for a fresh student:
+  // nobody has completed a negative number of credits, so "0 entered" and "0
+  // done" mean the same thing.
+  //
+  // This used to also derive major_core/ccc/uwe/ccc_uwe as (required - the
+  // Profile tab's "credits remaining" fields), but those fields
+  // (remCore/remME/remUWE/remCCC) exist to feed the bid-POOL formula, not the
+  // degree audit, and they default to 0 for the same reason doneCr does - "I
+  // haven't told you anything yet". For the pool formula 0 is a safe neutral
+  // default. For this inversion it is not: "0 remaining" reads as "fully done",
+  // so a completely untouched profile silently reported the full requirement as
+  // satisfied (measured: B.Sc. Research Mathematics with zero input showed 4 of
+  // 8 requirements complete, one per field this used to read). There is no way
+  // to tell "the student entered zero" apart from "the student never opened
+  // this field" in a plain number input, so the only correct fix is to stop
+  // inferring degree-audit completion from bid-pool inputs at all. Named
+  // completed courses and the advisement-PDF parse below are real evidence;
+  // this was not.
   const out={total:fieldNumber('doneCr')};
-  const remaining={major_core:fieldNumber('remCore'),major_elective:fieldNumber('remME'),
-    ccc:fieldNumber('remCCC'),uwe:fieldNumber('remUWE')};
-  Object.entries(remaining).forEach(([id,left])=>{if(req[id]!=null)out[id]=Math.max(0,req[id]-left);});
-  if(req.ccc_uwe!=null)out.ccc_uwe=Math.max(0,req.ccc_uwe-
-    (fieldNumber('remCCC')+fieldNumber('remUWE')+fieldNumber('remFL')));
   const rp=(ADVISEMENT_INFO&&ADVISEMENT_INFO.requirementProgress)||{};
   Object.entries(rp).forEach(([id,row])=>{if(row&&Number.isFinite(+row.used))out[id]=Math.max(out[id]||0,+row.used);});
   return out;
