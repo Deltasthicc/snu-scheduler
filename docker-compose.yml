@@ -5,6 +5,7 @@ services:
       - "8000:8000"
     environment:
       - SNU_DB=/data/snu.db
+      - SNU_TIMETABLE_AUTO_APPLY=true
     volumes:
       - snu-db:/data
     healthcheck:

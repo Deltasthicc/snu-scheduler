@@ -57,7 +57,15 @@ class UpdateService:
     enabled: bool = field(default_factory=lambda: _env_bool("SNU_TIMETABLE_UPDATE_ENABLED", True))
     poll_interval_minutes: float = field(default_factory=lambda: max(
         MIN_INTERVAL_MINUTES, _env_float("SNU_TIMETABLE_UPDATE_INTERVAL_MINUTES", 15.0)))
-    auto_apply: bool = field(default_factory=lambda: _env_bool("SNU_TIMETABLE_AUTO_APPLY", False))
+    # Default flipped to True 2026-08-09/10: the poller had been correctly
+    # detecting real site changes for days (checksums differed on 08-04, 05,
+    # 06, 07, 09) but manual review never happened, so the active dataset
+    # silently sat 5+ days behind the live timetable. A clean (zero-error)
+    # candidate now applies itself; a candidate with any validation error
+    # still always waits for manual review regardless of this flag - see the
+    # error_count == 0 gate in check() below. SNU_TIMETABLE_AUTO_APPLY=false
+    # opts back out.
+    auto_apply: bool = field(default_factory=lambda: _env_bool("SNU_TIMETABLE_AUTO_APPLY", True))
 
     state: UpdateState = UpdateState.IDLE
     last_check_started: float | None = None
