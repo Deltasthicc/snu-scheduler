@@ -8,21 +8,30 @@ FRONTEND_SRC = Path(__file__).resolve().parent.parent.parent / "frontend" / "src
 BACKEND_COPY = Path(__file__).resolve().parent.parent / "app" / "data" / "courses.json"
 
 
-def test_catalog_loads_326_courses():
-    assert len(catalog.all_courses()) == 326
+def test_catalog_loads_325_courses():
+    # 326 through monsoon-2026-batch-coherence-fix-2026-08-07; now 325 under
+    # monsoon-2026-netlify-revision-2026-08-09 (caught up 2026-08-09/10 after
+    # discovering the live site had moved on 5 times - 08-04/05/06/07/09 -
+    # while our poller kept staging candidates nobody reviewed). Net -1: +1
+    # course (MAT205/MAT2004), -2 courses (DES4001, HIS102), 3 renames
+    # (CCC685/CCC2302->CCC685, CSD102/CSD1002->CSD102/CSD2001,
+    # ECO2101->ECO2101/ECO221). See dataset_manifest.json for the full trail.
+    assert len(catalog.all_courses()) == 325
 
 
-def test_catalog_has_954_packages():
+def test_catalog_has_555_packages():
     # 859 under monsoon-2026-excel-v1; 988 under monsoon-2026-netlify-revision-
-    # 2026-08-04 (see docs/TIMETABLE_REVISION_DIFF_2026-08-04.md); now 954
-    # under monsoon-2026-batch-coherence-fix-2026-08-07, which reprocesses that
-    # same 08-04 source with a fixed build_packages(): the old cross-product
-    # ignored per-section batch tags and offered 34 combinations across 8
-    # courses that mixed sections restricted to disjoint student batches
-    # (e.g. CSD211/CSD2003's CSD21-only practical crossed with its CSD23/24-
-    # only tutorial) as though they were valid packages a real student could
-    # actually be enrolled in.
-    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 954
+    # 2026-08-04; 954 under monsoon-2026-batch-coherence-fix-2026-08-07 (that
+    # session's own batch-coherence fix to build_packages()); now 555 under
+    # monsoon-2026-netlify-revision-2026-08-09. This is a real drop, not a
+    # scraping regression: verified per-course before applying - zero courses
+    # dropped to 0 packages, and the biggest single drop (PHY1011, 348 -> 8)
+    # is because the University now tags each of PHY1011's sections to one of
+    # 8 specific first-year batches (SOE11..SOE18) where it previously
+    # published them as untagged, so the batch-coherence check (correctly)
+    # stops treating every LECxTUTxPRAC cross-product as a valid package for
+    # every student and collapses it to one real package per batch instead.
+    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 555
 
 
 def test_course_codes_are_unique():

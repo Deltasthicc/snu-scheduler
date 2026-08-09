@@ -230,18 +230,30 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
 
   console.log('\n=== §18 AUTO-RESOLVE CLASHES (backend-authoritative) ===');
   const pair = await p.evaluate(() => {
-    // find two single-package courses whose one meeting always overlaps -
-    // a genuinely unresolvable clash, for the least-conflict fallback path.
-    // Must also check term compatibility (tOv): same day+time in different
-    // halves of the semester is not actually a clash.
-    const single = C.filter(c => c.pk.length === 1 && c.pk[0].m.length === 1);
+    // Find two courses where EVERY combination of their packages overlaps -
+    // a genuinely unresolvable clash regardless of which section either
+    // student picks, for the least-conflict fallback path. Previously
+    // restricted to single-package/single-meeting courses only, which
+    // silently assumed such courses would always exist; the 2026-08-09
+    // timetable catch-up expanded batch tagging across far more courses
+    // (114 of 325, up from 108 of 326) and collapsed several previously
+    // single-package courses (e.g. PHY1011, 348 packages -> 8) into
+    // multi-package, batch-restricted ones, leaving only 5 single-package/
+    // single-meeting courses total and none of them clashing - this crashed
+    // on `pair.unavoidable` being null instead of failing the assertion
+    // cleanly. The general "every package combination clashes" definition
+    // is what the least-conflict fallback actually needs to prove (a real
+    // structural clash no section choice can avoid), and does not depend on
+    // either course having only one package.
     const termsOverlap = (ta, tb) => ta === tb || ta === 'Full semester' || tb === 'Full semester';
-    for (let i = 0; i < single.length; i++) {
-      for (let j = i + 1; j < single.length; j++) {
-        const a = single[i].pk[0].m[0], b = single[j].pk[0].m[0];
-        const ta = single[i].pk[0].t, tb = single[j].pk[0].t;
-        if (a[0] === b[0] && termsOverlap(ta, tb) && a[1] < b[2] && b[1] < a[2]) {
-          return { unavoidable: [single[i].code, single[j].code] };
+    const meetsOverlap = (pa, pb) => pa.m.some(a => pb.m.some(b =>
+      a[0] === b[0] && termsOverlap(pa.t, pb.t) && a[1] < b[2] && b[1] < a[2]));
+    const withPk = C.filter(c => c.pk.length);
+    for (let i = 0; i < withPk.length; i++) {
+      for (let j = i + 1; j < withPk.length; j++) {
+        const A = withPk[i], B = withPk[j];
+        if (A.pk.every(pa => B.pk.every(pb => meetsOverlap(pa, pb)))) {
+          return { unavoidable: [A.code, B.code] };
         }
       }
     }
