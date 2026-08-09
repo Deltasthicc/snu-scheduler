@@ -88,7 +88,7 @@ function migrateNonBiddablePicks(){
       box.style.display='';
       box.innerHTML=`<div class="flag f-warn"><b>${moved.length} course${moved.length>1?'s':''}
         moved to your fixed / pre-enrolled list:</b> ${moved.map(esc).join(', ')} - your new programme
-        no longer treats ${moved.length>1?'these as':'this as'} something you bid for, so
+        no longer treats ${moved.length>1?'these as':'this as'} something you place preferences on, so
         ${moved.length>1?"they're":"it's"} kept in your plan as fixed instead of being dropped silently.</div>`;
     } else box.style.display='none';
   }
@@ -278,8 +278,8 @@ function drawData(){
   if($('qBox'))$('qBox').innerHTML=Q.map(([q,a])=>`<div class="qbox"><b>${esc(q)}</b><div style="margin-top:5px;font-size:12.5px;color:var(--dim)">${esc(a)}</div></div>`).join('');
   renderCredits();
   if($('rulesBox'))$('rulesBox').innerHTML=`<table><tbody>
-   <tr><td><b>Clearing price</b></td><td>Every winner pays the lowest winning bid, or zero if seats go unfilled.</td></tr>
-   <tr><td><b>Maximum bid</b></td><td>None — any whole number up to your entire category pool on one course (rectified 2026-08-05).</td></tr>
+   <tr><td><b>Clearing price</b></td><td>Every winner pays the lowest winning preference-point amount, or zero if seats go unfilled.</td></tr>
+   <tr><td><b>Maximum preference points</b></td><td>None — any whole number up to your entire category pool on one course (rectified 2026-08-05).</td></tr>
    <tr><td><b>Audit completion</b></td><td>Only completed coursework satisfies a requirement; selected courses are projected separately.</td></tr>
    <tr><td><b>Overlapping minima</b></td><td>CCC and UWE each count toward their own minimum and the combined minimum, without duplicate credits inside a rule.</td></tr>
    <tr><td><b>Unknown curriculum</b></td><td>The app reports incomplete source coverage and accepts a private override; it never invents missing requirements.</td></tr>

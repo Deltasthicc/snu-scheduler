@@ -57,7 +57,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
 
   await p.click('.tab[data-p="bid"]');
   ck('default bid tab is the strategic planner, not the synthetic stress UI',
-     /Strategic bid planner/.test(await p.textContent('#p-bid')) &&
+     /Strategic preference planner/.test(await p.textContent('#p-bid')) &&
      (await p.locator('#stressOut').count()) === 0);
 
   console.log('\n=== POOLS COME FROM THE BACKEND ===');

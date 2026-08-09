@@ -4,10 +4,10 @@
   <div class="brand-mark" aria-hidden="true"><span>S</span></div>
   <div>
    <div class="eyebrow">Shiv Nadar IoE · Monsoon 2026 · student planning workspace</div>
-   <h1>SNU Scheduler &amp; <span style="color:var(--sig-hi)">Strategic Bid Planner</span></h1>
-   <div class="sub">326 offered courses · 988 valid section packages · 3,201 package-meeting slots, all read from the
+   <h1>SNU Scheduler &amp; <span style="color:var(--sig-hi)">Preference Matching Planner</span></h1>
+   <div class="sub">326 offered courses · 954 valid section packages · 3,095 package-meeting slots, all read from the
    published timetable dataset. Nothing here is invented — where a value is an estimate it says so.
-   <b>Unofficial planning aid.</b></div>
+   Models the University's COMPAS preference-based course matching system. <b>Unofficial planning aid.</b></div>
   </div>
   <div class="mast-actions">
    <div class="preference-panel">
@@ -42,7 +42,7 @@
   <button class="tab on" role="tab" aria-selected="true" aria-controls="p-learn" data-p="learn"><span class="n">01</span>Learn</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="p-prof" data-p="prof"><span class="n">02</span>Profile &amp; budget</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="p-courses" data-p="courses"><span class="n">03</span>Courses &amp; schedule</button>
-  <button class="tab" role="tab" aria-selected="false" aria-controls="p-bid" data-p="bid"><span class="n">04</span>Strategic bids</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="p-bid" data-p="bid"><span class="n">04</span>Preference matching</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="p-two" data-p="two"><span class="n">05</span>Degree audit</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="p-rules" data-p="rules"><span class="n">06</span>Rules &amp; data</button>
 </div>
@@ -51,7 +51,7 @@
  <div class="journey-copy">
   <span class="journey-count" id="journeyCount">Step 1 of 6</span>
   <strong id="journeyTitle">Learn the system</strong>
-  <span id="journeyHint">See how clearing prices, refunds and strategic bids work before making a plan.</span>
+  <span id="journeyHint">See how clearing prices, refunds and strategic preferences work before making a plan.</span>
  </div>
  <div class="journey-actions">
   <button class="btn2 sm" id="journeyPrev" type="button" onclick="journeyMove(-1)" aria-label="Previous planning step">← Back</button>
@@ -105,7 +105,7 @@
      <option value="y4" selected>4th year allocation model</option>
      <option value="y3">3rd year — transition</option>
      <option value="y2">2nd year — steady state</option></select></div>
-   <div><label>Bidding semester</label><select id="sem"></select></div>
+   <div><label>Matching semester</label><select id="sem"></select></div>
    <div><label>Standard semester ceiling (official)</label><input type="number" id="capCr" value="25" step="1" readonly></div>
    <div id="blkWrap" style="display:none"><label>My batch / student group (optional; auto-loads its core courses)</label><select id="blk"></select></div>
   </div>
@@ -170,7 +170,7 @@
   <div style="margin-top:12px"><button class="btn2" onclick="void refreshCreditPolicy()">Check my credit policy</button></div>
   <div id="creditPolicyBox" style="margin-top:10px"></div>
  </div>
- <div class="card" data-section-title="Bid-point budget"><div class="hd"><div><h2>Bid-point budget</h2><div class="note" id="formula"></div></div></div>
+ <div class="card" data-section-title="Preference-point budget"><div class="hd"><div><h2>Preference-point budget</h2><div class="note" id="formula"></div></div></div>
   <div class="stats">
    <div class="stat"><div class="k">Major elective</div><div class="v" id="bME">—</div><div class="f" id="fME"></div></div>
    <div class="stat u"><div class="k">UWE</div><div class="v" id="bUWE">—</div><div class="f" id="fUWE"></div></div>
@@ -184,7 +184,7 @@
  <div id="categoryCoverageNote" style="display:none;margin-bottom:15px"></div>
  <div id="categoryMigrationNote" style="display:none;margin-bottom:15px"></div>
  <div class="card tight" data-section-title="Fixed / pre-enrolled"><div class="hd" style="margin-bottom:9px"><div><h2>Fixed / pre-enrolled</h2>
-  <div class="note">Not biddable — the baseline every clash check runs against. Add or remove manually; some
+  <div class="note">Not part of preference matching — the baseline every clash check runs against. Add or remove manually; some
   programmes can also auto-load a core block, below in Profile &amp; budget.</div></div></div>
   <div id="fixedList"></div>
   <div class="srch" style="margin-top:11px">
@@ -192,13 +192,13 @@
    <button class="btn2" onclick="addFixed()">Add</button>
    <button class="btn2" onclick="addManual()">+ add an off-timetable item (project, SWAYAM…)</button></div>
  </div>
- <div class="card" data-section-title="Every course you can bid for">
-  <div class="hd"><div><h2>Every course you can bid for</h2>
+ <div class="card" data-section-title="Every course you can place preferences on">
+  <div class="hd"><div><h2>Every course you can place preferences on</h2>
    <div class="note">Category follows your selected programme: <b>ME</b>/<b>Core</b> = your major ·
    <b>UWE</b> = open to everyone · <b>CCC</b> = common core. A dotted credit is timetable-derived — confirm in COS.</div></div>
    <div class="tiny" id="pickCount"></div></div>
   <div class="srch">
-   <select id="fCat"><option value="">All biddable (ME + UWE + CCC)</option>
+   <select id="fCat"><option value="">All matched electives (ME + UWE + CCC)</option>
      <option value="ME">ME — major elective</option>
      <option value="CCC">CCC — common core</option>
      <option value="UWE">UWE — university-wide</option>
@@ -219,7 +219,7 @@
    <input type="text" id="fQ" placeholder="Search code, title, department or instructor…"></div>
   <div class="scroll catalog-list responsive-table"><table><thead><tr><th style="width:30px"><span class="sr-only">Add to plan</span></th><th>Course</th><th>Cat</th><th>Term</th>
    <th>Cr</th><th>Seats</th>
-   <th title="No per-course cap — you may bid up to your entire category pool on one course">Pool cap</th>
+   <th title="No per-course cap — you may place preference points up to your entire category pool on one course">Pool cap</th>
    <th>Pkgs</th><th>Best fit</th><th>Want</th></tr></thead>
    <tbody id="pickBody"></tbody></table></div>
   <div id="pickMore" class="list-pagination"></div>
@@ -295,18 +295,19 @@
  </details>
 </div>
 
-<!-- 04 BID SIMULATOR -->
+<!-- 04 PREFERENCE MATCHING SIMULATOR -->
 <div class="pane" id="p-bid">
- <div class="card" data-section-title="Strategic bid planner" style="border-color:var(--ok)">
-  <h2>Strategic bid planner</h2>
+ <div class="card" data-section-title="Strategic preference planner" style="border-color:var(--ok)">
+  <h2>Strategic preference planner</h2>
   <div class="note">Build a budget-feasible plan across every selected course without guessing what other
-  students will bid. The University publishes the auction mechanism and live bidder counts, but not historical
-  clearing prices or private rival bids. This planner therefore shows an <b>opening bid</b> and a
+  students will place. The University publishes the preference-matching mechanism and live counts of
+  interested students, but not historical clearing prices or other students' own preference points. This
+  planner therefore shows an <b>opening bid</b> and a
   <b>personal ceiling</b>&mdash;never a made-up win probability.</div>
  </div>
  <div class="card tight" data-section-title="Choose your resource strategy"><div class="hd" style="margin-bottom:10px"><div><h2>Choose your resource strategy</h2>
   <div class="note">These controls are personal planning choices, not University rules. Category balances
-  remain separate, and the total held by simultaneous bids can never exceed the relevant live balance.</div></div></div>
+  remain separate, and the total held by simultaneous preferences can never exceed the relevant live balance.</div></div></div>
   <div class="grid g3">
    <div><label for="bidPosture">Allocation posture</label><select id="bidPosture">
      <option value="diversified">Diversified &mdash; protect alternatives</option>
@@ -321,7 +322,7 @@
      <div class="tiny mut" style="margin-top:5px">The portal's live count changes the opening step, not your personal ceiling.</div></div>
   </div>
   <div style="margin-top:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-   <button class="btn" id="runBtn" onclick="void runOpt()">Build strategic bid plan</button>
+   <button class="btn" id="runBtn" onclick="void runOpt()">Build strategic preference plan</button>
    <span class="tiny" id="optStat" role="status" aria-live="polite"></span></div>
   </div>
  <div id="bidOut"></div>

@@ -67,7 +67,7 @@ function drawTT(){
     if(!seen.has(k)){seen.add(k);uniq.push(x);} });
   const swapNote = (typeof LASTSWAPS!=='undefined' && LASTSWAPS.length)
     ? `<div class="flag f-warn"><b>This schedule depends on a Major-Core swap.</b> Request it in Round 1
-       (or Round 5) — it uses no bid points, but only one swap request is allowed per round:<br>`+
+       (or Round 5) — it uses no preference points, but only one swap request is allowed per round:<br>`+
        LASTSWAPS.map(x=>'&nbsp;&nbsp;'+esc(x)).join('<br>')+'</div>' : '';
   $('ttReport').innerHTML = swapNote + (uniq.length
     ? `<div class="flag f-bad"><b>${uniq.length} real overlap${uniq.length>1?'s':''}:</b><br>`+

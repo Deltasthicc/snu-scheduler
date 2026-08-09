@@ -33,10 +33,10 @@ let ADVISEMENT_INFO=null; // private, local-only report provenance; never shippe
    the existing controls are presented and navigated. */
 const THEME_KEY='snu-ui-theme',MOTION_KEY='snu-ui-motion';
 const JOURNEY={
-  learn:['Learn the system','See how clearing prices, refunds and strategic bids work before making a plan.'],
-  prof:['Set your profile','Load or enter your programme, completed work, credit policy and bid-point position.'],
+  learn:['Learn the system','See how clearing prices, refunds and strategic preferences work before making a plan.'],
+  prof:['Set your profile','Load or enter your programme, completed work, credit policy and preference-point position.'],
   courses:['Shape your semester','Browse courses, resolve clashes and build a schedule you can actually attend.'],
-  bid:['Plan your bids','Turn priorities and separate point pools into opening bids and personal stop points.'],
+  bid:['Plan your preferences','Turn priorities and separate point pools into opening preferences and personal stop points.'],
   two:['Check degree progress','See what is complete, what this semester satisfies and what remains afterward.'],
   rules:['Verify every claim','Open the exact University source behind a rule, assumption or programme requirement.']
 };
@@ -261,12 +261,12 @@ function recalc(){
   .forEach(id=>{const e=$(id); if(e) e.addEventListener('change',recalc);});
 
 function budFlags(){
-  let h=`<div class="flag f-ok"><b>There is no per-course bid cap.</b>
-   You may bid any whole number from zero up to your entire available pool for that category on a single
-   course (rectified 2026-08-05). With ${BUD.ME} ME points you could commit all of it to one elective if you
-   chose to. Points bid are held against your category's live balance while a round is open and released back
-   if the bid loses (confirmed official rule, BUDGET.SHARED_LIVE — see the Rules tab), so simultaneous bids in
-   the same category are a real tradeoff, not independent budgets.</div>`;
+  let h=`<div class="flag f-ok"><b>There is no per-course preference-point cap.</b>
+   You may place any whole number of preference points from zero up to your entire available pool for that
+   category on a single course (rectified 2026-08-05). With ${BUD.ME} ME points you could commit all of it to
+   one elective if you chose to. Points placed are held against your category's live balance while a round is
+   open and released back if the course is not secured (confirmed official rule, BUDGET.SHARED_LIVE — see the
+   Rules tab), so simultaneous preferences in the same category are a real tradeoff, not independent budgets.</div>`;
   h+=`<div class="flag f-q"><b>Your inputs control this estimate.</b> Remaining-credit values come from
    your local profile. Run the degree audit against your selected programme before relying on the pool,
    especially when a course may satisfy more than one published minimum.</div>`;

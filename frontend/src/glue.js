@@ -131,7 +131,7 @@ async function refreshPoolsFromBackend() {
 function setRunning(on) {
   RUNNING = on;
   const run = $('runBtn'), cancel = $('cancelBtn');
-  if (run) { run.disabled = on || !BACKEND_OK; run.textContent = on ? 'Planning…' : 'Build strategic bid plan'; }
+  if (run) { run.disabled = on || !BACKEND_OK; run.textContent = on ? 'Planning…' : 'Build strategic preference plan'; }
   if (cancel) cancel.disabled = !on;
 }
 
