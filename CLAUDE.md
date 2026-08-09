@@ -1709,3 +1709,109 @@ information-architecture change; a `.pane-cols` utility was drafted then removed
 unused rather than left half-wired. Doctoral/MBA/PhD students still see the full bid
 simulator tab even though most graduate enrolment bypasses bidding (`ENROL.BACKEND_DISCONTINUED`)
 - named again as a real follow-up, not attempted.
+
+---
+
+## 20. Session update — 2026-08-09: COMPAS rename, a real Net Ceiling bug, four
+## new official documents
+
+The Dean Academics office announced the COMPAS mock round (10 August 2026) and
+attached four new documents, read in full before any code changed:
+`SNU - CPMS User Manual.pdf` (the vendor's own 61-page portal guide),
+`Preference_Based_Course_Matching_Introduction.pdf`, `..._FAQ.pdf`, and
+`..._Concept_Note.pdf`. The system is now officially "preference-based course
+matching" / COMPAS (Course Matching using Preference Assigned Scores),
+replacing the "bidding"/"auction" framing this project has used since
+inception.
+
+**Checked every number and formula in these four documents against what this
+project already had - it is the same mechanism under a new official name, not
+a new mechanism.** The Concept Note's steady-state (Y2), transition (Y3) and
+graduating (Y4) pool formulas, worked examples, and per-semester release
+schedules reproduce this project's existing `pools.py` formulas exactly,
+number for number (e.g. the Y4 worked example's 342/215/342 and the disputed
+297/125/238.5 average row, both already tracked here since earlier sessions).
+The round sequence, tie-break design, clearing-price rule, and retake/waiver
+provisions also match exactly. The vendor's own CPMS User Manual keeps using
+"Bid Points"/"Bid Ledger"/"Bidders" internally throughout, even under the new
+official student-facing name - so this was not treated as a mandate to purge
+"bid" everywhere, only to align the app's own top-level, most-visible
+vocabulary with what students now see in official communications.
+
+**A real, confirmed bug found via the manual's "Net Credits Logic" section.**
+The consideration-set ceiling ("you may bid for backups up to twice your
+available credit limit") was already documented in `rules.py` as
+`SET.NET_CEILING`: Req = min(graduation remaining, semester remaining,
+category remaining), ceiling = Req x 2 - but the frontend's own "Net ceiling
+(Req×2)" stat (`d_sched.html::renderChosen()`) only ever computed the
+semester leg of that MIN (`cap - fixedCredits`), silently dropping the
+graduation-remaining and category-remaining legs the rule itself already
+documented. Reproduced the manual's own worked example directly in a real
+browser session before and after the fix (`degCr=120, doneCr=9, capCr=25,
+fixedCredits=9, remME=50` → `grad=111, sem=16, cat=50, Req=MIN(111,16,50)=16,
+ceiling=32`) - byte-for-byte match. Fixed by adding `netCeiling(cat)` (new
+function in `d_sched.html`), computed per elective category (ME/UWE/CCC each
+get their own Req and ceiling, since the manual's own example computes Req
+for the specific round/category being bid on, not one blended figure) using
+data already collected on the Profile tab (`doneCr`/`degCr` for graduation,
+`capCr` minus fixed credits for semester, `remME`/`remUWE`/`remCCC` for
+category). `degCr` is explicitly optional, so an unset value (0) leaves the
+graduation leg unconstraining (`Infinity`) rather than forcing Req to 0.
+
+**Two genuinely new rules added to `rules.py`** (things stated in the new
+documents that no earlier document had said): `ENROL.PREREQUISITES` -
+prerequisites must be met to add a course, but no prerequisite data exists
+anywhere in `courses.json`, so this is honestly marked `Status.UNKNOWN` and
+not enforced; `ROUND.WAITLIST_POINTS_RESERVED` - a waitlisted bid's points
+are held, not refunded, until the waitlist itself resolves (the manual's own
+"Waitlist Processing" page) - not modelled in the Monte Carlo simulator or
+optimizer, both of which reason about a single round's win/lose outcome, not
+a multi-round reserved-points state machine. `SET.NET_CEILING`, `ROUND.SEQUENCE`
+(rounds 10-12 are now explicitly named "2nd Half CCC Bidding/Waitlist/Add-Drop"
+by the manual's own outline, previously only inferred) and `AUC.TIEBREAK` got
+updated citations. `RULE_VERSION` bumped to `2026.M.4`.
+
+**Terminology pass - scoped to the most visible, top-level student-facing
+copy, not an exhaustive purge.** Updated: page `<title>`, the H1 (`Strategic
+Bid Planner` → `Preference Matching Planner`), the `04` tab label
+(`Strategic bids` → `Preference matching`), the journey-bar hints (both the
+static initial span and the `JOURNEY` metadata object that overrides it per
+tab), the `Bid-point budget` and `Every course you can bid for` card
+titles/headers (the latter's rename required updating a `querySelector`
+reference in `d_sched.html`'s "Collapse list" button, done in the same edit
+so it didn't silently break), the picker's "biddable" filter option, the
+pool-cap tooltips (both copies, `b_body.html` and `d_sched.html`), the
+Strategic-planner section's intro paragraph and "Build strategic ... plan"
+button (updated identically in both the static HTML and the `glue.js`
+toggle that overwrites it), the budget-flags prose in `c_core.html`, a
+category-migration notice and the Rules-tab glossary rows in `g_two.html`,
+and a swap-round tooltip in `e_tt.html`. Also fixed an unrelated, real
+staleness bug found while touching this exact header text: the masthead's
+"326 offered courses · **988** valid section packages · **3,201**
+package-meeting slots" line was hardcoded prose that never got updated after
+this session's earlier `2026-08-07` batch-coherence fix changed the real
+package count to 954 (3,095 meeting slots, recomputed directly from
+`courses.json` rather than guessed). Every renamed `data-section-title` and
+button-text string was checked against `frontend/tests/e2e.test.js` first;
+the one real hit (`/Strategic bid planner/` in the tab-identity check) was
+updated in the same change, not left to fail silently.
+
+**Deliberately not touched, named rather than silently left inconsistent**:
+`frontend/src/ui/k_learn.html` (the "Learn the system" tab's comparative
+explainer, which correctly and factually describes *other* universities' own
+still-actually-named "bid points" systems, e.g. Chicago Booth - blindly
+renaming "bid" there would make true statements about other schools false);
+`README.md`'s own prose; and the deeper, cross-file "opening bid" /
+`bidPosture` / `bidReserve` / `BidStrategyRequest` vocabulary, which is this
+project's own strategic-planning terminology (never an official University
+term to begin with, and entangled with `plans.js`'s CSV export column header
+and a `plans.test.js` assertion by exact string) - left as one internally
+consistent term rather than a rushed, error-prone partial rename across a
+CSV contract and its tests in the same sitting.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 213 passed, 1 skipped (rules.py additions)
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 48 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 69 passed
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations
+```
