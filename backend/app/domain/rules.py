@@ -2,13 +2,32 @@
 
 Every rule carries provenance so a caller can distinguish "the University wrote
 this down" from "we inferred this because it is the only coherent reading".
+
+Official rename, 2026-08-09: the University's own communications now call this
+system "preference-based course matching" / COMPAS (Course Matching using
+Preference Assigned Scores), replacing the earlier "bidding"/"auction"
+framing, per the Dean Academics email announcing the COMPAS mock round
+(10 August 2026) and its four attachments: SNU - CPMS User Manual.pdf,
+Preference_Based_Course_Matching_{Introduction,FAQ,Concept_Note}.pdf. Every
+number and formula already in this registry (pool sizes, clearing-price rule,
+tie-break, round sequence, retake handling) was checked against these four
+documents and reproduces them exactly - this is the same mechanism under an
+official new name, not a new mechanism. Where a rule's `source` still cites
+an older-named document (e.g. "Course_Bidding_Introduction.pdf"), that is the
+original document this rule was first verified against; the new COMPAS-named
+documents were checked afterward and corroborate the same numbers unless a
+rule's own note says otherwise. The vendor's own CPMS User Manual keeps using
+"bid points" / "bidding" internally throughout (e.g. "Bid Ledger", "Bidders")
+even under the new official student-facing name, so this registry's rule
+text is not being purged of that vocabulary wholesale - only updated where a
+rule's substance actually changed.
 """
 from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
-RULE_VERSION = "2026.M.3"
+RULE_VERSION = "2026.M.4"
 DATASET_VERSION = "monsoon-2026.1"
 MODEL_VERSION = "competition-v3"
 
@@ -62,7 +81,9 @@ _R: list[Rule] = [
          "Equal bids separated by a random number assigned uniquely for each course, for each round. "
          "Not time-based. Withdrawing and rebidding for the same course in the same round keeps the "
          "same number; a new round assigns a fresh one.",
-         Status.OFFICIAL, "Course_Bidding_Introduction.pdf, Eligibility/tie-break section"),
+         Status.OFFICIAL, "Course_Bidding_Introduction.pdf, Eligibility/tie-break section; corroborated "
+         "by SNU - CPMS User Manual.pdf, 'Tie-Breaker Logic' ('generated for each Student + Course + "
+         "Round combination') and Preference_Based_Course_Matching_FAQ.pdf, 'Tie-breakers'"),
     Rule("AUC.REFUND", "Settlement and refunds",
          "Winners charged the clearing price and refunded the remainder. Losing bids refunded in full.",
          Status.OFFICIAL, "Introduction s.3"),
@@ -122,9 +143,18 @@ _R: list[Rule] = [
               "figure in the University's own materials, not a one-off typo in a single PDF - but it "
               "does not supply the missing reconciliation, so the disputed status stands."),
     Rule("SET.NET_CEILING", "Consideration set ceiling (Req x 2)",
-         "Req = min(graduation, semester, major-elective remaining). Set may hold Req x 2 credits.",
+         "Req = min(credits remaining to graduate, credits remaining this semester, credits remaining "
+         "in the specific elective category being bid on). The consideration set for that category may "
+         "hold up to Req x 2 credits.",
          Status.OFFICIAL, "Course_Bidding_Introduction.pdf, Eligibility checks: 'you may bid for backups "
-         "up to twice your available credit limit'", value=2, configurable=True),
+         "up to twice your available credit limit'; SNU - CPMS User Manual.pdf, 'Net Credits Logic' "
+         "(worked example: Req = MIN(111, 16, 50) = 16, Net Credits = 32)", value=2, configurable=True,
+         note="Fixed 2026-08-09: the frontend previously computed Req using only the semester leg of "
+              "this MIN (cap minus fixed credits), dropping the graduation and category legs entirely - "
+              "so a student close to graduation, or close to clearing one category's own requirement, "
+              "was shown a ceiling looser than the real one. Now computed per elective category (ME/UWE/"
+              "CCC each get their own Req and ceiling, since the manual's own worked example computes Req "
+              "for the specific round/category being bid on, not one blended figure)."),
     Rule("SET.ONE_CLASH", "One clash per course in bidding rounds",
          "Rounds 2/4/6: a course may clash with at most one other in the set.",
          Status.OFFICIAL, "Course_Bidding_Introduction.pdf, Eligibility checks"),
@@ -151,7 +181,11 @@ _R: list[Rule] = [
          "1 swap, 2 ME bid, 3 ME drop, 4 CCC/UWE bid I, 5 swap II, 6 CCC/UWE bid II, "
          "7 ME waitlist, 8 CCC/UWE waitlist, 9 add/drop; then 10-12 for half-semester CCC.",
          Status.OFFICIAL, "Course_Bidding_Introduction.pdf s.4; "
-         "Course_Enrolment_FAQ_1.pdf, 'What are the rounds?'"),
+         "Course_Enrolment_FAQ_1.pdf, 'What are the rounds?'",
+         verified="Rounds 10-12 (previously inferred only from 'a further set of second-half rounds "
+                  "later in the semester') are now explicitly named and numbered by "
+                  "SNU - CPMS User Manual.pdf's own outline: Round 10 - 2nd Half CCC Bidding, "
+                  "Round 11 - 2nd Half CCC Waitlist, Round 12 - 2nd Half CCC Add/Drop."),
     Rule("ROUND.WAITLIST_BY_BID", "Waitlist order is by bid, not by who clicks first",
          "The Major Elective and CCC/UWE waitlist rounds settle exactly like a normal bidding round: "
          "highest bid wins, tie-break as usual. Speed of clicking has no effect.",
@@ -255,6 +289,31 @@ _R: list[Rule] = [
                     "what the prospectus itself lists. There is no separate include/exclude toggle; the "
                     "student's own recorded coursework is the only input.",
          programme_scope=("b-tech-in-computer-science-and-engineering",)),
+    Rule("ENROL.PREREQUISITES", "Prerequisites must be met to add a course (not modelled)",
+         "A course cannot be added to a consideration set unless its prerequisite is satisfied; a clean "
+         "prerequisite list is published on the matching platform itself.",
+         Status.UNKNOWN, "Preference_Based_Course_Matching_Introduction.pdf s.3, Eligibility checks; "
+         "Preference_Based_Course_Matching_FAQ.pdf, 'Prerequisites and eligibility'; "
+         "SNU - CPMS User Manual.pdf, 'Add a Major Elective to Consideration Set'",
+         note="Genuinely new to this registry (2026-08-09): none of the previously-attached documents "
+              "stated a prerequisite eligibility check. courses.json carries no prerequisite field for "
+              "any of the 326 courses, so this simulator cannot enforce or warn about it - a recommended "
+              "bid here may in reality be blocked by an unmet prerequisite the tool has no way to see. "
+              "Not modelled until prerequisite data is sourced; students should independently confirm "
+              "eligibility for any course before relying on this planner's recommendation for it."),
+    Rule("ROUND.WAITLIST_POINTS_RESERVED", "Waitlisted bid points are reserved, not refunded",
+         "Unlike a losing bid (refunded in full), a bid that lands on a waitlist keeps its points held "
+         "against the category balance until the waitlist itself resolves.",
+         Status.OFFICIAL, "SNU - CPMS User Manual.pdf, 'Waitlist Processing': 'For the Waitlisted "
+         "Courses, Bid Points are reserved, not refunded.'",
+         note="Genuinely new to this registry (2026-08-09) - not stated in any previously-attached "
+              "document, which only ever described the confirmed-vs-fully-refunded case. Not modelled in "
+              "the Monte Carlo simulator or the optimizer, both of which reason about a single round's "
+              "win/lose outcome and do not track a multi-round reserved-points state machine; a student "
+              "using the waitlist rounds should expect those specific points to sit locked, not spendable "
+              "elsewhere, until the waitlist round closes.",
+         impact="A student who waitlists a course and assumes those points are still free to bid "
+                "elsewhere in the same round would be wrong - the reservation is real, not cosmetic."),
     Rule("COMP.STRESS_DEFAULT", "Competition is assumed, not observed",
          "No historical SNU clearing-price or bidder-count data exists. Every course is modelled as "
          "oversubscribed until live platform data proves otherwise.",

@@ -247,11 +247,39 @@ function renderChosen(){
    <div class="stat"><div class="k">Fixed credits</div><div class="v mono">${f1(fx)}</div></div>
    <div class="stat u"><div class="k">Chosen elective credits</div><div class="v mono">${f1(tot)}</div></div>
    <div class="stat c"><div class="k">Total if all won</div><div class="v mono">${f1(fx+tot)}</div>
-     <div class="f">cap ${cap}</div></div>
-   <div class="stat r"><div class="k">Net ceiling (Req×2)</div><div class="v mono">${f1(Math.max(0,cap-fx)*2)}</div>
-     <div class="f">max consideration set</div></div></div>`;
+     <div class="f">cap ${cap}</div></div></div>`;
+  const catNames=Object.keys(grp).filter(cat=>grp[cat].length);
+  if(catNames.length){
+    h+=`<div class="grid g3" style="margin-top:10px">${catNames.map(cat=>{
+      const r=netCeiling(cat);
+      const gradTxt=isFinite(r.grad)?f1(r.grad):'not set';
+      return `<div class="stat r"><div class="k">${cat} net ceiling (Req×2)</div><div class="v mono">${f1(r.ceiling)}</div>
+        <div class="f" title="Req = min(graduation remaining ${gradTxt}, semester remaining ${f1(r.sem)}, ${cat} remaining ${f1(r.cat)})">Req ${f1(r.req)} — max consideration-set credits for ${cat}</div></div>`;
+    }).join('')}</div>`;
+  }
   if(fx+tot>cap) h+=`<div class="flag f-warn"><b>Over the cap if everything wins — that is fine, if the priority
     order is right.</b> ${f1(fx+tot)} against a ${cap} limit. The platform confirms down your priority list and
     unconfirms (and refunds) the rest, so surplus choices act as free backups.</div>`;
   $('chosenBox').innerHTML=h; drawTT(); if(typeof drawSpec==='function') drawSpec();
+}
+/* Net Credits / consideration-set ceiling (SNU - CPMS User Manual, "Net Credits
+   Logic"; SET.NET_CEILING rule): Req = MIN(credits remaining to graduate,
+   credits remaining this semester, credits remaining in the specific elective
+   category), and the consideration set for that category may hold up to
+   Req x 2 credits' worth of courses (so backups beyond your realistic win
+   count are still allowed). Previously this only ever used the semester leg
+   of the MIN (cap - fixed credits) - a real gap, since a student close to
+   graduation or close to clearing one category's own requirement is bound by
+   whichever of the three is tightest, not always the semester cap. degCr (the
+   optional degree-credit target) is left unconstraining (Infinity) when unset,
+   since it is explicitly an optional field. */
+function netCeiling(cat){
+  const cap=+$('capCr').value||25, fx=fixedCredits();
+  const degCr=+($('degCr')?$('degCr').value:0)||0, doneCr=+($('doneCr')?$('doneCr').value:0)||0;
+  const grad=degCr>0?Math.max(0,degCr-doneCr):Infinity;
+  const sem=Math.max(0,cap-fx);
+  const catRem={ME:'remME',UWE:'remUWE',CCC:'remCCC'}[cat];
+  const catVal=catRem&&$(catRem)?Math.max(0,+$(catRem).value||0):Infinity;
+  const req=Math.min(grad,sem,catVal);
+  return {grad,sem,cat:catVal,req,ceiling:req*2};
 }
