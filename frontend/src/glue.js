@@ -1107,6 +1107,41 @@ function downloadTimetableDiff() {
   download('timetable-diff.json', JSON.stringify(window._TT_LAST_DIFF, null, 2), 'application/json');
 }
 
+let TT_CHANGELOG_LOADED = false;
+/* Public, always-available history of every revision the University has
+   actually published - reads dataset_manifest.json's persisted version
+   list via GET /timetable-updates/changelog, not this process's own
+   in-memory check log (renderTimetableUpdateBar's #ttUpdateReview only ever
+   shows the current candidate, if any). Added 2026-08-09/10 after the
+   active dataset was found silently sitting 5+ days behind the live site
+   because nobody had been reviewing staged candidates - this makes every
+   past change visible without anyone having to remember to check. Lazy: the
+   <details> element only calls this on first expand, not on every page load. */
+async function renderTimetableChangelog() {
+  if (TT_CHANGELOG_LOADED) return;
+  const box = $('ttChangelog'); if (!box) return;
+  try {
+    const { changelog } = await API.getTimetableChangelog();
+    TT_CHANGELOG_LOADED = true;
+    if (!changelog.length) { box.innerHTML = 'No revision history yet.'; return; }
+    box.innerHTML = changelog.map(e => {
+      const s = e.summary;
+      const named = [...e.renamed_courses.map(r => `${esc(r.old_code)} → ${esc(r.new_code)} (renamed)`),
+        ...e.added_courses.map(c => `${esc(c)} (added)`),
+        ...e.removed_courses.map(c => `${esc(c)} (removed)`)];
+      return `<div class="card tight" style="margin-top:8px">
+        <div><b>${esc(e.from_version)}</b> → <b>${esc(e.to_version)}</b>
+          <span class="tiny mut">${e.retrieved_at ? esc(fmtWhen(Date.parse(e.retrieved_at) / 1000)) : ''}</span></div>
+        <div class="tiny mut" style="margin-top:4px">${s.renamed} renamed · ${s.added} added · ${s.removed} removed ·
+          ${s.changed} changed · ${s.unchanged} unchanged</div>
+        ${named.length ? `<div class="tiny" style="margin-top:4px">${named.join(' · ')}</div>` : ''}
+      </div>`;
+    }).join('');
+  } catch (e) {
+    box.innerHTML = 'Could not load the change history: ' + esc(API.humanError(e));
+  }
+}
+
 async function applyTimetableUpdateAction(versionId, checksum) {
   if (!confirm(`Apply timetable ${versionId}? Your saved plans will be revalidated afterward, not silently rewritten.`)) return;
   try {

@@ -177,6 +177,7 @@
   function getTimetableUpdateHistory(limit) {
     return req('/timetable-updates/history' + (limit ? '?limit=' + encodeURIComponent(limit) : ''));
   }
+  function getTimetableChangelog() { return req('/timetable-updates/changelog'); }
   function maxBid(credits) { return req('/max-bid?credits=' + encodeURIComponent(credits)); }
 
   /* ---------- plan normalisation ---------- */
@@ -508,6 +509,7 @@
     calculateProfileBudget, settleAuction, getRules, getDataset, maxBid,
     getTimetableUpdateStatus, checkTimetableUpdate, getTimetableCandidate, getTimetableDiff,
     applyTimetableUpdate, discardTimetableCandidate, rollbackTimetableUpdate, getTimetableUpdateHistory,
+    getTimetableChangelog,
     buildSimRequest, validatePlan, buildBidStrategyRequest, getBidStrategy,
     startSimulation, getSimulationStatus, getSimulationResult,
     cancelSimulation, stressTestPlan, subscribeToSimulationProgress,

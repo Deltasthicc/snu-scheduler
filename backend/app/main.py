@@ -225,6 +225,16 @@ async def tt_history(limit: int = 50):
     return {"history": UPDATE_SERVICE.history[-min(200, max(1, limit)):][::-1]}
 
 
+@app.get("/api/v1/timetable-updates/changelog", tags=["timetable-updates"])
+async def tt_changelog():
+    """Every real timetable revision ever applied, diffed against its
+    predecessor, oldest first - unlike /history above (this process's own
+    in-memory check/apply log), this reads dataset_manifest.json's persisted
+    version list, so it survives a restart and covers versions applied in an
+    earlier process too."""
+    return {"changelog": tt_apply.changelog()}
+
+
 @app.get("/api/v1/rules", tags=["rules"])
 async def rules():
     return {"version": RULE_VERSION, "dataset_version": DATASET_VERSION,

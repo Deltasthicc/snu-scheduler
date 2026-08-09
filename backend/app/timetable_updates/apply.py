@@ -157,6 +157,48 @@ def apply_version(version_id: str, expected_checksum: str | None = None) -> dict
             "course_count": health["course_count"], "package_count": health["package_count"]}
 
 
+def changelog() -> list[dict]:
+    """Every difference between consecutive applied versions, read straight
+    from their own preserved files - oldest first. Distinct from
+    UpdateService.history (poller.py), which is an in-memory, per-process
+    check/apply event log that resets on restart and says nothing about a
+    version applied in an earlier process. This instead walks
+    dataset_manifest.json's `versions` list (persisted, restart-proof) and
+    diffs each version's courses.json against its immediate predecessor's,
+    the same way tools/import_netlify_timetable.py already does for a single
+    pair - so a student (or a developer) can see the full history of every
+    real timetable revision the University has published, not just whatever
+    candidate happens to be staged right now. Computed on demand rather than
+    cached: the version list is small (a handful of entries) and each
+    courses.json is at most ~700KB, so the cost of diffing every consecutive
+    pair is trivial next to a page load."""
+    from app.timetable_updates.diff import diff_datasets  # avoid a cycle at import time
+
+    manifest = load_manifest()
+    versions = manifest.get("versions", [])
+    entries = []
+    for i in range(1, len(versions)):
+        prev, cur = versions[i - 1], versions[i]
+        prev_path = VERSIONS_DIR / prev["version_id"] / "courses.json"
+        cur_path = VERSIONS_DIR / cur["version_id"] / "courses.json"
+        if not prev_path.exists() or not cur_path.exists():
+            # A version whose own files were pruned (or never archived - see
+            # the honesty note on unapplied candidates in poller.py) cannot
+            # be diffed; skip rather than fabricate a placeholder entry.
+            continue
+        prev_courses = json.loads(prev_path.read_text(encoding="utf-8"))
+        cur_courses = json.loads(cur_path.read_text(encoding="utf-8"))
+        d = diff_datasets(prev_courses, cur_courses)
+        entries.append({
+            "from_version": prev["version_id"], "to_version": cur["version_id"],
+            "retrieved_at": cur.get("retrieved_at"), "source_name": cur.get("source_name"),
+            "note": cur.get("note"), "summary": d["summary"],
+            "renamed_courses": d["renamed_courses"], "added_courses": d["added_courses"],
+            "removed_courses": d["removed_courses"], "changed_courses": d["changed_courses"],
+        })
+    return entries
+
+
 def discard_candidate(version_id: str) -> None:
     """Removes a staged-but-never-applied candidate's folder. Never called on
     an applied version - history is only ever pruned by explicit retention

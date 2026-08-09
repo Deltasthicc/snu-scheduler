@@ -73,6 +73,24 @@ def test_dataset_endpoint_reports_active_version_and_checksum():
         assert body["active_version"] in body["known_versions"]
 
 
+def test_timetable_changelog_covers_every_applied_version_transition():
+    """The public change-history endpoint (added 2026-08-09/10 after the
+    active dataset was found to be silently 5+ days behind the live
+    timetable) must actually reflect every real revision on disk, not just
+    the most recent one - go through the real HTTP route, since
+    test_timetable_updates.py's own tests call apply.changelog() directly and
+    would not have caught a route handler dropping or reshaping the field."""
+    with TestClient(app) as client:
+        r = client.get("/api/v1/timetable-updates/changelog")
+        assert r.status_code == 200, r.text
+        log = r.json()["changelog"]
+        assert len(log) >= 3
+        assert log[0]["from_version"] == "monsoon-2026-excel-v1"
+        for entry in log:
+            assert set(entry["summary"]) == {"renamed", "added", "removed", "changed", "unchanged"}
+            assert entry["to_version"]
+
+
 def test_profiles_validate_returns_a_clear_summary():
     with TestClient(app) as client:
         r = client.post("/api/v1/profiles/validate", json={

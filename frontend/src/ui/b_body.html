@@ -35,6 +35,10 @@
 </div>
 <div id="datasetBanner" style="display:none"></div>
 <div id="ttUpdateReview" style="display:none"></div>
+<details id="ttChangelogWrap" style="margin:8px 0" ontoggle="if(this.open) void renderTimetableChangelog()">
+  <summary class="tiny mut" style="cursor:pointer">Timetable change history — every revision the University has published, and what changed</summary>
+  <div id="ttChangelog" class="tiny mut" style="padding:8px 2px">Loading…</div>
+</details>
 </header>
 <main>
 <div class="scroll-progress" aria-hidden="true"><i id="scrollProgressFill"></i></div>
