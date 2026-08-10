@@ -220,6 +220,10 @@
      <option value="lt3">Under 3</option><option value="gte4">4 or more</option></select>
    <select id="fDay"><option value="">Any day</option><option value="0">Mon</option><option value="1">Tue</option>
      <option value="2">Wed</option><option value="3">Thu</option><option value="4">Fri</option><option value="5">Sat</option></select>
+   <span class="tiny mut" style="display:flex;align-items:center;gap:5px" title="Show only courses with a meeting whose start time falls in this range — leave one side blank for an open-ended 'after'/'before' filter, or set both to the same time for an exact start">Starts
+     <input type="time" id="fStartFrom" aria-label="Starts at or after" style="flex:0 0 auto;width:104px;min-width:0">–<input type="time" id="fStartTo" aria-label="Starts at or before" style="flex:0 0 auto;width:104px;min-width:0"></span>
+   <span class="tiny mut" style="display:flex;align-items:center;gap:5px" title="Show only courses with a meeting whose end time falls in this range — leave one side blank for an open-ended 'after'/'before' filter, or set both to the same time for an exact end">Ends
+     <input type="time" id="fEndFrom" aria-label="Ends at or after" style="flex:0 0 auto;width:104px;min-width:0">–<input type="time" id="fEndTo" aria-label="Ends at or before" style="flex:0 0 auto;width:104px;min-width:0"></span>
    <input type="text" id="fQ" placeholder="Search code, title, department or instructor…"></div>
   <div class="scroll catalog-list responsive-table"><table><thead><tr><th style="width:30px"><span class="sr-only">Add to plan</span></th><th>Course</th><th>Cat</th><th>Term</th>
    <th>Cr</th><th>Seats</th>

@@ -144,11 +144,18 @@ async function autoSolve(silent){
 }
 
 /* ============ PICKER ============ */
-let PICK_VISIBLE=30;
-function setPickVisible(value){PICK_VISIBLE=value==='all'?10000:Math.max(30,+value||30);renderPick();}
+const PICK_PAGE_SIZE=10;
+let PICK_PAGE=0;
+function setPickPage(p){PICK_PAGE=Math.max(0,p);renderPick();}
+/* "HH:MM" from an <input type="time"> -> minutes since midnight, matching the
+   meeting-time representation used throughout this file (m[1]/m[2]). Returns
+   null for an empty/unset input, which callers treat as "no bound on this side". */
+function timeToMin(v){ if(!v) return null; const [h,mi]=v.split(':').map(Number); return h*60+mi; }
 function renderPick(){
   const cat=$('fCat').value, term=$('fTerm').value, q=$('fQ').value.trim().toLowerCase();
   const fit=$('fFit').value, day=$('fDay').value, crf=($('fCr')?$('fCr').value:'');
+  const startFrom=timeToMin($('fStartFrom')?$('fStartFrom').value:''), startTo=timeToMin($('fStartTo')?$('fStartTo').value:'');
+  const endFrom=timeToMin($('fEndFrom')?$('fEndFrom').value:''), endTo=timeToMin($('fEndTo')?$('fEndTo').value:'');
   const fx=fixedMeets(), all=allChosenMeets(null);
   let L=C.filter(c=>!FIXED.some(f=>f.code===c.code));
   if(cat) L=L.filter(c=>c.cat===cat);
@@ -156,6 +163,13 @@ function renderPick(){
   if(term) L=L.filter(c=>c.terms.includes(term));
   if(q) L=L.filter(c=>(c.code+' '+c.title+' '+c.dept+' '+c.pk.map(p=>p.l).join(' ')).toLowerCase().includes(q));
   if(day!=='') L=L.filter(c=>c.pk.some(p=>p.m.some(m=>m[0]===+day)));
+  // Both bounds must hold on the SAME meeting - two independent .some() calls
+  // (one per bound) would let a course pass an exact-time filter just by having
+  // one early meeting and one late one, with neither actually at that time.
+  if(startFrom!==null||startTo!==null)
+    L=L.filter(c=>c.pk.some(p=>p.m.some(m=>(startFrom===null||m[1]>=startFrom)&&(startTo===null||m[1]<=startTo))));
+  if(endFrom!==null||endTo!==null)
+    L=L.filter(c=>c.pk.some(p=>p.m.some(m=>(endFrom===null||m[2]>=endFrom)&&(endTo===null||m[2]<=endTo))));
   if(crf==='lt3')      L=L.filter(c=>c.cr<3);
   else if(crf==='gte4')L=L.filter(c=>c.cr>=4);
   else if(crf!=='')    L=L.filter(c=>Math.abs(c.cr-parseFloat(crf))<0.01);
@@ -165,9 +179,12 @@ function renderPick(){
   if(fit==='free') R=rows.filter(r=>r.bf.n===0);
   if(fit==='freeall') R=rows.filter(r=>r.ba.n===0);
   R.sort((x,y)=>(x.ba.n-y.ba.n)||x.c.code.localeCompare(y.c.code));
+  const pageCount=Math.max(1,Math.ceil(R.length/PICK_PAGE_SIZE));
+  if(PICK_PAGE>=pageCount) PICK_PAGE=pageCount-1;
+  const pageStart=PICK_PAGE*PICK_PAGE_SIZE;
   const CAP={ME:'p-me',UWE:'p-uwe',CCC:'p-ccc',NB:'p-nb',CORE:'p-nb'};
   let h='';
-  R.slice(0,PICK_VISIBLE).forEach(r=>{const c=r.c;
+  R.slice(pageStart,pageStart+PICK_PAGE_SIZE).forEach(r=>{const c=r.c;
     const routesToFixed = (c.cat==='CORE'||c.cat==='NB');
     const on = routesToFixed ? FIXED.some(f=>f.code===c.code) : !!PICK[c.code];
     const disabled = c.unsched;
@@ -188,11 +205,12 @@ function renderPick(){
       <td data-label="Want">${routesToFixed?'<span class="tiny mut">fixed</span>':(PICK[c.code]?`<input type="number" aria-label="Want level for ${esc(c.code)}" min="1" max="10" value="${PICK[c.code].want}" style="width:52px"
           onchange="PICK['${c.code}'].want=+this.value;renderChosen()">`:'<span class="tiny">—</span>')}</td></tr>`;});
   $('pickBody').innerHTML=h||'<tr><td colspan="10" class="tiny" style="padding:16px">Nothing matches.</td></tr>';
-  const shown=Math.min(R.length,PICK_VISIBLE);
-  $('pickCount').textContent=`${R.length} match · showing ${shown} · ${Object.keys(PICK).length} in your bid shortlist`;
-  if($('pickMore'))$('pickMore').innerHTML=R.length>PICK_VISIBLE
-    ? `<span class="tiny">Showing ${shown} of ${R.length}</span><button class="btn2 sm" onclick="setPickVisible(${PICK_VISIBLE+30})">Show 30 more</button><button class="btn2 sm" onclick="setPickVisible('all')">Show all</button>`
-    : (R.length>30?`<span class="tiny">Showing all ${R.length}</span><button class="btn2 sm" onclick="setPickVisible(30);document.querySelector('[data-section-title=&quot;Every course you can place preferences on&quot;]').scrollIntoView({behavior:'smooth'})">Collapse list</button>`:'');
+  const shownFrom=R.length?pageStart+1:0, shownTo=Math.min(R.length,pageStart+PICK_PAGE_SIZE);
+  $('pickCount').textContent=`${R.length} match · showing ${shownFrom}-${shownTo} · ${Object.keys(PICK).length} in your bid shortlist`;
+  if($('pickMore'))$('pickMore').innerHTML=
+    `<button class="btn2 sm" onclick="setPickPage(${PICK_PAGE-1})" ${PICK_PAGE<=0?'disabled':''}>← Prev</button>
+     <span class="tiny">Page ${PICK_PAGE+1} of ${pageCount}</span>
+     <button class="btn2 sm" onclick="setPickPage(${PICK_PAGE+1})" ${PICK_PAGE>=pageCount-1?'disabled':''}>Next →</button>`;
 }
 function togglePick(code,on){
   const c=BY[code];
@@ -207,8 +225,9 @@ function togglePick(code,on){
   }
   renderPick(); renderChosen();
 }
-['fCat','fTerm','fFit','fDay','fCr'].forEach(i=>{ if($(i)) $(i).onchange=()=>{PICK_VISIBLE=30;renderPick();}; });
-$('fQ').oninput=()=>{PICK_VISIBLE=30;renderPick();};
+['fCat','fTerm','fFit','fDay','fCr','fStartFrom','fStartTo','fEndFrom','fEndTo'].forEach(i=>{
+  if($(i)) $(i).onchange=()=>{PICK_PAGE=0;renderPick();}; });
+$('fQ').oninput=()=>{PICK_PAGE=0;renderPick();};
 
 /* ============ CHOSEN ============ */
 function renderChosen(){
