@@ -34,13 +34,22 @@
     && (location.hostname === '127.0.0.1' || location.hostname === 'localhost')
     && location.port === '5173';
   const DEFAULT_BASE = IS_LOCAL_WEB ? 'http://127.0.0.1:8000' : '';
-  const STORED_BASE = typeof localStorage !== 'undefined' && localStorage.getItem('snu.apiBase');
+  function readStoredBase() {
+    try { return typeof localStorage !== 'undefined' ? localStorage.getItem('snu.apiBase') : null; }
+    catch (e) { return null; }
+  }
+  const STORED_BASE = readStoredBase();
   const HOST_IS_PUBLIC = typeof location !== 'undefined'
     && location.hostname !== '127.0.0.1' && location.hostname !== 'localhost';
-  // Do not carry a developer's loopback override onto a public deployment:
-  // there it would point each visitor at their own computer.
-  let BASE = (HOST_IS_PUBLIC && /^https?:\/\/(127\.0\.0\.1|localhost)(:|\/|$)/i.test(STORED_BASE || ''))
-    ? DEFAULT_BASE : (STORED_BASE || DEFAULT_BASE);
+  // Production is deliberately one same-origin service (see Dockerfile and
+  // render.yaml).  Never let an API address saved by an older deployment or a
+  // debugging session override that contract on a public host.  The previous
+  // loopback-only guard still allowed a stale Render/Netlify URL to strand one
+  // visitor on the disconnected banner while everybody else worked.
+  let BASE = HOST_IS_PUBLIC ? DEFAULT_BASE : (STORED_BASE || DEFAULT_BASE);
+  if (HOST_IS_PUBLIC && STORED_BASE != null) {
+    try { localStorage.removeItem('snu.apiBase'); } catch (e) {}
+  }
   const TIMEOUT_MS = 20000;
 
   /* ---------- monotonic run token: kills stale results ---------- */
@@ -143,8 +152,15 @@
     // problem, when the fix for that case is on their end (try a different
     // network, disable an extension, or check for a captive-portal login
     // page), not ours.
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort('health-timeout'), TIMEOUT_MS);
     try {
-      const r = await fetch(BASE + '/health/ready', { method: 'GET' });
+      const r = await fetch(BASE + '/health/ready', {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+        cache: 'no-store',
+        signal: ctl.signal
+      });
       const text = await r.text();
       let j;
       try { j = text ? JSON.parse(text) : {}; }
@@ -155,7 +171,10 @@
       lastHealth = { ok: r.ok, ...j, at: Date.now() };
       if (!r.ok) lastHealth.status = lastHealth.status || 'error_' + r.status;
     } catch (e) {
-      lastHealth = { ok: false, status: 'unreachable', at: Date.now() };
+      const timedOut = e && e.name === 'AbortError';
+      lastHealth = { ok: false, status: timedOut ? 'timeout' : 'unreachable', at: Date.now() };
+    } finally {
+      clearTimeout(timer);
     }
     return lastHealth;
   }
@@ -523,8 +542,11 @@
   }
 
   function setBase(url) {
-    BASE = url || '';
-    try { localStorage.setItem('snu.apiBase', BASE); } catch (e) {}
+    BASE = HOST_IS_PUBLIC ? DEFAULT_BASE : (url || '');
+    try {
+      if (HOST_IS_PUBLIC) localStorage.removeItem('snu.apiBase');
+      else localStorage.setItem('snu.apiBase', BASE);
+    } catch (e) {}
   }
   function getBase() { return BASE; }
 

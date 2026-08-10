@@ -18,6 +18,7 @@ let RULES_CACHE = null;   // declared here to avoid a temporal-dead-zone error a
 let RESULT = null;           // last completed backend result
 let BACKEND_OK = null;       // null = unknown, true/false = last health probe
 let HEALTH_TIMER = null;
+let HEALTH_PROBE_SEQ = 0;    // a late older failure must not overwrite a newer success
 let RUNNING = false;
 let DATASET_INFO = null;     // active institutional timetable dataset identity (see /api/v1/dataset)
 
@@ -104,7 +105,9 @@ function setBackendState(ok, info) {
 }
 
 async function probeHealth() {
+  const seq = ++HEALTH_PROBE_SEQ;
   const h = await API.healthCheck();
+  if (seq !== HEALTH_PROBE_SEQ) return h;
   setBackendState(!!h.ok, h);
   return h;
 }

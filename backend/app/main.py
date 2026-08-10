@@ -101,6 +101,13 @@ async def request_id(request: Request, call_next):
     t0 = time.perf_counter()
     resp = await call_next(request)
     resp.headers["x-request-id"] = rid
+    # The frontend is a single generated HTML bundle.  Revalidate it on every
+    # visit so a browser cannot keep running an older connection adapter after
+    # a deployment.  Health responses are live state and must never be cached.
+    if request.url.path in ("/", "/index.html"):
+        resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    elif request.url.path.startswith("/health/"):
+        resp.headers["Cache-Control"] = "no-store"
     log.info("%s %s -> %d" % (request.method, request.url.path, resp.status_code),
              extra={"request_id": rid, "runtime_ms": round((time.perf_counter() - t0) * 1000, 1)})
     return resp

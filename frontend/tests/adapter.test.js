@@ -106,6 +106,24 @@ console.log('=== §14 API ADAPTER ===');
   ck('every request carries the API version', seen.includes('/api/v1/'), seen);
 }
 {
+  // A public deployment is one same-origin service.  A stale override from an
+  // older split deployment must not make only this browser appear offline.
+  store['snu.apiBase'] = 'https://retired-api.example.invalid';
+  globalThis.location = { hostname: 'snu-scheduler.onrender.com', port: '' };
+  let seen = '';
+  const API = freshApi(async (url) => {
+    seen = url;
+    return { ok: true, status: 200, text: async () => '{}' };
+  });
+  await API.getRules();
+  ck('public deployment ignores a stale saved API origin', seen === '/api/v1/rules', seen);
+  ck('public deployment removes the stale API override', store['snu.apiBase'] == null);
+  API.setBase('https://another-retired-api.example.invalid');
+  ck('public deployment cannot reintroduce a cross-origin API override',
+     API.getBase() === '' && store['snu.apiBase'] == null, API.getBase());
+  delete globalThis.location;
+}
+{
   const API = freshApi(okJson({}));
   const t1 = API.newRunToken(), t2 = API.newRunToken();
   ck('a newer token invalidates the older one', !API.isCurrent(t1) && API.isCurrent(t2));
