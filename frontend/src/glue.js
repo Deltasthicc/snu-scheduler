@@ -62,8 +62,21 @@ function setBackendState(ok, info) {
         + ` · ${esc(API.getBase() || 'same origin')}</span>`;
     } else {
       bar.className = 'flag f-bad';
+      // The most common real-world cause of this banner is not a bug or a
+      // network problem on the visitor's end - it's this app's own free-tier
+      // hosting putting the backend to sleep after ~15 minutes of no traffic,
+      // then taking up to a minute to wake back up on the next request. That
+      // is unrelated to which network/device is asking; whoever happens to be
+      // first back after a quiet spell pays the wake-up cost. Said explicitly
+      // here so it doesn't read as a mysterious, possibly network-specific
+      // failure - without softening or removing the required phrases below
+      // (e2e.test.js's §9 checks these exact strings on the very first probe
+      // failure, simulating a hard network abort, so this can only ADD
+      // context, never replace the direct language).
       bar.innerHTML = `<b>The calculation service is unavailable.</b> Your plan is safe, but the schedule and
-        bid recommendations cannot run until the service reconnects.
+        bid recommendations cannot run until the service reconnects. This is usually the free hosting tier
+        waking back up after being idle, not a problem with your network - it is retrying automatically and
+        should reconnect within about a minute.
         <button class="btn2 sm" onclick="void retryBackend()" style="margin-left:8px">Retry connection</button>
         <span class="tiny mut" id="healthNote" style="margin-left:8px"></span>`;
     }
@@ -89,9 +102,21 @@ async function retryBackend() {
   if (!h.ok && n) n.textContent = 'still unreachable at ' + new Date().toLocaleTimeString();
 }
 function startHealthLoop() {
-  if (HEALTH_TIMER) clearInterval(HEALTH_TIMER);
-  // controlled interval: no request spamming
-  HEALTH_TIMER = setInterval(() => { if (!RUNNING) void probeHealth(); }, 15000);
+  if (HEALTH_TIMER) clearTimeout(HEALTH_TIMER);
+  // Self-rescheduling rather than a fixed setInterval so the cadence can
+  // shorten while the backend is down: this app's free-tier hosting can
+  // take up to about a minute to wake from an idle-triggered sleep, and a
+  // fixed 15s interval means whoever hits it first after a quiet spell
+  // could sit on the "unavailable" banner for a full 15s between checks
+  // before even the first automatic retry lands. Polling every 4s while
+  // down (back to the normal 15s once healthy) gets a woken-up backend
+  // detected roughly 3-4x sooner, without spamming a healthy one any harder
+  // than before.
+  const tick = async () => {
+    if (!RUNNING) await probeHealth();
+    HEALTH_TIMER = setTimeout(tick, BACKEND_OK ? 15000 : 4000);
+  };
+  HEALTH_TIMER = setTimeout(tick, 15000);
 }
 
 /* ---------------- pools now come from the backend ---------------- */
