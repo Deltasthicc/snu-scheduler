@@ -129,10 +129,31 @@
   /* ---------- health ---------- */
   let lastHealth = null;
   async function healthCheck() {
+    // Distinguishes three different failure shapes, because they need
+    // different advice: (1) the fetch itself never got a response at all -
+    // genuinely offline or DNS-level blocked; (2) a response came back but
+    // wasn't JSON - almost always something between the browser and the
+    // origin intercepted the request (a Cloudflare bot/security challenge
+    // page, a captive portal, a corporate TLS-inspecting proxy), NOT the
+    // app's own backend being down, since the origin server only ever
+    // returns JSON from this route; (3) valid JSON but a non-2xx status -
+    // the origin itself is answering with an error. Collapsing all three
+    // into one "unreachable" state (the previous behaviour) actively
+    // misled anyone hitting case 2 into thinking our servers were the
+    // problem, when the fix for that case is on their end (try a different
+    // network, disable an extension, or check for a captive-portal login
+    // page), not ours.
     try {
       const r = await fetch(BASE + '/health/ready', { method: 'GET' });
-      const j = await r.json();
+      const text = await r.text();
+      let j;
+      try { j = text ? JSON.parse(text) : {}; }
+      catch (parseErr) {
+        lastHealth = { ok: false, status: 'blocked', httpStatus: r.status, at: Date.now() };
+        return lastHealth;
+      }
       lastHealth = { ok: r.ok, ...j, at: Date.now() };
+      if (!r.ok) lastHealth.status = lastHealth.status || 'error_' + r.status;
     } catch (e) {
       lastHealth = { ok: false, status: 'unreachable', at: Date.now() };
     }

@@ -73,10 +73,22 @@ function setBackendState(ok, info) {
       // (e2e.test.js's §9 checks these exact strings on the very first probe
       // failure, simulating a hard network abort, so this can only ADD
       // context, never replace the direct language).
+      // 'blocked' means a response came back but wasn't the JSON this route
+      // always returns - almost never this app's backend being down, since
+      // the origin server has no other way to answer this route. It means
+      // something between this browser and the origin substituted its own
+      // page: a Cloudflare bot/security challenge, a captive Wi-Fi login
+      // portal, or a corporate/campus proxy. That needs different advice
+      // than "our server is asleep", so it gets its own sentence instead of
+      // silently folding into the generic wording below.
+      const extra = (info && info.status === 'blocked')
+        ? ` Your browser got a response, but not from this app - something on your network (a captive Wi-Fi `
+          + `login page, a security filter, or a browser extension) intercepted the request. Try a different `
+          + `network or browser, or check for a Wi-Fi login page that needs accepting first.`
+        : ` This is usually the free hosting tier waking back up after being idle, not a problem with your `
+          + `network - it is retrying automatically and should reconnect within about a minute.`;
       bar.innerHTML = `<b>The calculation service is unavailable.</b> Your plan is safe, but the schedule and
-        bid recommendations cannot run until the service reconnects. This is usually the free hosting tier
-        waking back up after being idle, not a problem with your network - it is retrying automatically and
-        should reconnect within about a minute.
+        bid recommendations cannot run until the service reconnects.${extra}
         <button class="btn2 sm" onclick="void retryBackend()" style="margin-left:8px">Retry connection</button>
         <span class="tiny mut" id="healthNote" style="margin-left:8px"></span>`;
     }
