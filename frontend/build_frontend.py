@@ -18,6 +18,7 @@ UI = ["src/ui/a_head.html", "src/ui/b_body.html", "src/ui/c_core.html", "src/ui/
       "src/ui/j_minor.html", "src/ui/g_two.html"]
 DATA = os.path.join(BASE, "src", "data.json")
 DOCS = os.path.join(BASE, "src", "docs")
+STATIC = os.path.join(BASE, "src", "static")
 
 # every browser-side computation path that must NOT survive the migration
 # Any REFERENCE to a removed engine is a bug, not just a definition. An earlier
@@ -109,11 +110,19 @@ def main():
     docs_out = os.path.join(os.path.dirname(OUT), "docs")
     if os.path.isdir(DOCS):
         shutil.copytree(DOCS, docs_out, dirs_exist_ok=True)
+    # robots.txt / 404.html etc: plain files served as-is at the site root by
+    # both the FastAPI StaticFiles mount (app/main.py) and the nginx image
+    # (frontend/Dockerfile), since both simply serve everything under dist/.
+    if os.path.isdir(STATIC):
+        for name in os.listdir(STATIC):
+            shutil.copy2(os.path.join(STATIC, name), os.path.join(os.path.dirname(OUT), name))
     print(f"built {OUT}  ({len(html):,} bytes)")
     print(f"  client modules: {len(CLIENT)} + glue")
     print(f"  ui layers:      {len(UI)}")
     if os.path.isdir(DOCS):
         print(f"  source docs:    {len(os.listdir(DOCS))}")
+    if os.path.isdir(STATIC):
+        print(f"  static assets:  {len(os.listdir(STATIC))} ({', '.join(sorted(os.listdir(STATIC)))})")
     print("  verified: no simulation/optimisation engine defined OR referenced in the bundle")
     return 0
 

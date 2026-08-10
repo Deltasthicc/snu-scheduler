@@ -1,0 +1,4 @@
+# Unofficial student tool, not a University service - safe for any crawler
+# to index. There is nothing dynamic or account-gated here to disallow.
+User-agent: *
+Allow: /

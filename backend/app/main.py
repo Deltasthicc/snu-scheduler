@@ -6,8 +6,9 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse, JSONResponse
+from fastapi.responses import StreamingResponse, JSONResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.domain.rules import RULES, RULE_VERSION, DATASET_VERSION, MODEL_VERSION, counts
 from app.domain.pools import compute_pools, max_bid, RuleError
@@ -761,5 +762,22 @@ _frontend_dir = Path(os.getenv(
     "SNU_FRONTEND_DIR",
     str(Path(__file__).resolve().parents[2] / "frontend" / "dist"),
 ))
+_404_page = _frontend_dir / "404.html"
+
+
+@app.exception_handler(StarletteHTTPException)
+async def _styled_404(request: Request, exc: StarletteHTTPException) -> Response:
+    """A page navigated to directly (not an API call) gets the app's own
+    styled 404 instead of Starlette's default plain-text response - but only
+    for genuine page requests. Every real API route already returns its own
+    specific JSONResponse/HTTPException detail (e.g. "unknown job_id"), so an
+    /api/*, /health/* or /docs 404 must stay JSON - a browser tab is the only
+    case this replaces."""
+    if exc.status_code == 404 and not request.url.path.startswith(("/api/", "/health/", "/docs", "/openapi.json")) \
+            and _404_page.is_file():
+        return HTMLResponse(_404_page.read_text(encoding="utf-8"), status_code=404)
+    return JSONResponse({"detail": exc.detail}, status_code=exc.status_code, headers=exc.headers)
+
+
 if (_frontend_dir / "index.html").is_file():
     app.mount("/", StaticFiles(directory=_frontend_dir, html=True), name="frontend")
