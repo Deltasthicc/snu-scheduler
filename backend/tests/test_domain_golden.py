@@ -44,6 +44,55 @@ def test_y2_pool_never_goes_negative():
     assert (p["ME"], p["UWE"], p["CCC"]) == (0, 0, 0)
 
 
+def test_y3_pool_matches_the_concept_notes_own_semester_5_worked_example():
+    # Found missing entirely during a 2026-08-10 bias audit: y4 and y2 each had
+    # dedicated golden tests but y3 (third-year transition) had none at all -
+    # exactly the kind of gap a developer who only ever tested their own year
+    # would leave unnoticed. Concept Note s.3: 3rd year, Sem 5, 24 ME / 9 UWE /
+    # 6 CCC remaining, 6 floater (split 3/3) -> 161/98/66 exactly.
+    p = compute_pools("y3", 5, 24, 9, 6, 6)
+    assert (p["ME"], p["UWE"], p["CCC"]) == (161, 98, 66)
+
+
+def test_y3_pool_semester_share_ratio_is_40_30_30_across_sem_5_6_7():
+    # Same remaining-credit profile, only the semester differs - the 40/30/30
+    # split of the credit-based component should show up directly in the ratio
+    # of (pool - flat constant) across semesters 5/6/7.
+    constants = {"ME": 65, "UWE": 50, "CCC": 30}
+    shares = {5: 0.40, 6: 0.30, 7: 0.30}
+    base = compute_pools("y3", 5, 20, 10, 10, 0)
+    for sem in (6, 7):
+        p = compute_pools("y3", sem, 20, 10, 10, 0)
+        for cat in ("ME", "UWE", "CCC"):
+            expected_ratio = shares[sem] / shares[5]
+            actual_ratio = (p[cat] - constants[cat]) / (base[cat] - constants[cat])
+            assert abs(actual_ratio - expected_ratio) < 0.02, (sem, cat)
+
+
+def test_y3_pool_only_defines_semesters_5_6_7():
+    import pytest
+    from app.domain.pools import RuleError
+    with pytest.raises(RuleError):
+        compute_pools("y3", 4, 20, 10, 10, 0)
+
+
+def test_y2_pool_cumulative_totals_match_the_full_semester_wise_release_table():
+    # Concept Note s.2's own "Semester-wise release schedule" table, verified
+    # cumulatively across every semester it defines (not just the Sem-3 point
+    # the other y2 tests already cover), for the document's own standard
+    # profile: 36 ME / 16 UWE / 12 CCC total requirement, 8 floater, nothing
+    # completed yet. Per-semester releases from the doc: ME 0/27/63/72/72/72/54,
+    # UWE 0/30/40/40/40/30/20, CCC 0/12/28/32/32/32/24 (Sem 1-7) - the pool at
+    # any semester is the running cumulative sum of these.
+    cumulative = {"ME": [0, 27, 90, 162, 234, 306, 360],
+                  "UWE": [0, 30, 70, 110, 150, 180, 200],
+                  "CCC": [0, 12, 40, 72, 104, 136, 160]}
+    for sem in range(2, 8):
+        p = compute_pools("y2", sem, 36, 16, 12, 8)
+        for cat in ("ME", "UWE", "CCC"):
+            assert p[cat] == cumulative[cat][sem - 1], (sem, cat)
+
+
 def test_no_per_course_max_bid_by_default():
     # AUC.MAX_BID, rectified 2026-08-05: "There is no minimum or maximum bid. You can
     # go from zero to your entire pool of bid points for one course."
