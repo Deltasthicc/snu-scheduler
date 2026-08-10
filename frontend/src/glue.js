@@ -127,9 +127,23 @@ function startHealthLoop() {
   // down (back to the normal 15s once healthy) gets a woken-up backend
   // detected roughly 3-4x sooner, without spamming a healthy one any harder
   // than before.
+  //
+  // The try/finally is load-bearing, not defensive noise. A self-rescheduling
+  // timeout only survives as long as the reschedule line is actually reached,
+  // so ANY rejection out of probeHealth() (a throw inside healthCheck, or DOM
+  // work in setBackendState) permanently kills the retry loop - the banner
+  // then sits on "unavailable" forever and never recovers on its own, which
+  // is precisely the "it still doesn't work for her" symptom. The setInterval
+  // this replaced was immune to that, so the conversion to setTimeout is what
+  // introduced the exposure; reschedule in finally so it cannot regress.
   const tick = async () => {
-    if (!RUNNING) await probeHealth();
-    HEALTH_TIMER = setTimeout(tick, BACKEND_OK ? 15000 : 4000);
+    try {
+      if (!RUNNING) await probeHealth();
+    } catch (e) {
+      setBackendState(false, { status: 'unreachable' });
+    } finally {
+      HEALTH_TIMER = setTimeout(tick, BACKEND_OK ? 15000 : 4000);
+    }
   };
   HEALTH_TIMER = setTimeout(tick, 15000);
 }
