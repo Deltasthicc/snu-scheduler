@@ -19,19 +19,19 @@ def test_catalog_loads_325_courses():
     assert len(catalog.all_courses()) == 325
 
 
-def test_catalog_has_555_packages():
+def test_catalog_has_559_packages():
     # 859 under monsoon-2026-excel-v1; 988 under monsoon-2026-netlify-revision-
     # 2026-08-04; 954 under monsoon-2026-batch-coherence-fix-2026-08-07 (that
-    # session's own batch-coherence fix to build_packages()); now 555 under
-    # monsoon-2026-netlify-revision-2026-08-09. This is a real drop, not a
-    # scraping regression: verified per-course before applying - zero courses
-    # dropped to 0 packages, and the biggest single drop (PHY1011, 348 -> 8)
-    # is because the University now tags each of PHY1011's sections to one of
-    # 8 specific first-year batches (SOE11..SOE18) where it previously
-    # published them as untagged, so the batch-coherence check (correctly)
-    # stops treating every LECxTUTxPRAC cross-product as a valid package for
-    # every student and collapses it to one real package per batch instead.
-    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 555
+    # session's own batch-coherence fix to build_packages()); 555 under
+    # monsoon-2026-netlify-revision-2026-08-09 (the University now tags each
+    # of PHY1011's sections to one of 8 specific first-year batches instead of
+    # publishing them untagged, so the batch-coherence check correctly stops
+    # treating every LECxTUTxPRAC cross-product as valid for every student);
+    # now 559 under monsoon-2026-netlify-revision-2026-08-10, auto-applied by
+    # the live poller (no courses added/removed/renamed) after ECE1001 and
+    # PHY1011 each gained one new LEC+PRAC(+TUT) section - two brand-new
+    # course sections opened, not a data-quality regression.
+    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 559
 
 
 def test_course_codes_are_unique():

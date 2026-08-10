@@ -8955,10 +8955,10 @@
       "SOE13, SOE14",
       "SOE14",
       "SOE15",
-      "SOE15, SOE16",
+      "SOE15, SOE16, SOE19",
       "SOE16",
       "SOE17",
-      "SOE17, SOE18",
+      "SOE17, SOE18, SOE110",
       "SOE18",
       "SOE19"
     ],
@@ -9163,6 +9163,72 @@
         ],
         "batches": [
           "SOE16"
+        ]
+      },
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC3 + PRAC:PRAC9",
+        "m": [
+          [
+            1,
+            780,
+            840,
+            "LEC",
+            "LEC3",
+            "G101"
+          ],
+          [
+            3,
+            845,
+            960,
+            "PRAC",
+            "PRAC9",
+            "B103"
+          ],
+          [
+            4,
+            910,
+            970,
+            "LEC",
+            "LEC3",
+            "G101"
+          ]
+        ],
+        "batches": [
+          "SOE19"
+        ]
+      },
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC4 + PRAC:PRAC10",
+        "m": [
+          [
+            1,
+            1005,
+            1065,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            3,
+            605,
+            720,
+            "PRAC",
+            "PRAC10",
+            "B103"
+          ],
+          [
+            4,
+            1005,
+            1065,
+            "LEC",
+            "LEC4",
+            "G201"
+          ]
+        ],
+        "batches": [
+          "SOE110"
         ]
       },
       {
@@ -15119,7 +15185,7 @@
     "school": "School of Management and Entrepreneurship",
     "dept": "School of Management and Entrepreneurship - Dean's Office- SME",
     "ttype": "Major",
-    "uwe": false,
+    "uwe": true,
     "cr": 3.0,
     "crOfficial": false,
     "crBasis": "Full semester [LEC:3] = 3",
@@ -15775,7 +15841,7 @@
         "m": [
           [
             4,
-            840,
+            805,
             925,
             "LEC",
             "LEC1",
@@ -22344,10 +22410,11 @@
       "SOE13, SOE14",
       "SOE14",
       "SOE15",
-      "SOE15, SOE16",
+      "SOE15, SOE16, SOE19",
       "SOE16",
       "SOE17",
       "SOE17, SOE18",
+      "SOE17, SOE18, SOE110",
       "SOE18",
       "SOE19"
     ],
@@ -22600,6 +22667,88 @@
         ],
         "batches": [
           "SOE16"
+        ]
+      },
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT9",
+        "m": [
+          [
+            0,
+            480,
+            660,
+            "PRAC",
+            "PRAC9",
+            "A103"
+          ],
+          [
+            0,
+            670,
+            725,
+            "TUT",
+            "TUT9",
+            "A309"
+          ],
+          [
+            0,
+            910,
+            995,
+            "LEC",
+            "LEC3",
+            "G101"
+          ],
+          [
+            2,
+            575,
+            660,
+            "LEC",
+            "LEC3",
+            "G101"
+          ]
+        ],
+        "batches": [
+          "SOE19"
+        ]
+      },
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT10",
+        "m": [
+          [
+            0,
+            910,
+            995,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            2,
+            575,
+            660,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            5,
+            540,
+            595,
+            "TUT",
+            "TUT10",
+            "A309"
+          ],
+          [
+            5,
+            595,
+            775,
+            "PRAC",
+            "PRAC10",
+            "A103"
+          ]
+        ],
+        "batches": [
+          "SOE110"
         ]
       },
       {
