@@ -142,9 +142,14 @@
 
   /* ---------- deterministic rule calls ---------- */
   function calculateProfileBudget(profile) {
+    // No 'y4'/7 fallback here on purpose: which pool formula applies is a fact
+    // about the student, not something safe to guess, and the backend schema
+    // now requires both fields explicitly for the same reason. An omitted
+    // model/semester should surface as a clear validation error, not silently
+    // compute a graduating-student's pools for someone who never said they were one.
     const body = {
-      model_year: profile.model || 'y4',
-      semester: Number(profile.semester) || 7,
+      model_year: profile.model,
+      semester: Number(profile.semester),
       rem_me: num(profile.remME), rem_uwe: num(profile.remUWE),
       rem_ccc: num(profile.remCCC), floater: num(profile.floater),
       done_me: num(profile.doneME), done_uwe: num(profile.doneUWE), done_ccc: num(profile.doneCCC)
@@ -240,7 +245,7 @@
       reserve_percent: Math.min(90, Math.max(0, Math.round(
         plan.reservePercent == null ? 20 : num(plan.reservePercent)))),
       posture: ['diversified', 'balanced', 'focused'].includes(plan.posture) ? plan.posture : 'balanced',
-      semester: Math.min(8, Math.max(1, Math.round(num(plan.semester) || 7)))
+      semester: Math.min(8, Math.max(1, Math.round(num(plan.semester))))
     };
   }
 

@@ -43,8 +43,13 @@ function applyProgrammeCategories(){
   migrateNonBiddablePicks();
   const covBox=$('categoryCoverageNote');
   if(covBox){
-    covBox.style.display=(p && !categoryKnown)?'':'none';
-    if(p && !categoryKnown) covBox.innerHTML=`<div class="flag f-warn"><b>Major Elective / Major Core isn't
+    covBox.style.display=(!p || !categoryKnown)?'':'none';
+    if(!p) covBox.innerHTML=`<div class="flag f-warn"><b>Select your programme above to see accurate
+      categories.</b> Without one, every course's Major Elective / Major Core / "everything else" label
+      below falls back to this catalogue's own original scheme, which only recognises Computer Science
+      &amp; Engineering's own courses as ME/Core — every other major's courses show as "Everything else"
+      until you pick your real programme. CCC and UWE are unaffected either way.</div>`;
+    else if(!categoryKnown) covBox.innerHTML=`<div class="flag f-warn"><b>Major Elective / Major Core isn't
       distinguishable yet for ${esc(p.title)}.</b> The University's public page for this programme doesn't
       publish a department mapping, so every one of your own major's courses below shows as "Everything else"
       instead of ME/Core. CCC and UWE are unaffected. Report the mis-categorisation via a private profile

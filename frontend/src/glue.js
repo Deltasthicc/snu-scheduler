@@ -97,9 +97,10 @@ function startHealthLoop() {
 /* ---------------- pools now come from the backend ---------------- */
 async function refreshPoolsFromBackend() {
   if (!BACKEND_OK) return;
+  if (!$('model') || !$('model').value) return;   // no year picked yet — recalc() already shows the prompt
   try {
     const p = await API.calculateProfileBudget({
-      model: $('model') ? $('model').value : 'y4',
+      model: $('model').value,
       semester: $('sem') ? +$('sem').value : 7,
       remME: +$('remME').value, remUWE: +$('remUWE').value,
       remCCC: +$('remCCC').value, floater: +$('remFL').value,
@@ -137,6 +138,11 @@ function setRunning(on) {
 
 async function runOpt() {
   if (RUNNING) return;                                   // no duplicate submission
+  if (!$('model') || !$('model').value) {
+    $('bidOut').innerHTML = '<div class="card"><div class="note">Select your year (Profile &amp; budget tab) first — '
+      + 'your pools and this plan both depend on which allocation model applies to you.</div></div>';
+    return;
+  }
   if (!Object.keys(PICK).length) {
     $('bidOut').innerHTML = '<div class="card"><div class="note">Choose some courses first on the Course picker tab.</div></div>';
     return;
@@ -504,7 +510,7 @@ async function refreshCreditPolicy() {
     fixed_credits: fixedCredits(), personal_target: cp.target, min_credits: cp.min,
     overload_ceiling: cp.overloadOn ? cp.overloadCeiling : null,
     overload_mode: 'what_if', overload_confirmed: false,
-    current_year: $('model')&&$('model').value==='y4'?4:($('model')&&$('model').value==='y3'?3:2),
+    current_year: !$('model')||!$('model').value ? null : ($('model').value==='y4'?4:($('model').value==='y3'?3:2)),
     eligibility_confirmed: cp.eligibilityConfirmed,
     advisor_recommended: cp.advisorRecommended, dean_approved: cp.deanApproved,
   }};
@@ -891,7 +897,12 @@ function restoreActivePlan() {
   try {
     if (pay.profile) {
       const set = (k, v) => { const e = $(k); if (e && v != null) e.value = v; };
-      set('model', pay.profile.model); set('sem', pay.profile.semester);
+      // refreshSem() must run between these two: it rebuilds #sem's own <option>
+      // list to match whichever model was just restored (y2/y3 each expose a
+      // different set of valid semesters), so setting #sem's value first would
+      // silently fail to match anything whenever the restored plan's model isn't
+      // whatever model happened to be selected on the page before this call.
+      set('model', pay.profile.model); refreshSem(); set('sem', pay.profile.semester);
       set('remME', pay.profile.remME); set('remUWE', pay.profile.remUWE);
       set('remCCC', pay.profile.remCCC); set('remFL', pay.profile.floater);
       set('doneME', pay.profile.doneME || 0); set('doneUWE', pay.profile.doneUWE || 0);
@@ -1318,8 +1329,24 @@ async function confirmAdvisementImport() {
   const pending=Math.max(0,+($('pdfPendingCredits')?$('pdfPendingCredits').value:0)||0);
   const planningTotal=reportUsed+transferred+pending;
   const preferExisting=(current,suggested)=>Number(current)>0?Number(current):(suggested==null?current:suggested);
+  // Derive the student's actual year/semester from the report's own "Bachelor of
+  // Technology Program Monsoon <cohort_year>" line - this app is itself scoped to
+  // one specific semester (Monsoon 2026, see RULE_VERSION/DATASET_VERSION and the
+  // page's own title), so that reference point is the tool's documented scope, not
+  // a personal fact. Previously this hardcoded every imported report to model:'y4',
+  // semester:7 regardless of what the report actually said - a 2nd or 3rd-year
+  // student's own advisement report would have been silently mis-modelled as a
+  // graduating 4th-year's. Falls back to leaving the existing profile value alone
+  // (never a guessed year) when the report has no parseable cohort year.
+  const CURRENT_MONSOON_YEAR = 2026;
+  let derivedModel = payload.profile.model, derivedSemester = payload.profile.semester;
+  if (Number(a.cohort_year) > 0) {
+    const yearsIn = CURRENT_MONSOON_YEAR - Number(a.cohort_year);   // 0 = just admitted this Monsoon
+    derivedSemester = yearsIn * 2 + 1;
+    derivedModel = derivedSemester >= 7 ? 'y4' : (derivedSemester === 5 ? 'y3' : (derivedSemester >= 2 ? 'y2' : payload.profile.model));
+  }
   payload.profile = Object.assign({}, payload.profile, {
-    model: 'y4', semester: 7, creditCap: 25,
+    model: derivedModel, semester: derivedSemester, creditCap: 25,
     programme: a.programme_id || payload.profile.programme,
     cohortYear: a.cohort_year || payload.profile.cohortYear,
     completedCoursesText: (a.completed_courses || []).map(c =>

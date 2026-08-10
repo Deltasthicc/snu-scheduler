@@ -56,8 +56,13 @@ class JobState(str, Enum):
 
 class PoolRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    model_year: Literal["y2", "y3", "y4"] = "y4"
-    semester: int = Field(7, ge=1, le=8)
+    # No default here on purpose: which formula applies is determined entirely by
+    # the student's actual year, and a silent y4/semester-7 default (removed
+    # 2026-08-10) meant any caller that forgot to pass these - or any test that
+    # never explicitly exercised y2/y3 - got the graduating-student formula
+    # without anyone noticing. Every caller must state its own year explicitly.
+    model_year: Literal["y2", "y3", "y4"]
+    semester: int = Field(..., ge=1, le=8)
     rem_me: float = Field(..., ge=0, le=200)
     rem_uwe: float = Field(..., ge=0, le=200)
     rem_ccc: float = Field(..., ge=0, le=200)
@@ -160,7 +165,7 @@ class BidStrategyRequest(BaseModel):
     pools: dict[str, int]
     reserve_percent: int = Field(20, ge=0, le=90)
     posture: StrategyPosture = StrategyPosture.BALANCED
-    semester: int = Field(7, ge=1, le=8)
+    semester: int = Field(..., ge=1, le=8)  # echoed back only, but no silent default (see PoolRequest)
 
     @field_validator("courses")
     @classmethod

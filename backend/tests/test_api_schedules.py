@@ -73,6 +73,32 @@ def test_dataset_endpoint_reports_active_version_and_checksum():
         assert body["active_version"] in body["known_versions"]
 
 
+def test_pools_endpoint_rejects_a_request_missing_model_year_or_semester():
+    """POST /api/v1/pools had zero HTTP-level coverage before a 2026-08-10
+    bias audit found model_year/semester defaulted to 'y4'/7 in the schema
+    itself - meaning any caller (a stray frontend bug, a direct API user, a
+    future integration) that forgot to send its own year got a graduating
+    student's pools with no error. Both fields are now required; this is the
+    regression test proving that at the real HTTP layer, not just by reading
+    the schema source."""
+    with TestClient(app) as client:
+        base = {"rem_me": 9, "rem_uwe": 4, "rem_ccc": 11, "floater": 6}
+        assert client.post("/api/v1/pools", json=base).status_code == 422
+        assert client.post("/api/v1/pools", json={**base, "model_year": "y4"}).status_code == 422
+        assert client.post("/api/v1/pools", json={**base, "semester": 7}).status_code == 422
+
+
+def test_pools_endpoint_matches_the_domain_function_through_the_real_route():
+    with TestClient(app) as client:
+        r = client.post("/api/v1/pools", json={
+            "model_year": "y4", "semester": 7,
+            "rem_me": 9, "rem_uwe": 4, "rem_ccc": 11, "floater": 6,
+        })
+        assert r.status_code == 200, r.text
+        body = r.json()
+        assert (body["ME"], body["UWE"], body["CCC"]) == (297, 215, 492)
+
+
 def test_timetable_changelog_covers_every_applied_version_transition():
     """The public change-history endpoint (added 2026-08-09/10 after the
     active dataset was found to be silently 5+ days behind the live

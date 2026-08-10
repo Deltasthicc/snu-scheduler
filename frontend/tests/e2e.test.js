@@ -63,6 +63,10 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   console.log('\n=== POOLS COME FROM THE BACKEND ===');
   await p.evaluate(async () => {
     const set = (id, v) => { document.getElementById(id).value = v; };
+    // model has no default since the 2026-08-10 bias audit (it used to silently
+    // pre-select y4, which is exactly the bias that audit removed) - a real user
+    // must pick their year first, same as this test now does explicitly.
+    set('model', 'y4'); refreshSem(); set('sem', '7');
     set('remME', 9); set('remUWE', 4); set('remCCC', 11); set('remFL', 6);
     recalc();
     await refreshPoolsFromBackend();

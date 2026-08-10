@@ -219,6 +219,7 @@ initPresentation();
 const SEMS={y4:[7],y3:[5,6,7],y2:[2,3,4,5,6,7]};
 const UREL={2:.15,3:.20,4:.20,5:.20,6:.15,7:.10}, MREL={2:.075,3:.175,4:.20,5:.20,6:.20,7:.15};
 function refreshSem(){const m=$('model').value,s=$('sem');s.innerHTML='';
+  if(!SEMS[m])return;   // no year picked yet — nothing to populate, recalc() shows the prompt
   SEMS[m].forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent='Semester '+v;s.appendChild(o);});
   if(m==='y3')s.value=5;}
 $('model').onchange=()=>{refreshSem();recalc();};refreshSem();
@@ -229,6 +230,14 @@ function recalc(){
   // copy exists purely so the page renders something before that call resolves, or if the
   // backend is genuinely unreachable — it must stay in sync with app/domain/pools.py.
   const m=$('model').value, sem=+$('sem').value;
+  if(!m){   // no year picked yet — never silently compute against a guessed model
+    BUD={ME:0,UWE:0,CCC:0};
+    $('bME').textContent=$('bUWE').textContent=$('bCCC').textContent='—';
+    $('fME').textContent=$('fUWE').textContent=$('fCCC').textContent='Select your year above to see your pools.';
+    $('formula').textContent='No allocation model selected yet — pools cannot be computed without knowing your year.';
+    budFlags(); posFlags(); renderChosen(); drawTwo(); if(typeof drawSpec==='function') drawSpec();
+    return;
+  }
   const rM=+$('remME').value||0,rU=+$('remUWE').value||0,rC=+$('remCCC').value||0,fl=+$('remFL').value||0;
   const dM=+($('doneME')?$('doneME').value:0)||0,dU=+($('doneUWE')?$('doneUWE').value:0)||0,
         dC=+($('doneCCC')?$('doneCCC').value:0)||0;
