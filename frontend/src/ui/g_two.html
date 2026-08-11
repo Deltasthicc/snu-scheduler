@@ -22,21 +22,81 @@ async function loadProgrammeCatalog(){
 
 const CSE_PROGRAMME_ID='b-tech-in-computer-science-and-engineering';
 
+/* prefix -> the department string the workbook prints for it ("CSD" ->
+   "...Computer Science & Engineering"), built once from the dataset itself.
+   Used only to match a programme to its prefix; the per-course decision below
+   never falls back to substring-matching department names when a prefix and
+   year are known. */
+let DEPT_PREFIX_LABELS=null;
+function deptPrefixLabels(){
+  if(DEPT_PREFIX_LABELS)return DEPT_PREFIX_LABELS;
+  // Keyed off the COURSE CODE's own prefix, not off the scoping lists. A
+  // course's `dept` is the department that OWNS it, which is not the
+  // department of every programme in its "Major for"/"Major Elective for"
+  // list - CSD365 is scoped to ECE3YR, so labelling by scoping mapped ECE to
+  // "Computer Science & Engineering" (and MED likewise). Codes are
+  // unambiguous: ECE301 is an ECE course. Most common dept per prefix wins,
+  // so one cross-listed outlier cannot flip the label.
+  const tally={};
+  C.forEach(c=>{
+    const m=/^([A-Za-z]+)/.exec(String(c.code).split('/')[0]); if(!m||!c.dept)return;
+    const pre=m[1].toUpperCase(), dept=String(c.dept).toLowerCase();
+    (tally[pre]=tally[pre]||{})[dept]=(tally[pre][dept]||0)+1;
+  });
+  DEPT_PREFIX_LABELS={};
+  Object.keys(tally).forEach(pre=>{
+    DEPT_PREFIX_LABELS[pre]=Object.keys(tally[pre]).sort((a,b)=>tally[pre][b]-tally[pre][a])[0];
+  });
+  return DEPT_PREFIX_LABELS;
+}
+/* The student's own department prefix. A selected batch answers this exactly
+   (CSD31 -> CSD) with no matching at all; otherwise fall back to matching the
+   programme's published department keywords against the labels above. */
+function myDeptPrefix(programme){
+  const blk=$('blk')?$('blk').value:'';
+  const fromBatch=/^([A-Za-z]+)\d/.exec(blk||'');
+  if(fromBatch)return fromBatch[1].toUpperCase();
+  const keys=(programme&&programme.department_keywords)||[];
+  if(!keys.length)return '';
+  const labels=deptPrefixLabels();
+  for(const pre of Object.keys(labels))
+    if(keys.some(k=>labels[pre].includes(String(k).toLowerCase())))return pre;
+  return '';
+}
+function myYearDigit(){
+  const m=$('model')?$('model').value:'';
+  return m==='y4'?4:(m==='y3'?3:(m==='y2'?2:0));
+}
 function applyProgrammeCategories(){
   const id=$('programme')?$('programme').value:'';
   const p=PROGRAMME_CATALOG.find(x=>x.id===id),keys=(p&&p.department_keywords)||[];
-  // CCC/UWE come from the timetable's own flags either way; only Major-Elective vs
-  // Major-Core vs "not my business" depends on knowing the student's own department,
-  // which the University's public pages don't publish for every programme.
-  const categoryKnown=!p || keys.length>0;
+  // The Academic Office workbook states, per course, exactly whose major core
+  // it is ("Major for Programme") and who may take it as a major elective
+  // ("Major Elective for Programmes"), as <DEPT><YEAR>YR tokens. When the
+  // student's own prefix and year are both known, that is a direct lookup and
+  // replaces the old guesswork entirely - substring-matching department names
+  // silently mislabelled every course for the programmes whose public page
+  // publishes no keywords at all. The keyword path below is kept only as the
+  // fallback for when we cannot establish a prefix/year.
+  const prefix=myDeptPrefix(p), year=myYearDigit();
+  const token=(prefix&&year)?(prefix+year+'YR'):'';
+  const categoryKnown=!p || !!token || keys.length>0;
   C.forEach(c=>{
     if(c._baseCat==null)c._baseCat=c.cat;
     if(!p){c.cat=c._baseCat;return;}
     const tt=String(c.ttype||'').toLowerCase(),dept=String(c.dept||'').toLowerCase();
-    const inMajor=keys.some(k=>dept.includes(String(k).toLowerCase()));
+    let inMajorCore=false,inMajorElective=false;
+    if(token){
+      inMajorCore=(c.majorFor||[]).includes(token);
+      inMajorElective=(c.meFor||[]).includes(token);
+    } else {
+      const inMajor=keys.some(k=>dept.includes(String(k).toLowerCase()));
+      inMajorCore=inMajor&&!tt.includes('elective');
+      inMajorElective=inMajor&&tt.includes('elective');
+    }
     if(tt==='ccc'||c._baseCat==='CCC')c.cat='CCC';
-    else if(inMajor&&tt.includes('elective'))c.cat='ME';
-    else if(inMajor)c.cat='CORE';
+    else if(inMajorElective)c.cat='ME';
+    else if(inMajorCore)c.cat='CORE';
     else if(c.uwe)c.cat='UWE';
     else c.cat='NB';
   });

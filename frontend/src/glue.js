@@ -840,6 +840,9 @@ async function boot() {
   ['model', 'sem', 'remME', 'remUWE', 'remCCC', 'remFL', 'doneME', 'doneUWE', 'doneCCC'].forEach(id => {
     const e = $(id); if (e) e.addEventListener('change', () => void refreshPoolsFromBackend());
   });
+  // ME/Core now resolve through the workbook's <DEPT><YEAR>YR scoping tokens,
+  // so the year is an input to categorisation and not just to the pools.
+  if ($('model')) $('model').addEventListener('change', () => applyProgrammeCategories());
   if ($('rStatus')) $('rStatus').onchange = () => void drawRules();
   if ($('rQ')) $('rQ').oninput = () => void drawRules();
   if ($('rAllProgrammes')) $('rAllProgrammes').onchange = () => void drawRules();

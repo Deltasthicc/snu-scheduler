@@ -22,7 +22,12 @@ function applyBlock(){
     const pkgIdx=pickBlockPkg(c,b);
     if(pkgIdx>=0) FIXED.push({code:c.code,pkg:pkgIdx,auto:true,lock:false});
   });
-  renderFixed(); renderPick(); renderChosen();
+  // The chosen batch names the student's department exactly (CSD31 -> CSD),
+  // which is the most reliable input to ME/Core categorisation - re-run it
+  // rather than leaving the previous programme-keyword guess in place. That
+  // call already ends with the same three renders, so don't repeat them.
+  if(typeof applyProgrammeCategories==='function') applyProgrammeCategories();
+  else { renderFixed(); renderPick(); renderChosen(); }
 }
 /* The package whose sections are actually restricted to this batch. Used to
    silently default to package 0 regardless of which block was selected -
