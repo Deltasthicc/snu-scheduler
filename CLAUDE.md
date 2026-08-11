@@ -2036,3 +2036,109 @@ automatically); the 2 courses with no outline but a pre-existing, untraceable
 of the 9 blank-template decoy filenames from §21, so its real outline was
 never actually submitted) were left exactly as they were, since there is
 nothing stronger than what they already have to reconcile against.
+
+---
+
+## 23. Session update — 2026-08-11 (later still): a real timetable revision,
+## and a carry-forward bug in the importer that would have silently undone
+## every credit fix - caught before it could do that
+
+Dean Academics emailed a "the timetable has been updated" notice pointing at
+the same live Netlify mirror the poller already watches, effective for
+COMPAS registration the next day. Before touching anything, this was
+checked in depth, not assumed - `python3 tools/import_netlify_timetable.py`
+in dry-run mode (no `--apply`) fetches and diffs without changing anything
+active, which is exactly the check this needed.
+
+**The first dry run's diff was immediately suspicious: 294 of 325 matched
+courses "changed."** That is not what a routine section/time update looks
+like. Reading `diff.json`'s own field breakdown showed why: every one of
+those 294 was a `crBasis`/`crOfficial`/`cr` change - meaning re-running the
+importer was about to revert §22's just-committed credit reconciliation.
+Root cause, found by reading the script directly rather than guessing: the
+CLI wrapper built its carry-forward baseline from the *frozen*
+`monsoon-2026-excel-v1` snapshot (archived from the very first session, per
+a fix described in an earlier CLAUDE.md entry to solve a *different* problem
+- a self-diff after apply), not from the live active dataset. Confirmed
+directly: `monsoon-2026-excel-v1/courses.json` still has PHY1001/PHY1011/
+MED2001/ECE1001's pre-reconciliation (wrong) credit values. Every credit or
+category refinement made to the active dataset since that original snapshot
+- this project's own accumulated work across a dozen sessions - would have
+been silently discarded on every single re-run of this script.
+
+**The real production poller (`app/timetable_updates/poller.py`) does not
+have this specific bug** - it already builds `existing_by_code` from
+`catalog.all_courses()`, the live active dataset, exactly like it should.
+But fixing the CLI script surfaced a second, more serious bug that DOES
+affect the poller, because it lives in the shared `normalize()` function
+both the CLI and the poller call: a matched course's dict was built with NO
+`majorFor`/`meFor` keys at all unless `tools/import_office_timetable_xlsx.py`'s
+own `attach_scoping()` step ran afterward to add them. The Netlify mirror
+never publishes those columns (confirmed in an earlier session already:
+"Credits are not in the view... Contact hours are shown instead" - the same
+is true of programme scoping), so re-normalizing against it would have wiped
+this authoritative, hard-to-get scoping data - the exact fix built to solve
+the department-name-guessing CS-bias problem (CLAUDE.md s.16/s.18) - for 273
+of 328 courses. This would have hit the real poller on this exact real
+update, auto-apply and all, had it shipped unfixed.
+
+**Both fixed at the root, not patched around.** `historical_fallback()`
+(courses that drop out of the active dataset and might reappear) was
+duplicated between the xlsx importer and would have needed duplicating again
+for the netlify importer - moved into `app/timetable_updates/apply.py` as
+one shared function instead, per this project's own "one canonical
+implementation, not two" principle (s.15). `tools/import_netlify_timetable.py`
+now builds its carry-forward/diff baseline from `apply_mod.BACKEND_COURSES_PATH`
+(the active dataset) plus that shared historical fallback - matching the
+xlsx importer and the poller exactly. `normalize()` itself now carries
+`majorFor`/`meFor` forward from `existing` in its matched-course branch (the
+same place `cr`/`crOfficial`/`crBasis`/`cat` already do), with a genuinely
+new course correctly getting `[]` rather than a missing key. Two new tests
+in `test_timetable_updates.py` pin this exact scenario (scoping survives a
+re-import when the new source doesn't publish it; a real new course still
+gets an empty list, not a missing key).
+
+**Applied through the real poller, not the CLI, precisely to prove it
+works.** After fixing both bugs, restarted the local backend; its own
+startup poll cycle (auto-apply is the documented default - see s.20) fetched
+the live site, staged a candidate, and applied it on its own, unprompted -
+`monsoon-2026-netlify-revision-2026-08-11-f2b83ffd`, dataset checksum
+`4c66f6ab0a370308`, matching byte-for-byte what a manual dry run had already
+been reviewed against. Confirmed directly through the running API
+afterward: PHY1001/PHY1011/MED2001/ECE1001/MAT205 all kept their
+reconciled credits, 273 of 328 courses kept their programme scoping, and
+`frontend/src/data.json`/`backend/app/data/courses.json` stayed byte-identical.
+
+**The real diff, once it was computed correctly**: 30 renamed (mostly a
+second, public-facing cross-listed code added alongside the internal one,
+e.g. `DES4001` -> `DES403/DES4001`), +4 added, -3 removed (one of the three,
+`"MEC 301"`, is genuinely the same course as added `MEC301/MEC3003` under a
+new code - a stray space in the old code broke the rename-detector's exact
+shared-component match, a minor known limitation, not fixed this session),
+28 `blocks` changes, 22 packages that moved time/room, 6 courses with
+section-level package changes, 0 validation errors, 48 informational
+warnings (multi-cohort dedup, renames, real batch-coherence skips). Package
+count dropped 987 -> 564 - not a regression: the live site brought real
+per-batch section tagging back (the Office's own draft workbook had a real
+gap there, already documented in s.16), so the batch-coherence check
+correctly stops treating every section combination as open to everyone.
+Updated the two dataset-shape pin tests (`test_catalog_loads_328_courses`,
+`test_catalog_has_564_packages`) and one hardcoded course-count assertion in
+`test_api_schedules.py` with the real numbers and the real reason for each.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 244 passed, 1 skipped (was 242)
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 55 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 76 passed
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+```
+
+**Explicitly not done this session**: a dedicated test exercising
+`tools/import_netlify_timetable.py`'s own `main()` end-to-end (mocking the
+network fetch, asserting it reads the active dataset) was not written - the
+shared `normalize()` logic both the CLI and the poller depend on is now
+tested directly, and the CLI's own remaining logic is a thin, already
+manually-verified wrapper around it; the `"MEC 301"` vs `MEC301/MEC3003`
+rename-detector near-miss (whitespace breaks the exact-component match) was
+noted but not fixed, since it doesn't lose data - it just files the same
+real change under added+removed instead of renamed in the diff report.

@@ -217,6 +217,44 @@ def changelog() -> list[dict]:
     return entries
 
 
+def historical_fallback(active_by_code: dict[str, dict]) -> dict[str, dict]:
+    """Course identity (credits/category) for codes absent from the ACTIVE
+    dataset but present in an archived one, newest archive first.
+
+    A course can drop out of one revision and come back in the next - both
+    DES4001 and HIS102 did exactly that between the 08-09 mirror scrape and
+    a later Office workbook. Matching only against the active dataset would
+    treat the returning course as brand new and emit `cr: null`, and a null
+    credit is not a cosmetic gap: it crashed a real wishlist solve with
+    `TypeError: float() argument must be... not 'NoneType'` (CLAUDE.md s.14).
+    Every archived version is a dataset this project itself published, so
+    reusing its credits is carrying forward a known value, not inventing one.
+
+    Shared by every importer (tools/import_office_timetable_xlsx.py,
+    tools/import_netlify_timetable.py, this module's own callers) so there is
+    one canonical answer to "what did we last know about this course",
+    rather than each importer maintaining its own copy that can drift.
+    """
+    fallback: dict[str, dict] = {}
+    try:
+        manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return fallback
+    for entry in reversed(manifest.get("versions", [])):
+        courses_path = VERSIONS_DIR / entry.get("version_id", "") / "courses.json"
+        if not courses_path.is_file():
+            continue
+        try:
+            archived = json.loads(courses_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for course in archived:
+            code = course.get("code")
+            if code and code not in active_by_code and code not in fallback:
+                fallback[code] = course
+    return fallback
+
+
 def discard_candidate(version_id: str) -> None:
     """Removes a staged-but-never-applied candidate's folder. Never called on
     an applied version - history is only ever pruned by explicit retention

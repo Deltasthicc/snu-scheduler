@@ -34,8 +34,6 @@ from app.timetable_updates import source as source_mod  # noqa: E402
 from app.timetable_updates.diff import diff_datasets  # noqa: E402
 
 DEFAULT_URL = "https://snioe-monsoon2026-tt.netlify.app/"
-FRONTEND_DATA = REPO_ROOT / "frontend" / "src" / "data.json"
-VERSIONS_DIR = apply_mod.VERSIONS_DIR
 
 
 def write_report_md(path: Path, title: str, body_lines: list[str]) -> None:
@@ -72,15 +70,27 @@ def main() -> int:
         print(f"ERROR: {e}", file=sys.stderr)
         return 3
 
-    baseline_path = VERSIONS_DIR / "monsoon-2026-excel-v1" / "courses.json"
-    if not baseline_path.exists():
-        baseline_path = FRONTEND_DATA
-    existing_by_code = {}
-    if baseline_path.exists():
-        existing_by_code = {c["code"]: c for c in json.loads(baseline_path.read_text(encoding="utf-8"))}
-    print(f"==> diffing/carrying-forward against baseline: {baseline_path}")
+    # The carry-forward/diff source is the CURRENTLY ACTIVE dataset, not a
+    # frozen baseline - matching tools/import_office_timetable_xlsx.py and
+    # the backend poller (app/timetable_updates/poller.py) exactly, so this
+    # CLI script can never drift from what "the real dataset" means to the
+    # rest of the app (see this module's own docstring). Using the frozen
+    # monsoon-2026-excel-v1 snapshot here was a real bug: every credit/
+    # category refinement made to the active dataset since the very first
+    # import (CLAUDE.md s.11, s.16, s.22, ...) would have been silently
+    # discarded on the next re-run, because normalize() carries `cr`/
+    # `crOfficial`/`crBasis`/`cat` forward from whatever `existing_by_code`
+    # it is given - confirmed directly: the frozen v1 file still has
+    # PHY1001/PHY1011/MED2001/ECE1001's pre-reconciliation (wrong) credits.
+    existing = json.loads(apply_mod.BACKEND_COURSES_PATH.read_text(encoding="utf-8"))
+    existing_by_code = {c["code"]: c for c in existing}
+    revived = apply_mod.historical_fallback(existing_by_code)
+    if revived:
+        print(f"history       : {len(revived)} code(s) available from archived versions for "
+              f"carry-forward if the site lists them again")
+    print(f"==> diffing/carrying-forward against the active dataset: {apply_mod.BACKEND_COURSES_PATH}")
 
-    norm = normalize_mod.normalize(extracted.parsed, existing_by_code)
+    norm = normalize_mod.normalize(extracted.parsed, {**revived, **existing_by_code})
     stats = norm.stats
 
     version_id = args.version_id or (

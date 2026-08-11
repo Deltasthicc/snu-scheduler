@@ -11,23 +11,28 @@ BACKEND_COPY = Path(__file__).resolve().parent.parent / "app" / "data" / "course
 VERSIONS = BACKEND_COPY.parent / "timetable_versions"
 
 
-def test_catalog_loads_327_courses():
-    # 326 through monsoon-2026-batch-coherence-fix-2026-08-07; now 325 under
-    # monsoon-2026-netlify-revision-2026-08-09 (caught up 2026-08-09/10 after
-    # discovering the live site had moved on 5 times - 08-04/05/06/07/09 -
-    # while our poller kept staging candidates nobody reviewed). Net -1: +1
-    # course (MAT205/MAT2004), -2 courses (DES4001, HIS102), 3 renames
-    # (CCC685/CCC2302->CCC685, CSD102/CSD1002->CSD102/CSD2001,
-    # ECO2101->ECO2101/ECO221). Now 327 under
-    # monsoon-2026-office-draft-2026-08-11, the Academic Office's own draft
-    # workbook (mailed to students for the 11 Aug review window) rather than a
-    # scrape of the public mirror: DES4001 and HIS102 are back, and both kept
-    # their real 4.0 credits because the importer now carries values forward
-    # from ARCHIVED versions, not just the active one.
-    assert len(catalog.all_courses()) == 327
+def test_catalog_loads_328_courses():
+    # 326 through monsoon-2026-batch-coherence-fix-2026-08-07; 325 under
+    # monsoon-2026-netlify-revision-2026-08-09; 327 under
+    # monsoon-2026-office-draft-2026-08-11 (the Academic Office's own draft
+    # workbook). Now 328 under monsoon-2026-netlify-revision-2026-08-11
+    # (Dean Academics' "timetable updated" email, live site re-synced): the
+    # Netlify mirror was checked directly against the real ACTIVE dataset
+    # this time, not a frozen 08-04 baseline (see
+    # tools/import_netlify_timetable.py and CLAUDE.md s.23 - carrying
+    # forward against a stale snapshot was a real bug that would have
+    # silently reverted every credit fix made since). Net +1: 30 courses
+    # gained a second, public-facing cross-listed code component (e.g.
+    # DES4001 -> DES403/DES4001, a rename this diff detector matches by
+    # shared code component); +4 added (CCC113/CCC2408, FAC212/2002,
+    # FAC213/2001, MEC301/MEC3003); -3 removed (FAC2001, FAC2002,
+    # "MEC 301" - the last is genuinely MEC301/MEC3003 under a new code,
+    # but a stray space in the old code broke the rename-matcher's exact
+    # component match, so it shows as removed+added rather than renamed).
+    assert len(catalog.all_courses()) == 328
 
 
-def test_catalog_has_987_packages():
+def test_catalog_has_564_packages():
     # 859 under monsoon-2026-excel-v1; 988 under monsoon-2026-netlify-revision-
     # 2026-08-04; 954 under monsoon-2026-batch-coherence-fix-2026-08-07 (that
     # session's own batch-coherence fix to build_packages()); 555 under
@@ -35,19 +40,16 @@ def test_catalog_has_987_packages():
     # of PHY1011's sections to one of 8 specific first-year batches instead of
     # publishing them untagged, so the batch-coherence check correctly stops
     # treating every LECxTUTxPRAC cross-product as valid for every student);
-    # now 559 under monsoon-2026-netlify-revision-2026-08-10, auto-applied by
-    # the live poller (no courses added/removed/renamed) after ECE1001 and
-    # PHY1011 each gained one new LEC+PRAC(+TUT) section - two brand-new
-    # course sections opened, not a data-quality regression. Now 987 under
-    # monsoon-2026-office-draft-2026-08-11. That jump is NOT a package-builder
-    # regression - it is a real gap in the Office's draft workbook, which
-    # dropped the "Student Block" tagging for nearly every first-year course
-    # (18 of 332 first-year rows carry one, against 229 of 277 second-year
-    # rows). PHY1011 alone goes 10 -> 372 because an untagged course is,
-    # correctly, treated as every LECxTUTxPRAC combination being open to
-    # everyone. No batch tags are fabricated to hide it; the importer instead
-    # raises IMPLAUSIBLE_PACKAGE_COUNT so it can be reported upstream.
-    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 987
+    # 987 under monsoon-2026-office-draft-2026-08-11, NOT a regression but a
+    # real gap in the Office's draft workbook, which dropped "Student Block"
+    # tagging for nearly every first-year course. Now 564 under
+    # monsoon-2026-netlify-revision-2026-08-11: the live site's re-sync
+    # brought real batch tagging back (confirmed via the import's own
+    # BATCH_INCOHERENT_COMBOS_SKIPPED warnings for CSD101/CSD102/CSD205/
+    # CSD211/CSD304/ECE1001/ECE301/ECE302 and others), so the batch-coherence
+    # check correctly drops the cross-batch combinations again. Fewer
+    # packages here is the check working, not a data loss.
+    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 564
 
 
 def test_course_codes_are_unique():

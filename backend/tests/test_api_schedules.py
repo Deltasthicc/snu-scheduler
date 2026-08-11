@@ -68,7 +68,7 @@ def test_dataset_endpoint_reports_active_version_and_checksum():
         r = client.get("/api/v1/dataset")
         assert r.status_code == 200, r.text
         body = r.json()
-        assert body["course_count"] == 327  # see test_catalog.py::test_catalog_loads_327_courses
+        assert body["course_count"] == 328  # see test_catalog.py::test_catalog_loads_328_courses
         assert body["dataset_checksum"]
         assert body["active_version"] in body["known_versions"]
 

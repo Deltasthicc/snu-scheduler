@@ -259,6 +259,34 @@ def test_normalize_carries_forward_credits_from_existing_dataset():
     assert result.courses[0]["cat"] == "ME"
 
 
+def test_normalize_carries_forward_programme_scoping_from_existing_dataset():
+    """majorFor/meFor is the Academic Office workbook's own authoritative
+    programme scoping (tools/import_office_timetable_xlsx.py); a source that
+    doesn't publish those columns at all (the Netlify mirror never has) must
+    not silently wipe it. Real regression, found 2026-08-11 re-syncing against
+    Dean Academics' "timetable updated" announcement: normalize() built every
+    course dict without a majorFor/meFor key at all unless the xlsx importer's
+    own attach_scoping() ran afterward, so re-importing from the Netlify
+    source reverted 273 of 328 courses' scoping to nothing - which would have
+    silently undone the fix for the department-name-guessing CS-bias problem
+    those columns exist to solve (CLAUDE.md s.16/s.18)."""
+    existing = {"CSD101": {"code": "CSD101", "cr": 4.5, "crOfficial": True, "cat": "ME",
+                           "school": "S", "dept": "D", "ttype": "Major Elective", "crBasis": "x",
+                           "majorFor": ["CSD1YR"], "meFor": ["ECE2YR"]}}
+    result = normalize_mod.normalize(SAMPLE_A, existing)
+    assert result.courses[0]["majorFor"] == ["CSD1YR"]
+    assert result.courses[0]["meFor"] == ["ECE2YR"]
+
+
+def test_normalize_new_course_gets_empty_scoping_not_a_missing_key():
+    """A genuinely brand-new course (no existing match) has no scoping to
+    carry forward - it must get an empty list, not a missing key, so callers
+    can always safely read course.get("majorFor", []) or index it directly."""
+    result = normalize_mod.normalize(SAMPLE_A, {})
+    assert result.courses[0]["majorFor"] == []
+    assert result.courses[0]["meFor"] == []
+
+
 def _row(comp, sec, block, day, start, end, rowid, term="Full semester"):
     return {"code": "CSD211/CSD2003", "title": "Computer Organization and Architecture", "type": "Major",
            "uwe": "No", "comp": comp, "sec": sec, "block": block, "term": term, "day": day,

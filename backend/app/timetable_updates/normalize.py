@@ -338,6 +338,16 @@ def normalize(data: dict, existing_by_code: dict[str, dict]) -> NormalizeResult:
             cr = existing.get("cr")
             cr_official = existing.get("crOfficial", False)
             cr_basis = existing.get("crBasis", "")
+            # majorFor/meFor is the Office's own workbook-published programme
+            # scoping (see tools/import_office_timetable_xlsx.py) - the
+            # Netlify mirror never publishes these columns at all, so a
+            # source switch must carry them forward rather than silently
+            # reverting every course to the department-name-guessing
+            # fallback derive_category() exists for. A future workbook
+            # import still overrides this with its own fresher scoping via
+            # attach_scoping(), which runs after normalize().
+            major_for = existing.get("majorFor", [])
+            me_for = existing.get("meFor", [])
             if existing.get("code") != code:
                 stats.warn("COURSE_CODE_RENAMED",
                           f"{code}: matched previous dataset entry {existing.get('code')!r} by shared "
@@ -355,6 +365,8 @@ def normalize(data: dict, existing_by_code: dict[str, dict]) -> NormalizeResult:
             cr = None
             cr_official = False
             cr_basis = "NEEDS_MANUAL_REVIEW: course not present in the prior dataset; no credit source available"
+            major_for = []
+            me_for = []
             field_status["category_credits_identity"] = "best_effort_new_course_needs_review"
 
         pk = build_packages(code_rows, code, stats)
@@ -364,6 +376,7 @@ def normalize(data: dict, existing_by_code: dict[str, dict]) -> NormalizeResult:
             "crBasis": cr_basis, "terms": terms, "blocks": blocks_raw, "cat": cat,
             "seats": seats, "unsched": len(pk) == 0,
             "why": "no internally-consistent section combination exists in the revised timetable" if len(pk) == 0 else "",
+            "majorFor": major_for, "meFor": me_for,
             "pk": pk,
         })
         provenance[code] = {
