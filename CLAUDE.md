@@ -2142,3 +2142,87 @@ manually-verified wrapper around it; the `"MEC 301"` vs `MEC301/MEC3003`
 rename-detector near-miss (whitespace breaks the exact-component match) was
 noted but not fixed, since it doesn't lose data - it just files the same
 real change under added+removed instead of renamed in the diff report.
+
+---
+
+## 24. Session update — 2026-08-11 (latest): the mobile course picker was
+## genuinely bad, and a real CSS specificity bug found while fixing it
+
+The user called the mobile UI "absolute trash" and asked for it to be
+checked properly, tab by tab, against the real thing rather than assumed
+fine. Since this environment's own Browser pane cannot composite frames for
+a real screenshot (confirmed - `computer{action:"screenshot"}` times out
+with "the Browser pane is not displayed"), verification used a real
+Chromium session at a real 390x844 phone viewport via Playwright directly,
+screenshotting every tab and measuring page height, horizontal overflow,
+and touch-target size - the same instrumentation `ui-responsive.test.js`
+already uses, just with actual saved PNGs to look at directly rather than
+pass/fail assertions.
+
+**Six of seven tabs were already genuinely fine** - Learn, Profile, Timetable
+(the agenda view), Preference matching, Degree audit, and Rules & data all
+render cleanly at phone width: no horizontal overflow anywhere, readable
+typography, comfortable spacing. The one real problem was the Course
+selection picker: the generic `.responsive-table` mobile pattern turns every
+table column into its own stacked label:value row, and the picker table has
+ten columns (Add/Course/Category/Term/Credits/Seats/Pool cap/Packages/Best
+fit/Want) - each course became an 800px+ card, several screens tall for a
+10-course page.
+
+**A real CSS bug was found and fixed while building the compact mobile
+card**, not just a design choice: the first attempt scoped new rules with
+`.pick-compact .responsive-table td[...]` (a descendant selector), which
+never matched anything, because `pick-compact` and `responsive-table` are
+both classes on the *same* `<div>`, not on two nested ancestors - it needed
+to be the compound selector `.pick-compact.responsive-table td[...]` (no
+space). Caught by directly querying `document.styleSheets` for which rules
+actually matched the target element (not by eyeballing the CSS), which also
+surfaces the general lesson: a "the CSS I wrote didn't do anything visible"
+symptom is often exactly this descendant-vs-compound mistake, not a
+specificity or load-order problem.
+
+A second, subtler bug surfaced once the selector matched: `flex-basis:auto`
+on the "Course" cell let it claim its own full content width (title +
+department text) before the wrap decision, which either forced the tiny
+"Add" checkbox onto its own line, or - after changing to `flex-basis:0` in
+a naive attempt to fix that - collapsed "Course" to near-nothing and wrapped
+its text one character per line. Flex-wrap's line-composition depends on
+each item's *hypothetical* size, computed independently per item, which
+made getting five differently-shaped cells (a checkbox, a two-line title
+block, and six short stat fields) to share lines predictably genuinely
+unreliable. Replaced with explicit CSS Grid coordinates instead - a fixed
+`grid-template-columns:30px 1fr 1fr 1fr` with every cell assigned its exact
+`grid-column`/`grid-row` by `data-label` attribute selector - which is fully
+deterministic and has no content-size ambiguity at all.
+
+**Result**: Category/Term/Credits sit in one row, Seats/Pool cap/Packages in
+the next, Best fit and Want stay full-width (their content genuinely varies
+in length), checkbox and course code share the top row. Picker page height
+dropped from ~10,600px to ~9,300px for the same content - roughly a 12%
+reduction on top of a much less repetitive-feeling card shape (5 fewer full
+rows per course, not just a number). Also bumped `.chk` checkboxes (16px ->
+20px) and the outline-lookup button (22px -> 27px) for touch, site-wide, not
+just in the picker - and gave `.cs-reset` a real minimum touch height. Most
+of the tool's remaining sub-32px "touch targets" the audit flagged
+(`fFitFixed`/`fFitAll`, `#overloadOn`, `#rAllProgrammes`) turned out to be
+false positives once checked - all four are wrapped in a `<label>`, so the
+real tappable area is the whole label text, not just the checkbox's own
+box; left as-is rather than fixed twice.
+
+```bash
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 55 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 76 passed
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+./scripts/run-e2e.sh tests/ui-responsive.test.js                       # 70 passed, laptop + phone, both themes
+cd backend && python3 -m pytest -q                                     # 244 passed, 1 skipped (untouched by this session)
+```
+
+**Explicitly not done this session**: the Fixed/Chosen tables (6-7 columns
+each, versus the picker's 10) were left on the generic stacked-row mobile
+pattern - visually acceptable at that column count, not retrofitted with
+the same explicit-grid treatment since there was no evidence it needed it;
+the Learn tab's settlement-result table still extends slightly past the
+viewport width inside its own `overflow-x:auto` wrapper (a small horizontal
+scroll, not a broken/clipped layout) - left alone rather than risking
+another fragile CSS pass on a table already behaving per this project's own
+"wide content scrolls in its own container" rule.

@@ -474,6 +474,49 @@ kbd{display:inline-grid;place-items:center;min-width:20px;min-height:20px;paddin
   .responsive-table td{display:grid;grid-template-columns:minmax(92px,.42fr) minmax(0,1fr);gap:10px;align-items:center;padding:7px 5px;border:0;border-bottom:1px solid var(--line)}
   .responsive-table td:last-child{border-bottom:0}.responsive-table td::before{content:attr(data-label);color:var(--faint);font:600 8.5px var(--mono);letter-spacing:.07em;text-transform:uppercase}
   .responsive-table td[data-label=""]{grid-template-columns:1fr}.responsive-table td[data-label=""]::before{display:none}.responsive-table select,.responsive-table input{width:100%!important}
+  /* Picker cards had 10 stacked label:value rows per course (one per column)
+     - Add/Course/Category/Term/Credits/Seats/Pool cap/Packages/Best fit/Want -
+     making every course a near-full-screen card. Explicit grid coordinates
+     per data-label (not flex-wrap: content-based flex-basis for "Course"
+     kept claiming its full text width before the wrap decision, either
+     forcing Add onto its own line or, with flex-basis:0, collapsing Course
+     to near-nothing and wrapping its text one character per line) place
+     the 6 short stat fields into a compact 3-column block instead. */
+  .pick-compact.responsive-table tr{
+    display:grid;grid-template-columns:30px 1fr 1fr 1fr;
+    grid-template-rows:auto auto auto auto auto;gap:6px 8px;
+  }
+  .pick-compact.responsive-table td{width:auto!important;min-width:0}
+  .pick-compact.responsive-table td[data-label="Add"]{grid-column:1;grid-row:1;align-self:start;padding:8px 8px 0!important;grid-template-columns:1fr!important}
+  .pick-compact.responsive-table td[data-label="Add"]::before{display:none}
+  .pick-compact.responsive-table td[data-label="Course"]{grid-column:2/5;grid-row:1;min-width:0;overflow:hidden}
+  .pick-compact.responsive-table td[data-label="Category"]{grid-column:2;grid-row:2}
+  .pick-compact.responsive-table td[data-label="Term"]{grid-column:3;grid-row:2}
+  .pick-compact.responsive-table td[data-label="Credits"]{grid-column:4;grid-row:2}
+  .pick-compact.responsive-table td[data-label="Seats"]{grid-column:2;grid-row:3}
+  .pick-compact.responsive-table td[data-label="Pool cap"]{grid-column:3;grid-row:3}
+  .pick-compact.responsive-table td[data-label="Packages"]{grid-column:4;grid-row:3}
+  .pick-compact.responsive-table td[data-label="Best fit"]{grid-column:1/5;grid-row:4}
+  .pick-compact.responsive-table td[data-label="Want"]{grid-column:1/5;grid-row:5}
+  .pick-compact.responsive-table td[data-label="Category"],
+  .pick-compact.responsive-table td[data-label="Term"],
+  .pick-compact.responsive-table td[data-label="Credits"],
+  .pick-compact.responsive-table td[data-label="Seats"],
+  .pick-compact.responsive-table td[data-label="Pool cap"],
+  .pick-compact.responsive-table td[data-label="Packages"]{
+    display:flex!important;flex-direction:column;gap:1px;
+    border-bottom:0!important;padding:5px 6px!important;
+    background:var(--s2);border-radius:9px;
+  }
+  .pick-compact.responsive-table td[data-label="Category"]::before,
+  .pick-compact.responsive-table td[data-label="Term"]::before,
+  .pick-compact.responsive-table td[data-label="Credits"]::before,
+  .pick-compact.responsive-table td[data-label="Seats"]::before,
+  .pick-compact.responsive-table td[data-label="Pool cap"]::before,
+  .pick-compact.responsive-table td[data-label="Packages"]::before{font-size:7px}
+  .chk{width:20px;height:20px;min-height:20px}
+  .pick-outline-btn{width:27px;height:27px;font-size:13px}
+  .cs-reset{min-height:38px}
 }
 @media(prefers-reduced-motion:reduce){body::after,.mast::before,.eyebrow::before{animation:none}.pane,.card,#bidOut>.card,#wishOut>.card{animation:none}.card:hover,.stat:hover,.btn:hover,.btn2:hover{transform:none}}
 [data-motion="reduced"] *,[data-motion="reduced"] *::before,[data-motion="reduced"] *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
