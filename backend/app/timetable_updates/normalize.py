@@ -15,9 +15,24 @@ from app.timetable_updates.validate import DAYS, to_minutes, validate_normalized
 
 MAJOR_DEPT_PREFIX = "CSD"
 
+# Above this, a single course's package list is treated as a symptom of missing
+# batch tags rather than a real menu of choices. 40 is well clear of the
+# largest genuinely batch-tagged course seen in any published revision while
+# still catching the untagged cross-products (which run to the hundreds).
+PACKAGE_COUNT_WARN_THRESHOLD = 40
+
+
+# See app/services/scheduler.py::_spans_both_halves for why "Both half" is
+# treated as occupying the whole semester. Kept identical here because package
+# construction rejects internally-conflicting combinations using this same
+# notion of overlap, and a divergence between the two would silently build
+# packages the scheduler then considers clashing.
+def _spans_both_halves(term: str) -> bool:
+    return term in ("Full semester", "Both half")
+
 
 def _term_overlap(a: str, b: str) -> bool:
-    return a == b or a == "Full semester" or b == "Full semester"
+    return a == b or _spans_both_halves(a) or _spans_both_halves(b)
 
 
 def _meetings_overlap(a: tuple, b: tuple, term_a: str, term_b: str) -> bool:
@@ -68,8 +83,28 @@ def _block_set(raw: str) -> frozenset[str]:
     is asking, not "belongs to no one"."""
     result: frozenset[str] = frozenset()
     for part in raw.split(","):
-        result |= _expand_block_token(part)
+        if _RANGE_TOKEN.match(part.strip()):
+            result |= _expand_block_token(part)
+            continue
+        for piece in _split_compound_token(part):
+            result |= _expand_block_token(piece)
     return result
+
+
+# Some cells separate batches with "&" and/or bare spaces instead of commas -
+# the 2026-08-11 Office workbook has "ECE31 to ECE33, ECE36 ECE310 & ECE311",
+# where the second comma-part names three batches at once. Splitting the WHOLE
+# cell on whitespace would destroy the "X to Y" range form, so this only runs
+# on a part that is not itself a range. Verified against the Office's own
+# student-batch roster: before this, "ECE36 ECE310 & ECE311" survived as one
+# opaque pseudo-batch matching nothing real; after, every batch code the
+# timetable produces is a batch that actually exists in the roster.
+_BATCH_CODE = re.compile(r"^[A-Za-z]{2,4}\d{1,3}$")
+
+
+def _split_compound_token(token: str) -> list[str]:
+    pieces = [p.strip() for p in re.split(r"[&\s]+", token.strip()) if p.strip()]
+    return pieces if len(pieces) > 1 and all(_BATCH_CODE.match(p) for p in pieces) else [token]
 
 
 def flatten_rows(data: dict, stats: ImportStats) -> list[dict]:
@@ -207,6 +242,21 @@ def build_packages(rows: list[dict], code: str, stats: ImportStats) -> list[dict
         stats.warn("BATCH_INCOHERENT_COMBOS_SKIPPED",
                   f"{code}: {incoherent_skipped} section combination(s) skipped because they mixed "
                   f"sections restricted to different, non-overlapping student batches", code)
+    # An implausible package count almost always means the source stopped
+    # publishing this course's batch tags, not that a student really may pick
+    # any LEC x TUT x PRAC combination. The 2026-08-11 Office draft workbook
+    # dropped "Student Block" for nearly every first-year course (18 of 332
+    # first-year rows carry one, against 229 of 277 second-year rows), which
+    # took PHY1011 from 10 packages to 372. Nothing is fabricated to
+    # compensate - inventing batch tags would be exactly the guesswork the
+    # batch-coherence check exists to prevent - but a silent 372-package
+    # course is a data-quality problem worth reporting upstream, so it is
+    # raised as a warning rather than absorbed.
+    if len(packages) > PACKAGE_COUNT_WARN_THRESHOLD and not any(p["batches"] for p in packages):
+        stats.warn("IMPLAUSIBLE_PACKAGE_COUNT",
+                  f"{code}: {len(packages)} packages from an untagged section cross-product - the "
+                  f"source publishes no student-batch restriction for this course, so every "
+                  f"combination is being treated as open to every student", code)
     stats.packages_built += len(packages)
     return packages
 

@@ -1,0 +1,4134 @@
+{
+  "ART202/AMP1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#2",
+      "Draft Timetable_ Monsoon 2026 .xlsx#3"
+    ],
+    "dept3": "ART",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ART220": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#4",
+      "Draft Timetable_ Monsoon 2026 .xlsx#5"
+    ],
+    "dept3": "ART",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ART341/AMP2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#6",
+      "Draft Timetable_ Monsoon 2026 .xlsx#7"
+    ],
+    "dept3": "ART",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ART342": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#10",
+      "Draft Timetable_ Monsoon 2026 .xlsx#8",
+      "Draft Timetable_ Monsoon 2026 .xlsx#9"
+    ],
+    "dept3": "ART",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#11",
+      "Draft Timetable_ Monsoon 2026 .xlsx#12",
+      "Draft Timetable_ Monsoon 2026 .xlsx#13"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO1002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#14",
+      "Draft Timetable_ Monsoon 2026 .xlsx#15"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO1004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#16",
+      "Draft Timetable_ Monsoon 2026 .xlsx#17",
+      "Draft Timetable_ Monsoon 2026 .xlsx#18",
+      "Draft Timetable_ Monsoon 2026 .xlsx#19"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO1008": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#20",
+      "Draft Timetable_ Monsoon 2026 .xlsx#21",
+      "Draft Timetable_ Monsoon 2026 .xlsx#22",
+      "Draft Timetable_ Monsoon 2026 .xlsx#23"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO2009": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1163",
+      "Draft Timetable_ Monsoon 2026 .xlsx#24",
+      "Draft Timetable_ Monsoon 2026 .xlsx#25"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO202/BIO2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#26",
+      "Draft Timetable_ Monsoon 2026 .xlsx#27",
+      "Draft Timetable_ Monsoon 2026 .xlsx#28"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO208/BIO2008": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#29",
+      "Draft Timetable_ Monsoon 2026 .xlsx#30",
+      "Draft Timetable_ Monsoon 2026 .xlsx#31",
+      "Draft Timetable_ Monsoon 2026 .xlsx#32"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO210/BIO2010": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#33",
+      "Draft Timetable_ Monsoon 2026 .xlsx#34",
+      "Draft Timetable_ Monsoon 2026 .xlsx#35"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO211/BIO2011": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#36",
+      "Draft Timetable_ Monsoon 2026 .xlsx#37",
+      "Draft Timetable_ Monsoon 2026 .xlsx#38"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#39",
+      "Draft Timetable_ Monsoon 2026 .xlsx#40",
+      "Draft Timetable_ Monsoon 2026 .xlsx#41"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO302": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#42",
+      "Draft Timetable_ Monsoon 2026 .xlsx#43",
+      "Draft Timetable_ Monsoon 2026 .xlsx#44"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO303": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#45",
+      "Draft Timetable_ Monsoon 2026 .xlsx#46",
+      "Draft Timetable_ Monsoon 2026 .xlsx#47"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO304": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#48",
+      "Draft Timetable_ Monsoon 2026 .xlsx#49",
+      "Draft Timetable_ Monsoon 2026 .xlsx#50"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO323": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#51",
+      "Draft Timetable_ Monsoon 2026 .xlsx#52",
+      "Draft Timetable_ Monsoon 2026 .xlsx#53"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO324": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#54",
+      "Draft Timetable_ Monsoon 2026 .xlsx#55",
+      "Draft Timetable_ Monsoon 2026 .xlsx#56"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO327": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#57",
+      "Draft Timetable_ Monsoon 2026 .xlsx#58",
+      "Draft Timetable_ Monsoon 2026 .xlsx#59"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO330": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#60",
+      "Draft Timetable_ Monsoon 2026 .xlsx#61",
+      "Draft Timetable_ Monsoon 2026 .xlsx#62",
+      "Draft Timetable_ Monsoon 2026 .xlsx#63"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO401": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#64",
+      "Draft Timetable_ Monsoon 2026 .xlsx#65",
+      "Draft Timetable_ Monsoon 2026 .xlsx#66"
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC122/CCC2105": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#67",
+      "Draft Timetable_ Monsoon 2026 .xlsx#68"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC125/CCC2116": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#69",
+      "Draft Timetable_ Monsoon 2026 .xlsx#70"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC2103": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#72",
+      "Draft Timetable_ Monsoon 2026 .xlsx#73"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC2116": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#74"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC228/CCC2605": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#75",
+      "Draft Timetable_ Monsoon 2026 .xlsx#76"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC236/CCC2117": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#77",
+      "Draft Timetable_ Monsoon 2026 .xlsx#78"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC252/CCC2506": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1110",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1111"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC255/CCC2206": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#81",
+      "Draft Timetable_ Monsoon 2026 .xlsx#82"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC257/CCC2208": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#83",
+      "Draft Timetable_ Monsoon 2026 .xlsx#84"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC259/CCC2213": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#85",
+      "Draft Timetable_ Monsoon 2026 .xlsx#86"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC261/CCC2214": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#87",
+      "Draft Timetable_ Monsoon 2026 .xlsx#88"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC356/CCC2501": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#89",
+      "Draft Timetable_ Monsoon 2026 .xlsx#90"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC359/CCC2313": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#91",
+      "Draft Timetable_ Monsoon 2026 .xlsx#92"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC395/CCC2502": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#93",
+      "Draft Timetable_ Monsoon 2026 .xlsx#94"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC396/CCC2315": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1125",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1126"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC407/CCC2200": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#95",
+      "Draft Timetable_ Monsoon 2026 .xlsx#96"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC411/CCC2201": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#97",
+      "Draft Timetable_ Monsoon 2026 .xlsx#98"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC416/CCC2314": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#100",
+      "Draft Timetable_ Monsoon 2026 .xlsx#99"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC419/CCC2202": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#101",
+      "Draft Timetable_ Monsoon 2026 .xlsx#102"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC447/CCC2406": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#103",
+      "Draft Timetable_ Monsoon 2026 .xlsx#104"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC448/CCC2407": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1108",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1109"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC526/CCC2503": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#79",
+      "Draft Timetable_ Monsoon 2026 .xlsx#80"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC527/CCC2508": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#105",
+      "Draft Timetable_ Monsoon 2026 .xlsx#106"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC606/CCC2608": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1106",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1107"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC634/CCC2204": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#107",
+      "Draft Timetable_ Monsoon 2026 .xlsx#108"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC685": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#109",
+      "Draft Timetable_ Monsoon 2026 .xlsx#110"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC697/CCC2308": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1112",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1113"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC704/CCC2302": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1118",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1119"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC804/CCC2309": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1116",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1117"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC805/CCC2600": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#111",
+      "Draft Timetable_ Monsoon 2026 .xlsx#112"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC826/CCC2101": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1172",
+      "Draft Timetable_ Monsoon 2026 .xlsx#71"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC844/CCC2205": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#113",
+      "Draft Timetable_ Monsoon 2026 .xlsx#114"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC848/CCC2504": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1114",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1115"
+    ],
+    "dept3": "CCC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#115",
+      "Draft Timetable_ Monsoon 2026 .xlsx#116"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#117",
+      "Draft Timetable_ Monsoon 2026 .xlsx#118",
+      "Draft Timetable_ Monsoon 2026 .xlsx#119"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#120",
+      "Draft Timetable_ Monsoon 2026 .xlsx#121",
+      "Draft Timetable_ Monsoon 2026 .xlsx#122",
+      "Draft Timetable_ Monsoon 2026 .xlsx#123"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#124",
+      "Draft Timetable_ Monsoon 2026 .xlsx#125",
+      "Draft Timetable_ Monsoon 2026 .xlsx#126",
+      "Draft Timetable_ Monsoon 2026 .xlsx#127"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#128",
+      "Draft Timetable_ Monsoon 2026 .xlsx#129",
+      "Draft Timetable_ Monsoon 2026 .xlsx#130"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED304": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#131",
+      "Draft Timetable_ Monsoon 2026 .xlsx#132",
+      "Draft Timetable_ Monsoon 2026 .xlsx#133"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED305": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#134",
+      "Draft Timetable_ Monsoon 2026 .xlsx#135"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED310": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#136",
+      "Draft Timetable_ Monsoon 2026 .xlsx#137",
+      "Draft Timetable_ Monsoon 2026 .xlsx#138"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED316": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#139",
+      "Draft Timetable_ Monsoon 2026 .xlsx#140",
+      "Draft Timetable_ Monsoon 2026 .xlsx#141"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED325": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#142",
+      "Draft Timetable_ Monsoon 2026 .xlsx#143",
+      "Draft Timetable_ Monsoon 2026 .xlsx#144"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED326": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#145",
+      "Draft Timetable_ Monsoon 2026 .xlsx#146"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED412": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#147",
+      "Draft Timetable_ Monsoon 2026 .xlsx#148",
+      "Draft Timetable_ Monsoon 2026 .xlsx#149"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED424": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#150",
+      "Draft Timetable_ Monsoon 2026 .xlsx#151"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED425": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#152",
+      "Draft Timetable_ Monsoon 2026 .xlsx#153",
+      "Draft Timetable_ Monsoon 2026 .xlsx#154"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED640": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#155",
+      "Draft Timetable_ Monsoon 2026 .xlsx#156"
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#157",
+      "Draft Timetable_ Monsoon 2026 .xlsx#158",
+      "Draft Timetable_ Monsoon 2026 .xlsx#159"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#160",
+      "Draft Timetable_ Monsoon 2026 .xlsx#161",
+      "Draft Timetable_ Monsoon 2026 .xlsx#162"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#163",
+      "Draft Timetable_ Monsoon 2026 .xlsx#164"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD2004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#165",
+      "Draft Timetable_ Monsoon 2026 .xlsx#166"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD310": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#167",
+      "Draft Timetable_ Monsoon 2026 .xlsx#168"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD318": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#169",
+      "Draft Timetable_ Monsoon 2026 .xlsx#170",
+      "Draft Timetable_ Monsoon 2026 .xlsx#171"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD319": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#172",
+      "Draft Timetable_ Monsoon 2026 .xlsx#173"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD320": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#174",
+      "Draft Timetable_ Monsoon 2026 .xlsx#175"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD413": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#176",
+      "Draft Timetable_ Monsoon 2026 .xlsx#177",
+      "Draft Timetable_ Monsoon 2026 .xlsx#178"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD418": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#179",
+      "Draft Timetable_ Monsoon 2026 .xlsx#180"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD471": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#181",
+      "Draft Timetable_ Monsoon 2026 .xlsx#182"
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY103/CHY1003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#183",
+      "Draft Timetable_ Monsoon 2026 .xlsx#184",
+      "Draft Timetable_ Monsoon 2026 .xlsx#185",
+      "Draft Timetable_ Monsoon 2026 .xlsx#186"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY111/CHY1011": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1180",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1181",
+      "Draft Timetable_ Monsoon 2026 .xlsx#187",
+      "Draft Timetable_ Monsoon 2026 .xlsx#188",
+      "Draft Timetable_ Monsoon 2026 .xlsx#189",
+      "Draft Timetable_ Monsoon 2026 .xlsx#190",
+      "Draft Timetable_ Monsoon 2026 .xlsx#191",
+      "Draft Timetable_ Monsoon 2026 .xlsx#192",
+      "Draft Timetable_ Monsoon 2026 .xlsx#193"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY115/CHY1015": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#194",
+      "Draft Timetable_ Monsoon 2026 .xlsx#195",
+      "Draft Timetable_ Monsoon 2026 .xlsx#196",
+      "Draft Timetable_ Monsoon 2026 .xlsx#197"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY211/CHY2011": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#198",
+      "Draft Timetable_ Monsoon 2026 .xlsx#199",
+      "Draft Timetable_ Monsoon 2026 .xlsx#200",
+      "Draft Timetable_ Monsoon 2026 .xlsx#201"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY214/CHY2014": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#202",
+      "Draft Timetable_ Monsoon 2026 .xlsx#203",
+      "Draft Timetable_ Monsoon 2026 .xlsx#204"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY221/CHY2021": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#205",
+      "Draft Timetable_ Monsoon 2026 .xlsx#206",
+      "Draft Timetable_ Monsoon 2026 .xlsx#207",
+      "Draft Timetable_ Monsoon 2026 .xlsx#208"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY245/CHY2045": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#209",
+      "Draft Timetable_ Monsoon 2026 .xlsx#210",
+      "Draft Timetable_ Monsoon 2026 .xlsx#211",
+      "Draft Timetable_ Monsoon 2026 .xlsx#212"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY3041": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#213",
+      "Draft Timetable_ Monsoon 2026 .xlsx#214"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY311": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#215",
+      "Draft Timetable_ Monsoon 2026 .xlsx#216",
+      "Draft Timetable_ Monsoon 2026 .xlsx#217",
+      "Draft Timetable_ Monsoon 2026 .xlsx#218"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY313": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#219",
+      "Draft Timetable_ Monsoon 2026 .xlsx#220",
+      "Draft Timetable_ Monsoon 2026 .xlsx#221",
+      "Draft Timetable_ Monsoon 2026 .xlsx#222"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY321": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#223",
+      "Draft Timetable_ Monsoon 2026 .xlsx#224"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY323": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#225",
+      "Draft Timetable_ Monsoon 2026 .xlsx#226",
+      "Draft Timetable_ Monsoon 2026 .xlsx#227"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY351": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#228",
+      "Draft Timetable_ Monsoon 2026 .xlsx#229",
+      "Draft Timetable_ Monsoon 2026 .xlsx#230"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY400": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#231"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY504/CHY5004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1097",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1098"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY545/CHY5045": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1099",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1100",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1101"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY556": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1104",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1105"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY571/CHY5071": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1102",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1103"
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "COM191/AMP2004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#232",
+      "Draft Timetable_ Monsoon 2026 .xlsx#233",
+      "Draft Timetable_ Monsoon 2026 .xlsx#234"
+    ],
+    "dept3": "COM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "COM197/AMP2006": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#235",
+      "Draft Timetable_ Monsoon 2026 .xlsx#236"
+    ],
+    "dept3": "COM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD101/CSD1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1157",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1158",
+      "Draft Timetable_ Monsoon 2026 .xlsx#237",
+      "Draft Timetable_ Monsoon 2026 .xlsx#238",
+      "Draft Timetable_ Monsoon 2026 .xlsx#239",
+      "Draft Timetable_ Monsoon 2026 .xlsx#240",
+      "Draft Timetable_ Monsoon 2026 .xlsx#241",
+      "Draft Timetable_ Monsoon 2026 .xlsx#242",
+      "Draft Timetable_ Monsoon 2026 .xlsx#243",
+      "Draft Timetable_ Monsoon 2026 .xlsx#244",
+      "Draft Timetable_ Monsoon 2026 .xlsx#245",
+      "Draft Timetable_ Monsoon 2026 .xlsx#246",
+      "Draft Timetable_ Monsoon 2026 .xlsx#247",
+      "Draft Timetable_ Monsoon 2026 .xlsx#248",
+      "Draft Timetable_ Monsoon 2026 .xlsx#249",
+      "Draft Timetable_ Monsoon 2026 .xlsx#250",
+      "Draft Timetable_ Monsoon 2026 .xlsx#251",
+      "Draft Timetable_ Monsoon 2026 .xlsx#252"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD102/CSD2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#253",
+      "Draft Timetable_ Monsoon 2026 .xlsx#254",
+      "Draft Timetable_ Monsoon 2026 .xlsx#255",
+      "Draft Timetable_ Monsoon 2026 .xlsx#256",
+      "Draft Timetable_ Monsoon 2026 .xlsx#257",
+      "Draft Timetable_ Monsoon 2026 .xlsx#258",
+      "Draft Timetable_ Monsoon 2026 .xlsx#259",
+      "Draft Timetable_ Monsoon 2026 .xlsx#260"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD205/CSD2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#261",
+      "Draft Timetable_ Monsoon 2026 .xlsx#262",
+      "Draft Timetable_ Monsoon 2026 .xlsx#263",
+      "Draft Timetable_ Monsoon 2026 .xlsx#264",
+      "Draft Timetable_ Monsoon 2026 .xlsx#265",
+      "Draft Timetable_ Monsoon 2026 .xlsx#266",
+      "Draft Timetable_ Monsoon 2026 .xlsx#267",
+      "Draft Timetable_ Monsoon 2026 .xlsx#268"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD211/CSD2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#269",
+      "Draft Timetable_ Monsoon 2026 .xlsx#270",
+      "Draft Timetable_ Monsoon 2026 .xlsx#271",
+      "Draft Timetable_ Monsoon 2026 .xlsx#272",
+      "Draft Timetable_ Monsoon 2026 .xlsx#273",
+      "Draft Timetable_ Monsoon 2026 .xlsx#274",
+      "Draft Timetable_ Monsoon 2026 .xlsx#275",
+      "Draft Timetable_ Monsoon 2026 .xlsx#276"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD213/CSD2004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#277",
+      "Draft Timetable_ Monsoon 2026 .xlsx#278",
+      "Draft Timetable_ Monsoon 2026 .xlsx#279",
+      "Draft Timetable_ Monsoon 2026 .xlsx#280",
+      "Draft Timetable_ Monsoon 2026 .xlsx#281",
+      "Draft Timetable_ Monsoon 2026 .xlsx#282"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD304": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#283",
+      "Draft Timetable_ Monsoon 2026 .xlsx#284",
+      "Draft Timetable_ Monsoon 2026 .xlsx#285",
+      "Draft Timetable_ Monsoon 2026 .xlsx#286",
+      "Draft Timetable_ Monsoon 2026 .xlsx#287",
+      "Draft Timetable_ Monsoon 2026 .xlsx#288",
+      "Draft Timetable_ Monsoon 2026 .xlsx#289",
+      "Draft Timetable_ Monsoon 2026 .xlsx#290"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD311": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#291",
+      "Draft Timetable_ Monsoon 2026 .xlsx#292",
+      "Draft Timetable_ Monsoon 2026 .xlsx#293",
+      "Draft Timetable_ Monsoon 2026 .xlsx#294",
+      "Draft Timetable_ Monsoon 2026 .xlsx#295"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD319": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#296",
+      "Draft Timetable_ Monsoon 2026 .xlsx#297",
+      "Draft Timetable_ Monsoon 2026 .xlsx#298",
+      "Draft Timetable_ Monsoon 2026 .xlsx#299",
+      "Draft Timetable_ Monsoon 2026 .xlsx#300"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD355": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#301",
+      "Draft Timetable_ Monsoon 2026 .xlsx#302",
+      "Draft Timetable_ Monsoon 2026 .xlsx#303"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD358": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#304",
+      "Draft Timetable_ Monsoon 2026 .xlsx#305"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD361": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#306",
+      "Draft Timetable_ Monsoon 2026 .xlsx#307",
+      "Draft Timetable_ Monsoon 2026 .xlsx#308"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD365": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#309",
+      "Draft Timetable_ Monsoon 2026 .xlsx#310",
+      "Draft Timetable_ Monsoon 2026 .xlsx#311"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD436": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#312",
+      "Draft Timetable_ Monsoon 2026 .xlsx#313"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD438": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#314",
+      "Draft Timetable_ Monsoon 2026 .xlsx#315",
+      "Draft Timetable_ Monsoon 2026 .xlsx#316"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD457": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#317",
+      "Draft Timetable_ Monsoon 2026 .xlsx#318",
+      "Draft Timetable_ Monsoon 2026 .xlsx#319"
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CWR1002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1122",
+      "Draft Timetable_ Monsoon 2026 .xlsx#320",
+      "Draft Timetable_ Monsoon 2026 .xlsx#321",
+      "Draft Timetable_ Monsoon 2026 .xlsx#322"
+    ],
+    "dept3": "CWR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CWR2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1123",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1124",
+      "Draft Timetable_ Monsoon 2026 .xlsx#323",
+      "Draft Timetable_ Monsoon 2026 .xlsx#324"
+    ],
+    "dept3": "CWR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES102/DES1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#325",
+      "Draft Timetable_ Monsoon 2026 .xlsx#326",
+      "Draft Timetable_ Monsoon 2026 .xlsx#327"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES103/DES1002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#328",
+      "Draft Timetable_ Monsoon 2026 .xlsx#329"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES104/DES1003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#330",
+      "Draft Timetable_ Monsoon 2026 .xlsx#331",
+      "Draft Timetable_ Monsoon 2026 .xlsx#332"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES105/DES1004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#333",
+      "Draft Timetable_ Monsoon 2026 .xlsx#334",
+      "Draft Timetable_ Monsoon 2026 .xlsx#335"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES106/DES1005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#336",
+      "Draft Timetable_ Monsoon 2026 .xlsx#337"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES131": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#338",
+      "Draft Timetable_ Monsoon 2026 .xlsx#339",
+      "Draft Timetable_ Monsoon 2026 .xlsx#340",
+      "Draft Timetable_ Monsoon 2026 .xlsx#341"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES203/DES2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#342",
+      "Draft Timetable_ Monsoon 2026 .xlsx#343",
+      "Draft Timetable_ Monsoon 2026 .xlsx#344",
+      "Draft Timetable_ Monsoon 2026 .xlsx#345"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES204/DES2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#346",
+      "Draft Timetable_ Monsoon 2026 .xlsx#347",
+      "Draft Timetable_ Monsoon 2026 .xlsx#348",
+      "Draft Timetable_ Monsoon 2026 .xlsx#349"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES205/DES2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#350",
+      "Draft Timetable_ Monsoon 2026 .xlsx#351",
+      "Draft Timetable_ Monsoon 2026 .xlsx#352",
+      "Draft Timetable_ Monsoon 2026 .xlsx#353"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES206/DES2004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#354",
+      "Draft Timetable_ Monsoon 2026 .xlsx#355",
+      "Draft Timetable_ Monsoon 2026 .xlsx#356",
+      "Draft Timetable_ Monsoon 2026 .xlsx#357"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES301/DES3001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#358",
+      "Draft Timetable_ Monsoon 2026 .xlsx#359",
+      "Draft Timetable_ Monsoon 2026 .xlsx#360",
+      "Draft Timetable_ Monsoon 2026 .xlsx#361"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES302/DES3002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#362",
+      "Draft Timetable_ Monsoon 2026 .xlsx#363",
+      "Draft Timetable_ Monsoon 2026 .xlsx#364",
+      "Draft Timetable_ Monsoon 2026 .xlsx#365"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES4001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#366",
+      "Draft Timetable_ Monsoon 2026 .xlsx#367",
+      "Draft Timetable_ Monsoon 2026 .xlsx#368",
+      "Draft Timetable_ Monsoon 2026 .xlsx#369"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES4002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#370",
+      "Draft Timetable_ Monsoon 2026 .xlsx#371",
+      "Draft Timetable_ Monsoon 2026 .xlsx#372",
+      "Draft Timetable_ Monsoon 2026 .xlsx#373"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES4003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#374",
+      "Draft Timetable_ Monsoon 2026 .xlsx#375",
+      "Draft Timetable_ Monsoon 2026 .xlsx#376",
+      "Draft Timetable_ Monsoon 2026 .xlsx#377"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES4007": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#378",
+      "Draft Timetable_ Monsoon 2026 .xlsx#379",
+      "Draft Timetable_ Monsoon 2026 .xlsx#380",
+      "Draft Timetable_ Monsoon 2026 .xlsx#381"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES4008": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#382",
+      "Draft Timetable_ Monsoon 2026 .xlsx#383",
+      "Draft Timetable_ Monsoon 2026 .xlsx#384",
+      "Draft Timetable_ Monsoon 2026 .xlsx#385"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES406/DES4009": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#386",
+      "Draft Timetable_ Monsoon 2026 .xlsx#387",
+      "Draft Timetable_ Monsoon 2026 .xlsx#388",
+      "Draft Timetable_ Monsoon 2026 .xlsx#389"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES4100": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#390",
+      "Draft Timetable_ Monsoon 2026 .xlsx#391",
+      "Draft Timetable_ Monsoon 2026 .xlsx#392",
+      "Draft Timetable_ Monsoon 2026 .xlsx#393"
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DNC214/AMP1005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#394",
+      "Draft Timetable_ Monsoon 2026 .xlsx#395"
+    ],
+    "dept3": "DNC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM104/DOM1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#396",
+      "Draft Timetable_ Monsoon 2026 .xlsx#397",
+      "Draft Timetable_ Monsoon 2026 .xlsx#398",
+      "Draft Timetable_ Monsoon 2026 .xlsx#399",
+      "Draft Timetable_ Monsoon 2026 .xlsx#400",
+      "Draft Timetable_ Monsoon 2026 .xlsx#401"
+    ],
+    "dept3": "DOM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM207": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#402",
+      "Draft Timetable_ Monsoon 2026 .xlsx#403"
+    ],
+    "dept3": "DOM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM304": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#404",
+      "Draft Timetable_ Monsoon 2026 .xlsx#405"
+    ],
+    "dept3": "DOM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM306": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#406",
+      "Draft Timetable_ Monsoon 2026 .xlsx#407",
+      "Draft Timetable_ Monsoon 2026 .xlsx#408",
+      "Draft Timetable_ Monsoon 2026 .xlsx#409",
+      "Draft Timetable_ Monsoon 2026 .xlsx#410",
+      "Draft Timetable_ Monsoon 2026 .xlsx#411"
+    ],
+    "dept3": "DOM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM307": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#412"
+    ],
+    "dept3": "DOM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1131",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1132",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1133",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1134",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1141",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1142",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1143",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1144",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1159",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1160",
+      "Draft Timetable_ Monsoon 2026 .xlsx#413",
+      "Draft Timetable_ Monsoon 2026 .xlsx#414",
+      "Draft Timetable_ Monsoon 2026 .xlsx#415",
+      "Draft Timetable_ Monsoon 2026 .xlsx#416",
+      "Draft Timetable_ Monsoon 2026 .xlsx#417",
+      "Draft Timetable_ Monsoon 2026 .xlsx#418",
+      "Draft Timetable_ Monsoon 2026 .xlsx#419",
+      "Draft Timetable_ Monsoon 2026 .xlsx#420"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#421",
+      "Draft Timetable_ Monsoon 2026 .xlsx#422",
+      "Draft Timetable_ Monsoon 2026 .xlsx#423",
+      "Draft Timetable_ Monsoon 2026 .xlsx#424",
+      "Draft Timetable_ Monsoon 2026 .xlsx#425",
+      "Draft Timetable_ Monsoon 2026 .xlsx#426",
+      "Draft Timetable_ Monsoon 2026 .xlsx#427",
+      "Draft Timetable_ Monsoon 2026 .xlsx#428"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#429",
+      "Draft Timetable_ Monsoon 2026 .xlsx#430",
+      "Draft Timetable_ Monsoon 2026 .xlsx#431",
+      "Draft Timetable_ Monsoon 2026 .xlsx#432",
+      "Draft Timetable_ Monsoon 2026 .xlsx#433",
+      "Draft Timetable_ Monsoon 2026 .xlsx#434",
+      "Draft Timetable_ Monsoon 2026 .xlsx#435",
+      "Draft Timetable_ Monsoon 2026 .xlsx#436"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#437",
+      "Draft Timetable_ Monsoon 2026 .xlsx#438",
+      "Draft Timetable_ Monsoon 2026 .xlsx#439",
+      "Draft Timetable_ Monsoon 2026 .xlsx#440",
+      "Draft Timetable_ Monsoon 2026 .xlsx#441",
+      "Draft Timetable_ Monsoon 2026 .xlsx#442"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#443",
+      "Draft Timetable_ Monsoon 2026 .xlsx#444",
+      "Draft Timetable_ Monsoon 2026 .xlsx#445",
+      "Draft Timetable_ Monsoon 2026 .xlsx#446",
+      "Draft Timetable_ Monsoon 2026 .xlsx#447",
+      "Draft Timetable_ Monsoon 2026 .xlsx#448",
+      "Draft Timetable_ Monsoon 2026 .xlsx#449",
+      "Draft Timetable_ Monsoon 2026 .xlsx#450",
+      "Draft Timetable_ Monsoon 2026 .xlsx#451",
+      "Draft Timetable_ Monsoon 2026 .xlsx#452",
+      "Draft Timetable_ Monsoon 2026 .xlsx#453"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE302": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#454",
+      "Draft Timetable_ Monsoon 2026 .xlsx#455",
+      "Draft Timetable_ Monsoon 2026 .xlsx#456",
+      "Draft Timetable_ Monsoon 2026 .xlsx#457",
+      "Draft Timetable_ Monsoon 2026 .xlsx#458",
+      "Draft Timetable_ Monsoon 2026 .xlsx#459",
+      "Draft Timetable_ Monsoon 2026 .xlsx#460",
+      "Draft Timetable_ Monsoon 2026 .xlsx#461",
+      "Draft Timetable_ Monsoon 2026 .xlsx#462",
+      "Draft Timetable_ Monsoon 2026 .xlsx#463"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE303": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#464",
+      "Draft Timetable_ Monsoon 2026 .xlsx#465",
+      "Draft Timetable_ Monsoon 2026 .xlsx#466",
+      "Draft Timetable_ Monsoon 2026 .xlsx#467"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE305": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#468",
+      "Draft Timetable_ Monsoon 2026 .xlsx#469",
+      "Draft Timetable_ Monsoon 2026 .xlsx#470",
+      "Draft Timetable_ Monsoon 2026 .xlsx#471"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE351": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#472",
+      "Draft Timetable_ Monsoon 2026 .xlsx#473",
+      "Draft Timetable_ Monsoon 2026 .xlsx#474",
+      "Draft Timetable_ Monsoon 2026 .xlsx#475"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE352": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#476",
+      "Draft Timetable_ Monsoon 2026 .xlsx#477",
+      "Draft Timetable_ Monsoon 2026 .xlsx#478"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE353": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#479",
+      "Draft Timetable_ Monsoon 2026 .xlsx#480",
+      "Draft Timetable_ Monsoon 2026 .xlsx#481"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE356": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#482",
+      "Draft Timetable_ Monsoon 2026 .xlsx#483",
+      "Draft Timetable_ Monsoon 2026 .xlsx#484",
+      "Draft Timetable_ Monsoon 2026 .xlsx#485"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE357": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#486",
+      "Draft Timetable_ Monsoon 2026 .xlsx#487",
+      "Draft Timetable_ Monsoon 2026 .xlsx#488",
+      "Draft Timetable_ Monsoon 2026 .xlsx#489"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE363": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#490",
+      "Draft Timetable_ Monsoon 2026 .xlsx#491",
+      "Draft Timetable_ Monsoon 2026 .xlsx#492",
+      "Draft Timetable_ Monsoon 2026 .xlsx#493"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE370": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#494",
+      "Draft Timetable_ Monsoon 2026 .xlsx#495"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE374": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#496",
+      "Draft Timetable_ Monsoon 2026 .xlsx#497"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE451": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#498",
+      "Draft Timetable_ Monsoon 2026 .xlsx#499",
+      "Draft Timetable_ Monsoon 2026 .xlsx#500"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE452": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#501",
+      "Draft Timetable_ Monsoon 2026 .xlsx#502",
+      "Draft Timetable_ Monsoon 2026 .xlsx#503"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE453": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#504",
+      "Draft Timetable_ Monsoon 2026 .xlsx#505"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE454": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#506",
+      "Draft Timetable_ Monsoon 2026 .xlsx#507",
+      "Draft Timetable_ Monsoon 2026 .xlsx#508"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE456": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#509",
+      "Draft Timetable_ Monsoon 2026 .xlsx#510",
+      "Draft Timetable_ Monsoon 2026 .xlsx#511"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE458": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#512",
+      "Draft Timetable_ Monsoon 2026 .xlsx#513",
+      "Draft Timetable_ Monsoon 2026 .xlsx#514"
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO101/ECO1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#515",
+      "Draft Timetable_ Monsoon 2026 .xlsx#516",
+      "Draft Timetable_ Monsoon 2026 .xlsx#517",
+      "Draft Timetable_ Monsoon 2026 .xlsx#518",
+      "Draft Timetable_ Monsoon 2026 .xlsx#519",
+      "Draft Timetable_ Monsoon 2026 .xlsx#520",
+      "Draft Timetable_ Monsoon 2026 .xlsx#521",
+      "Draft Timetable_ Monsoon 2026 .xlsx#522",
+      "Draft Timetable_ Monsoon 2026 .xlsx#523",
+      "Draft Timetable_ Monsoon 2026 .xlsx#524",
+      "Draft Timetable_ Monsoon 2026 .xlsx#525",
+      "Draft Timetable_ Monsoon 2026 .xlsx#526",
+      "Draft Timetable_ Monsoon 2026 .xlsx#527",
+      "Draft Timetable_ Monsoon 2026 .xlsx#528",
+      "Draft Timetable_ Monsoon 2026 .xlsx#529",
+      "Draft Timetable_ Monsoon 2026 .xlsx#530"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO102/ECO1002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#531",
+      "Draft Timetable_ Monsoon 2026 .xlsx#532",
+      "Draft Timetable_ Monsoon 2026 .xlsx#533",
+      "Draft Timetable_ Monsoon 2026 .xlsx#534",
+      "Draft Timetable_ Monsoon 2026 .xlsx#535",
+      "Draft Timetable_ Monsoon 2026 .xlsx#536",
+      "Draft Timetable_ Monsoon 2026 .xlsx#537"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO104/ECO1004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#538",
+      "Draft Timetable_ Monsoon 2026 .xlsx#539",
+      "Draft Timetable_ Monsoon 2026 .xlsx#540",
+      "Draft Timetable_ Monsoon 2026 .xlsx#541",
+      "Draft Timetable_ Monsoon 2026 .xlsx#542"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO108/ECO1009": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#543",
+      "Draft Timetable_ Monsoon 2026 .xlsx#544",
+      "Draft Timetable_ Monsoon 2026 .xlsx#545",
+      "Draft Timetable_ Monsoon 2026 .xlsx#546"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO203/ECO2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#547",
+      "Draft Timetable_ Monsoon 2026 .xlsx#548",
+      "Draft Timetable_ Monsoon 2026 .xlsx#549",
+      "Draft Timetable_ Monsoon 2026 .xlsx#550",
+      "Draft Timetable_ Monsoon 2026 .xlsx#551",
+      "Draft Timetable_ Monsoon 2026 .xlsx#552",
+      "Draft Timetable_ Monsoon 2026 .xlsx#553",
+      "Draft Timetable_ Monsoon 2026 .xlsx#554",
+      "Draft Timetable_ Monsoon 2026 .xlsx#555",
+      "Draft Timetable_ Monsoon 2026 .xlsx#556"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO2101/ECO221": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1175",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1176",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1177",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1178",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1179",
+      "Draft Timetable_ Monsoon 2026 .xlsx#557",
+      "Draft Timetable_ Monsoon 2026 .xlsx#558",
+      "Draft Timetable_ Monsoon 2026 .xlsx#559",
+      "Draft Timetable_ Monsoon 2026 .xlsx#560",
+      "Draft Timetable_ Monsoon 2026 .xlsx#561"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO301/ECO2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#562",
+      "Draft Timetable_ Monsoon 2026 .xlsx#563",
+      "Draft Timetable_ Monsoon 2026 .xlsx#564",
+      "Draft Timetable_ Monsoon 2026 .xlsx#565"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO302": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1183",
+      "Draft Timetable_ Monsoon 2026 .xlsx#566",
+      "Draft Timetable_ Monsoon 2026 .xlsx#567"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO325": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#568",
+      "Draft Timetable_ Monsoon 2026 .xlsx#569",
+      "Draft Timetable_ Monsoon 2026 .xlsx#570",
+      "Draft Timetable_ Monsoon 2026 .xlsx#571"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO354/ECO4201": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#572",
+      "Draft Timetable_ Monsoon 2026 .xlsx#573",
+      "Draft Timetable_ Monsoon 2026 .xlsx#574",
+      "Draft Timetable_ Monsoon 2026 .xlsx#575"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO373": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#576",
+      "Draft Timetable_ Monsoon 2026 .xlsx#577",
+      "Draft Timetable_ Monsoon 2026 .xlsx#578",
+      "Draft Timetable_ Monsoon 2026 .xlsx#579",
+      "Draft Timetable_ Monsoon 2026 .xlsx#580",
+      "Draft Timetable_ Monsoon 2026 .xlsx#581"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO375": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#582",
+      "Draft Timetable_ Monsoon 2026 .xlsx#583",
+      "Draft Timetable_ Monsoon 2026 .xlsx#584",
+      "Draft Timetable_ Monsoon 2026 .xlsx#585"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO402": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#586",
+      "Draft Timetable_ Monsoon 2026 .xlsx#587",
+      "Draft Timetable_ Monsoon 2026 .xlsx#588",
+      "Draft Timetable_ Monsoon 2026 .xlsx#589"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO415/ECO3101": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#590",
+      "Draft Timetable_ Monsoon 2026 .xlsx#591",
+      "Draft Timetable_ Monsoon 2026 .xlsx#592",
+      "Draft Timetable_ Monsoon 2026 .xlsx#593"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO4502": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#594",
+      "Draft Timetable_ Monsoon 2026 .xlsx#595",
+      "Draft Timetable_ Monsoon 2026 .xlsx#596",
+      "Draft Timetable_ Monsoon 2026 .xlsx#597"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO4603": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#598",
+      "Draft Timetable_ Monsoon 2026 .xlsx#599",
+      "Draft Timetable_ Monsoon 2026 .xlsx#600",
+      "Draft Timetable_ Monsoon 2026 .xlsx#601"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO483": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#602",
+      "Draft Timetable_ Monsoon 2026 .xlsx#603",
+      "Draft Timetable_ Monsoon 2026 .xlsx#604",
+      "Draft Timetable_ Monsoon 2026 .xlsx#605"
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENF1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#606",
+      "Draft Timetable_ Monsoon 2026 .xlsx#607",
+      "Draft Timetable_ Monsoon 2026 .xlsx#608",
+      "Draft Timetable_ Monsoon 2026 .xlsx#609"
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENF409": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#610",
+      "Draft Timetable_ Monsoon 2026 .xlsx#611",
+      "Draft Timetable_ Monsoon 2026 .xlsx#612",
+      "Draft Timetable_ Monsoon 2026 .xlsx#613"
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENF4801": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#614",
+      "Draft Timetable_ Monsoon 2026 .xlsx#615"
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG104/CWR1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#616",
+      "Draft Timetable_ Monsoon 2026 .xlsx#617",
+      "Draft Timetable_ Monsoon 2026 .xlsx#618",
+      "Draft Timetable_ Monsoon 2026 .xlsx#619",
+      "Draft Timetable_ Monsoon 2026 .xlsx#620",
+      "Draft Timetable_ Monsoon 2026 .xlsx#621"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG141/ENG1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#622",
+      "Draft Timetable_ Monsoon 2026 .xlsx#623",
+      "Draft Timetable_ Monsoon 2026 .xlsx#624"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG241/ENG2041": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#625",
+      "Draft Timetable_ Monsoon 2026 .xlsx#626",
+      "Draft Timetable_ Monsoon 2026 .xlsx#627"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG242/ENG2042": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#628",
+      "Draft Timetable_ Monsoon 2026 .xlsx#629",
+      "Draft Timetable_ Monsoon 2026 .xlsx#630"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG245/ENG2045": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#631",
+      "Draft Timetable_ Monsoon 2026 .xlsx#632",
+      "Draft Timetable_ Monsoon 2026 .xlsx#633"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG340": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#634",
+      "Draft Timetable_ Monsoon 2026 .xlsx#635",
+      "Draft Timetable_ Monsoon 2026 .xlsx#636"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG342": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#637",
+      "Draft Timetable_ Monsoon 2026 .xlsx#638",
+      "Draft Timetable_ Monsoon 2026 .xlsx#639"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG343": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#640",
+      "Draft Timetable_ Monsoon 2026 .xlsx#641",
+      "Draft Timetable_ Monsoon 2026 .xlsx#642"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG348": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#643",
+      "Draft Timetable_ Monsoon 2026 .xlsx#644",
+      "Draft Timetable_ Monsoon 2026 .xlsx#645"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG440": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#646",
+      "Draft Timetable_ Monsoon 2026 .xlsx#647",
+      "Draft Timetable_ Monsoon 2026 .xlsx#648"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG448": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#649",
+      "Draft Timetable_ Monsoon 2026 .xlsx#650",
+      "Draft Timetable_ Monsoon 2026 .xlsx#651"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG449": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#652",
+      "Draft Timetable_ Monsoon 2026 .xlsx#653",
+      "Draft Timetable_ Monsoon 2026 .xlsx#654"
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#655",
+      "Draft Timetable_ Monsoon 2026 .xlsx#656",
+      "Draft Timetable_ Monsoon 2026 .xlsx#657",
+      "Draft Timetable_ Monsoon 2026 .xlsx#658"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC1002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#659",
+      "Draft Timetable_ Monsoon 2026 .xlsx#660",
+      "Draft Timetable_ Monsoon 2026 .xlsx#661",
+      "Draft Timetable_ Monsoon 2026 .xlsx#662"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC102/FAC1005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#663",
+      "Draft Timetable_ Monsoon 2026 .xlsx#664",
+      "Draft Timetable_ Monsoon 2026 .xlsx#665",
+      "Draft Timetable_ Monsoon 2026 .xlsx#666",
+      "Draft Timetable_ Monsoon 2026 .xlsx#667",
+      "Draft Timetable_ Monsoon 2026 .xlsx#668"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1120",
+      "Draft Timetable_ Monsoon 2026 .xlsx#669",
+      "Draft Timetable_ Monsoon 2026 .xlsx#670",
+      "Draft Timetable_ Monsoon 2026 .xlsx#671"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1121",
+      "Draft Timetable_ Monsoon 2026 .xlsx#672",
+      "Draft Timetable_ Monsoon 2026 .xlsx#673",
+      "Draft Timetable_ Monsoon 2026 .xlsx#674"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC202/FAC2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#675",
+      "Draft Timetable_ Monsoon 2026 .xlsx#676",
+      "Draft Timetable_ Monsoon 2026 .xlsx#677",
+      "Draft Timetable_ Monsoon 2026 .xlsx#678",
+      "Draft Timetable_ Monsoon 2026 .xlsx#679",
+      "Draft Timetable_ Monsoon 2026 .xlsx#680"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC211": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#681",
+      "Draft Timetable_ Monsoon 2026 .xlsx#682"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#683",
+      "Draft Timetable_ Monsoon 2026 .xlsx#684"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC312": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#685",
+      "Draft Timetable_ Monsoon 2026 .xlsx#686"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC313": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#687",
+      "Draft Timetable_ Monsoon 2026 .xlsx#688"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC405": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#689",
+      "Draft Timetable_ Monsoon 2026 .xlsx#690"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC410": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#691",
+      "Draft Timetable_ Monsoon 2026 .xlsx#692",
+      "Draft Timetable_ Monsoon 2026 .xlsx#693",
+      "Draft Timetable_ Monsoon 2026 .xlsx#694"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC415": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#695",
+      "Draft Timetable_ Monsoon 2026 .xlsx#696"
+    ],
+    "dept3": "FAC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#697",
+      "Draft Timetable_ Monsoon 2026 .xlsx#698",
+      "Draft Timetable_ Monsoon 2026 .xlsx#699",
+      "Draft Timetable_ Monsoon 2026 .xlsx#700"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS102": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#701",
+      "Draft Timetable_ Monsoon 2026 .xlsx#702",
+      "Draft Timetable_ Monsoon 2026 .xlsx#703"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS302": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#704",
+      "Draft Timetable_ Monsoon 2026 .xlsx#705",
+      "Draft Timetable_ Monsoon 2026 .xlsx#706"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS303": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#707",
+      "Draft Timetable_ Monsoon 2026 .xlsx#708",
+      "Draft Timetable_ Monsoon 2026 .xlsx#709"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS312": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#710",
+      "Draft Timetable_ Monsoon 2026 .xlsx#711",
+      "Draft Timetable_ Monsoon 2026 .xlsx#712"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS323": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#713",
+      "Draft Timetable_ Monsoon 2026 .xlsx#714",
+      "Draft Timetable_ Monsoon 2026 .xlsx#715"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS325": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#716",
+      "Draft Timetable_ Monsoon 2026 .xlsx#717",
+      "Draft Timetable_ Monsoon 2026 .xlsx#718"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS326": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#719",
+      "Draft Timetable_ Monsoon 2026 .xlsx#720",
+      "Draft Timetable_ Monsoon 2026 .xlsx#721"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS331": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#722",
+      "Draft Timetable_ Monsoon 2026 .xlsx#723",
+      "Draft Timetable_ Monsoon 2026 .xlsx#724"
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#725",
+      "Draft Timetable_ Monsoon 2026 .xlsx#726",
+      "Draft Timetable_ Monsoon 2026 .xlsx#727",
+      "Draft Timetable_ Monsoon 2026 .xlsx#728",
+      "Draft Timetable_ Monsoon 2026 .xlsx#729",
+      "Draft Timetable_ Monsoon 2026 .xlsx#730",
+      "Draft Timetable_ Monsoon 2026 .xlsx#731",
+      "Draft Timetable_ Monsoon 2026 .xlsx#732",
+      "Draft Timetable_ Monsoon 2026 .xlsx#733"
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#734",
+      "Draft Timetable_ Monsoon 2026 .xlsx#735",
+      "Draft Timetable_ Monsoon 2026 .xlsx#736"
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#737",
+      "Draft Timetable_ Monsoon 2026 .xlsx#738",
+      "Draft Timetable_ Monsoon 2026 .xlsx#739"
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#740",
+      "Draft Timetable_ Monsoon 2026 .xlsx#741",
+      "Draft Timetable_ Monsoon 2026 .xlsx#742"
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#743",
+      "Draft Timetable_ Monsoon 2026 .xlsx#744",
+      "Draft Timetable_ Monsoon 2026 .xlsx#745"
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT101/INT1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#746",
+      "Draft Timetable_ Monsoon 2026 .xlsx#747",
+      "Draft Timetable_ Monsoon 2026 .xlsx#748"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT102/INT1002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#749",
+      "Draft Timetable_ Monsoon 2026 .xlsx#750",
+      "Draft Timetable_ Monsoon 2026 .xlsx#751"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT104/INT2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#752",
+      "Draft Timetable_ Monsoon 2026 .xlsx#753",
+      "Draft Timetable_ Monsoon 2026 .xlsx#754"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT203/INT2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#755",
+      "Draft Timetable_ Monsoon 2026 .xlsx#756",
+      "Draft Timetable_ Monsoon 2026 .xlsx#757"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT217/INT2004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#758",
+      "Draft Timetable_ Monsoon 2026 .xlsx#759",
+      "Draft Timetable_ Monsoon 2026 .xlsx#760"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT232/INT3032": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#761",
+      "Draft Timetable_ Monsoon 2026 .xlsx#762",
+      "Draft Timetable_ Monsoon 2026 .xlsx#763"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT246/INT3046": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#764",
+      "Draft Timetable_ Monsoon 2026 .xlsx#765",
+      "Draft Timetable_ Monsoon 2026 .xlsx#766"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#767",
+      "Draft Timetable_ Monsoon 2026 .xlsx#768",
+      "Draft Timetable_ Monsoon 2026 .xlsx#769"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT354": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#770",
+      "Draft Timetable_ Monsoon 2026 .xlsx#771",
+      "Draft Timetable_ Monsoon 2026 .xlsx#772"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT363": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#773",
+      "Draft Timetable_ Monsoon 2026 .xlsx#774",
+      "Draft Timetable_ Monsoon 2026 .xlsx#775"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT365": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#776",
+      "Draft Timetable_ Monsoon 2026 .xlsx#777",
+      "Draft Timetable_ Monsoon 2026 .xlsx#778"
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT100/MAT1000": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#779",
+      "Draft Timetable_ Monsoon 2026 .xlsx#780",
+      "Draft Timetable_ Monsoon 2026 .xlsx#781",
+      "Draft Timetable_ Monsoon 2026 .xlsx#782"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT1003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1145",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1146",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1147",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1148",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1161",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1162",
+      "Draft Timetable_ Monsoon 2026 .xlsx#783",
+      "Draft Timetable_ Monsoon 2026 .xlsx#784",
+      "Draft Timetable_ Monsoon 2026 .xlsx#785",
+      "Draft Timetable_ Monsoon 2026 .xlsx#786",
+      "Draft Timetable_ Monsoon 2026 .xlsx#787",
+      "Draft Timetable_ Monsoon 2026 .xlsx#788",
+      "Draft Timetable_ Monsoon 2026 .xlsx#789",
+      "Draft Timetable_ Monsoon 2026 .xlsx#790"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT1005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#791",
+      "Draft Timetable_ Monsoon 2026 .xlsx#792",
+      "Draft Timetable_ Monsoon 2026 .xlsx#793",
+      "Draft Timetable_ Monsoon 2026 .xlsx#794"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT1008": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#795",
+      "Draft Timetable_ Monsoon 2026 .xlsx#796",
+      "Draft Timetable_ Monsoon 2026 .xlsx#797",
+      "Draft Timetable_ Monsoon 2026 .xlsx#798",
+      "Draft Timetable_ Monsoon 2026 .xlsx#799"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT1009": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1173",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1174",
+      "Draft Timetable_ Monsoon 2026 .xlsx#800",
+      "Draft Timetable_ Monsoon 2026 .xlsx#801",
+      "Draft Timetable_ Monsoon 2026 .xlsx#802",
+      "Draft Timetable_ Monsoon 2026 .xlsx#803"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT101/MAT1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#804",
+      "Draft Timetable_ Monsoon 2026 .xlsx#805",
+      "Draft Timetable_ Monsoon 2026 .xlsx#806",
+      "Draft Timetable_ Monsoon 2026 .xlsx#807",
+      "Draft Timetable_ Monsoon 2026 .xlsx#808",
+      "Draft Timetable_ Monsoon 2026 .xlsx#809"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT160/MAT1006": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#810",
+      "Draft Timetable_ Monsoon 2026 .xlsx#811",
+      "Draft Timetable_ Monsoon 2026 .xlsx#812",
+      "Draft Timetable_ Monsoon 2026 .xlsx#813"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT184/MAT2007": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#814",
+      "Draft Timetable_ Monsoon 2026 .xlsx#815",
+      "Draft Timetable_ Monsoon 2026 .xlsx#816",
+      "Draft Timetable_ Monsoon 2026 .xlsx#817"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#818",
+      "Draft Timetable_ Monsoon 2026 .xlsx#819",
+      "Draft Timetable_ Monsoon 2026 .xlsx#820"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT205/MAT2004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1170",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1171",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1182"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT230": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#821",
+      "Draft Timetable_ Monsoon 2026 .xlsx#822",
+      "Draft Timetable_ Monsoon 2026 .xlsx#823"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT241/MAT2041": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#824",
+      "Draft Timetable_ Monsoon 2026 .xlsx#825",
+      "Draft Timetable_ Monsoon 2026 .xlsx#826"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT331": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#827",
+      "Draft Timetable_ Monsoon 2026 .xlsx#828",
+      "Draft Timetable_ Monsoon 2026 .xlsx#829"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT360": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#830",
+      "Draft Timetable_ Monsoon 2026 .xlsx#831",
+      "Draft Timetable_ Monsoon 2026 .xlsx#832"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT390": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#833",
+      "Draft Timetable_ Monsoon 2026 .xlsx#834",
+      "Draft Timetable_ Monsoon 2026 .xlsx#835"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT422": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#836",
+      "Draft Timetable_ Monsoon 2026 .xlsx#837",
+      "Draft Timetable_ Monsoon 2026 .xlsx#838"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT442": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#839",
+      "Draft Timetable_ Monsoon 2026 .xlsx#840",
+      "Draft Timetable_ Monsoon 2026 .xlsx#841"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT485": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#842",
+      "Draft Timetable_ Monsoon 2026 .xlsx#843",
+      "Draft Timetable_ Monsoon 2026 .xlsx#844"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT494": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#845",
+      "Draft Timetable_ Monsoon 2026 .xlsx#846",
+      "Draft Timetable_ Monsoon 2026 .xlsx#847"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT620": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#848",
+      "Draft Timetable_ Monsoon 2026 .xlsx#849",
+      "Draft Timetable_ Monsoon 2026 .xlsx#850"
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR102": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#851",
+      "Draft Timetable_ Monsoon 2026 .xlsx#852",
+      "Draft Timetable_ Monsoon 2026 .xlsx#853",
+      "Draft Timetable_ Monsoon 2026 .xlsx#854",
+      "Draft Timetable_ Monsoon 2026 .xlsx#855",
+      "Draft Timetable_ Monsoon 2026 .xlsx#856"
+    ],
+    "dept3": "MDR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR152": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#857",
+      "Draft Timetable_ Monsoon 2026 .xlsx#858",
+      "Draft Timetable_ Monsoon 2026 .xlsx#859",
+      "Draft Timetable_ Monsoon 2026 .xlsx#860",
+      "Draft Timetable_ Monsoon 2026 .xlsx#861",
+      "Draft Timetable_ Monsoon 2026 .xlsx#862"
+    ],
+    "dept3": "MDR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR202": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#863",
+      "Draft Timetable_ Monsoon 2026 .xlsx#864",
+      "Draft Timetable_ Monsoon 2026 .xlsx#865"
+    ],
+    "dept3": "MDR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR252": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#866",
+      "Draft Timetable_ Monsoon 2026 .xlsx#867",
+      "Draft Timetable_ Monsoon 2026 .xlsx#868"
+    ],
+    "dept3": "MDR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR302": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#869",
+      "Draft Timetable_ Monsoon 2026 .xlsx#870",
+      "Draft Timetable_ Monsoon 2026 .xlsx#871"
+    ],
+    "dept3": "MDR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR352": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#872",
+      "Draft Timetable_ Monsoon 2026 .xlsx#873",
+      "Draft Timetable_ Monsoon 2026 .xlsx#874"
+    ],
+    "dept3": "MDR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR402": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#875",
+      "Draft Timetable_ Monsoon 2026 .xlsx#876",
+      "Draft Timetable_ Monsoon 2026 .xlsx#877"
+    ],
+    "dept3": "MDR",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MEC 104/MEC2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#878",
+      "Draft Timetable_ Monsoon 2026 .xlsx#879",
+      "Draft Timetable_ Monsoon 2026 .xlsx#880",
+      "Draft Timetable_ Monsoon 2026 .xlsx#881",
+      "Draft Timetable_ Monsoon 2026 .xlsx#882",
+      "Draft Timetable_ Monsoon 2026 .xlsx#883"
+    ],
+    "dept3": "MEC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MEC 301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#884",
+      "Draft Timetable_ Monsoon 2026 .xlsx#885"
+    ],
+    "dept3": "MEC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MEC4005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#886",
+      "Draft Timetable_ Monsoon 2026 .xlsx#887"
+    ],
+    "dept3": "MEC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#888",
+      "Draft Timetable_ Monsoon 2026 .xlsx#889",
+      "Draft Timetable_ Monsoon 2026 .xlsx#890",
+      "Draft Timetable_ Monsoon 2026 .xlsx#891"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED2002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#892",
+      "Draft Timetable_ Monsoon 2026 .xlsx#893",
+      "Draft Timetable_ Monsoon 2026 .xlsx#894",
+      "Draft Timetable_ Monsoon 2026 .xlsx#895"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#896",
+      "Draft Timetable_ Monsoon 2026 .xlsx#897",
+      "Draft Timetable_ Monsoon 2026 .xlsx#898",
+      "Draft Timetable_ Monsoon 2026 .xlsx#899",
+      "Draft Timetable_ Monsoon 2026 .xlsx#900"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED2004": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#901",
+      "Draft Timetable_ Monsoon 2026 .xlsx#902",
+      "Draft Timetable_ Monsoon 2026 .xlsx#903",
+      "Draft Timetable_ Monsoon 2026 .xlsx#904",
+      "Draft Timetable_ Monsoon 2026 .xlsx#905"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#906",
+      "Draft Timetable_ Monsoon 2026 .xlsx#907",
+      "Draft Timetable_ Monsoon 2026 .xlsx#908",
+      "Draft Timetable_ Monsoon 2026 .xlsx#909",
+      "Draft Timetable_ Monsoon 2026 .xlsx#910"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED303": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#911",
+      "Draft Timetable_ Monsoon 2026 .xlsx#912",
+      "Draft Timetable_ Monsoon 2026 .xlsx#913",
+      "Draft Timetable_ Monsoon 2026 .xlsx#914",
+      "Draft Timetable_ Monsoon 2026 .xlsx#915",
+      "Draft Timetable_ Monsoon 2026 .xlsx#916"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED307": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#917",
+      "Draft Timetable_ Monsoon 2026 .xlsx#918"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED309": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#919",
+      "Draft Timetable_ Monsoon 2026 .xlsx#920",
+      "Draft Timetable_ Monsoon 2026 .xlsx#921",
+      "Draft Timetable_ Monsoon 2026 .xlsx#922",
+      "Draft Timetable_ Monsoon 2026 .xlsx#923"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED318": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#924",
+      "Draft Timetable_ Monsoon 2026 .xlsx#925"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED320": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#926",
+      "Draft Timetable_ Monsoon 2026 .xlsx#927",
+      "Draft Timetable_ Monsoon 2026 .xlsx#928"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED328": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#929",
+      "Draft Timetable_ Monsoon 2026 .xlsx#930",
+      "Draft Timetable_ Monsoon 2026 .xlsx#931"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED403": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#932",
+      "Draft Timetable_ Monsoon 2026 .xlsx#933",
+      "Draft Timetable_ Monsoon 2026 .xlsx#934"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED410": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#935",
+      "Draft Timetable_ Monsoon 2026 .xlsx#936"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED412": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#937",
+      "Draft Timetable_ Monsoon 2026 .xlsx#938",
+      "Draft Timetable_ Monsoon 2026 .xlsx#939",
+      "Draft Timetable_ Monsoon 2026 .xlsx#940",
+      "Draft Timetable_ Monsoon 2026 .xlsx#941",
+      "Draft Timetable_ Monsoon 2026 .xlsx#942"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED416": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#943",
+      "Draft Timetable_ Monsoon 2026 .xlsx#944",
+      "Draft Timetable_ Monsoon 2026 .xlsx#945",
+      "Draft Timetable_ Monsoon 2026 .xlsx#946"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED417": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#947",
+      "Draft Timetable_ Monsoon 2026 .xlsx#948",
+      "Draft Timetable_ Monsoon 2026 .xlsx#949",
+      "Draft Timetable_ Monsoon 2026 .xlsx#950"
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#951",
+      "Draft Timetable_ Monsoon 2026 .xlsx#952",
+      "Draft Timetable_ Monsoon 2026 .xlsx#953"
+    ],
+    "dept3": "MGT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT102/MGT1002": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#954",
+      "Draft Timetable_ Monsoon 2026 .xlsx#955",
+      "Draft Timetable_ Monsoon 2026 .xlsx#956",
+      "Draft Timetable_ Monsoon 2026 .xlsx#957",
+      "Draft Timetable_ Monsoon 2026 .xlsx#958",
+      "Draft Timetable_ Monsoon 2026 .xlsx#959"
+    ],
+    "dept3": "MGT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1164",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1165",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1166"
+    ],
+    "dept3": "MGT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#960",
+      "Draft Timetable_ Monsoon 2026 .xlsx#961",
+      "Draft Timetable_ Monsoon 2026 .xlsx#962",
+      "Draft Timetable_ Monsoon 2026 .xlsx#963",
+      "Draft Timetable_ Monsoon 2026 .xlsx#964",
+      "Draft Timetable_ Monsoon 2026 .xlsx#965"
+    ],
+    "dept3": "MGT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT211": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#966",
+      "Draft Timetable_ Monsoon 2026 .xlsx#967"
+    ],
+    "dept3": "MGT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#968",
+      "Draft Timetable_ Monsoon 2026 .xlsx#969",
+      "Draft Timetable_ Monsoon 2026 .xlsx#970",
+      "Draft Timetable_ Monsoon 2026 .xlsx#971",
+      "Draft Timetable_ Monsoon 2026 .xlsx#972",
+      "Draft Timetable_ Monsoon 2026 .xlsx#973"
+    ],
+    "dept3": "MGT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT306": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#974",
+      "Draft Timetable_ Monsoon 2026 .xlsx#975"
+    ],
+    "dept3": "MGT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT402": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#976",
+      "Draft Timetable_ Monsoon 2026 .xlsx#977"
+    ],
+    "dept3": "MGT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT304": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#978",
+      "Draft Timetable_ Monsoon 2026 .xlsx#979"
+    ],
+    "dept3": "MKT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT402": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#980",
+      "Draft Timetable_ Monsoon 2026 .xlsx#981"
+    ],
+    "dept3": "MKT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT404": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#982",
+      "Draft Timetable_ Monsoon 2026 .xlsx#983"
+    ],
+    "dept3": "MKT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT408": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#984",
+      "Draft Timetable_ Monsoon 2026 .xlsx#985"
+    ],
+    "dept3": "MKT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT409": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#986",
+      "Draft Timetable_ Monsoon 2026 .xlsx#987"
+    ],
+    "dept3": "MKT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM103/OHM1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#988",
+      "Draft Timetable_ Monsoon 2026 .xlsx#989",
+      "Draft Timetable_ Monsoon 2026 .xlsx#990",
+      "Draft Timetable_ Monsoon 2026 .xlsx#991",
+      "Draft Timetable_ Monsoon 2026 .xlsx#992",
+      "Draft Timetable_ Monsoon 2026 .xlsx#993"
+    ],
+    "dept3": "OHM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1000",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1001",
+      "Draft Timetable_ Monsoon 2026 .xlsx#994",
+      "Draft Timetable_ Monsoon 2026 .xlsx#995",
+      "Draft Timetable_ Monsoon 2026 .xlsx#996",
+      "Draft Timetable_ Monsoon 2026 .xlsx#997",
+      "Draft Timetable_ Monsoon 2026 .xlsx#998",
+      "Draft Timetable_ Monsoon 2026 .xlsx#999"
+    ],
+    "dept3": "OHM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM303": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1002",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1003"
+    ],
+    "dept3": "OHM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM307": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1006",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1007"
+    ],
+    "dept3": "OHM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM401": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1004",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1005"
+    ],
+    "dept3": "OHM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1008"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY1003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1009",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1010",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1011"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY1007": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1012"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY1011": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1013",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1014",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1015",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1016",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1017",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1018",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1019",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1020",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1021",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1022",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1023",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1024",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1025",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1026",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1027",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1028",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1127",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1128",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1129",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1130",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1137",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1138",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1139",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1140",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1153",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1154",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1155",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1156"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY105/PHY1005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1029",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1030",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1031"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY201/PHY2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1032",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1033",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1034",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1035"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY203/PHY2003": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1036",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1037",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1038"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY205/PHY2005": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1039",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1040",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1041",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1042"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1043",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1044",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1045"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY303": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1046",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1047",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1048"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY305": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1049",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1050",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1051"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY307": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1052",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1053",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1054",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1055"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY551": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1056",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1057"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY556": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1058",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1059"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY558": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1060",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1061"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY560": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1062",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1063"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY565": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1064",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1065"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY572": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1066",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1067"
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SNS1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1135",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1136",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1151",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1152"
+    ],
+    "dept3": "SNS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOC323": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1068",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1069",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1070"
+    ],
+    "dept3": "SOC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOC327": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1071",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1072",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1073"
+    ],
+    "dept3": "SOC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOC414": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1074",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1075",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1076"
+    ],
+    "dept3": "SOC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOC415": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1077",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1078",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1079"
+    ],
+    "dept3": "SOC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOE4801": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1149",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1150"
+    ],
+    "dept3": "SOE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SPO201/SPO2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1080",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1081",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1082",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1083",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1084"
+    ],
+    "dept3": "SPO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "STM103/STM1001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1085",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1086",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1087",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1088",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1089",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1090"
+    ],
+    "dept3": "STM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "STM2001": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1167",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1168",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1169"
+    ],
+    "dept3": "STM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "STM301": {
+    "source_rowids": [
+      "Draft Timetable_ Monsoon 2026 .xlsx#1091",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1092",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1093",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1094",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1095",
+      "Draft Timetable_ Monsoon 2026 .xlsx#1096"
+    ],
+    "dept3": "STM",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "source": {
+    "kind": "academic_office_xlsx",
+    "file": "Draft Timetable_ Monsoon 2026 .xlsx",
+    "checksum": "9eb78bb215d53146",
+    "retrieved_at": "2026-08-11T00:56:13.216212+00:00",
+    "label": "Academic Office draft timetable workbook (Student Council review copy, 10 Aug 23:00)"
+  }
+}
