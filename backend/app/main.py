@@ -710,7 +710,7 @@ async def schedule_explain_exclusion(job_id: str, body: dict):
         for w in req["wishlist"]:
             fc = catalog.get_course(w["code"])
             items.append(WishItem(
-                code=w["code"], packages=tuple(fc["pk"]), credits=float(fc.get("cr", 0)),
+                code=w["code"], packages=tuple(fc["pk"]), credits=catalog.credits_of(fc),
                 intent=w.get("intent", "strong"), priority=int(w.get("priority", 5)),
                 forced=w.get("intent") == "must_have", locked_package=w.get("locked_package"),
                 excluded_packages=tuple(w.get("excluded_packages", [])),

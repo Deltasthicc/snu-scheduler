@@ -110,6 +110,35 @@ def dataset_info() -> dict:
     }
 
 
+def credits_of(course: dict | None, default: float = 0.0) -> float:
+    """Null-safe credit read. Returns `default` when the course is missing OR
+    its credit is null.
+
+    A null credit is a real, legitimate state in this dataset: the University
+    publishes timetables with no credit column, so a course appearing for the
+    very first time (with no prior dataset entry to carry a value forward
+    from) genuinely has no known credit until one is published. `cr: null` is
+    the honest representation of that and must not be replaced by a guess.
+
+    What it must NOT do is crash. `float(course.get("cr", 0))` looks safe but
+    is not: the key EXISTS with a null value, so the 0 default never applies
+    and float(None) raises. That was a live HTTP 500 on
+    /api/v1/wishlists/validate for two real courses (CCC396/CCC2315,
+    MAT205/MAT2004) that a student could put in their wishlist during
+    enrolment week. Callers that want to SHOW the distinction should read
+    `cr` directly and test for None; callers doing arithmetic use this.
+    """
+    if not course:
+        return default
+    value = course.get("cr")
+    if value is None:
+        return default
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
 def all_courses() -> list[dict]:
     _load()
     return _CATALOG

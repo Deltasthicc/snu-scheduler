@@ -7,6 +7,7 @@ accounts for time clashes) is computed by app/services/cp_scheduler.py.
 from __future__ import annotations
 from dataclasses import dataclass, field
 
+from app.domain.catalog import credits_of as course_credits
 from app.models.profile_schemas import ChoiceGroup, ChoiceGroupKind, WishlistIntent, WishlistItem
 
 
@@ -92,7 +93,7 @@ def wishlist_summary(
 
     for it in items:
         course = courses.get(it.code)
-        credits = float(course["cr"]) if course else 0.0
+        credits = course_credits(course)
         category = course["cat"] if course else "unknown"
         pkg_count = _usable_package_count(it, course)
         confirmed = bool(course.get("crOfficial")) if course else False
@@ -124,7 +125,7 @@ def wishlist_summary(
                 baseline_max += credits
 
     by_code = {i.code: i for i in items}
-    credits_of = {i.code: (float(courses[i.code]["cr"]) if courses.get(i.code) else 0.0) for i in items}
+    credits_of = {i.code: course_credits(courses.get(i.code)) for i in items}
     seen_groups: set[int] = set()
     notes: list[str] = []
     min_extra = max_extra = 0.0

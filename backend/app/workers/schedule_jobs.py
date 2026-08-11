@@ -51,7 +51,7 @@ def _worker_entry(req: dict, cancel_ev, prog_q, out_q) -> None:
                 pkg = fc["pk"][f["pkg"]]
                 for m in pkg["m"]:
                     fixed_meetings.append(PlacedMeeting(m=tuple(m), term=pkg["t"], code=f["code"]))
-                fixed_credits += float(fc.get("cr", 0))
+                fixed_credits += catalog.credits_of(fc)
             else:
                 items.append(SearchItem(code=f["code"], packages=tuple(fc["pk"])))
 
@@ -84,7 +84,7 @@ def _solve_wishlist(req: dict, catalog, fixed_meetings, fixed_credits, should_ca
     for w in req["wishlist"]:
         fc = catalog.get_course(w["code"])
         items.append(WishItem(
-            code=w["code"], packages=tuple(fc["pk"]), credits=float(fc.get("cr", 0)),
+            code=w["code"], packages=tuple(fc["pk"]), credits=catalog.credits_of(fc),
             intent=w.get("intent", "strong"), priority=int(w.get("priority", 5)),
             forced=w.get("intent") == "must_have",
             locked_package=w.get("locked_package"),
