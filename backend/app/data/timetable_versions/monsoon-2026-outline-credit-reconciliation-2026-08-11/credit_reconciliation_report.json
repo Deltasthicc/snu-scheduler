@@ -1,0 +1,2720 @@
+[
+  {
+    "code": "ART202/AMP1001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:4] = 4",
+    "new_cr": 4.0,
+    "outline_file": "AMP1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ART220",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 4.0,
+    "outline_file": "ART220_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ART341/AMP2002",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 4.0,
+    "outline_file": "AMP2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ART342",
+    "action": "corrected",
+    "prior_cr": 5.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:4, PRAC:1] = 5",
+    "new_cr": 4.0,
+    "outline_file": "ART342_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO1001",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO1002",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "BIO1002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO1008",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO1008_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO2009",
+    "action": "corrected",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 3.0,
+    "outline_file": "BIO2009_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO202/BIO2002",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO210/BIO2010",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO2010_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO211/BIO2011",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO2011_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO301",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO301_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO302",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO302_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO303",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO303_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO304",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO304_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO323",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO323_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO324",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO324_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO327",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO327_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO330",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "BIO330_Monsoon_2026.pdf"
+  },
+  {
+    "code": "BIO401",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "BIO401_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC122/CCC2105",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3; Second half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC122_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC125/CCC2116",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Second half [LEC:3] = 3; First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC125_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC2103",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC2103_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC2116",
+    "action": "promoted_same_value",
+    "prior_cr": 1.5,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:1.5] = 1.5",
+    "new_cr": 1.5,
+    "outline_file": "CCC2116_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC228/CCC2605",
+    "action": "corrected",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:2] = 2",
+    "new_cr": 1.5,
+    "outline_file": "CCC228_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC236/CCC2117",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Second half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC236_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC255/CCC2206",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC255_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC257/CCC2208",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC257_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC259/CCC2213",
+    "action": "corrected",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Second half [LEC:2] = 2",
+    "new_cr": 1.5,
+    "outline_file": "CCC259_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC261/CCC2214",
+    "action": "corrected",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:2] = 2; Second half [LEC:2] = 2",
+    "new_cr": 1.5,
+    "outline_file": "CCC261_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC356/CCC2501",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CCC356_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC359/CCC2313",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC359_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC395/CCC2502",
+    "action": "promoted_same_value",
+    "prior_cr": 1.5,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:1.5] = 1.5; Second half [LEC:1.5] = 1.5",
+    "new_cr": 1.5,
+    "outline_file": "CCC395_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC407/CCC2200",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC407_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC411/CCC2201",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3; Second half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC411_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC416/CCC2314",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC416_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC419/CCC2202",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC419_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC447/CCC2406",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Second half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC447_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC526/CCC2503",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC2503_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC527/CCC2508",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Second half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC527_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC606/CCC2608",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC644_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC634/CCC2204",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Second half [LEC:3] = 3; First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC634_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC685",
+    "action": "corrected",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Second half [LEC:2] = 2",
+    "new_cr": 1.5,
+    "outline_file": "CCC685_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC704/CCC2302",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 4.0,
+    "outline_file": "CCC2302_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC805/CCC2600",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC805_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC826/CCC2101",
+    "action": "promoted_same_value",
+    "prior_cr": 1.5,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:1.5] = 1.5",
+    "new_cr": 1.5,
+    "outline_file": "CCC2101_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CCC844/CCC2205",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3",
+    "new_cr": 1.5,
+    "outline_file": "CCC844_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED2001",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:1, PRAC:1] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CED2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED2002",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED2003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CED2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED2004",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CED2004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED2005",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED2005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED304",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CED304_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED305",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED305_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED310",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED310_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED316",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED316_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED325",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED325_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED326",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CED326_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED412",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, TUT:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED412_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED424",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED424_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED425",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED425_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CED640",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CED640_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD2001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHD2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD2002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHD2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD2003",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHD2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD2004",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CHD2004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD310",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHD310_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD318",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHD318_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD319",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [PRAC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CHD319_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD320",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHD320_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD413",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHD413_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD418",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [PRAC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CHD418_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHD471",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHD471_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY103/CHY1003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHY1003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY111/CHY1011",
+    "action": "reconfirmed",
+    "prior_cr": 5.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1, PRAC:1] = 5",
+    "new_cr": 5.0,
+    "outline_file": "CHY1011_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY115/CHY1015",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHY1015_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY211/CHY2011",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHY2011_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY214/CHY2014",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHY2014_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY221/CHY2021",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, TUT:1, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHY2021_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY245/CHY2045",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHY2045_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY3041",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CHY3041_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY311",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHY311_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY313",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CHY313_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY321",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CHY321_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY323",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHY323_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY351",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CHY351_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CHY400",
+    "action": "corrected",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "First half [LEC:3] = 3; Full semester [LEC:1] = 1",
+    "new_cr": 1.0,
+    "outline_file": "CHY400_Monsoon_2026.pdf"
+  },
+  {
+    "code": "COM191/AMP2004",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, TUT:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "AMP2004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "COM197/AMP2006",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 4.0,
+    "outline_file": "AMP2006_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD101/CSD1001",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CSD1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD205/CSD2002",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CSD2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD211/CSD2003",
+    "action": "reconfirmed",
+    "prior_cr": 5.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1, PRAC:1] = 5",
+    "new_cr": 5.0,
+    "outline_file": "CSD2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD213/CSD2004",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CSD2004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD304",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CSD304_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD311",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CSD311_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD319",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CSD319_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD355",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CSD355_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD358",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CSD358_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD361",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CSD361_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD365",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CSD365_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD436",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CSD436_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD438",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CSD438_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CSD457",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "CSD457_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CWR1002",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CWR1002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "CWR2002",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "CWR2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES102/DES1001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES103/DES1002",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [PRAC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "DES1002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES104/DES1003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES1003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES105/DES1004",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:1, PRAC:2] = 3",
+    "new_cr": 3.0,
+    "outline_file": "DES1004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES106/DES1005",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "DES1005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES131",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES131_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES203/DES2001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES204/DES2002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES205/DES2003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES206/DES2004",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:1, PRAC:3] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES2004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES301/DES3001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES3001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES302/DES3002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES3002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES4001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES4001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES4002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES4002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES4003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES4003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES4007",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES4007_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES4008",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES4008_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DES4100",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:2] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DES4100_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DNC214/AMP1005",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:4] = 4",
+    "new_cr": 4.0,
+    "outline_file": "AMP1005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DOM104/DOM1001",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "DOM1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DOM207",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:4] = 4",
+    "new_cr": 4.0,
+    "outline_file": "DOM207_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DOM304",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "DOM304_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DOM306",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "DOM306_Monsoon_2026.pdf"
+  },
+  {
+    "code": "DOM307",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "DOM307_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE1001",
+    "action": "corrected_official_override",
+    "prior_cr": 5.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE2001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE2002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE2003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE301",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE301_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE302",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE302_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE303",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE303_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE305",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE305_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE351",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE351_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE352",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE352_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE353",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE353_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE356",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE356_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE357",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE357_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE363",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE363_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE370",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE370_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE374",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE374_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE451",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE451_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE452",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE452_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE453",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE453_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE454",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECE454_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE456",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE456_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECE458",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ECE458_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO101/ECO1001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO102/ECO1002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO1002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO104/ECO1004",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO1004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO108/ECO1009",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO1009_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO203/ECO2003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO2101/ECO221",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO2101_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO301/ECO2001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO325",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO325_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO354/ECO4201",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO4201_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO375",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO375_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO402",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO402_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO415/ECO3101",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO415_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO4502",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO4502_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO4603",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO4603_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ECO483",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ECO483_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENF1001",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ENF1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENF409",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "ENF409_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENF4801",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 2.0,
+    "outline_file": "ENF4801_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG104/CWR1001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "CWR1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG241/ENG2041",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG2041_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG242/ENG2042",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG2042_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG245/ENG2045",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG2045_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG340",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG340_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG342",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG342_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG343",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG343_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG348",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG348_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG440",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG440_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG448",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG448_Monsoon_2026.pdf"
+  },
+  {
+    "code": "ENG449",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "ENG449_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC1001",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC102/FAC1005",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC1005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC2001",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "FAC2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC2002",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC202/FAC2003",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC211",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC211_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC301",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC301_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC312",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC312_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC313",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC313_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC405",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC405_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC410",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "FAC410_Monsoon_2026.pdf"
+  },
+  {
+    "code": "FAC415",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 4.0,
+    "outline_file": "FAC415_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS1001",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "HIS1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS102",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "HIS102_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS302",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "HIS302_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS303",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "HIS303_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS312",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "HIS312_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS323",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "HIS323_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS325",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "HIS325_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS326",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "HIS326_Monsoon_2026.pdf"
+  },
+  {
+    "code": "HIS331",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "HIS331_Monsoon_2026.pdf"
+  },
+  {
+    "code": "IHS1001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "IHS1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "IHS1002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "IHS1002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "IHS1003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "IHS1003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "IHS1004",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "IHS1004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "IHS1005",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "IHS1005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT101/INT1001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT102/INT1002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT1002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT104/INT2002",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT203/INT2003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT217/INT2004",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT2004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT232/INT3032",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT3032_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT246/INT3046",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT3046_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT301",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT301_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT354",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT354_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT363",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT363_Monsoon_2026.pdf"
+  },
+  {
+    "code": "INT365",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "INT365_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT100/MAT1000",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT1000_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT1003",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT1003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT1005",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT1005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT1008",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT1008_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT1009",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT1009_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT101/MAT1001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT184/MAT2007",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT2007_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT2001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT205/MAT2004",
+    "action": "filled_null",
+    "prior_cr": null,
+    "prior_crOfficial": false,
+    "prior_crBasis": "NEEDS_MANUAL_REVIEW: course not present in the prior dataset; no credit source available",
+    "new_cr": 3.0,
+    "outline_file": "MAT2004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT230",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT230_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT241/MAT2041",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT2041_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT331",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT331_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT360",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT360_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT390",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT390_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT422",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT422_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT442",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT442_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT485",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT485_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT494",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT494_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MAT620",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MAT620_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MDR102",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MDR102\u252c\u00e1_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MDR152",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MDR152\u252c\u00e1_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MDR202",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MDR202\u252c\u00e1_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MDR302",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MDR302 _Monsoon_2026.pdf"
+  },
+  {
+    "code": "MDR402",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MDR402_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MEC 104/MEC2001",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MEC2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MEC4005",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MEC4005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED2001",
+    "action": "corrected_official_override",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED2002",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED2002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED2004",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MED2004_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED301",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, TUT:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED301_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED303",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MED303_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED307",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 4.0,
+    "outline_file": "MED307_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED309",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, TUT:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED309_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED318",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED318_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED320",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED320_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED328",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED328_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED403",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED403_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED410",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED410_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED412",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MED412_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED416",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED416_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MED417",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MED417_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MGT1001",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "MGT1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MGT102/MGT1002",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MGT1002_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MGT2001",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:4] = 4",
+    "new_cr": 4.0,
+    "outline_file": "MGT2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MGT2003",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MGT2003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MGT211",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MGT211_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MGT301",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MGT301_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MGT306",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MGT306_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MGT402",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MGT402_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MKT304",
+    "action": "corrected",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:4] = 4",
+    "new_cr": 3.0,
+    "outline_file": "MKT304_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MKT402",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MKT402_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MKT404",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MKT404_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MKT408",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MKT408_Monsoon_2026.pdf"
+  },
+  {
+    "code": "MKT409",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "MKT409_Monsoon_2026.pdf"
+  },
+  {
+    "code": "OHM103/OHM1001",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "OHM1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "OHM2001",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "OHM2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "OHM303",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "OHM303_Monsoon_2026.pdf"
+  },
+  {
+    "code": "OHM401",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "OHM401_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY1001",
+    "action": "corrected_official_override",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:1] = 1",
+    "new_cr": 1.0,
+    "outline_file": "PHY1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY1003",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "PHY1003_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY1007",
+    "action": "reconfirmed",
+    "prior_cr": 1.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [PRAC:1] = 1",
+    "new_cr": 1.0,
+    "outline_file": "PHY1007_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY1011",
+    "action": "corrected_official_override",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1, PRAC:1] = 5",
+    "new_cr": 5.0,
+    "outline_file": "PHY1011_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY105/PHY1005",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:1, TUT:1, PRAC:1] = 3",
+    "new_cr": 3.0,
+    "outline_file": "PHY1005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY201/PHY2001",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "PHY2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY205/PHY2005",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "PHY2005_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY301",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "PHY301_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY303",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "PHY303_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY305",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "PHY305_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY307",
+    "action": "reconfirmed",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:2, TUT:1, PRAC:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "PHY307_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY551",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "PHY551_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY556",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "PHY556_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY558",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "PHY558_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY560",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "PHY560_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY565",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "PHY565_Monsoon_2026.pdf"
+  },
+  {
+    "code": "PHY572",
+    "action": "reconfirmed",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "PHY572_Monsoon_2026.pdf"
+  },
+  {
+    "code": "SNS1001",
+    "action": "promoted_same_value",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:2] = 2",
+    "new_cr": 2.0,
+    "outline_file": "SNS1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "SOC323",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "SOC323_Monsoon_2026.pdf"
+  },
+  {
+    "code": "SOC327",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "SOC327_Monsoon_2026.pdf"
+  },
+  {
+    "code": "SOC414",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "SOC414_Monsoon_2026.pdf"
+  },
+  {
+    "code": "SOC415",
+    "action": "promoted_same_value",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3, TUT:1] = 4",
+    "new_cr": 4.0,
+    "outline_file": "SOC415_Monsoon_2026.pdf"
+  },
+  {
+    "code": "SOE4801",
+    "action": "corrected",
+    "prior_cr": 1.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:1] = 1",
+    "new_cr": 2.0,
+    "outline_file": "SOE4801_Monsoon_2026.pdf"
+  },
+  {
+    "code": "SPO201/SPO2001",
+    "action": "corrected",
+    "prior_cr": 5.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:1, PRAC:4] = 5",
+    "new_cr": 3.0,
+    "outline_file": "SPO201_Monsoon_2026.pdf"
+  },
+  {
+    "code": "STM103/STM1001",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "STM1001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "STM2001",
+    "action": "corrected",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 2.0,
+    "outline_file": "STM2001_Monsoon_2026.pdf"
+  },
+  {
+    "code": "STM301",
+    "action": "promoted_same_value",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "prior_crBasis": "Full semester [LEC:3] = 3",
+    "new_cr": 3.0,
+    "outline_file": "STM301_Monsoon_2026.pdf"
+  }
+]

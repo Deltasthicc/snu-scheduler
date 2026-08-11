@@ -82,6 +82,25 @@ def test_csd211_packages_are_batch_coherent_not_a_cross_batch_cross_product():
     assert batches_per_package == {("CSD21",), ("CSD22",), ("CSD23",), ("CSD24",)}
 
 
+def test_credits_reconciled_against_outline_pdfs_not_the_contact_hour_guess():
+    """4 courses were hardcoded `crOfficial: true` with a credit value that
+    turned out to be a data-entry mistake - confirmed against the Academic
+    Office's own course-outline PDFs directly, byte for byte, before this
+    was trusted (see tools/reconcile_credits_from_outlines.py and CLAUDE.md
+    s.22). Pinned at the live catalog level so a future re-import that
+    carries the *old* wrong value forward (the normal, correct behaviour for
+    a course the new source doesn't mention) can't silently regress this."""
+    expected = {
+        "ECE1001": 3.0, "MED2001": 3.0, "PHY1001": 1.0, "PHY1011": 5.0,
+        "MAT205/MAT2004": 3.0,  # previously null - the exact course test_null_credits.py exists for
+    }
+    for code, cr in expected.items():
+        course = catalog.get_course(code)
+        assert course is not None, code
+        assert course["cr"] == cr, f"{code}: expected {cr}, got {course['cr']}"
+        assert course["crOfficial"] is True, f"{code}: should be sourced from the outline PDF"
+
+
 def test_office_draft_audit_diff_matches_the_actual_previous_version():
     previous = json.loads((VERSIONS / "monsoon-2026-netlify-revision-2026-08-10" /
                            "courses.json").read_text(encoding="utf-8"))

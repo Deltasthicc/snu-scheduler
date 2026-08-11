@@ -1947,3 +1947,92 @@ for "has an outline on file" was not added to the picker's existing filter
 row (24 codes with an outline aren't even in the active catalogue, so a
 literal filter there would be somewhat orphaned); the desktop `.exe` rebuild
 itself (see above).
+
+---
+
+## 22. Session update — 2026-08-11 (later): credits reconciled against the
+## outline PDFs - a real 4-course "official" data-entry error found and fixed
+
+The user asked directly whether the outline PDFs' credit and faculty data had
+actually been integrated, not just displayed. Faculty was already wired into
+the modal (§21); credits were shown there too, but never checked against the
+catalog's own `cr` field. The user's framing was exactly right: `crOfficial`
+was already `false` on 294 of 327 courses, and `crBasis` makes the reason
+explicit - it is a formula derived from counting the timetable's own
+LEC/TUT/PRAC section counts per week (e.g. `"Full semester [LEC:3, TUT:1] =
+4"`), not a University-published number. The outline PDFs' Section A credits
+field is the real thing; the University "publishes timetables with no credit
+column" at all (catalog.py's own docstring), so this project's own guess was
+never going to out-rank it.
+
+**Checked before touching anything, not assumed.** Cross-referenced all 328
+outlines against the 327-course catalog: 25 courses have no matching outline
+(kept as-is, still honestly `crOfficial: false`, except 2 that were already
+official from an untraceable earlier source and simply have no outline to
+compare against); of the 302 with an outline, 234 already agreed with the
+guess (promoted to `crOfficial: true` anyway - the number was accidentally
+right, but the *source* is now real), 27 were already marked official and
+agreed, and **41 disagreed outright** - including **4 that were already
+marked `crOfficial: true`**: ECE1001 (5.0 -> 3.0), MED2001 (4.0 -> 3.0),
+PHY1001 (4.0 -> 1.0), PHY1011 (4.0 -> 5.0). One previously-null course
+(MAT205/MAT2004, the exact course named in the null-credit crash this project
+fixed once already) got a real value (3.0) for the first time.
+
+**The 4 "official" corrections were verified two independent ways before
+being trusted**, since overriding an existing `crOfficial: true` value is the
+highest-stakes case: (1) in every one of the 4, the outline figure also
+matches what `crBasis`'s own contact-hour formula would have computed -
+meaning the hardcoded "official" number was the one out of step with two
+independently-derived sources, not the outline; (2) re-extracted the raw text
+of all 4 PDFs directly from the source zip with a throwaway script,
+independent of `tools/parse_course_outlines.py` entirely, and confirmed the
+Section A credits line by eye for each: `"ECE1001 ... 3 Monsoon 2026"`,
+`"MED2001 ... 3 Monsoon 2026"`, `"PHY1001 ... 1 Monsoon 2026"`, `"PHY1011 ...
+5 Monsoon 2026"`. Also spot-checked several of the other 37 the same way
+(CCC2116, ART342, CCC2103) - all matched the parser's own output exactly.
+
+**Implementation**: `tools/reconcile_credits_from_outlines.py` reprocesses
+the currently-active dataset (no timetable rows change - times, rooms,
+sections, packages are untouched) through the exact same versioned
+stage -> diff -> apply pipeline every other dataset change in this project
+uses (`app.timetable_updates.apply.stage_version`/`apply_version`,
+`diff_datasets`, `canonical_checksum`) - never a hand-edit of `courses.json`.
+Defaults to a dry-run (stages under `timetable_versions/` and prints every
+change for review); `--apply` commits. New active version:
+`monsoon-2026-outline-credit-reconciliation-2026-08-11` - the diff against
+the previous active version reports 302 changed (any course whose `cr`,
+`crOfficial`, or `crBasis` moved), 0 added/removed/renamed, matching the
+reconciliation's own report exactly. `provenance.json` and a new
+`credit_reconciliation_report.json` record, per course, the prior value and
+which of five actions was taken (`corrected`, `corrected_official_override`,
+`filled_null`, `promoted_same_value`, `reconfirmed`), so the full trail is
+auditable without re-deriving it.
+
+**Verified, not assumed, before and after applying**: checked every test file
+mentioning any of the 41 changed course codes (`test_api_schedules.py`,
+`test_catalog.py`, `test_null_credits.py`, `test_advisement_report.py`,
+`e2e.test.js`) - none assert a specific credit *value* for any of them, so
+none were at risk of a hardcoded-number regression. `frontend/src/data.json`
+and `backend/app/data/courses.json` reconfirmed byte-identical after the
+apply (the drift check `test_backend_copy_matches_frontend_source` depends
+on). Reran the full suite; loaded the real app in a browser and confirmed
+PHY1001 now shows `1` credit with no "unconfirmed" dotted underline and
+`title="official"` in the picker table, and the outline modal's own credit
+tag reads the same `1 credits` - both numbers agree because both now read
+from the same reconciled source.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 241 passed, 1 skipped (unchanged - no test asserted the old values)
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 55 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 76 passed
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+```
+
+**Explicitly not done this session**: the desktop `.exe` was not rebuilt
+against the new dataset version (nothing about the packaging changed, only
+the data file's contents - the next real rebuild will pick it up
+automatically); the 2 courses with no outline but a pre-existing, untraceable
+`crOfficial: true` value (CSD102/CSD2001, PHY203/PHY2003 - the latter is one
+of the 9 blank-template decoy filenames from §21, so its real outline was
+never actually submitted) were left exactly as they were, since there is
+nothing stronger than what they already have to reconcile against.

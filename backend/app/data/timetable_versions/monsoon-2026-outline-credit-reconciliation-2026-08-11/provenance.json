@@ -1,0 +1,2116 @@
+{
+  "ART202/AMP1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "AMP1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ART220": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ART220_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "ART341/AMP2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "AMP2002_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "ART342": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ART342_Monsoon_2026.pdf",
+    "prior_cr": 5.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "BIO1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO1001_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO1002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO1002_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO1008": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO1008_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO2009": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO2009_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "BIO202/BIO2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO2002_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO210/BIO2010": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO2010_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO211/BIO2011": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO2011_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO301": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO301_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO302": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO302_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO303": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO303_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO304": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO304_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO323": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO323_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO324": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO324_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO327": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO327_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO330": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO330_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "BIO401": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "BIO401_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CCC122/CCC2105": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC122_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC125/CCC2116": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC125_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC2103": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC2103_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC2116": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC2116_Monsoon_2026.pdf",
+    "prior_cr": 1.5,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CCC228/CCC2605": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC228_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC236/CCC2117": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC236_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC255/CCC2206": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC255_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC257/CCC2208": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC257_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC259/CCC2213": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC259_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC261/CCC2214": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC261_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC356/CCC2501": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC356_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CCC359/CCC2313": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC359_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC395/CCC2502": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC395_Monsoon_2026.pdf",
+    "prior_cr": 1.5,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CCC407/CCC2200": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC407_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC411/CCC2201": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC411_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC416/CCC2314": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC416_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC419/CCC2202": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC419_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC447/CCC2406": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC447_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC526/CCC2503": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC2503_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC527/CCC2508": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC527_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC606/CCC2608": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC644_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC634/CCC2204": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC634_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC685": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC685_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC704/CCC2302": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC2302_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC805/CCC2600": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC805_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CCC826/CCC2101": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC2101_Monsoon_2026.pdf",
+    "prior_cr": 1.5,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CCC844/CCC2205": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CCC844_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CED2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED2001_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED2002_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED2003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED2004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED2004_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED2005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED2005_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED304": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED304_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED305": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED305_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED310": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED310_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED316": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED316_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED325": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED325_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED326": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED326_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED412": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED412_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED424": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED424_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED425": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED425_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CED640": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CED640_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD2001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD2002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD2003_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD2004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD2004_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD310": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD310_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD318": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD318_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD319": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD319_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD320": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD320_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD413": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD413_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD418": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD418_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHD471": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHD471_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY103/CHY1003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY1003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY111/CHY1011": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY1011_Monsoon_2026.pdf",
+    "prior_cr": 5.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CHY115/CHY1015": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY1015_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY211/CHY2011": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY2011_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY214/CHY2014": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY2014_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY221/CHY2021": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY2021_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY245/CHY2045": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY2045_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY3041": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY3041_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY311": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY311_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY313": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY313_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY321": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY321_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY323": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY323_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY351": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY351_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CHY400": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CHY400_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "COM191/AMP2004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "AMP2004_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "COM197/AMP2006": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "AMP2006_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "CSD101/CSD1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD205/CSD2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD2002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD211/CSD2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD2003_Monsoon_2026.pdf",
+    "prior_cr": 5.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD213/CSD2004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD2004_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD304": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD304_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD311": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD311_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD319": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD319_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD355": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD355_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD358": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD358_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD361": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD361_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CSD365": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD365_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CSD436": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD436_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CSD438": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD438_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CSD457": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CSD457_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "CWR1002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CWR1002_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "CWR2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CWR2002_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES102/DES1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES103/DES1002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES1002_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES104/DES1003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES1003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES105/DES1004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES1004_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES106/DES1005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES1005_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES131": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES131_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES203/DES2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES2001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES204/DES2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES2002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES205/DES2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES2003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES206/DES2004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES2004_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES301/DES3001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES3001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES302/DES3002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES3002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES4001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES4001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES4002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES4002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES4003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES4003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES4007": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES4007_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES4008": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES4008_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DES4100": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DES4100_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DNC214/AMP1005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "AMP1005_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DOM104/DOM1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DOM1001_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DOM207": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DOM207_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DOM304": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DOM304_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DOM306": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DOM306_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "DOM307": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "DOM307_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE1001_Monsoon_2026.pdf",
+    "prior_cr": 5.0,
+    "prior_crOfficial": true,
+    "action": "corrected_official_override"
+  },
+  "ECE2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE2001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE2002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE2003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE301": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE301_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE302": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE302_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE303": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE303_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE305": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE305_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE351": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE351_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE352": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE352_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE353": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE353_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE356": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE356_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE357": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE357_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE363": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE363_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE370": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE370_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE374": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE374_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE451": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE451_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE452": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE452_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE453": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE453_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE454": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE454_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE456": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE456_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECE458": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECE458_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO101/ECO1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO102/ECO1002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO1002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO104/ECO1004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO1004_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO108/ECO1009": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO1009_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO203/ECO2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO2003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO2101/ECO221": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO2101_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO301/ECO2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO2001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO325": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO325_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO354/ECO4201": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO4201_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO375": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO375_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO402": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO402_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO415/ECO3101": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO415_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO4502": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO4502_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO4603": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO4603_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ECO483": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ECO483_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENF1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENF1001_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENF409": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENF409_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENF4801": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENF4801_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "ENG104/CWR1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "CWR1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG241/ENG2041": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG2041_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG242/ENG2042": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG2042_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG245/ENG2045": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG2045_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG340": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG340_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG342": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG342_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG343": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG343_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG348": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG348_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG440": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG440_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG448": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG448_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "ENG449": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "ENG449_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC1001_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC102/FAC1005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC1005_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC2001_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC2002_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC202/FAC2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC2003_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC211": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC211_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC301": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC301_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC312": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC312_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC313": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC313_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC405": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC405_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC410": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC410_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "FAC415": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "FAC415_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "HIS1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS1001_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "HIS102": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS102_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "HIS302": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS302_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "HIS303": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS303_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "HIS312": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS312_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "HIS323": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS323_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "HIS325": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS325_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "HIS326": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS326_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "HIS331": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "HIS331_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "IHS1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "IHS1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "IHS1002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "IHS1002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "IHS1003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "IHS1003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "IHS1004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "IHS1004_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "IHS1005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "IHS1005_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT101/INT1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT102/INT1002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT1002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT104/INT2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT2002_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT203/INT2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT2003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT217/INT2004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT2004_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT232/INT3032": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT3032_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT246/INT3046": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT3046_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT301": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT301_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT354": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT354_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT363": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT363_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "INT365": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "INT365_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT100/MAT1000": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT1000_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT1003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT1003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT1005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT1005_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT1008": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT1008_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT1009": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT1009_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT101/MAT1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT184/MAT2007": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT2007_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT2001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT205/MAT2004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT2004_Monsoon_2026.pdf",
+    "prior_cr": null,
+    "prior_crOfficial": false,
+    "action": "filled_null"
+  },
+  "MAT230": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT230_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT241/MAT2041": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT2041_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT331": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT331_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT360": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT360_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT390": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT390_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT422": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT422_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT442": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT442_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT485": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT485_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT494": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT494_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MAT620": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MAT620_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MDR102": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MDR102\u252c\u00e1_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MDR152": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MDR152\u252c\u00e1_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MDR202": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MDR202\u252c\u00e1_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MDR302": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MDR302 _Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MDR402": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MDR402_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MEC 104/MEC2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MEC2001_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MEC4005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MEC4005_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED2001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "corrected_official_override"
+  },
+  "MED2002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED2002_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED2004": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED2004_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED301": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED301_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED303": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED303_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED307": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED307_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "MED309": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED309_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED318": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED318_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED320": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED320_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED328": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED328_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED403": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED403_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED410": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED410_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED412": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED412_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED416": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED416_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MED417": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MED417_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MGT1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MGT1001_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MGT102/MGT1002": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MGT1002_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MGT2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MGT2001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MGT2003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MGT2003_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MGT211": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MGT211_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MGT301": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MGT301_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MGT306": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MGT306_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MGT402": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MGT402_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MKT304": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MKT304_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "MKT402": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MKT402_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MKT404": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MKT404_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MKT408": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MKT408_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "MKT409": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "MKT409_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "OHM103/OHM1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "OHM1001_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "OHM2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "OHM2001_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "OHM303": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "OHM303_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "OHM401": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "OHM401_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "PHY1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY1001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "corrected_official_override"
+  },
+  "PHY1003": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY1003_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY1007": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY1007_Monsoon_2026.pdf",
+    "prior_cr": 1.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY1011": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY1011_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "corrected_official_override"
+  },
+  "PHY105/PHY1005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY1005_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY201/PHY2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY2001_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY205/PHY2005": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY2005_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY301": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY301_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY303": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY303_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY305": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY305_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY307": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY307_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY551": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY551_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY556": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY556_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY558": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY558_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY560": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY560_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY565": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY565_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "PHY572": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "PHY572_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": true,
+    "action": "reconfirmed"
+  },
+  "SNS1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "SNS1001_Monsoon_2026.pdf",
+    "prior_cr": 2.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "SOC323": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "SOC323_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "SOC327": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "SOC327_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "SOC414": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "SOC414_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "SOC415": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "SOC415_Monsoon_2026.pdf",
+    "prior_cr": 4.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "SOE4801": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "SOE4801_Monsoon_2026.pdf",
+    "prior_cr": 1.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "SPO201/SPO2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "SPO201_Monsoon_2026.pdf",
+    "prior_cr": 5.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "STM103/STM1001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "STM1001_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  },
+  "STM2001": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "STM2001_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "corrected"
+  },
+  "STM301": {
+    "credit_source": "academic_office_outline",
+    "outline_file": "STM301_Monsoon_2026.pdf",
+    "prior_cr": 3.0,
+    "prior_crOfficial": false,
+    "action": "promoted_same_value"
+  }
+}

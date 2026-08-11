@@ -1,0 +1,3980 @@
+{
+  "renamed_courses": [],
+  "added_courses": [],
+  "removed_courses": [],
+  "changed_courses": [
+    {
+      "code": "ART202/AMP1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:4] = 4",
+          "new": "Academic Office course outline (AMP1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ART220",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 4.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (ART220_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ART341/AMP2002",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 4.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (AMP2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ART342",
+      "diffs": {
+        "cr": {
+          "old": 5.0,
+          "new": 4.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:4, PRAC:1] = 5",
+          "new": "Academic Office course outline (ART342_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (BIO1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO1002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (BIO1002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO1008",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (BIO1008_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO2009",
+      "diffs": {
+        "cr": {
+          "old": 4.0,
+          "new": 3.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (BIO2009_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO202/BIO2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (BIO2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO210/BIO2010",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (BIO2010_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO211/BIO2011",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (BIO2011_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO301",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (BIO301_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO302",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (BIO302_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO303",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (BIO303_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO304",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (BIO304_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO323",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (BIO323_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO324",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (BIO324_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO327",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (BIO327_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO330",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (BIO330_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "BIO401",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (BIO401_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC122/CCC2105",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3; Second half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC122_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC125/CCC2116",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Second half [LEC:3] = 3; First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC125_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC2103",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC2103_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC2116",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:1.5] = 1.5",
+          "new": "Academic Office course outline (CCC2116_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC228/CCC2605",
+      "diffs": {
+        "cr": {
+          "old": 2.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:2] = 2",
+          "new": "Academic Office course outline (CCC228_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC236/CCC2117",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Second half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC236_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC255/CCC2206",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC255_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC257/CCC2208",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC257_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC259/CCC2213",
+      "diffs": {
+        "cr": {
+          "old": 2.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Second half [LEC:2] = 2",
+          "new": "Academic Office course outline (CCC259_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC261/CCC2214",
+      "diffs": {
+        "cr": {
+          "old": 2.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:2] = 2; Second half [LEC:2] = 2",
+          "new": "Academic Office course outline (CCC261_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC356/CCC2501",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC356_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC359/CCC2313",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC359_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC395/CCC2502",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:1.5] = 1.5; Second half [LEC:1.5] = 1.5",
+          "new": "Academic Office course outline (CCC395_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC407/CCC2200",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC407_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC411/CCC2201",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3; Second half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC411_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC416/CCC2314",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC416_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC419/CCC2202",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC419_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC447/CCC2406",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Second half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC447_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC526/CCC2503",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC2503_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC527/CCC2508",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Second half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC527_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC606/CCC2608",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC644_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC634/CCC2204",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Second half [LEC:3] = 3; First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC634_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC685",
+      "diffs": {
+        "cr": {
+          "old": 2.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Second half [LEC:2] = 2",
+          "new": "Academic Office course outline (CCC685_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC704/CCC2302",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 4.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC2302_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC805/CCC2600",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC805_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC826/CCC2101",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:1.5] = 1.5",
+          "new": "Academic Office course outline (CCC2101_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CCC844/CCC2205",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 1.5
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3",
+          "new": "Academic Office course outline (CCC844_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:1, PRAC:1] = 2",
+          "new": "Academic Office course outline (CED2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CED2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED2003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CED2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED2004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CED2004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED2005",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CED2005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED304",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CED304_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED305",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CED305_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED310",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CED310_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED316",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CED316_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED325",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CED325_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED326",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (CED326_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED412",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, TUT:1] = 3",
+          "new": "Academic Office course outline (CED412_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED424",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CED424_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED425",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CED425_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CED640",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CED640_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (CHD2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (CHD2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD2003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CHD2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD2004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (CHD2004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD310",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CHD310_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD318",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CHD318_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD319",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [PRAC:2] = 2",
+          "new": "Academic Office course outline (CHD319_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD320",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CHD320_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD413",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CHD413_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD418",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [PRAC:2] = 2",
+          "new": "Academic Office course outline (CHD418_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHD471",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CHD471_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY103/CHY1003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (CHY1003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY111/CHY1011",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1, PRAC:1] = 5",
+          "new": "Academic Office course outline (CHY1011_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY115/CHY1015",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CHY1015_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY211/CHY2011",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CHY2011_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY214/CHY2014",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CHY2014_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY221/CHY2021",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, TUT:1, PRAC:1] = 4",
+          "new": "Academic Office course outline (CHY2021_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY245/CHY2045",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CHY2045_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY3041",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (CHY3041_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY311",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (CHY311_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY313",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (CHY313_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY321",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (CHY321_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY323",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CHY323_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY351",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CHY351_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CHY400",
+      "diffs": {
+        "cr": {
+          "old": 2.0,
+          "new": 1.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "First half [LEC:3] = 3; Full semester [LEC:1] = 1",
+          "new": "Academic Office course outline (CHY400_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "COM191/AMP2004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, TUT:2] = 4",
+          "new": "Academic Office course outline (AMP2004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "COM197/AMP2006",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 4.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (AMP2006_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD101/CSD1001",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CSD1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD205/CSD2002",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (CSD2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD211/CSD2003",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1, PRAC:1] = 5",
+          "new": "Academic Office course outline (CSD2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD213/CSD2004",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CSD2004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD304",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CSD304_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD311",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CSD311_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD319",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (CSD319_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD355",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CSD355_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD358",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CSD358_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD361",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CSD361_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD365",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CSD365_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD436",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (CSD436_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD438",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CSD438_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CSD457",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (CSD457_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CWR1002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (CWR1002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "CWR2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (CWR2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES102/DES1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES103/DES1002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [PRAC:2] = 2",
+          "new": "Academic Office course outline (DES1002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES104/DES1003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (DES1003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES105/DES1004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:1, PRAC:2] = 3",
+          "new": "Academic Office course outline (DES1004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES106/DES1005",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (DES1005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES131",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES131_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES203/DES2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES204/DES2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES205/DES2003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES206/DES2004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:1, PRAC:3] = 4",
+          "new": "Academic Office course outline (DES2004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES301/DES3001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES3001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES302/DES3002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES3002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES4001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES4001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES4002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES4002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES4003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (DES4003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES4007",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES4007_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES4008",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES4008_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DES4100",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:2] = 4",
+          "new": "Academic Office course outline (DES4100_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DNC214/AMP1005",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:4] = 4",
+          "new": "Academic Office course outline (AMP1005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DOM104/DOM1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (DOM1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DOM207",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:4] = 4",
+          "new": "Academic Office course outline (DOM207_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DOM304",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (DOM304_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DOM306",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (DOM306_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "DOM307",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (DOM307_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE1001",
+      "diffs": {
+        "cr": {
+          "old": 5.0,
+          "new": 3.0
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (ECE1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE2003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE301",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE301_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE302",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE302_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE303",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE303_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE305",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE305_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE351",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE351_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE352",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE352_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE353",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE353_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE356",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE356_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE357",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE357_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE363",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE363_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE370",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE370_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE374",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE374_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE451",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE451_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE452",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE452_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE453",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE453_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE454",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (ECE454_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE456",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE456_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECE458",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ECE458_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO101/ECO1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO102/ECO1002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO1002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO104/ECO1004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO1004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO108/ECO1009",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO1009_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO203/ECO2003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO2101/ECO221",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO2101_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO301/ECO2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO325",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO325_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO354/ECO4201",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO4201_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO375",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO375_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO402",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO402_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO415/ECO3101",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO415_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO4502",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO4502_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO4603",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO4603_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ECO483",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ECO483_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENF1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ENF1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENF409",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ENF409_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENF4801",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 2.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (ENF4801_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG104/CWR1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (CWR1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG241/ENG2041",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG2041_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG242/ENG2042",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG2042_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG245/ENG2045",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG2045_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG340",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG340_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG342",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG342_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG343",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG343_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG348",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG348_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG440",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG440_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG448",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG448_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "ENG449",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (ENG449_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC102/FAC1005",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC1005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (FAC2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC202/FAC2003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC211",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC211_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC301",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC301_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC312",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC312_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC313",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC313_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC405",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC405_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC410",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC410_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "FAC415",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 4.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (FAC415_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (HIS1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS102",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (HIS102_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS302",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (HIS302_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS303",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (HIS303_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS312",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (HIS312_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS323",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (HIS323_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS325",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (HIS325_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS326",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (HIS326_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "HIS331",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (HIS331_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "IHS1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (IHS1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "IHS1002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (IHS1002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "IHS1003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (IHS1003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "IHS1004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (IHS1004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "IHS1005",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (IHS1005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT101/INT1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT102/INT1002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT1002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT104/INT2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT203/INT2003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT217/INT2004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT2004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT232/INT3032",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT3032_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT246/INT3046",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT3046_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT301",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT301_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT354",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT354_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT363",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT363_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "INT365",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (INT365_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT100/MAT1000",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT1000_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT1003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT1003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT1005",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT1005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT1008",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT1008_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT1009",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT1009_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT101/MAT1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT184/MAT2007",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT2007_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT205/MAT2004",
+      "diffs": {
+        "cr": {
+          "old": null,
+          "new": 3.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "NEEDS_MANUAL_REVIEW: course not present in the prior dataset; no credit source available",
+          "new": "Academic Office course outline (MAT2004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT230",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT230_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT241/MAT2041",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT2041_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT331",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT331_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT360",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT360_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT390",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (MAT390_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT422",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT422_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT442",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT442_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT485",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT485_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT494",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (MAT494_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MAT620",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MAT620_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MDR102",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MDR102\u252c\u00e1_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MDR152",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MDR152\u252c\u00e1_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MDR202",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MDR202\u252c\u00e1_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MDR302",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MDR302 _Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MDR402",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (MDR402_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MEC 104/MEC2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MEC2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MEC4005",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MEC4005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED2001",
+      "diffs": {
+        "cr": {
+          "old": 4.0,
+          "new": 3.0
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (MED2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED2002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (MED2002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED2004",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (MED2004_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED301",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, TUT:1] = 3",
+          "new": "Academic Office course outline (MED301_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED303",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (MED303_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED307",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 4.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MED307_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED309",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, TUT:1] = 3",
+          "new": "Academic Office course outline (MED309_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED318",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MED318_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED320",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MED320_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED328",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (MED328_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED403",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (MED403_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED410",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MED410_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED412",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, PRAC:1] = 4",
+          "new": "Academic Office course outline (MED412_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED416",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (MED416_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MED417",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2, PRAC:1] = 3",
+          "new": "Academic Office course outline (MED417_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MGT1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (MGT1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MGT102/MGT1002",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MGT1002_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MGT2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:4] = 4",
+          "new": "Academic Office course outline (MGT2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MGT2003",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MGT2003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MGT211",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MGT211_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MGT301",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MGT301_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MGT306",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MGT306_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MGT402",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MGT402_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MKT304",
+      "diffs": {
+        "cr": {
+          "old": 4.0,
+          "new": 3.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:4] = 4",
+          "new": "Academic Office course outline (MKT304_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MKT402",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MKT402_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MKT404",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MKT404_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MKT408",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MKT408_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "MKT409",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (MKT409_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "OHM103/OHM1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (OHM1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "OHM2001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (OHM2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "OHM303",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (OHM303_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "OHM401",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (OHM401_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY1001",
+      "diffs": {
+        "cr": {
+          "old": 4.0,
+          "new": 1.0
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:1] = 1",
+          "new": "Academic Office course outline (PHY1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY1003",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (PHY1003_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY1007",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [PRAC:1] = 1",
+          "new": "Academic Office course outline (PHY1007_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY1011",
+      "diffs": {
+        "cr": {
+          "old": 4.0,
+          "new": 5.0
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1, PRAC:1] = 5",
+          "new": "Academic Office course outline (PHY1011_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY105/PHY1005",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:1, TUT:1, PRAC:1] = 3",
+          "new": "Academic Office course outline (PHY1005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY201/PHY2001",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (PHY2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY205/PHY2005",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (PHY2005_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY301",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (PHY301_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY303",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (PHY303_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY305",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (PHY305_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY307",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:2, TUT:1, PRAC:1] = 4",
+          "new": "Academic Office course outline (PHY307_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY551",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (PHY551_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY556",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (PHY556_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY558",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (PHY558_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY560",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (PHY560_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY565",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (PHY565_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "PHY572",
+      "diffs": {
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (PHY572_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "SNS1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:2] = 2",
+          "new": "Academic Office course outline (SNS1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "SOC323",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (SOC323_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "SOC327",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (SOC327_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "SOC414",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (SOC414_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "SOC415",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3, TUT:1] = 4",
+          "new": "Academic Office course outline (SOC415_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "SOE4801",
+      "diffs": {
+        "cr": {
+          "old": 1.0,
+          "new": 2.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:1] = 1",
+          "new": "Academic Office course outline (SOE4801_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "SPO201/SPO2001",
+      "diffs": {
+        "cr": {
+          "old": 5.0,
+          "new": 3.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:1, PRAC:4] = 5",
+          "new": "Academic Office course outline (SPO201_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "STM103/STM1001",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (STM1001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "STM2001",
+      "diffs": {
+        "cr": {
+          "old": 3.0,
+          "new": 2.0
+        },
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (STM2001_Monsoon_2026.pdf)"
+        }
+      }
+    },
+    {
+      "code": "STM301",
+      "diffs": {
+        "crOfficial": {
+          "old": false,
+          "new": true
+        },
+        "crBasis": {
+          "old": "Full semester [LEC:3] = 3",
+          "new": "Academic Office course outline (STM301_Monsoon_2026.pdf)"
+        }
+      }
+    }
+  ],
+  "summary": {
+    "renamed": 0,
+    "added": 0,
+    "removed": 0,
+    "changed": 302,
+    "unchanged": 25
+  }
+}
