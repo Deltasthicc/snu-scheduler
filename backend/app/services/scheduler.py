@@ -19,8 +19,19 @@ from dataclasses import dataclass
 from typing import Callable
 
 
+# "Both half" arrived with the 2026-08-10 Academic Office draft workbook: a
+# CCC offered in BOTH the first and second half at the same weekly slot, so it
+# occupies that slot all semester exactly like "Full semester" does. Modelling
+# terms as the set of halves they occupy handles all four values without
+# special-casing, and - critically - stops a "Both half" course being read as
+# non-overlapping with a "First half" one, which the old string equality would
+# have done and would have hidden real clashes.
+def _spans_both_halves(term: str) -> bool:
+    return term in ("Full semester", "Both half")
+
+
 def _term_overlap(a: str, b: str) -> bool:
-    return a == b or a == "Full semester" or b == "Full semester"
+    return a == b or _spans_both_halves(a) or _spans_both_halves(b)
 
 
 def _meetings_overlap(a: tuple, b: tuple, term_a: str, term_b: str) -> bool:

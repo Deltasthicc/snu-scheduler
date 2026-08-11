@@ -20,9 +20,13 @@
   if (typeof module === 'object' && module.exports) module.exports = factory();
   else g.CLASH = factory();
 }(function () {
+  // "Both half" (a CCC running in both halves at the same weekly slot) occupies
+  // that slot all semester, so it overlaps exactly what "Full semester" does.
+  // Must stay identical to backend app/services/scheduler.py::_term_overlap.
+  function spansBothHalves(t) { return t === 'Full semester' || t === 'Both half'; }
   function termsOverlap(a, b) {
     if (a === b) return true;
-    return a === 'Full semester' || b === 'Full semester';
+    return spansBothHalves(a) || spansBothHalves(b);
   }
   function meetingsOverlap(m1, t1, m2, t2) {
     if (m1.d !== m2.d) return false;

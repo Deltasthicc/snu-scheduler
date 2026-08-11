@@ -4,7 +4,9 @@ function drawTT(){
   const filt=$('ttTerm')?$('ttTerm').value:'all';
   let ev=fixedMeets();
   Object.keys(PICK).forEach(c=>ev=ev.concat(pkgMeets(c,PICK[c].pkg)));
-  if(filt!=='all') ev=ev.filter(e=>e.term==='Full semester'||e.term===filt);
+  // spansBoth() covers "Both half" too: it genuinely runs in the half being
+  // filtered for, so hiding it would under-report that half's real load.
+  if(filt!=='all') ev=ev.filter(e=>spansBoth(e.term)||e.term===filt);
   if(!ev.length){ $('ttGrid').innerHTML='<div class="note">Nothing scheduled yet.</div>';
     $('ttReport').innerHTML=''; drawLoad([]); return; }
   const cf=[]; const badKey=new Set();

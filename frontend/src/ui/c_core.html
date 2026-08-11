@@ -8,7 +8,11 @@ const f1=n=>(Math.round(n*10)/10);
 function hm(m){const h=Math.floor(m/60),q=m%60,ap=h>=12?'PM':'AM';let x=h%12;if(!x)x=12;
   return x+':'+String(q).padStart(2,'0')+' '+ap;}
 /* term overlap: two half-semester terms in opposite halves never collide */
-function tOv(a,b){ if(a===b) return true; return a==='Full semester'||b==='Full semester'; }
+/* "Both half" = a CCC running in both halves at the same weekly slot, so it
+   occupies that slot all semester and overlaps whatever "Full semester" does.
+   Must stay identical to backend app/services/scheduler.py::_term_overlap. */
+function spansBoth(t){ return t==='Full semester'||t==='Both half'; }
+function tOv(a,b){ if(a===b) return true; return spansBoth(a)||spansBoth(b); }
 /* meeting = [day, start, end, comp, sec, room] */
 function mOv(a,b,ta,tb){ return a[0]===b[0] && tOv(ta,tb) && a[1]<b[2] && b[1]<a[2]; }
 
