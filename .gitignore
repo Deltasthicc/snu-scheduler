@@ -18,3 +18,20 @@ frontend/tests/a11y-results.json
 user_profile.local.json
 user_profile.local.*.json
 **/user_profile.local*.json
+
+# Source workbooks from the Academic Office. The student-batch workbook is a
+# ROSTER (roll number, full name, year, batch, major for ~2,700 named people)
+# and must never reach this public repo or a public deployment. Only the
+# anonymous aggregate that tools/derive_batch_catalogue.py produces
+# (backend/app/data/student_batches.json - batch, year, programme, headcount)
+# is committed. Timetable workbooks are ignored too: they are inputs to
+# tools/import_office_timetable_xlsx.py, whose normalized + checksummed output
+# under backend/app/data/timetable_versions/ is the artifact worth versioning.
+*.xlsx
+*.xls
+# Anchored to the repo root on purpose. Unanchored, this also matched
+# backend/app/data/student_batches.json - the ANONYMOUS derived catalogue that
+# must ship - because the match is case-insensitive on Windows, silently
+# excluding the very artifact this rule exists to make safe to publish.
+/Student*Batches*
+

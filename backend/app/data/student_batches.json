@@ -1,0 +1,632 @@
+{
+  "source": "Student Batches.xlsx",
+  "note": "Anonymous aggregate derived from the Academic Office student-batch workbook. Contains no roll numbers and no names - only batch, year, programme and headcount.",
+  "batch_count": 104,
+  "student_count": 2672,
+  "batches": [
+    {
+      "batch": "BIO21",
+      "year": 2,
+      "programme": "BSCSN-BIO (Biotechnology)",
+      "size": 24
+    },
+    {
+      "batch": "BIO22",
+      "year": 2,
+      "programme": "BSCSN-BIO (Biotechnology)",
+      "size": 24
+    },
+    {
+      "batch": "BIO31",
+      "year": 3,
+      "programme": "BSCSN-BIO (Biotechnology)",
+      "size": 20
+    },
+    {
+      "batch": "BIO32",
+      "year": 3,
+      "programme": "BSCSN-BIO (Biotechnology)",
+      "size": 21
+    },
+    {
+      "batch": "BIO4YR",
+      "year": 4,
+      "programme": "BSCSN-BIO (Biotechnology)",
+      "size": 25
+    },
+    {
+      "batch": "BMS21",
+      "year": 2,
+      "programme": "BMS-SME (Bachelor of Management Studies)",
+      "size": 65
+    },
+    {
+      "batch": "BMS22",
+      "year": 2,
+      "programme": "BMS-SME (Bachelor of Management Studies)",
+      "size": 68
+    },
+    {
+      "batch": "BMS23",
+      "year": 2,
+      "programme": "BMS-SME (Bachelor of Management Studies)",
+      "size": 67
+    },
+    {
+      "batch": "BMS31",
+      "year": 3,
+      "programme": "BMS-SME (Bachelor of Management Studies)",
+      "size": 55
+    },
+    {
+      "batch": "BMS32",
+      "year": 3,
+      "programme": "BMS-SME (Bachelor of Management Studies)",
+      "size": 56
+    },
+    {
+      "batch": "BMS33",
+      "year": 3,
+      "programme": "BMS-SME (Bachelor of Management Studies)",
+      "size": 54
+    },
+    {
+      "batch": "BMS4YR",
+      "year": 4,
+      "programme": "BMS-SME (Bachelor of Management Studies)",
+      "size": 129
+    },
+    {
+      "batch": "CED2YR",
+      "year": 2,
+      "programme": "BTECH-CED (Civil Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "CED3YR",
+      "year": 3,
+      "programme": "BTECH-CED (Civil Engineering)",
+      "size": 14
+    },
+    {
+      "batch": "CED4YR",
+      "year": 4,
+      "programme": "BTECH-CED (Civil Engineering)",
+      "size": 6
+    },
+    {
+      "batch": "CHD2YR",
+      "year": 2,
+      "programme": "BTECH-CHED (Chemical Engineering)",
+      "size": 27
+    },
+    {
+      "batch": "CHD3YR",
+      "year": 3,
+      "programme": "BTECH-CHED (Chemical Engineering)",
+      "size": 32
+    },
+    {
+      "batch": "CHD4YR",
+      "year": 4,
+      "programme": "BTECH-CHED (Chemical Engineering)",
+      "size": 18
+    },
+    {
+      "batch": "CHY2YR",
+      "year": 2,
+      "programme": "BSCSN-CHY (Chemistry)",
+      "size": 12
+    },
+    {
+      "batch": "CHY3YR",
+      "year": 3,
+      "programme": "BSCSN-CHY (Chemistry)",
+      "size": 18
+    },
+    {
+      "batch": "CHY4YR",
+      "year": 4,
+      "programme": "BSCSN-CHY (Chemistry)",
+      "size": 14
+    },
+    {
+      "batch": "CSD21",
+      "year": 2,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 51
+    },
+    {
+      "batch": "CSD22",
+      "year": 2,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 50
+    },
+    {
+      "batch": "CSD23",
+      "year": 2,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 50
+    },
+    {
+      "batch": "CSD24",
+      "year": 2,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 50
+    },
+    {
+      "batch": "CSD31",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD310",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD311",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 17
+    },
+    {
+      "batch": "CSD32",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD33",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD34",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD35",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD36",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD37",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD38",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD39",
+      "year": 3,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 20
+    },
+    {
+      "batch": "CSD4YR",
+      "year": 4,
+      "programme": "BTECH-CSD (Computer Science and Engineering)",
+      "size": 130
+    },
+    {
+      "batch": "DES2YR",
+      "year": 2,
+      "programme": "BDES (Design)",
+      "size": 26
+    },
+    {
+      "batch": "DES31",
+      "year": 3,
+      "programme": "BDES (Design)",
+      "size": 22
+    },
+    {
+      "batch": "DES32",
+      "year": 3,
+      "programme": "BDES (Design)",
+      "size": 24
+    },
+    {
+      "batch": "DES4YR",
+      "year": 4,
+      "programme": "BDES (Design)",
+      "size": 24
+    },
+    {
+      "batch": "ECE21",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE210",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE211",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE212",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE213",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE214",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE215",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE22",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE23",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE24",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE25",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE26",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE27",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE28",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE29",
+      "year": 2,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 9
+    },
+    {
+      "batch": "ECE31",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 32
+    },
+    {
+      "batch": "ECE310",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 6
+    },
+    {
+      "batch": "ECE311",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 6
+    },
+    {
+      "batch": "ECE32",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 32
+    },
+    {
+      "batch": "ECE33",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 32
+    },
+    {
+      "batch": "ECE34",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 32
+    },
+    {
+      "batch": "ECE35",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 32
+    },
+    {
+      "batch": "ECE36",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 13
+    },
+    {
+      "batch": "ECE37",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 13
+    },
+    {
+      "batch": "ECE38",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 12
+    },
+    {
+      "batch": "ECE39",
+      "year": 3,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 12
+    },
+    {
+      "batch": "ECE4YR",
+      "year": 4,
+      "programme": "BTECH-ECE (Electrical and Computer Engineering)",
+      "size": 89
+    },
+    {
+      "batch": "ECO21",
+      "year": 2,
+      "programme": "BSCHS-ECO (Economics)",
+      "size": 27
+    },
+    {
+      "batch": "ECO22",
+      "year": 2,
+      "programme": "BSCHS-ECO (Economics)",
+      "size": 26
+    },
+    {
+      "batch": "ECO31",
+      "year": 3,
+      "programme": "BSCHS-ECO (Economics)",
+      "size": 25
+    },
+    {
+      "batch": "ECO32",
+      "year": 3,
+      "programme": "BSCHS-ECO (Economics)",
+      "size": 25
+    },
+    {
+      "batch": "ECO4YR",
+      "year": 4,
+      "programme": "BSCHS-ECO (Economics)",
+      "size": 41
+    },
+    {
+      "batch": "ENF21",
+      "year": 2,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 25
+    },
+    {
+      "batch": "ENF22",
+      "year": 2,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 25
+    },
+    {
+      "batch": "ENF23",
+      "year": 2,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 24
+    },
+    {
+      "batch": "ENF24",
+      "year": 2,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 24
+    },
+    {
+      "batch": "ENF31",
+      "year": 3,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 26
+    },
+    {
+      "batch": "ENF32",
+      "year": 3,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 26
+    },
+    {
+      "batch": "ENF33",
+      "year": 3,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 25
+    },
+    {
+      "batch": "ENF41",
+      "year": 4,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 28
+    },
+    {
+      "batch": "ENF42",
+      "year": 4,
+      "programme": "BSCHS-ENF (Economics and Finance)",
+      "size": 28
+    },
+    {
+      "batch": "ENG2YR",
+      "year": 2,
+      "programme": "BA-ENG (English)",
+      "size": 8
+    },
+    {
+      "batch": "ENG3YR",
+      "year": 3,
+      "programme": "BA-ENG (English)",
+      "size": 12
+    },
+    {
+      "batch": "ENG4YR",
+      "year": 4,
+      "programme": "BA-ENG (English)",
+      "size": 13
+    },
+    {
+      "batch": "HIS3YR",
+      "year": 3,
+      "programme": "BA-HIS (History)",
+      "size": 9
+    },
+    {
+      "batch": "HIS4YR",
+      "year": 4,
+      "programme": "BA-HIS (History)",
+      "size": 9
+    },
+    {
+      "batch": "INT2YR",
+      "year": 2,
+      "programme": "BA-IRGS (International Relations)",
+      "size": 22
+    },
+    {
+      "batch": "INT3YR",
+      "year": 3,
+      "programme": "BA-IRGS (International Relations)",
+      "size": 35
+    },
+    {
+      "batch": "INT4YR",
+      "year": 4,
+      "programme": "BA-IRGS (International Relations)",
+      "size": 28
+    },
+    {
+      "batch": "MAT2YR",
+      "year": 2,
+      "programme": "BSCSN-MAT (Mathematics)",
+      "size": 19
+    },
+    {
+      "batch": "MAT3YR",
+      "year": 3,
+      "programme": "BSCSN-MAT (Mathematics)",
+      "size": 24
+    },
+    {
+      "batch": "MAT4YR",
+      "year": 4,
+      "programme": "BSCSN-MAT (Mathematics)",
+      "size": 20
+    },
+    {
+      "batch": "MED21",
+      "year": 2,
+      "programme": "BTECH-MED (Mechanical Engineering)",
+      "size": 24
+    },
+    {
+      "batch": "MED22",
+      "year": 2,
+      "programme": "BTECH-MED (Mechanical Engineering)",
+      "size": 24
+    },
+    {
+      "batch": "MED31",
+      "year": 3,
+      "programme": "BTECH-MED (Mechanical Engineering)",
+      "size": 22
+    },
+    {
+      "batch": "MED32",
+      "year": 3,
+      "programme": "BTECH-MED (Mechanical Engineering)",
+      "size": 21
+    },
+    {
+      "batch": "MED33",
+      "year": 3,
+      "programme": "BTECH-MED (Mechanical Engineering)",
+      "size": 21
+    },
+    {
+      "batch": "MED4YR",
+      "year": 4,
+      "programme": "BTECH-MED (Mechanical Engineering)",
+      "size": 36
+    },
+    {
+      "batch": "PHY2YR",
+      "year": 2,
+      "programme": "BSCSN-PHY (Physics)",
+      "size": 24
+    },
+    {
+      "batch": "PHY3YR",
+      "year": 3,
+      "programme": "BSCSN-PHY (Physics)",
+      "size": 27
+    },
+    {
+      "batch": "PHY4YR",
+      "year": 4,
+      "programme": "BSCSN-PHY (Physics)",
+      "size": 29
+    },
+    {
+      "batch": "SOC3YR",
+      "year": 3,
+      "programme": "BA-SOC (Sociology)",
+      "size": 10
+    },
+    {
+      "batch": "SOC4YR",
+      "year": 4,
+      "programme": "BA-SOC (Sociology)",
+      "size": 12
+    }
+  ]
+}
