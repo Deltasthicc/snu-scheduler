@@ -80,6 +80,18 @@ tr:last-child td{border-bottom:0}td.num{font-family:var(--mono);font-variant-num
 .bar{height:5px;background:var(--s3);border-radius:3px;overflow:hidden;margin-top:4px}
 .bar>i{display:block;height:100%;background:var(--sig);border-radius:3px}
 .bar.ok>i{background:var(--ok)}.bar.bad>i{background:var(--bad)}
+.wish-option{margin-top:12px}
+.wish-option-best{border-color:var(--sig);box-shadow:0 0 0 1px var(--sig) inset}
+.wish-chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;align-items:center}
+.wish-chip{display:inline-flex;align-items:center;gap:3px;padding:4px 9px;border-radius:20px;font-size:11px;
+  font-family:var(--mono);background:var(--s2);border:1px solid var(--line);white-space:nowrap}
+.wish-chip-fixed{opacity:.72;border-style:dashed}
+.wish-chip-row-excluded{margin-top:7px;opacity:.85}
+.wish-chip-excluded{background:transparent;border:1px dashed var(--line);color:var(--dim);text-decoration:line-through;
+  text-decoration-color:color-mix(in srgb,var(--dim) 45%,transparent)}
+.wish-why-btn{display:inline-grid;place-items:center;width:15px;height:15px;margin-left:2px;border:1px solid var(--line2);
+  border-radius:50%;background:var(--s1);color:var(--sig-hi);font-size:9px;line-height:1;cursor:pointer;text-decoration:none}
+.wish-why-btn:hover{background:var(--sigbg)}
 .ladder{position:relative;height:32px;background:var(--s2);border:1px solid var(--line);border-radius:5px;overflow:hidden}
 .ld{position:absolute;bottom:0;background:var(--vio);opacity:.5}
 .lb{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--sig);box-shadow:0 0 6px var(--sig)}
@@ -107,6 +119,9 @@ details.more>*:last-child{margin-bottom:14px}
 .hrlab{font-family:var(--mono);font-size:9.5px;color:var(--faint);text-align:right;padding-right:5px;position:absolute;right:0;transform:translateY(-6px)}
 .ev{position:absolute;left:2px;right:2px;border-radius:4px;padding:2px 4px;overflow:hidden;font-size:9.5px;line-height:1.25;font-family:var(--mono);z-index:2;cursor:default}
 .ev b{font-size:10px}
+.ev b,.ev-title,.ev-when{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev-title{font-family:var(--body);font-weight:600;opacity:.92}
+.ev-when{opacity:.75}
 .ev.fix{background:#2F3B45;color:#D6E0E7;border-left:3px solid var(--dim)}
 .ev.me{background:#4A3717;color:#F5D09B;border-left:3px solid var(--sig)}
 .ev.uwe{background:#173A34;color:#9CDECF;border-left:3px solid var(--ok)}

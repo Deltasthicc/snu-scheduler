@@ -10,7 +10,7 @@ import itertools
 import pytest
 
 from app.services import cp_scheduler
-from app.services.cp_scheduler import WishChoiceGroup, WishItem, explain_omission, solve
+from app.services.cp_scheduler import WishChoiceGroup, WishItem, explain_omission, solve, solve_top_k
 from app.services.scheduler import PlacedMeeting
 
 
@@ -285,3 +285,64 @@ def test_explain_omission_already_included_is_a_noop():
     r = solve([a], [], 0, [], credit_min=0, credit_target=3, credit_max=25)
     ex = explain_omission("A", [a], [], 0, [], 0, 3, 25, r)
     assert ex["blocker"] is None
+
+
+# ---------------- solve_top_k ----------------
+
+def test_solve_top_k_returns_multiple_distinct_inclusion_patterns():
+    """Three mutually non-clashing 10-credit courses under a 20-credit cap:
+    only 2 of the 3 can ever fit, so a real "which 2 do I keep" choice
+    exists - the exact case this project's own request describes ("generate
+    all schedules possible ... help me choose which 1 from them works")."""
+    items = [WishItem(code=c, packages=(pkg(i, 600, 690),), credits=10, intent="strong", priority=5)
+             for i, c in enumerate(["A", "B", "C"])]
+    results = solve_top_k(items, [], 0, [], credit_min=0, credit_target=20, credit_max=20, k=5)
+    assert len(results) >= 2
+    patterns = [frozenset(r.included) for r in results]
+    assert len(patterns) == len(set(patterns)), "the same set of included courses was returned twice"
+    for r in results:
+        assert r.total_credits <= 20
+
+
+def test_solve_top_k_never_exceeds_the_credit_cap():
+    items = [WishItem(code=c, packages=(pkg(i, 600, 690),), credits=10, intent="strong", priority=5)
+             for i, c in enumerate(["A", "B", "C", "D"])]
+    results = solve_top_k(items, [], 0, [], credit_min=0, credit_target=25, credit_max=25, k=6)
+    assert results
+    for r in results:
+        assert r.total_credits <= 25
+
+
+def test_solve_top_k_always_includes_must_have_courses():
+    m = WishItem(code="M", packages=(pkg(0, 600, 690),), credits=3, intent="must_have", forced=True)
+    others = [WishItem(code=c, packages=(pkg(i + 1, 600, 690),), credits=5, intent="strong", priority=5)
+             for i, c in enumerate(["A", "B", "C"])]
+    results = solve_top_k([m] + others, [], 0, [], credit_min=0, credit_target=13, credit_max=13, k=5)
+    assert results
+    for r in results:
+        assert "M" in r.included
+
+
+def test_solve_top_k_stops_early_when_the_pattern_space_is_exhausted():
+    """Asking for more distinct schedules than genuinely exist must not loop
+    forever or fabricate duplicates - it should just return fewer than k."""
+    a = WishItem(code="A", packages=(pkg(0, 600, 690),), credits=3, intent="must_have", forced=True)
+    results = solve_top_k([a], [], 0, [], credit_min=0, credit_target=3, credit_max=25, k=8)
+    assert len(results) == 1
+
+
+def test_solve_top_k_first_result_matches_single_best_solve():
+    """The top-1 result of solve_top_k should agree with solve()'s own single
+    answer for the same inputs - top_k is an extension, not a different
+    optimizer."""
+    items = [WishItem(code=c, packages=(pkg(i, 600, 690),), credits=8, intent="strong", priority=9 - i)
+             for i, c in enumerate(["A", "B", "C"])]
+    single = solve(items, [], 0, [], credit_min=0, credit_target=16, credit_max=16)
+    top_k = solve_top_k(items, [], 0, [], credit_min=0, credit_target=16, credit_max=16, k=3)
+    assert top_k[0].included == single.included
+
+
+def test_solve_top_k_on_frozen_build_returns_at_most_one_result(running_frozen):
+    a = WishItem(code="A", packages=(pkg(0, 600, 690),), credits=3, intent="must_have", forced=True)
+    results = solve_top_k([a], [], 0, [], credit_min=0, credit_target=3, credit_max=25, k=5)
+    assert len(results) <= 1

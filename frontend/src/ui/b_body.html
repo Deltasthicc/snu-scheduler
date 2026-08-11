@@ -294,18 +294,24 @@
   <div id="ttReport"></div></div>
  <div class="card tight" data-section-title="Load &amp; feasibility"><h2>Load &amp; feasibility</h2><div id="loadBox"></div></div>
 
- <div class="card tight" data-section-title="Generate a personalised schedule" style="border-color:var(--sig)"><div class="hd" style="margin-bottom:9px"><div>
-  <h2>Generate a schedule — personalised (recommended)</h2>
-  <div class="note">Best subset of your chosen courses within your credit ceiling — using intent, choice groups
-  and credit policy above, not just any clash-free combination. Backend-computed; every excluded course gets a
-  specific reason, not silence.</div></div>
-  <div style="align-self:end"><button class="btn" id="wishBtn" onclick="void generateWishlistSchedule()">Generate personalised schedule</button></div></div>
+ <div class="card tight" data-section-title="Generate schedule options" style="border-color:var(--sig)"><div class="hd" style="margin-bottom:9px"><div>
+  <h2>Generate schedule options (recommended)</h2>
+  <div class="note">Takes every course you've chosen — clashing or not — and builds several complete, genuinely
+  different ways to fit them under your credit limit (<b id="wishCapNote">25</b> credits by default, set on the
+  Profile tab). Each option keeps every must-have course; the rest are chosen to fit. Compare them side by side
+  and pick whichever works for you. Every excluded course gets a specific reason, not silence.</div></div>
+  <div style="align-self:end;display:flex;gap:8px;align-items:end">
+   <div><label for="wishOptionCount" class="tiny mut" style="display:block;margin-bottom:4px">Options to generate</label>
+    <select id="wishOptionCount"><option value="3">3</option><option value="5" selected>5</option><option value="8">8 (slower)</option></select></div>
+   <button class="btn" id="wishBtn" onclick="void generateWishlistSchedule()">Generate schedule options</button></div></div>
   <div class="tiny" id="wishStat" style="margin-top:9px" role="status" aria-live="polite"></div>
  </div>
  <div id="wishOut"></div>
- <details class="more" data-section-title="Exhaustive schedule search"><summary>Exhaustive search instead — every valid combination, not credit-aware</summary>
-  <div class="note" style="margin-top:10px">Searches the whole space of section combinations for complete,
-  clash-free schedules. Use this if you want to browse every valid option rather than one optimised pick.</div>
+ <details class="more" data-section-title="Exhaustive schedule search"><summary>Exhaustive search — only if you're committed to taking every chosen course</summary>
+  <div class="note" style="margin-top:10px">A different, narrower tool: searches every possible section
+  combination assuming you take <b>all</b> of your chosen courses, with no credit limit and no dropping any of
+  them. Use the generator above first — it can drop courses to fit your credit limit; this cannot. Useful mainly
+  when your shortlist already fits comfortably and you just want to compare section-time options.</div>
   <div class="grid g4">
    <div><label>Search up to</label><select id="bMaxNodes">
      <option value="500000">500k combinations tried</option>
@@ -321,7 +327,7 @@
      <option value="late">Latest start each day</option>
      <option value="days">Fewest days on campus</option></select></div>
    <div style="align-self:end;display:flex;gap:8px">
-     <button class="btn" id="buildBtn" onclick="void buildSchedules()">Generate all schedules</button>
+     <button class="btn" id="buildBtn" onclick="void buildSchedules()">Search all combinations</button>
      <button class="btn2" id="buildCancelBtn" onclick="void cancelBuild()" disabled>Cancel</button></div>
   </div>
   <div class="tiny" id="buildStat" style="margin-top:9px" role="status" aria-live="polite"></div>

@@ -76,8 +76,15 @@ def _solve_wishlist(req: dict, catalog, fixed_meetings, fixed_credits, should_ca
     """Wishlist mode: routes to the CP-SAT exact optimization layer instead of
     the shortlist branch-and-bound path. See app/services/cp_scheduler.py for
     why CP-SAT is the right tool for this specific shape (course inclusion +
-    package selection + choice groups + credit bounds)."""
-    from app.services.cp_scheduler import WishChoiceGroup, WishItem, explain_omission, solve as cp_solve
+    package selection + choice groups + credit bounds).
+
+    Returns up to `req["max_results"]` distinct schedules (capped at 8 - each
+    extra solve costs real wall-clock time, and a student comparing options
+    stops benefiting well before 8), not just the single best one - the whole
+    point of "generate schedules within my credit limit, let me choose" is
+    seeing real alternatives, not trusting one optimizer call.
+    """
+    from app.services.cp_scheduler import WishChoiceGroup, WishItem, explain_omission, solve_top_k
 
     on_progress(0, 1)
     items: list[WishItem] = []
@@ -96,25 +103,33 @@ def _solve_wishlist(req: dict, catalog, fixed_meetings, fixed_credits, should_ca
     credit_max = req["credit_max"]
     credit_target = req.get("credit_target") if req.get("credit_target") is not None else credit_max
     credit_min = req.get("credit_min") or 0.0
+    k = max(1, min(8, int(req.get("max_results") or 5)))
 
-    result = cp_solve(items, fixed_meetings, fixed_credits, groups, credit_min, credit_target, credit_max)
+    results = solve_top_k(items, fixed_meetings, fixed_credits, groups, credit_min, credit_target, credit_max, k=k)
     on_progress(1, 1)
     if should_cancel():
         return {"cancelled": True}
 
-    schedules = [{"assign": result.assign, "stats": result.stats}] if result.assign else []
+    schedules = [{
+        "assign": r.assign, "stats": r.stats, "included": r.included, "excluded": r.excluded,
+        "total_credits": r.total_credits, "min_relaxed": r.min_relaxed,
+    } for r in results]
+    best = results[0] if results else None
     why_not = []
-    for code in result.excluded[:15]:  # bounded: full explanations are the on-demand endpoint's job
-        why_not.append(explain_omission(code, items, fixed_meetings, fixed_credits, groups,
-                                        credit_min, credit_target, credit_max, result,
-                                        time_limit_seconds=1.5))
+    if best is not None:
+        for code in best.excluded[:15]:  # bounded: full explanations are the on-demand endpoint's job
+            why_not.append(explain_omission(code, items, fixed_meetings, fixed_credits, groups,
+                                            credit_min, credit_target, credit_max, best,
+                                            time_limit_seconds=1.5))
     return {
         "schedules": schedules, "truncated": False, "cancelled": False, "nodes": 0,
         "total_found": len(schedules), "sort": req.get("sort", "compact"),
         "item_order": [it.code for it in items], "mode": "optimized",
-        "clash_count": 0, "cp_status": result.status, "total_credits": result.total_credits,
-        "fixed_credits": fixed_credits, "included": result.included, "excluded": result.excluded,
-        "min_relaxed": result.min_relaxed, "why_not": why_not,
+        "clash_count": 0, "cp_status": best.status if best else "infeasible",
+        "total_credits": best.total_credits if best else 0.0,
+        "fixed_credits": fixed_credits, "included": best.included if best else [],
+        "excluded": best.excluded if best else [it.code for it in items],
+        "min_relaxed": best.min_relaxed if best else False, "why_not": why_not,
         "credit_min": credit_min, "credit_target": credit_target, "credit_max": credit_max,
     }
 

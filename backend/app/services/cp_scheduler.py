@@ -118,6 +118,7 @@ def _build_and_solve(
     enforce_min: bool,
     force_include: str | None,
     force_exclude: str | None,
+    forbidden_inclusion_sets: list[frozenset[str]] | None = None,
 ) -> tuple[str, dict[str, int], float]:
     model = cp_model.CpModel()
     y: dict[str, "cp_model.IntVar"] = {}
@@ -140,6 +141,16 @@ def _build_and_solve(
             model.Add(y[it.code] == 1)
         if force_exclude == it.code:
             model.Add(y[it.code] == 0)
+
+    # No-good cuts for top-K generation: forbid the exact same set of included
+    # courses from being chosen again. What a student actually compares
+    # between options is "which courses did I keep vs drop," not a tiny
+    # package swap on a course whose inclusion was never in question, so
+    # distinctness is defined on the inclusion pattern, not the full
+    # assignment - see solve_top_k().
+    for included_set in (forbidden_inclusion_sets or ()):
+        model.Add(sum((1 - y[it.code]) if it.code in included_set else y[it.code]
+                      for it in items) >= 1)
 
     # term-aware conflict constraints between every pair of package choices,
     # across different courses (a course's own packages are mutually
@@ -352,6 +363,13 @@ def solve(
             wall += wall2
             min_relaxed = status in ("optimal", "feasible")
 
+    return _wrap_result(items, fixed_credits, assign, status, wall, min_relaxed)
+
+
+def _wrap_result(
+    items: list[WishItem], fixed_credits: float, assign: dict[str, int],
+    status: str, wall: float, min_relaxed: bool,
+) -> SolveResult:
     all_codes = {it.code for it in items}
     included = sorted(assign.keys())
     excluded = sorted(all_codes - set(included))
@@ -364,6 +382,66 @@ def solve(
         total_credits=round(total_credits, 4), min_relaxed=min_relaxed,
         wall_time_s=round(wall, 4), stats=stats,
     )
+
+
+def solve_top_k(
+    items: list[WishItem],
+    fixed_meetings: list[PlacedMeeting],
+    fixed_credits: float,
+    groups: list[WishChoiceGroup],
+    credit_min: float,
+    credit_target: float,
+    credit_max: float,
+    k: int = 5,
+    time_limit_seconds: float = 3.0,
+    seed: int = 20260804,
+) -> list[SolveResult]:
+    """Up to `k` distinct schedules built from the same wishlist, ranked by
+    the same objective the single-best solve uses (target-fit, then
+    priority-weighted value, then campus-day compactness), so a student can
+    compare real options instead of trusting one optimizer call. Each solve
+    after the first forbids every previously found *inclusion pattern* (see
+    the no-good cut in `_build_and_solve`) - since dropping to the same
+    package on an already-decided course isn't a meaningfully different
+    choice, but keeping a different subset of courses is.
+
+    RUNNING_FROZEN builds cannot call CP-SAT at all (see the module docstring)
+    and the greedy fallback has no mechanism for a "next-best" re-solve, so
+    this returns at most one result there - the same accepted limitation
+    `solve()` already has on a frozen build.
+    """
+    if RUNNING_FROZEN:
+        status, assign = _solve_greedy_fallback(
+            items, fixed_meetings, fixed_credits, groups, credit_min, credit_target, credit_max,
+            None, None,
+        )
+        if status == "heuristic_fallback" and assign:
+            return [_wrap_result(items, fixed_credits, assign, status, 0.0, False)]
+        return []
+
+    results: list[SolveResult] = []
+    forbidden: list[frozenset[str]] = []
+    enforce_min_current = True
+    min_relaxed = False
+    for _ in range(max(1, k)):
+        status, assign, wall = _build_and_solve(
+            items, fixed_meetings, fixed_credits, groups, credit_min, credit_target, credit_max,
+            time_limit_seconds, seed, enforce_min=enforce_min_current,
+            force_include=None, force_exclude=None, forbidden_inclusion_sets=forbidden,
+        )
+        if status not in ("optimal", "feasible"):
+            # spec s.5: never drop the minimum-credit floor unless no schedule
+            # can meet it at all - only relax it if this is the very first
+            # solve (nothing found yet), not just because a later, already-
+            # explored-inclusion-pattern re-solve came up empty.
+            if enforce_min_current and credit_min > 0 and not results and not forbidden:
+                enforce_min_current = False
+                min_relaxed = True
+                continue
+            break
+        results.append(_wrap_result(items, fixed_credits, assign, status, wall, min_relaxed))
+        forbidden.append(frozenset(assign.keys()))
+    return results
 
 
 BLOCKER_LABELS = {

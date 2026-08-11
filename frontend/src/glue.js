@@ -552,6 +552,11 @@ function toggleOverload() {
   const on = $('overloadOn').checked;
   if ($('overloadCeilingWrap')) $('overloadCeilingWrap').style.display = on ? '' : 'none';
   if ($('overloadConfirmWrap')) $('overloadConfirmWrap').style.display = on ? '' : 'none';
+  updateWishCapNote();
+}
+function updateWishCapNote() {
+  const note = $('wishCapNote'); if (!note) return;
+  note.textContent = f1(creditPolicyPayload().max);
 }
 function creditPolicyPayload() {
   const overloadOn = !!($('overloadOn') && $('overloadOn').checked);
@@ -610,12 +615,13 @@ function buildWishlistRequest() {
     // here previously made the personalised schedule undercount the load.
     .map(f => ({ code: f.code, pkg: f.pkg, locked: true }));
   const cp = creditPolicyPayload();
+  const optionCount = +($('wishOptionCount') ? $('wishOptionCount').value : 5) || 5;
   return {
     shortlist: [], fixed,
     external_fixed: MANUAL.map(m => ({ name: m.name, credits: m.cr })), wishlist,
     choice_groups: CHOICE_GROUPS.filter(g => g.members.every(m => codes.includes(m))),
     credit_min: cp.min, credit_target: cp.target || cp.max, credit_max: cp.max,
-    max_nodes: 2000000, max_results: 10, sort: 'compact', allow_least_conflict: true,
+    max_nodes: 2000000, max_results: optionCount, sort: 'compact', allow_least_conflict: true,
   };
 }
 
@@ -651,6 +657,8 @@ async function generateWishlistSchedule() {
   }
 }
 
+const CAT_PILL = { ME: 'p-me', UWE: 'p-uwe', CCC: 'p-ccc', CORE: 'p-m', NB: 'p-m' };
+
 function renderWishlistResult() {
   const r = WISH_RESULT;
   if (!r || !r.schedules || !r.schedules.length) {
@@ -660,36 +668,67 @@ function renderWishlistResult() {
         + 'try relaxing a lock, a choice group, or the minimum-credit floor.' : ''}</div></div>`;
     return;
   }
-  const s = r.schedules[0];
-  let h = `<div class="card" style="border-color:var(--sig)"><div class="hd"><div><h2>Your personalised schedule</h2>
-    <div class="note">Solver status: <b>${esc(r.cp_status)}</b>${r.min_relaxed
-      ? ' · minimum-credit floor was relaxed because no schedule could meet it' : ''}</div></div></div>
-    <div class="grid g4">
-      <div class="stat"><div class="k">Included</div><div class="v mono">${r.included.length}</div></div>
-      <div class="stat u"><div class="k">Excluded</div><div class="v mono">${r.excluded.length}</div></div>
-      <div class="stat c"><div class="k">Total credits</div><div class="v mono">${f1(r.total_credits)}</div>
-        <div class="f">fixed ${f1(r.fixed_credits)} + wishlist ${f1(r.total_credits - r.fixed_credits)}</div></div>
-      <div class="stat"><div class="k">Target</div><div class="v mono">${f1(r.credit_target)}</div>
-        <div class="f">min ${f1(r.credit_min)} · max ${f1(r.credit_max)}</div></div></div>`;
-  h += '<table style="margin-top:12px"><thead><tr><th>Course</th><th>Status</th><th>Why</th></tr></thead><tbody>';
-  (r.fixed_course_codes||[]).forEach(c=>{
-    h += `<tr><td><b>${esc(c)}</b> ${BY[c]?esc(BY[c].title.slice(0,30)):''}</td><td><span class="pill p-m">fixed / core</span></td><td class="tiny">Pre-enrolled or fixed in this plan</td></tr>`;
+  const fixedRows = [
+    ...(r.fixed_course_codes || []).map(c => ({ label: c, sub: BY[c] ? BY[c].title : '', credits: BY[c] ? BY[c].cr : 0 })),
+    ...(r.external_fixed || []).map(m => ({ label: m.name, sub: 'off-timetable', credits: m.credits })),
+  ];
+  let h = `<div class="card tight" style="border-color:var(--sig)"><div class="note">
+    Solver status: <b>${esc(r.cp_status)}</b>${r.min_relaxed
+      ? ' · the minimum-credit floor was relaxed because no schedule could meet it' : ''}
+    · comparing <b>${r.schedules.length}</b> option${r.schedules.length === 1 ? '' : 's'}, each fitting within
+    <b>${f1(r.credit_max)}</b> credit${r.credit_max === 1 ? '' : 's'}${fixedRows.length
+      ? ` (${f1(r.fixed_credits)} of that is already fixed: ${fixedRows.map(f => esc(f.label)).join(', ')})` : ''}.
+    </div></div>`;
+  r.schedules.forEach((s, i) => {
+    const over = s.total_credits > r.credit_max + 0.001;
+    const pct = Math.min(100, Math.round((s.total_credits / Math.max(1, r.credit_max)) * 100));
+    h += `<div class="card wish-option${i === 0 ? ' wish-option-best' : ''}">
+      <div class="hd" style="align-items:flex-start">
+        <div><h2>Option ${i + 1}${i === 0 ? ' <span class="pill p-uwe">best fit</span>' : ''}</h2>
+          <div class="tiny mut">${s.included.length} course${s.included.length === 1 ? '' : 's'} included
+            ${s.excluded.length ? `· ${s.excluded.length} not included` : ''}
+            ${s.stats ? `· ${s.stats.days} day${s.stats.days === 1 ? '' : 's'} on campus · ${f1(s.stats.gap / 60)}h idle/week` : ''}</div></div>
+        <div style="text-align:right;min-width:88px"><div class="v mono" style="font-size:19px">${f1(s.total_credits)}</div>
+          <div class="tiny mut">of ${f1(r.credit_max)} max</div></div>
+      </div>
+      <div class="bar ${over ? 'bad' : 'ok'}"><i style="width:${pct}%"></i></div>
+      <div class="wish-chip-row">
+        ${fixedRows.map(f => `<span class="wish-chip wish-chip-fixed" title="${esc(f.sub)} · fixed, not part of this choice">
+          <b>${esc(f.label.split('/')[0])}</b>${f.credits ? ` · ${f1(f.credits)}cr` : ''}</span>`).join('')}
+        ${s.included.map(c => `<span class="wish-chip pill ${CAT_PILL[BY[c] ? BY[c].cat : ''] || 'p-m'}"
+          title="${BY[c] ? esc(BY[c].title) : ''}"><b>${esc(c.split('/')[0])}</b> · ${BY[c] ? f1(BY[c].cr) : '?'}cr</span>`).join('')}
+      </div>
+      ${s.excluded.length ? `<div class="wish-chip-row wish-chip-row-excluded">
+        <span class="tiny mut">Not included:</span>
+        ${s.excluded.map(c => {
+          const wn = i === 0 ? (r.why_not || []).find(w => w.code === c) : null;
+          return `<span class="wish-chip wish-chip-excluded" title="${wn ? esc(wn.reason) : 'Not part of this option'}">
+            ${esc(c.split('/')[0])}${wn ? ` <button class="wish-why-btn" onclick="void explainWishlistExclusion('${esc(c)}')" aria-label="Why not ${esc(c)}?">?</button>` : ''}</span>`;
+        }).join('')}
+      </div>` : ''}
+      <div style="margin-top:11px;display:flex;gap:8px">
+        <button class="btn2 sm" onclick="previewWishlistSchedule(${i})">Preview</button>
+        <button class="btn sm" onclick="void useWishlistSchedule(${i})">Use this schedule</button>
+      </div>
+    </div>`;
   });
-  (r.external_fixed||[]).forEach(m=>{
-    h += `<tr><td><b>${esc(m.name)}</b></td><td><span class="pill p-m">fixed off-timetable</span></td><td class="tiny">${f1(m.credits)} credits already committed</td></tr>`;
-  });
-  [...r.included, ...r.excluded].forEach(c => {
-    const inc = r.included.includes(c);
-    const wn = (r.why_not || []).find(w => w.code === c);
-    h += `<tr><td><b>${esc(c)}</b> ${BY[c] ? esc(BY[c].title.slice(0, 30)) : ''}</td>
-      <td>${inc ? '<span class="pill p-uwe">included</span>' : '<span class="pill p-w">excluded</span>'}</td>
-      <td class="tiny">${inc ? '—' : (wn ? esc(wn.reason)
-        : `<button class="btn2 sm" onclick="void explainWishlistExclusion('${esc(c)}')">why not?</button>`)}</td></tr>`;
-  });
-  h += '</tbody></table>';
-  h += '<div style="margin-top:12px"><button class="btn2" onclick="void useWishlistSchedule()">Use this schedule</button></div></div>';
-  h += '<div id="wishExplainBox"></div>';
+  h += '<div id="wishExplainBox"></div><div id="wishPreviewBox"></div>';
   $('wishOut').innerHTML = h;
+}
+
+function previewWishlistSchedule(i) {
+  const r = WISH_RESULT; const s = r && r.schedules && r.schedules[i]; if (!s) return;
+  const ev = [...fixedMeets()];
+  Object.keys(s.assign).forEach(code => {
+    if (!BY[code]) return;
+    const p = BY[code].pk[s.assign[code]];
+    if (!p) return;
+    p.m.forEach(m => ev.push({ m, term: p.t, code, title: BY[code].title, kind: BY[code].cat.toLowerCase() }));
+  });
+  const box = $('wishPreviewBox'); if (!box) return;
+  box.innerHTML = `<div class="card"><h2>Preview — Option ${i + 1}</h2><div class="ttwrap" id="wishPreviewGrid"></div></div>`;
+  renderMiniGrid(ev, 'wishPreviewGrid');
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 async function explainWishlistExclusion(code) {
@@ -704,10 +743,21 @@ async function explainWishlistExclusion(code) {
     box.innerHTML = `<div class="flag f-bad">${esc(API.humanError(e))}</div>`;
   }
 }
-function useWishlistSchedule() {
+function useWishlistSchedule(i) {
   const r = WISH_RESULT; if (!r || !r.schedules || !r.schedules.length) return;
-  const assign = r.schedules[0].assign;
+  const s = r.schedules[i] || r.schedules[0];
+  const assign = s.assign;
+  // This option's whole point was choosing which chosen courses to keep
+  // under the credit limit - a course it dropped must actually leave the
+  // plan, not stay checked with an arbitrary leftover package assignment,
+  // or switching between options would silently re-introduce a clash.
+  const dropped = s.excluded.filter(code => PICK[code]);
+  dropped.forEach(code => { delete PICK[code]; });
   Object.keys(assign).forEach(code => { if (PICK[code]) PICK[code].pkg = assign[code]; });
+  if (dropped.length && typeof showToast === 'function') {
+    showToast(`Applied option ${i + 1}: removed ${dropped.map(c => c.split('/')[0]).join(', ')} `
+      + `from Chosen to fit the credit limit — re-add ${dropped.length === 1 ? 'it' : 'them'} on the Course selection tab if you change your mind.`);
+  }
   renderChosen(); renderPick();
   // "Generate a personalised schedule" and the weekly grid both live on the
   // Timetable tab now (split out of Course selection) - scroll to the grid
@@ -858,6 +908,10 @@ async function boot() {
   ['model', 'sem', 'remME', 'remUWE', 'remCCC', 'remFL', 'doneME', 'doneUWE', 'doneCCC'].forEach(id => {
     const e = $(id); if (e) e.addEventListener('change', () => void refreshPoolsFromBackend());
   });
+  ['capCr', 'overloadOn', 'overloadCeiling'].forEach(id => {
+    const e = $(id); if (e) e.addEventListener('change', updateWishCapNote);
+  });
+  updateWishCapNote();
   // ME/Core now resolve through the workbook's <DEPT><YEAR>YR scoping tokens,
   // so the year is an input to categorisation and not just to the pools.
   if ($('model')) $('model').addEventListener('change', () => applyProgrammeCategories());

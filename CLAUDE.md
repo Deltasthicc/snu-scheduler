@@ -2226,3 +2226,100 @@ viewport width inside its own `overflow-x:auto` wrapper (a small horizontal
 scroll, not a broken/clipped layout) - left alone rather than risking
 another fragile CSS pass on a table already behaving per this project's own
 "wide content scrolls in its own container" rule.
+
+---
+
+## 25. Session update — 2026-08-12: course names in the timetable grid, and a
+## real "generate several schedules under a credit limit" feature
+
+The user asked for three things: course names in the timetable grid (only
+the agenda view had them; the weekly grid showed just the code), a fix for
+the personalised-schedule generator ("not working ideally") and the
+exhaustive search ("doesn't work properly"), and a more presentable UI.
+Investigating the two "broken" tools in depth found the real gap wasn't a
+bug in either - it was a genuine capability neither one had: given a full
+chosen-course list that clashes or exceeds a credit limit, produce several
+distinct complete schedules to choose between, each fitting the limit.
+
+**The exhaustive search (`app/services/scheduler.py`) requires every
+shortlisted course to be included** - its backtracking assigns a package to
+every item, with no "drop this course" branch and no credit-cap concept at
+all. That is fine for its own actual job (every section-time permutation
+across a *fixed* set of courses you're committed to), but it cannot do what
+was being asked of it: drop courses to fit a budget. Renamed and re-scoped
+its copy honestly ("only if you're committed to taking every chosen
+course") instead of trying to bend it into a second, worse implementation
+of the tool below.
+
+**The wishlist/CP-SAT path (`app/services/cp_scheduler.py`) already solves
+exactly this shape** - course inclusion is itself a decision variable,
+gated by a real credit ceiling (25 by default, confirmed already wired
+correctly) - but `solve()` only ever returned the single best result.
+Added `solve_top_k()`: re-solves up to `k` times, adding a no-good cut after
+each solution that forbids the exact same *set of included courses* from
+being chosen again (not the exact same package assignment - swapping one
+already-decided course's section isn't a meaningfully different choice to
+compare, but keeping a different subset of courses is). Refactored the
+shared result-wrapping logic (`_wrap_result`) out of `solve()` so both paths
+stay in sync. 6 new tests, including one pinning that `solve_top_k()`'s
+first result always agrees with the plain `solve()` answer, and one proving
+it stops early rather than fabricating duplicates once the genuinely
+distinct pattern space is exhausted.
+
+`app/workers/schedule_jobs.py::_solve_wishlist` now calls `solve_top_k`
+(capped at 8 - each extra solve costs real wall-clock time) instead of
+wrapping a single result in a one-element list; `max_results` from the
+request finally does something for wishlist mode, where it was silently
+ignored before.
+
+**A real, embarrassing bug was found and fixed in the process of testing
+this - in the new test, not the app.** A first draft e2e test generated
+schedule options for three real courses, expecting to see the best pair
+(6 of 6 credits) win - and instead saw the same stale single-course result
+from an *earlier* test section, verbatim. Direct reproduction against the
+real catalog in a standalone Python script proved `solve_top_k()` itself
+was already correct (it found the right 6-credit pair immediately). Traced
+the actual cause with `console.trace` temporarily added to the run-token
+functions: `newScheduleRunToken()` fired exactly once, no staleness ever
+triggered. The real bug was in the test's own wait condition - it polled for
+"Solver status" text in `#wishOut`, but that text was already sitting there
+from the *previous* section's run, so the wait resolved instantly, before
+the new request had even returned, and read `WISH_RESULT` far too early.
+Fixed by clearing `#wishOut` before triggering the new generation, so the
+wait condition can only be satisfied by a genuinely new render. Left as a
+cautionary note here because the debugging path (adding a harmless-looking
+async wrapper "fixed" it by accident, which looked like confirmation of a
+staleness bug that was never real) is exactly the kind of false lead this
+project has hit before - the fix that appears to work is not evidence for
+the theory that motivated trying it.
+
+**Frontend**: `e_tt.html`'s weekly grid blocks now show the course title as
+their own line (`.ev-title`, ellipsis-truncated at whatever height the block
+actually has - still clipped for very short blocks by design, matching the
+existing tooltip-is-authoritative philosophy). `renderWishlistResult()`
+rewritten from a single flat table to one card per generated schedule -
+credit-usage bar (reusing the existing `.bar`/`.bar>i` component), chip rows
+for included/excluded courses (colour-coded by category pill, dashed for
+fixed courses), a "best fit" badge on the top-ranked option, and per-option
+Preview (reusing `i_build.html`'s existing mini-grid renderer) and "Use this
+schedule" actions. `useWishlistSchedule(i)` now takes an index and, critically,
+removes courses that option dropped from `PICK` entirely (via `showToast`,
+not silently) rather than leaving them checked with a stale package
+assignment that would reintroduce the exact clash the option avoided.
+Added an "options to generate" selector (3/5/8) and a live credit-cap note
+reading from the real Profile-tab value.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 250 passed, 1 skipped (was 244)
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 55 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 83 passed (was 76)
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+./scripts/run-e2e.sh tests/ui-responsive.test.js                       # 70 passed, laptop + phone, both themes
+```
+
+**Explicitly not done this session**: the a11y audit does not exercise the
+new multi-option cards in their post-generation state (it only scans static
+tab content, matching its existing coverage boundary); the exhaustive
+search's own package-permutation logic was not changed at all, only its
+labelling - it remains a narrower, separate tool by design, not merged into
+the wishlist path.

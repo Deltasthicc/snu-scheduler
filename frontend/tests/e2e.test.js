@@ -411,21 +411,106 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('solver status is shown to the student', /Solver status/.test(wish.html));
 
   // a wishlist this small already has its why-not eagerly computed (see
-  // _solve_wishlist's bounded loop), so the table shows the reason inline
-  // rather than a "why not?" button - the on-demand /explain-exclusion
-  // endpoint is exercised directly via API instead, as any larger wishlist's
-  // UI would use it.
+  // _solve_wishlist's bounded loop), so the excluded chip's title carries the
+  // real reason rather than the generic "not part of this option" fallback -
+  // the on-demand /explain-exclusion endpoint is exercised directly via API
+  // instead, as any larger wishlist's UI would use it.
   const inlineReason = await p.evaluate((codes) => {
-    const rows = [...document.querySelectorAll('#wishOut table tbody tr')];
-    const row = rows.find(r => r.textContent.includes(codes[1]));
-    return row ? row.textContent : null;
+    const shortCode = codes[1].split('/')[0];
+    const chip = [...document.querySelectorAll('#wishOut .wish-chip-excluded')]
+      .find(el => el.textContent.includes(shortCode));
+    return chip ? chip.getAttribute('title') : null;
   }, pair.unavoidable);
   ck('the excluded course already shows a specific inline reason, not a generic failure',
-     inlineReason && inlineReason.length > 20 && !/why not\?/.test(inlineReason), inlineReason);
+     inlineReason && inlineReason.length > 20 && inlineReason !== 'Not part of this option', inlineReason);
 
   const onDemand = await p.evaluate((codes) => API.explainExclusion(WISH_JOB, codes[1]), pair.unavoidable);
   ck('on-demand explain-exclusion endpoint also gives a specific blocker for the same course',
      !!onDemand.blocker && onDemand.blocker !== 'lower_priority', JSON.stringify(onDemand));
+
+  console.log('\n=== §21b MULTIPLE SCHEDULE OPTIONS UNDER A CREDIT LIMIT ===');
+  // Three real courses that can each coexist with either other (schedulable
+  // pairwise, for at least one package combination each) but whose combined
+  // credits exceed a tight cap that fits only two at once - the exact shape
+  // of "take all the courses I've chosen, with conflicts or without, and
+  // help me choose which one schedule works" this feature exists for.
+  const triple = await p.evaluate(() => {
+    // Disjoint meeting-days across EVERY package of a course, not just one
+    // combination, is a bulletproof sufficient condition for "can never
+    // clash regardless of which section either course ends up using" - no
+    // term-matching subtlety (First/Second/Both half) can undo it, since
+    // courses that never even share a day of the week cannot overlap.
+    const daysUsed = (c) => new Set(c.pk.flatMap(p => p.m.map(m => m[0])));
+    const disjointDays = (A, B) => { const a = daysUsed(A); return ![...daysUsed(B)].some(d => a.has(d)); };
+    const pool = C.filter(c => c.pk.length && c.cr >= 3 && c.cr <= 5 && !c.unsched && daysUsed(c).size <= 2)
+      .slice(0, 120);
+    for (let i = 0; i < pool.length; i++) {
+      for (let j = i + 1; j < pool.length; j++) {
+        if (!disjointDays(pool[i], pool[j])) continue;
+        for (let k = j + 1; k < pool.length; k++) {
+          if (disjointDays(pool[i], pool[k]) && disjointDays(pool[j], pool[k])) {
+            return { codes: [pool[i].code, pool[j].code, pool[k].code], credits: [pool[i].cr, pool[j].cr, pool[k].cr] };
+          }
+        }
+      }
+    }
+    return null;
+  });
+  ck('found three real courses on disjoint days to test with', !!triple, JSON.stringify(triple));
+
+  const sortedCredits = [...triple.credits].sort((a, b) => a - b);
+  const capForTwo = sortedCredits[0] + sortedCredits[1];  // fits exactly two of the three, never all three
+  await p.evaluate((codes) => {
+    FIXED = []; PICK = {}; PRIO = {};
+    codes.forEach(c => { PICK[c] = { want: 5, pkg: 0 }; PRIO[c] = 'STRONG'; });
+    renderChosen(); renderFixed();
+  }, triple.codes);
+  await p.evaluate((cap) => {
+    document.getElementById('capCr').value = cap;
+    document.getElementById('credTarget').value = 0;  // default to the cap itself, not the earlier §21 value
+  }, capForTwo);
+  await p.selectOption('#wishOptionCount', '5');
+  // §21's own render is still sitting in #wishOut from the previous section -
+  // clear it first so the upcoming wait condition can't trivially match that
+  // leftover "Solver status" text before this section's own request has even
+  // returned (this is exactly what made the very first draft of this test
+  // read WISH_RESULT far too early and see stale data from §21).
+  await p.evaluate(() => { $('wishOut').innerHTML = ''; });
+  await p.click('#wishBtn');
+  await p.waitForFunction(() => /Solver status/.test(document.getElementById('wishOut').textContent)
+    || /No schedule found/.test(document.getElementById('wishOut').textContent), null, { timeout: 20000 });
+
+  const multi = await p.evaluate(() => ({
+    scheduleCount: WISH_RESULT.schedules.length,
+    totalCredits: WISH_RESULT.schedules.map(s => s.total_credits),
+    inclusionPatterns: WISH_RESULT.schedules.map(s => [...s.included].sort().join(',')),
+    optionCards: document.querySelectorAll('#wishOut .wish-option').length,
+  }));
+  ck('more than one schedule option is generated when a genuine choice exists',
+     multi.scheduleCount >= 2, JSON.stringify(multi));
+  ck('every option stays within the credit cap', multi.totalCredits.every(c => c <= capForTwo + 0.001),
+     JSON.stringify(multi.totalCredits));
+  ck('no two options repeat the exact same set of included courses',
+     new Set(multi.inclusionPatterns).size === multi.inclusionPatterns.length,
+     JSON.stringify(multi.inclusionPatterns));
+  ck('one option card is rendered per generated schedule', multi.optionCards === multi.scheduleCount,
+     `${multi.optionCards} cards vs ${multi.scheduleCount} schedules`);
+
+  if (multi.scheduleCount >= 2) {
+    await p.click('#wishOut .wish-option >> nth=1 >> button:has-text("Use this schedule")');
+    await p.waitForTimeout(150);
+    const applied = await p.evaluate(() => {
+      const secondSchedule = WISH_RESULT.schedules[1];
+      return {
+        pickMatchesIncluded: secondSchedule.included.every(c => PICK[c] && PICK[c].pkg === secondSchedule.assign[c]),
+        droppedCoursesRemoved: secondSchedule.excluded.every(c => !PICK[c]),
+      };
+    });
+    ck('"use this schedule" on a non-first option applies that option\'s own package assignment',
+       applied.pickMatchesIncluded, JSON.stringify(applied));
+    ck('"use this schedule" removes courses that option dropped, not just leaves them stale',
+       applied.droppedCoursesRemoved, JSON.stringify(applied));
+  }
 
   console.log('\n=== §22 DEGREE AUDIT AND SPECIALISATION HONESTY ===');
   // Real regression: a fresh B.Sc. (Research) in Mathematics profile - no

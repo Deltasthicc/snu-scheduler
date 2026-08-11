@@ -58,7 +58,7 @@ function drawTT(){
         h+=`<div class="ev ${e.kind==='nb'?'fix':e.kind} ${badKey.has(x.i)?'bad':''}"
           style="top:${top}px;height:${ht}px;left:calc(${left}% + 2px);width:calc(${w}% - 4px)"
           title="${esc(e.code)} ${esc(e.title)} — ${e.m[3]} ${e.m[4]} ${DAYS[e.m[0]]} ${hm(e.m[1])}–${hm(e.m[2])} ${esc(e.m[5]||'')} [${e.term}]">
-          <b>${esc(e.code.split('/')[0])}</b><br>${e.m[3]}<br>${hm(e.m[1]).replace(' ','')}–${hm(e.m[2]).replace(' ','')}</div>`;});
+          <b>${esc(e.code.split('/')[0])}</b><span class="ev-title">${esc(e.title)}</span><span class="ev-when">${e.m[3]} ${hm(e.m[1]).replace(' ','')}–${hm(e.m[2]).replace(' ','')}</span></div>`;});
       h+='</div>';
     });
     h+='</div>';
