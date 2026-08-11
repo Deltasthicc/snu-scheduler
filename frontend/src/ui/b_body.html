@@ -198,40 +198,63 @@
    <button class="btn2" onclick="addManual()">+ add an off-timetable item (project, SWAYAM…)</button></div>
  </div>
  <div class="card" data-section-title="Every course you can place preferences on">
-  <div class="hd"><div><h2>Every course you can place preferences on</h2>
+  <div class="hd"><div><h2>Course Search &amp; Enroll</h2>
    <div class="note">Category follows your selected programme: <b>ME</b>/<b>Core</b> = your major ·
-   <b>UWE</b> = open to everyone · <b>CCC</b> = common core. A dotted credit is timetable-derived — confirm in COS.</div></div>
-   <div class="tiny" id="pickCount"></div></div>
-  <div class="srch">
-   <select id="fCat"><option value="">All matched electives (ME + UWE + CCC)</option>
-     <option value="ME">ME — major elective</option>
-     <option value="CCC">CCC — common core</option>
-     <option value="UWE">UWE — university-wide</option>
-     <option value="CORE">Core — your major-core catalog (reference / swap only)</option>
-     <option value="NB">Everything else (other majors' cores)</option></select>
-   <select id="fTerm"><option value="">All terms</option><option>Full semester</option>
-     <option>First half</option><option>Second half</option></select>
-   <select id="fFit"><option value="">Any fit</option><option value="free">Clash-free with fixed only</option>
-     <option value="freeall">Clash-free with everything chosen</option></select>
-   <select id="fCr"><option value="">Any credits</option>
-     <option value="1">1 credit</option><option value="1.5">1.5 credits</option>
-     <option value="2">2 credits</option><option value="3">3 credits</option>
-     <option value="4">4 credits</option><option value="5">5 credits</option>
-     <option value="6">6 credits</option>
-     <option value="lt3">Under 3</option><option value="gte4">4 or more</option></select>
-   <select id="fDay"><option value="">Any day</option><option value="0">Mon</option><option value="1">Tue</option>
-     <option value="2">Wed</option><option value="3">Thu</option><option value="4">Fri</option><option value="5">Sat</option></select>
-   <span class="tiny mut" style="display:flex;align-items:center;gap:5px" title="Show only courses with a meeting whose start time falls in this range — leave one side blank for an open-ended 'after'/'before' filter, or set both to the same time for an exact start">Starts
-     <input type="time" id="fStartFrom" aria-label="Starts at or after" style="flex:0 0 auto;width:104px;min-width:0">–<input type="time" id="fStartTo" aria-label="Starts at or before" style="flex:0 0 auto;width:104px;min-width:0"></span>
-   <span class="tiny mut" style="display:flex;align-items:center;gap:5px" title="Show only courses with a meeting whose end time falls in this range — leave one side blank for an open-ended 'after'/'before' filter, or set both to the same time for an exact end">Ends
-     <input type="time" id="fEndFrom" aria-label="Ends at or after" style="flex:0 0 auto;width:104px;min-width:0">–<input type="time" id="fEndTo" aria-label="Ends at or before" style="flex:0 0 auto;width:104px;min-width:0"></span>
-   <input type="text" id="fQ" placeholder="Search code, title, department or instructor…"></div>
-  <div class="scroll catalog-list responsive-table"><table><thead><tr><th style="width:30px"><span class="sr-only">Add to plan</span></th><th>Course</th><th>Cat</th><th>Term</th>
-   <th>Cr</th><th>Seats</th>
-   <th title="No per-course cap — you may place preference points up to your entire category pool on one course">Pool cap</th>
-   <th>Pkgs</th><th>Best fit</th><th>Want</th></tr></thead>
-   <tbody id="pickBody"></tbody></table></div>
-  <div id="pickMore" class="list-pagination"></div>
+   <b>UWE</b> = open to everyone · <b>CCC</b> = common core. A dotted credit is timetable-derived — confirm in COS.</div></div></div>
+  <div class="course-search">
+   <div class="cs-sidebar">
+    <div class="cs-sidebar-hd"><b>Search for courses</b>
+     <button type="button" class="cs-reset" onclick="resetPickFilters()">Reset search</button></div>
+    <div class="cs-sidebar-body">
+     <div class="cs-field"><label for="fTerm">Term</label>
+      <select id="fTerm"><option value="">All terms</option><option>Full semester</option>
+       <option>First half</option><option>Second half</option></select></div>
+     <div class="cs-field"><label for="fCat">Subject (category)</label>
+      <select id="fCat"><option value="">All matched electives (ME + UWE + CCC)</option>
+       <option value="ME">ME — major elective</option>
+       <option value="CCC">CCC — common core</option>
+       <option value="UWE">UWE — university-wide</option>
+       <option value="CORE">Core — your major-core catalog (reference / swap only)</option>
+       <option value="NB">Everything else (other majors' cores)</option></select></div>
+     <div class="cs-field"><label for="fDept">Department</label>
+      <select id="fDept"><option value="">All departments</option></select></div>
+     <div class="cs-field"><label for="fQ">Keyword, instructor, course code</label>
+      <div class="cs-search-row"><input type="text" id="fQ" placeholder="e.g. CSD358, machine learning…">
+       <button type="button" aria-label="Search" title="Filters as you type — this just focuses the field" onclick="$('fQ').focus()">⌕</button></div></div>
+     <div class="cs-check-group">
+      <div class="k">Fit</div>
+      <label class="cs-check"><input type="checkbox" id="fFitFixed" onchange="PICK_PAGE=0;renderPick()"> Clash-free with fixed only</label>
+      <label class="cs-check"><input type="checkbox" id="fFitAll" onchange="PICK_PAGE=0;renderPick()"> Clash-free with everything chosen</label>
+     </div>
+     <details class="cs-more">
+      <summary>More filters (day, time, credits)</summary>
+      <div class="cs-field"><label for="fDay">Day</label>
+       <select id="fDay"><option value="">Any day</option><option value="0">Mon</option><option value="1">Tue</option>
+        <option value="2">Wed</option><option value="3">Thu</option><option value="4">Fri</option><option value="5">Sat</option></select></div>
+      <div class="cs-field"><label for="fCr">Credits</label>
+       <select id="fCr"><option value="">Any credits</option>
+        <option value="1">1 credit</option><option value="1.5">1.5 credits</option>
+        <option value="2">2 credits</option><option value="3">3 credits</option>
+        <option value="4">4 credits</option><option value="5">5 credits</option>
+        <option value="6">6 credits</option>
+        <option value="lt3">Under 3</option><option value="gte4">4 or more</option></select></div>
+      <div class="cs-field"><label>Starts</label>
+       <div class="cs-time-row"><input type="time" id="fStartFrom" aria-label="Starts at or after">–<input type="time" id="fStartTo" aria-label="Starts at or before"></div></div>
+      <div class="cs-field"><label>Ends</label>
+       <div class="cs-time-row"><input type="time" id="fEndFrom" aria-label="Ends at or after">–<input type="time" id="fEndTo" aria-label="Ends at or before"></div></div>
+     </details>
+    </div>
+   </div>
+   <div class="cs-results">
+    <div class="cs-results-hd"><h3 id="pickCount">0 match</h3></div>
+    <div class="scroll catalog-list responsive-table"><table><thead><tr><th style="width:30px"><span class="sr-only">Add to plan</span></th><th>Course</th><th>Cat</th><th>Term</th>
+     <th>Cr</th><th>Seats</th>
+     <th title="No per-course cap — you may place preference points up to your entire category pool on one course">Pool cap</th>
+     <th>Pkgs</th><th>Best fit</th><th>Want</th></tr></thead>
+     <tbody id="pickBody"></tbody></table></div>
+    <div id="pickMore" class="list-pagination"></div>
+   </div>
+  </div>
  </div>
  <div class="card" data-section-title="Chosen for Monsoon 2026"><div class="hd"><div><h2>Chosen for Monsoon 2026</h2>
   <div class="note">Pick a section package per course, or auto-resolve clashes. <b>Priority</b> also doubles as

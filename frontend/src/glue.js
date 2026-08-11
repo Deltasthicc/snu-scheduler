@@ -826,6 +826,7 @@ async function drawRules() {
    ===================================================================== */
 async function boot() {
   initBlocks();
+  if (typeof initDeptFilter === 'function') initDeptFilter();
   // neutral by default -- a fresh install (anyone this app is shared with) starts
   // with nothing pre-filled; restoreActivePlan() below fills these back in from
   // this browser's own saved plan, if one exists, so a returning student on their

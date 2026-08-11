@@ -156,15 +156,32 @@ function setPickPage(p){PICK_PAGE=Math.max(0,p);renderPick();}
    meeting-time representation used throughout this file (m[1]/m[2]). Returns
    null for an empty/unset input, which callers treat as "no bound on this side". */
 function timeToMin(v){ if(!v) return null; const [h,mi]=v.split(':').map(Number); return h*60+mi; }
+/* Real department names pulled from the catalogue itself (c.dept), not a
+   guessed list - populated once at boot by initDeptFilter(). */
+function initDeptFilter(){
+  const sel=$('fDept'); if(!sel)return;
+  const depts=[...new Set(C.map(c=>c.dept).filter(Boolean))].sort();
+  sel.innerHTML='<option value="">All departments</option>'+
+    depts.map(d=>`<option value="${esc(d)}">${esc(d)}</option>`).join('');
+}
+function resetPickFilters(){
+  ['fCat','fTerm','fDept','fDay','fCr','fStartFrom','fStartTo','fEndFrom','fEndTo'].forEach(id=>{ if($(id)) $(id).value=''; });
+  ['fFitFixed','fFitAll'].forEach(id=>{ if($(id)) $(id).checked=false; });
+  if($('fQ')) $('fQ').value='';
+  PICK_PAGE=0; renderPick();
+}
 function renderPick(){
   const cat=$('fCat').value, term=$('fTerm').value, q=$('fQ').value.trim().toLowerCase();
-  const fit=$('fFit').value, day=$('fDay').value, crf=($('fCr')?$('fCr').value:'');
+  const dept=$('fDept')?$('fDept').value:'';
+  const fitFixed=$('fFitFixed')&&$('fFitFixed').checked, fitAll=$('fFitAll')&&$('fFitAll').checked;
+  const day=$('fDay').value, crf=($('fCr')?$('fCr').value:'');
   const startFrom=timeToMin($('fStartFrom')?$('fStartFrom').value:''), startTo=timeToMin($('fStartTo')?$('fStartTo').value:'');
   const endFrom=timeToMin($('fEndFrom')?$('fEndFrom').value:''), endTo=timeToMin($('fEndTo')?$('fEndTo').value:'');
   const fx=fixedMeets(), all=allChosenMeets(null);
   let L=C.filter(c=>!FIXED.some(f=>f.code===c.code));
   if(cat) L=L.filter(c=>c.cat===cat);
   else L=L.filter(c=>['ME','UWE','CCC'].includes(c.cat));   // default view: only what you can bid for
+  if(dept) L=L.filter(c=>c.dept===dept);
   if(term) L=L.filter(c=>c.terms.includes(term));
   if(q) L=L.filter(c=>(c.code+' '+c.title+' '+c.dept+' '+c.pk.map(p=>p.l).join(' ')).toLowerCase().includes(q));
   if(day!=='') L=L.filter(c=>c.pk.some(p=>p.m.some(m=>m[0]===+day)));
@@ -181,8 +198,8 @@ function renderPick(){
   const rows=L.map(c=>{const bf=bestPkg(c,fx), ba=bestPkg(c,all);
     return {c,bf,ba};});
   let R=rows;
-  if(fit==='free') R=rows.filter(r=>r.bf.n===0);
-  if(fit==='freeall') R=rows.filter(r=>r.ba.n===0);
+  if(fitFixed) R=R.filter(r=>r.bf.n===0);
+  if(fitAll) R=R.filter(r=>r.ba.n===0);
   R.sort((x,y)=>(x.ba.n-y.ba.n)||x.c.code.localeCompare(y.c.code));
   const pageCount=Math.max(1,Math.ceil(R.length/PICK_PAGE_SIZE));
   if(PICK_PAGE>=pageCount) PICK_PAGE=pageCount-1;
@@ -230,7 +247,7 @@ function togglePick(code,on){
   }
   renderPick(); renderChosen();
 }
-['fCat','fTerm','fFit','fDay','fCr','fStartFrom','fStartTo','fEndFrom','fEndTo'].forEach(i=>{
+['fCat','fTerm','fDept','fDay','fCr','fStartFrom','fStartTo','fEndFrom','fEndTo'].forEach(i=>{
   if($(i)) $(i).onchange=()=>{PICK_PAGE=0;renderPick();}; });
 $('fQ').oninput=()=>{PICK_PAGE=0;renderPick();};
 
