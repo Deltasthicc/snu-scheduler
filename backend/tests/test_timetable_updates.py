@@ -366,6 +366,25 @@ def test_diff_detects_changed_package_times():
     assert "packages_moved" in d["changed_courses"][0]["diffs"]
 
 
+def test_diff_detects_programme_scoping_and_package_batch_changes():
+    old = [{
+        "code": "A", "title": "t", "seats": 1, "terms": ["Full semester"], "cat": "NB",
+        "majorFor": [], "meFor": [],
+        "pk": [{"l": "LEC:LEC1", "m": [[0, 540, 600, "LEC", "LEC1", "A1"]],
+                "batches": ["AAA21"]}],
+    }]
+    new = [{
+        **old[0], "majorFor": ["AAA2YR"], "meFor": ["AAA3YR"],
+        "pk": [{**old[0]["pk"][0], "batches": ["AAA22"]}],
+    }]
+    d = diff_datasets(old, new)
+    assert d["summary"]["changed"] == 1
+    fields = d["changed_courses"][0]["diffs"]
+    assert fields["majorFor"] == {"old": [], "new": ["AAA2YR"]}
+    assert fields["meFor"] == {"old": [], "new": ["AAA3YR"]}
+    assert fields["package_batches_changed"] == ["LEC:LEC1"]
+
+
 def test_diff_detects_no_changes_for_identical_datasets():
     c = [{"code": "A", "title": "t", "seats": 1, "terms": ["Full semester"], "cat": "ME", "pk": []}]
     d = diff_datasets(c, c)
@@ -396,6 +415,22 @@ def test_stage_and_apply_version_success(isolated_catalog):
     assert result["dataset_checksum"] == checksum
     assert catalog.dataset_info()["active_version"] == "v2"
     assert catalog.get_course("CSD101")["seats"] == 999
+
+
+def test_stage_refuses_to_overwrite_an_applied_version(isolated_catalog):
+    entry = {"version_id": "v1", "dataset_checksum": "different", "course_count": 0,
+             "package_count": 0, "error_count": 0, "warning_count": 0}
+    original = (apply_mod.VERSIONS_DIR / "v1" / "courses.json").read_text(encoding="utf-8")
+    with pytest.raises(apply_mod.ApplyError, match="immutable"):
+        apply_mod.stage_version("v1", [], {}, entry)
+    assert (apply_mod.VERSIONS_DIR / "v1" / "courses.json").read_text(encoding="utf-8") == original
+
+
+def test_stage_rejects_mismatched_manifest_version_id(isolated_catalog):
+    entry = {"version_id": "wrong", "dataset_checksum": "x", "course_count": 0,
+             "package_count": 0, "error_count": 0, "warning_count": 0}
+    with pytest.raises(apply_mod.ApplyError, match="does not match"):
+        apply_mod.stage_version("right", [], {}, entry)
 
 
 def test_apply_rejects_stale_checksum(isolated_catalog):

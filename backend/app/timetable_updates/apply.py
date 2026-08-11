@@ -68,7 +68,25 @@ def _write_atomic(path: Path, text: str) -> None:
 
 def stage_version(version_id: str, courses: list[dict], provenance: dict, manifest_entry: dict) -> Path:
     """Writes a candidate (or a freshly-imported version not yet applied) to
-    its own versioned folder. Never touches the active files."""
+    its own versioned folder. Never touches the active files.
+
+    Applied version folders are immutable audit records.  Re-staging one used
+    to overwrite its courses/provenance in place; a repeat Office-workbook
+    import consequently replaced the original diff with an impossible
+    self-diff (327 unchanged courses).  A new source snapshot must get a new
+    version id instead of rewriting history.
+    """
+    if manifest_entry.get("version_id") != version_id:
+        raise ApplyError(
+            f"manifest entry version id {manifest_entry.get('version_id')!r} does not match "
+            f"staging target {version_id!r}"
+        )
+    manifest = load_manifest()
+    if any(v.get("version_id") == version_id for v in manifest.get("versions", [])):
+        raise ApplyError(
+            f"version {version_id!r} has already been applied and is immutable; "
+            "stage the new snapshot under a different version id"
+        )
     out_dir = VERSIONS_DIR / version_id
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "courses.json").write_text(json.dumps(courses, indent=2), encoding="utf-8")

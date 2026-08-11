@@ -83,7 +83,9 @@ def main() -> int:
     norm = normalize_mod.normalize(extracted.parsed, existing_by_code)
     stats = norm.stats
 
-    version_id = args.version_id or f"monsoon-2026-netlify-revision-{retrieved_at[:10]}"
+    version_id = args.version_id or (
+        f"monsoon-2026-netlify-revision-{retrieved_at[:10]}-{source_checksum[:8]}"
+    )
     manifest_entry = {
         "version_id": version_id, "source_name": "SNU Monsoon 2026 Timetable Planner (Netlify)",
         "source_url": args.url if not args.offline_html else f"offline:{args.offline_html}",
@@ -94,7 +96,11 @@ def main() -> int:
         "error_count": stats.error_count, "warning_count": stats.warning_count,
         "validation_status": "clean" if stats.error_count == 0 else "has_errors",
     }
-    out_dir = apply_mod.stage_version(version_id, norm.courses, norm.provenance, manifest_entry)
+    try:
+        out_dir = apply_mod.stage_version(version_id, norm.courses, norm.provenance, manifest_entry)
+    except apply_mod.ApplyError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 4
     (out_dir / "raw_snapshot.html").write_text(html, encoding="utf-8")
     (out_dir / "raw_data_literal.json").write_text(json.dumps(extracted.parsed, indent=2, sort_keys=True),
                                                    encoding="utf-8")

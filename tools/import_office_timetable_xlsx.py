@@ -63,8 +63,11 @@ COL_ROOM = "Room"
 COL_INSTRUCTOR = "Instructor(s)"
 COL_CAPACITY = "Section Capacity"
 
-REQUIRED_COLUMNS = (COL_CODE, COL_TITLE, COL_TYPE, COL_UWE, COL_COMPONENT, COL_SECTION,
-                    COL_TERM, COL_DAY, COL_START, COL_END, COL_CAPACITY)
+REQUIRED_COLUMNS = (
+    COL_CODE, COL_TITLE, COL_SCHOOL, COL_DEPT, COL_MAJOR_FOR, COL_TYPE, COL_ME_FOR,
+    COL_UWE, COL_COMPONENT, COL_SECTION, COL_BLOCK, COL_TERM, COL_DAY, COL_START,
+    COL_END, COL_ROOM, COL_INSTRUCTOR, COL_CAPACITY,
+)
 
 
 class WorkbookError(RuntimeError):
@@ -254,7 +257,7 @@ def main() -> int:
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("workbook", type=Path)
     ap.add_argument("--version-id", default=None,
-                    help="dataset version id (default: monsoon-2026-office-xlsx-<UTC date>)")
+                    help="dataset version id (default: date plus source-checksum suffix)")
     ap.add_argument("--label", default="Academic Office timetable workbook",
                     help="human-readable source name recorded in the manifest")
     ap.add_argument("--apply", action="store_true",
@@ -268,7 +271,12 @@ def main() -> int:
     raw_bytes = args.workbook.read_bytes()
     source_checksum = hashlib.sha256(raw_bytes).hexdigest()[:16]
     retrieved_at = datetime.now(timezone.utc).isoformat()
-    version_id = args.version_id or f"monsoon-2026-office-xlsx-{retrieved_at[:10]}"
+    # Date-only ids collided when a workbook was reissued or the importer was
+    # rerun later on the same day.  The short source hash is deterministic for
+    # identical bytes and unique for a genuinely new snapshot.
+    version_id = args.version_id or (
+        f"monsoon-2026-office-xlsx-{retrieved_at[:10]}-{source_checksum[:8]}"
+    )
 
     try:
         data, scoping = read_workbook(args.workbook)
@@ -337,7 +345,11 @@ def main() -> int:
         "checksum": source_checksum, "retrieved_at": retrieved_at, "label": args.label,
     }
 
-    out_dir = apply_mod.stage_version(version_id, result.courses, provenance, manifest_entry)
+    try:
+        out_dir = apply_mod.stage_version(version_id, result.courses, provenance, manifest_entry)
+    except apply_mod.ApplyError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
     (out_dir / "diff_vs_previous_active.json").write_text(json.dumps(diff, indent=2), encoding="utf-8")
     print(f"staged        : {out_dir}")
 

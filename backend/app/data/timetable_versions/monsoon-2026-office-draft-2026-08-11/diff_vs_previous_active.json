@@ -1,13 +1,5524 @@
 {
   "renamed_courses": [],
-  "added_courses": [],
+  "added_courses": [
+    "DES4001",
+    "HIS102"
+  ],
   "removed_courses": [],
-  "changed_courses": [],
+  "changed_courses": [
+    {
+      "code": "ART202/AMP1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ART220",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ART341/AMP2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ART342",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO1002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BIO1YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO1004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO1008",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO2009",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO202/BIO2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO208/BIO2008",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO210/BIO2010",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO211/BIO2011",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO302",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO303",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO304",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "BIO323",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BIO3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO324",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BIO3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO327",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BIO3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO330",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BIO3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO401",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO4YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC122/CCC2105",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC125/CCC2116",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC2103",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC2116",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC228/CCC2605",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC236/CCC2117",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC252/CCC2506",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC255/CCC2206",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC257/CCC2208",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC259/CCC2213",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC261/CCC2214",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC356/CCC2501",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC359/CCC2313",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC395/CCC2502",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC396/CCC2315",
+      "diffs": {
+        "school": {
+          "old": "",
+          "new": "School of Humanities & Social Sciences"
+        },
+        "dept": {
+          "old": "",
+          "new": "School of Humanities & Social Sciences - CCC"
+        },
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC407/CCC2200",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC411/CCC2201",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC416/CCC2314",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC419/CCC2202",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC447/CCC2406",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC448/CCC2407",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC526/CCC2503",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC527/CCC2508",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC606/CCC2608",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC634/CCC2204",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC685",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC697/CCC2308",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC704/CCC2302",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS1YR",
+            "CHY1YR",
+            "DES1YR",
+            "ECO1YR",
+            "ENF2YR",
+            "INT1YR",
+            "MAT1YR",
+            "PHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC804/CCC2309",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC805/CCC2600",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC826/CCC2101",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC844/CCC2205",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CCC848/CCC2504",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED2004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED2005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED304",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED305",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED310",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED316",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CED325",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED326",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED412",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CED424",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED4YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CED425",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CED640",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CHD2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD2004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD310",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD318",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD319",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD320",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD413",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD4YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD418",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD4YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHD471",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CHD4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CHY103/CHY1003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY111/CHY1011",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO1YR",
+            "CHY1YR",
+            "PHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY115/CHY1015",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY211/CHY2011",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY214/CHY2014",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY221/CHY2021",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY245/CHY2045",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY3041",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY311",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY313",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY321",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY323",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY351",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CHY400",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CHY3YR",
+            "CHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CHY504/CHY5004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CHY3YR",
+            "CHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CHY545/CHY5045",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CHY3YR",
+            "CHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CHY556",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CHY3YR",
+            "CHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CHY571/CHY5071",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CHY3YR",
+            "CHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "COM191/AMP2004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "COM197/AMP2006",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CSD101/CSD1001",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "SOE11",
+            "SOE11, SOE12",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE13, SOE14",
+            "SOE14",
+            "SOE15",
+            "SOE15, SOE16",
+            "SOE16",
+            "SOE17",
+            "SOE17, SOE18",
+            "SOE18",
+            "SOE19"
+          ],
+          "new": []
+        },
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CED1YR",
+            "CHD1YR",
+            "CSD1YR",
+            "ECE1YR",
+            "MED1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC10",
+            "LEC:LEC1 + PRAC:PRAC3",
+            "LEC:LEC1 + PRAC:PRAC4",
+            "LEC:LEC1 + PRAC:PRAC5",
+            "LEC:LEC1 + PRAC:PRAC7",
+            "LEC:LEC1 + PRAC:PRAC8",
+            "LEC:LEC2 + PRAC:PRAC1",
+            "LEC:LEC2 + PRAC:PRAC10",
+            "LEC:LEC2 + PRAC:PRAC2",
+            "LEC:LEC2 + PRAC:PRAC5",
+            "LEC:LEC2 + PRAC:PRAC7",
+            "LEC:LEC2 + PRAC:PRAC8",
+            "LEC:LEC3 + PRAC:PRAC1",
+            "LEC:LEC3 + PRAC:PRAC10",
+            "LEC:LEC3 + PRAC:PRAC2",
+            "LEC:LEC3 + PRAC:PRAC4",
+            "LEC:LEC3 + PRAC:PRAC7",
+            "LEC:LEC3 + PRAC:PRAC8",
+            "LEC:LEC3 + PRAC:PRAC9",
+            "LEC:LEC4 + PRAC:PRAC1",
+            "LEC:LEC4 + PRAC:PRAC10",
+            "LEC:LEC4 + PRAC:PRAC3",
+            "LEC:LEC4 + PRAC:PRAC4",
+            "LEC:LEC4 + PRAC:PRAC5",
+            "LEC:LEC4 + PRAC:PRAC6",
+            "LEC:LEC4 + PRAC:PRAC9"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD102/CSD2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CSD2YR",
+            "ECE2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CSD205/CSD2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CSD2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CSD211/CSD2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CSD2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "CSD213/CSD2004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CSD2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CSD304",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CSD3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CSD311",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CSD3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CSD319",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CSD3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CSD355",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CSD3YR",
+            "CSD4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD358",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CSD3YR",
+            "CSD4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD361",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CSD3YR",
+            "CSD4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD365",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CSD3YR",
+            "CSD4YR",
+            "ECE3YR",
+            "ECE4YR",
+            "MED3YR",
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD436",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CSD3YR",
+            "CSD4YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD438",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CSD3YR",
+            "CSD4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD457",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "CSD3YR",
+            "CSD4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CWR1002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "CWR2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES102/DES1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES103/DES1002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES104/DES1003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES105/DES1004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES106/DES1005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES131",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES203/DES2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES204/DES2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES205/DES2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES206/DES2004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES301/DES3001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES302/DES3002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DES4002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES4003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES4007",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES4008",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES406/DES4009",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES4100",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DNC214/AMP1005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DOM104/DOM1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DOM207",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DOM304",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DOM306",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "DOM307",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE1001",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "SOE11",
+            "SOE11, SOE12",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE13, SOE14",
+            "SOE14",
+            "SOE15",
+            "SOE15, SOE16, SOE19",
+            "SOE16",
+            "SOE17",
+            "SOE17, SOE18, SOE110",
+            "SOE18",
+            "SOE19"
+          ],
+          "new": []
+        },
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD1YR",
+            "CSD1YR",
+            "ECE1YR",
+            "MED1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC10",
+            "LEC:LEC1 + PRAC:PRAC3",
+            "LEC:LEC1 + PRAC:PRAC4",
+            "LEC:LEC1 + PRAC:PRAC5",
+            "LEC:LEC1 + PRAC:PRAC6",
+            "LEC:LEC1 + PRAC:PRAC7",
+            "LEC:LEC1 + PRAC:PRAC8",
+            "LEC:LEC1 + PRAC:PRAC9",
+            "LEC:LEC2 + PRAC:PRAC1",
+            "LEC:LEC2 + PRAC:PRAC10",
+            "LEC:LEC2 + PRAC:PRAC2",
+            "LEC:LEC2 + PRAC:PRAC6",
+            "LEC:LEC2 + PRAC:PRAC7",
+            "LEC:LEC2 + PRAC:PRAC8",
+            "LEC:LEC2 + PRAC:PRAC9",
+            "LEC:LEC3 + PRAC:PRAC1",
+            "LEC:LEC3 + PRAC:PRAC10",
+            "LEC:LEC3 + PRAC:PRAC2",
+            "LEC:LEC3 + PRAC:PRAC3",
+            "LEC:LEC3 + PRAC:PRAC4",
+            "LEC:LEC3 + PRAC:PRAC7",
+            "LEC:LEC3 + PRAC:PRAC8",
+            "LEC:LEC4 + PRAC:PRAC1",
+            "LEC:LEC4 + PRAC:PRAC2",
+            "LEC:LEC4 + PRAC:PRAC3",
+            "LEC:LEC4 + PRAC:PRAC4",
+            "LEC:LEC4 + PRAC:PRAC6",
+            "LEC:LEC4 + PRAC:PRAC9"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECE2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECE2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECE2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECE2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECE2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECE301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC4"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE302",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC3"
+        ]
+      }
+    },
+    {
+      "code": "ECE303",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECE305",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE351",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE352",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE353",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE356",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE357",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE363",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "ECE370",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE374",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE451",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE452",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE453",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE454",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE456",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE458",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO101/ECO1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO1YR",
+            "ENF1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECO102/ECO1002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECO104/ECO1004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECO108/ECO1009",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "DES1YR",
+            "ENG1YR",
+            "IHS1YR",
+            "INT1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECO203/ECO2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO2YR",
+            "ENF2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECO2101/ECO221",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO2YR",
+            "ENF2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECO301/ECO2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECO302",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO3YR",
+            "ECO4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ECO325",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECO3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO354/ECO4201",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECO2YR",
+            "ECO3YR",
+            "ENF2YR",
+            "ENF3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO373",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECO3YR",
+            "ECO4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO375",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECO3YR",
+            "ENF3YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO402",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECO3YR",
+            "ENF3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO415/ECO3101",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO4502",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECO3YR",
+            "ENF3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO4603",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECO3YR",
+            "ENF3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO483",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ECO3YR",
+            "ENF3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENF1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENF409",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF4YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENF4801",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENG104/CWR1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO1YR",
+            "INT1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENG141/ENG1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENG1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENG241/ENG2041",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENG2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENG242/ENG2042",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENG2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENG245/ENG2045",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENG2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENG340",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ENG3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG342",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ENG3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG343",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENG3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "ENG348",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ENG3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG440",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG448",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG449",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "FAC1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "FAC1002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "FAC102/FAC1005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "FAC2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "FAC2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "FAC202/FAC2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "FAC211",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS3YR",
+            "BMS4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "FAC301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS3YR",
+            "BMS4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "FAC312",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR",
+            "ENF2YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "FAC313",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR",
+            "ENF2YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "FAC405",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS3YR",
+            "BMS4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "FAC410",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "FAC415",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS3YR",
+            "BMS4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "HIS302",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "HIS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS303",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "HIS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS312",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "HIS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS323",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "HIS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS325",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "HIS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS326",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "HIS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS331",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "HIS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "IHS1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "IHS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages_moved": [
+          "LEC:LEC3 + TUT:TUT1",
+          "LEC:LEC3 + TUT:TUT2",
+          "LEC:LEC3 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "IHS1002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "IHS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "IHS1003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "IHS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "IHS1004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "IHS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "IHS1005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "IHS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "INT101/INT1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "INT1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "INT102/INT1002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "INT1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "INT104/INT2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "INT1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "INT203/INT2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "INT2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "INT217/INT2004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "INT2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "INT232/INT3032",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "INT3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "INT246/INT3046",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "INT3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "INT301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "INT3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "INT354",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "INT3YR",
+            "INT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "INT363",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "INT3YR",
+            "INT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "INT365",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "INT3YR",
+            "INT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT100/MAT1000",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MAT1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT1003",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "SOE11",
+            "SOE11 to SOE15",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE14",
+            "SOE15",
+            "SOE16",
+            "SOE16 to SOE110",
+            "SOE17",
+            "SOE18",
+            "SOE19"
+          ],
+          "new": []
+        },
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD1YR",
+            "CSD1YR",
+            "ECE1YR",
+            "MED1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages": {
+          "removed_labels": [],
+          "added_labels": [
+            "LEC:LEC1 + TUT:TUT10",
+            "LEC:LEC1 + TUT:TUT6",
+            "LEC:LEC1 + TUT:TUT7",
+            "LEC:LEC1 + TUT:TUT8",
+            "LEC:LEC1 + TUT:TUT9",
+            "LEC:LEC2 + TUT:TUT1",
+            "LEC:LEC2 + TUT:TUT3",
+            "LEC:LEC2 + TUT:TUT4",
+            "LEC:LEC2 + TUT:TUT5"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT1005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MAT1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT1008",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BIO1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT1009",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ENF1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT101/MAT1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECO1YR",
+            "MAT1YR",
+            "PHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT160/MAT1006",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MAT1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT184/MAT2007",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MAT2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MAT2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT205/MAT2004",
+      "diffs": {
+        "school": {
+          "old": "",
+          "new": "School of Natural Sciences"
+        },
+        "dept": {
+          "old": "",
+          "new": "School of Natural Sciences - Mathematics"
+        },
+        "majorFor": {
+          "old": null,
+          "new": [
+            "ECE2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT230",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MAT3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT241/MAT2041",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MAT2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT331",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MAT3YR",
+            "MAT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT360",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MAT3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MAT390",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MAT3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT422",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MAT3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT442",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MAT3YR",
+            "MAT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT485",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MAT3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT494",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MAT3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT620",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MAT3YR",
+            "MAT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MDR102",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MDR152",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MDR202",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MDR252",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MDR302",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MDR352",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MDR402",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MEC 104/MEC2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MEC 301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MEC4005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MED2002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "MED2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MED2004",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MED301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MED303",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MED307",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED309",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MED318",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED320",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MED328",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED403",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED410",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED412",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "MED3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MED416",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED417",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MGT1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MGT102/MGT1002",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MGT2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MGT2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MGT211",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MGT301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "MGT306",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MGT402",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MKT304",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MKT402",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MKT404",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MKT408",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MKT409",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS2YR",
+            "BMS3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "OHM103/OHM1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "OHM2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "OHM303",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "OHM307",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "OHM401",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY1003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY1007",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY1011",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "SOE11",
+            "SOE11, SOE12",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE13, SOE14",
+            "SOE14",
+            "SOE15",
+            "SOE15, SOE16, SOE19",
+            "SOE16",
+            "SOE17",
+            "SOE17, SOE18",
+            "SOE17, SOE18, SOE110",
+            "SOE18",
+            "SOE19"
+          ],
+          "new": []
+        },
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD1YR",
+            "CSD1YR",
+            "ECE1YR",
+            "MED1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT9"
+          ],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC10 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC5 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC6 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC7 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT8",
+            "LEC:LEC1 + PRAC:PRAC8 + TUT:TUT9",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT10",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT4",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT5",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT6",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT7",
+            "LEC:LEC1 + PRAC:PRAC9 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC1 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC10 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC2 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC4 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC6 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC7 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT1",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT8",
+            "LEC:LEC2 + PRAC:PRAC8 + TUT:TUT9",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT10",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT2",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT4",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT5",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT6",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT7",
+            "LEC:LEC2 + PRAC:PRAC9 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC1 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC10 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC2 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC3 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC4 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC6 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT1",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT8",
+            "LEC:LEC3 + PRAC:PRAC8 + TUT:TUT9",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT10",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT2",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT4",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT6",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT7",
+            "LEC:LEC3 + PRAC:PRAC9 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC1 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC2 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC3 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC4 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC5 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC6 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT8",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT1",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC8 + TUT:TUT9",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT10",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT2",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT3",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT4",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT6",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT8"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY105/PHY1005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY201/PHY2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY203/PHY2003",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY205/PHY2005",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY303",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY305",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY307",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "PHY3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "PHY551",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "PHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY556",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "PHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY558",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "PHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY560",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "PHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY565",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "PHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY572",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "PHY4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "SNS1001",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "SOE11 to SOE15",
+            "SOE16 to SOE110"
+          ],
+          "new": []
+        },
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD1YR",
+            "CSD1YR",
+            "ECE1YR",
+            "MED1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "SOC323",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "SOC3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "SOC327",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "SOC3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "SOC414",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "SOC4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "SOC415",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": [
+            "SOC4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "SOE4801",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "SOE11 to SOE15",
+            "SOE16 to SOE110"
+          ],
+          "new": []
+        },
+        "majorFor": {
+          "old": null,
+          "new": [
+            "CHD1YR",
+            "CSD1YR",
+            "ECE1YR",
+            "MED1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "SPO201/SPO2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": []
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "STM103/STM1001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS1YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "STM2001",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS2YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    },
+    {
+      "code": "STM301",
+      "diffs": {
+        "majorFor": {
+          "old": null,
+          "new": [
+            "BMS3YR"
+          ]
+        },
+        "meFor": {
+          "old": null,
+          "new": []
+        }
+      }
+    }
+  ],
   "summary": {
     "renamed": 0,
-    "added": 0,
+    "added": 2,
     "removed": 0,
-    "changed": 0,
-    "unchanged": 327
+    "changed": 325,
+    "unchanged": 0
   }
 }

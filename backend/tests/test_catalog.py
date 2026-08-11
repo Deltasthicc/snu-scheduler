@@ -1,11 +1,14 @@
 from __future__ import annotations
 import filecmp
+import json
 from pathlib import Path
 
 from app.domain import catalog
+from app.timetable_updates.diff import diff_datasets
 
 FRONTEND_SRC = Path(__file__).resolve().parent.parent.parent / "frontend" / "src" / "data.json"
 BACKEND_COPY = Path(__file__).resolve().parent.parent / "app" / "data" / "courses.json"
+VERSIONS = BACKEND_COPY.parent / "timetable_versions"
 
 
 def test_catalog_loads_327_courses():
@@ -77,6 +80,21 @@ def test_csd211_packages_are_batch_coherent_not_a_cross_batch_cross_product():
     assert len(course["pk"]) == 4
     batches_per_package = {tuple(sorted(p.get("batches", []))) for p in course["pk"]}
     assert batches_per_package == {("CSD21",), ("CSD22",), ("CSD23",), ("CSD24",)}
+
+
+def test_office_draft_audit_diff_matches_the_actual_previous_version():
+    previous = json.loads((VERSIONS / "monsoon-2026-netlify-revision-2026-08-10" /
+                           "courses.json").read_text(encoding="utf-8"))
+    office_dir = VERSIONS / "monsoon-2026-office-draft-2026-08-11"
+    current = json.loads((office_dir / "courses.json").read_text(encoding="utf-8"))
+    recorded = json.loads((office_dir / "diff_vs_previous_active.json").read_text(encoding="utf-8"))
+    expected = diff_datasets(previous, current)
+
+    assert recorded == expected
+    assert recorded["summary"] == {
+        "renamed": 0, "added": 2, "removed": 0, "changed": 325, "unchanged": 0,
+    }
+    assert recorded["added_courses"] == ["DES4001", "HIS102"]
 
 
 def test_backend_copy_matches_frontend_source():

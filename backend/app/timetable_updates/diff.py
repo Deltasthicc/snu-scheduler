@@ -7,6 +7,17 @@ course comparison - rename detection uses a targeted secondary index over
 from __future__ import annotations
 
 
+# Every course-level field that can change what a student sees or how a course
+# is categorised.  The Office workbook introduced majorFor/meFor, but the old
+# four-field diff ignored them and therefore reported authoritative programme
+# scoping changes as "unchanged".  Keep package details separate below so the
+# report remains concise and calls out section-level changes explicitly.
+COURSE_FIELDS = (
+    "title", "school", "dept", "ttype", "uwe", "cr", "crOfficial", "crBasis",
+    "terms", "blocks", "cat", "seats", "unsched", "why", "majorFor", "meFor",
+)
+
+
 def _code_parts(code: str) -> set[str]:
     return {p.strip() for p in code.split("/") if p.strip()}
 
@@ -47,7 +58,7 @@ def diff_datasets(old: list[dict], new: list[dict]) -> dict:
     for code in sorted(old_codes & new_codes):
         o, n = old_by_code[code], new_by_code[code]
         field_diffs = {}
-        for f in ("title", "seats", "terms", "cat"):
+        for f in COURSE_FIELDS:
             if o.get(f) != n.get(f):
                 field_diffs[f] = {"old": o.get(f), "new": n.get(f)}
         old_labels = sorted(p["l"] for p in o.get("pk", []))
@@ -63,6 +74,12 @@ def diff_datasets(old: list[dict], new: list[dict]) -> dict:
             moved = [label for label in old_labels if old_pk_by_label[label]["m"] != new_pk_by_label[label]["m"]]
             if moved:
                 field_diffs["packages_moved"] = moved
+            batch_changed = [
+                label for label in old_labels
+                if old_pk_by_label[label].get("batches", []) != new_pk_by_label[label].get("batches", [])
+            ]
+            if batch_changed:
+                field_diffs["package_batches_changed"] = batch_changed
         if field_diffs:
             changed.append({"code": code, "diffs": field_diffs})
 

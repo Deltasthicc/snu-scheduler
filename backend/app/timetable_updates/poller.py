@@ -209,7 +209,13 @@ class UpdateService:
 
         self.state = UpdateState.VALIDATING
         diff = diff_datasets(catalog.all_courses(), norm.courses)
-        version_id = f"monsoon-2026-netlify-revision-{fetch.retrieved_at[:10]}"
+        # A date-only id let a second publication on the same day overwrite a
+        # staged or already-applied revision folder.  Source-hash suffixes keep
+        # every published snapshot's audit record distinct.
+        version_id = (
+            f"monsoon-2026-netlify-revision-{fetch.retrieved_at[:10]}-"
+            f"{new_source_hash[:8]}"
+        )
         manifest_entry = {
             "version_id": version_id, "source_name": "SNU Monsoon 2026 Timetable Planner (Netlify)",
             "source_url": self.url, "retrieved_at": fetch.retrieved_at, "source_checksum": new_source_hash,
