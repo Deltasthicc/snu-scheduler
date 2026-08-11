@@ -54,7 +54,7 @@ function renderFixed(){
   if(!FIXED.length && !MANUAL.length) h+='<tr><td colspan="7" class="tiny">Nothing fixed yet.</td></tr>';
   FIXED.forEach((f,i)=>{const c=BY[f.code];if(!c)return;const p=c.pk[f.pkg];
     const opts=c.pk.map((q,j)=>`<option value="${j}"${j===f.pkg?' selected':''}>${esc(q.l)} — ${q.t}</option>`).join('');
-    h+=`<tr><td data-label="Course"><b>${esc(c.code)}</b><span class="course-title">${esc(c.title)}</span>
+    h+=`<tr><td data-label="Course"><b>${esc(c.code)}</b>${hasOutline(c.code)?`<button type="button" class="pick-outline-btn" title="View the Academic Office's course outline" aria-label="View course outline for ${esc(c.code)}" onclick="event.stopPropagation();openCourseOutline('${esc(c.code)}')">ⓘ</button>`:''}<span class="course-title">${esc(c.title)}</span>
       ${f.auto?'<span class="pill p-m">block</span>':''}</td>
       <td data-label="Package">${c.pk.length>1?`<select aria-label="Section package for ${esc(c.code)}" onchange="FIXED[${i}].pkg=+this.value;renderFixed();renderPick();renderChosen()">${opts}</select>`:`<span class="tiny">${esc(p.l)}</span>`}</td>
       <td data-label="Credits" class="num">${c.cr}</td><td data-label="Term" class="tiny">${p.t}</td>
@@ -139,7 +139,7 @@ async function autoSolve(silent){
     LASTSWAPS=swaps;
     if(!silent){
       let msg=out.results.mode==='exact' ? 'Found a completely clash-free assignment.'
-        : 'Best achievable still leaves '+out.results.clash_count+' overlap(s) — see the scheduler tab for exactly which.';
+        : 'Best achievable still leaves '+out.results.clash_count+' overlap(s) — see the Timetable tab for exactly which.';
       if(swaps.length) msg+='\n\nThis requires a Major-Core SWAP in Round 1 or 5:\n  '+swaps.join('\n  ');
       alert(msg);
     }
@@ -214,7 +214,7 @@ function renderPick(){
     h+=`<tr><td data-label="Add"><input type="checkbox" class="chk" aria-label="Add ${esc(c.code)} to plan" ${on?'checked':''} ${disabled?'disabled':''}
         onchange="togglePick('${c.code}',this.checked)"
         title="${routesToFixed?'adds as a fixed / pre-enrolled reference item':'adds to your bid shortlist'}"></td>
-      <td data-label="Course"><b>${esc(c.code)}</b><span class="course-title">${esc(c.title)}</span>
+      <td data-label="Course"><b>${esc(c.code)}</b>${hasOutline(c.code)?`<button type="button" class="pick-outline-btn" title="View the Academic Office's course outline" aria-label="View course outline for ${esc(c.code)}" onclick="event.stopPropagation();openCourseOutline('${esc(c.code)}')">ⓘ</button>`:''}<span class="course-title">${esc(c.title)}</span>
         <span class="course-meta">${esc(c.dept)}</span></td>
       <td data-label="Category"><span class="pill ${CAP[c.cat]||'p-m'}">${c.cat}</span></td>
       <td data-label="Term" class="tiny">${c.terms.join(', ').replace('Full semester','Full')}</td>
@@ -271,7 +271,7 @@ function renderChosen(){
       const cf=conflicts(mm,allChosenMeets(code));
       const names=[...new Set(cf.map(x=>x.b.code))];
       const opts=c.pk.map((p,i)=>`<option value="${i}"${i===PICK[code].pkg?' selected':''}>${esc(p.l)} — ${p.t}</option>`).join('');
-      h+=`<tr><td data-label="Course"><b>${esc(c.code)}</b><span class="course-title">${esc(c.title)}</span></td>
+      h+=`<tr><td data-label="Course"><b>${esc(c.code)}</b>${hasOutline(c.code)?`<button type="button" class="pick-outline-btn" title="View the Academic Office's course outline" aria-label="View course outline for ${esc(c.code)}" onclick="event.stopPropagation();openCourseOutline('${esc(c.code)}')">ⓘ</button>`:''}<span class="course-title">${esc(c.title)}</span></td>
         <td data-label="Package">${c.pk.length>1?`<select aria-label="Section package for ${esc(code)}" onchange="PICK['${code}'].pkg=+this.value;renderChosen();renderPick()">${opts}</select>`:`<span class="tiny">${esc(c.pk[0].l)}</span>`}</td>
         <td data-label="Credits" class="num">${c.cr}</td><td data-label="Seats" class="num">${c.seats}</td>
         <td data-label="Pool cap" class="num" style="color:var(--sig)" title="No per-course cap — the figure shown is your whole ${cat} pool">${BUD[cat]}</td>

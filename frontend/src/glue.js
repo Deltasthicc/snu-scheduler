@@ -21,6 +21,18 @@ let HEALTH_TIMER = null;
 let HEALTH_PROBE_SEQ = 0;    // a late older failure must not overwrite a newer success
 let RUNNING = false;
 let DATASET_INFO = null;     // active institutional timetable dataset identity (see /api/v1/dataset)
+let OUTLINE_CODES = new Set(); // course codes with a real Academic Office outline on file
+let OUTLINE_CACHE = {};        // code -> fetched outline body, so re-opening the same course is instant
+
+// The outline set is keyed by the Office's own per-department filename code
+// (e.g. "AMP1001"), while the catalogue often joins cross-listed sections with
+// "/" (e.g. "ART202/AMP1001") - mirrors OutlineCatalog.get()'s own component
+// match on the backend, so a picker row for either code finds the same file.
+function hasOutline(code) {
+  if (OUTLINE_CODES.has(code)) return true;
+  const parts = code.split('/').map(p => p.trim()).filter(Boolean);
+  return parts.some(p => OUTLINE_CODES.has(p));
+}
 
 function curPosture() { const e = $('bidPosture'); return e ? e.value : 'balanced'; }
 function curReserve() { const e = $('bidReserve'); return e ? Math.max(0, Math.min(90, Math.round(+e.value || 0))) : 20; }
@@ -418,7 +430,7 @@ async function buildSchedules() {
   if (SCHED_RUNNING) return;                             // no duplicate submission
   const codes = Object.keys(PICK).filter(c => BY[c] && BY[c].pk.length);
   if (!codes.length) {
-    $('buildOut').innerHTML = '<div class="card"><div class="note">Add courses to your bid shortlist on the Course Picker tab first.</div></div>';
+    $('buildOut').innerHTML = '<div class="card"><div class="note">Add courses to your bid shortlist on the Course selection tab first.</div></div>';
     return;
   }
   if (!BACKEND_OK) { await probeHealth(); if (!BACKEND_OK) return; }
@@ -611,7 +623,7 @@ async function generateWishlistSchedule() {
   const codes = Object.keys(PICK).filter(c => BY[c] && BY[c].pk.length);
   if (!codes.length) {
     $('wishOut').innerHTML = '<div class="card"><div class="note">Add courses to your wishlist on the '
-      + 'Course Picker tab first.</div></div>';
+      + 'Course selection tab first.</div></div>';
     return;
   }
   if (!BACKEND_OK) { await probeHealth(); if (!BACKEND_OK) return; }
@@ -697,7 +709,12 @@ function useWishlistSchedule() {
   const assign = r.schedules[0].assign;
   Object.keys(assign).forEach(code => { if (PICK[code]) PICK[code].pkg = assign[code]; });
   renderChosen(); renderPick();
-  const tab = document.querySelector('[data-p="courses"]'); if (tab) tab.click();
+  // "Generate a personalised schedule" and the weekly grid both live on the
+  // Timetable tab now (split out of Course selection) - scroll to the grid
+  // in place, the same pattern i_build.html's useSchedule() already uses for
+  // the same reason, rather than switching tabs away from where this button is.
+  const grid = $('ttGrid'); if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (typeof drawTT === 'function') drawTT();
 }
 
 /* ---------------- rules from the backend ---------------- */
@@ -881,6 +898,11 @@ async function boot() {
     try { DATASET_INFO = await API.getDataset(); revalidatePlanAgainstDataset(); }
     catch (e) { /* dataset banner is best-effort; never block boot on it */ }
     void checkTimetableOnOpen();  // every app open/refresh; backend lock deduplicates simultaneous tabs
+    try {
+      const outlines = await API.getCourseOutlineCodes();
+      OUTLINE_CODES = new Set(outlines.codes || []);
+      renderPick();   // re-render so "view outline" affordances appear on rows already drawn
+    } catch (e) { /* outline availability is a nice-to-have; never block boot on it */ }
   }
   // expose a minimal surface for tests and debugging (no compute, just state)
   try {
@@ -1476,6 +1498,102 @@ async function confirmPlanImport() {
           ? ' (' + PENDING_IMPORT.warnings.join('; ') + ')' : '') + '.');
   cancelPlanImport();
 }
+/* ---------------- course outlines (Academic Office PDFs) ---------------- */
+let OUTLINE_RETURN_FOCUS = null;
+
+function outlineField(v) {
+  // The Office's own forms use "None"/"NA"/"N/A" for a genuinely-answered
+  // blank; treat those the same as null rather than printing them as if they
+  // were real content.
+  if (v === null || v === undefined) return null;
+  const s = String(v).trim();
+  return (!s || /^(none|na|n\/a)$/i.test(s)) ? null : s;
+}
+
+function renderOutlineWeeks(weeklyModules) {
+  if (!weeklyModules) return '';
+  const weeks = Object.keys(weeklyModules).map(Number).filter(n => Number.isFinite(n)).sort((a, b) => a - b);
+  if (!weeks.length) return '';
+  // Consecutive weeks sharing identical text describe one module; collapse
+  // them into a single row instead of repeating the same paragraph N times.
+  const rows = [];
+  weeks.forEach(w => {
+    const text = outlineField(weeklyModules[w]); if (!text) return;
+    const last = rows[rows.length - 1];
+    if (last && last.text === text && w === last.to + 1) last.to = w;
+    else rows.push({ from: w, to: w, text });
+  });
+  return `<div class="outline-section"><h3>Weekly modules</h3><div class="outline-weeks">` +
+    rows.map(r => `<div class="outline-week"><b>Wk ${r.from === r.to ? r.from : r.from + '–' + r.to}</b><span>${esc(r.text)}</span></div>`).join('') +
+    `</div></div>`;
+}
+
+function renderOutlineGrading(outline) {
+  const comps = Array.isArray(outline.assessment_components) ? outline.assessment_components : [];
+  const notes = outlineField(outline.grading_notes);
+  const type = outlineField(outline.grading_type);
+  if (!comps.length && !notes && !type) return '';
+  let h = '<div class="outline-section"><h3>Grading</h3>';
+  if (type) h += `<p><span class="outline-tag">${esc(type)} grading</span></p>`;
+  if (comps.length) {
+    h += `<table class="outline-grade-table"><thead><tr><th>Component</th><th>Weight</th></tr></thead><tbody>` +
+      comps.map(c => `<tr><td>${esc(c.component || '—')}</td><td>${c.weightage_pct != null ? c.weightage_pct + '%' : '—'}</td></tr>`).join('') +
+      `</tbody></table>`;
+  }
+  if (notes) h += `<p>${esc(notes)}</p>`;
+  return h + '</div>';
+}
+
+function renderOutlineBody(outline) {
+  const title = outlineField(outline.title_from_outline) || (BY[outline.code] ? BY[outline.code].title : outline.code);
+  $('outlineTitle').textContent = title;
+  $('outlineCode').textContent = 'Course outline · ' + outline.code;
+  const tags = [];
+  if (outlineField(outline.credits_from_outline) != null) tags.push(outline.credits_from_outline + ' credits');
+  if (outlineField(outline.semester)) tags.push(outline.semester);
+  if (outlineField(outline.method_of_instruction)) tags.push(outline.method_of_instruction);
+  if (outlineField(outline.seats_from_outline)) tags.push(outline.seats_from_outline + ' seats (outline)');
+  if (outlineField(outline.department)) tags.push(outline.department);
+  const para = (label, field) => { const v = outlineField(outline[field]); return v ? `<div class="outline-section"><h3>${esc(label)}</h3><p>${esc(v)}</p></div>` : ''; };
+  const faculty = outlineField(outline.faculty);
+  const facultyEmail = outlineField(outline.faculty_email);
+  let h = `<div class="outline-meta">${tags.map(t => `<span class="outline-tag">${esc(t)}</span>`).join('')}</div>`;
+  if (faculty) h += `<div class="outline-section"><h3>Faculty</h3><p>${esc(faculty)}${facultyEmail ? ' · <a href="mailto:' + esc(facultyEmail) + '">' + esc(facultyEmail) + '</a>' : ''}</p></div>`;
+  h += para('Prerequisites', 'prerequisites');
+  h += para('Introduction', 'introduction');
+  h += para('Objectives', 'objectives');
+  h += para('Learning outcomes', 'learning_outcomes');
+  h += para('Skill development', 'skill_development');
+  h += para('Programme learning goals', 'program_learning_goals');
+  h += renderOutlineWeeks(outline.weekly_modules);
+  h += renderOutlineGrading(outline);
+  h += para('Textbooks & references', 'textbooks');
+  if (!h.trim()) h = '<div class="note">The Office\'s outline for this course did not contain any readable content beyond its code and title.</div>';
+  $('outlineBody').innerHTML = h;
+}
+
+async function openCourseOutline(code) {
+  const backdrop = $('outlineBackdrop'); if (!backdrop) return;
+  OUTLINE_RETURN_FOCUS = document.activeElement;
+  backdrop.hidden = false; document.body.style.overflow = 'hidden';
+  $('outlineTitle').textContent = BY[code] ? BY[code].title : code;
+  $('outlineCode').textContent = 'Course outline · ' + code;
+  $('outlineBody').innerHTML = '<div class="note">Loading…</div>';
+  if (OUTLINE_CACHE[code]) { renderOutlineBody(OUTLINE_CACHE[code]); return; }
+  try {
+    const outline = await API.getCourseOutline(code);
+    OUTLINE_CACHE[code] = outline;
+    if (!backdrop.hidden) renderOutlineBody(outline);
+  } catch (e) {
+    if (!backdrop.hidden) $('outlineBody').innerHTML = `<div class="flag f-bad">${esc(API.humanError(e))}</div>`;
+  }
+}
+function closeCourseOutline() {
+  const backdrop = $('outlineBackdrop'); if (!backdrop || backdrop.hidden) return;
+  backdrop.hidden = true; document.body.style.overflow = '';
+  if (OUTLINE_RETURN_FOCUS?.focus) OUTLINE_RETURN_FOCUS.focus();
+}
+
 function cancelPlanImport() {
   PENDING_IMPORT = null;
   PENDING_ADVISEMENT = null;

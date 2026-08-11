@@ -92,7 +92,7 @@ const ck = (name, ok, detail = '') => {
     const columns = await page.$eval('.workspace-shell', el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
     ck('responsive workspace column count', expectedSingleColumn ? columns === 1 : columns >= 2, String(columns));
 
-    for (const tab of ['learn', 'prof', 'courses', 'bid', 'two', 'rules']) {
+    for (const tab of ['learn', 'prof', 'courses', 'timetable', 'bid', 'two', 'rules']) {
       await page.click(`.tab[data-p="${tab}"]`);
       const state = await page.evaluate(name => ({
         selected: document.querySelector(`.tab[data-p="${name}"]`).getAttribute('aria-selected'),
@@ -102,7 +102,7 @@ const ck = (name, ok, detail = '') => {
     }
     await page.click('.tab[data-p="prof"]');
     const journey = await page.evaluate(() => ({ count: document.getElementById('journeyCount').textContent, title: document.getElementById('journeyTitle').textContent, hash: location.hash }));
-    ck('guided journey follows the active workspace', journey.count === 'Step 2 of 6' && /profile/i.test(journey.title) && journey.hash === '#prof', `${journey.count} · ${journey.hash}`);
+    ck('guided journey follows the active workspace', journey.count === 'Step 2 of 7' && /profile/i.test(journey.title) && journey.hash === '#prof', `${journey.count} · ${journey.hash}`);
     await page.keyboard.press('Alt+3');
     ck('Alt+number shortcut changes workspace', await page.$eval('.tab[data-p="courses"]', el => el.getAttribute('aria-selected') === 'true'));
     await page.click('.tab[data-p="prof"]');
@@ -118,15 +118,21 @@ const ck = (name, ok, detail = '') => {
     const courseLayout = await page.evaluate(() => ({
       rows: document.querySelectorAll('#pickBody tr').length,
       innerOverflow: document.querySelector('.catalog-list').scrollWidth - document.querySelector('.catalog-list').clientWidth,
-      view: document.getElementById('ttView').value,
       nav: document.querySelectorAll('#sectionNav .section-link').length,
     }));
     ck('course catalogue starts with a manageable page', courseLayout.rows <= 30, String(courseLayout.rows));
     ck('course catalogue does not require horizontal scrolling', courseLayout.innerOverflow <= 1, `${courseLayout.innerOverflow}px`);
-    ck('readable timetable view is the default', courseLayout.view === 'agenda', courseLayout.view);
-    ck('course page map covers every major tool', courseLayout.nav === 8, String(courseLayout.nav));
+    ck('course selection page map covers its sections', courseLayout.nav === 4, String(courseLayout.nav));
+
+    await page.click('.tab[data-p="timetable"]');
+    const timetableLayout = await page.evaluate(() => ({
+      view: document.getElementById('ttView').value,
+      nav: document.querySelectorAll('#sectionNav .section-link').length,
+    }));
+    ck('readable timetable view is the default', timetableLayout.view === 'agenda', timetableLayout.view);
+    ck('timetable page map covers every major tool', timetableLayout.nav === 4, String(timetableLayout.nav));
     await page.click('#sectionNav .section-link:last-child');
-    ck('page map opens collapsed target sections', await page.$eval('#p-courses > details.more', el => el.open));
+    ck('page map opens collapsed target sections', await page.$eval('#p-timetable > details.more', el => el.open));
 
     await page.click('.tab[data-p="rules"]');
     await page.waitForSelector('.source-card');

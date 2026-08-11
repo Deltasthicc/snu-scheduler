@@ -166,11 +166,11 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
 
   console.log('\n=== §17 SCHEDULE BUILDER (backend-authoritative search) ===');
   await p.evaluate(() => { PICK = {}; renderChosen(); });
-  await p.click('.tab[data-p="courses"]');
-  await p.evaluate(() => { const d = document.querySelector('#p-courses details.more'); if (d) d.open = true; });
+  await p.click('.tab[data-p="timetable"]');
+  await p.evaluate(() => { const d = document.querySelector('#p-timetable details.more'); if (d) d.open = true; });
   await p.click('#buildBtn');
   await p.waitForTimeout(200);
-  ck('empty shortlist shows a friendly message, no request made', /Course Picker tab first/.test(
+  ck('empty shortlist shows a friendly message, no request made', /Course selection tab first/.test(
     await p.textContent('#buildOut')));
 
   await p.evaluate(() => {
@@ -227,10 +227,10 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
 
   await p.click('#buildOut .scroll table tbody tr:nth-child(2) button:has-text("use this")');
   await p.waitForTimeout(200);
-  ck('"use this" stays on Courses & schedule and scrolls to the timetable',
-     await p.evaluate(() => document.querySelector('.tab.on').dataset.p) === 'courses');
+  ck('"use this" stays on the Timetable tab and scrolls to the grid',
+     await p.evaluate(() => document.querySelector('.tab.on').dataset.p) === 'timetable');
 
-  await p.evaluate(() => { const d = document.querySelector('#p-courses details.more'); if (d) d.open = true; });
+  await p.evaluate(() => { const d = document.querySelector('#p-timetable details.more'); if (d) d.open = true; });
   await p.selectOption('#bSort', 'days');
   await p.waitForFunction(() => /combinations tested/.test(document.getElementById('buildStat').textContent),
                           null, { timeout: 20000 });
@@ -276,7 +276,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     codes.forEach(c => PICK[c] = { want: 5, pkg: 0 });
     renderChosen(); renderFixed();
   }, pair.unavoidable);
-  await p.click('.tab[data-p="courses"]');
+  await p.click('.tab[data-p="timetable"]');
   await p.evaluate(() => {
     window.__longTasks2 = [];
     window.__lto2 = new PerformanceObserver(l => l.getEntries().forEach(e => window.__longTasks2.push(e.duration)));
@@ -290,8 +290,8 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('auto-resolve does not block the main thread either', longTasks2.length === 0, JSON.stringify(longTasks2));
 
   // Rendering the full timetable is verified separately; it must not pollute
-  // the solver's long-task measurement above. Timetable now lives on the same
-  // "courses" pane, already active - just force a fresh draw.
+  // the solver's long-task measurement above. The grid now lives on its own
+  // "timetable" pane, already active - just force a fresh draw.
   await p.evaluate(() => void drawTT());
   await p.waitForFunction(() => /overlap/.test(document.getElementById('ttReport').textContent) ||
     document.querySelectorAll('#ttReport .flag').length > 0, null, { timeout: 15000 }).catch(() => {});
@@ -303,8 +303,8 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     codes.forEach(c => PICK[c] = { want: 5, pkg: 0 });
     renderChosen(); renderFixed();
   }, pair.unavoidable);
-  await p.click('.tab[data-p="courses"]');
-  await p.evaluate(() => { const d = document.querySelector('#p-courses details.more'); if (d) d.open = true; });
+  await p.click('.tab[data-p="timetable"]');
+  await p.evaluate(() => { const d = document.querySelector('#p-timetable details.more'); if (d) d.open = true; });
   await p.click('#buildBtn');
   await p.waitForFunction(() => /combinations tested/.test(document.getElementById('buildStat').textContent),
                           null, { timeout: 20000 });
@@ -389,7 +389,7 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
     PICK[codes[1]] = { want: 5, pkg: 0 }; PRIO[codes[1]] = 'STRONG';
     renderChosen(); renderFixed();
   }, pair.unavoidable);
-  await p.click('.tab[data-p="courses"]');
+  await p.click('.tab[data-p="timetable"]');
   await p.evaluate(() => {
     window.__longTasks3 = [];
     window.__lto3 = new PerformanceObserver(l => l.getEntries().forEach(e => window.__longTasks3.push(e.duration)));
@@ -547,6 +547,41 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   await p.waitForTimeout(300);
   ck('a multi-pathway minor names the eligibility conditions it cannot verify',
      /minimum CGPA/i.test(await p.textContent('#minorDetailBox')));
+
+  console.log('\n=== §24 COURSE OUTLINES (Academic Office PDFs) IN THE PICKER ===');
+  await p.click('.tab[data-p="courses"]');
+  await p.waitForFunction(() => typeof OUTLINE_CODES !== 'undefined' && OUTLINE_CODES.size > 0, null, { timeout: 10000 });
+  await p.fill('#fQ', 'AMP1001');
+  await p.waitForFunction(() => document.querySelectorAll('#pickBody tr').length === 1, null, { timeout: 5000 });
+  ck('a course with a real outline on file shows the outline affordance',
+     !!(await p.$('#pickBody .pick-outline-btn')));
+
+  await p.click('#pickBody .pick-outline-btn');
+  await p.waitForFunction(() => !document.getElementById('outlineBackdrop').hidden &&
+    document.getElementById('outlineBody').textContent.length > 100, null, { timeout: 8000 });
+  const outlineModal = await p.evaluate(() => ({
+    title: document.getElementById('outlineTitle').textContent,
+    code: document.getElementById('outlineCode').textContent,
+    headings: [...document.querySelectorAll('#outlineBody .outline-section h3')].map(h => h.textContent),
+    weeks: document.querySelectorAll('#outlineBody .outline-week').length,
+  }));
+  ck('the outline modal shows the real Office-published title', /Critical Art History/.test(outlineModal.title), outlineModal.title);
+  ck('the outline modal resolves the cross-listed code to the Office\'s own filename code',
+     /AMP1001/.test(outlineModal.code), outlineModal.code);
+  ck('the outline shows the weekly syllabus, not just the header fields', outlineModal.weeks > 0, String(outlineModal.weeks));
+  ck('the outline groups real content sections', outlineModal.headings.includes('Introduction') &&
+     outlineModal.headings.includes('Weekly modules'), JSON.stringify(outlineModal.headings));
+
+  await p.keyboard.press('Escape');
+  await p.waitForTimeout(150);
+  ck('Escape closes the outline modal', await p.evaluate(() => document.getElementById('outlineBackdrop').hidden));
+
+  const noOutlineCourse = await p.evaluate(() => Object.keys(BY).find(c => !hasOutline(c)));
+  await p.fill('#fQ', noOutlineCourse.split('/')[0]);
+  await p.waitForFunction(() => document.querySelectorAll('#pickBody tr').length >= 1, null, { timeout: 5000 });
+  ck('a course with no outline on file shows no affordance, rather than a broken one',
+     !(await p.$('#pickBody .pick-outline-btn')), noOutlineCourse);
+  await p.fill('#fQ', '');
 
   console.log('\n=== §9 BACKEND UNAVAILABLE ===');
   await p.route('**/api/v1/**', r => r.abort());

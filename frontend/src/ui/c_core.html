@@ -39,7 +39,8 @@ const THEME_KEY='snu-ui-theme',MOTION_KEY='snu-ui-motion';
 const JOURNEY={
   learn:['Learn the system','See how clearing prices, refunds and strategic preferences work before making a plan.'],
   prof:['Set your profile','Load or enter your programme, completed work, credit policy and preference-point position.'],
-  courses:['Shape your semester','Browse courses, resolve clashes and build a schedule you can actually attend.'],
+  courses:['Choose your courses','Browse courses, set priorities and choice groups — the timetable and clash checks are next.'],
+  timetable:['Build your timetable','See your chosen courses laid out by week, with every clash highlighted, then let the scheduler resolve them.'],
   bid:['Plan your preferences','Turn priorities and separate point pools into opening preferences and personal stop points.'],
   two:['Check degree progress','See what is complete, what this semester satisfies and what remains afterward.'],
   rules:['Verify every claim','Open the exact University source behind a rule, assumption or programme requirement.']
@@ -174,7 +175,7 @@ function activateTab(t){
     document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-selected','false');});
     document.querySelectorAll('.pane').forEach(x=>{x.classList.remove('on');x.hidden=true;});
     t.classList.add('on');t.setAttribute('aria-selected','true');const pane=$('p-'+t.dataset.p);pane.hidden=false;pane.classList.add('on');
-    if(t.dataset.p==='courses')drawTT();if(t.dataset.p==='two'){drawTwo();drawSpec();}if(t.dataset.p==='rules')drawRules();if(t.dataset.p==='learn')drawLearn();
+    if(t.dataset.p==='timetable')drawTT();if(t.dataset.p==='two'){drawTwo();drawSpec();}if(t.dataset.p==='rules')drawRules();if(t.dataset.p==='learn')drawLearn();
     history.replaceState(null,'',`#${t.dataset.p}`);SECTION_SIGNATURE='';updateSectionNav();updateJourney(t);updateScrollChrome();registerReveals(pane);pane.querySelectorAll('.ui-reveal').forEach(el=>el.classList.add('reveal-in'));
   };
   // Keep tab state synchronous for assistive technology and downstream renderers;
@@ -198,12 +199,14 @@ function initPresentation(){
   }
   document.addEventListener('pointerdown',e=>{const button=e.target.closest?.('button');if(!button||motionReduced())return;const r=button.getBoundingClientRect(),dot=document.createElement('span');dot.className='tap-ripple';dot.style.left=`${e.clientX-r.left}px`;dot.style.top=`${e.clientY-r.top}px`;button.appendChild(dot);dot.addEventListener('animationend',()=>dot.remove());});
   $('commandBackdrop')?.addEventListener('pointerdown',e=>{if(e.target===$('commandBackdrop'))closeCommandPalette();});
+  $('outlineBackdrop')?.addEventListener('pointerdown',e=>{if(e.target===$('outlineBackdrop'))closeCourseOutline();});
   $('commandSearch')?.addEventListener('input',e=>renderCommandResults(e.target.value));
   $('commandSearch')?.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();setCommandActive(CMD_ACTIVE+(e.key==='ArrowDown'?1:-1));}else if(e.key==='Enter'){e.preventDefault();runCommand(CMD_ACTIVE);}else if(e.key==='Escape'){e.preventDefault();closeCommandPalette();}});
   document.addEventListener('keydown',e=>{
     if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('commandBackdrop')?.hidden?openCommandPalette():closeCommandPalette();return;}
     if(e.key==='Escape'&&!$('commandBackdrop')?.hidden){closeCommandPalette();return;}
-    if(e.altKey&&/^[1-6]$/.test(e.key)){e.preventDefault();document.querySelectorAll('.tab')[+e.key-1]?.click();}
+    if(e.key==='Escape'&&!$('outlineBackdrop')?.hidden){closeCourseOutline();return;}
+    if(e.altKey&&/^[1-9]$/.test(e.key)){const tabs=document.querySelectorAll('.tab');if(+e.key<=tabs.length){e.preventDefault();tabs[+e.key-1]?.click();}}
   });
   const mq=window.matchMedia?.('(prefers-reduced-motion: reduce)');mq?.addEventListener?.('change',()=>{if(getMotionPreference()==='auto')setMotionPreference('auto',true);});
   updateSectionNav();updateJourney();updateScrollChrome();registerReveals(document);

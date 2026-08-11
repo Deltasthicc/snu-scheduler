@@ -1815,3 +1815,135 @@ cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 48 + 39
 cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 69 passed
 ./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations
 ```
+
+---
+
+## 21. Session update — 2026-08-11: 337 Academic Office course-outline PDFs
+## integrated, the Courses tab split in two, and outlines surfaced in the picker
+
+The Dean Academics office forwarded 337 per-course outline PDFs (one per code,
+e.g. `CSD358_Monsoon_2026.pdf`) ahead of the COMPAS live round, "for reference
+only." Alongside that, a direct product request: the merged "Courses &
+schedule" tab (course picker, chosen list, choice groups, weekly grid, load,
+schedule generation, exhaustive search - eight sections in one pane) scrolled
+too much and needed splitting into a course-selection page and a timetable
+page, with clashes clearly marked. General instruction: make the UX
+"sublime," implementation left to judgement.
+
+**PDF extraction - two real data-quality problems, both caught and handled,
+not shipped blind.** `tools/parse_course_outlines.py` reads every PDF
+straight out of the zip (`pdfplumber` tables first, `pypdf` linear text as a
+pattern-matched fallback - table extraction reliably pairs Section-A
+labels/values on the same row, plain text does not: labels and values print
+in two separate blocks). Two problems surfaced, verified against the actual
+source bytes before deciding how to handle either:
+1. A minority of files extract with pdfplumber's table cells interleaved
+   mid-word (`"CNOonUeRSE PREREQUISITES"`). Two independent heuristics
+   (intra-word case-transition scoring, short-token ratio) catch this;
+   confirmed against real garbled and clean samples before trusting either
+   one alone (one corruption pattern scored 0.0 on the first heuristic and
+   94% short-token ratio on the second - neither alone was sufficient).
+   Affected fields are dropped and, for Section A specifically, recovered
+   from `pypdf`'s plain text via pattern-matched regexes instead of
+   positional line indices (checked six samples first and found the line
+   position shifts depending on whether the optional Component field is
+   blank - positional parsing would have silently mis-assigned fields).
+2. 9 of 337 filenames (`ECO373`, `ECO495`, `ENG1001`, `MAT1006`, `MDR252 `,
+   `MEC 301`, `MED2003`, `PHY2003`, and one `CHY323` with a trailing space)
+   are the Office's own blank "Instructions for Filling the Course Outline
+   Form" template, uploaded under a real course's filename by mistake -
+   detected by checking whether page 1 starts with that exact template
+   marker, and excluded entirely rather than stored as if they described the
+   course.
+
+Final run: 328 outlines parsed (9 template files correctly skipped), 140 with
+non-fatal warnings, 24 codes not in the active catalogue (real - courses with
+a filed outline that aren't on this semester's timetable), a final sweep
+confirming zero garbled fields anywhere in the output. Cross-listed codes
+(the catalogue's `"ART202/AMP1001"` vs. the Office's own `"AMP1001"`-only
+filename) are matched by shared `/`-component, mirroring the exact convention
+`timetable_updates/normalize.py` already established for the same problem.
+
+**Backend**: `app/services/course_outlines.py`'s `OutlineCatalog` loads the
+328-entry JSON once; `.get(code)` does the same slash-component match.
+`GET /api/v1/course-outlines` returns just the set of codes with a real
+outline (fetched once at boot so the picker knows which rows get the
+affordance, without a round trip per row); `POST /api/v1/course-outlines/lookup`
+takes `{code}` in the body rather than a path param, since a `/`-bearing code
+in the URL path would break routing (same convention as
+`/schedules/{job_id}/explain-exclusion`). 10 new tests
+(`test_course_outlines.py`), including one that independently re-implements
+the garble check and sweeps every stored field, so a future regression in the
+parser can't silently ship scrambled text again.
+
+**The tab split**: "Courses & schedule" (`data-p="courses"`) became two -
+**Course selection** (fixed/pre-enrolled, the search-and-pick table, chosen
+list, choice groups) and a new **Timetable** tab (weekly grid + clash report,
+load/feasibility, the personalised wishlist generator, and the exhaustive
+search behind its `<details>`). `activateTab()`'s per-tab draw hook moved
+from firing `drawTT()` on `courses` to firing it on `timetable`, since the
+grid physically lives there now. Splitting to 7 tabs from 6 surfaced a real,
+separate bug: the `Alt+<number>` shortcut handler was hardcoded to
+`/^[1-6]$/`, so `Alt+7` (the new last tab, Rules & data) would have silently
+done nothing - fixed to size against the actual tab count instead of a
+literal range. Every test file referencing the old single pane
+(`a11y-audit.js`'s `TABS` array, `e2e.test.js`'s `#p-courses details.more`
+selectors and tab-click targets for the schedule-builder and wishlist
+sections, `ui-responsive.test.js`'s per-tab interaction loop, its journey
+step-count assertion, and its page-map section counts) was updated to match
+- confirmed by actually rerunning each suite rather than assuming the
+selectors still resolved.
+
+**Clash highlighting** (`e_tt.html`) was already real, not something this
+session had to invent: a red outline on grid blocks, a red-tinted background
+plus an inline "· CLASH" tag on agenda cards, and a red flag box listing
+every specific overlapping pair by course/component/day/time. Left as-is;
+verified directly in a real browser with a genuinely clashing pair
+(`ART202/AMP1001` × `ART220`) that the report correctly lists the exact
+overlap.
+
+**Outlines surfaced in the picker.** A small ⓘ button appears next to a
+course's code (in the search table, the chosen list, and the fixed list -
+wherever a code is shown) whenever `hasOutline(code)` is true, opening a
+modal (`#outlineBackdrop`, styled and wired identically to the existing
+`Ctrl+K` quick-find backdrop - same open/close/Escape/backdrop-click
+conventions, so it doesn't introduce a second interaction pattern) with the
+real parsed content: credits/semester/method/seats/department tags, faculty
++ email, introduction/objectives/learning outcomes/skill development/
+programme goals, a deduplicated weekly-syllabus list (consecutive weeks
+sharing identical text collapse into one "Wk 3–4" row instead of repeating
+the same paragraph), and a grading table with weightages. Fields the Office
+itself left as `"None"`/`"NA"` are treated as absent rather than printed
+literally. `API.getCourseOutlineCodes()`/`getCourseOutline()` added to
+`api.js`; `OUTLINE_CODES` is fetched once at boot (best-effort - never blocks
+boot on it) and `OUTLINE_CACHE` avoids re-fetching a course already opened
+this session. Verified directly in a real browser: the modal opens with the
+Office's actual title/faculty/syllabus for a real course, a course with no
+outline on file shows no button at all (25 of 327 catalogue courses,
+confirmed by checking `hasOutline()` against the real loaded set), and
+Escape closes it. 4 new adapter tests, 7 new e2e tests (§24) covering the
+same real-browser flow.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 241 passed, 1 skipped (was 213)
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 55 + 39 passed (was 48 + 39)
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 76 passed (was 69)
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+./scripts/run-e2e.sh tests/ui-responsive.test.js                       # 70 passed, laptop + phone, both themes
+```
+
+Also added `--add-data "app/data/course_outlines.json;app/data"` to
+`scripts/build-exe.sh` proactively - the exact same category of gap §16
+found once already for `programs.json` (a new static data dependency
+missing from the frozen build's bundle list) - though the desktop `.exe`
+itself was not rebuilt or reverified this session, since nothing else this
+session touched (`desktop_launcher.py`, packaging) needed it.
+
+**Explicitly not done this session**: the Chosen/Fixed tables' new outline
+button reuses the search table's affordance but wasn't asked for beyond
+"the picker" - added anyway for consistency since it was a one-line
+extension of the same helper, not a new feature; a search/filter specifically
+for "has an outline on file" was not added to the picker's existing filter
+row (24 codes with an outline aren't even in the active catalogue, so a
+literal filter there would be somewhat orphaned); the desktop `.exe` rebuild
+itself (see above).

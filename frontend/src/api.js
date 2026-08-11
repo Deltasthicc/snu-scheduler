@@ -202,6 +202,12 @@
   function getRules() { return req('/rules'); }
   function getDataset() { return req('/dataset'); }
 
+  /* ---------- course outlines (Academic Office PDFs, ahead of the COMPAS live round) ---------- */
+  function getCourseOutlineCodes() { return req('/course-outlines', { timeout: 10000 }); }
+  function getCourseOutline(code) {
+    return req('/course-outlines/lookup', { method: 'POST', body: { code }, timeout: 8000 });
+  }
+
   /* ---------- timetable update service ---------- */
   function getTimetableUpdateStatus() { return req('/timetable-updates/status'); }
   function checkTimetableUpdate(force) {
@@ -555,6 +561,7 @@
     setBase, getBase,
     healthCheck, lastKnownHealth,
     calculateProfileBudget, settleAuction, getRules, getDataset, maxBid,
+    getCourseOutlineCodes, getCourseOutline,
     getTimetableUpdateStatus, checkTimetableUpdate, getTimetableCandidate, getTimetableDiff,
     applyTimetableUpdate, discardTimetableCandidate, rollbackTimetableUpdate, getTimetableUpdateHistory,
     getTimetableChangelog,

@@ -349,6 +349,29 @@ console.log('\n=== §22 TIMETABLE UPDATE SERVICE API ADAPTER ===');
   ck('rollbackTimetableUpdate returns the result', r.result.version_id === 'v1');
 }
 
+console.log('\n=== §23 COURSE OUTLINE API ADAPTER ===');
+{
+  const API = freshApi(okJson({ codes: ['AMP1001', 'CSD358'] }));
+  const r = await API.getCourseOutlineCodes();
+  ck('getCourseOutlineCodes hits /course-outlines', r.codes.includes('CSD358'), JSON.stringify(r.codes));
+}
+{
+  let seenBody = null;
+  const API = freshApi(async (url, opts) => {
+    seenBody = opts.body;
+    return { ok: true, status: 200, text: async () => JSON.stringify({ code: 'AMP1001', title_from_outline: 'Critical Art History' }) };
+  });
+  const r = await API.getCourseOutline('ART202/AMP1001');
+  ck('getCourseOutline POSTs the exact code given, slash and all',
+     JSON.parse(seenBody).code === 'ART202/AMP1001', seenBody);
+  ck('getCourseOutline returns the outline body', r.code === 'AMP1001');
+}
+{
+  const API = freshApi(async () => ({ ok: false, status: 404, text: async () => JSON.stringify({ detail: 'no outline on file' }) }));
+  try { await API.getCourseOutline('NOT-A-REAL-COURSE'); ck('unknown code raises', false); }
+  catch (e) { ck('unknown code -> kind=http, status=404', e.kind === 'http' && e.status === 404); }
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
 })();

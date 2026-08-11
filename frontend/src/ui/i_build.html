@@ -28,7 +28,7 @@ function renderSchedules(){
     (SCHED_TRUNC?' <span style="color:var(--bad)">— the search hit its combination limit before finishing; '+
       'raise it above, or narrow your shortlist, for a complete search.</span>':'')+
     (SCHED_TOTAL===0?' <span style="color:var(--bad)">— no combination of your current shortlist avoids every '+
-      'clash. Remove a course (start with the one flagged most often on the Course Picker tab) and try again.</span>':'')+
+      'clash. Remove a course (start with the one flagged most often in the Chosen list on the Course selection tab) and try again.</span>':'')+
     ' "Idle time" is total gap-between-classes across the week — lower means less dead time on campus.'+
     '</div></div></div><div class="scroll" style="max-height:560px"><table><thead><tr><th>#</th>';
   const codes=Object.keys(ALLSCHED[0].assign);

@@ -8,7 +8,7 @@ const path = require('path');
 const APP = process.env.SNU_APP_URL || 'http://127.0.0.1:5173/index.html';
 const AXE_SRC = fs.readFileSync(path.join(__dirname, '..', 'node_modules', 'axe-core', 'axe.min.js'), 'utf8');
 
-const TABS = ['learn', 'prof', 'courses', 'bid', 'two', 'rules'];
+const TABS = ['learn', 'prof', 'courses', 'timetable', 'bid', 'two', 'rules'];
 
 (async () => {
   const b = await chromium.launch();
