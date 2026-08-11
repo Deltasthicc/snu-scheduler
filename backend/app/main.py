@@ -29,6 +29,7 @@ from app.services.credit_policy import CreditPolicyError, resolve_ceiling
 from app.services.wishlist import validate_choice_groups, wishlist_summary
 from app.services.degree_audit import ProgrammeCatalog, audit_degree
 from app.services.minor_audit import MinorCatalog, audit_minor, minors_overview
+from app.services.course_outlines import OutlineCatalog
 from app.services.advisement_report import AdvisementParseError, parse_advisement_report
 from app.workers.jobs import JobManager
 from app.workers.schedule_jobs import ScheduleJobManager
@@ -63,6 +64,7 @@ SCHED_MANAGER: ScheduleJobManager | None = None
 UPDATE_SERVICE: UpdateService | None = None
 PROGRAMMES = ProgrammeCatalog()
 MINORS = MinorCatalog()
+OUTLINES = OutlineCatalog()
 
 
 @asynccontextmanager
@@ -497,6 +499,30 @@ async def programme_detail(programme_id: str):
     if programme is None:
         raise HTTPException(404, "unknown programme")
     return programme
+
+
+@app.get("/api/v1/course-outlines", tags=["rules"])
+async def course_outline_codes():
+    """Just the codes that have a real outline on file - fetched once so the
+    frontend can show an "outline available" affordance per course without a
+    round trip for every row in the picker. The outline content itself is
+    fetched lazily, per course, only if a student actually opens one."""
+    return {"codes": OUTLINES.codes()}
+
+
+@app.post("/api/v1/course-outlines/lookup", tags=["rules"])
+async def course_outline_detail(body: dict):
+    # A path param would break for any code containing "/" (e.g.
+    # "CSD211/CSD2003", "ART202/AMP1001" - routine in this catalog), so this
+    # follows the same body-not-path-param convention already used for course
+    # codes elsewhere (see /schedules/{job_id}/explain-exclusion).
+    code = str(body.get("code") or "")
+    if not code:
+        raise HTTPException(422, "code is required")
+    outline = OUTLINES.get(code)
+    if outline is None:
+        raise HTTPException(404, "no outline on file for this course code")
+    return outline
 
 
 @app.post("/api/v1/degree-audit", tags=["profile"])
