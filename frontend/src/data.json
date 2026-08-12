@@ -177,14 +177,6 @@
             "LEC",
             "LEC1",
             "B205"
-          ],
-          [
-            4,
-            780,
-            895,
-            "LEC",
-            "LEC1",
-            "B205"
           ]
         ],
         "batches": []
@@ -1347,7 +1339,7 @@
     "crOfficial": false,
     "crBasis": "NEEDS_MANUAL_REVIEW: course not present in the prior dataset; no credit source available",
     "terms": [
-      "First half"
+      "Second half"
     ],
     "blocks": [],
     "cat": "CCC",
@@ -1358,7 +1350,7 @@
     "meFor": [],
     "pk": [
       {
-        "t": "First half",
+        "t": "Second half",
         "l": "LEC:LEC1",
         "m": [
           [
@@ -9750,11 +9742,11 @@
           ],
           [
             3,
-            960,
-            1020,
+            1030,
+            1090,
             "LEC",
             "LEC3",
-            "G-Audi"
+            "G101"
           ]
         ],
         "batches": [
@@ -9775,11 +9767,11 @@
           ],
           [
             3,
-            960,
-            1020,
+            1030,
+            1090,
             "LEC",
             "LEC3",
-            "G-Audi"
+            "G101"
           ],
           [
             4,
@@ -9816,11 +9808,11 @@
           ],
           [
             3,
-            960,
-            1020,
+            1030,
+            1090,
             "LEC",
             "LEC3",
-            "G-Audi"
+            "G101"
           ]
         ],
         "batches": [
@@ -16974,7 +16966,7 @@
     ]
   },
   {
-    "code": "HIS102",
+    "code": "HIS102/IHS1003",
     "title": "Does History Matter",
     "school": "School of Humanities & Social Sciences",
     "dept": "School of Humanities & Social Sciences - History & Archaeology",
@@ -17749,62 +17741,6 @@
     ]
   },
   {
-    "code": "IHS1003",
-    "title": "Thinking Historically",
-    "school": "School of Humanities & Social Sciences",
-    "dept": "School of Humanities & Social Sciences - IHS",
-    "ttype": "Major",
-    "uwe": true,
-    "cr": 4.0,
-    "crOfficial": true,
-    "crBasis": "Academic Office course outline (IHS1003_Monsoon_2026.pdf)",
-    "terms": [
-      "Full semester"
-    ],
-    "blocks": [],
-    "cat": "UWE",
-    "seats": 50,
-    "unsched": false,
-    "why": "",
-    "majorFor": [
-      "IHS1YR"
-    ],
-    "meFor": [],
-    "pk": [
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + TUT:TUT1",
-        "m": [
-          [
-            1,
-            860,
-            945,
-            "LEC",
-            "LEC1",
-            "G301B"
-          ],
-          [
-            2,
-            610,
-            665,
-            "TUT",
-            "TUT1",
-            "G301D"
-          ],
-          [
-            4,
-            780,
-            865,
-            "LEC",
-            "LEC1",
-            "G301B"
-          ]
-        ],
-        "batches": []
-      }
-    ]
-  },
-  {
     "code": "IHS1004",
     "title": "The Natural World",
     "school": "School of Humanities & Social Sciences",
@@ -18057,18 +17993,18 @@
         "m": [
           [
             0,
-            780,
-            835,
-            "TUT",
-            "TUT1",
-            "G304B"
-          ],
-          [
-            0,
             910,
             995,
             "LEC",
             "LEC1",
+            "G304B"
+          ],
+          [
+            1,
+            755,
+            810,
+            "TUT",
+            "TUT1",
             "G304B"
           ],
           [
@@ -18617,7 +18553,7 @@
     "school": "School of Natural Sciences",
     "dept": "School of Natural Sciences - Mathematics",
     "ttype": "Major",
-    "uwe": true,
+    "uwe": false,
     "cr": 4.0,
     "crOfficial": true,
     "crBasis": "Academic Office course outline (MAT1003_Monsoon_2026.pdf)",
@@ -22709,7 +22645,7 @@
             780,
             "LEC",
             "LEC1",
-            ""
+            "N/A"
           ]
         ],
         "batches": [
@@ -22726,7 +22662,7 @@
             780,
             "LEC",
             "LEC2",
-            ""
+            "N/A"
           ]
         ],
         "batches": [
@@ -22743,7 +22679,7 @@
             780,
             "LEC",
             "LEC3",
-            ""
+            "N/A"
           ]
         ],
         "batches": [
@@ -23850,9 +23786,9 @@
         "l": "PRAC:PRAC1",
         "m": [
           [
-            2,
-            610,
-            785,
+            0,
+            955,
+            1130,
             "PRAC",
             "PRAC1",
             "A103"
@@ -25653,7 +25589,7 @@
             960,
             "LEC",
             "LEC1",
-            ""
+            "D022"
           ]
         ],
         "batches": [
@@ -25670,7 +25606,7 @@
             960,
             "LEC",
             "LEC2",
-            ""
+            "D026"
           ]
         ],
         "batches": [
@@ -25687,7 +25623,7 @@
             960,
             "LEC",
             "LEC3",
-            ""
+            "A317"
           ]
         ],
         "batches": [

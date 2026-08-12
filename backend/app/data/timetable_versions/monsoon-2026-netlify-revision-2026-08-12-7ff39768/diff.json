@@ -1,0 +1,97 @@
+{
+  "renamed_courses": [
+    {
+      "old_code": "HIS102",
+      "new_code": "HIS102/IHS1003"
+    }
+  ],
+  "added_courses": [],
+  "removed_courses": [
+    "IHS1003"
+  ],
+  "changed_courses": [
+    {
+      "code": "ART342",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC113/CCC2408",
+      "diffs": {
+        "terms": {
+          "old": [
+            "First half"
+          ],
+          "new": [
+            "Second half"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC3 + PRAC:PRAC5",
+          "LEC:LEC3 + PRAC:PRAC6",
+          "LEC:LEC3 + PRAC:PRAC9"
+        ]
+      }
+    },
+    {
+      "code": "INT104/INT2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT1003",
+      "diffs": {
+        "uwe": {
+          "old": true,
+          "new": false
+        }
+      }
+    },
+    {
+      "code": "MGT2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "PHY1007",
+      "diffs": {
+        "packages_moved": [
+          "PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "STM2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "renamed": 1,
+    "added": 0,
+    "removed": 1,
+    "changed": 8,
+    "unchanged": 318
+  }
+}

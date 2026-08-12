@@ -11,28 +11,21 @@ BACKEND_COPY = Path(__file__).resolve().parent.parent / "app" / "data" / "course
 VERSIONS = BACKEND_COPY.parent / "timetable_versions"
 
 
-def test_catalog_loads_328_courses():
+def test_catalog_loads_327_courses():
     # 326 through monsoon-2026-batch-coherence-fix-2026-08-07; 325 under
     # monsoon-2026-netlify-revision-2026-08-09; 327 under
     # monsoon-2026-office-draft-2026-08-11 (the Academic Office's own draft
-    # workbook). Now 328 under monsoon-2026-netlify-revision-2026-08-11
-    # (Dean Academics' "timetable updated" email, live site re-synced): the
-    # Netlify mirror was checked directly against the real ACTIVE dataset
-    # this time, not a frozen 08-04 baseline (see
-    # tools/import_netlify_timetable.py and CLAUDE.md s.23 - carrying
-    # forward against a stale snapshot was a real bug that would have
-    # silently reverted every credit fix made since). Net +1: 30 courses
-    # gained a second, public-facing cross-listed code component (e.g.
-    # DES4001 -> DES403/DES4001, a rename this diff detector matches by
-    # shared code component); +4 added (CCC113/CCC2408, FAC212/2002,
-    # FAC213/2001, MEC301/MEC3003); -3 removed (FAC2001, FAC2002,
-    # "MEC 301" - the last is genuinely MEC301/MEC3003 under a new code,
-    # but a stray space in the old code broke the rename-matcher's exact
-    # component match, so it shows as removed+added rather than renamed).
-    assert len(catalog.all_courses()) == 328
+    # workbook); 328 under monsoon-2026-netlify-revision-2026-08-11 (Dean
+    # Academics' "timetable updated" email, live site re-synced). Now back
+    # to 327 under monsoon-2026-netlify-revision-2026-08-12 - the "final"
+    # timetable the Student Council's own email flagged as having "minimal
+    # changes": HIS102 and the previously-separate IHS1003 entry consolidated
+    # into one cross-listed course (HIS102/IHS1003), a real net -1, not a
+    # data-loss regression.
+    assert len(catalog.all_courses()) == 327
 
 
-def test_catalog_has_564_packages():
+def test_catalog_has_563_packages():
     # 859 under monsoon-2026-excel-v1; 988 under monsoon-2026-netlify-revision-
     # 2026-08-04; 954 under monsoon-2026-batch-coherence-fix-2026-08-07 (that
     # session's own batch-coherence fix to build_packages()); 555 under
@@ -42,14 +35,15 @@ def test_catalog_has_564_packages():
     # treating every LECxTUTxPRAC cross-product as valid for every student);
     # 987 under monsoon-2026-office-draft-2026-08-11, NOT a regression but a
     # real gap in the Office's draft workbook, which dropped "Student Block"
-    # tagging for nearly every first-year course. Now 564 under
-    # monsoon-2026-netlify-revision-2026-08-11: the live site's re-sync
-    # brought real batch tagging back (confirmed via the import's own
-    # BATCH_INCOHERENT_COMBOS_SKIPPED warnings for CSD101/CSD102/CSD205/
-    # CSD211/CSD304/ECE1001/ECE301/ECE302 and others), so the batch-coherence
-    # check correctly drops the cross-batch combinations again. Fewer
-    # packages here is the check working, not a data loss.
-    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 564
+    # tagging for nearly every first-year course; 564 under
+    # monsoon-2026-netlify-revision-2026-08-11, the live site's re-sync
+    # bringing real batch tagging back. Now 563 under
+    # monsoon-2026-netlify-revision-2026-08-12 - a handful of real section
+    # time/room moves (ART342, ECE1001, INT104/INT2002, MGT2001, PHY1007,
+    # STM2001 all show packages_moved in the diff) plus the HIS102/IHS1003
+    # consolidation losing IHS1003's own separately-counted packages, not a
+    # data-quality regression.
+    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 563
 
 
 def test_course_codes_are_unique():

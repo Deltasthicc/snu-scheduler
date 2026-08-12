@@ -2323,3 +2323,52 @@ tab content, matching its existing coverage boundary); the exhaustive
 search's own package-permutation logic was not changed at all, only its
 labelling - it remains a narrower, separate tool by design, not merged into
 the wishlist path.
+
+---
+
+## 26. Session update — 2026-08-12 (later): the "final" Monsoon 2026
+## timetable, a genuinely small revision this time
+
+The Student Council's own Secretaries of Academic Affairs emailed that the
+Academic Office had shared the "final" timetable (same Netlify mirror the
+poller already watches), flagging it as arriving late, in the wrong format
+(HTML instead of the agreed fixed Excel), and with "minimal changes." Ran
+the same dry-run-review-apply procedure as the last two revisions.
+
+**The email's own characterization checked out.** `0 errors, 15 warnings, 1
+renamed, +0 added, -1 removed, 8 changed` - a small, clean diff:
+- `HIS102` and a previously-separately-listed `IHS1003` entry consolidated
+  into one cross-listed course, `HIS102/IHS1003` (confirmed directly: each
+  had exactly 1 package before, now merged into 1 - the exact source of the
+  net -1 course and -1 package counts, not a data-loss regression).
+- 6 courses got real section time/room moves (`ART342`, `ECE1001`,
+  `INT104/INT2002`, `MGT2001`, `PHY1007`, `STM2001`).
+- `CCC113/CCC2408` changed which half-semester it runs in; `MAT1003`'s UWE
+  eligibility flag flipped.
+- All 15 warnings were the same already-established, benign categories
+  (multi-cohort dedup, one carried-forward title, batch-coherence skips
+  working as designed).
+
+**Verified the two real bugs fixed in s.23 stayed fixed** before applying,
+since this is exactly the scenario that would have re-exposed them: the
+credit reconciliation (PHY1001/PHY1011/MED2001/ECE1001/MAT205/MAT2004 all
+kept their outline-sourced credits and `crOfficial: true`) and the
+programme-scoping carry-forward (272 of 327 courses still carry
+`majorFor`/`meFor`) both survived this real re-sync intact.
+
+Applied as `monsoon-2026-netlify-revision-2026-08-12-7ff39768`. Updated the
+two dataset-shape pin tests back down (`test_catalog_loads_327_courses`,
+`test_catalog_has_563_packages`) and the one hardcoded course-count
+assertion in `test_api_schedules.py`, with the real number and reason for
+each net change.
+
+```bash
+cd backend && python3 -m pytest -q                                     # 250 passed, 1 skipped
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 55 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 83 passed
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+```
+
+**Not investigated this session**: the email also mentions a third-party
+site (`scooby.rohitjg.com/collision-checker`) mirroring the same published
+data - not this project, not integrated, no action taken.
