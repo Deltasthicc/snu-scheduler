@@ -294,15 +294,17 @@
   <div id="ttReport"></div></div>
  <div class="card tight" data-section-title="Export your schedule"><div class="hd"><div><h2>Export your schedule</h2>
   <div class="note">Add every meeting to Google Calendar, Apple Calendar, Outlook, Samsung Calendar or any app that
-  imports a standard <code>.ics</code> file — or download a picture of the grid to share. This app has no way to
-  read SNU's own semester dates (the University hasn't published them anywhere this tool can see), so enter the
-  real dates from the official academic calendar below before exporting; the boundary date auto-fills halfway
-  between start and end and can be corrected if you know the actual cutover date.</div></div></div>
+  imports a standard <code>.ics</code> file — or download a picture of the grid to share. Semester dates below are
+  detected automatically from SNU's own published academic calendar for whichever semester is current right now;
+  edit them only if you need to correct or override the detected dates.</div></div></div>
+  <div class="tiny" id="calSemesterMsg" style="margin-bottom:11px"></div>
   <div class="timetable-controls">
    <div><label for="calStart">Semester start date</label><input type="date" id="calStart" onchange="onCalDateChange()"></div>
    <div><label for="calEnd">Semester end date</label><input type="date" id="calEnd" onchange="onCalDateChange()"></div>
-   <div><label for="calMid">Half-semester boundary <span class="tiny mut">(H1/H2 courses only)</span></label>
-    <input type="date" id="calMid"></div>
+   <div><label for="calFirstHalfEnd">First-half end date <span class="tiny mut">(H1/H2 courses only)</span></label>
+    <input type="date" id="calFirstHalfEnd" onchange="onCalDateChange()"></div>
+   <div><label for="calSecondHalfStart">Second-half start date <span class="tiny mut">(H1/H2 courses only)</span></label>
+    <input type="date" id="calSecondHalfStart" onchange="onCalDateChange()"></div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:11px">
    <button class="btn2" id="calIcsBtn" onclick="void scheduleExportIcs()">Download calendar file (.ics)</button>

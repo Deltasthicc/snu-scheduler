@@ -733,21 +733,49 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
      /Block/.test(ttLocationText) && /Floor|Auditorium/.test(ttLocationText), ttLocationText.slice(0, 300));
 
   console.log('\n=== §26 CALENDAR EXPORT + SCHEDULE SCREENSHOT ===');
-  ck('CAL and SNAPSHOT modules are present, no simulation math snuck in beside them',
-     await p.evaluate(() => typeof window.CAL === 'object' && typeof window.SNAPSHOT === 'object'));
+  ck('CAL, SNAPSHOT and SEMCAL modules are present, no simulation math snuck in beside them',
+     await p.evaluate(() => typeof window.CAL === 'object' && typeof window.SNAPSHOT === 'object'
+                            && typeof window.SEMCAL === 'object'));
 
   await p.click('.tab[data-p="timetable"]');
-  await p.evaluate(() => { $('calStart').value = ''; $('calEnd').value = ''; $('calMid').value = ''; });
+
+  // date-independent: whatever the real date is when this suite runs, either
+  // a known semester is detected and every field is auto-filled from it (the
+  // "don't ask the student" requirement), or none is and a clear fallback
+  // message appears instead of a guess
+  const semStatus = await p.evaluate(() => ({
+    msg: $('calSemesterMsg').textContent,
+    start: $('calStart').value, end: $('calEnd').value,
+    fhe: $('calFirstHalfEnd').value, shs: $('calSecondHalfStart').value,
+    detected: SEMCAL.detectSemester(new Date())
+  }));
+  if (semStatus.detected) {
+    const s = semStatus.detected;
+    ck('a detected semester auto-fills all four date fields with its real, sourced dates',
+       semStatus.start === s.classesStart && semStatus.end === s.classesEnd
+       && semStatus.fhe === s.firstHalfEnd && semStatus.shs === s.secondHalfStart,
+       JSON.stringify({ fields: semStatus, detected: s }));
+    ck('the status message names the detected semester and cites its source, not a bare date range',
+       semStatus.msg.includes(s.label) && semStatus.msg.includes(s.source), semStatus.msg);
+  } else {
+    ck('no known semester for today - a clear fallback message is shown instead of a guessed range',
+       /no official academic calendar/i.test(semStatus.msg), semStatus.msg);
+  }
+
+  await p.evaluate(() => { $('calStart').value = ''; $('calEnd').value = ''; $('calFirstHalfEnd').value = ''; $('calSecondHalfStart').value = ''; });
   await p.click('#calIcsBtn');
   await p.waitForTimeout(200);
   const noDateMsg = await p.evaluate(() => $('calMsg').textContent);
   ck('exporting without a semester start date first shows a clear error, not a fabricated one',
      /semester start date/i.test(noDateMsg), noDateMsg);
 
-  // fills the boundary date too, even though the active course may well be a
-  // Full-semester one that never needs it - harmless when unused, and makes
+  // fills the boundary dates too, even though the active course may well be a
+  // Full-semester one that never needs them - harmless when unused, and makes
   // this check independent of which course §25 happened to leave active
-  await p.evaluate(() => { $('calStart').value = '2026-08-25'; $('calEnd').value = '2026-12-15'; $('calMid').value = '2026-10-15'; });
+  await p.evaluate(() => {
+    $('calStart').value = '2026-08-25'; $('calEnd').value = '2026-12-15';
+    $('calFirstHalfEnd').value = '2026-10-01'; $('calSecondHalfStart').value = '2026-10-15';
+  });
   const [icsDownload] = await Promise.all([
     p.waitForEvent('download'),
     p.click('#calIcsBtn'),

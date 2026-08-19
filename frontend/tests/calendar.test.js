@@ -21,14 +21,22 @@ const fullSemMon = { m: [0, 575, 655, 'LEC', 'LEC1', 'A204'], term: 'Full semest
 }
 {
   const half = { ...fullSemMon, term: 'First half' };
-  try { CAL.buildIcs([half], { semesterStart: '2026-08-25', semesterEnd: '2026-12-15' }); ck('half-term course without a boundary date throws', false); }
-  catch (e) { ck('half-term course without a boundary date throws', /half-semester boundary/i.test(e.message), e.message); }
+  try { CAL.buildIcs([half], { semesterStart: '2026-08-25', semesterEnd: '2026-12-15' }); ck('half-term course without either boundary date throws', false); }
+  catch (e) { ck('half-term course without either boundary date throws', /first-half end date/i.test(e.message), e.message); }
 }
 {
   try {
-    CAL.buildIcs([fullSemMon], { semesterStart: '2026-08-25', semesterEnd: '2026-12-15', midpoint: '2027-01-01' });
-    ck('boundary date outside the semester range throws', false);
-  } catch (e) { ck('boundary date outside the semester range throws', /between/i.test(e.message), e.message); }
+    CAL.buildIcs([fullSemMon], { semesterStart: '2026-08-25', semesterEnd: '2026-12-15',
+                                  firstHalfEnd: '2026-10-01', secondHalfStart: '2027-01-01' });
+    ck('a boundary date outside the semester range throws', false);
+  } catch (e) { ck('a boundary date outside the semester range throws', /between/i.test(e.message), e.message); }
+}
+{
+  try {
+    CAL.buildIcs([fullSemMon], { semesterStart: '2026-08-25', semesterEnd: '2026-12-15',
+                                  firstHalfEnd: '2026-10-15', secondHalfStart: '2026-10-01' });
+    ck('second-half start before first-half end throws (order matters, not just range)', false);
+  } catch (e) { ck('second-half start before first-half end throws (order matters, not just range)', /order/i.test(e.message), e.message); }
 }
 {
   const text = CAL.buildIcs([fullSemMon], { semesterStart: '2026-08-25', semesterEnd: '2026-12-15' });
@@ -51,16 +59,20 @@ const fullSemMon = { m: [0, 575, 655, 'LEC', 'LEC1', 'A204'], term: 'Full semest
      text.includes('DTSTART;TZID=Asia/Kolkata:20260825T093500'));
 }
 {
+  // real academic calendars have a genuine gap between the two halves (exam/
+  // buffer days), not one shared midpoint - e.g. Monsoon 2026's own first-
+  // half ends 2026-09-30 and second half only begins 2026-10-12, a 12-day
+  // gap with no half-semester classes running at all.
   const h1 = { ...fullSemMon, code: 'CCC101', title: 'First half course', term: 'First half' };
   const h2 = { ...fullSemMon, code: 'CCC102', title: 'Second half course', term: 'Second half' };
-  const text = CAL.buildIcs([h1, h2], { semesterStart: '2026-08-25', semesterEnd: '2026-12-15', midpoint: '2026-10-15' });
+  const text = CAL.buildIcs([h1, h2], { semesterStart: '2026-08-25', semesterEnd: '2026-12-15',
+                                          firstHalfEnd: '2026-09-30', secondHalfStart: '2026-10-12' });
   const h1Block = text.split('BEGIN:VEVENT').find(b => b.includes('CCC101'));
   const h2Block = text.split('BEGIN:VEVENT').find(b => b.includes('CCC102'));
-  ck('a First-half course\'s recurrence ends at the boundary date, not the semester end',
-     h1Block.includes('UNTIL=20261015T235959'), h1Block.match(/RRULE:[^\r\n]+/)?.[0]);
-  ck('a Second-half course starts on/after the boundary date, not the semester start',
-     new RegExp('DTSTART;TZID=Asia/Kolkata:2026(10(1[5-9]|2\\d|3[01])|11)').test(h2Block.match(/DTSTART[^\r\n]+/)[0]),
-     h2Block.match(/DTSTART[^\r\n]+/)[0]);
+  ck('a First-half course\'s recurrence ends at the first-half end date, not the semester end',
+     h1Block.includes('UNTIL=20260930T235959'), h1Block.match(/RRULE:[^\r\n]+/)?.[0]);
+  ck('a Second-half course\'s first occurrence is on/after the real second-half start date, honouring the gap',
+     /DTSTART;TZID=Asia\/Kolkata:20261012T093500/.test(h2Block), h2Block.match(/DTSTART[^\r\n]+/)?.[0]);
 }
 {
   const dup = [fullSemMon, { ...fullSemMon }];

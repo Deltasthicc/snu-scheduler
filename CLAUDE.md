@@ -2624,3 +2624,135 @@ meetings; the desktop `.exe` was not rebuilt (pure frontend addition, no
 packaging change); no server-side persistence of the entered semester
 dates (they stay in this browser's own `localStorage`, consistent with
 this project's local-only, no-accounts scope).
+
+---
+
+## 29. Session update — 2026-08-19 (later): real semester dates, auto-
+## detected, replacing the manual date entry §28 shipped a few hours earlier
+
+User provided `academic_calendar_monsoon_2026 (1).pdf` - the University's
+actual published Academic Calendar - and asked that the `.ics` export in
+§28 stop asking for semester dates at all: figure out the current semester
+from today's date and use its real start/end automatically, extracting
+further semesters from SNU's own calendar page
+(`snu.edu.in/home/mandatory-disclosure/academic-calendar-all/`) if useful.
+Explicit instruction: "Make no mistakes, be very thorough and precise."
+
+**Read the PDF in full, then re-verified every date against independent
+weekday arithmetic before trusting any of it** - the calendar states e.g.
+"Start of classes for all students" lands on a Monday; a value that didn't
+actually fall on a Monday would have meant a misread cell, not a real date.
+All nine dates pulled from the calendar (four for Monsoon 2026, four for a
+second semester - see below - plus the recurrence anchor logic itself)
+were checked this way and all matched exactly.
+
+**Monsoon 2026, read directly off the calendar grid:**
+- Start of classes for all students: **17 Aug 2026 (Mon)**
+- First Half Finishes: **30 Sep 2026 (Wed)**
+- 2nd half begins: **12 Oct 2026 (Mon)**
+- Last teaching day: **1 Dec 2026 (Tue)**, the later of two end-of-term
+  dates the calendar actually lists - see the schedule-swap caveat below.
+
+**A genuine ambiguity found and disclosed, not silently resolved.** The
+calendar names two different "last teaching day" entries: Monday 30 Nov
+2026 runs on the *Tuesday* timetable, and Tuesday 1 Dec 2026 runs on the
+*Friday* timetable - a university scheduling convention for making up
+sessions lost to holidays earlier in term. Modelling this correctly would
+mean knowing which course occupies each *other* weekday's slot on those
+two specific calendar dates, which this app's course data does not track
+(the timetable only ever records each course's own normal weekday). Rather
+than silently guess or silently ignore the swap, `semester_calendar.js`
+uses 1 Dec (the later, more inclusive bound, so no real session is ever
+excluded) and carries an explicit `note` field surfaced directly in the
+UI's auto-detect message: those two specific calendar days may not exactly
+match the University's real swapped schedule, everything else is precise.
+
+**A second semester added because the source made it easy to check, not
+guessed to be thorough.** `WebFetch` on the University's calendar-listing
+page surfaced a direct link to `academic_calendar_spring_2027.pdf`;
+`WebFetch` itself couldn't read the PDF's encoded stream, but it saved the
+binary to disk, and it opened cleanly as its own document read - same
+extraction-then-weekday-cross-check discipline applied:
+- Start of classes for all students: **11 Jan 2027 (Mon)**
+- First Half finishes: **26 Feb 2027 (Fri)**
+- Second Half Begins: **11 Mar 2027 (Thu)**
+- Last Teaching Day: **29 Apr 2027 (Thu)** - a single, unambiguous date this
+  time, no schedule-swap caveat needed.
+
+**`frontend/src/semester_calendar.js` (new module, `SEMCAL`).** Holds
+exactly these two semesters as real, sourced records (each citing the
+specific PDF it came from) - never a formula, never an extrapolation.
+`detectSemester(now)` returns whichever known semester's own teaching
+window contains `now`; failing that, the nearest *upcoming* one (so
+opening the app before term starts, or during the gap between two terms,
+still lands on something useful rather than nothing); failing that
+too - past every known semester's end with nothing newer on file - `null`,
+so the caller falls back to asking rather than inventing a date range for
+a semester nobody has looked up yet. This is the honest boundary: the
+module will not silently keep working forever - after Spring 2027 ends,
+whoever is using this app that far out gets an explicit "no calendar on
+file yet" message, not a plausible-looking wrong date.
+
+**`calendar_export.js` reworked from one guessed midpoint to two real,
+independent boundary dates.** §28's first version modelled the half-
+semester split as a single "boundary" date, splitting First/Second-half
+courses evenly - but the real calendar has a genuine 12-day gap between
+"First Half Finishes" (30 Sep) and "2nd half begins" (12 Oct), not a
+single cutover point. `buildIcs()` now takes `firstHalfEnd` and
+`secondHalfStart` as two independent, ordered dates (validated
+`start < firstHalfEnd <= secondHalfStart < end`), so a First-half course's
+last occurrence is genuinely bounded at 30 Sep and a Second-half course's
+first occurrence genuinely starts no earlier than 12 Oct - the gap itself
+is now represented, not smoothed over.
+
+**`glue.js` wiring: auto-detect first, ask only when there is nothing to
+detect.** `initCalDates()` calls `SEMCAL.detectSemester(new Date())` on
+boot; when it returns a semester, all four date fields are filled from its
+real data immediately (no click, no typing) and a status line
+(`#calSemesterMsg`) states which semester was detected, its exact dates,
+its source citation, and the schedule-swap caveat when one applies.
+Verified live in a real browser (§25/§28's established practice - decode
+what the code actually does, don't assume from reading it) on this
+machine's real system clock, which genuinely reads 19 Aug 2026: the card
+auto-filled `17 Aug 2026 → 1 Dec 2026`, first half `30 Sep`, second half
+`12 Oct`, byte-for-byte matching the PDF. All four fields stay editable -
+for a correction, or for a semester not yet on file - and persist to
+`localStorage` exactly as §28 already did; a manual, undetected fallback
+still auto-guesses a single shared split point from whatever start/end the
+student types in, same convenience §28 offered, now clearly scoped to only
+the case where no real two-date data exists to use instead.
+
+**Tests.** `frontend/tests/semester_calendar.test.js` (new, 17 tests) -
+both semesters present, detection at the exact first/last teaching day of
+each (inclusive boundaries), detection before term starts, detection
+during the inter-semester gap (resolves to the upcoming one), detection
+past the last known semester (`null`, not a guess), and structural checks
+on every stored record (ordered dates, real source citation).
+`calendar.test.js` updated for the two-date model (was 19 tests, now 20 -
+added a dedicated "order matters, not just range" case: a second-half
+start before the first-half end must fail even if both dates are
+individually within the semester). `e2e.test.js` §26 rewritten to be
+date-independent - it reads `SEMCAL.detectSemester(new Date())` itself and
+branches: if a semester is detected, asserts every field matches that
+semester's real data and the message cites it by name and source; if none
+is detected, asserts the honest fallback message appears - so the suite
+stays correct regardless of what the real calendar day is whenever it
+next runs, not just today.
+
+```bash
+cd frontend && node tests/semester_calendar.test.js && node tests/calendar.test.js && node tests/adapter.test.js && node tests/plans.test.js  # 17 + 20 + 55 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 105 passed (was 103)
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+./scripts/run-e2e.sh tests/ui-responsive.test.js                       # 70 passed, laptop + phone, both themes
+cd backend && python -m pytest -q                                     # 251 passed, 2 skipped (backend untouched)
+```
+
+**Explicitly not done this session**: no semesters beyond Monsoon 2026 and
+Spring 2027 were added (Summer 2027 exists as a PDF link but wasn't fetched
+- outside what "today" needs and outside what the user asked to prioritise);
+no automatic periodic re-fetch of the University's calendar page to pick up
+newly published semesters on its own - `SEMESTERS` is a static, hand-
+verified list that a future session extends the same way this one did,
+each new entry re-derived from its own PDF and re-checked against weekday
+arithmetic, never copied from a secondary source; the desktop `.exe` was
+not rebuilt (pure frontend data/logic change).

@@ -13,11 +13,10 @@
    CLAUDE.md design decision §5.4) - same category as the CSV/JSON export
    already in plans.js.
 
-   No semester start/end date is hardcoded anywhere in this codebase
-   (checked: neither rules.py nor docs/RULES_REFERENCE.md carries one,
-   because the University has never published one to this project). This
-   module never invents one either - the caller must supply real dates,
-   which the UI collects directly from the student rather than guessing.
+   This module itself never invents a semester date - it only formats
+   whatever dates the caller supplies. Real, sourced semester date ranges
+   (auto-detected from the current date, so the student is never asked)
+   live in semester_calendar.js; glue.js is what wires the two together.
    ===================================================================== */
 (function (factory) {
   var g = (typeof globalThis !== 'undefined' && globalThis)
@@ -89,24 +88,27 @@
   const HALF_TERMS = { 'First half': 'start', 'Second half': 'end' };
 
   /* events: array of {m:[day,startMin,endMin,component,section,room], term, code, title}
-     opts: { semesterStart, semesterEnd, midpoint? } - all "YYYY-MM-DD" strings.
-     midpoint is only required if the schedule actually has a First/Second-half
-     course; when omitted for a full-semester-only schedule it is simply unused. */
+     opts: { semesterStart, semesterEnd, firstHalfEnd?, secondHalfStart? } - all
+     "YYYY-MM-DD" strings. The real academic calendar has a genuine gap between
+     the two halves (exams/buffer days), not one shared midpoint, so these are
+     two independent dates, not a single "boundary" - see semester_calendar.js
+     for real, sourced values per semester. Only required if the schedule
+     actually has a First/Second-half course; unused otherwise. */
   function buildIcs(events, opts) {
     opts = opts || {};
     const start = requireDate(opts.semesterStart, 'Semester start date');
     const end = requireDate(opts.semesterEnd, 'Semester end date');
     if (!(start < end)) throw new Error('Semester end date must be after the semester start date.');
     const rows = (events || []).filter(e => e && e.m);
-    const needsMidpoint = rows.some(e => HALF_TERMS[e.term]);
-    let mid = null;
-    if (opts.midpoint) {
-      mid = requireDate(opts.midpoint, 'Half-semester boundary date');
-      if (!(start < mid && mid < end)) {
-        throw new Error('Half-semester boundary date must fall between the semester start and end dates.');
+    const needsHalves = rows.some(e => HALF_TERMS[e.term]);
+    let firstHalfEnd = null, secondHalfStart = null;
+    if (opts.firstHalfEnd || opts.secondHalfStart || needsHalves) {
+      firstHalfEnd = requireDate(opts.firstHalfEnd, 'First-half end date');
+      secondHalfStart = requireDate(opts.secondHalfStart, 'Second-half start date');
+      if (!(start < firstHalfEnd && firstHalfEnd <= secondHalfStart && secondHalfStart < end)) {
+        throw new Error('The first-half end date and second-half start date must fall in order '
+          + 'between the semester start and end dates.');
       }
-    } else if (needsMidpoint) {
-      throw new Error('This schedule has a half-semester course - set the half-semester boundary date too.');
     }
 
     const lines = [
@@ -131,8 +133,8 @@
 
       let rangeStart = start, rangeEnd = end;
       const half = HALF_TERMS[e.term];
-      if (half === 'start') rangeEnd = mid;
-      else if (half === 'end') rangeStart = mid;
+      if (half === 'start') rangeEnd = firstHalfEnd;
+      else if (half === 'end') rangeStart = secondHalfStart;
       if (!(rangeStart < rangeEnd)) return; // degenerate range - nothing to export for this meeting
 
       const dow = e.m[0]; // 0=Mon..5=Sat already, matches DOW[]

@@ -1365,11 +1365,16 @@ function planExportCsv() {
    Both pull the same event list the Timetable tab's own grid already
    computes (fixedMeets() + one pkgMeets() per chosen course) - never a
    second, separately-derived schedule that could drift from what the
-   student is actually looking at. Semester dates are never guessed: this
-   codebase has no University-published semester calendar to read (checked
-   CLAUDE.md §7/rules.py directly), so the three date fields are exactly
-   what the student enters, persisted in localStorage (not the versioned
-   per-plan schema, since the same real-world dates apply to every plan). */
+   student is actually looking at.
+
+   Semester dates come from semester_calendar.js's real, sourced date
+   ranges whenever the current date falls into a known semester -
+   detected automatically on boot so the student is never asked to type
+   in dates the app can already look up. The four fields stay editable so
+   a student can correct them or fill in a semester this app doesn't have
+   on file yet; whatever is currently in the fields (auto-detected or
+   hand-entered) persists to localStorage (not the versioned per-plan
+   schema, since the real-world dates are the same for every saved plan). */
 const CAL_DATES_KEY = 'snu.caldates.v1';
 function loadCalDates() {
   try { return JSON.parse(localStorage.getItem(CAL_DATES_KEY) || '{}') || {}; }
@@ -1378,28 +1383,61 @@ function loadCalDates() {
 function saveCalDates(o) {
   try { localStorage.setItem(CAL_DATES_KEY, JSON.stringify(o)); } catch (e) { /* storage may be unavailable */ }
 }
-function calMidpointGuess(startStr, endStr) {
+function fmtCalDate(iso) {
+  if (!iso) return '';
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+function calHalfGuess(startStr, endStr) {
   if (!startStr || !endStr) return '';
   const s = new Date(startStr), e = new Date(endStr);
   if (!(s < e)) return '';
   return new Date((s.getTime() + e.getTime()) / 2).toISOString().slice(0, 10);
 }
+function readCalFields() {
+  return {
+    start: $('calStart') ? $('calStart').value : '',
+    end: $('calEnd') ? $('calEnd').value : '',
+    firstHalfEnd: $('calFirstHalfEnd') ? $('calFirstHalfEnd').value : '',
+    secondHalfStart: $('calSecondHalfStart') ? $('calSecondHalfStart').value : ''
+  };
+}
+function writeCalFields(o) {
+  if ($('calStart')) $('calStart').value = o.start || '';
+  if ($('calEnd')) $('calEnd').value = o.end || '';
+  if ($('calFirstHalfEnd')) $('calFirstHalfEnd').value = o.firstHalfEnd || '';
+  if ($('calSecondHalfStart')) $('calSecondHalfStart').value = o.secondHalfStart || '';
+}
+function calSemesterMsg(text) {
+  const el = $('calSemesterMsg'); if (el) el.textContent = text;
+}
 function initCalDates() {
-  const saved = loadCalDates();
-  if ($('calStart') && saved.start) $('calStart').value = saved.start;
-  if ($('calEnd') && saved.end) $('calEnd').value = saved.end;
-  if ($('calMid') && saved.mid) $('calMid').value = saved.mid;
+  const sem = (typeof SEMCAL === 'object' && SEMCAL) ? SEMCAL.detectSemester(new Date()) : null;
+  if (sem) {
+    writeCalFields({ start: sem.classesStart, end: sem.classesEnd,
+                      firstHalfEnd: sem.firstHalfEnd, secondHalfStart: sem.secondHalfStart });
+    saveCalDates({ start: sem.classesStart, end: sem.classesEnd,
+                   firstHalfEnd: sem.firstHalfEnd, secondHalfStart: sem.secondHalfStart, semesterId: sem.id });
+    calSemesterMsg(`Using the official ${sem.label} academic calendar (detected automatically): classes `
+      + `${fmtCalDate(sem.classesStart)} to ${fmtCalDate(sem.classesEnd)}, first half ends `
+      + `${fmtCalDate(sem.firstHalfEnd)}, second half begins ${fmtCalDate(sem.secondHalfStart)}. `
+      + `Source: ${sem.source}.` + (sem.note ? ' ' + sem.note : ''));
+    return;
+  }
+  writeCalFields(loadCalDates());
+  calSemesterMsg("No official academic calendar on file for today's date yet — enter the real semester "
+    + 'dates from SNU\'s own academic calendar (snu.edu.in, Mandatory Disclosure > Academic Calendar) below.');
 }
 function onCalDateChange() {
-  const start = $('calStart') ? $('calStart').value : '';
-  const end = $('calEnd') ? $('calEnd').value : '';
-  // only auto-fill the boundary while the student hasn't set one themselves,
-  // so a real cutover date they typed in is never silently overwritten
-  if ($('calMid') && !$('calMid').value) {
-    const guess = calMidpointGuess(start, end);
-    if (guess) $('calMid').value = guess;
+  const f = readCalFields();
+  // only auto-fill while the student hasn't set these themselves, so a real
+  // cutover date they typed in (or one that came from a detected semester)
+  // is never silently overwritten by a rough estimate
+  if ($('calFirstHalfEnd') && !f.firstHalfEnd && $('calSecondHalfStart') && !f.secondHalfStart) {
+    const guess = calHalfGuess(f.start, f.end);
+    if (guess) { $('calFirstHalfEnd').value = guess; $('calSecondHalfStart').value = guess; }
   }
-  saveCalDates({ start, end, mid: $('calMid') ? $('calMid').value : '' });
+  saveCalDates(readCalFields());
 }
 function calMsg(text, isError) {
   const el = $('calMsg'); if (!el) return;
@@ -1411,12 +1449,14 @@ function currentScheduleEvents() {
   return ev;
 }
 function scheduleExportIcs() {
-  saveCalDates({ start: $('calStart').value, end: $('calEnd').value, mid: $('calMid').value });
+  const f = readCalFields();
+  saveCalDates(f);
   const ev = currentScheduleEvents();
   if (!ev.length) { calMsg('Nothing scheduled yet — fix or pick a course first.', true); return; }
   try {
-    const text = CAL.buildIcs(ev, { semesterStart: $('calStart').value, semesterEnd: $('calEnd').value,
-                                     midpoint: $('calMid').value, calendarName: 'My Monsoon 2026 schedule' });
+    const text = CAL.buildIcs(ev, { semesterStart: f.start, semesterEnd: f.end,
+                                     firstHalfEnd: f.firstHalfEnd, secondHalfStart: f.secondHalfStart,
+                                     calendarName: 'My schedule' });
     download('snu-timetable.ics', text, 'text/calendar;charset=utf-8');
     calMsg('Downloaded snu-timetable.ics — import it into Google, Apple, Outlook or Samsung Calendar.');
   } catch (e) { calMsg(e.message || 'Could not build the calendar file.', true); }
