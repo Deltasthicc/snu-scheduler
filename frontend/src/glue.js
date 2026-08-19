@@ -893,6 +893,7 @@ async function drawRules() {
    ===================================================================== */
 async function boot() {
   initBlocks();
+  initCalDates();
   if (typeof initDeptFilter === 'function') initDeptFilter();
   // neutral by default -- a fresh install (anyone this app is shared with) starts
   // with nothing pre-filled; restoreActivePlan() below fills these back in from
@@ -1359,6 +1360,78 @@ function planExportCsv() {
   const recs = (RESULT.courses || []).map(r => ({ ...r, credits: (BY[r.code] || {}).cr }));
   download('snu-strategic-bid-plan.csv', PLANS.exportCsv(recs), 'text/csv');
   planMsg('Exported CSV.');
+}
+/* ---------------- calendar export + schedule screenshot ----------------
+   Both pull the same event list the Timetable tab's own grid already
+   computes (fixedMeets() + one pkgMeets() per chosen course) - never a
+   second, separately-derived schedule that could drift from what the
+   student is actually looking at. Semester dates are never guessed: this
+   codebase has no University-published semester calendar to read (checked
+   CLAUDE.md §7/rules.py directly), so the three date fields are exactly
+   what the student enters, persisted in localStorage (not the versioned
+   per-plan schema, since the same real-world dates apply to every plan). */
+const CAL_DATES_KEY = 'snu.caldates.v1';
+function loadCalDates() {
+  try { return JSON.parse(localStorage.getItem(CAL_DATES_KEY) || '{}') || {}; }
+  catch (e) { return {}; }
+}
+function saveCalDates(o) {
+  try { localStorage.setItem(CAL_DATES_KEY, JSON.stringify(o)); } catch (e) { /* storage may be unavailable */ }
+}
+function calMidpointGuess(startStr, endStr) {
+  if (!startStr || !endStr) return '';
+  const s = new Date(startStr), e = new Date(endStr);
+  if (!(s < e)) return '';
+  return new Date((s.getTime() + e.getTime()) / 2).toISOString().slice(0, 10);
+}
+function initCalDates() {
+  const saved = loadCalDates();
+  if ($('calStart') && saved.start) $('calStart').value = saved.start;
+  if ($('calEnd') && saved.end) $('calEnd').value = saved.end;
+  if ($('calMid') && saved.mid) $('calMid').value = saved.mid;
+}
+function onCalDateChange() {
+  const start = $('calStart') ? $('calStart').value : '';
+  const end = $('calEnd') ? $('calEnd').value : '';
+  // only auto-fill the boundary while the student hasn't set one themselves,
+  // so a real cutover date they typed in is never silently overwritten
+  if ($('calMid') && !$('calMid').value) {
+    const guess = calMidpointGuess(start, end);
+    if (guess) $('calMid').value = guess;
+  }
+  saveCalDates({ start, end, mid: $('calMid') ? $('calMid').value : '' });
+}
+function calMsg(text, isError) {
+  const el = $('calMsg'); if (!el) return;
+  el.textContent = text; el.style.color = isError ? 'var(--bad)' : '';
+}
+function currentScheduleEvents() {
+  let ev = fixedMeets();
+  Object.keys(PICK).forEach(c => ev = ev.concat(pkgMeets(c, PICK[c].pkg)));
+  return ev;
+}
+function scheduleExportIcs() {
+  saveCalDates({ start: $('calStart').value, end: $('calEnd').value, mid: $('calMid').value });
+  const ev = currentScheduleEvents();
+  if (!ev.length) { calMsg('Nothing scheduled yet — fix or pick a course first.', true); return; }
+  try {
+    const text = CAL.buildIcs(ev, { semesterStart: $('calStart').value, semesterEnd: $('calEnd').value,
+                                     midpoint: $('calMid').value, calendarName: 'My Monsoon 2026 schedule' });
+    download('snu-timetable.ics', text, 'text/calendar;charset=utf-8');
+    calMsg('Downloaded snu-timetable.ics — import it into Google, Apple, Outlook or Samsung Calendar.');
+  } catch (e) { calMsg(e.message || 'Could not build the calendar file.', true); }
+}
+async function scheduleScreenshot() {
+  const ev = currentScheduleEvents();
+  if (!ev.length) { calMsg('Nothing scheduled yet — fix or pick a course first.', true); return; }
+  calMsg('Rendering…');
+  try {
+    const blob = await SNAPSHOT.captureAndDownload(ev, {
+      title: 'My Monsoon 2026 Schedule', manual: MANUAL,
+      filename: 'snu-timetable-' + new Date().toISOString().slice(0, 10) + '.png'
+    });
+    calMsg(blob ? 'Downloaded a PNG of your timetable.' : 'Nothing to render yet.', !blob);
+  } catch (e) { calMsg('Could not render the schedule image.', true); }
 }
 function planPrint() {
   const txt = PLANS.printableSummary(currentPlanPayload(), RESULT);

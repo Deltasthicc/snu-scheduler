@@ -130,7 +130,7 @@ const ck = (name, ok, detail = '') => {
       nav: document.querySelectorAll('#sectionNav .section-link').length,
     }));
     ck('readable timetable view is the default', timetableLayout.view === 'agenda', timetableLayout.view);
-    ck('timetable page map covers every major tool', timetableLayout.nav === 4, String(timetableLayout.nav));
+    ck('timetable page map covers every major tool', timetableLayout.nav === 5, String(timetableLayout.nav));
     await page.click('#sectionNav .section-link:last-child');
     ck('page map opens collapsed target sections', await page.$eval('#p-timetable > details.more', el => el.open));
 

@@ -10,8 +10,9 @@ import os, re, shutil, sys
 BASE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.environ.get("SNU_FRONTEND_OUT", os.path.join(BASE, "dist", "index.html"))
 
-# client-side modules: adapter, plan store, clash preview, glue. No engines.
-CLIENT = ["src/api.js", "src/plans.js", "src/clash.js"]
+# client-side modules: adapter, plan store, clash preview, calendar export,
+# schedule screenshot, glue. No engines.
+CLIENT = ["src/api.js", "src/plans.js", "src/clash.js", "src/calendar_export.js", "src/screenshot.js"]
 GLUE = "src/glue.js"
 UI = ["src/ui/a_head.html", "src/ui/b_body.html", "src/ui/c_core.html", "src/ui/d_sched.html",
       "src/ui/i_build.html", "src/ui/e_tt.html", "src/ui/h_spec.html", "src/ui/k_learn.html",
@@ -100,7 +101,8 @@ def main():
     leaked = [t for t in FORBIDDEN_TOKENS if t in html] + [t for t in FORBIDDEN_GLOBALS if t in html]
     if leaked:
         sys.exit("ERROR: removed compute engine still referenced in the bundle: " + ", ".join(leaked))
-    for need in ("g.API = factory", "g.PLANS = factory", "g.CLASH = factory"):
+    for need in ("g.API = factory", "g.PLANS = factory", "g.CLASH = factory",
+                 "g.CAL = factory", "g.SNAPSHOT = factory"):
         if need not in html:
             sys.exit("ERROR: client module missing from bundle: " + need)
 

@@ -2493,3 +2493,134 @@ real rebuild will pick both up automatically); a dedicated filter for "meets
 in a specific block" was not added to the course picker's existing filter
 row, since it wasn't asked for and the location is now visible inline
 wherever a course's meetings already appear.
+
+---
+
+## 28. Session update — 2026-08-19 (latest): calendar export and a
+## high-resolution schedule screenshot, both client-side
+
+Request: add every meeting to Google/Apple/Samsung calendar with one click,
+and a high-fidelity, high-resolution picture of the schedule with one click.
+Both are pure export/rendering of data already in the browser, not
+scheduling math, so both stayed on the client per design decision §5.4 -
+same category as the CSV/JSON export already in `plans.js` and
+`roomLocation()` in `c_core.html`.
+
+**Calendar export (`frontend/src/calendar_export.js`, new module, `CAL`).**
+One `.ics` (iCalendar) file covers every provider named in the request in a
+single export - Google Calendar, Apple Calendar, Outlook, and Samsung
+Calendar (which syncs through the Android calendar provider) all import a
+standard `.ics` natively, so there is no reason to integrate per-provider
+APIs (which would also mean OAuth, real accounts, and a genuinely different
+risk profile for what is a local planning tool). `CAL.buildIcs(events, opts)`
+emits one `VEVENT` per distinct meeting with a weekly `RRULE`, bounded to the
+real term - `Full semester`/`Both half` span the whole range, `First half`/
+`Second half` are bounded at a boundary date (confirmed these are the real
+term strings the catalog actually stores, not the "H1"/"H2" shorthand this
+document uses casually elsewhere - checked `courses.json` directly rather
+than assume). Wraps every event in a minimal `VTIMEZONE` for `Asia/Kolkata`
+(a single fixed `+0530` offset - the region has no DST, so no transition
+`RRULE` is needed) rather than emitting floating local time, so an exported
+calendar reads correctly regardless of the importing device's own timezone.
+
+**No semester start/end date is fabricated anywhere.** Checked directly
+(again) that neither `rules.py` nor `docs/RULES_REFERENCE.md` carries a
+University-published semester calendar - this project has never had one to
+read. The three date fields (start, end, half-semester boundary) on the new
+"Export your schedule" card (Timetable tab, `b_body.html`) are exactly what
+the student types in from the real official calendar; the boundary date
+auto-fills halfway between start and end the moment both are set
+(`calMidpointGuess()` in `glue.js`) and is silently left alone the instant
+the student edits it themselves, so a real cutover date is never
+overwritten by the estimate. `buildIcs()` throws a specific, student-facing
+message for every real failure mode (missing/invalid date, end before
+start, a half-semester course present with no boundary set, boundary
+outside the semester range) rather than silently emitting a wrong or empty
+file. The three dates persist to a dedicated `localStorage` key
+(`snu.caldates.v1`), deliberately outside the versioned per-plan schema in
+`plans.js` - the real-world semester dates are the same for every saved
+plan, so they don't belong keyed to one.
+
+**Schedule screenshot (`frontend/src/screenshot.js`, new module,
+`SNAPSHOT`).** Renders the current weekly grid to an off-screen `<canvas>`
+and exports a PNG, rather than pulling in html2canvas or a similar DOM-
+to-image library - this project's whole frontend is one dependency-free,
+self-contained bundle (`build_frontend.py` concatenates everything into a
+single `dist/index.html`; there is no package-manager step for the shipped
+artifact), and the actual grid layout math (lane assignment for overlapping
+meetings, hour scale) is only a few lines, already proven correct by the
+live DOM grid in `e_tt.html`. Colours and fonts are read live via
+`getComputedStyle` - a temporary off-screen probe `<div class="ev me">`
+etc. for the block palette, `--s1`/`--tx`/`--bad`/... custom properties for
+the rest, and the page's own `h1`/`.tiny` elements for font stacks - rather
+than a second, hand-copied palette, so the image always matches whichever
+theme (light/dark/system) is active and can never quietly drift from
+`a_head.html`'s real CSS the way a hardcoded copy eventually would (this
+project has hit that exact "two implementations of the same concept
+disagree" bug shape more than once already - see the checksum-convention
+bug in §15). Clash highlighting reuses the same `mOv()`/`tOv()` pairwise
+check the live grid runs, so a screenshot shows the identical overlaps the
+Timetable tab shows, never a rosier or different picture. Renders at
+`max(2, devicePixelRatio*2)` canvas scale (capped at 4x) specifically
+because "high fidelity and high resolution" was explicit in the request -
+verified in a real browser that a 5-course rendering comes out at
+2576x1656 physical pixels for a 5-course week (2000x1286 was one preview
+render's downsampled display size, not the actual data).
+
+**A real legibility bug found via an actual rendered image, not assumed
+fine.** First render (checked visually, not just via the automated PNG-
+byte-count test) showed course blocks in a two-lane clash pair truncating
+mid-character - `"PRAC 9:00A"` instead of a full time range - because
+`ctx.clip()` alone just chops text at the clip boundary, unlike CSS's
+`text-overflow:ellipsis` the DOM grid already uses for the identical
+situation. Fixed with `fitText()`, a binary-search truncate-to-width-plus-
+ellipsis helper, applied to all three text lines (course code, time range,
+room). Re-rendered and visually confirmed clean truncation
+(`"PRAC 9:0…"`) instead of a mid-word cut. This was caught specifically by
+decoding a real canvas render to a PNG file and looking at it, not by the
+automated test alone (which only checks PNG magic bytes and file size) -
+another instance of this project's own standing rule that "it looks right"
+in code is not evidence until the actual rendered artifact has been looked
+at.
+
+**Tests.** `frontend/tests/calendar.test.js` (new, 19 tests, pure Node, no
+DOM) - every `buildIcs()` error path, correct weekday-anchored `DTSTART`
+(verified against real `Date` weekday arithmetic, not assumed), `RRULE`
+`UNTIL` bounded correctly for full-semester vs. half-semester courses,
+de-duplication of an identical meeting listed twice, RFC 5545 comma/
+semicolon escaping, `LOCATION` present when `roomLocation()` is available
+and cleanly omitted (not fabricated) when it isn't, and an off-timetable
+`MANUAL` item (no meeting time at all) skipped rather than crashing the
+export. `frontend/tests/e2e.test.js` §26 (new, 10 tests, real browser) -
+both `CAL` and `SNAPSHOT` present as globals alongside the existing
+API/PLANS/CLASH check that no simulation engine leaked in; a real `.ics`
+download captured via Playwright's own download event and read back off
+disk to confirm it's a well-formed `VCALENDAR` containing the actually-
+active course; a real PNG download read back and checked for the correct
+PNG magic bytes and a substantial byte count (100KB+, proving a genuine
+high-res render rather than a blank canvas); the three-date persistence
+round-trip; and the empty-schedule and missing-date refusal messages.
+Adding the new "Export your schedule" card bumped the Timetable tab's page-
+map section count from 4 to 5 - updated `ui-responsive.test.js`'s own
+assertion to match, the same way every prior UI addition to that tab has
+required (§21/§25's own history already shows this pattern).
+
+```bash
+cd frontend && node tests/calendar.test.js && node tests/adapter.test.js && node tests/plans.test.js  # 19 + 55 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 103 passed (was 93)
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+./scripts/run-e2e.sh tests/ui-responsive.test.js                       # 70 passed, laptop + phone, both themes
+cd backend && python -m pytest -q                                     # 251 passed, 2 skipped (backend untouched this session)
+```
+
+**Explicitly not done this session**: no per-provider OAuth integration
+(Google Calendar API, Apple EventKit, etc.) - a standard `.ics` covers every
+named provider without one, and this is a local planning tool with no
+server-side user accounts to authorize against; no "add to calendar" one-
+click web-intent links (e.g. Google Calendar's `render?action=TEMPLATE`
+URL) alongside the `.ics` file, since those only cover single non-recurring
+events cleanly and this schedule is inherently a set of weekly-recurring
+meetings; the desktop `.exe` was not rebuilt (pure frontend addition, no
+packaging change); no server-side persistence of the entered semester
+dates (they stay in this browser's own `localStorage`, consistent with
+this project's local-only, no-accounts scope).

@@ -732,6 +732,59 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
   ck('the timetable (agenda view) shows a parsed location, not just a bare room code',
      /Block/.test(ttLocationText) && /Floor|Auditorium/.test(ttLocationText), ttLocationText.slice(0, 300));
 
+  console.log('\n=== §26 CALENDAR EXPORT + SCHEDULE SCREENSHOT ===');
+  ck('CAL and SNAPSHOT modules are present, no simulation math snuck in beside them',
+     await p.evaluate(() => typeof window.CAL === 'object' && typeof window.SNAPSHOT === 'object'));
+
+  await p.click('.tab[data-p="timetable"]');
+  await p.evaluate(() => { $('calStart').value = ''; $('calEnd').value = ''; $('calMid').value = ''; });
+  await p.click('#calIcsBtn');
+  await p.waitForTimeout(200);
+  const noDateMsg = await p.evaluate(() => $('calMsg').textContent);
+  ck('exporting without a semester start date first shows a clear error, not a fabricated one',
+     /semester start date/i.test(noDateMsg), noDateMsg);
+
+  // fills the boundary date too, even though the active course may well be a
+  // Full-semester one that never needs it - harmless when unused, and makes
+  // this check independent of which course §25 happened to leave active
+  await p.evaluate(() => { $('calStart').value = '2026-08-25'; $('calEnd').value = '2026-12-15'; $('calMid').value = '2026-10-15'; });
+  const [icsDownload] = await Promise.all([
+    p.waitForEvent('download'),
+    p.click('#calIcsBtn'),
+  ]);
+  ck('the .ics download uses a real filename', icsDownload.suggestedFilename() === 'snu-timetable.ics',
+     icsDownload.suggestedFilename());
+  const icsPath = await icsDownload.path();
+  const icsText = require('fs').readFileSync(icsPath, 'utf8');
+  ck('the downloaded file is a well-formed VCALENDAR',
+     icsText.startsWith('BEGIN:VCALENDAR') && icsText.trim().endsWith('END:VCALENDAR'));
+  const activeCode = await p.evaluate(() => Object.keys(PICK)[0].split('/')[0]);
+  ck('the downloaded file actually contains the currently active course, not a stale/empty schedule',
+     icsText.includes('BEGIN:VEVENT') && icsText.includes(activeCode),
+     icsText.match(/SUMMARY:[^\r\n]+/)?.[0]);
+  ck('the export was persisted so re-opening the tab remembers the same dates',
+     await p.evaluate(() => { const d = JSON.parse(localStorage.getItem('snu.caldates.v1') || '{}');
+                               return d.start === '2026-08-25' && d.end === '2026-12-15'; }));
+
+  const [pngDownload] = await Promise.all([
+    p.waitForEvent('download'),
+    p.click('#calPngBtn'),
+  ]);
+  const pngPath = await pngDownload.path();
+  const pngBytes = require('fs').readFileSync(pngPath);
+  const pngSignature = pngBytes.slice(0, 8).equals(Buffer.from([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]));
+  ck('the downloaded schedule image is a genuine PNG (correct magic bytes)', pngSignature);
+  ck('the image is a real high-resolution render, not a blank/placeholder canvas', pngBytes.length > 8000, pngBytes.length);
+  const pngMsg = await p.evaluate(() => $('calMsg').textContent);
+  ck('a success message confirms the image download', /Downloaded a PNG/i.test(pngMsg), pngMsg);
+
+  await p.evaluate(() => { FIXED = []; PICK = {}; PRIO = {}; renderChosen(); renderFixed(); });
+  await p.click('#calIcsBtn');
+  await p.waitForTimeout(200);
+  const emptyMsg = await p.evaluate(() => $('calMsg').textContent);
+  ck('exporting an empty schedule is refused with a clear message, not an empty file',
+     /nothing scheduled/i.test(emptyMsg), emptyMsg);
+
   console.log('\n=== §9 BACKEND UNAVAILABLE ===');
   await p.route('**/api/v1/**', r => r.abort());
   await p.route('**/health/**', r => r.abort());

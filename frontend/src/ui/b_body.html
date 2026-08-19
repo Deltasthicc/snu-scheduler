@@ -292,6 +292,24 @@
    <span><i style="background:#4A3717"></i>ME</span><span><i style="background:#173A34"></i>UWE</span>
    <span><i style="background:#2E2A4C"></i>CCC</span><span><i style="background:var(--bad)"></i>Clash</span></div>
   <div id="ttReport"></div></div>
+ <div class="card tight" data-section-title="Export your schedule"><div class="hd"><div><h2>Export your schedule</h2>
+  <div class="note">Add every meeting to Google Calendar, Apple Calendar, Outlook, Samsung Calendar or any app that
+  imports a standard <code>.ics</code> file — or download a picture of the grid to share. This app has no way to
+  read SNU's own semester dates (the University hasn't published them anywhere this tool can see), so enter the
+  real dates from the official academic calendar below before exporting; the boundary date auto-fills halfway
+  between start and end and can be corrected if you know the actual cutover date.</div></div></div>
+  <div class="timetable-controls">
+   <div><label for="calStart">Semester start date</label><input type="date" id="calStart" onchange="onCalDateChange()"></div>
+   <div><label for="calEnd">Semester end date</label><input type="date" id="calEnd" onchange="onCalDateChange()"></div>
+   <div><label for="calMid">Half-semester boundary <span class="tiny mut">(H1/H2 courses only)</span></label>
+    <input type="date" id="calMid"></div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:11px">
+   <button class="btn2" id="calIcsBtn" onclick="void scheduleExportIcs()">Download calendar file (.ics)</button>
+   <button class="btn2" id="calPngBtn" onclick="void scheduleScreenshot()">Download schedule image (PNG)</button>
+  </div>
+  <div class="tiny" id="calMsg" style="margin-top:8px" role="status" aria-live="polite"></div>
+ </div>
  <div class="card tight" data-section-title="Load &amp; feasibility"><h2>Load &amp; feasibility</h2><div id="loadBox"></div></div>
 
  <div class="card tight" data-section-title="Generate schedule options" style="border-color:var(--sig)"><div class="hd" style="margin-bottom:9px"><div>
