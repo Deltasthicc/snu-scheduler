@@ -66,8 +66,15 @@ COL_CAPACITY = "Section Capacity"
 REQUIRED_COLUMNS = (
     COL_CODE, COL_TITLE, COL_SCHOOL, COL_DEPT, COL_MAJOR_FOR, COL_TYPE, COL_ME_FOR,
     COL_UWE, COL_COMPONENT, COL_SECTION, COL_BLOCK, COL_TERM, COL_DAY, COL_START,
-    COL_END, COL_ROOM, COL_INSTRUCTOR, COL_CAPACITY,
+    COL_END, COL_ROOM, COL_INSTRUCTOR,
 )
+# Section Capacity is NOT in REQUIRED_COLUMNS - a real 2026-08-12 workbook
+# export omitted it entirely (confirmed: not a blank-cells situation, the
+# column header itself was absent). normalize()'s own carry-forward (see
+# CAPACITY_MISSING_CARRIED_FORWARD) reuses the active dataset's seat counts
+# when this happens, rather than silently reporting 0 seats for every
+# course. cell() below already returns None for a column index that
+# doesn't exist, so no other change is needed here.
 
 
 class WorkbookError(RuntimeError):

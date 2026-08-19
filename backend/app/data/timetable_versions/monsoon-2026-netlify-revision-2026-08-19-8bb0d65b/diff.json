@@ -1,0 +1,1417 @@
+{
+  "renamed_courses": [],
+  "added_courses": [
+    "DES303"
+  ],
+  "removed_courses": [],
+  "changed_courses": [
+    {
+      "code": "ART341/AMP2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BIO11, BIO12"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO1002",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BIO11, BIO12"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO1004",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BIO11",
+            "BIO11, BIO12",
+            "BIO12"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "BIO1008",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BIO11",
+            "BIO11, BIO12",
+            "BIO12"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2"
+        ]
+      }
+    },
+    {
+      "code": "BIO330",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CCC395/CCC2502",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "CCC396/CCC2315",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CCC704/CCC2302",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "PHY1YR,MAT1YR,CHY1YR,BMS11,BMS12 BMS13,ECO11,ECO12,INT1YR,DES1YR,ENF21,ENF22"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "CHD2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CHY103/CHY1003",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "CHY1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CHY111/CHY1011",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BIO11",
+            "BIO11, BIO12",
+            "BIO11, BIO12, CHY1YR, PHY1YR",
+            "BIO12",
+            "CHY1YR, PHY1YR"
+          ]
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT3",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT1",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT2",
+            "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT3"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "CHY115/CHY1015",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "CHY1YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "COM197/AMP2006",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD101/CSD1001",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "SOE11",
+            "SOE11, SOE12",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE13, SOE14",
+            "SOE14",
+            "SOE15",
+            "SOE15, SOE16",
+            "SOE16",
+            "SOE17",
+            "SOE17, SOE18",
+            "SOE18",
+            "SOE19"
+          ],
+          "new": [
+            "SOE11",
+            "SOE11, SOE12, SOE13",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE14",
+            "SOE14, SOE15",
+            "SOE15",
+            "SOE16",
+            "SOE16, SOE17",
+            "SOE17",
+            "SOE18",
+            "SOE18, SOE19, SOE110",
+            "SOE19"
+          ]
+        },
+        "seats": {
+          "old": 160,
+          "new": 180
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC2 + PRAC:PRAC3",
+            "LEC:LEC3 + PRAC:PRAC5",
+            "LEC:LEC4 + PRAC:PRAC7"
+          ],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC3",
+            "LEC:LEC2 + PRAC:PRAC5",
+            "LEC:LEC3 + PRAC:PRAC7",
+            "LEC:LEC4 + PRAC:PRAC10",
+            "LEC:LEC4 + PRAC:PRAC9"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD102/CSD2001",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "CSD21, CSD22",
+            "CSD21,CSD22, CSD23, CSD24",
+            "CSD23, CSD24",
+            "ECE21 to ECE28",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215"
+          ],
+          "new": [
+            "CSD21, CSD22",
+            "CSD21,CSD22, CSD23, CSD24",
+            "CSD23, CSD24",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD205/CSD2002",
+      "diffs": {
+        "seats": {
+          "old": 120,
+          "new": 150
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC2 + TUT:TUT3",
+          "LEC:LEC2 + TUT:TUT4"
+        ]
+      }
+    },
+    {
+      "code": "CSD355",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CSD438",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "CWR1002",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ENF11",
+            "ENF12"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3",
+          "LEC:LEC4"
+        ]
+      }
+    },
+    {
+      "code": "DES102/DES1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES103/DES1002",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "packages_moved": [
+          "PRAC:PRAC1"
+        ],
+        "package_batches_changed": [
+          "PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES104/DES1003",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES105/DES1004",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DES106/DES1005",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "DES1YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "DES403/DES4001",
+      "diffs": {
+        "uwe": {
+          "old": true,
+          "new": false
+        }
+      }
+    },
+    {
+      "code": "DES405/DES4003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "DOM104/DOM1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BMS11",
+            "BMS12",
+            "BMS13"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "ECE1001",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "SOE11",
+            "SOE11, SOE12",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE13, SOE14",
+            "SOE14",
+            "SOE15",
+            "SOE15, SOE16, SOE19",
+            "SOE16",
+            "SOE17",
+            "SOE17, SOE18, SOE110",
+            "SOE18",
+            "SOE19"
+          ],
+          "new": [
+            "SOE11",
+            "SOE11, SOE12, SOE13",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE14",
+            "SOE14, SOE15",
+            "SOE15",
+            "SOE16",
+            "SOE16, SOE17",
+            "SOE17",
+            "SOE18",
+            "SOE18, SOE19, SOE110",
+            "SOE19"
+          ]
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC2 + PRAC:PRAC3",
+            "LEC:LEC3 + PRAC:PRAC5",
+            "LEC:LEC3 + PRAC:PRAC9",
+            "LEC:LEC4 + PRAC:PRAC7"
+          ],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC3",
+            "LEC:LEC2 + PRAC:PRAC5",
+            "LEC:LEC3 + PRAC:PRAC7",
+            "LEC:LEC4 + PRAC:PRAC9"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE2001",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "ECE21 to ECE23",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE210, ECE211, ECE212",
+            "ECE213, ECE214, ECE215",
+            "ECE24, ECE25, ECE26",
+            "ECE27, ECE28, ECE29"
+          ],
+          "new": [
+            "ECE21, ECE22, ECE23",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE210, ECE211, ECE212",
+            "ECE213, ECE214, ECE215",
+            "ECE24, ECE25, ECE26",
+            "ECE27, ECE28, ECE29"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE2002",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "ECE21 to ECE23",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE210, ECE211, ECE212",
+            "ECE213, ECE214, ECE215",
+            "ECE24, ECE25, ECE26",
+            "ECE27, ECE28, ECE29"
+          ],
+          "new": [
+            "ECE21, ECE22, ECE23",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE210, ECE211, ECE212",
+            "ECE213, ECE214, ECE215",
+            "ECE24, ECE25, ECE26",
+            "ECE27, ECE28, ECE29"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE2003",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "ECE21 to ECE25",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE26, ECE27, ECE28, ECE29, ECE210"
+          ],
+          "new": [
+            "ECE21, ECE22, ECE23, ECE24, ECE25",
+            "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE211, ECE212, ECE213, ECE214, ECE215",
+            "ECE26, ECE27, ECE28, ECE29, ECE210"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE301",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "ECE31",
+            "ECE31, ECE32, ECE33, ECE36, ECE37, ECE38, ECE39, ECE310, ECE311",
+            "ECE32",
+            "ECE33",
+            "ECE34",
+            "ECE34, ECE35, ECE37, ECE38, ECE39",
+            "ECE35",
+            "ECE36, ECE310, ECE311",
+            "ECE37, ECE38, ECE39"
+          ],
+          "new": [
+            "ECE31",
+            "ECE31, ECE32, ECE33, ECE36, ECE310, ECE311",
+            "ECE32",
+            "ECE33",
+            "ECE34",
+            "ECE34, ECE35, ECE37, ECE38, ECE39",
+            "ECE35",
+            "ECE36, ECE310, ECE311",
+            "ECE37, ECE38, ECE39"
+          ]
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC1 + PRAC:PRAC7"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "ECE302",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "ECE31, ECE32, ECE33, ECE36, ECE37, ECE38, ECE39, ECE310, ECE311",
+            "ECE31, ECE36",
+            "ECE32",
+            "ECE33, ECE310, ECE311",
+            "ECE34",
+            "ECE34, ECE35, ECE37, ECE38, ECE39",
+            "ECE35",
+            "ECE37, ECE38, ECE39"
+          ],
+          "new": [
+            "ECE31, ECE32, ECE33, ECE36, ECE310, ECE311",
+            "ECE31, ECE36",
+            "ECE32",
+            "ECE33, ECE310, ECE311",
+            "ECE34",
+            "ECE34, ECE35, ECE37, ECE38, ECE39",
+            "ECE35",
+            "ECE37, ECE38, ECE39"
+          ]
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC1 + PRAC:PRAC6"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "ECE303",
+      "diffs": {
+        "blocks": {
+          "old": [
+            "ECE31, ECE32, ECE33",
+            "ECE34, ECE35, ECE36"
+          ],
+          "new": [
+            "ECE31, ECE32, ECE33, ECE36, ECE310, ECE311",
+            "ECE34, ECE35, ECE37, ECE38, ECE39"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "ECE370",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "ECO101/ECO1001",
+      "diffs": {
+        "uwe": {
+          "old": true,
+          "new": false
+        },
+        "blocks": {
+          "old": [],
+          "new": [
+            "ECO11",
+            "ECO11, ECO12, ENF11, ENF12",
+            "ECO12",
+            "ENF11",
+            "ENF12"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT10",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3",
+          "LEC:LEC1 + TUT:TUT4",
+          "LEC:LEC1 + TUT:TUT5",
+          "LEC:LEC1 + TUT:TUT6",
+          "LEC:LEC1 + TUT:TUT7",
+          "LEC:LEC1 + TUT:TUT8",
+          "LEC:LEC1 + TUT:TUT9"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT10",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3",
+          "LEC:LEC1 + TUT:TUT4",
+          "LEC:LEC1 + TUT:TUT5",
+          "LEC:LEC1 + TUT:TUT6",
+          "LEC:LEC1 + TUT:TUT7",
+          "LEC:LEC1 + TUT:TUT8",
+          "LEC:LEC1 + TUT:TUT9",
+          "LEC:LEC2 + TUT:TUT1",
+          "LEC:LEC2 + TUT:TUT2",
+          "LEC:LEC2 + TUT:TUT3",
+          "LEC:LEC2 + TUT:TUT4",
+          "LEC:LEC3 + TUT:TUT1",
+          "LEC:LEC3 + TUT:TUT2",
+          "LEC:LEC3 + TUT:TUT3",
+          "LEC:LEC3 + TUT:TUT4"
+        ]
+      }
+    },
+    {
+      "code": "ECO104/ECO1004",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "ECO108/ECO1009",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "DES1YR",
+            "DES1YR,INT1YR",
+            "INT1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ECO2101/ECO221",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "ECO325",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "ENF1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ENF11",
+            "ENF12"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "ENF4801",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ENF11",
+            "ENF12"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "ENG104/CWR1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ECO11,ECO12",
+            "INT1YR"
+          ]
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC1 + TUT:TUT2",
+            "LEC:LEC2 + TUT:TUT1"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "ENG141/ENG1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "ENG449",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "FAC102/FAC1005",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BMS11",
+            "BMS12",
+            "BMS13"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "FAC103/FAC1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ENF11",
+            "ENF12"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "FAC202/FAC2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "FAC210/FAC1002",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ENF11",
+            "ENF12"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "HIS1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ENF11",
+            "ENF12"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "HIS102/IHS1003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "HIS323",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "IHS1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "IHS11",
+            "IHS12",
+            "IHS13"
+          ]
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC1 + TUT:TUT2",
+            "LEC:LEC1 + TUT:TUT3",
+            "LEC:LEC2 + TUT:TUT3",
+            "LEC:LEC3 + TUT:TUT1",
+            "LEC:LEC3 + TUT:TUT2"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "IHS1002",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "IHS11,IHS12,IHS13"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "IHS1004",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "IHS11,IHS12,IHS13"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "INT101/INT1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "INT1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT102/INT1002",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "INT1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "INT104/INT2002",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "INT1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT100/MAT1000",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "MAT1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT1003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3",
+          "LEC:LEC1 + TUT:TUT4",
+          "LEC:LEC1 + TUT:TUT5"
+        ]
+      }
+    },
+    {
+      "code": "MAT1005",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "MAT1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT1008",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BIO11",
+            "BIO11, BIO12",
+            "BIO12"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "MAT1009",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ENF11",
+            "ENF11, ENF12",
+            "ENF12"
+          ]
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC1 + TUT:TUT3"
+          ],
+          "added_labels": []
+        }
+      }
+    },
+    {
+      "code": "MAT101/MAT1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "ASU1YR",
+            "ECO12",
+            "MAT1YR,ECO11",
+            "MAT1YR,ECO11, ECO12",
+            "MAT1YR,ECO11, ECO12, ASU1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "MAT160/MAT1006",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "MAT1YR,PHY1YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MAT2001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "MED301",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "MED309",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2",
+          "LEC:LEC1 + TUT:TUT3"
+        ]
+      }
+    },
+    {
+      "code": "MED412",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1",
+          "LEC:LEC1 + PRAC:PRAC2",
+          "LEC:LEC1 + PRAC:PRAC3"
+        ]
+      }
+    },
+    {
+      "code": "MGT1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BMS11",
+            "BMS12",
+            "BMS13"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC3"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "MGT102/MGT1002",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BMS11",
+            "BMS12",
+            "BMS13"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC2"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "MGT2003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "MGT301",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "MGT402/MGT4002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "OHM103/OHM1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BMS11",
+            "BMS12",
+            "BMS13"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    },
+    {
+      "code": "PHY1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "PHY1YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "PHY1003",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "PHY1YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ],
+        "package_batches_changed": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "PHY1007",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "PHY1YR"
+          ]
+        },
+        "packages_moved": [
+          "PRAC:PRAC1"
+        ],
+        "package_batches_changed": [
+          "PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "PHY1011",
+      "diffs": {
+        "uwe": {
+          "old": true,
+          "new": false
+        },
+        "blocks": {
+          "old": [
+            "SOE11",
+            "SOE11, SOE12",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE13, SOE14",
+            "SOE14",
+            "SOE15",
+            "SOE15, SOE16, SOE19",
+            "SOE16",
+            "SOE17",
+            "SOE17, SOE18, SOE110",
+            "SOE18",
+            "SOE19"
+          ],
+          "new": [
+            "SOE11",
+            "SOE11, SOE12, SOE13",
+            "SOE110",
+            "SOE12",
+            "SOE13",
+            "SOE14",
+            "SOE14, SOE15",
+            "SOE15",
+            "SOE16",
+            "SOE16, SOE17",
+            "SOE17",
+            "SOE18",
+            "SOE18, SOE19, SOE110",
+            "SOE19"
+          ]
+        },
+        "packages": {
+          "removed_labels": [
+            "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT3",
+            "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT5",
+            "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT7"
+          ],
+          "added_labels": [
+            "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT3",
+            "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT5",
+            "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT7",
+            "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT9"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY105/PHY1005",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "PHY1YR"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "STM103/STM1001",
+      "diffs": {
+        "blocks": {
+          "old": [],
+          "new": [
+            "BMS11",
+            "BMS12",
+            "BMS13"
+          ]
+        },
+        "package_batches_changed": [
+          "LEC:LEC1",
+          "LEC:LEC2",
+          "LEC:LEC3"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "renamed": 0,
+    "added": 1,
+    "removed": 0,
+    "changed": 82,
+    "unchanged": 245
+  }
+}

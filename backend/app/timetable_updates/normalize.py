@@ -326,7 +326,7 @@ def normalize(data: dict, existing_by_code: dict[str, dict]) -> NormalizeResult:
         blocks_raw = sorted({r.get("block", "").strip() for r in code_rows if r.get("block", "").strip()})
         terms = sorted({r.get("term") or "Full semester" for r in code_rows})
         seats_vals = [float(r["cap"]) for r in code_rows if r.get("cap") not in (None, "")]
-        seats = int(max(seats_vals)) if seats_vals else 0
+        seats_from_source = int(max(seats_vals)) if seats_vals else None
 
         field_status = {}
         if existing:
@@ -348,6 +348,19 @@ def normalize(data: dict, existing_by_code: dict[str, dict]) -> NormalizeResult:
             # attach_scoping(), which runs after normalize().
             major_for = existing.get("majorFor", [])
             me_for = existing.get("meFor", [])
+            if seats_from_source is not None:
+                seats = seats_from_source
+            else:
+                # Same carry-forward reasoning as majorFor/meFor above: a
+                # source that publishes no "Section Capacity" column at all
+                # (confirmed 2026-08-12 - a workbook export genuinely lacking
+                # that column, not just blank cells) must not silently zero
+                # out every course's seat count. Real capacity data for this
+                # row shape always wins when the source does provide it.
+                seats = existing.get("seats", 0)
+                stats.warn("CAPACITY_MISSING_CARRIED_FORWARD",
+                          f"{code}: no capacity data in this source; carried forward {seats} "
+                          f"seat(s) from the previous dataset", code)
             if existing.get("code") != code:
                 stats.warn("COURSE_CODE_RENAMED",
                           f"{code}: matched previous dataset entry {existing.get('code')!r} by shared "
@@ -367,6 +380,7 @@ def normalize(data: dict, existing_by_code: dict[str, dict]) -> NormalizeResult:
             cr_basis = "NEEDS_MANUAL_REVIEW: course not present in the prior dataset; no credit source available"
             major_for = []
             me_for = []
+            seats = seats_from_source if seats_from_source is not None else 0
             field_status["category_credits_identity"] = "best_effort_new_course_needs_review"
 
         pk = build_packages(code_rows, code, stats)

@@ -2372,3 +2372,124 @@ cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 83 pass
 **Not investigated this session**: the email also mentions a third-party
 site (`scooby.rohitjg.com/collision-checker`) mirroring the same published
 data - not this project, not integrated, no action taken.
+
+---
+
+## 27. Session update — 2026-08-19: a fresh Academic Office workbook, a real
+## seats-carry-forward bug, and room locations parsed for every meeting
+
+The user provided a new file, `Monsoon 2026 Timetable(1).xlsx`, and asked for
+it to be integrated, cross-checked against the live Netlify site so both
+sources agree, and for every meeting to show a derived location (block,
+floor, room number - "A204 means A block, 2nd floor, room 204").
+
+**A missing column, not blank cells.** `tools/import_office_timetable_xlsx.py`
+rejected the new workbook outright: `missing required column(s):
+['Section Capacity']` - this export genuinely has no capacity column at all,
+confirmed by inspecting the header row directly, not a column of blank
+values. Removing it from `REQUIRED_COLUMNS` alone would have been wrong: the
+shared `normalize()` function (`app/timetable_updates/normalize.py`) computed
+`seats` inline from whatever the current source provides, with no
+carry-forward - so importing this workbook alone would have silently zeroed
+every course's seat count. This is the exact same regression class already
+fixed twice before in this file for `cr`/`crOfficial`/`crBasis` (s.19) and
+`majorFor`/`meFor` (s.23) - a new source that doesn't publish a field must
+carry the active dataset's own value forward, never overwrite it with a
+default. Fixed by splitting `seats_from_source` (`None` when the column is
+absent or every cell in it is blank) from the carried-forward fallback,
+emitting a new `CAPACITY_MISSING_CARRIED_FORWARD` warning per course so the
+behavior is visible in the import report rather than silent. Two new tests
+in `test_timetable_updates.py` pin both directions: seats survive when the
+source has nothing, and real capacity data still overrides a carried-forward
+value when the source does provide it.
+
+**Two sources, sequenced deliberately, not just applied in whatever order
+they arrived.** The live Netlify site was re-fetched the same session and had
+its own real update (30 renamed, +1 added - `DES303` - 0 removed, 82
+changed) since s.23's last sync, including fresh seat counts the new xlsx
+workbook doesn't have. The xlsx workbook carries the richer
+`majorFor`/`meFor` programme scoping this project depends on for the
+non-CS-bias fix (s.16/s.18) and the live site's own draft-workbook gap
+(s.16) doesn't reliably have. Applying either alone would have been
+incomplete in a different way, so both were applied in sequence against the
+same baseline - Netlify first (fresh seats), then the xlsx layered on top
+(rich scoping, with seats-carry-forward now correctly reusing what Netlify
+had just supplied) - so the carry-forward logic combines the best of each
+rather than one source silently overwriting the other's stronger data.
+Confirmed `DES303` is a real, independently-published new course by checking
+it appears in both sources separately, not a data artifact of the merge.
+
+Final: `monsoon-2026-office-xlsx-2026-08-19-1b82b4d1`, 328 courses (was 327 -
+net +1, `DES303`), 548 packages (was 563 - this workbook tags "Student
+Block" on more rows than the live mirror, so the batch-coherence check
+correctly drops more cross-batch section combinations, the same category of
+count movement already explained in s.16/s.23), 0 errors, 344 warnings (the
+large majority being the new `CAPACITY_MISSING_CARRIED_FORWARD` firing once
+per course, since this workbook has no capacity column at all; the rest are
+the same benign multi-cohort/tag categories already established as
+non-issues). Verified after applying, not assumed: PHY1001/PHY1011/MED2001/
+ECE1001/MAT205 all kept their s.22 outline-reconciled credits and
+`crOfficial: true`, and `frontend/src/data.json`/`backend/app/data/courses.json`
+stayed byte-identical. Updated the dataset-shape pin tests
+(`test_catalog_loads_328_courses`, `test_catalog_has_548_packages`) and the
+one hardcoded course-count assertion in `test_api_schedules.py`, with the
+real numbers and reasons.
+
+**Room locations - a real display gap, not a data gap.** The dataset already
+carries a room code per meeting (`m[5]`); nothing derived a human-readable
+location from it anywhere in the UI. Surveyed every distinct room code
+actually present in the catalog before writing any parsing logic (112
+codes): the convention is `[Block Letter][Floor Digit][Room Number][Optional
+Sub-Room Letter]` - e.g. `A204` = A Block, 2nd Floor, Room 204, the floor
+being the room number's own leading digit rather than a separately-published
+field - plus two real special cases, `<Block>-Audi` (the block's auditorium,
+no room number) and literal `N/A`/`Online`/empty values (no physical room to
+report). `roomLocation()` (new, `frontend/src/ui/c_core.html`, alongside
+`hm()`/`esc()` - pure display formatting, not scheduling logic, so it stays
+out of the backend and off this project's compute-authority boundary per
+design decision s.5.4) parses this into a full label ("A Block, 2nd Floor,
+Room 204") and a short form ("A Block · Rm 204") for space-constrained
+views, handling all of the survey's real edge cases: a room number starting
+with 0 is Ground Floor (not floor "0"), a trailing letter is a sub-room
+sharing that number rather than a different floor, and the four non-room
+cases each get an honest label instead of a fabricated one.
+
+Wired into every place a room code was previously shown bare or not shown at
+all: the timetable's agenda view (`e_tt.html`, a new `.agenda-loc` line) and
+weekly grid (a new `.ev-loc` line on each block, plus the full label in the
+tooltip), the Fixed table's "When" column and the course picker's "Best fit"
+times list (`d_sched.html`, now one meeting per line since each line carries
+more text), and the schedule-builder mini-grid preview (`i_build.html`).
+New CSS in `a_head.html` for `.agenda-loc`/`.ev-loc`, matching the existing
+`.agenda-tag`/`.ev-when` treatment rather than inventing a new visual
+pattern.
+
+**Verified with a real e2e section (§25), not just unit-tested in
+isolation.** `frontend/tests/e2e.test.js` covers the parser's own edge
+cases (A204, a Ground-Floor room, a sub-room letter, the G block auditorium,
+`N/A`, `Online`, empty), then sweeps every real room code in the live
+328-course catalog and asserts none produce garbage output, then - the part
+that actually proves the wiring, not just the function - sets a real course
+with a real room active, switches to the Timetable tab, and confirms the
+rendered page text contains a genuine "Block"/"Floor" location string, not a
+bare room code. 93/93 e2e passing (was 83); 0 a11y violations across all 7
+tabs; 70/70 responsive tests; full backend suite green (251 passed, 2
+skipped - the second skip is `test_office_timetable_importer.py`'s own
+`openpyxl`-not-installed guard in this particular shell's Python, not a new
+gap in the app itself).
+
+```bash
+cd backend && python -m pytest -q                                      # 251 passed, 2 skipped (was 250 passed, 1 skipped)
+cd frontend && node tests/adapter.test.js && node tests/plans.test.js  # 55 + 39 passed
+cd .. && ./scripts/run-e2e.sh tests/e2e.test.js                        # 93 passed (was 83)
+./scripts/run-e2e.sh tests/a11y-audit.js                               # 0 violations, all 7 tabs
+./scripts/run-e2e.sh tests/ui-responsive.test.js                       # 70 passed, laptop + phone, both themes
+```
+
+**Explicitly not done this session**: the desktop `.exe` was not rebuilt
+against the new dataset version or the room-location UI changes (nothing
+about packaging changed, only data contents and frontend markup - the next
+real rebuild will pick both up automatically); a dedicated filter for "meets
+in a specific block" was not added to the course picker's existing filter
+row, since it wasn't asked for and the location is now visible inline
+wherever a course's meetings already appear.

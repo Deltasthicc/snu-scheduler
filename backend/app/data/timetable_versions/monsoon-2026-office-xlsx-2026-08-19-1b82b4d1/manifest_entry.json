@@ -1,0 +1,16 @@
+{
+  "version_id": "monsoon-2026-office-xlsx-2026-08-19-1b82b4d1",
+  "source_name": "Academic Office timetable workbook (Monsoon 2026 Timetable(1).xlsx)",
+  "source_url": null,
+  "source_file": "Monsoon 2026 Timetable(1).xlsx",
+  "retrieved_at": "2026-08-19T09:46:05.674157+00:00",
+  "source_checksum": "1b82b4d1b108b46f",
+  "dataset_checksum": "63964b34f3137b87",
+  "importer_version": "xlsx-1.0.0",
+  "effective_semester": "Monsoon 2026",
+  "course_count": 328,
+  "package_count": 548,
+  "error_count": 0,
+  "warning_count": 344,
+  "validation_status": "clean"
+}

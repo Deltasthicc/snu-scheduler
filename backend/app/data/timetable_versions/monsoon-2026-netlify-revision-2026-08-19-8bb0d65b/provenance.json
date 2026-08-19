@@ -1,0 +1,4125 @@
+{
+  "ART202/AMP1001": {
+    "source_rowids": [
+      0,
+      1
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ART220": {
+    "source_rowids": [
+      2,
+      3
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ART341/AMP2002": {
+    "source_rowids": [
+      4,
+      5
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ART342": {
+    "source_rowids": [
+      6,
+      7
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO1001": {
+    "source_rowids": [
+      8,
+      9,
+      10
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO1002": {
+    "source_rowids": [
+      11,
+      12
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO1004": {
+    "source_rowids": [
+      13,
+      14,
+      15,
+      16
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO1008": {
+    "source_rowids": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO2009": {
+    "source_rowids": [
+      21,
+      22,
+      1148
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO202/BIO2002": {
+    "source_rowids": [
+      23,
+      24,
+      25
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO208/BIO2008": {
+    "source_rowids": [
+      26,
+      27,
+      28,
+      29
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO210/BIO2010": {
+    "source_rowids": [
+      30,
+      31,
+      32
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO211/BIO2011": {
+    "source_rowids": [
+      33,
+      34,
+      35
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO301": {
+    "source_rowids": [
+      36,
+      37,
+      38
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO302": {
+    "source_rowids": [
+      39,
+      40,
+      41
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO303": {
+    "source_rowids": [
+      42,
+      43,
+      44
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO304": {
+    "source_rowids": [
+      45,
+      46,
+      47
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO323": {
+    "source_rowids": [
+      48,
+      49,
+      50
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO324": {
+    "source_rowids": [
+      51,
+      52,
+      53
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO327": {
+    "source_rowids": [
+      54,
+      55,
+      56
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO330": {
+    "source_rowids": [
+      57,
+      58,
+      59
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "BIO401": {
+    "source_rowids": [
+      60,
+      61,
+      62
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC113/CCC2408": {
+    "source_rowids": [
+      1166,
+      1167
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC122/CCC2105": {
+    "source_rowids": [
+      63,
+      64
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC125/CCC2116": {
+    "source_rowids": [
+      65,
+      66
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC2103": {
+    "source_rowids": [
+      68,
+      69
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC2116": {
+    "source_rowids": [
+      70
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC228/CCC2605": {
+    "source_rowids": [
+      71,
+      72
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC236/CCC2117": {
+    "source_rowids": [
+      73,
+      74
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC252/CCC2506": {
+    "source_rowids": [
+      1095,
+      1096
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC255/CCC2206": {
+    "source_rowids": [
+      77,
+      78
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC257/CCC2208": {
+    "source_rowids": [
+      79,
+      80
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC259/CCC2213": {
+    "source_rowids": [
+      81,
+      82
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC261/CCC2214": {
+    "source_rowids": [
+      83,
+      84
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC356/CCC2501": {
+    "source_rowids": [
+      85,
+      86
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC359/CCC2313": {
+    "source_rowids": [
+      87,
+      88
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC395/CCC2502": {
+    "source_rowids": [
+      89,
+      90
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC396/CCC2315": {
+    "source_rowids": [
+      1110,
+      1111
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC407/CCC2200": {
+    "source_rowids": [
+      91,
+      92
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC411/CCC2201": {
+    "source_rowids": [
+      93,
+      94
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC416/CCC2314": {
+    "source_rowids": [
+      95,
+      96
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC419/CCC2202": {
+    "source_rowids": [
+      97,
+      98
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC447/CCC2406": {
+    "source_rowids": [
+      99,
+      100
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC448/CCC2407": {
+    "source_rowids": [
+      1093,
+      1094
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC526/CCC2503": {
+    "source_rowids": [
+      75,
+      76
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC527/CCC2508": {
+    "source_rowids": [
+      101,
+      102
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC606/CCC2608": {
+    "source_rowids": [
+      1091,
+      1092
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC634/CCC2204": {
+    "source_rowids": [
+      103,
+      104
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC685": {
+    "source_rowids": [
+      105,
+      106
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC697/CCC2308": {
+    "source_rowids": [
+      1097,
+      1098
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC704/CCC2302": {
+    "source_rowids": [
+      1103,
+      1104
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC804/CCC2309": {
+    "source_rowids": [
+      1101,
+      1102
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC805/CCC2600": {
+    "source_rowids": [
+      107,
+      108
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC826/CCC2101": {
+    "source_rowids": [
+      67,
+      1157
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC844/CCC2205": {
+    "source_rowids": [
+      109,
+      110
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CCC848/CCC2504": {
+    "source_rowids": [
+      1099,
+      1100
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2001": {
+    "source_rowids": [
+      111,
+      112
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2002": {
+    "source_rowids": [
+      113,
+      114,
+      115
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2003": {
+    "source_rowids": [
+      116,
+      117,
+      118,
+      119
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2004": {
+    "source_rowids": [
+      120,
+      121,
+      122,
+      123
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED2005": {
+    "source_rowids": [
+      124,
+      125,
+      126
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED304": {
+    "source_rowids": [
+      127,
+      128,
+      129
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED305": {
+    "source_rowids": [
+      130,
+      131
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED310": {
+    "source_rowids": [
+      132,
+      133,
+      134
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED316": {
+    "source_rowids": [
+      135,
+      136,
+      137
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED325": {
+    "source_rowids": [
+      138,
+      139,
+      140
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED326": {
+    "source_rowids": [
+      141,
+      142
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED412": {
+    "source_rowids": [
+      143,
+      144,
+      145
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED424": {
+    "source_rowids": [
+      146,
+      147
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED425": {
+    "source_rowids": [
+      148,
+      149,
+      150
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CED640": {
+    "source_rowids": [
+      151,
+      152
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD2002": {
+    "source_rowids": [
+      156,
+      157,
+      158
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD213/CHD2001": {
+    "source_rowids": [
+      153,
+      154,
+      155
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD216/CHD2003": {
+    "source_rowids": [
+      159,
+      160
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD227/CHD2004": {
+    "source_rowids": [
+      161,
+      162
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD310": {
+    "source_rowids": [
+      163,
+      164
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD318": {
+    "source_rowids": [
+      165,
+      166,
+      167
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD319": {
+    "source_rowids": [
+      168,
+      169
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD320": {
+    "source_rowids": [
+      170,
+      171
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD413": {
+    "source_rowids": [
+      172,
+      173,
+      174
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD418": {
+    "source_rowids": [
+      175,
+      176
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHD471": {
+    "source_rowids": [
+      177,
+      178
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY103/CHY1003": {
+    "source_rowids": [
+      179,
+      180,
+      181,
+      182
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY111/CHY1011": {
+    "source_rowids": [
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY115/CHY1015": {
+    "source_rowids": [
+      190,
+      191,
+      192,
+      193
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY211/CHY2011": {
+    "source_rowids": [
+      194,
+      195,
+      196,
+      197
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY214/CHY2014": {
+    "source_rowids": [
+      198,
+      199,
+      200
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY221/CHY2021": {
+    "source_rowids": [
+      201,
+      202,
+      203,
+      204
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY245/CHY2045": {
+    "source_rowids": [
+      205,
+      206,
+      207,
+      208
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY3041": {
+    "source_rowids": [
+      209,
+      210
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY311": {
+    "source_rowids": [
+      211,
+      212,
+      213,
+      214
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY313": {
+    "source_rowids": [
+      215,
+      216,
+      217,
+      218
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY321": {
+    "source_rowids": [
+      219,
+      220
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY323": {
+    "source_rowids": [
+      221,
+      222,
+      223
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY351": {
+    "source_rowids": [
+      224,
+      225,
+      226
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY400": {
+    "source_rowids": [
+      227
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY504/CHY5004": {
+    "source_rowids": [
+      1082,
+      1083
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY545/CHY5045": {
+    "source_rowids": [
+      1084,
+      1085,
+      1086
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY556": {
+    "source_rowids": [
+      1089,
+      1090
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CHY571/CHY5071": {
+    "source_rowids": [
+      1087,
+      1088
+    ],
+    "dept3": "CHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "COM191/AMP2004": {
+    "source_rowids": [
+      228,
+      229,
+      230
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "COM197/AMP2006": {
+    "source_rowids": [
+      231,
+      232
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD101/CSD1001": {
+    "source_rowids": [
+      233,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239,
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      1142,
+      1143
+    ],
+    "dept3": "CED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD102/CSD2001": {
+    "source_rowids": [
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD205/CSD2002": {
+    "source_rowids": [
+      257,
+      258,
+      259,
+      260,
+      261,
+      262,
+      263,
+      264
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD211/CSD2003": {
+    "source_rowids": [
+      265,
+      266,
+      267,
+      268,
+      269,
+      270,
+      271,
+      272
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD213/CSD2004": {
+    "source_rowids": [
+      273,
+      274,
+      275,
+      276,
+      277,
+      278
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD304": {
+    "source_rowids": [
+      279,
+      280,
+      281,
+      282,
+      283,
+      284,
+      285,
+      286
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD311": {
+    "source_rowids": [
+      287,
+      288,
+      289,
+      290,
+      291
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD319": {
+    "source_rowids": [
+      292,
+      293,
+      294,
+      295,
+      296
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD355": {
+    "source_rowids": [
+      297,
+      298,
+      299
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD358": {
+    "source_rowids": [
+      300,
+      301
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD361": {
+    "source_rowids": [
+      302,
+      303,
+      304
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD365": {
+    "source_rowids": [
+      305,
+      306,
+      307
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD436": {
+    "source_rowids": [
+      308,
+      309
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD438": {
+    "source_rowids": [
+      310,
+      311,
+      312
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CSD457": {
+    "source_rowids": [
+      313,
+      314,
+      315
+    ],
+    "dept3": "CSD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CWR1002": {
+    "source_rowids": [
+      316,
+      317,
+      318,
+      1107
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "CWR2002": {
+    "source_rowids": [
+      319,
+      320,
+      1108,
+      1109
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES102/DES1001": {
+    "source_rowids": [
+      321,
+      322
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES103/DES1002": {
+    "source_rowids": [
+      323
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES104/DES1003": {
+    "source_rowids": [
+      324,
+      1170
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES105/DES1004": {
+    "source_rowids": [
+      325,
+      1169
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES106/DES1005": {
+    "source_rowids": [
+      326
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES131": {
+    "source_rowids": [
+      327,
+      328,
+      329,
+      330
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES203/DES2001": {
+    "source_rowids": [
+      331,
+      332,
+      333,
+      334
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES204/DES2002": {
+    "source_rowids": [
+      335,
+      336,
+      337,
+      338
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES205/DES2003": {
+    "source_rowids": [
+      339,
+      340,
+      341,
+      342
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES206/DES2004": {
+    "source_rowids": [
+      343,
+      344,
+      345,
+      346
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES301/DES3001": {
+    "source_rowids": [
+      347,
+      348,
+      349,
+      350
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES302/DES3002": {
+    "source_rowids": [
+      351,
+      352,
+      353,
+      354
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES303": {
+    "source_rowids": [
+      1168
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "best_effort_new_course_needs_review"
+    },
+    "matched_previous_dataset": false
+  },
+  "DES403/DES4001": {
+    "source_rowids": [
+      355,
+      356,
+      357,
+      358
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES404/DES4002": {
+    "source_rowids": [
+      359,
+      360,
+      361,
+      362
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES405/DES4003": {
+    "source_rowids": [
+      363,
+      364,
+      365,
+      366
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES406/DES4009": {
+    "source_rowids": [
+      375,
+      376,
+      377,
+      378
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES410/DES4007": {
+    "source_rowids": [
+      367,
+      368,
+      369,
+      370
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES411/DES4008": {
+    "source_rowids": [
+      371,
+      372,
+      373,
+      374
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DES412/DES4100": {
+    "source_rowids": [
+      379,
+      380,
+      381,
+      382
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DNC214/AMP1005": {
+    "source_rowids": [
+      383,
+      384
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM104/DOM1001": {
+    "source_rowids": [
+      385,
+      386,
+      387,
+      388,
+      389,
+      390
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM207/DOM3007": {
+    "source_rowids": [
+      391,
+      392
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM304/DOM3004": {
+    "source_rowids": [
+      393,
+      394
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM306": {
+    "source_rowids": [
+      395,
+      396,
+      397,
+      398,
+      399,
+      400
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "DOM307": {
+    "source_rowids": [
+      401
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE1001": {
+    "source_rowids": [
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      1116,
+      1117,
+      1118,
+      1119,
+      1126,
+      1127,
+      1128,
+      1129,
+      1144,
+      1145
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE2001": {
+    "source_rowids": [
+      410,
+      411,
+      412,
+      413,
+      414,
+      415,
+      416,
+      417
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE2002": {
+    "source_rowids": [
+      418,
+      419,
+      420,
+      421,
+      422,
+      423,
+      424,
+      425
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE2003": {
+    "source_rowids": [
+      426,
+      427,
+      428,
+      429,
+      430,
+      431
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE301": {
+    "source_rowids": [
+      432,
+      433,
+      434,
+      435,
+      436,
+      437,
+      438,
+      439,
+      440,
+      441,
+      442
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE302": {
+    "source_rowids": [
+      443,
+      444,
+      445,
+      446,
+      447,
+      448,
+      449,
+      450,
+      451,
+      452
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE303": {
+    "source_rowids": [
+      453,
+      454,
+      455,
+      456
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE305": {
+    "source_rowids": [
+      457,
+      458,
+      459,
+      460
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE351": {
+    "source_rowids": [
+      461,
+      462,
+      463,
+      464
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE352": {
+    "source_rowids": [
+      465,
+      466,
+      467
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE353": {
+    "source_rowids": [
+      468,
+      469,
+      470
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE356": {
+    "source_rowids": [
+      471,
+      472,
+      473,
+      474
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE357": {
+    "source_rowids": [
+      475,
+      476,
+      477,
+      478
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE363": {
+    "source_rowids": [
+      479,
+      480,
+      481,
+      482
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE370": {
+    "source_rowids": [
+      483,
+      484
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE374": {
+    "source_rowids": [
+      485,
+      486
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE451": {
+    "source_rowids": [
+      487,
+      488,
+      489
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE452": {
+    "source_rowids": [
+      490,
+      491,
+      492
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE453": {
+    "source_rowids": [
+      493,
+      494
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE454": {
+    "source_rowids": [
+      495,
+      496,
+      497
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE456": {
+    "source_rowids": [
+      498,
+      499,
+      500
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECE458": {
+    "source_rowids": [
+      501,
+      502,
+      503
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO101/ECO1001": {
+    "source_rowids": [
+      504,
+      505,
+      506,
+      507,
+      508,
+      509,
+      510,
+      511,
+      512,
+      513,
+      514,
+      515,
+      516,
+      517,
+      518,
+      519
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO102/ECO1002": {
+    "source_rowids": [
+      520,
+      521,
+      522,
+      523,
+      524,
+      525,
+      526
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO104/ECO1004": {
+    "source_rowids": [
+      527,
+      528,
+      529,
+      530,
+      531
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO108/ECO1009": {
+    "source_rowids": [
+      532,
+      533,
+      534,
+      535
+    ],
+    "dept3": "DES",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO203/ECO2003": {
+    "source_rowids": [
+      536,
+      537,
+      538,
+      539,
+      540,
+      541,
+      542,
+      543,
+      544,
+      545
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO2101/ECO221": {
+    "source_rowids": [
+      546,
+      547,
+      548,
+      549,
+      550,
+      1159,
+      1160,
+      1161,
+      1162,
+      1163
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO301/ECO2001": {
+    "source_rowids": [
+      551,
+      552,
+      553,
+      554
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO302": {
+    "source_rowids": [
+      555,
+      556,
+      1165
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO325": {
+    "source_rowids": [
+      557,
+      558,
+      559,
+      560
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO354/ECO4201": {
+    "source_rowids": [
+      561,
+      562,
+      563,
+      564
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO373": {
+    "source_rowids": [
+      565,
+      566,
+      567,
+      568,
+      569,
+      570
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO375": {
+    "source_rowids": [
+      571,
+      572,
+      573,
+      574
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO402": {
+    "source_rowids": [
+      575,
+      576,
+      577,
+      578
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO415/ECO3101": {
+    "source_rowids": [
+      579,
+      580,
+      581,
+      582
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO452/ECO4502": {
+    "source_rowids": [
+      583,
+      584,
+      585,
+      586
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO463/ECO4603": {
+    "source_rowids": [
+      587,
+      588,
+      589,
+      590
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ECO483": {
+    "source_rowids": [
+      591,
+      592,
+      593,
+      594
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENF1001": {
+    "source_rowids": [
+      595,
+      596,
+      597,
+      598
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENF409": {
+    "source_rowids": [
+      599,
+      600,
+      601,
+      602
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENF4801": {
+    "source_rowids": [
+      603,
+      604
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG104/CWR1001": {
+    "source_rowids": [
+      605,
+      606,
+      607,
+      608,
+      609,
+      610
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG141/ENG1001": {
+    "source_rowids": [
+      611,
+      612,
+      613
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG241/ENG2041": {
+    "source_rowids": [
+      614,
+      615,
+      616
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG242/ENG2042": {
+    "source_rowids": [
+      617,
+      618,
+      619
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG245/ENG2045": {
+    "source_rowids": [
+      620,
+      621,
+      622
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG340": {
+    "source_rowids": [
+      623,
+      624,
+      625
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG342": {
+    "source_rowids": [
+      626,
+      627,
+      628
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG343": {
+    "source_rowids": [
+      629,
+      630,
+      631
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG348": {
+    "source_rowids": [
+      632,
+      633,
+      634
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG440": {
+    "source_rowids": [
+      635,
+      636,
+      637
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG448": {
+    "source_rowids": [
+      638,
+      639,
+      640
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "ENG449": {
+    "source_rowids": [
+      641,
+      642,
+      643
+    ],
+    "dept3": "ENG",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC102/FAC1005": {
+    "source_rowids": [
+      652,
+      653,
+      654,
+      655,
+      656,
+      657
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC103/FAC1001": {
+    "source_rowids": [
+      644,
+      645,
+      646,
+      647
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC202/FAC2003": {
+    "source_rowids": [
+      664,
+      665,
+      666,
+      667,
+      668,
+      669
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC210/FAC1002": {
+    "source_rowids": [
+      648,
+      649,
+      650,
+      651
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC211": {
+    "source_rowids": [
+      670,
+      671
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC212/2002": {
+    "source_rowids": [
+      661,
+      662,
+      663,
+      1106
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC213/2001": {
+    "source_rowids": [
+      658,
+      659,
+      660,
+      1105
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC301": {
+    "source_rowids": [
+      672,
+      673
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC312/FAC3012": {
+    "source_rowids": [
+      674,
+      675
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC313/FAC3013": {
+    "source_rowids": [
+      676,
+      677
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC405": {
+    "source_rowids": [
+      678,
+      679
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC410": {
+    "source_rowids": [
+      680,
+      681,
+      682,
+      683
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "FAC415": {
+    "source_rowids": [
+      684,
+      685
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS1001": {
+    "source_rowids": [
+      686,
+      687,
+      688,
+      689
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS102/IHS1003": {
+    "source_rowids": [
+      690,
+      691,
+      692
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS302": {
+    "source_rowids": [
+      693,
+      694,
+      695
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS303": {
+    "source_rowids": [
+      696,
+      697,
+      698
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS312": {
+    "source_rowids": [
+      699,
+      700,
+      701
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS323": {
+    "source_rowids": [
+      702,
+      703,
+      704
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS325": {
+    "source_rowids": [
+      705,
+      706,
+      707
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS326": {
+    "source_rowids": [
+      708,
+      709,
+      710
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "HIS331": {
+    "source_rowids": [
+      711,
+      712,
+      713
+    ],
+    "dept3": "HIS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1001": {
+    "source_rowids": [
+      714,
+      715,
+      716,
+      717,
+      718,
+      719,
+      720,
+      721,
+      722
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1002": {
+    "source_rowids": [
+      723,
+      724,
+      725
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1004": {
+    "source_rowids": [
+      726,
+      727,
+      728
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "IHS1005": {
+    "source_rowids": [
+      729,
+      730,
+      731
+    ],
+    "dept3": "IHS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT101/INT1001": {
+    "source_rowids": [
+      732,
+      733,
+      734
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT102/INT1002": {
+    "source_rowids": [
+      735,
+      736,
+      737
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT104/INT2002": {
+    "source_rowids": [
+      738,
+      739,
+      740
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT203/INT2003": {
+    "source_rowids": [
+      741,
+      742,
+      743
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT217/INT2004": {
+    "source_rowids": [
+      744,
+      745,
+      746
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT232/INT3032": {
+    "source_rowids": [
+      747,
+      748,
+      749
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT246/INT3046": {
+    "source_rowids": [
+      750,
+      751,
+      752
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT301": {
+    "source_rowids": [
+      753,
+      754,
+      755
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT354/INT3054": {
+    "source_rowids": [
+      756,
+      757,
+      758
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT363/INT3063": {
+    "source_rowids": [
+      759,
+      760,
+      761
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "INT365/INT4065": {
+    "source_rowids": [
+      762,
+      763,
+      764
+    ],
+    "dept3": "INT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT100/MAT1000": {
+    "source_rowids": [
+      765,
+      766,
+      767,
+      768
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT1003": {
+    "source_rowids": [
+      769,
+      770,
+      771,
+      772,
+      773,
+      774,
+      775,
+      776,
+      1130,
+      1131,
+      1132,
+      1133,
+      1146,
+      1147
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT1005": {
+    "source_rowids": [
+      777,
+      778,
+      779,
+      780
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT1008": {
+    "source_rowids": [
+      781,
+      782,
+      783,
+      784,
+      785
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT1009": {
+    "source_rowids": [
+      786,
+      787,
+      788,
+      1158
+    ],
+    "dept3": "ENF",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT101/MAT1001": {
+    "source_rowids": [
+      789,
+      790,
+      791,
+      792,
+      793,
+      794
+    ],
+    "dept3": "ECO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT160/MAT1006": {
+    "source_rowids": [
+      795,
+      796,
+      797,
+      798
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT184/MAT2007": {
+    "source_rowids": [
+      799,
+      800,
+      801,
+      802
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT2001": {
+    "source_rowids": [
+      803,
+      804,
+      805
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT205/MAT2004": {
+    "source_rowids": [
+      1155,
+      1156,
+      1164
+    ],
+    "dept3": "ECE",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT230": {
+    "source_rowids": [
+      806,
+      807,
+      808
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT241/MAT2041": {
+    "source_rowids": [
+      809,
+      810,
+      811
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT331": {
+    "source_rowids": [
+      812,
+      813,
+      814
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT360": {
+    "source_rowids": [
+      815,
+      816,
+      817
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT390": {
+    "source_rowids": [
+      818,
+      819,
+      820
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT422": {
+    "source_rowids": [
+      821,
+      822,
+      823
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT442": {
+    "source_rowids": [
+      824,
+      825,
+      826
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT485": {
+    "source_rowids": [
+      827,
+      828,
+      829
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT494": {
+    "source_rowids": [
+      830,
+      831,
+      832
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MAT620": {
+    "source_rowids": [
+      833,
+      834,
+      835
+    ],
+    "dept3": "MAT",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR102": {
+    "source_rowids": [
+      836,
+      837,
+      838,
+      839,
+      840,
+      841
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR152": {
+    "source_rowids": [
+      842,
+      843,
+      844,
+      845,
+      846,
+      847
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR202": {
+    "source_rowids": [
+      848,
+      849,
+      850
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR252": {
+    "source_rowids": [
+      851,
+      852,
+      853
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR302": {
+    "source_rowids": [
+      854,
+      855,
+      856
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR352": {
+    "source_rowids": [
+      857,
+      858,
+      859
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MDR402": {
+    "source_rowids": [
+      860,
+      861,
+      862
+    ],
+    "dept3": "BIO",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MEC104/MEC2001": {
+    "source_rowids": [
+      863,
+      864,
+      865,
+      866,
+      867,
+      868
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MEC301/MEC3003": {
+    "source_rowids": [
+      869,
+      870
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MEC4005/MEC405": {
+    "source_rowids": [
+      871,
+      872
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED2001": {
+    "source_rowids": [
+      873,
+      874,
+      875,
+      876
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED2002": {
+    "source_rowids": [
+      877,
+      878,
+      879,
+      880
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED2003": {
+    "source_rowids": [
+      881,
+      882,
+      883,
+      884,
+      885
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED2004": {
+    "source_rowids": [
+      886,
+      887,
+      888,
+      889,
+      890
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED301": {
+    "source_rowids": [
+      891,
+      892,
+      893,
+      894,
+      895
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED303": {
+    "source_rowids": [
+      896,
+      897,
+      898,
+      899,
+      900,
+      901
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED307": {
+    "source_rowids": [
+      902,
+      903
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED309": {
+    "source_rowids": [
+      904,
+      905,
+      906,
+      907,
+      908
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED318": {
+    "source_rowids": [
+      909,
+      910
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED320": {
+    "source_rowids": [
+      911,
+      912,
+      913
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED328": {
+    "source_rowids": [
+      914,
+      915,
+      916
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED403": {
+    "source_rowids": [
+      917,
+      918,
+      919
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED410": {
+    "source_rowids": [
+      920,
+      921
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED412": {
+    "source_rowids": [
+      922,
+      923,
+      924,
+      925,
+      926,
+      927
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED416": {
+    "source_rowids": [
+      928,
+      929,
+      930,
+      931
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MED417": {
+    "source_rowids": [
+      932,
+      933,
+      934,
+      935
+    ],
+    "dept3": "MED",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT1001": {
+    "source_rowids": [
+      936,
+      937,
+      938
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT102/MGT1002": {
+    "source_rowids": [
+      939,
+      940,
+      941,
+      942,
+      943,
+      944
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT2001": {
+    "source_rowids": [
+      1149,
+      1150,
+      1151
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT2003": {
+    "source_rowids": [
+      945,
+      946,
+      947,
+      948,
+      949,
+      950
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT211/MGT3004": {
+    "source_rowids": [
+      951,
+      952
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT301": {
+    "source_rowids": [
+      953,
+      954,
+      955,
+      956,
+      957,
+      958
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT306/MGT3006": {
+    "source_rowids": [
+      959,
+      960
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MGT402/MGT4002": {
+    "source_rowids": [
+      961,
+      962
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT304/MKT3004": {
+    "source_rowids": [
+      963,
+      964
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT402/MKT4002": {
+    "source_rowids": [
+      965,
+      966
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT404/MKT4004": {
+    "source_rowids": [
+      967,
+      968
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT408/MKT4008": {
+    "source_rowids": [
+      969,
+      970
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "MKT409/MKT4009": {
+    "source_rowids": [
+      971,
+      972
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM103/OHM1001": {
+    "source_rowids": [
+      973,
+      974,
+      975,
+      976,
+      977,
+      978
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM2001": {
+    "source_rowids": [
+      979,
+      980,
+      981,
+      982,
+      983,
+      984,
+      985,
+      986
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM303": {
+    "source_rowids": [
+      987,
+      988
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM307": {
+    "source_rowids": [
+      991,
+      992
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "OHM401": {
+    "source_rowids": [
+      989,
+      990
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY1001": {
+    "source_rowids": [
+      993
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY1003": {
+    "source_rowids": [
+      994,
+      995,
+      996
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY1007": {
+    "source_rowids": [
+      997
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY1011": {
+    "source_rowids": [
+      998,
+      999,
+      1000,
+      1001,
+      1002,
+      1003,
+      1004,
+      1005,
+      1006,
+      1007,
+      1008,
+      1009,
+      1010,
+      1011,
+      1012,
+      1013,
+      1112,
+      1113,
+      1114,
+      1115,
+      1122,
+      1123,
+      1124,
+      1125,
+      1138,
+      1139,
+      1140,
+      1141
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY105/PHY1005": {
+    "source_rowids": [
+      1014,
+      1015,
+      1016
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY201/PHY2001": {
+    "source_rowids": [
+      1017,
+      1018,
+      1019,
+      1020
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY203/PHY2003": {
+    "source_rowids": [
+      1021,
+      1022,
+      1023
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY205/PHY2005": {
+    "source_rowids": [
+      1024,
+      1025,
+      1026,
+      1027
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY301": {
+    "source_rowids": [
+      1028,
+      1029,
+      1030
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY303": {
+    "source_rowids": [
+      1031,
+      1032,
+      1033
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY305": {
+    "source_rowids": [
+      1034,
+      1035,
+      1036
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY307": {
+    "source_rowids": [
+      1037,
+      1038,
+      1039,
+      1040
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY551": {
+    "source_rowids": [
+      1041,
+      1042
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY556": {
+    "source_rowids": [
+      1043,
+      1044
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY558": {
+    "source_rowids": [
+      1045,
+      1046
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY560": {
+    "source_rowids": [
+      1047,
+      1048
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY565": {
+    "source_rowids": [
+      1049,
+      1050
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "PHY572": {
+    "source_rowids": [
+      1051,
+      1052
+    ],
+    "dept3": "PHY",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SNS1001": {
+    "source_rowids": [
+      1120,
+      1121,
+      1136,
+      1137
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOC323": {
+    "source_rowids": [
+      1053,
+      1054,
+      1055
+    ],
+    "dept3": "SOC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOC327": {
+    "source_rowids": [
+      1056,
+      1057,
+      1058
+    ],
+    "dept3": "SOC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOC414": {
+    "source_rowids": [
+      1059,
+      1060,
+      1061
+    ],
+    "dept3": "SOC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOC415": {
+    "source_rowids": [
+      1062,
+      1063,
+      1064
+    ],
+    "dept3": "SOC",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SOE4801": {
+    "source_rowids": [
+      1134,
+      1135
+    ],
+    "dept3": "CHD",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "SPO201/SPO2001": {
+    "source_rowids": [
+      1065,
+      1066,
+      1067,
+      1068,
+      1069
+    ],
+    "dept3": "Other",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "STM103/STM1001": {
+    "source_rowids": [
+      1070,
+      1071,
+      1072,
+      1073,
+      1074,
+      1075
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "STM2001": {
+    "source_rowids": [
+      1152,
+      1153,
+      1154
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  },
+  "STM301": {
+    "source_rowids": [
+      1076,
+      1077,
+      1078,
+      1079,
+      1080,
+      1081
+    ],
+    "dept3": "BMS",
+    "field_status": {
+      "category_credits_identity": "carried_forward_from_previous_workbook_dataset"
+    },
+    "matched_previous_dataset": true
+  }
+}

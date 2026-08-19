@@ -287,6 +287,35 @@ def test_normalize_new_course_gets_empty_scoping_not_a_missing_key():
     assert result.courses[0]["meFor"] == []
 
 
+def test_normalize_carries_forward_seats_when_source_has_no_capacity_column():
+    """A real 2026-08-12 workbook export had no 'Section Capacity' column at
+    all - every row's cap is empty, so seats_vals is empty for every course.
+    Without a carry-forward, that silently zeroed out every course's seat
+    count on a source switch, the same category of regression already fixed
+    once for majorFor/meFor. Real capacity data, when the source does have
+    it, must still win over any carried-forward value."""
+    no_cap_row = {"code": "CSD101", "title": "Intro", "type": "Major", "uwe": "No", "comp": "LEC", "sec": "LEC1",
+                 "block": "", "term": "Full semester", "day": "Mon", "start": "09:00 AM", "end": "10:00 AM",
+                 "room": "A1", "inst": "X", "cap": "", "note": "", "rowid": 1}
+    data = {"CSD": {"CSD1YR": [no_cap_row]}}
+    existing = {"CSD101": {"code": "CSD101", "cr": 4, "crOfficial": True, "cat": "ME",
+                          "school": "S", "dept": "D", "ttype": "Major", "crBasis": "x", "seats": 60}}
+    result = normalize_mod.normalize(data, existing)
+    assert result.courses[0]["seats"] == 60
+
+
+def test_normalize_real_capacity_data_overrides_the_carried_forward_value():
+    data = {"CSD": {"CSD1YR": [
+        {"code": "CSD101", "title": "Intro", "type": "Major", "uwe": "No", "comp": "LEC", "sec": "LEC1",
+         "block": "", "term": "Full semester", "day": "Mon", "start": "09:00 AM", "end": "10:00 AM",
+         "room": "A1", "inst": "X", "cap": "45", "note": "", "rowid": 1},
+    ]}}
+    existing = {"CSD101": {"code": "CSD101", "cr": 4, "crOfficial": True, "cat": "ME",
+                          "school": "S", "dept": "D", "ttype": "Major", "crBasis": "x", "seats": 60}}
+    result = normalize_mod.normalize(data, existing)
+    assert result.courses[0]["seats"] == 45
+
+
 def _row(comp, sec, block, day, start, end, rowid, term="Full semester"):
     return {"code": "CSD211/CSD2003", "title": "Computer Organization and Architecture", "type": "Major",
            "uwe": "No", "comp": comp, "sec": sec, "block": block, "term": term, "day": day,

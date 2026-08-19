@@ -11,21 +11,21 @@ BACKEND_COPY = Path(__file__).resolve().parent.parent / "app" / "data" / "course
 VERSIONS = BACKEND_COPY.parent / "timetable_versions"
 
 
-def test_catalog_loads_327_courses():
+def test_catalog_loads_328_courses():
     # 326 through monsoon-2026-batch-coherence-fix-2026-08-07; 325 under
     # monsoon-2026-netlify-revision-2026-08-09; 327 under
     # monsoon-2026-office-draft-2026-08-11 (the Academic Office's own draft
     # workbook); 328 under monsoon-2026-netlify-revision-2026-08-11 (Dean
-    # Academics' "timetable updated" email, live site re-synced). Now back
-    # to 327 under monsoon-2026-netlify-revision-2026-08-12 - the "final"
-    # timetable the Student Council's own email flagged as having "minimal
-    # changes": HIS102 and the previously-separate IHS1003 entry consolidated
-    # into one cross-listed course (HIS102/IHS1003), a real net -1, not a
-    # data-loss regression.
-    assert len(catalog.all_courses()) == 327
+    # Academics' "timetable updated" email); 327 under
+    # monsoon-2026-netlify-revision-2026-08-12 (the "final" timetable, HIS102
+    # and IHS1003 consolidated into one cross-listed course). Now 328 under
+    # monsoon-2026-office-xlsx-2026-08-19 - a genuinely new course, DES303,
+    # appeared in both the live site and a fresh Academic Office workbook
+    # independently (cross-checked directly, not assumed).
+    assert len(catalog.all_courses()) == 328
 
 
-def test_catalog_has_563_packages():
+def test_catalog_has_548_packages():
     # 859 under monsoon-2026-excel-v1; 988 under monsoon-2026-netlify-revision-
     # 2026-08-04; 954 under monsoon-2026-batch-coherence-fix-2026-08-07 (that
     # session's own batch-coherence fix to build_packages()); 555 under
@@ -37,13 +37,18 @@ def test_catalog_has_563_packages():
     # real gap in the Office's draft workbook, which dropped "Student Block"
     # tagging for nearly every first-year course; 564 under
     # monsoon-2026-netlify-revision-2026-08-11, the live site's re-sync
-    # bringing real batch tagging back. Now 563 under
-    # monsoon-2026-netlify-revision-2026-08-12 - a handful of real section
-    # time/room moves (ART342, ECE1001, INT104/INT2002, MGT2001, PHY1007,
-    # STM2001 all show packages_moved in the diff) plus the HIS102/IHS1003
-    # consolidation losing IHS1003's own separately-counted packages, not a
-    # data-quality regression.
-    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 563
+    # bringing real batch tagging back; 563 under
+    # monsoon-2026-netlify-revision-2026-08-12. Now 548 under
+    # monsoon-2026-office-xlsx-2026-08-19 - this session's own new workbook
+    # (`Monsoon 2026 Timetable(1).xlsx`) tags "Student Block" on more rows
+    # than the live mirror did, so the batch-coherence check correctly drops
+    # more cross-batch combinations again; confirmed by cross-referencing
+    # against a fresh, independent Netlify re-fetch taken the same session,
+    # which landed on the identical 548 once both sources were layered on
+    # the same baseline (see tools/import_office_timetable_xlsx.py's own
+    # CAPACITY_MISSING_CARRIED_FORWARD handling for why seats still matched
+    # exactly despite this workbook publishing no capacity column at all).
+    assert sum(len(c["pk"]) for c in catalog.all_courses()) == 548
 
 
 def test_course_codes_are_unique():

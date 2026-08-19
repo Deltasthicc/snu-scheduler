@@ -27,11 +27,12 @@ function drawTT(){
       if(!day.length)h+='<div class="agenda-empty">No classes</div>';
       else{
         h+='<div class="agenda-events">';
-        day.forEach(x=>{const e=x.e,conflict=badKey.has(x.i);
-          h+=`<article class="agenda-event ${e.kind==='nb'?'fix':e.kind} ${conflict?'bad':''}" title="${esc(e.title)}">
+        day.forEach(x=>{const e=x.e,conflict=badKey.has(x.i),loc=roomLocation(e.m[5]);
+          h+=`<article class="agenda-event ${e.kind==='nb'?'fix':e.kind} ${conflict?'bad':''}" title="${esc(e.title)}${loc.label?' — '+esc(loc.label):''}">
             <div class="agenda-time">${hm(e.m[1])}<br>${hm(e.m[2])}</div>
             <div class="agenda-course"><b>${esc(e.code)}</b><span>${esc(e.title)}</span>
-              <span class="agenda-tag">${esc(e.m[3])} ${esc(e.m[4])}${e.m[5]?' · '+esc(e.m[5]):''} · ${esc(e.term)}${conflict?' · CLASH':''}</span></div></article>`;
+              <span class="agenda-tag">${esc(e.m[3])} ${esc(e.m[4])} · ${esc(e.term)}${conflict?' · CLASH':''}</span>
+              ${loc.label?`<span class="agenda-loc">${esc(loc.label)}</span>`:''}</div></article>`;
         });
         h+='</div>';
       }
@@ -53,12 +54,12 @@ function drawTT(){
       const lanes=[];
       day.forEach(x=>{ let L=0;while(lanes[L]!==undefined && lanes[L]>x.e.m[1]) L++;lanes[L]=x.e.m[2];x.lane=L; });
       const nl=Math.max(1,lanes.length);
-      day.forEach(x=>{const e=x.e, top=(e.m[1]-lo)*PXM, ht=Math.max(17,(e.m[2]-e.m[1])*PXM-2);
+      day.forEach(x=>{const e=x.e, top=(e.m[1]-lo)*PXM, ht=Math.max(17,(e.m[2]-e.m[1])*PXM-2), loc=roomLocation(e.m[5]);
         const w=100/nl, left=x.lane*w;
         h+=`<div class="ev ${e.kind==='nb'?'fix':e.kind} ${badKey.has(x.i)?'bad':''}"
           style="top:${top}px;height:${ht}px;left:calc(${left}% + 2px);width:calc(${w}% - 4px)"
-          title="${esc(e.code)} ${esc(e.title)} — ${e.m[3]} ${e.m[4]} ${DAYS[e.m[0]]} ${hm(e.m[1])}–${hm(e.m[2])} ${esc(e.m[5]||'')} [${e.term}]">
-          <b>${esc(e.code.split('/')[0])}</b><span class="ev-title">${esc(e.title)}</span><span class="ev-when">${e.m[3]} ${hm(e.m[1]).replace(' ','')}–${hm(e.m[2]).replace(' ','')}</span></div>`;});
+          title="${esc(e.code)} ${esc(e.title)} — ${e.m[3]} ${e.m[4]} ${DAYS[e.m[0]]} ${hm(e.m[1])}–${hm(e.m[2])}${loc.label?' — '+esc(loc.label):''} [${e.term}]">
+          <b>${esc(e.code.split('/')[0])}</b><span class="ev-title">${esc(e.title)}</span><span class="ev-when">${e.m[3]} ${hm(e.m[1]).replace(' ','')}–${hm(e.m[2]).replace(' ','')}</span>${loc.short?`<span class="ev-loc">${esc(loc.short)}</span>`:''}</div>`;});
       h+='</div>';
     });
     h+='</div>';

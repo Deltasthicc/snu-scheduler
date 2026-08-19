@@ -7,6 +7,32 @@ const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const f1=n=>(Math.round(n*10)/10);
 function hm(m){const h=Math.floor(m/60),q=m%60,ap=h>=12?'PM':'AM';let x=h%12;if(!x)x=12;
   return x+':'+String(q).padStart(2,'0')+' '+ap;}
+/* Room codes on this campus are BLOCK + FLOOR-DIGIT + ROOM-NUMBER, e.g.
+   "A204" = A Block, 2nd floor, room 204 - the floor is the room number's own
+   leading digit, not a separately-published field, confirmed against every
+   room code in the Monsoon 2026 timetable (A/B/C/D/G blocks; no E/F block
+   rooms appear in the data). A trailing letter (e.g. "C013A", "G102B") is a
+   sub-room sharing that number, not a different floor. "<Block>-Audi" is the
+   block's auditorium, which has no room number at all. Pure display
+   formatting, not scheduling logic - same category as hm()/esc() above, not
+   the clash/credit computation this project keeps off the client entirely.*/
+const FLOOR_WORDS={0:'Ground Floor',1:'1st Floor',2:'2nd Floor',3:'3rd Floor'};
+function ordinalFloor(n){ return FLOOR_WORDS[n]||(n+'th Floor'); }
+function roomLocation(room){
+  const raw=(room==null?'':String(room)).trim();
+  if(!raw||raw.toUpperCase()==='N/A') return {raw:raw||'', label:'', short:''};
+  if(/^online$/i.test(raw)) return {raw, label:'Online', short:'Online'};
+  const audi=raw.match(/^([A-Za-z])-?Audi(?:torium)?$/i);
+  if(audi){ const block=audi[1].toUpperCase();
+    return {raw, block, label:`${block} Block — Auditorium`, short:`${block} Block, Auditorium`}; }
+  const m=raw.match(/^([A-Za-z])(\d+)([A-Za-z]?)$/);
+  if(!m) return {raw, label:raw, short:raw};
+  const block=m[1].toUpperCase(), digits=m[2], suffix=m[3]?m[3].toUpperCase():'';
+  const floor=parseInt(digits[0],10), roomNumber=digits+suffix;
+  return {raw, block, floor, roomNumber,
+    label:`${block} Block, ${ordinalFloor(floor)}, Room ${roomNumber}`,
+    short:`${block} Block · Rm ${roomNumber}`};
+}
 /* term overlap: two half-semester terms in opposite halves never collide */
 /* "Both half" = a CCC running in both halves at the same weekly slot, so it
    occupies that slot all semester and overlaps whatever "Full semester" does.

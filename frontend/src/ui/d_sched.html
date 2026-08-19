@@ -58,7 +58,8 @@ function renderFixed(){
       ${f.auto?'<span class="pill p-m">block</span>':''}</td>
       <td data-label="Package">${c.pk.length>1?`<select aria-label="Section package for ${esc(c.code)}" onchange="FIXED[${i}].pkg=+this.value;renderFixed();renderPick();renderChosen()">${opts}</select>`:`<span class="tiny">${esc(p.l)}</span>`}</td>
       <td data-label="Credits" class="num">${c.cr}</td><td data-label="Term" class="tiny">${p.t}</td>
-      <td data-label="When" class="tiny">${p.m.map(m=>m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])).join(' · ')}</td>
+      <td data-label="When" class="tiny">${p.m.map(m=>{const loc=roomLocation(m[5]);
+        return m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])+(loc.short?' · '+esc(loc.short):'');}).join('<br>')}</td>
       <td data-label="Swappable"><input type="checkbox" class="chk" aria-label="Allow solver to swap ${esc(c.code)} section" ${f.lock?'':'checked'} title="untick to lock this section"
           onchange="FIXED[${i}].lock=!this.checked"></td>
       <td data-label=""><button class="btn2 sm" aria-label="Remove ${esc(c.code)}" onclick="FIXED.splice(${i},1);renderFixed();renderPick();renderChosen()">×</button></td></tr>`;});
@@ -223,7 +224,8 @@ function renderPick(){
       <td data-label="Pool cap" class="num" style="color:var(--sig)" title="No per-course cap — bounded only by your category pool">${c.cat==='ME'||c.cat==='UWE'||c.cat==='CCC'?(BUD[c.cat]??'—'):'—'}</td>
       <td data-label="Packages" class="num tiny">${c.pk.length||'0'}</td>
       <td data-label="Best fit" class="tiny">${c.unsched?'<span style="color:var(--bad)" title="'+esc(c.why)+'">unschedulable</span>':(r.ba.n===0?'<span style="color:var(--ok)">clear</span>':'<span style="color:var(--bad)">'+r.ba.n+' clash</span>')}
-        <div class="tiny">${p.m.slice(0,3).map(m=>m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])).join(' · ')}</div></td>
+        <div class="tiny">${p.m.slice(0,3).map(m=>{const loc=roomLocation(m[5]);
+          return m[3]+' '+DAYS[m[0]]+' '+hm(m[1])+'–'+hm(m[2])+(loc.short?' · '+esc(loc.short):'');}).join('<br>')}</div></td>
       <td data-label="Want">${routesToFixed?'<span class="tiny mut">fixed</span>':(PICK[c.code]?`<input type="number" aria-label="Want level for ${esc(c.code)}" min="1" max="10" value="${PICK[c.code].want}" style="width:52px"
           onchange="PICK['${c.code}'].want=+this.value;renderChosen()">`:'<span class="tiny">—</span>')}</td></tr>`;});
   $('pickBody').innerHTML=h||'<tr><td colspan="10" class="tiny" style="padding:16px">Nothing matches.</td></tr>';

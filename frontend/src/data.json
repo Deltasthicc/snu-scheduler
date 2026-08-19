@@ -196,7 +196,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BIO11, BIO12"
+    ],
     "cat": "UWE",
     "seats": 80,
     "unsched": false,
@@ -216,7 +218,7 @@
             665,
             "LEC",
             "LEC1",
-            "D022"
+            "G102B"
           ],
           [
             2,
@@ -224,7 +226,7 @@
             665,
             "LEC",
             "LEC1",
-            "D022"
+            "G102B"
           ],
           [
             4,
@@ -232,10 +234,13 @@
             665,
             "LEC",
             "LEC1",
-            "D022"
+            "G102B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO11",
+          "BIO12"
+        ]
       }
     ]
   },
@@ -252,14 +257,16 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BIO11, BIO12"
+    ],
     "cat": "UWE",
     "seats": 80,
     "unsched": false,
     "why": "",
     "majorFor": [],
     "meFor": [
-      "BIO1YR"
+      "BIO2YR"
     ],
     "pk": [
       {
@@ -272,7 +279,7 @@
             1030,
             "LEC",
             "LEC1",
-            "D022"
+            "G104B"
           ],
           [
             4,
@@ -280,10 +287,13 @@
             1030,
             "LEC",
             "LEC1",
-            "D022"
+            "G104B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO11",
+          "BIO12"
+        ]
       }
     ]
   },
@@ -300,7 +310,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BIO11",
+      "BIO11, BIO12",
+      "BIO12"
+    ],
     "cat": "NB",
     "seats": 80,
     "unsched": false,
@@ -316,11 +330,11 @@
         "m": [
           [
             1,
-            850,
-            905,
+            980,
+            1035,
             "LEC",
             "LEC1",
-            "D026"
+            "G104B"
           ],
           [
             2,
@@ -336,10 +350,12 @@
             905,
             "LEC",
             "LEC1",
-            "D026"
+            "G104B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO11"
+        ]
       },
       {
         "t": "Full semester",
@@ -347,11 +363,11 @@
         "m": [
           [
             1,
-            850,
-            905,
+            980,
+            1035,
             "LEC",
             "LEC1",
-            "D026"
+            "G104B"
           ],
           [
             3,
@@ -359,7 +375,7 @@
             905,
             "LEC",
             "LEC1",
-            "D026"
+            "G104B"
           ],
           [
             4,
@@ -370,7 +386,9 @@
             "B310"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO12"
+        ]
       }
     ]
   },
@@ -387,7 +405,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BIO11",
+      "BIO11, BIO12",
+      "BIO12"
+    ],
     "cat": "NB",
     "seats": 80,
     "unsched": false,
@@ -415,7 +437,7 @@
             725,
             "LEC",
             "LEC1",
-            "D022"
+            "G103C"
           ],
           [
             3,
@@ -423,10 +445,12 @@
             725,
             "LEC",
             "LEC1",
-            "D022"
+            "G103C"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO11"
+        ]
       },
       {
         "t": "Full semester",
@@ -438,7 +462,7 @@
             725,
             "LEC",
             "LEC1",
-            "D022"
+            "G103C"
           ],
           [
             2,
@@ -454,10 +478,12 @@
             725,
             "LEC",
             "LEC1",
-            "D022"
+            "G103C"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO12"
+        ]
       }
     ]
   },
@@ -1064,7 +1090,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "BIO3YR"
+      "BIO3YR",
+      "BIO4YR"
     ],
     "pk": [
       {
@@ -1120,7 +1147,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "BIO3YR"
+      "BIO3YR",
+      "BIO4YR"
     ],
     "pk": [
       {
@@ -1176,7 +1204,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "BIO3YR"
+      "BIO3YR",
+      "BIO4YR"
     ],
     "pk": [
       {
@@ -1232,7 +1261,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "BIO3YR"
+      "BIO3YR",
+      "BIO4YR"
     ],
     "pk": [
       {
@@ -1331,8 +1361,8 @@
   {
     "code": "CCC113/CCC2408",
     "title": "Folk and Popular Music in Ind",
-    "school": "",
-    "dept": "",
+    "school": "School of Humanities & Social Sciences",
+    "dept": "School of Humanities & Social Sciences - Sociology",
     "ttype": "CCC",
     "uwe": false,
     "cr": null,
@@ -1995,7 +2025,7 @@
             870,
             "LEC",
             "LEC1",
-            "D109"
+            "B207"
           ]
         ],
         "batches": []
@@ -2010,7 +2040,7 @@
             870,
             "LEC",
             "LEC2",
-            "D109"
+            "B207"
           ]
         ],
         "batches": []
@@ -2048,7 +2078,7 @@
             765,
             "LEC",
             "LEC1",
-            "B107"
+            "D026"
           ],
           [
             2,
@@ -2056,7 +2086,7 @@
             765,
             "LEC",
             "LEC1",
-            "B107"
+            "D026"
           ]
         ],
         "batches": []
@@ -2628,7 +2658,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "PHY1YR,MAT1YR,CHY1YR,BMS11,BMS12 BMS13,ECO11,ECO12,INT1YR,DES1YR,ENF21,ENF22"
+    ],
     "cat": "CCC",
     "seats": 450,
     "unsched": false,
@@ -2666,7 +2698,20 @@
             "G-Audi"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS11",
+          "BMS12",
+          "BMS13",
+          "CHY1YR",
+          "DES1YR",
+          "ECO11",
+          "ECO12",
+          "ENF21",
+          "ENF22",
+          "INT1YR",
+          "MAT1YR",
+          "PHY1YR"
+        ]
       }
     ]
   },
@@ -3400,6 +3445,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "CED3YR",
       "CED4YR"
     ],
     "pk": [
@@ -3568,6 +3614,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "CED3YR",
       "CED4YR"
     ],
     "pk": [
@@ -3676,6 +3723,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "CED3YR",
       "CED4YR"
     ],
     "pk": [
@@ -3732,6 +3780,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "CED3YR",
       "CED4YR"
     ],
     "pk": [
@@ -3795,7 +3844,7 @@
             600,
             "TUT",
             "TUT1",
-            "G305D"
+            "G303D"
           ],
           [
             2,
@@ -4332,6 +4381,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "CHD3YR",
       "CHD4YR"
     ],
     "pk": [
@@ -4373,7 +4423,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "CHY1YR"
+    ],
     "cat": "NB",
     "seats": 30,
     "unsched": false,
@@ -4420,7 +4472,9 @@
             "D118"
           ]
         ],
-        "batches": []
+        "batches": [
+          "CHY1YR"
+        ]
       }
     ]
   },
@@ -4437,7 +4491,13 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BIO11",
+      "BIO11, BIO12",
+      "BIO11, BIO12, CHY1YR, PHY1YR",
+      "BIO12",
+      "CHY1YR, PHY1YR"
+    ],
     "cat": "UWE",
     "seats": 120,
     "unsched": false,
@@ -4454,6 +4514,14 @@
         "l": "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT1",
         "m": [
           [
+            0,
+            675,
+            760,
+            "LEC",
+            "LEC1",
+            "G105C"
+          ],
+          [
             1,
             575,
             660,
@@ -4462,12 +4530,12 @@
             "B016"
           ],
           [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
+            1,
+            735,
+            910,
+            "PRAC",
+            "PRAC1",
+            "B208"
           ],
           [
             3,
@@ -4476,146 +4544,23 @@
             "TUT",
             "TUT1",
             "G302B"
-          ],
-          [
-            4,
-            780,
-            955,
-            "PRAC",
-            "PRAC1",
-            "B212"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO11"
+        ]
       },
       {
         "t": "Full semester",
         "l": "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT2",
         "m": [
           [
-            1,
-            480,
-            535,
-            "TUT",
-            "TUT2",
-            "G303D"
-          ],
-          [
-            1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            4,
-            780,
-            955,
-            "PRAC",
-            "PRAC1",
-            "B212"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC1 + TUT:TUT3",
-        "m": [
-          [
-            1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            1,
-            945,
-            1000,
-            "TUT",
-            "TUT3",
-            "G302B"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            4,
-            780,
-            955,
-            "PRAC",
-            "PRAC1",
-            "B212"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT1",
-        "m": [
-          [
             0,
-            780,
-            955,
-            "PRAC",
-            "PRAC2",
-            "B212"
-          ],
-          [
-            1,
-            575,
-            660,
+            675,
+            760,
             "LEC",
             "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            945,
-            1000,
-            "TUT",
-            "TUT1",
-            "G302B"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC2 + TUT:TUT2",
-        "m": [
-          [
-            0,
-            780,
-            955,
-            "PRAC",
-            "PRAC2",
-            "B212"
+            "G105C"
           ],
           [
             1,
@@ -4634,15 +4579,17 @@
             "B016"
           ],
           [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
+            1,
+            735,
+            910,
+            "PRAC",
+            "PRAC1",
+            "B208"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO12"
+        ]
       },
       {
         "t": "Full semester",
@@ -4650,11 +4597,19 @@
         "m": [
           [
             0,
+            675,
+            760,
+            "LEC",
+            "LEC1",
+            "G105C"
+          ],
+          [
+            0,
             780,
             955,
             "PRAC",
             "PRAC2",
-            "B212"
+            "B208"
           ],
           [
             1,
@@ -4671,251 +4626,12 @@
             "TUT",
             "TUT3",
             "G302B"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
           ]
         ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT1",
-        "m": [
-          [
-            1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            945,
-            1000,
-            "TUT",
-            "TUT1",
-            "G302B"
-          ],
-          [
-            5,
-            670,
-            845,
-            "PRAC",
-            "PRAC3",
-            "B212"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT2",
-        "m": [
-          [
-            1,
-            480,
-            535,
-            "TUT",
-            "TUT2",
-            "G303D"
-          ],
-          [
-            1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            5,
-            670,
-            845,
-            "PRAC",
-            "PRAC3",
-            "B212"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT3",
-        "m": [
-          [
-            1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            1,
-            945,
-            1000,
-            "TUT",
-            "TUT3",
-            "G302B"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            5,
-            670,
-            845,
-            "PRAC",
-            "PRAC3",
-            "B212"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT1",
-        "m": [
-          [
-            1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            945,
-            1000,
-            "TUT",
-            "TUT1",
-            "G302B"
-          ],
-          [
-            5,
-            670,
-            845,
-            "PRAC",
-            "PRAC4",
-            "B214"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT2",
-        "m": [
-          [
-            1,
-            480,
-            535,
-            "TUT",
-            "TUT2",
-            "G303D"
-          ],
-          [
-            1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            5,
-            670,
-            845,
-            "PRAC",
-            "PRAC4",
-            "B214"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC4 + TUT:TUT3",
-        "m": [
-          [
-            1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            1,
-            945,
-            1000,
-            "TUT",
-            "TUT3",
-            "G302B"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            5,
-            670,
-            845,
-            "PRAC",
-            "PRAC4",
-            "B214"
-          ]
-        ],
-        "batches": []
+        "batches": [
+          "CHY1YR",
+          "PHY1YR"
+        ]
       }
     ]
   },
@@ -4932,7 +4648,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "CHY1YR"
+    ],
     "cat": "NB",
     "seats": 30,
     "unsched": false,
@@ -4976,10 +4694,12 @@
             955,
             "PRAC",
             "PRAC1",
-            "B208"
+            "B212"
           ]
         ],
-        "batches": []
+        "batches": [
+          "CHY1YR"
+        ]
       }
     ]
   },
@@ -5937,7 +5657,7 @@
             775,
             "LEC",
             "LEC1",
-            "A214"
+            "D232"
           ],
           [
             1,
@@ -5967,22 +5687,22 @@
     ],
     "blocks": [
       "SOE11",
-      "SOE11, SOE12",
+      "SOE11, SOE12, SOE13",
       "SOE110",
       "SOE12",
       "SOE13",
-      "SOE13, SOE14",
       "SOE14",
+      "SOE14, SOE15",
       "SOE15",
-      "SOE15, SOE16",
       "SOE16",
+      "SOE16, SOE17",
       "SOE17",
-      "SOE17, SOE18",
       "SOE18",
+      "SOE18, SOE19, SOE110",
       "SOE19"
     ],
     "cat": "CORE",
-    "seats": 160,
+    "seats": 180,
     "unsched": false,
     "why": "",
     "majorFor": [
@@ -6007,20 +5727,20 @@
             "D313"
           ],
           [
-            1,
-            575,
-            660,
+            2,
+            870,
+            955,
             "LEC",
             "LEC1",
-            "G201"
+            "B315"
           ],
           [
-            3,
-            575,
-            660,
+            5,
+            540,
+            625,
             "LEC",
             "LEC1",
-            "G201"
+            "B315"
           ]
         ],
         "batches": [
@@ -6033,27 +5753,27 @@
         "m": [
           [
             1,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "G201"
-          ],
-          [
-            3,
-            575,
-            660,
-            "LEC",
-            "LEC1",
-            "G201"
-          ],
-          [
-            4,
-            790,
-            905,
+            880,
+            995,
             "PRAC",
             "PRAC2",
             "D313"
+          ],
+          [
+            2,
+            870,
+            955,
+            "LEC",
+            "LEC1",
+            "B315"
+          ],
+          [
+            5,
+            540,
+            625,
+            "LEC",
+            "LEC1",
+            "B315"
           ]
         ],
         "batches": [
@@ -6062,31 +5782,31 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC2 + PRAC:PRAC3",
+        "l": "LEC:LEC1 + PRAC:PRAC3",
         "m": [
           [
             0,
-            540,
-            655,
+            900,
+            1015,
             "PRAC",
             "PRAC3",
             "D317"
           ],
           [
-            1,
-            480,
-            565,
+            2,
+            870,
+            955,
             "LEC",
-            "LEC2",
-            "G101"
+            "LEC1",
+            "B315"
           ],
           [
-            3,
-            480,
-            565,
+            5,
+            540,
+            625,
             "LEC",
-            "LEC2",
-            "G101"
+            "LEC1",
+            "B315"
           ]
         ],
         "batches": [
@@ -6107,8 +5827,8 @@
           ],
           [
             3,
-            480,
-            565,
+            660,
+            745,
             "LEC",
             "LEC2",
             "G101"
@@ -6128,15 +5848,15 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC3 + PRAC:PRAC5",
+        "l": "LEC:LEC2 + PRAC:PRAC5",
         "m": [
           [
-            0,
-            675,
-            760,
+            1,
+            480,
+            565,
             "LEC",
-            "LEC3",
-            "G201"
+            "LEC2",
+            "G101"
           ],
           [
             2,
@@ -6147,12 +5867,12 @@
             "D313"
           ],
           [
-            4,
-            675,
-            760,
+            3,
+            660,
+            745,
             "LEC",
-            "LEC3",
-            "G201"
+            "LEC2",
+            "G101"
           ]
         ],
         "batches": [
@@ -6194,14 +5914,14 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC4 + PRAC:PRAC7",
+        "l": "LEC:LEC3 + PRAC:PRAC7",
         "m": [
           [
             0,
-            765,
-            850,
+            675,
+            760,
             "LEC",
-            "LEC4",
+            "LEC3",
             "G201"
           ],
           [
@@ -6214,15 +5934,48 @@
           ],
           [
             4,
-            765,
-            850,
+            675,
+            760,
             "LEC",
-            "LEC4",
+            "LEC3",
             "G201"
           ]
         ],
         "batches": [
           "SOE17"
+        ]
+      },
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC4 + PRAC:PRAC10",
+        "m": [
+          [
+            0,
+            765,
+            850,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            4,
+            765,
+            850,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            5,
+            780,
+            895,
+            "PRAC",
+            "PRAC10",
+            "D313"
+          ]
+        ],
+        "batches": [
+          "SOE110"
         ]
       },
       {
@@ -6238,9 +5991,9 @@
             "G201"
           ],
           [
-            1,
-            905,
-            1020,
+            3,
+            960,
+            1075,
             "PRAC",
             "PRAC8",
             "D317"
@@ -6256,6 +6009,39 @@
         ],
         "batches": [
           "SOE18"
+        ]
+      },
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC4 + PRAC:PRAC9",
+        "m": [
+          [
+            0,
+            765,
+            850,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            3,
+            480,
+            595,
+            "PRAC",
+            "PRAC9",
+            "D313"
+          ],
+          [
+            4,
+            765,
+            850,
+            "LEC",
+            "LEC4",
+            "G201"
+          ]
+        ],
+        "batches": [
+          "SOE19"
         ]
       }
     ]
@@ -6277,7 +6063,7 @@
       "CSD21, CSD22",
       "CSD21,CSD22, CSD23, CSD24",
       "CSD23, CSD24",
-      "ECE21 to ECE28",
+      "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28",
       "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
       "ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215"
     ],
@@ -6462,7 +6248,7 @@
       "CSD24"
     ],
     "cat": "CORE",
-    "seats": 120,
+    "seats": 150,
     "unsched": false,
     "why": "",
     "majorFor": [
@@ -6480,7 +6266,7 @@
             565,
             "LEC",
             "LEC1",
-            "B016"
+            "G201"
           ],
           [
             2,
@@ -6496,7 +6282,7 @@
             565,
             "LEC",
             "LEC1",
-            "B016"
+            "G201"
           ]
         ],
         "batches": [
@@ -6513,7 +6299,7 @@
             565,
             "LEC",
             "LEC1",
-            "B016"
+            "G201"
           ],
           [
             1,
@@ -6529,7 +6315,7 @@
             565,
             "LEC",
             "LEC1",
-            "B016"
+            "G201"
           ]
         ],
         "batches": [
@@ -6554,7 +6340,7 @@
             660,
             "LEC",
             "LEC2",
-            "B012"
+            "B016"
           ],
           [
             2,
@@ -6595,7 +6381,7 @@
             660,
             "LEC",
             "LEC2",
-            "B012"
+            "B016"
           ]
         ],
         "batches": [
@@ -7451,7 +7237,7 @@
             820,
             "LEC",
             "LEC1",
-            "A218"
+            "G103C"
           ],
           [
             5,
@@ -7459,7 +7245,7 @@
             830,
             "LEC",
             "LEC1",
-            "D026"
+            "G103C"
           ]
         ],
         "batches": []
@@ -7716,7 +7502,7 @@
             535,
             "LEC",
             "LEC1",
-            "D026"
+            "G103C"
           ],
           [
             4,
@@ -7732,7 +7518,7 @@
             535,
             "LEC",
             "LEC1",
-            "D026"
+            "G103C"
           ]
         ],
         "batches": []
@@ -7809,7 +7595,10 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ENF11",
+      "ENF12"
+    ],
     "cat": "NB",
     "seats": 30,
     "unsched": false,
@@ -7832,7 +7621,9 @@
             "B107"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -7847,7 +7638,9 @@
             "G303B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -7862,7 +7655,9 @@
             "G305B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -7877,7 +7672,9 @@
             "B203"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       }
     ]
   },
@@ -7994,7 +7791,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "DES1YR"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
@@ -8009,31 +7808,25 @@
         "l": "LEC:LEC1 + PRAC:PRAC1",
         "m": [
           [
-            0,
-            540,
-            655,
-            "PRAC",
-            "PRAC1",
-            "A106"
-          ],
-          [
             1,
-            540,
-            655,
-            "PRAC",
-            "PRAC1",
-            "A106"
-          ],
-          [
-            4,
-            780,
-            895,
+            670,
+            785,
             "LEC",
             "LEC1",
             "A218"
+          ],
+          [
+            1,
+            795,
+            1030,
+            "PRAC",
+            "PRAC1",
+            "A206"
           ]
         ],
-        "batches": []
+        "batches": [
+          "DES1YR"
+        ]
       }
     ]
   },
@@ -8050,7 +7843,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "DES1YR"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
@@ -8066,22 +7861,16 @@
         "m": [
           [
             0,
-            905,
-            1020,
+            780,
+            1015,
             "PRAC",
             "PRAC1",
-            "B102"
-          ],
-          [
-            1,
-            765,
-            850,
-            "PRAC",
-            "PRAC1",
-            "B102"
+            "A114"
           ]
         ],
-        "batches": []
+        "batches": [
+          "DES1YR"
+        ]
       }
     ]
   },
@@ -8098,7 +7887,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "DES1YR"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
@@ -8113,31 +7904,25 @@
         "l": "LEC:LEC1 + PRAC:PRAC1",
         "m": [
           [
-            0,
-            780,
-            865,
-            "LEC",
-            "LEC1",
-            "A218"
-          ],
-          [
-            0,
-            910,
-            995,
-            "LEC",
-            "LEC1",
-            "A218"
-          ],
-          [
-            4,
+            2,
             780,
             895,
+            "LEC",
+            "LEC1",
+            "A206"
+          ],
+          [
+            2,
+            905,
+            1020,
             "PRAC",
             "PRAC1",
             "A106"
           ]
         ],
-        "batches": []
+        "batches": [
+          "DES1YR"
+        ]
       }
     ]
   },
@@ -8154,7 +7939,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "DES1YR"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
@@ -8169,31 +7956,25 @@
         "l": "LEC:LEC1 + PRAC:PRAC1",
         "m": [
           [
-            0,
-            480,
-            535,
+            4,
+            780,
+            835,
             "LEC",
             "LEC1",
             "A218"
           ],
           [
-            2,
-            905,
-            1020,
-            "PRAC",
-            "PRAC1",
-            "B003"
-          ],
-          [
             4,
-            905,
-            1020,
+            845,
+            1080,
             "PRAC",
             "PRAC1",
-            "B003"
+            "A103"
           ]
         ],
-        "batches": []
+        "batches": [
+          "DES1YR"
+        ]
       }
     ]
   },
@@ -8210,7 +7991,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "DES1YR"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
@@ -8225,23 +8008,17 @@
         "l": "LEC:LEC1",
         "m": [
           [
-            1,
-            670,
-            725,
+            2,
+            480,
+            595,
             "LEC",
             "LEC1",
-            "A218"
-          ],
-          [
-            3,
-            670,
-            725,
-            "LEC",
-            "LEC1",
-            "A218"
+            "A103"
           ]
         ],
-        "batches": []
+        "batches": [
+          "DES1YR"
+        ]
       }
     ]
   },
@@ -8718,12 +8495,57 @@
     ]
   },
   {
+    "code": "DES303",
+    "title": "Design Project 2",
+    "school": "School of Humanities & Social Sciences",
+    "dept": "School of Humanities & Social Sciences - Design",
+    "ttype": "Major",
+    "uwe": true,
+    "cr": null,
+    "crOfficial": false,
+    "crBasis": "NEEDS_MANUAL_REVIEW: course not present in the prior dataset; no credit source available",
+    "terms": [
+      "Full semester"
+    ],
+    "blocks": [
+      "DES31,DES32"
+    ],
+    "cat": "UWE",
+    "seats": 70,
+    "unsched": false,
+    "why": "",
+    "majorFor": [
+      "DES3YR"
+    ],
+    "meFor": [],
+    "pk": [
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC1",
+        "m": [
+          [
+            3,
+            630,
+            685,
+            "LEC",
+            "LEC1",
+            "D110"
+          ]
+        ],
+        "batches": [
+          "DES31",
+          "DES32"
+        ]
+      }
+    ]
+  },
+  {
     "code": "DES403/DES4001",
     "title": "Interaction Design",
     "school": "School of Humanities & Social Sciences",
     "dept": "School of Humanities & Social Sciences - Design",
     "ttype": "Major Elective",
-    "uwe": true,
+    "uwe": false,
     "cr": 4.0,
     "crOfficial": true,
     "crBasis": "Academic Office course outline (DES4001_Monsoon_2026.pdf)",
@@ -8736,7 +8558,10 @@
     "unsched": false,
     "why": "",
     "majorFor": [],
-    "meFor": [],
+    "meFor": [
+      "DES3YR",
+      "DES4YR"
+    ],
     "pk": [
       {
         "t": "Full semester",
@@ -8799,6 +8624,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "DES3YR",
       "DES4YR"
     ],
     "pk": [
@@ -8863,6 +8689,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "DES3YR",
       "DES4YR"
     ],
     "pk": [
@@ -8876,7 +8703,7 @@
             665,
             "LEC",
             "LEC1",
-            "G305D"
+            "A222"
           ],
           [
             2,
@@ -8884,7 +8711,7 @@
             665,
             "LEC",
             "LEC1",
-            "G305D"
+            "A222"
           ],
           [
             2,
@@ -8900,7 +8727,7 @@
             665,
             "LEC",
             "LEC1",
-            "G305D"
+            "A222"
           ]
         ],
         "batches": []
@@ -8927,6 +8754,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "DES3YR",
       "DES4YR"
     ],
     "pk": [
@@ -8991,6 +8819,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "DES3YR",
       "DES4YR"
     ],
     "pk": [
@@ -9055,6 +8884,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "DES3YR",
       "DES4YR"
     ],
     "pk": [
@@ -9119,6 +8949,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "DES3YR",
       "DES4YR"
     ],
     "pk": [
@@ -9222,7 +9053,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BMS11",
+      "BMS12",
+      "BMS13"
+    ],
     "cat": "NB",
     "seats": 70,
     "unsched": false,
@@ -9253,7 +9088,9 @@
             "A309"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS11"
+        ]
       },
       {
         "t": "Full semester",
@@ -9276,7 +9113,9 @@
             "A309"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS12"
+        ]
       },
       {
         "t": "Full semester",
@@ -9299,7 +9138,9 @@
             "A309"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS13"
+        ]
       }
     ]
   },
@@ -9324,7 +9165,8 @@
     "majorFor": [],
     "meFor": [
       "BMS2YR",
-      "BMS3YR"
+      "BMS3YR",
+      "BMS4YR"
     ],
     "pk": [
       {
@@ -9562,18 +9404,18 @@
     ],
     "blocks": [
       "SOE11",
-      "SOE11, SOE12",
+      "SOE11, SOE12, SOE13",
       "SOE110",
       "SOE12",
       "SOE13",
-      "SOE13, SOE14",
       "SOE14",
+      "SOE14, SOE15",
       "SOE15",
-      "SOE15, SOE16, SOE19",
       "SOE16",
+      "SOE16, SOE17",
       "SOE17",
-      "SOE17, SOE18, SOE110",
       "SOE18",
+      "SOE18, SOE19, SOE110",
       "SOE19"
     ],
     "cat": "NB",
@@ -9656,31 +9498,31 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC2 + PRAC:PRAC3",
+        "l": "LEC:LEC1 + PRAC:PRAC3",
         "m": [
           [
-            0,
-            545,
-            660,
-            "PRAC",
-            "PRAC3",
-            "B103"
-          ],
-          [
             1,
-            1010,
-            1070,
+            780,
+            840,
             "LEC",
-            "LEC2",
-            "D217"
+            "LEC1",
+            "B315"
           ],
           [
             4,
-            1005,
-            1065,
+            910,
+            970,
             "LEC",
-            "LEC2",
-            "D217"
+            "LEC1",
+            "B315"
+          ],
+          [
+            4,
+            970,
+            1085,
+            "PRAC",
+            "PRAC3",
+            "B103"
           ]
         ],
         "batches": [
@@ -9700,9 +9542,9 @@
             "B103"
           ],
           [
-            1,
-            1010,
-            1070,
+            3,
+            960,
+            1020,
             "LEC",
             "LEC2",
             "D217"
@@ -9722,16 +9564,8 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC3 + PRAC:PRAC5",
+        "l": "LEC:LEC2 + PRAC:PRAC5",
         "m": [
-          [
-            1,
-            780,
-            840,
-            "LEC",
-            "LEC3",
-            "G101"
-          ],
           [
             1,
             905,
@@ -9742,11 +9576,19 @@
           ],
           [
             3,
-            1030,
-            1090,
+            960,
+            1020,
             "LEC",
-            "LEC3",
-            "G101"
+            "LEC2",
+            "D217"
+          ],
+          [
+            4,
+            1005,
+            1065,
+            "LEC",
+            "LEC2",
+            "D217"
           ]
         ],
         "batches": [
@@ -9758,9 +9600,9 @@
         "l": "LEC:LEC3 + PRAC:PRAC6",
         "m": [
           [
-            1,
-            780,
-            840,
+            0,
+            540,
+            600,
             "LEC",
             "LEC3",
             "G101"
@@ -9788,22 +9630,22 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC3 + PRAC:PRAC9",
+        "l": "LEC:LEC3 + PRAC:PRAC7",
         "m": [
           [
-            1,
-            780,
-            840,
+            0,
+            540,
+            600,
             "LEC",
             "LEC3",
             "G101"
           ],
           [
-            3,
-            845,
-            960,
+            1,
+            540,
+            655,
             "PRAC",
-            "PRAC9",
+            "PRAC7",
             "B103"
           ],
           [
@@ -9816,7 +9658,7 @@
           ]
         ],
         "batches": [
-          "SOE19"
+          "SOE17"
         ]
       },
       {
@@ -9854,39 +9696,6 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC4 + PRAC:PRAC7",
-        "m": [
-          [
-            1,
-            540,
-            655,
-            "PRAC",
-            "PRAC7",
-            "B103"
-          ],
-          [
-            1,
-            1005,
-            1065,
-            "LEC",
-            "LEC4",
-            "G201"
-          ],
-          [
-            4,
-            1005,
-            1065,
-            "LEC",
-            "LEC4",
-            "G201"
-          ]
-        ],
-        "batches": [
-          "SOE17"
-        ]
-      },
-      {
-        "t": "Full semester",
         "l": "LEC:LEC4 + PRAC:PRAC8",
         "m": [
           [
@@ -9899,8 +9708,8 @@
           ],
           [
             2,
-            780,
-            895,
+            875,
+            990,
             "PRAC",
             "PRAC8",
             "B103"
@@ -9916,6 +9725,39 @@
         ],
         "batches": [
           "SOE18"
+        ]
+      },
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC4 + PRAC:PRAC9",
+        "m": [
+          [
+            1,
+            1005,
+            1065,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            3,
+            845,
+            960,
+            "PRAC",
+            "PRAC9",
+            "B103"
+          ],
+          [
+            4,
+            1005,
+            1065,
+            "LEC",
+            "LEC4",
+            "G201"
+          ]
+        ],
+        "batches": [
+          "SOE19"
         ]
       }
     ]
@@ -9934,7 +9776,7 @@
       "Full semester"
     ],
     "blocks": [
-      "ECE21 to ECE23",
+      "ECE21, ECE22, ECE23",
       "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
       "ECE210, ECE211, ECE212",
       "ECE213, ECE214, ECE215",
@@ -10181,7 +10023,7 @@
       "Full semester"
     ],
     "blocks": [
-      "ECE21 to ECE23",
+      "ECE21, ECE22, ECE23",
       "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
       "ECE210, ECE211, ECE212",
       "ECE213, ECE214, ECE215",
@@ -10428,7 +10270,7 @@
       "Full semester"
     ],
     "blocks": [
-      "ECE21 to ECE25",
+      "ECE21, ECE22, ECE23, ECE24, ECE25",
       "ECE21, ECE22, ECE23, ECE24, ECE25, ECE26, ECE27, ECE28, ECE29, ECE210, ECE211, ECE212, ECE213, ECE214, ECE215",
       "ECE211, ECE212, ECE213, ECE214, ECE215",
       "ECE26, ECE27, ECE28, ECE29, ECE210"
@@ -10594,7 +10436,7 @@
     ],
     "blocks": [
       "ECE31",
-      "ECE31, ECE32, ECE33, ECE36, ECE37, ECE38, ECE39, ECE310, ECE311",
+      "ECE31, ECE32, ECE33, ECE36, ECE310, ECE311",
       "ECE32",
       "ECE33",
       "ECE34",
@@ -10748,41 +10590,6 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC7",
-        "m": [
-          [
-            0,
-            780,
-            895,
-            "PRAC",
-            "PRAC7",
-            "C206"
-          ],
-          [
-            1,
-            480,
-            565,
-            "LEC",
-            "LEC1",
-            "B108"
-          ],
-          [
-            3,
-            480,
-            565,
-            "LEC",
-            "LEC1",
-            "B108"
-          ]
-        ],
-        "batches": [
-          "ECE37",
-          "ECE38",
-          "ECE39"
-        ]
-      },
-      {
-        "t": "Full semester",
         "l": "LEC:LEC2 + PRAC:PRAC5",
         "m": [
           [
@@ -10898,7 +10705,7 @@
       "Full semester"
     ],
     "blocks": [
-      "ECE31, ECE32, ECE33, ECE36, ECE37, ECE38, ECE39, ECE310, ECE311",
+      "ECE31, ECE32, ECE33, ECE36, ECE310, ECE311",
       "ECE31, ECE36",
       "ECE32",
       "ECE33, ECE310, ECE311",
@@ -11020,41 +10827,6 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC1 + PRAC:PRAC6",
-        "m": [
-          [
-            1,
-            725,
-            840,
-            "PRAC",
-            "PRAC6",
-            "C217"
-          ],
-          [
-            1,
-            855,
-            940,
-            "LEC",
-            "LEC1",
-            "B108"
-          ],
-          [
-            3,
-            850,
-            935,
-            "LEC",
-            "LEC1",
-            "B108"
-          ]
-        ],
-        "batches": [
-          "ECE37",
-          "ECE38",
-          "ECE39"
-        ]
-      },
-      {
-        "t": "Full semester",
         "l": "LEC:LEC2 + PRAC:PRAC4",
         "m": [
           [
@@ -11170,8 +10942,8 @@
       "Full semester"
     ],
     "blocks": [
-      "ECE31, ECE32, ECE33",
-      "ECE34, ECE35, ECE36"
+      "ECE31, ECE32, ECE33, ECE36, ECE310, ECE311",
+      "ECE34, ECE35, ECE37, ECE38, ECE39"
     ],
     "cat": "NB",
     "seats": 120,
@@ -11205,8 +10977,11 @@
         ],
         "batches": [
           "ECE31",
+          "ECE310",
+          "ECE311",
           "ECE32",
-          "ECE33"
+          "ECE33",
+          "ECE36"
         ]
       },
       {
@@ -11233,7 +11008,9 @@
         "batches": [
           "ECE34",
           "ECE35",
-          "ECE36"
+          "ECE37",
+          "ECE38",
+          "ECE39"
         ]
       }
     ]
@@ -11258,6 +11035,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ECE3YR",
       "ECE4YR"
     ],
     "pk": [
@@ -11345,7 +11123,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ECE3YR"
+      "ECE3YR",
+      "ECE4YR"
     ],
     "pk": [
       {
@@ -11432,7 +11211,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ECE3YR"
+      "ECE3YR",
+      "ECE4YR"
     ],
     "pk": [
       {
@@ -11488,7 +11268,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ECE3YR"
+      "ECE3YR",
+      "ECE4YR"
     ],
     "pk": [
       {
@@ -11544,6 +11325,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ECE3YR",
       "ECE4YR"
     ],
     "pk": [
@@ -11608,7 +11390,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ECE3YR"
+      "ECE3YR",
+      "ECE4YR"
     ],
     "pk": [
       {
@@ -11695,7 +11478,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ECE3YR"
+      "ECE3YR",
+      "ECE4YR"
     ],
     "pk": [
       {
@@ -11782,7 +11566,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ECE3YR"
+      "ECE3YR",
+      "ECE4YR"
     ],
     "pk": [
       {
@@ -11795,7 +11580,7 @@
             1025,
             "LEC",
             "LEC1",
-            "A214"
+            "D022"
           ],
           [
             5,
@@ -11830,6 +11615,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ECE3YR",
       "ECE4YR"
     ],
     "pk": [
@@ -11878,6 +11664,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ECE3YR",
       "ECE4YR"
     ],
     "pk": [
@@ -11934,6 +11721,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ECE3YR",
       "ECE4YR"
     ],
     "pk": [
@@ -11990,6 +11778,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ECE3YR",
       "ECE4YR"
     ],
     "pk": [
@@ -12038,6 +11827,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ECE3YR",
       "ECE4YR"
     ],
     "pk": [
@@ -12151,6 +11941,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ECE3YR",
       "ECE4YR"
     ],
     "pk": [
@@ -12193,14 +11984,20 @@
     "school": "School of Humanities & Social Sciences",
     "dept": "School of Humanities & Social Sciences - Economics",
     "ttype": "Major",
-    "uwe": true,
+    "uwe": false,
     "cr": 4.0,
     "crOfficial": true,
     "crBasis": "Academic Office course outline (ECO1001_Monsoon_2026.pdf)",
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ECO11",
+      "ECO11, ECO12, ENF11, ENF12",
+      "ECO12",
+      "ENF11",
+      "ENF12"
+    ],
     "cat": "UWE",
     "seats": 150,
     "unsched": false,
@@ -12221,7 +12018,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             2,
@@ -12229,7 +12026,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             4,
@@ -12240,7 +12037,9 @@
             "G302B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11"
+        ]
       },
       {
         "t": "Full semester",
@@ -12260,7 +12059,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             2,
@@ -12268,10 +12067,15 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11",
+          "ECO12",
+          "ENF11",
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12283,7 +12087,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             2,
@@ -12299,10 +12103,12 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12314,7 +12120,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             0,
@@ -12330,10 +12136,12 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -12353,7 +12161,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             2,
@@ -12361,10 +12169,12 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12376,7 +12186,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             2,
@@ -12384,7 +12194,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             4,
@@ -12395,7 +12205,12 @@
             "G303B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11",
+          "ECO12",
+          "ENF11",
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12407,7 +12222,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             1,
@@ -12423,10 +12238,15 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11",
+          "ECO12",
+          "ENF11",
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12438,7 +12258,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             2,
@@ -12454,10 +12274,15 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11",
+          "ECO12",
+          "ENF11",
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12469,7 +12294,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             2,
@@ -12477,7 +12302,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             3,
@@ -12488,7 +12313,12 @@
             "G302B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11",
+          "ECO12",
+          "ENF11",
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12500,7 +12330,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             2,
@@ -12508,7 +12338,7 @@
             865,
             "LEC",
             "LEC1",
-            "D217"
+            "G101"
           ],
           [
             4,
@@ -12519,7 +12349,12 @@
             "G302D"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11",
+          "ECO12",
+          "ENF11",
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12550,7 +12385,9 @@
             "G302B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11"
+        ]
       },
       {
         "t": "Full semester",
@@ -12612,7 +12449,9 @@
             "D217"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12643,7 +12482,9 @@
             "D217"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -12674,7 +12515,9 @@
             "D217"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12860,7 +12703,9 @@
             "G302B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11"
+        ]
       },
       {
         "t": "Full semester",
@@ -12922,7 +12767,9 @@
             "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO12"
+        ]
       },
       {
         "t": "Full semester",
@@ -12953,7 +12800,9 @@
             "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -12984,7 +12833,9 @@
             "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       },
       {
         "t": "Full semester",
@@ -13356,7 +13207,7 @@
             660,
             "LEC",
             "LEC1",
-            "D026"
+            "G201"
           ],
           [
             2,
@@ -13372,7 +13223,7 @@
             660,
             "LEC",
             "LEC1",
-            "D026"
+            "G201"
           ]
         ],
         "batches": []
@@ -13387,7 +13238,7 @@
             660,
             "LEC",
             "LEC1",
-            "D026"
+            "G201"
           ],
           [
             1,
@@ -13403,7 +13254,7 @@
             660,
             "LEC",
             "LEC1",
-            "D026"
+            "G201"
           ]
         ],
         "batches": []
@@ -13418,7 +13269,7 @@
             660,
             "LEC",
             "LEC1",
-            "D026"
+            "G201"
           ],
           [
             3,
@@ -13426,7 +13277,7 @@
             660,
             "LEC",
             "LEC1",
-            "D026"
+            "G201"
           ],
           [
             3,
@@ -13454,15 +13305,17 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "DES1YR",
+      "DES1YR,INT1YR",
+      "INT1YR"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
     "why": "",
     "majorFor": [
       "DES1YR",
-      "ENG1YR",
-      "IHS1YR",
       "INT1YR"
     ],
     "meFor": [],
@@ -13496,7 +13349,9 @@
             "A214"
           ]
         ],
-        "batches": []
+        "batches": [
+          "DES1YR"
+        ]
       },
       {
         "t": "Full semester",
@@ -13527,7 +13382,9 @@
             "B217"
           ]
         ],
-        "batches": []
+        "batches": [
+          "INT1YR"
+        ]
       }
     ]
   },
@@ -13807,7 +13664,7 @@
             660,
             "LEC",
             "LEC1",
-            "G102B"
+            "D217"
           ],
           [
             3,
@@ -13815,7 +13672,7 @@
             660,
             "LEC",
             "LEC1",
-            "G102B"
+            "D217"
           ],
           [
             4,
@@ -13848,7 +13705,7 @@
             660,
             "LEC",
             "LEC1",
-            "G102B"
+            "D217"
           ],
           [
             3,
@@ -13856,7 +13713,7 @@
             660,
             "LEC",
             "LEC1",
-            "G102B"
+            "D217"
           ]
         ],
         "batches": [
@@ -13881,7 +13738,7 @@
             660,
             "LEC",
             "LEC1",
-            "G102B"
+            "D217"
           ],
           [
             3,
@@ -13889,7 +13746,7 @@
             660,
             "LEC",
             "LEC1",
-            "G102B"
+            "D217"
           ]
         ],
         "batches": [
@@ -14161,7 +14018,9 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ECO3YR"
+      "ECO3YR",
+      "ECO4YR",
+      "ENF3YR"
     ],
     "pk": [
       {
@@ -14190,7 +14049,7 @@
             950,
             "LEC",
             "LEC1",
-            "A214"
+            "G104B"
           ]
         ],
         "batches": []
@@ -14221,7 +14080,7 @@
             950,
             "LEC",
             "LEC1",
-            "A214"
+            "G104B"
           ]
         ],
         "batches": []
@@ -14250,6 +14109,7 @@
     "meFor": [
       "ECO2YR",
       "ECO3YR",
+      "ECO4YR",
       "ENF2YR",
       "ENF3YR"
     ],
@@ -14346,7 +14206,9 @@
     ],
     "meFor": [
       "ECO3YR",
-      "ECO4YR"
+      "ECO4YR",
+      "ENF3YR",
+      "ENF4YR"
     ],
     "pk": [
       {
@@ -14506,7 +14368,9 @@
     "majorFor": [],
     "meFor": [
       "ECO3YR",
-      "ENF3YR"
+      "ECO4YR",
+      "ENF3YR",
+      "ENF4YR"
     ],
     "pk": [
       {
@@ -14594,7 +14458,9 @@
     "majorFor": [],
     "meFor": [
       "ECO3YR",
-      "ENF3YR"
+      "ECO4YR",
+      "ENF3YR",
+      "ENF4YR"
     ],
     "pk": [
       {
@@ -14780,7 +14646,9 @@
     "majorFor": [],
     "meFor": [
       "ECO3YR",
-      "ENF3YR"
+      "ECO4YR",
+      "ENF3YR",
+      "ENF4YR"
     ],
     "pk": [
       {
@@ -14868,7 +14736,9 @@
     "majorFor": [],
     "meFor": [
       "ECO3YR",
-      "ENF3YR"
+      "ECO4YR",
+      "ENF3YR",
+      "ENF4YR"
     ],
     "pk": [
       {
@@ -14956,7 +14826,9 @@
     "majorFor": [],
     "meFor": [
       "ECO3YR",
-      "ENF3YR"
+      "ECO4YR",
+      "ENF3YR",
+      "ENF4YR"
     ],
     "pk": [
       {
@@ -15036,7 +14908,10 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ENF11",
+      "ENF12"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
@@ -15067,7 +14942,9 @@
             "A316"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -15090,7 +14967,9 @@
             "B007"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       }
     ]
   },
@@ -15185,7 +15064,10 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ENF11",
+      "ENF12"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
@@ -15208,7 +15090,9 @@
             "A218"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -15223,7 +15107,9 @@
             "A218"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       }
     ]
   },
@@ -15240,7 +15126,10 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ECO11,ECO12",
+      "INT1YR"
+    ],
     "cat": "NB",
     "seats": 50,
     "unsched": false,
@@ -15280,69 +15169,10 @@
             "D102"
           ]
         ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + TUT:TUT2",
-        "m": [
-          [
-            0,
-            910,
-            995,
-            "LEC",
-            "LEC1",
-            "D102"
-          ],
-          [
-            4,
-            545,
-            600,
-            "TUT",
-            "TUT2",
-            "D007"
-          ],
-          [
-            4,
-            910,
-            995,
-            "LEC",
-            "LEC1",
-            "D102"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC2 + TUT:TUT1",
-        "m": [
-          [
-            0,
-            610,
-            665,
-            "TUT",
-            "TUT1",
-            "B007"
-          ],
-          [
-            2,
-            780,
-            865,
-            "LEC",
-            "LEC2",
-            "D007"
-          ],
-          [
-            4,
-            780,
-            865,
-            "LEC",
-            "LEC2",
-            "D007"
-          ]
-        ],
-        "batches": []
+        "batches": [
+          "ECO11",
+          "ECO12"
+        ]
       },
       {
         "t": "Full semester",
@@ -15373,7 +15203,9 @@
             "D007"
           ]
         ],
-        "batches": []
+        "batches": [
+          "INT1YR"
+        ]
       }
     ]
   },
@@ -15410,7 +15242,7 @@
             600,
             "TUT",
             "TUT1",
-            "G305D"
+            "B219"
           ],
           [
             0,
@@ -15633,7 +15465,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ENG3YR"
+      "ENG3YR",
+      "ENG4YR"
     ],
     "pk": [
       {
@@ -15689,7 +15522,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ENG3YR"
+      "ENG3YR",
+      "ENG4YR"
     ],
     "pk": [
       {
@@ -15805,7 +15639,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "ENG3YR"
+      "ENG3YR",
+      "ENG4YR"
     ],
     "pk": [
       {
@@ -15861,6 +15696,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ENG3YR",
       "ENG4YR"
     ],
     "pk": [
@@ -15917,6 +15753,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ENG3YR",
       "ENG4YR"
     ],
     "pk": [
@@ -15973,6 +15810,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "ENG3YR",
       "ENG4YR"
     ],
     "pk": [
@@ -15986,7 +15824,7 @@
             625,
             "LEC",
             "LEC1",
-            "G305D"
+            "G302B"
           ],
           [
             3,
@@ -16022,7 +15860,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BMS11",
+      "BMS12",
+      "BMS13"
+    ],
     "cat": "NB",
     "seats": 80,
     "unsched": false,
@@ -16042,7 +15884,7 @@
             865,
             "LEC",
             "LEC1",
-            "D022"
+            "B108"
           ],
           [
             2,
@@ -16050,10 +15892,12 @@
             865,
             "LEC",
             "LEC1",
-            "D022"
+            "B108"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS11"
+        ]
       },
       {
         "t": "Full semester",
@@ -16065,7 +15909,7 @@
             995,
             "LEC",
             "LEC2",
-            "D026"
+            "B108"
           ],
           [
             4,
@@ -16073,10 +15917,12 @@
             995,
             "LEC",
             "LEC2",
-            "D026"
+            "B108"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS12"
+        ]
       },
       {
         "t": "Full semester",
@@ -16099,7 +15945,9 @@
             "D003"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS13"
+        ]
       }
     ]
   },
@@ -16116,7 +15964,10 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ENF11",
+      "ENF12"
+    ],
     "cat": "UWE",
     "seats": 60,
     "unsched": false,
@@ -16147,7 +15998,9 @@
             "A312"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -16170,7 +16023,9 @@
             "B309"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       }
     ]
   },
@@ -16211,7 +16066,7 @@
             660,
             "LEC",
             "LEC1",
-            "A309"
+            "G102B"
           ],
           [
             3,
@@ -16219,7 +16074,7 @@
             660,
             "LEC",
             "LEC1",
-            "A309"
+            "G102B"
           ]
         ],
         "batches": [
@@ -16261,7 +16116,7 @@
             865,
             "LEC",
             "LEC3",
-            "D026"
+            "G105C"
           ],
           [
             2,
@@ -16269,7 +16124,7 @@
             865,
             "LEC",
             "LEC3",
-            "D026"
+            "G105C"
           ]
         ],
         "batches": [
@@ -16291,7 +16146,10 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ENF11",
+      "ENF12"
+    ],
     "cat": "UWE",
     "seats": 60,
     "unsched": false,
@@ -16322,7 +16180,9 @@
             "B311"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -16345,7 +16205,9 @@
             "B217"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       }
     ]
   },
@@ -16403,8 +16265,8 @@
   {
     "code": "FAC212/2002",
     "title": "Advanced Corporate Finance",
-    "school": "",
-    "dept": "",
+    "school": "School of Management and Entrepreneurship",
+    "dept": "School of Management and Entrepreneurship - Dean's Office- SME",
     "ttype": "Major",
     "uwe": true,
     "cr": null,
@@ -16421,7 +16283,9 @@
     "seats": 60,
     "unsched": false,
     "why": "",
-    "majorFor": [],
+    "majorFor": [
+      "ENF2YR"
+    ],
     "meFor": [],
     "pk": [
       {
@@ -16481,8 +16345,8 @@
   {
     "code": "FAC213/2001",
     "title": "Cost Accounting and Control",
-    "school": "",
-    "dept": "",
+    "school": "School of Management and Entrepreneurship",
+    "dept": "School of Management and Entrepreneurship - Dean's Office- SME",
     "ttype": "Major",
     "uwe": true,
     "cr": null,
@@ -16499,7 +16363,9 @@
     "seats": 60,
     "unsched": false,
     "why": "",
-    "majorFor": [],
+    "majorFor": [
+      "ENF2YR"
+    ],
     "meFor": [],
     "pk": [
       {
@@ -16907,7 +16773,10 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ENF11",
+      "ENF12"
+    ],
     "cat": "NB",
     "seats": 30,
     "unsched": false,
@@ -16938,7 +16807,9 @@
             "G305B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
@@ -16961,7 +16832,9 @@
             "B303"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       }
     ]
   },
@@ -16984,7 +16857,11 @@
     "unsched": false,
     "why": "",
     "majorFor": [],
-    "meFor": [],
+    "meFor": [
+      "HIS3YR",
+      "IRGS3YR",
+      "SOC3YR"
+    ],
     "pk": [
       {
         "t": "Full semester",
@@ -17039,7 +16916,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "HIS3YR"
+      "HIS3YR",
+      "HIS4YR"
     ],
     "pk": [
       {
@@ -17095,7 +16973,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "HIS3YR"
+      "HIS3YR",
+      "HIS4YR"
     ],
     "pk": [
       {
@@ -17151,7 +17030,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "HIS3YR"
+      "HIS3YR",
+      "HIS4YR"
     ],
     "pk": [
       {
@@ -17207,7 +17087,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "HIS3YR"
+      "HIS3YR",
+      "HIS4YR"
     ],
     "pk": [
       {
@@ -17236,7 +17117,7 @@
             600,
             "TUT",
             "TUT1",
-            "G305D"
+            "B219"
           ]
         ],
         "batches": []
@@ -17263,7 +17144,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "HIS3YR"
+      "HIS3YR",
+      "HIS4YR"
     ],
     "pk": [
       {
@@ -17319,7 +17201,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "HIS3YR"
+      "HIS3YR",
+      "HIS4YR"
     ],
     "pk": [
       {
@@ -17375,7 +17258,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "HIS3YR"
+      "HIS3YR",
+      "HIS4YR"
     ],
     "pk": [
       {
@@ -17424,7 +17308,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "IHS11",
+      "IHS12",
+      "IHS13"
+    ],
     "cat": "NB",
     "seats": 50,
     "unsched": false,
@@ -17440,92 +17328,32 @@
         "m": [
           [
             1,
-            850,
-            935,
-            "LEC",
-            "LEC1",
-            "D202"
-          ],
-          [
-            2,
-            910,
-            965,
-            "TUT",
-            "TUT1",
-            "B205"
-          ],
-          [
-            3,
-            850,
-            935,
-            "LEC",
-            "LEC1",
-            "D202"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + TUT:TUT2",
-        "m": [
-          [
-            1,
-            850,
-            935,
+            480,
+            565,
             "LEC",
             "LEC1",
             "D202"
           ],
           [
             3,
-            850,
-            935,
+            480,
+            565,
             "LEC",
             "LEC1",
             "D202"
           ],
           [
             4,
-            610,
-            665,
+            780,
+            835,
             "TUT",
-            "TUT2",
-            "B305"
+            "TUT1",
+            "B205"
           ]
         ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + TUT:TUT3",
-        "m": [
-          [
-            0,
-            545,
-            600,
-            "TUT",
-            "TUT3",
-            "D109"
-          ],
-          [
-            1,
-            850,
-            935,
-            "LEC",
-            "LEC1",
-            "D202"
-          ],
-          [
-            3,
-            850,
-            935,
-            "LEC",
-            "LEC1",
-            "D202"
-          ]
-        ],
-        "batches": []
+        "batches": [
+          "IHS11"
+        ]
       },
       {
         "t": "Full semester",
@@ -17533,8 +17361,8 @@
         "m": [
           [
             2,
-            910,
-            995,
+            875,
+            960,
             "LEC",
             "LEC2",
             "D206"
@@ -17556,100 +17384,9 @@
             "D206"
           ]
         ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC2 + TUT:TUT3",
-        "m": [
-          [
-            0,
-            545,
-            600,
-            "TUT",
-            "TUT3",
-            "D109"
-          ],
-          [
-            2,
-            910,
-            995,
-            "LEC",
-            "LEC2",
-            "D206"
-          ],
-          [
-            4,
-            910,
-            995,
-            "LEC",
-            "LEC2",
-            "D206"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC3 + TUT:TUT1",
-        "m": [
-          [
-            1,
-            935,
-            1020,
-            "LEC",
-            "LEC3",
-            "B217"
-          ],
-          [
-            2,
-            910,
-            965,
-            "TUT",
-            "TUT1",
-            "B205"
-          ],
-          [
-            3,
-            935,
-            1020,
-            "LEC",
-            "LEC3",
-            "B217"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC3 + TUT:TUT2",
-        "m": [
-          [
-            1,
-            935,
-            1020,
-            "LEC",
-            "LEC3",
-            "B217"
-          ],
-          [
-            3,
-            935,
-            1020,
-            "LEC",
-            "LEC3",
-            "B217"
-          ],
-          [
-            4,
-            610,
-            665,
-            "TUT",
-            "TUT2",
-            "B305"
-          ]
-        ],
-        "batches": []
+        "batches": [
+          "IHS12"
+        ]
       },
       {
         "t": "Full semester",
@@ -17657,30 +17394,32 @@
         "m": [
           [
             0,
+            900,
+            985,
+            "LEC",
+            "LEC3",
+            "B219"
+          ],
+          [
+            1,
+            765,
+            850,
+            "LEC",
+            "LEC3",
+            "B217"
+          ],
+          [
+            2,
             545,
             600,
             "TUT",
             "TUT3",
             "D109"
-          ],
-          [
-            1,
-            935,
-            1020,
-            "LEC",
-            "LEC3",
-            "B217"
-          ],
-          [
-            3,
-            935,
-            1020,
-            "LEC",
-            "LEC3",
-            "B217"
           ]
         ],
-        "batches": []
+        "batches": [
+          "IHS13"
+        ]
       }
     ]
   },
@@ -17697,7 +17436,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "IHS11,IHS12,IHS13"
+    ],
     "cat": "UWE",
     "seats": 70,
     "unsched": false,
@@ -17736,7 +17477,11 @@
             "A317"
           ]
         ],
-        "batches": []
+        "batches": [
+          "IHS11",
+          "IHS12",
+          "IHS13"
+        ]
       }
     ]
   },
@@ -17753,7 +17498,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "IHS11,IHS12,IHS13"
+    ],
     "cat": "UWE",
     "seats": 70,
     "unsched": false,
@@ -17769,8 +17516,8 @@
         "m": [
           [
             0,
-            540,
-            655,
+            610,
+            725,
             "PRAC",
             "PRAC1",
             "B308"
@@ -17792,7 +17539,11 @@
             "A317"
           ]
         ],
-        "batches": []
+        "batches": [
+          "IHS11",
+          "IHS12",
+          "IHS13"
+        ]
       }
     ]
   },
@@ -17865,7 +17616,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "INT1YR"
+    ],
     "cat": "UWE",
     "seats": 45,
     "unsched": false,
@@ -17904,7 +17657,9 @@
             "G203F"
           ]
         ],
-        "batches": []
+        "batches": [
+          "INT1YR"
+        ]
       }
     ]
   },
@@ -17921,7 +17676,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "INT1YR"
+    ],
     "cat": "UWE",
     "seats": 50,
     "unsched": false,
@@ -17960,7 +17717,9 @@
             "G301B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "INT1YR"
+        ]
       }
     ]
   },
@@ -17977,7 +17736,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "INT1YR"
+    ],
     "cat": "UWE",
     "seats": 40,
     "unsched": false,
@@ -18016,7 +17777,9 @@
             "G304B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "INT1YR"
+        ]
       }
     ]
   },
@@ -18160,7 +17923,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "INT3YR"
+      "INT3YR",
+      "INT4YR"
     ],
     "pk": [
       {
@@ -18216,7 +17980,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "INT3YR"
+      "INT3YR",
+      "INT4YR"
     ],
     "pk": [
       {
@@ -18496,7 +18261,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "MAT1YR"
+    ],
     "cat": "NB",
     "seats": 30,
     "unsched": false,
@@ -18543,7 +18310,9 @@
             "G203F"
           ]
         ],
-        "batches": []
+        "batches": [
+          "MAT1YR"
+        ]
       }
     ]
   },
@@ -18591,14 +18360,6 @@
         "l": "LEC:LEC1 + TUT:TUT1",
         "m": [
           [
-            3,
-            840,
-            925,
-            "LEC",
-            "LEC1",
-            "G-Audi"
-          ],
-          [
             4,
             610,
             665,
@@ -18610,6 +18371,14 @@
             4,
             780,
             865,
+            "LEC",
+            "LEC1",
+            "B315"
+          ],
+          [
+            5,
+            635,
+            720,
             "LEC",
             "LEC1",
             "B315"
@@ -18632,17 +18401,17 @@
             "A309"
           ],
           [
-            3,
-            840,
-            925,
-            "LEC",
-            "LEC1",
-            "G-Audi"
-          ],
-          [
             4,
             780,
             865,
+            "LEC",
+            "LEC1",
+            "B315"
+          ],
+          [
+            5,
+            635,
+            720,
             "LEC",
             "LEC1",
             "B315"
@@ -18658,14 +18427,6 @@
         "m": [
           [
             3,
-            840,
-            925,
-            "LEC",
-            "LEC1",
-            "G-Audi"
-          ],
-          [
-            3,
             945,
             1000,
             "TUT",
@@ -18679,6 +18440,14 @@
             "LEC",
             "LEC1",
             "B315"
+          ],
+          [
+            5,
+            635,
+            720,
+            "LEC",
+            "LEC1",
+            "B315"
           ]
         ],
         "batches": [
@@ -18689,14 +18458,6 @@
         "t": "Full semester",
         "l": "LEC:LEC1 + TUT:TUT4",
         "m": [
-          [
-            3,
-            840,
-            925,
-            "LEC",
-            "LEC1",
-            "G-Audi"
-          ],
           [
             4,
             780,
@@ -18712,6 +18473,14 @@
             "TUT",
             "TUT4",
             "D006"
+          ],
+          [
+            5,
+            635,
+            720,
+            "LEC",
+            "LEC1",
+            "B315"
           ]
         ],
         "batches": [
@@ -18731,17 +18500,17 @@
             "D006"
           ],
           [
-            3,
-            840,
-            925,
-            "LEC",
-            "LEC1",
-            "G-Audi"
-          ],
-          [
             4,
             780,
             865,
+            "LEC",
+            "LEC1",
+            "B315"
+          ],
+          [
+            5,
+            635,
+            720,
             "LEC",
             "LEC1",
             "B315"
@@ -18931,7 +18700,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "MAT1YR"
+    ],
     "cat": "UWE",
     "seats": 40,
     "unsched": false,
@@ -18978,7 +18749,9 @@
             "G302B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "MAT1YR"
+        ]
       }
     ]
   },
@@ -18995,7 +18768,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BIO11",
+      "BIO11, BIO12",
+      "BIO12"
+    ],
     "cat": "NB",
     "seats": 80,
     "unsched": false,
@@ -19015,7 +18792,7 @@
             600,
             "LEC",
             "LEC1",
-            "D022"
+            "G105C"
           ],
           [
             0,
@@ -19031,7 +18808,7 @@
             600,
             "LEC",
             "LEC1",
-            "D022"
+            "G105C"
           ],
           [
             4,
@@ -19039,10 +18816,12 @@
             600,
             "LEC",
             "LEC1",
-            "D022"
+            "G105C"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO11"
+        ]
       },
       {
         "t": "Full semester",
@@ -19054,7 +18833,7 @@
             600,
             "LEC",
             "LEC1",
-            "D022"
+            "G105C"
           ],
           [
             0,
@@ -19070,7 +18849,7 @@
             600,
             "LEC",
             "LEC1",
-            "D022"
+            "G105C"
           ],
           [
             4,
@@ -19078,10 +18857,12 @@
             600,
             "LEC",
             "LEC1",
-            "D022"
+            "G105C"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BIO12"
+        ]
       }
     ]
   },
@@ -19098,7 +18879,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ENF11",
+      "ENF11, ENF12",
+      "ENF12"
+    ],
     "cat": "NB",
     "seats": 90,
     "unsched": false,
@@ -19115,62 +18900,15 @@
           [
             1,
             945,
-            1000,
-            "LEC",
-            "LEC1",
-            "D217"
-          ],
-          [
-            2,
-            975,
             1030,
             "LEC",
             "LEC1",
-            "B016"
+            "D217"
           ],
           [
             3,
             945,
-            1000,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            5,
-            540,
-            595,
-            "TUT",
-            "TUT1",
-            "D217"
-          ]
-        ],
-        "batches": []
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC1 + TUT:TUT2",
-        "m": [
-          [
-            1,
-            945,
-            1000,
-            "LEC",
-            "LEC1",
-            "D217"
-          ],
-          [
-            2,
-            975,
             1030,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
-            3,
-            945,
-            1000,
             "LEC",
             "LEC1",
             "B016"
@@ -19180,50 +18918,46 @@
             780,
             835,
             "TUT",
-            "TUT2",
+            "TUT1",
             "D006"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF11"
+        ]
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC1 + TUT:TUT3",
+        "l": "LEC:LEC1 + TUT:TUT2",
         "m": [
           [
             1,
             945,
-            1000,
+            1030,
             "LEC",
             "LEC1",
             "D217"
           ],
           [
-            2,
-            975,
+            3,
+            945,
             1030,
             "LEC",
             "LEC1",
             "B016"
           ],
           [
-            3,
-            945,
-            1000,
-            "LEC",
-            "LEC1",
-            "B016"
-          ],
-          [
             5,
-            480,
-            535,
+            540,
+            595,
             "TUT",
-            "TUT3",
-            "D007"
+            "TUT2",
+            "D217"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ENF12"
+        ]
       }
     ]
   },
@@ -19240,15 +18974,20 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "ASU1YR",
+      "ECO12",
+      "MAT1YR,ECO11",
+      "MAT1YR,ECO11, ECO12",
+      "MAT1YR,ECO11, ECO12, ASU1YR"
+    ],
     "cat": "UWE",
     "seats": 160,
     "unsched": false,
     "why": "",
     "majorFor": [
       "ECO1YR",
-      "MAT1YR",
-      "PHY1YR"
+      "MAT1YR"
     ],
     "meFor": [],
     "pk": [
@@ -19289,7 +19028,10 @@
             "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO11",
+          "MAT1YR"
+        ]
       },
       {
         "t": "Full semester",
@@ -19328,7 +19070,9 @@
             "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ECO12"
+        ]
       },
       {
         "t": "Full semester",
@@ -19367,7 +19111,9 @@
             "G101"
           ]
         ],
-        "batches": []
+        "batches": [
+          "ASU1YR"
+        ]
       }
     ]
   },
@@ -19384,13 +19130,16 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "MAT1YR,PHY1YR"
+    ],
     "cat": "UWE",
     "seats": 50,
     "unsched": false,
     "why": "",
     "majorFor": [
-      "MAT1YR"
+      "MAT1YR",
+      "PHY1YR"
     ],
     "meFor": [],
     "pk": [
@@ -19399,20 +19148,12 @@
         "l": "LEC:LEC1 + TUT:TUT1",
         "m": [
           [
-            0,
-            545,
-            600,
+            1,
+            735,
+            790,
             "LEC",
             "LEC1",
             "G301D"
-          ],
-          [
-            1,
-            575,
-            630,
-            "TUT",
-            "TUT1",
-            "A316"
           ],
           [
             2,
@@ -19423,15 +19164,26 @@
             "G301D"
           ],
           [
-            4,
-            545,
-            600,
+            3,
+            935,
+            990,
             "LEC",
             "LEC1",
             "G301D"
+          ],
+          [
+            5,
+            575,
+            630,
+            "TUT",
+            "TUT1",
+            "A316"
           ]
         ],
-        "batches": []
+        "batches": [
+          "MAT1YR",
+          "PHY1YR"
+        ]
       }
     ]
   },
@@ -19538,7 +19290,7 @@
             950,
             "LEC",
             "LEC1",
-            "A214"
+            "G304D"
           ],
           [
             2,
@@ -19894,7 +19646,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "MAT3YR"
+      "MAT3YR",
+      "MAT4YR"
     ],
     "pk": [
       {
@@ -19950,7 +19703,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "MAT3YR"
+      "MAT3YR",
+      "MAT4YR"
     ],
     "pk": [
       {
@@ -20063,7 +19817,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "MAT3YR"
+      "MAT3YR",
+      "MAT4YR"
     ],
     "pk": [
       {
@@ -20119,7 +19874,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "MAT3YR"
+      "MAT3YR",
+      "MAT4YR"
     ],
     "pk": [
       {
@@ -20883,8 +20639,8 @@
   {
     "code": "MEC301/MEC3003",
     "title": "Advanced Managerial Econ",
-    "school": "",
-    "dept": "",
+    "school": "School of Management and Entrepreneurship",
+    "dept": "School of Management and Entrepreneurship - Dean's Office- SME",
     "ttype": "Major Elective",
     "uwe": true,
     "cr": null,
@@ -20899,7 +20655,11 @@
     "unsched": false,
     "why": "",
     "majorFor": [],
-    "meFor": [],
+    "meFor": [
+      "BMS2YR",
+      "BMS3YR",
+      "BMS4YR"
+    ],
     "pk": [
       {
         "t": "Full semester",
@@ -21426,7 +21186,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             1,
@@ -21442,7 +21202,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ]
         ],
         "batches": [
@@ -21459,7 +21219,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             3,
@@ -21467,7 +21227,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             3,
@@ -21492,7 +21252,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             1,
@@ -21500,7 +21260,7 @@
             725,
             "TUT",
             "TUT3",
-            "G305D"
+            "G203F"
           ],
           [
             3,
@@ -21508,7 +21268,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ]
         ],
         "batches": [
@@ -21690,6 +21450,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "MED3YR",
       "MED4YR"
     ],
     "pk": [
@@ -21756,7 +21517,7 @@
             630,
             "LEC",
             "LEC1",
-            "A317"
+            "B108"
           ],
           [
             3,
@@ -21764,7 +21525,7 @@
             630,
             "LEC",
             "LEC1",
-            "A317"
+            "B016"
           ],
           [
             3,
@@ -21789,7 +21550,7 @@
             630,
             "LEC",
             "LEC1",
-            "A317"
+            "B108"
           ],
           [
             1,
@@ -21805,7 +21566,7 @@
             630,
             "LEC",
             "LEC1",
-            "A317"
+            "B016"
           ]
         ],
         "batches": [
@@ -21822,7 +21583,7 @@
             630,
             "LEC",
             "LEC1",
-            "A317"
+            "B108"
           ],
           [
             3,
@@ -21830,7 +21591,7 @@
             630,
             "LEC",
             "LEC1",
-            "A317"
+            "B016"
           ],
           [
             3,
@@ -21867,6 +21628,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "MED3YR",
       "MED4YR"
     ],
     "pk": [
@@ -21977,6 +21739,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "MED3YR",
       "MED4YR"
     ],
     "pk": [
@@ -22033,6 +21796,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "MED3YR",
       "MED4YR"
     ],
     "pk": [
@@ -22089,6 +21853,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "MED3YR",
       "MED4YR"
     ],
     "pk": [
@@ -22155,7 +21920,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             2,
@@ -22163,7 +21928,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             2,
@@ -22179,7 +21944,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ]
         ],
         "batches": [
@@ -22196,7 +21961,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             0,
@@ -22212,7 +21977,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             4,
@@ -22220,7 +21985,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ]
         ],
         "batches": [
@@ -22237,7 +22002,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             2,
@@ -22245,7 +22010,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             4,
@@ -22253,7 +22018,7 @@
             535,
             "LEC",
             "LEC1",
-            "D022"
+            "B016"
           ],
           [
             4,
@@ -22290,6 +22055,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "MED3YR",
       "MED4YR"
     ],
     "pk": [
@@ -22377,6 +22143,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "MED3YR",
       "MED4YR"
     ],
     "pk": [
@@ -22457,7 +22224,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BMS11",
+      "BMS12",
+      "BMS13"
+    ],
     "cat": "NB",
     "seats": 70,
     "unsched": false,
@@ -22480,7 +22251,9 @@
             "A309"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS11"
+        ]
       },
       {
         "t": "Full semester",
@@ -22495,7 +22268,9 @@
             "A317"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS12"
+        ]
       },
       {
         "t": "Full semester",
@@ -22503,14 +22278,16 @@
         "m": [
           [
             5,
-            725,
-            845,
+            600,
+            720,
             "LEC",
             "LEC3",
-            "A309"
+            "D022"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS13"
+        ]
       }
     ]
   },
@@ -22527,7 +22304,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BMS11",
+      "BMS12",
+      "BMS13"
+    ],
     "cat": "NB",
     "seats": 70,
     "unsched": false,
@@ -22558,7 +22339,9 @@
             "D003"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS11"
+        ]
       },
       {
         "t": "Full semester",
@@ -22570,7 +22353,7 @@
             660,
             "LEC",
             "LEC2",
-            "D006"
+            "D026"
           ],
           [
             3,
@@ -22578,10 +22361,12 @@
             660,
             "LEC",
             "LEC2",
-            "D006"
+            "D026"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS12"
+        ]
       },
       {
         "t": "Full semester",
@@ -22604,7 +22389,9 @@
             "A317"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS13"
+        ]
       }
     ]
   },
@@ -22775,7 +22562,7 @@
             1105,
             "LEC",
             "LEC3",
-            "D007"
+            "B012"
           ],
           [
             3,
@@ -22783,7 +22570,7 @@
             1105,
             "LEC",
             "LEC3",
-            "D007"
+            "B012"
           ]
         ],
         "batches": [
@@ -22879,7 +22666,7 @@
             660,
             "LEC",
             "LEC1",
-            "A218"
+            "A309"
           ],
           [
             3,
@@ -22887,7 +22674,7 @@
             660,
             "LEC",
             "LEC1",
-            "A218"
+            "A309"
           ]
         ],
         "batches": [
@@ -23038,7 +22825,7 @@
             1020,
             "LEC",
             "LEC1",
-            "A214"
+            "D022"
           ]
         ],
         "batches": []
@@ -23266,7 +23053,8 @@
     "majorFor": [],
     "meFor": [
       "BMS2YR",
-      "BMS3YR"
+      "BMS3YR",
+      "BMS4YR"
     ],
     "pk": [
       {
@@ -23307,7 +23095,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BMS11",
+      "BMS12",
+      "BMS13"
+    ],
     "cat": "NB",
     "seats": 60,
     "unsched": false,
@@ -23338,7 +23130,9 @@
             "B217"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS11"
+        ]
       },
       {
         "t": "Full semester",
@@ -23361,7 +23155,9 @@
             "B007"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS12"
+        ]
       },
       {
         "t": "Full semester",
@@ -23384,7 +23180,9 @@
             "A316"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS13"
+        ]
       }
     ]
   },
@@ -23675,7 +23473,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "PHY1YR"
+    ],
     "cat": "UWE",
     "seats": 40,
     "unsched": false,
@@ -23695,10 +23495,12 @@
             600,
             "LEC",
             "LEC1",
-            "G305D"
+            "G305B"
           ]
         ],
-        "batches": []
+        "batches": [
+          "PHY1YR"
+        ]
       }
     ]
   },
@@ -23715,7 +23517,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "PHY1YR"
+    ],
     "cat": "UWE",
     "seats": 40,
     "unsched": false,
@@ -23754,7 +23558,9 @@
             "G304D"
           ]
         ],
-        "batches": []
+        "batches": [
+          "PHY1YR"
+        ]
       }
     ]
   },
@@ -23771,7 +23577,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "PHY1YR"
+    ],
     "cat": "UWE",
     "seats": 40,
     "unsched": false,
@@ -23787,14 +23595,16 @@
         "m": [
           [
             0,
-            955,
-            1130,
+            965,
+            1140,
             "PRAC",
             "PRAC1",
             "A103"
           ]
         ],
-        "batches": []
+        "batches": [
+          "PHY1YR"
+        ]
       }
     ]
   },
@@ -23804,7 +23614,7 @@
     "school": "School of Natural Sciences",
     "dept": "School of Natural Sciences - Physics",
     "ttype": "Major",
-    "uwe": true,
+    "uwe": false,
     "cr": 5.0,
     "crOfficial": true,
     "crBasis": "Academic Office course outline (PHY1011_Monsoon_2026.pdf)",
@@ -23813,18 +23623,18 @@
     ],
     "blocks": [
       "SOE11",
-      "SOE11, SOE12",
+      "SOE11, SOE12, SOE13",
       "SOE110",
       "SOE12",
       "SOE13",
-      "SOE13, SOE14",
       "SOE14",
+      "SOE14, SOE15",
       "SOE15",
-      "SOE15, SOE16, SOE19",
       "SOE16",
+      "SOE16, SOE17",
       "SOE17",
-      "SOE17, SOE18, SOE110",
       "SOE18",
+      "SOE18, SOE19, SOE110",
       "SOE19"
     ],
     "cat": "UWE",
@@ -23854,7 +23664,7 @@
           [
             1,
             660,
-            835,
+            775,
             "PRAC",
             "PRAC1",
             "A103"
@@ -23895,7 +23705,7 @@
           [
             1,
             480,
-            655,
+            595,
             "PRAC",
             "PRAC2",
             "A103"
@@ -23923,15 +23733,15 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC2 + PRAC:PRAC3 + TUT:TUT3",
+        "l": "LEC:LEC1 + PRAC:PRAC3 + TUT:TUT3",
         "m": [
           [
             0,
-            910,
-            995,
+            675,
+            760,
             "LEC",
-            "LEC2",
-            "D217"
+            "LEC1",
+            "B315"
           ],
           [
             1,
@@ -23943,16 +23753,16 @@
           ],
           [
             2,
-            480,
-            565,
+            575,
+            660,
             "LEC",
-            "LEC2",
-            "D217"
+            "LEC1",
+            "B315"
           ],
           [
             4,
             540,
-            715,
+            655,
             "PRAC",
             "PRAC3",
             "A103"
@@ -23969,7 +23779,7 @@
           [
             0,
             730,
-            905,
+            845,
             "PRAC",
             "PRAC4",
             "A103"
@@ -23980,7 +23790,7 @@
             995,
             "LEC",
             "LEC2",
-            "D217"
+            "B315"
           ],
           [
             1,
@@ -23996,7 +23806,7 @@
             565,
             "LEC",
             "LEC2",
-            "D217"
+            "G201"
           ]
         ],
         "batches": [
@@ -24005,15 +23815,15 @@
       },
       {
         "t": "Full semester",
-        "l": "LEC:LEC3 + PRAC:PRAC5 + TUT:TUT5",
+        "l": "LEC:LEC2 + PRAC:PRAC5 + TUT:TUT5",
         "m": [
           [
             0,
             910,
             995,
             "LEC",
-            "LEC3",
-            "G101"
+            "LEC2",
+            "B315"
           ],
           [
             1,
@@ -24025,16 +23835,16 @@
           ],
           [
             2,
-            575,
-            660,
+            480,
+            565,
             "LEC",
-            "LEC3",
-            "G101"
+            "LEC2",
+            "G201"
           ],
           [
             3,
             540,
-            715,
+            655,
             "PRAC",
             "PRAC5",
             "A103"
@@ -24059,7 +23869,7 @@
           [
             1,
             840,
-            1015,
+            955,
             "PRAC",
             "PRAC6",
             "A103"
@@ -24087,6 +23897,47 @@
       },
       {
         "t": "Full semester",
+        "l": "LEC:LEC3 + PRAC:PRAC7 + TUT:TUT7",
+        "m": [
+          [
+            0,
+            910,
+            995,
+            "LEC",
+            "LEC3",
+            "G101"
+          ],
+          [
+            2,
+            575,
+            660,
+            "LEC",
+            "LEC3",
+            "G101"
+          ],
+          [
+            2,
+            875,
+            990,
+            "PRAC",
+            "PRAC7",
+            "A103"
+          ],
+          [
+            3,
+            575,
+            630,
+            "TUT",
+            "TUT7",
+            "D222"
+          ]
+        ],
+        "batches": [
+          "SOE17"
+        ]
+      },
+      {
+        "t": "Full semester",
         "l": "LEC:LEC4 + PRAC:PRAC10 + TUT:TUT10",
         "m": [
           [
@@ -24107,8 +23958,8 @@
           ],
           [
             5,
-            540,
-            595,
+            530,
+            585,
             "TUT",
             "TUT10",
             "A309"
@@ -24116,7 +23967,7 @@
           [
             5,
             595,
-            770,
+            710,
             "PRAC",
             "PRAC10",
             "A103"
@@ -24124,47 +23975,6 @@
         ],
         "batches": [
           "SOE110"
-        ]
-      },
-      {
-        "t": "Full semester",
-        "l": "LEC:LEC4 + PRAC:PRAC7 + TUT:TUT7",
-        "m": [
-          [
-            0,
-            910,
-            995,
-            "LEC",
-            "LEC4",
-            "G201"
-          ],
-          [
-            2,
-            575,
-            660,
-            "LEC",
-            "LEC4",
-            "G201"
-          ],
-          [
-            2,
-            790,
-            965,
-            "PRAC",
-            "PRAC7",
-            "A103"
-          ],
-          [
-            3,
-            575,
-            630,
-            "TUT",
-            "TUT7",
-            "D222"
-          ]
-        ],
-        "batches": [
-          "SOE17"
         ]
       },
       {
@@ -24198,7 +24008,7 @@
           [
             3,
             845,
-            1020,
+            960,
             "PRAC",
             "PRAC8",
             "A103"
@@ -24206,6 +24016,47 @@
         ],
         "batches": [
           "SOE18"
+        ]
+      },
+      {
+        "t": "Full semester",
+        "l": "LEC:LEC4 + PRAC:PRAC9 + TUT:TUT9",
+        "m": [
+          [
+            0,
+            480,
+            595,
+            "PRAC",
+            "PRAC9",
+            "A103"
+          ],
+          [
+            0,
+            910,
+            995,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            2,
+            575,
+            660,
+            "LEC",
+            "LEC4",
+            "G201"
+          ],
+          [
+            4,
+            545,
+            600,
+            "TUT",
+            "TUT9",
+            "A312"
+          ]
+        ],
+        "batches": [
+          "SOE19"
         ]
       }
     ]
@@ -24223,7 +24074,9 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "PHY1YR"
+    ],
     "cat": "UWE",
     "seats": 40,
     "unsched": false,
@@ -24262,7 +24115,9 @@
             "A114"
           ]
         ],
-        "batches": []
+        "batches": [
+          "PHY1YR"
+        ]
       }
     ]
   },
@@ -25167,7 +25022,8 @@
     "why": "",
     "majorFor": [],
     "meFor": [
-      "SOC3YR"
+      "SOC3YR",
+      "SOC4YR"
     ],
     "pk": [
       {
@@ -25223,6 +25079,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "SOC3YR",
       "SOC4YR"
     ],
     "pk": [
@@ -25279,6 +25136,7 @@
     "why": "",
     "majorFor": [],
     "meFor": [
+      "SOC3YR",
       "SOC4YR"
     ],
     "pk": [
@@ -25471,7 +25329,11 @@
     "terms": [
       "Full semester"
     ],
-    "blocks": [],
+    "blocks": [
+      "BMS11",
+      "BMS12",
+      "BMS13"
+    ],
     "cat": "NB",
     "seats": 70,
     "unsched": false,
@@ -25502,7 +25364,9 @@
             "D003"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS11"
+        ]
       },
       {
         "t": "Full semester",
@@ -25525,7 +25389,9 @@
             "G103C"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS12"
+        ]
       },
       {
         "t": "Full semester",
@@ -25548,7 +25414,9 @@
             "G103C"
           ]
         ],
-        "batches": []
+        "batches": [
+          "BMS13"
+        ]
       }
     ]
   },

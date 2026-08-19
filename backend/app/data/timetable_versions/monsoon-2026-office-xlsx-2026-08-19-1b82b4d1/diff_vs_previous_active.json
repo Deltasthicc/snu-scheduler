@@ -1,0 +1,1219 @@
+{
+  "renamed_courses": [],
+  "added_courses": [],
+  "removed_courses": [],
+  "changed_courses": [
+    {
+      "code": "ART341/AMP2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + PRAC:PRAC1"
+        ]
+      }
+    },
+    {
+      "code": "BIO1002",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "BIO1YR"
+          ],
+          "new": [
+            "BIO2YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO323",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "BIO3YR"
+          ],
+          "new": [
+            "BIO3YR",
+            "BIO4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO324",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "BIO3YR"
+          ],
+          "new": [
+            "BIO3YR",
+            "BIO4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO327",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "BIO3YR"
+          ],
+          "new": [
+            "BIO3YR",
+            "BIO4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "BIO330",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "BIO3YR"
+          ],
+          "new": [
+            "BIO3YR",
+            "BIO4YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "CCC113/CCC2408",
+      "diffs": {
+        "school": {
+          "old": "",
+          "new": "School of Humanities & Social Sciences"
+        },
+        "dept": {
+          "old": "",
+          "new": "School of Humanities & Social Sciences - Sociology"
+        }
+      }
+    },
+    {
+      "code": "CED316",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "CED4YR"
+          ],
+          "new": [
+            "CED3YR",
+            "CED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CED412",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "CED4YR"
+          ],
+          "new": [
+            "CED3YR",
+            "CED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CED425",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "CED4YR"
+          ],
+          "new": [
+            "CED3YR",
+            "CED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CED640",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "CED4YR"
+          ],
+          "new": [
+            "CED3YR",
+            "CED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CHD471",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "CHD4YR"
+          ],
+          "new": [
+            "CHD3YR",
+            "CHD4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "CSD205/CSD2002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1",
+          "LEC:LEC1 + TUT:TUT2"
+        ]
+      }
+    },
+    {
+      "code": "DES303",
+      "diffs": {
+        "school": {
+          "old": "",
+          "new": "School of Humanities & Social Sciences"
+        },
+        "dept": {
+          "old": "",
+          "new": "School of Humanities & Social Sciences - Design"
+        },
+        "majorFor": {
+          "old": [],
+          "new": [
+            "DES3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES403/DES4001",
+      "diffs": {
+        "meFor": {
+          "old": [],
+          "new": [
+            "DES3YR",
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES404/DES4002",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "DES4YR"
+          ],
+          "new": [
+            "DES3YR",
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES405/DES4003",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "DES4YR"
+          ],
+          "new": [
+            "DES3YR",
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES406/DES4009",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "DES4YR"
+          ],
+          "new": [
+            "DES3YR",
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES410/DES4007",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "DES4YR"
+          ],
+          "new": [
+            "DES3YR",
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES411/DES4008",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "DES4YR"
+          ],
+          "new": [
+            "DES3YR",
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DES412/DES4100",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "DES4YR"
+          ],
+          "new": [
+            "DES3YR",
+            "DES4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "DOM207/DOM3007",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "BMS2YR",
+            "BMS3YR"
+          ],
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE305",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE4YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE351",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE3YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE352",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE3YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE353",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE3YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE356",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE4YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE357",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE3YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE363",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE3YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE370",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE3YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE374",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE4YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE451",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE4YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE452",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE4YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE453",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE4YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE454",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE4YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECE458",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECE4YR"
+          ],
+          "new": [
+            "ECE3YR",
+            "ECE4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO108/ECO1009",
+      "diffs": {
+        "majorFor": {
+          "old": [
+            "DES1YR",
+            "ENG1YR",
+            "IHS1YR",
+            "INT1YR"
+          ],
+          "new": [
+            "DES1YR",
+            "INT1YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO325",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECO3YR"
+          ],
+          "new": [
+            "ECO3YR",
+            "ECO4YR",
+            "ENF3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO354/ECO4201",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECO2YR",
+            "ECO3YR",
+            "ENF2YR",
+            "ENF3YR"
+          ],
+          "new": [
+            "ECO2YR",
+            "ECO3YR",
+            "ECO4YR",
+            "ENF2YR",
+            "ENF3YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO373",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECO3YR",
+            "ECO4YR"
+          ],
+          "new": [
+            "ECO3YR",
+            "ECO4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO375",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECO3YR",
+            "ENF3YR"
+          ],
+          "new": [
+            "ECO3YR",
+            "ECO4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO402",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECO3YR",
+            "ENF3YR"
+          ],
+          "new": [
+            "ECO3YR",
+            "ECO4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO452/ECO4502",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECO3YR",
+            "ENF3YR"
+          ],
+          "new": [
+            "ECO3YR",
+            "ECO4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO463/ECO4603",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECO3YR",
+            "ENF3YR"
+          ],
+          "new": [
+            "ECO3YR",
+            "ECO4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ECO483",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ECO3YR",
+            "ENF3YR"
+          ],
+          "new": [
+            "ECO3YR",
+            "ECO4YR",
+            "ENF3YR",
+            "ENF4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG340",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ENG3YR"
+          ],
+          "new": [
+            "ENG3YR",
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG342",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ENG3YR"
+          ],
+          "new": [
+            "ENG3YR",
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG348",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ENG3YR"
+          ],
+          "new": [
+            "ENG3YR",
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG440",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ENG4YR"
+          ],
+          "new": [
+            "ENG3YR",
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG448",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ENG4YR"
+          ],
+          "new": [
+            "ENG3YR",
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "ENG449",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "ENG4YR"
+          ],
+          "new": [
+            "ENG3YR",
+            "ENG4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "FAC210/FAC1002",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1"
+        ]
+      }
+    },
+    {
+      "code": "FAC212/2002",
+      "diffs": {
+        "school": {
+          "old": "",
+          "new": "School of Management and Entrepreneurship"
+        },
+        "dept": {
+          "old": "",
+          "new": "School of Management and Entrepreneurship - Dean's Office- SME"
+        },
+        "majorFor": {
+          "old": [],
+          "new": [
+            "ENF2YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "FAC213/2001",
+      "diffs": {
+        "school": {
+          "old": "",
+          "new": "School of Management and Entrepreneurship"
+        },
+        "dept": {
+          "old": "",
+          "new": "School of Management and Entrepreneurship - Dean's Office- SME"
+        },
+        "majorFor": {
+          "old": [],
+          "new": [
+            "ENF2YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS1001",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1",
+          "LEC:LEC2"
+        ]
+      }
+    },
+    {
+      "code": "HIS102/IHS1003",
+      "diffs": {
+        "meFor": {
+          "old": [],
+          "new": [
+            "HIS3YR",
+            "IRGS3YR",
+            "SOC3YR"
+          ]
+        },
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "HIS302",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "HIS3YR"
+          ],
+          "new": [
+            "HIS3YR",
+            "HIS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS303",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "HIS3YR"
+          ],
+          "new": [
+            "HIS3YR",
+            "HIS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS312",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "HIS3YR"
+          ],
+          "new": [
+            "HIS3YR",
+            "HIS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS323",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "HIS3YR"
+          ],
+          "new": [
+            "HIS3YR",
+            "HIS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS325",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "HIS3YR"
+          ],
+          "new": [
+            "HIS3YR",
+            "HIS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS326",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "HIS3YR"
+          ],
+          "new": [
+            "HIS3YR",
+            "HIS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "HIS331",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "HIS3YR"
+          ],
+          "new": [
+            "HIS3YR",
+            "HIS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "INT232/INT3032",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "INT3YR"
+          ],
+          "new": [
+            "INT3YR",
+            "INT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "INT246/INT3046",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "INT3YR"
+          ],
+          "new": [
+            "INT3YR",
+            "INT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT101/MAT1001",
+      "diffs": {
+        "majorFor": {
+          "old": [
+            "ECO1YR",
+            "MAT1YR",
+            "PHY1YR"
+          ],
+          "new": [
+            "ECO1YR",
+            "MAT1YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT160/MAT1006",
+      "diffs": {
+        "majorFor": {
+          "old": [
+            "MAT1YR"
+          ],
+          "new": [
+            "MAT1YR",
+            "PHY1YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT390",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MAT3YR"
+          ],
+          "new": [
+            "MAT3YR",
+            "MAT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT422",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MAT3YR"
+          ],
+          "new": [
+            "MAT3YR",
+            "MAT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT485",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MAT3YR"
+          ],
+          "new": [
+            "MAT3YR",
+            "MAT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MAT494",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MAT3YR"
+          ],
+          "new": [
+            "MAT3YR",
+            "MAT4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MEC301/MEC3003",
+      "diffs": {
+        "school": {
+          "old": "",
+          "new": "School of Management and Entrepreneurship"
+        },
+        "dept": {
+          "old": "",
+          "new": "School of Management and Entrepreneurship - Dean's Office- SME"
+        },
+        "meFor": {
+          "old": [],
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED307",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MED4YR"
+          ],
+          "new": [
+            "MED3YR",
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED318",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MED4YR"
+          ],
+          "new": [
+            "MED3YR",
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED328",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MED4YR"
+          ],
+          "new": [
+            "MED3YR",
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED403",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MED4YR"
+          ],
+          "new": [
+            "MED3YR",
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED410",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MED4YR"
+          ],
+          "new": [
+            "MED3YR",
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED416",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MED4YR"
+          ],
+          "new": [
+            "MED3YR",
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MED417",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "MED4YR"
+          ],
+          "new": [
+            "MED3YR",
+            "MED4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "MKT409/MKT4009",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "BMS2YR",
+            "BMS3YR"
+          ],
+          "new": [
+            "BMS2YR",
+            "BMS3YR",
+            "BMS4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PHY1003",
+      "diffs": {
+        "packages_moved": [
+          "LEC:LEC1 + TUT:TUT1"
+        ]
+      }
+    },
+    {
+      "code": "SOC327",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "SOC3YR"
+          ],
+          "new": [
+            "SOC3YR",
+            "SOC4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "SOC414",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "SOC4YR"
+          ],
+          "new": [
+            "SOC3YR",
+            "SOC4YR"
+          ]
+        }
+      }
+    },
+    {
+      "code": "SOC415",
+      "diffs": {
+        "meFor": {
+          "old": [
+            "SOC4YR"
+          ],
+          "new": [
+            "SOC3YR",
+            "SOC4YR"
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "renamed": 0,
+    "added": 0,
+    "removed": 0,
+    "changed": 84,
+    "unchanged": 244
+  }
+}

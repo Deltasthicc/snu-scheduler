@@ -668,6 +668,70 @@ const ck = (n, c, x) => { console.log((c ? '  PASS  ' : '  FAIL  ') + n + (x ? '
      !(await p.$('#pickBody .pick-outline-btn')), noOutlineCourse);
   await p.fill('#fQ', '');
 
+  console.log('\n=== §25 ROOM LOCATIONS (Block/Floor/Room derived from room codes) ===');
+  const roomCases = await p.evaluate(() => [
+    { in: 'A204', out: roomLocation('A204') },
+    { in: 'A001', out: roomLocation('A001') },
+    { in: 'C013A', out: roomLocation('C013A') },
+    { in: 'G102B', out: roomLocation('G102B') },
+    { in: 'G-Audi', out: roomLocation('G-Audi') },
+    { in: 'N/A', out: roomLocation('N/A') },
+    { in: 'Online', out: roomLocation('Online') },
+    { in: '', out: roomLocation('') },
+  ]);
+  const byIn = Object.fromEntries(roomCases.map(c => [c.in, c.out]));
+  ck('"A204" parses to A Block, 2nd Floor, Room 204',
+     byIn['A204'].block === 'A' && byIn['A204'].floor === 2 && byIn['A204'].roomNumber === '204'
+     && byIn['A204'].label === 'A Block, 2nd Floor, Room 204', JSON.stringify(byIn['A204']));
+  ck('a room number starting with 0 is Ground Floor, not floor "0"',
+     byIn['A001'].floor === 0 && /Ground Floor/.test(byIn['A001'].label), JSON.stringify(byIn['A001']));
+  ck('a trailing sub-room letter is kept as part of the room number, not a second floor',
+     byIn['C013A'].block === 'C' && byIn['C013A'].floor === 0 && byIn['C013A'].roomNumber === '013A',
+     JSON.stringify(byIn['C013A']));
+  ck('G block sub-room letters parse the same way as any other block',
+     byIn['G102B'].block === 'G' && byIn['G102B'].floor === 1 && byIn['G102B'].roomNumber === '102B',
+     JSON.stringify(byIn['G102B']));
+  ck('the "<Block>-Audi" special case names the block\'s auditorium, not a fabricated room number',
+     byIn['G-Audi'].block === 'G' && byIn['G-Audi'].floor === undefined && /Auditorium/.test(byIn['G-Audi'].label),
+     JSON.stringify(byIn['G-Audi']));
+  ck('"N/A" produces no fabricated location', byIn['N/A'].label === '' && byIn['N/A'].block === undefined,
+     JSON.stringify(byIn['N/A']));
+  ck('"Online" is labelled as such, not parsed as a room code', byIn['Online'].label === 'Online',
+     JSON.stringify(byIn['Online']));
+  ck('an empty room produces no fabricated location', byIn[''].label === '', JSON.stringify(byIn['']));
+
+  // every real room code in the active catalogue must parse to a real block
+  // letter or one of the two known non-room labels - never silently produce
+  // garbage for a code the University actually publishes
+  const catalogRoomCheck = await p.evaluate(() => {
+    const rooms = new Set();
+    C.forEach(c => c.pk.forEach(p => p.m.forEach(m => { if (m[5]) rooms.add(m[5]); })));
+    const bad = [...rooms].map(r => ({ r, loc: roomLocation(r) }))
+      .filter(x => !x.loc.block && x.loc.label !== 'Online' && x.loc.label !== '');
+    return { total: rooms.size, bad };
+  });
+  ck('every real room code in the active catalogue resolves to a block (or a known non-room label)',
+     catalogRoomCheck.bad.length === 0, JSON.stringify(catalogRoomCheck.bad.slice(0, 10)));
+
+  await p.evaluate(() => {
+    // a course + package with at least one real, parseable room code, so
+    // this check isn't at the mercy of whatever earlier sections happened
+    // to leave in PICK/FIXED
+    let found = null;
+    for (const c of C) {
+      const pkgIdx = c.pk.findIndex(p => p.m.some(m => /^[A-Za-z]\d/.test(m[5] || '')));
+      if (pkgIdx !== -1) { found = { code: c.code, pkgIdx }; break; }
+    }
+    FIXED = []; PICK = {}; PRIO = {};
+    PICK[found.code] = { want: 5, pkg: found.pkgIdx };
+    renderChosen(); renderFixed();
+  });
+  await p.click('.tab[data-p="timetable"]');
+  await p.waitForTimeout(300);
+  const ttLocationText = await p.evaluate(() => document.getElementById('ttGrid').textContent);
+  ck('the timetable (agenda view) shows a parsed location, not just a bare room code',
+     /Block/.test(ttLocationText) && /Floor|Auditorium/.test(ttLocationText), ttLocationText.slice(0, 300));
+
   console.log('\n=== §9 BACKEND UNAVAILABLE ===');
   await p.route('**/api/v1/**', r => r.abort());
   await p.route('**/health/**', r => r.abort());

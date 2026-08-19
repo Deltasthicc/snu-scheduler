@@ -119,9 +119,10 @@ details.more>*:last-child{margin-bottom:14px}
 .hrlab{font-family:var(--mono);font-size:9.5px;color:var(--faint);text-align:right;padding-right:5px;position:absolute;right:0;transform:translateY(-6px)}
 .ev{position:absolute;left:2px;right:2px;border-radius:4px;padding:2px 4px;overflow:hidden;font-size:9.5px;line-height:1.25;font-family:var(--mono);z-index:2;cursor:default}
 .ev b{font-size:10px}
-.ev b,.ev-title,.ev-when{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev b,.ev-title,.ev-when,.ev-loc{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ev-title{font-family:var(--body);font-weight:600;opacity:.92}
 .ev-when{opacity:.75}
+.ev-loc{opacity:.7;font-weight:600}
 .ev.fix{background:#2F3B45;color:#D6E0E7;border-left:3px solid var(--dim)}
 .ev.me{background:#4A3717;color:#F5D09B;border-left:3px solid var(--sig)}
 .ev.uwe{background:#173A34;color:#9CDECF;border-left:3px solid var(--ok)}
@@ -418,6 +419,7 @@ details.cs-more .cs-field{margin-top:10px}
 .agenda-event.bad{border-color:color-mix(in srgb,var(--bad) 55%,var(--line));border-left-color:var(--bad);background:var(--badbg)}
 .agenda-time{font:600 10.5px/1.5 var(--mono);color:var(--sig-hi)}.agenda-course b{display:block;font-family:var(--display)}
 .agenda-course span{display:block;margin-top:3px;color:var(--dim);font-size:11px;line-height:1.45}.agenda-tag{margin-top:6px!important;color:var(--faint)!important;font:500 9px var(--mono)!important;text-transform:uppercase;letter-spacing:.05em}
+.agenda-loc{margin-top:3px!important;color:var(--sig-hi)!important;font:600 10.5px var(--mono)!important}
 .tt{grid-template-columns:54px repeat(6,minmax(92px,1fr));min-width:680px}.ttwrap{max-width:100%;overflow-x:auto}
 
 /* Group repeated citations into a compact source library. */

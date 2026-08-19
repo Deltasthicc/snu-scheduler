@@ -89,12 +89,12 @@ function renderMiniGrid(ev,targetId){
     const lanes=[];
     day.forEach(e=>{let L=0; while(lanes[L]!==undefined && lanes[L]>e.m[1])L++; lanes[L]=e.m[2]; e._lane=L;});
     const nl=Math.max(1,lanes.length);
-    day.forEach(e=>{const top=(e.m[1]-lo)*PXM, ht=Math.max(15,(e.m[2]-e.m[1])*PXM-2);
+    day.forEach(e=>{const top=(e.m[1]-lo)*PXM, ht=Math.max(15,(e.m[2]-e.m[1])*PXM-2), loc=roomLocation(e.m[5]);
       const w=100/nl, left=e._lane*w;
       h+=`<div class="ev ${e.kind==='nb'||e.kind==='core'?'fix':e.kind}"
         style="top:${top}px;height:${ht}px;left:calc(${left}% + 2px);width:calc(${w}% - 4px)"
-        title="${esc(e.code)} ${DAYS[e.m[0]]} ${hm(e.m[1])}-${hm(e.m[2])}">
-        <b>${esc(e.code.split('/')[0])}</b><br>${e.m[3]}</div>`;});
+        title="${esc(e.code)} ${DAYS[e.m[0]]} ${hm(e.m[1])}-${hm(e.m[2])}${loc.label?' — '+esc(loc.label):''}">
+        <b>${esc(e.code.split('/')[0])}</b><span class="ev-when">${e.m[3]}</span>${loc.short?`<span class="ev-loc">${esc(loc.short)}</span>`:''}</div>`;});
     h+='</div>';
   });
   h+='</div>';

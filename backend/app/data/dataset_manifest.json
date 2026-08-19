@@ -1,5 +1,5 @@
 {
-  "active_version": "monsoon-2026-netlify-revision-2026-08-12-7ff39768",
+  "active_version": "monsoon-2026-office-xlsx-2026-08-19-1b82b4d1",
   "versions": [
     {
       "version_id": "monsoon-2026-excel-v1",
@@ -138,6 +138,37 @@
       "package_count": 563,
       "error_count": 0,
       "warning_count": 15,
+      "validation_status": "clean"
+    },
+    {
+      "version_id": "monsoon-2026-netlify-revision-2026-08-19-8bb0d65b",
+      "source_name": "SNU Monsoon 2026 Timetable Planner (Netlify)",
+      "source_url": "https://snioe-monsoon2026-tt.netlify.app/",
+      "retrieved_at": "2026-08-19T09:44:32.947120+00:00",
+      "source_checksum": "8bb0d65bea39a2e1",
+      "dataset_checksum": "e84ba9e3e18be336",
+      "importer_version": "1.0.0",
+      "effective_semester": "Monsoon 2026",
+      "course_count": 328,
+      "package_count": 548,
+      "error_count": 0,
+      "warning_count": 18,
+      "validation_status": "clean"
+    },
+    {
+      "version_id": "monsoon-2026-office-xlsx-2026-08-19-1b82b4d1",
+      "source_name": "Academic Office timetable workbook (Monsoon 2026 Timetable(1).xlsx)",
+      "source_url": null,
+      "source_file": "Monsoon 2026 Timetable(1).xlsx",
+      "retrieved_at": "2026-08-19T09:46:05.674157+00:00",
+      "source_checksum": "1b82b4d1b108b46f",
+      "dataset_checksum": "63964b34f3137b87",
+      "importer_version": "xlsx-1.0.0",
+      "effective_semester": "Monsoon 2026",
+      "course_count": 328,
+      "package_count": 548,
+      "error_count": 0,
+      "warning_count": 344,
       "validation_status": "clean"
     }
   ]
